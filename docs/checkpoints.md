@@ -4,7 +4,7 @@
 
 Auxiliary proof of work produces candidate blocks. Eligible stake supplies checkpoint support over a valid branch. Ordinary validators continue to reject invalid transactions and proofs independently of stake support.
 
-A staking vote is an automatic protocol message, not an authorization to spend treasury assets or access private payments. Treasury control and governance of software upgrades are separate policies. The [ecosystem governance research](governance.md) defines a separate manual ballot and funding lifecycle.
+A staking vote is an automatic protocol message, not an authorization to spend treasury assets or access private payments. Treasury control and governance of software upgrades are separate policies. The [protocol pool governance research](governance.md) defines a separate manual ballot and funding lifecycle.
 
 ## Required construction
 
@@ -18,7 +18,11 @@ The randomness construction must address grinding, withholding, and adaptive par
 
 Specify activation, maturity, bonding/unbonding, key rotation, delegation, reward vesting, equivocation evidence, and penalties. Restricted online voting authority must not be general spending authority.
 
-The monetary core applies a nominal 70/30 split: the miner receives floor(7 * capped subsidy / 10) atomic units and the stake budget receives the remainder. This preserves atomic unit conservation, including a final budget of one atom that is entirely allocated to staking. Only explicitly earned stake amounts are issued. The core does not verify the evidence of those duties. Unused stake budget is not redirected to the miner or treasury. The future kernel must bind the accounting call to valid certificate/duty evidence and prevent duplicate application.
+The current [native subsidy allocation](subsidy-allocation.md) assigns nominal shares of 60 percent to miners, 20 percent to eligible staking, 10 percent to the protocol pool, and 10 percent to temporary development maintenance for the designated project developer. For capped subsidy $S$, the staking budget is $K=\lfloor 2S/10\rfloor$. Atomic remainders belong to the miner, including the final available atom.
+
+Only explicitly earned stake reward within $K$ is issued. The core does not verify the evidence of those duties. Unused staking budget remains unissued and is not redirected to any other allocation. Pool and developer allocations count as issued immediately, even while unspent. The future kernel must bind every allocation to valid authorization, destinations, accepted block context, and atomic persistence. The core does not create payout notes or establish those authorities.
+
+Checkpoint support is separate from pool spending and development maintenance. It cannot retire the developer allocation through an ordinary vote. Retirement requires the future consensus hard fork and handover rules described in the allocation specification. No automatic sunset is implemented.
 
 With no premine, checkpoint activation requires a public bootstrap process that distributes eligible stake. The transition rule and conditions must be audited and simulated before a launch involving real value. Until activated, the node must not report stake finality.
 

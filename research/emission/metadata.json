@@ -1,6 +1,6 @@
 {
-  "reference_version": "1",
-  "implementation_status": "monetary research reference; open construction",
+  "reference_version": "2",
+  "implementation_status": "monetary research reference. Protocol construction remains open",
   "atomic_decimals": 8,
   "cap_atoms": 6300000000000000,
   "block_seconds": 120,
@@ -10,15 +10,30 @@
   "long_reward_atoms": 50000000,
   "long_reward_first_index": 5256000,
   "long_reward_first_height": 5256001,
+  "allocation_profile": {
+    "nominal_shares": {
+      "miner": 60,
+      "staking_budget": 20,
+      "protocol_pool": 10,
+      "development_maintenance": 10
+    },
+    "denominator": 100,
+    "rounding": "floor each share then assign all remaining atomic units to miner",
+    "protocol_pool_credit": "issued at valid block allocation even while unspent",
+    "development_maintenance_credit": "issued at valid block allocation even while unspent",
+    "development_sunset_height": null,
+    "future_activation_and_replacement_profile": "unset. A future hard fork specification is required"
+  },
   "schedule_values_sha256": "ab8097f05a6993a38a3666ca5056c0cd30a6609ab2d5c3192a038bf2e27c8f7b",
   "schedule_hash_encoding": "ASCII decimal period:reward_atoms followed by LF for each of 240 entries",
   "assumptions": [
-    "all scheduled miner and staking budgets fully earned",
-    "zero-reward genesis; first paid height 1 maps to reward index 0",
-    "target 120-second block spacing; 365-day model years",
+    "all staking budgets fully earned and all miner, protocol pool and development allocations credited",
+    "zero reward genesis. First paid height 1 maps to reward index 0",
+    "target block spacing of 120 seconds. Model years contain 365 days",
     "no burns",
     "no premine",
-    "no bootstrap or omitted-budget timing adjustment"
+    "no timing adjustment for bootstrap or omitted budgets",
+    "constant 60/20/10/10 profile throughout the illustrated horizon. No development sunset is modeled"
   ],
   "cap_exhaustion": {
     "first_exhausted_height": 83902342,
@@ -35,9 +50,11 @@
       "remaining_cap_before_atoms": 12117900,
       "scheduled_reward_atoms": 50000000,
       "capped_reward_atoms": 12117900,
-      "miner_atoms": 8482530,
-      "staking_budget_atoms": 3635370,
-      "earned_staking_atoms": 3635370,
+      "miner_atoms": 7270740,
+      "staking_budget_atoms": 2423580,
+      "protocol_pool_atoms": 1211790,
+      "development_maintenance_atoms": 1211790,
+      "earned_staking_atoms": 2423580,
       "unearned_staking_atoms": 0,
       "actual_issued_atoms": 12117900,
       "burn_after_atoms": 0,
@@ -49,15 +66,17 @@
   },
   "artifacts_sha256": {
     "schedule.csv": "1a06338798693b63261c76bcc4dc873437f716b4d6f413a961f32c8ecd336918",
-    "golden_vectors.json": "a878275bd8ba5828d118f6379c6765192ba538d575f89ab68746c47a45756a9a",
-    "golden_vectors.csv": "1f1af7b570075de61e7c5f45f56133ff675732a3e339f0550b7a2b6f503588bd",
-    "projection_annual.csv": "571ea11482bbcfbde7b8b83d40093fc31cafc7246916dada5c6886418b4e6b1a",
-    "projection_monthly.csv": "e44ca0c2417ad5ac2d59a528f33f516a70e8c4c6cc29e09640712d30e5022661"
+    "golden_vectors.json": "603f08b76560db7c6d2510e3c8fc8c13617ace70cb9852987b8414bc69132fc4",
+    "golden_vectors.csv": "f6aaec600724b24dc4642dc2a668b5442fad0d695233416d6b3bb7091b134e35",
+    "projection_annual.csv": "0d8db45acace3548baeb8b8fcb1390cbfffc2e66559528b9e2a5c9df82b5b98b",
+    "projection_monthly.csv": "541e80a4e02ca2c609358352f99262d408d9048c504aa41327a20fc8e3d5247c"
   },
   "open_questions": [
     "stake eligibility and distribution",
     "bootstrap and launch rules",
-    "privacy and post-quantum consensus construction",
-    "fees and security after cap exhaustion"
+    "privacy and post quantum consensus construction",
+    "fees and security after cap exhaustion",
+    "protocol pool governance and authorized ledger destinations",
+    "development allocation sunset and the future hard fork profile"
   ]
 }

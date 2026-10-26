@@ -16,59 +16,59 @@
 			<g transform="">
 				<g transform="">
 					<g transform="">
-						<path d="M 95,135 L 895,135 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,155 L 895,155 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
 					</g>
 					<g transform="">
-						<path d="M 95,135 L 95,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
-						<path d="M 255,135 L 255,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
-						<path d="M 415,135 L 415,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
-						<path d="M 575,135 L 575,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
-						<path d="M 735,135 L 735,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
-						<path d="M 895,135 L 895,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,155 L 95,150 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 255,155 L 255,150 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 415,155 L 415,150 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 575,155 L 575,150 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 735,155 L 735,150 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 895,155 L 895,150 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
 					</g>
 					<g transform="">
-						<g transform=" matrix(1,0,0,1,95,127)">
+						<g transform=" matrix(1,0,0,1,95,147)">
 							<text x="-2.7800000000000002" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">0</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,255,127)">
+						<g transform=" matrix(1,0,0,1,255,147)">
 							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">10</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,415,127)">
+						<g transform=" matrix(1,0,0,1,415,147)">
 							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">20</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,575,127)">
+						<g transform=" matrix(1,0,0,1,575,147)">
 							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">30</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,735,127)">
+						<g transform=" matrix(1,0,0,1,735,147)">
 							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">40</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,895,127)">
+						<g transform=" matrix(1,0,0,1,895,147)">
 							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">50</text>
 						</g>
 					</g>
 				</g>
 				<g transform="">
 					<g transform="">
-						<path d="M 95,135 L 95,419 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,155 L 95,419 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
 					</g>
 					<g transform="">
-						<path d="M 95,135 L 90,135 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
-						<path d="M 95,206 L 90,206 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
-						<path d="M 95,277 L 90,277 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
-						<path d="M 95,348 L 90,348 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,155 L 90,155 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,221 L 90,221 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,287 L 90,287 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,353 L 90,353 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
 						<path d="M 95,419 L 90,419 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
 					</g>
 					<g transform="">
-						<g transform=" matrix(1,0,0,1,87,135)">
+						<g transform=" matrix(1,0,0,1,87,155)">
 							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">0</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,87,206)">
+						<g transform=" matrix(1,0,0,1,87,221)">
 							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">1</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,87,277)">
+						<g transform=" matrix(1,0,0,1,87,287)">
 							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">2</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,87,348)">
+						<g transform=" matrix(1,0,0,1,87,353)">
 							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">3</text>
 						</g>
 						<g transform=" matrix(1,0,0,1,87,419)">
@@ -76,19 +76,28 @@
 						</g>
 					</g>
 				</g>
-				<path d="M 95,206 L 895,206 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
-				<path d="M 95,277 L 895,277 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
-				<path d="M 95,348 L 895,348 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
+				<path d="M 95,221 L 895,221 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
+				<path d="M 95,287 L 895,287 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
+				<path d="M 95,353 L 895,353 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
 				<path d="M 95,419 L 895,419 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
 				<g transform="">
-					<polyline points="95 411.0897, 111 411.0897, 111 367.1628, 127 367.1628, 127 330.2249, 143 330.2249, 143 299.1639, 159 299.1639, 159 273.0448, 175 273.0448, 175 251.0814, 191 251.0814, 191 232.6124, 207 232.6124, 207 217.0819, 223 217.0819, 223 204.0224, 239 204.0224, 239 193.0407, 255 193.0407, 255 183.8062, 271 183.8062, 271 176.041, 287 176.041, 287 169.5112, 303 169.5112, 303 164.0204, 319 164.0204, 319 159.4031, 335 159.4031, 335 155.5205, 351 155.5205, 351 152.2556, 367 152.2556, 367 149.5102, 383 149.5102, 383 147.2016, 399 147.2016, 399 145.2602, 415 145.2602, 415 144.3294, 431 144.3294, 431 144.3294, 447 144.3294, 447 144.3294, 463 144.3294, 463 144.3294, 479 144.3294, 479 144.3294, 495 144.3294, 495 144.3294, 511 144.3294, 511 144.3294, 527 144.3294, 527 144.3294, 543 144.3294, 543 144.3294, 559 144.3294, 559 144.3294, 575 144.3294, 575 144.3294, 591 144.3294, 591 144.3294, 607 144.3294, 607 144.3294, 623 144.3294, 623 144.3294, 639 144.3294, 639 144.3294, 655 144.3294, 655 144.3294, 671 144.3294, 671 144.3294, 687 144.3294, 687 144.3294, 703 144.3294, 703 144.3294, 719 144.3294, 719 144.3294, 735 144.3294, 735 144.3294, 751 144.3294, 751 144.3294, 767 144.3294, 767 144.3294, 783 144.3294, 783 144.3294, 799 144.3294, 799 144.3294, 815 144.3294, 815 144.3294, 831 144.3294, 831 144.3294, 847 144.3294, 847 144.3294, 863 144.3294, 863 144.3294, 879 144.3294, 879 144.3294, 895 144.3294" style="stroke: rgb(13%,36%,65%); stroke-linecap: round; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+					<polyline points="95 411.6467, 111 411.6467, 111 370.8133, 127 370.8133, 127 336.4766, 143 336.4766, 143 307.6031, 159 307.6031, 159 283.3234, 175 283.3234, 175 262.9067, 191 262.9067, 191 245.7383, 207 245.7383, 207 231.3015, 223 231.3015, 223 219.1617, 239 219.1617, 239 208.9533, 255 208.9533, 255 200.3692, 271 200.3692, 271 193.1508, 287 193.1508, 287 187.0808, 303 187.0808, 303 181.9767, 319 181.9767, 319 177.6846, 335 177.6846, 335 174.0754, 351 174.0754, 351 171.0404, 367 171.0404, 367 168.4883, 383 168.4883, 383 166.3423, 399 166.3423, 399 164.5377, 415 164.5377, 415 163.6724, 431 163.6724, 431 163.6724, 447 163.6724, 447 163.6724, 463 163.6724, 463 163.6724, 479 163.6724, 479 163.6724, 495 163.6724, 495 163.6724, 511 163.6724, 511 163.6724, 527 163.6724, 527 163.6724, 543 163.6724, 543 163.6724, 559 163.6724, 559 163.6724, 575 163.6724, 575 163.6724, 591 163.6724, 591 163.6724, 607 163.6724, 607 163.6724, 623 163.6724, 623 163.6724, 639 163.6724, 639 163.6724, 655 163.6724, 655 163.6724, 671 163.6724, 671 163.6724, 687 163.6724, 687 163.6724, 703 163.6724, 703 163.6724, 719 163.6724, 719 163.6724, 735 163.6724, 735 163.6724, 751 163.6724, 751 163.6724, 767 163.6724, 767 163.6724, 783 163.6724, 783 163.6724, 799 163.6724, 799 163.6724, 815 163.6724, 815 163.6724, 831 163.6724, 831 163.6724, 847 163.6724, 847 163.6724, 863 163.6724, 863 163.6724, 879 163.6724, 879 163.6724, 895 163.6724" style="stroke: rgb(13%,36%,65%); stroke-linecap: round; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+					<polyline points="95 308.988, 111 308.988, 111 284.488, 127 284.488, 127 263.886, 143 263.886, 143 246.5618, 159 246.5618, 159 231.994, 175 231.994, 175 219.744, 191 219.744, 191 209.443, 207 209.443, 207 200.7809, 223 200.7809, 223 193.497, 239 193.497, 239 187.372, 255 187.372, 255 182.2215, 271 182.2215, 271 177.8905, 287 177.8905, 287 174.2485, 303 174.2485, 303 171.186, 319 171.186, 319 168.6107, 335 168.6107, 335 166.4452, 351 166.4452, 351 164.6243, 367 164.6243, 367 163.093, 383 163.093, 383 161.8054, 399 161.8054, 399 160.7226, 415 160.7226, 415 160.2034, 431 160.2034, 431 160.2034, 447 160.2034, 447 160.2034, 463 160.2034, 463 160.2034, 479 160.2034, 479 160.2034, 495 160.2034, 495 160.2034, 511 160.2034, 511 160.2034, 527 160.2034, 527 160.2034, 543 160.2034, 543 160.2034, 559 160.2034, 559 160.2034, 575 160.2034, 575 160.2034, 591 160.2034, 591 160.2034, 607 160.2034, 607 160.2034, 623 160.2034, 623 160.2034, 639 160.2034, 639 160.2034, 655 160.2034, 655 160.2034, 671 160.2034, 671 160.2034, 687 160.2034, 687 160.2034, 703 160.2034, 703 160.2034, 719 160.2034, 719 160.2034, 735 160.2034, 735 160.2034, 751 160.2034, 751 160.2034, 767 160.2034, 767 160.2034, 783 160.2034, 783 160.2034, 799 160.2034, 799 160.2034, 815 160.2034, 815 160.2034, 831 160.2034, 831 160.2034, 847 160.2034, 847 160.2034, 863 160.2034, 863 160.2034, 879 160.2034, 879 160.2034, 895 160.2034" style="stroke: rgb(13%,52%,39%); stroke-linecap: round; stroke-width: 1.8; fill: None; fill-rule: evenodd;"/>
+					<polyline points="95 206.3293, 111 206.3293, 111 198.1627, 127 198.1627, 127 191.2953, 143 191.2953, 143 185.5206, 159 185.5206, 159 180.6647, 175 180.6647, 175 176.5813, 191 176.5813, 191 173.1477, 207 173.1477, 207 170.2603, 223 170.2603, 223 167.8323, 239 167.8323, 239 165.7907, 255 165.7907, 255 164.0738, 271 164.0738, 271 162.6302, 287 162.6302, 287 161.4162, 303 161.4162, 303 160.3953, 319 160.3953, 319 159.5369, 335 159.5369, 335 158.8151, 351 158.8151, 351 158.2081, 367 158.2081, 367 157.6977, 383 157.6977, 383 157.2685, 399 157.2685, 399 156.9075, 415 156.9075, 415 156.7345, 431 156.7345, 431 156.7345, 447 156.7345, 447 156.7345, 463 156.7345, 463 156.7345, 479 156.7345, 479 156.7345, 495 156.7345, 495 156.7345, 511 156.7345, 511 156.7345, 527 156.7345, 527 156.7345, 543 156.7345, 543 156.7345, 559 156.7345, 559 156.7345, 575 156.7345, 575 156.7345, 591 156.7345, 591 156.7345, 607 156.7345, 607 156.7345, 623 156.7345, 623 156.7345, 639 156.7345, 639 156.7345, 655 156.7345, 655 156.7345, 671 156.7345, 671 156.7345, 687 156.7345, 687 156.7345, 703 156.7345, 703 156.7345, 719 156.7345, 719 156.7345, 735 156.7345, 735 156.7345, 751 156.7345, 751 156.7345, 767 156.7345, 767 156.7345, 783 156.7345, 783 156.7345, 799 156.7345, 799 156.7345, 815 156.7345, 815 156.7345, 831 156.7345, 831 156.7345, 847 156.7345, 847 156.7345, 863 156.7345, 863 156.7345, 879 156.7345, 879 156.7345, 895 156.7345" style="stroke: rgb(71%,36%,13%); stroke-linecap: round; stroke-width: 1.8; fill: None; fill-rule: evenodd;"/>
+					<polyline points="95 180.6647, 111 180.6647, 111 176.5813, 127 176.5813, 127 173.1477, 143 173.1477, 143 170.2603, 159 170.2603, 159 167.8323, 175 167.8323, 175 165.7907, 191 165.7907, 191 164.0738, 207 164.0738, 207 162.6302, 223 162.6302, 223 161.4162, 239 161.4162, 239 160.3953, 255 160.3953, 255 159.5369, 271 159.5369, 271 158.8151, 287 158.8151, 287 158.2081, 303 158.2081, 303 157.6977, 319 157.6977, 319 157.2685, 335 157.2685, 335 156.9075, 351 156.9075, 351 156.604, 367 156.604, 367 156.3488, 383 156.3488, 383 156.1342, 399 156.1342, 399 155.9538, 415 155.9538, 415 155.8672, 431 155.8672, 431 155.8672, 447 155.8672, 447 155.8672, 463 155.8672, 463 155.8672, 479 155.8672, 479 155.8672, 495 155.8672, 495 155.8672, 511 155.8672, 511 155.8672, 527 155.8672, 527 155.8672, 543 155.8672, 543 155.8672, 559 155.8672, 559 155.8672, 575 155.8672, 575 155.8672, 591 155.8672, 591 155.8672, 607 155.8672, 607 155.8672, 623 155.8672, 623 155.8672, 639 155.8672, 639 155.8672, 655 155.8672, 655 155.8672, 671 155.8672, 671 155.8672, 687 155.8672, 687 155.8672, 703 155.8672, 703 155.8672, 719 155.8672, 719 155.8672, 735 155.8672, 735 155.8672, 751 155.8672, 751 155.8672, 767 155.8672, 767 155.8672, 783 155.8672, 783 155.8672, 799 155.8672, 799 155.8672, 815 155.8672, 815 155.8672, 831 155.8672, 831 155.8672, 847 155.8672, 847 155.8672, 863 155.8672, 863 155.8672, 879 155.8672, 879 155.8672, 895 155.8672" style="stroke: rgb(46%,33%,63%); stroke-linecap: round; stroke-width: 1.8; fill: None; fill-rule: evenodd;"/>
 				</g>
 			</g>
 			<text x="416.1355" y="67" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,134) scale(1,-1)">Elapsed model years (365 days)</text>
 			<text x="95" y="434" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,868) scale(1,-1)">Million coins per model year</text>
-			<path d="M 95,91 L 119,91 Z" style="stroke: rgb(13%,36%,65%); stroke-linecap: butt; stroke-width: 2.4;"/>
-			<text x="127" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Fully earned annual issuance</text>
-			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">Fully earned budgets. No burns, premine, or timing adjustment for bootstrap or omitted budgets.</text>
+			<path d="M 95,109 L 119,109 Z" style="stroke: rgb(13%,36%,65%); stroke-linecap: butt; stroke-width: 2.4;"/>
+			<text x="127" y="105" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,210) scale(1,-1)">Total annual issuance</text>
+			<path d="M 495,109 L 519,109 Z" style="stroke: rgb(13%,52%,39%); stroke-linecap: butt; stroke-width: 2.4;"/>
+			<text x="527" y="105" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,210) scale(1,-1)">Mining allocation</text>
+			<path d="M 95,91 L 119,91 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.4;"/>
+			<text x="127" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Staking earned</text>
+			<path d="M 495,91 L 519,91 Z" style="stroke: rgb(46%,33%,63%); stroke-linecap: butt; stroke-width: 2.4;"/>
+			<text x="527" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Pool / development (each)</text>
+			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">All allocations issued. No burns, premine, or bootstrap adjustment. No development sunset modeled.</text>
 			<text x="64" y="18" style="font-family: Helvetica; font-size: 9px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,36) scale(1,-1)">Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.</text>
 		</g>
 	</g>

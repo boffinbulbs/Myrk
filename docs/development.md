@@ -2,14 +2,15 @@
 
 ## Initial executable boundary
 
-The current executable scope is deterministic monetary accounting and an isolated [primitive laboratory](crypto-lab.md), with reference vectors and reproducible research artifacts. It establishes arithmetic, primitive integration, and module boundaries. It does not implement a private transaction system or active consensus network.
+The current executable scope is deterministic monetary accounting under the [60/20/10/10 subsidy profile](subsidy-allocation.md) and an isolated [primitive laboratory](crypto-lab.md), with reference vectors and reproducible research artifacts. Transparent local relation research is underway. Its checkers receive private inputs directly and do not establish zero knowledge or complete private payment feasibility. The workspace does not implement a private transaction system or active consensus network.
 
 ## Milestones and evidence
 
 | Milestone | Deliverable | Acceptance evidence |
 |---|---|---|
-| Accounting | Atomic units, frozen subsidy table, allocation, cap, actual issuance and burns | Boundary/rejection/conservation tests and independent vectors |
+| Accounting | Atomic units, frozen subsidy table, 60/20/10/10 allocation, miner rounding, cap, actual issuance and burns | Boundary/rejection/conservation tests and independent vectors |
 | Primitive feasibility laboratory | Isolated operations for signing, verification, encapsulation, decapsulation and authenticated encryption | Exact backend versions and parameters, real primitive operations, altered input rejection, reproducible size and cost measurements |
+| Transparent relation research | Local reference checks for note, authorization, conservation and encryption semantics | Explicit plaintext witness boundary, valid and invalid fixtures, no substitution for a hiding proof |
 | Private transition feasibility | One fully specified and executable private payment relation | Authorization, ranges, conservation, nullifier binding, malformed proof rejection, measured costs and security rationale |
 | Private stake feasibility | Confidential eligible weight and checkpoint support | No duplicate weight/reuse, epoch/domain binding, PQ assumptions, bounded certificates and adversarial simulations |
 | Ledger kernel | State roots, global nullifiers, canonical decoding, fees, issuance integration and rollback | Independent node agreement, inflation rejection, replay rejection and atomic persistence |
@@ -17,7 +18,7 @@ The current executable scope is deterministic monetary accounting and an isolate
 | Mining and finality | Supported parent adapter, AuxPoW, difficulty, branch selection and stake lifecycle | Compatible results from the same work, tamper/replay rejection, partition/reorg/hash change tests |
 | Wallet and recovery | Private Send, local validation/proving, restricted voting, backup/restore and metadata controls | Measurements on named hardware, restore/pruning/reorg tests and observer leakage report |
 | Treasury simulation | Durable receipts, orders, withdrawals, reconciliation and native burns | Restart/deduplication correctness, failure cases and no consumption of worker funds |
-| Ecosystem governance research | Separate native fund rules, private eligible stake ballots, verifiable tally, desktop flow and grant payment lifecycle | Snapshot/weight/duplicate vote proofs, quorum and capture simulations, bounded spending, malformed proposal rejection and private data review |
+| Protocol pool governance research | Separate pool state and spending rules, private eligible stake ballots, verifiable tally, desktop flow and grant payment lifecycle | Snapshot/weight/duplicate vote proofs, quorum and capture simulations, bounded spending, malformed proposal rejection and private data review |
 | Combined synthetic demonstration | Payment, escrow, assets, recovery, auxiliary work, confidential stake and simulated treasury execution | One reproducible checklist with valid and invalid cases, durable reconciliation and no real funds |
 | Public test network | Independent operators, pools and adversarial trials | Reproduced validation, payouts, resource limits, concentration/availability observations |
 | Release evaluation | Independent composition/implementation reviews and reproducible distributions | Material findings resolved and relevant checks repeated |
@@ -44,14 +45,16 @@ The first complete demonstration must cover all of the following in a controlled
 
 Treasury execution in this demonstration uses synthetic records or a sandbox with no real funds. It does not place live orders, transfer external assets, or require production spending keys. Every checklist item must retain its input fixtures, exact reproduction commands, expected valid and invalid outcomes, raw results, and implementation versions. The demonstration does not replace independent review or establish production privacy.
 
-The combined demonstration uses the implemented 70/30 monetary profile. Optional ecosystem governance is separately gated and is not a prerequisite for demonstrating the core protocol. Its research allocation cannot silently replace the executable profile.
+The combined demonstration uses the current 60/20/10/10 monetary profile, including immediate issuance of pool and developer allocations and unissued unearned staking budget. Pool governance remains separately gated. A complete grant system is not a prerequisite for the core demonstration, but accounting for the pool allocation is. Developer credits and external treasury assets retain separate authority boundaries.
 
 ## Measurement discipline
 
 Separate analytical schedule projections from measured code performance. Record workload, machine, operating system, toolchain, dependency versions, parameters, repetitions, resource use and uncertainty. Retain raw data and generation commands for published figures.
 
-The [private protocol research specification](research-target.md) defines the formal relations and privacy evaluation gates. The [ecosystem governance specification](governance.md) records a separate research extension. Governance funding and the 60/30/10 allocation remain outside the implemented monetary profile until their accounting, consensus, privacy, and activation rules are complete and independently checked.
+The [private protocol research specification](research-target.md) defines the formal relations and privacy evaluation gates. The [pool governance specification](governance.md) records unimplemented pool spending and voting requirements. The monetary core calculates pool and developer amounts but does not create payout notes or authenticate destinations. Transparent local reference checks remain research evidence rather than private proof validation.
 
 ## Release gates
 
 Private PQ transaction and staking constructions must pass their feasibility and review gates before production interfaces that depend on them are frozen. The bootstrap, genesis, difficulty, finality, withdrawal and recovery rules need complete specifications. Source licenses and dependency notices must be inventoried. No release date or security audit completion is implied by a development milestone.
+
+The temporary developer allocation requires a future consensus hard fork for retirement after work completion and community handover. The future miner/stake redistribution, completion criteria, change process, and activation height remain undefined. The pool share stays at 10 percent absent a separate explicit change, and existing legitimately earned credits remain unaffected. No automatic sunset, milestone key, or retirement height is implemented. No production genesis has been released.

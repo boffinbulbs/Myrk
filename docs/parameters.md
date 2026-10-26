@@ -14,16 +14,22 @@ These values define the current reference profile. A production genesis and cons
 | Declining periods | 240 |
 | Initial maximum subsidy | 16 THM |
 | Long reward phase | 0.5 THM until issuance allowance is exhausted |
-| Miner allocation | floor(7 * available subsidy / 10) atomic units |
-| Stake budget | available subsidy minus miner allocation |
+| Miner allocation | floor(6 * available subsidy / 10) plus every atomic rounding remainder |
+| Stake budget | floor(2 * available subsidy / 10) atomic units |
+| Protocol pool allocation | floor(available subsidy / 10) atomic units |
+| Development maintenance allocation | floor(available subsidy / 10) atomic units, designated for the project developer |
 | Parent work profile | Equihash (200,9), supported parent format |
 
 Genesis has height zero and no subsidy. Every height h >= 1 has reward index h - 1, independently of actual issuance. Schedule generation, exact integer vectors, rounding and projection assumptions are documented in [the reference model](../research/emission/README.md). The implementation is in [emission.rs](../crates/thorum-core/src/emission.rs), with an executable [parameter example](../crates/thorum-core/examples/parameters.rs).
 
-Cumulative issued value and completed burned value are separate counters. Outstanding monetary value is issued minus burned. Burns do not reopen the issuance ceiling. Scheduled stake budget is not issued without valid duty evidence. The core accounting API accepts an explicitly earned amount, while the future kernel must validate its authorization.
+Cumulative issued value and completed burned value are separate counters. Outstanding monetary value is issued minus burned. Burns do not reopen the issuance ceiling. The [allocation specification](subsidy-allocation.md) defines the complete 60/20/10/10 integer rule. Its first 16 THM budget allocates 9.6 THM to miners, 3.2 THM to staking, 1.6 THM to the protocol pool, and 1.6 THM to development maintenance. Every rounding remainder, including the final available atom, belongs to the miner.
+
+Only explicitly earned staking value is issued. Unearned staking remains unissued. Pool and developer amounts count as issued immediately even while unspent. The core calculates amounts and supply counters without creating payout notes or authenticating destinations. The future kernel must validate duty evidence, destination authority, accepted block context, and atomic state changes. These subsidy shares do not determine fee allocation.
 
 The profile's theoretical full issuance projections are analytical results, not a launch distribution, price model, or guarantee that all stake allocations are earned. No premine is included in those projections. Bootstrap omissions, slower block production and unearned allocations change actual issuance.
 
-The [ecosystem governance extension](governance.md) studies a separate 60/30/10 allocation. It does not alter this executable 70/30 profile, the frozen reference artifacts, or the cumulative issuance ceiling.
+The [protocol pool governance research](governance.md) addresses spending and ballots for the pool allocation. It is separate from developer credits and the operator external treasury. Pool governance is unimplemented. The current subsidy profile supersedes earlier allocation profiles without changing the cumulative issuance ceiling.
+
+The development maintenance share is temporary. Retirement requires a future consensus hard fork after work completion and community handover, with its future 10 percent redistributed to mining and staking. Completion criteria, the handover and change process, activation height, and successor miner/stake ratio remain unresolved. The pool share remains 10 percent unless a separate explicit change modifies it. Existing legitimately earned credits are unaffected. There is no automatic sunset or milestone key in code.
 
 Production difficulty adjustment, stake threshold, finality/quorum rounds, lifecycle delays, bootstrap activation, resource limits, fee policy, recovery data availability, treasury destination updates and genesis configuration remain open specification items.

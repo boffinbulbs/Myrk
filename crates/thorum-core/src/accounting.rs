@@ -11,7 +11,10 @@ use crate::{planned_allocation, scheduled_subsidy, Allocation, Amount, AmountErr
 /// Callers must authenticate restored totals and ensure that each accepted block
 /// or burn is applied exactly once to the appropriate branch. This type does not
 /// validate height ordering, branch membership, replay prevention, note ownership,
-/// transaction conservation, or staking duty evidence.
+/// transaction conservation, staking duty evidence, or allocation destinations.
+/// The future kernel must bind the miner, protocol pool and development
+/// maintenance credits to their required ledger outputs. These counters do not
+/// create wallet notes, fund balances or spending authority.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
 pub struct SupplyState {
     cumulative_issued: Amount,
@@ -70,9 +73,8 @@ impl SupplyState {
 
     /// Clip the nominal subsidy to remaining issuance capacity, then split it.
     ///
-    /// The cap is a ceiling, not a promise of exact issuance. With one atom of
-    /// remaining capacity, the miner allocation is zero and the staking budget
-    /// is one atom. If that atom is unearned, it remains unissued.
+    /// Unearned stake can delay cap exhaustion. With one atom of remaining
+    /// capacity, all four floors are zero and the remainder belongs to the miner.
     pub fn block_budget(self, height: u64) -> BlockBudget {
         let scheduled = scheduled_subsidy(height);
         let capped = scheduled.min(self.remaining_issuance());
@@ -84,12 +86,16 @@ impl SupplyState {
         }
     }
 
-    /// Credit the miner allocation plus only the staking amount actually earned.
+    /// Credit miner, protocol pool, development maintenance and earned staking.
     ///
     /// The caller must prove staking eligibility and duty evidence. The supplied
     /// earned amount must lie in `0..=staking_budget`. Unearned staking allocation
-    /// is not credited to the miner, issued, or burned. Budgets are recomputed
-    /// against the current totals. An earlier quote cannot authorize extra minting.
+    /// is not redirected to any other allocation, issued, or burned. Protocol
+    /// pool and development maintenance allocations count as issued immediately
+    /// in every valid block, including when they have not been spent or awarded.
+    /// The future kernel must validate their required destination credits.
+    /// Budgets are recomputed against the current totals. An earlier quote
+    /// cannot authorize extra minting.
     /// Errors leave the state unchanged.
     pub fn issue_block(
         &mut self,
@@ -104,7 +110,11 @@ impl SupplyState {
             });
         }
 
-        let actual_issued = budget.miner().checked_add(earned_staking)?;
+        let actual_issued = budget
+            .miner()
+            .checked_add(budget.protocol_pool())?
+            .checked_add(budget.development_maintenance())?
+            .checked_add(earned_staking)?;
         let unearned_staking = budget.staking_budget().checked_sub(earned_staking)?;
         let next = Self::new(
             self.cumulative_issued.checked_add(actual_issued)?,
@@ -169,6 +179,14 @@ impl BlockBudget {
     pub const fn staking_budget(self) -> Amount {
         self.allocation.staking_budget()
     }
+
+    pub const fn protocol_pool(self) -> Amount {
+        self.allocation.protocol_pool()
+    }
+
+    pub const fn development_maintenance(self) -> Amount {
+        self.allocation.development_maintenance()
+    }
 }
 
 /// The allocation actually credited by one successful issuance transition.
@@ -183,6 +201,20 @@ pub struct BlockIssuance {
 impl BlockIssuance {
     pub const fn budget(self) -> BlockBudget {
         self.budget
+    }
+
+    pub const fn miner(self) -> Amount {
+        self.budget.miner()
+    }
+
+    /// Required protocol pool credit already included in actual issuance.
+    pub const fn protocol_pool(self) -> Amount {
+        self.budget.protocol_pool()
+    }
+
+    /// Required development maintenance credit already included in actual issuance.
+    pub const fn development_maintenance(self) -> Amount {
+        self.budget.development_maintenance()
     }
 
     pub const fn earned_staking(self) -> Amount {

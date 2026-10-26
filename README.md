@@ -6,11 +6,11 @@ The protocol architecture separates the private transaction relation, determinis
 
 ## Implementation status
 
-The workspace contains deterministic monetary accounting, an independent reference model, an isolated cryptographic laboratory, reproducible research data, and protocol specifications. It does not yet implement a network, private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
+The workspace contains deterministic monetary accounting, an independent reference model, an isolated cryptographic laboratory, reproducible research data, and protocol specifications. Transparent local relation research is underway. It receives private data directly and does not establish a private proof. The workspace does not yet implement a network, private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
 
 | Area | Current scope |
 |---|---|
-| [Core accounting](crates/thorum-core/src/lib.rs) | Atomic unit arithmetic, subsidy schedule, issuance ceiling, reward allocation, burns |
+| [Core accounting](crates/thorum-core/src/lib.rs) | Atomic unit arithmetic, subsidy schedule, issuance ceiling, 60/20/10/10 allocation, actual issuance and burns |
 | Research | Independent schedule construction, golden vectors, analytical projections, reproducible figures |
 | [Primitive laboratory](docs/crypto-lab.md) | Real signature, key establishment and encrypted envelope experiments, selected official vectors, tamper rejection and local measurements |
 | Private ledger | Transaction relation and kernel requirements |
@@ -52,11 +52,13 @@ flowchart LR
 
 This diagram describes component boundaries. Implementation status is recorded separately above.
 
-## Ecosystem governance research
+## Native subsidy allocation
 
-The governance extension studies native ecosystem funding with stake voting through the desktop wallet. It separates treasury decisions from automatic checkpoint votes and from the operator controlled external mining treasury. The current accounting implementation uses a 70 percent miner allocation and a 30 percent staking budget. A 60 percent miner, 30 percent staking, and 10 percent ecosystem profile remains a separate research design, with no treasury minting or governance code implemented.
+The current native subsidy profile assigns 60 percent to miners, 20 percent to eligible staking duties, 10 percent to the protocol pool, and 10 percent to development maintenance for the designated project developer. Atomic rounding remainders belong to the miner. The first 16 THM budget gives 9.6, 3.2, 1.6, and 1.6 THM respectively. Unearned staking budget remains unissued. Pool and developer allocations count as issued immediately, even while unspent.
 
-The [governance specification](docs/governance.md) defines the authority boundary, exact allocation model, voting weight, funding lifecycle, and unresolved privacy and security requirements.
+The developer allocation is temporary and requires retirement through a future consensus hard fork after work completion and community handover. Its future 10 percent is to be redistributed to mining and staking. The successor ratio, criteria, process, and activation height remain unresolved. The pool share remains 10 percent absent a separate explicit change. Existing legitimately earned credits are unaffected, and the code contains no automatic sunset.
+
+The [allocation specification](docs/subsidy-allocation.md) defines the exact integer rule and issuance boundary. It applies to block subsidy, with fee distribution left separate. The core does not create payout notes or validate destinations. Pool governance remains unimplemented and separate from developer credits, checkpoint voting, and the operator controlled external mining treasury. Its [research specification](docs/governance.md) records the spending and ballot requirements. No production genesis has been released.
 
 ## Build and check
 
@@ -86,9 +88,10 @@ The [cryptographic research record](research/crypto/README.md) retains selected 
 9. [Security policy](SECURITY.md)
 10. [Contribution guide](CONTRIBUTING.md)
 11. [Privacy and post quantum research specification](docs/research-target.md)
-12. [Ecosystem governance](docs/governance.md)
+12. [Protocol pool governance](docs/governance.md)
 13. [Cryptographic feasibility laboratory](docs/crypto-lab.md)
 14. [Third party notices](THIRD_PARTY_NOTICES.md)
+15. [Native subsidy allocation](docs/subsidy-allocation.md)
 
 ## Source and research practice
 

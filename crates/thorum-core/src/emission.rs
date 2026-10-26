@@ -36,11 +36,16 @@ pub fn scheduled_subsidy(height: u64) -> Amount {
     }
 }
 
-/// Planned 70/30 allocation of a capped subsidy.
+/// Reference 60/20/10/10 allocation of a capped subsidy.
+///
+/// Atomic remainders after the four floors belong to the miner. The development
+/// maintenance share has no automatic sunset or successor allocation in this profile.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct Allocation {
     miner: Amount,
     staking_budget: Amount,
+    protocol_pool: Amount,
+    development_maintenance: Amount,
 }
 
 impl Allocation {
@@ -51,15 +56,32 @@ impl Allocation {
     pub const fn staking_budget(self) -> Amount {
         self.staking_budget
     }
+
+    pub const fn protocol_pool(self) -> Amount {
+        self.protocol_pool
+    }
+
+    pub const fn development_maintenance(self) -> Amount {
+        self.development_maintenance
+    }
 }
 
-/// Allocate `floor(7 * subsidy / 10)` to the miner and the remainder to staking.
+/// Floor the 60/20/10/10 budgets, then credit every remaining atom to the miner.
 ///
-/// Widening the multiplication permits every `u64` amount without overflow.
+/// Pool and development maintenance budgets are exactly `floor(subsidy / 10)`.
+/// The staking budget is exactly `floor(2 * subsidy / 10)`. Widening the
+/// multiplication permits every `u64` amount without overflow.
 pub fn planned_allocation(subsidy: Amount) -> Allocation {
-    let miner = (u128::from(subsidy.atomic()) * 7 / 10) as u64;
+    let atomic = u128::from(subsidy.atomic());
+    let miner_floor = atomic * 6 / 10;
+    let staking_budget = atomic * 2 / 10;
+    let protocol_pool = atomic / 10;
+    let development_maintenance = atomic / 10;
+    let remainder = atomic - miner_floor - staking_budget - protocol_pool - development_maintenance;
     Allocation {
-        miner: Amount::from_atomic(miner),
-        staking_budget: Amount::from_atomic(subsidy.atomic() - miner),
+        miner: Amount::from_atomic((miner_floor + remainder) as u64),
+        staking_budget: Amount::from_atomic(staking_budget as u64),
+        protocol_pool: Amount::from_atomic(protocol_pool as u64),
+        development_maintenance: Amount::from_atomic(development_maintenance as u64),
     }
 }

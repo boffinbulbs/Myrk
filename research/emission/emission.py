@@ -24,7 +24,8 @@ LONG_REWARD_ATOMS = ATOMS_PER_COIN // 2
 LONG_REWARD_FIRST_INDEX = DECLINING_PERIODS * BLOCKS_PER_PERIOD
 LONG_REWARD_FIRST_HEIGHT = LONG_REWARD_FIRST_INDEX + 1
 MAX_HEIGHT = 2**64 - 1
-REFERENCE_VERSION = "1"
+REFERENCE_VERSION = "2"
+ALLOCATION_NAMES = ("miner", "staking_budget", "protocol_pool", "development_maintenance")
 
 def _natural(value: int, name: str, maximum: int | None = None) -> int:
     if type(value) is not int or value < 0 or (maximum is not None and value > maximum):
@@ -79,10 +80,15 @@ def scheduled_subsidy(height: int) -> int:
     return 0 if height == 0 else scheduled_reward_for_index(height - 1)
 
 
-def split_budget(amount_atoms: int) -> tuple[int, int]:
+def split_budget(amount_atoms: int) -> tuple[int, int, int, int]:
+    """Floor the 60/20/10/10 shares and assign every remainder to the miner."""
     _natural(amount_atoms, "amount_atoms", CAP_ATOMS)
-    miner = amount_atoms * 7 // 10
-    return miner, amount_atoms - miner
+    miner = amount_atoms * 6 // 10
+    staking = amount_atoms * 2 // 10
+    protocol_pool = amount_atoms // 10
+    development = amount_atoms // 10
+    miner += amount_atoms - miner - staking - protocol_pool - development
+    return miner, staking, protocol_pool, development
 
 
 def block_transition(height: int, cumulative_issued_before_atoms: int = 0,
@@ -93,17 +99,18 @@ def block_transition(height: int, cumulative_issued_before_atoms: int = 0,
 
     None means the entire staking budget is earned. Stake eligibility is an
     input assumption, not a capability implemented by this reference.
-    The miner budget is assumed earned whenever the block is issued.
+    Miner, protocol pool and development allocations are credited when a valid
+    block is issued. Unspent pool or development credits remain issued value.
     """
     scheduled = scheduled_subsidy(height)
     issued = _natural(cumulative_issued_before_atoms, "cumulative_issued_before_atoms", CAP_ATOMS)
     burned = _natural(cumulative_burned_before_atoms, "cumulative_burned_before_atoms", issued)
     remaining = CAP_ATOMS - issued
     capped = min(scheduled, remaining)
-    miner, staking = split_budget(capped)
+    miner, staking, protocol_pool, development = split_budget(capped)
     earned = staking if earned_staking_atoms is None else _natural(
         earned_staking_atoms, "earned_staking_atoms", staking)
-    actual = miner + earned
+    actual = miner + earned + protocol_pool + development
     issued_after = issued + actual
     burn = _natural(burn_after_atoms, "burn_after_atoms", issued_after - burned)
     burned_after = burned + burn
@@ -117,6 +124,8 @@ def block_transition(height: int, cumulative_issued_before_atoms: int = 0,
         "capped_reward_atoms": capped,
         "miner_atoms": miner,
         "staking_budget_atoms": staking,
+        "protocol_pool_atoms": protocol_pool,
+        "development_maintenance_atoms": development,
         "earned_staking_atoms": earned,
         "unearned_staking_atoms": staking - earned,
         "actual_issued_atoms": actual,
@@ -141,6 +150,27 @@ def nominal_issued_through_height(height: int) -> int:
 
 def fully_earned_issued_through_height(height: int) -> int:
     return min(CAP_ATOMS, nominal_issued_through_height(height))
+
+
+def fully_earned_allocations_through_height(height: int) -> tuple[int, int, int, int]:
+    """Sum per block allocations exactly, including the last clipped reward."""
+    _natural(height, "height", MAX_HEIGHT)
+    totals = [0, 0, 0, 0]
+    remaining_blocks, remaining_cap = height, CAP_ATOMS
+    for period, reward in enumerate((*SCHEDULE, LONG_REWARD_ATOMS)):
+        count = min(remaining_blocks, BLOCKS_PER_PERIOD) if period < DECLINING_PERIODS else remaining_blocks
+        full_blocks = min(count, remaining_cap // reward)
+        for index, amount in enumerate(split_budget(reward)):
+            totals[index] += full_blocks * amount
+        remaining_cap -= full_blocks * reward
+        if full_blocks < count and remaining_cap:
+            for index, amount in enumerate(split_budget(remaining_cap)):
+                totals[index] += amount
+            remaining_cap = 0
+        remaining_blocks -= count
+        if not remaining_blocks or not remaining_cap:
+            break
+    return tuple(totals)
 
 
 def cap_exhaustion() -> dict:
@@ -191,8 +221,10 @@ def golden_vectors() -> dict:
         ("staking_unavailable", 1, 0, 0, 0, 0),
         ("staking_partially_earned", 1, 0, 0, 123_456_789, 0),
         ("cap_clip_seven_atoms", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS - 7, 0, None, 0),
-        ("cap_clip_one_earned", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS - 1, 0, 1, 0),
-        ("cap_clip_one_unearned", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS - 1, 0, 0, 0),
+        ("cap_clip_one_atom", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS - 1, 0, None, 0),
+        ("cap_clip_one_without_staking", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS - 1, 0, 0, 0),
+        ("cap_clip_five_unearned_staking", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS - 5, 0, 0, 0),
+        ("cap_clip_ten_partial_staking", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS - 10, 0, 1, 0),
         ("cap_exhausted", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS, 0, None, 0),
         ("burn_does_not_reopen_cap", LONG_REWARD_FIRST_HEIGHT, CAP_ATOMS, 10 * ATOMS_PER_COIN, None, 0),
         ("burn_after_first_paid", 1, 0, 0, None, 3 * ATOMS_PER_COIN),
@@ -203,27 +235,30 @@ def golden_vectors() -> dict:
     transitions = [{"id": identifier, **block_transition(height, issued, burned, earned, burn)}
                    for identifier, height, issued, burned, earned, burn in cases]
     return {
-        "schema_version": 1,
-        "units": "integer atomic units; 100000000 atomic units per coin",
+        "schema_version": 2,
+        "units": "integer atomic units. 100000000 atomic units per coin",
         "semantics": {
-            "height_zero": "zero reward; reward_block_index is null",
-            "cap": "cumulative actual issuance; burns do not reopen capacity",
+            "height_zero": "zero reward. reward_block_index is null",
+            "cap": "cumulative actual issuance. Burns do not reopen capacity",
             "clipping": "clip scheduled subsidy to remaining capacity before budget splitting",
-            "split": "miner=floor(capped_reward*7/10); staking=capped_reward-miner",
-            "staking": "only earned_staking_atoms are issued; unearned budget remains unissued",
+            "split": "floor shares 60/20/10/10 for miner, staking, protocol pool and development. All rounding remainder goes to miner",
+            "staking": "only earned_staking_atoms are issued. Unearned budget remains unissued",
+            "protocol_pool": "credited at block issuance and counted within cumulative issuance and outstanding supply even while unspent",
+            "development_maintenance": "credited at block issuance. No sunset height or replacement profile is encoded",
             "burn": "burn_after_atoms is applied after issuance and reduces outstanding supply",
             "vectors": "independent input states, not consecutive blocks or eligibility proofs",
         },
         "transitions": transitions,
-        "split_vectors": [{"amount_atoms": amount, "miner_atoms": split_budget(amount)[0],
-                           "staking_budget_atoms": split_budget(amount)[1]}
+        "split_vectors": [{"amount_atoms": amount,
+                           **{name + "_atoms": value for name, value in zip(ALLOCATION_NAMES, split_budget(amount))}}
                           for amount in [0, 1, 2, 7, 9, 10, 11, 50_000_000, 1_577_061_117]],
         "invalid_cases": [
             {"id": "negative_height", "input": {"height": -1}},
             {"id": "height_over_u64", "input": {"height": MAX_HEIGHT + 1}},
             {"id": "issued_above_cap", "input": {"height": 1, "cumulative_issued_before_atoms": CAP_ATOMS + 1}},
             {"id": "burned_above_issued", "input": {"height": 1, "cumulative_burned_before_atoms": 1}},
-            {"id": "staking_above_budget", "input": {"height": 1, "earned_staking_atoms": 480_000_001}},
+            {"id": "staking_above_budget", "input": {"height": 1, "earned_staking_atoms": 320_000_001}},
+            {"id": "staking_at_final_one_atom", "input": {"height": 1, "cumulative_issued_before_atoms": CAP_ATOMS - 1, "earned_staking_atoms": 1}},
             {"id": "burn_above_outstanding", "input": {"height": 1, "burn_after_atoms": 1_600_000_001}},
         ],
     }
@@ -234,6 +269,9 @@ def projection_rows(step_blocks: int, count: int):
         height = point * step_blocks
         issued = fully_earned_issued_through_height(height)
         next_year_issued = fully_earned_issued_through_height(height + BLOCKS_PER_YEAR) - issued
+        allocations = fully_earned_allocations_through_height(height)
+        next_year_allocations = tuple(after - before for before, after in zip(
+            allocations, fully_earned_allocations_through_height(height + BLOCKS_PER_YEAR)))
         next_block = block_transition(height + 1, issued)
         yield {
             "completed_height": height,
@@ -244,12 +282,16 @@ def projection_rows(step_blocks: int, count: int):
             "cumulative_burned_atoms": 0,
             "outstanding_atoms": issued,
             "remaining_cap_atoms": CAP_ATOMS - issued,
+            **{"cumulative_" + name + "_atoms": value for name, value in zip(ALLOCATION_NAMES, allocations)},
             "next_block_scheduled_atoms": next_block["scheduled_reward_atoms"],
             "next_block_capped_atoms": next_block["capped_reward_atoms"],
             "next_block_miner_atoms": next_block["miner_atoms"],
             "next_block_staking_budget_atoms": next_block["staking_budget_atoms"],
+            "next_block_protocol_pool_atoms": next_block["protocol_pool_atoms"],
+            "next_block_development_maintenance_atoms": next_block["development_maintenance_atoms"],
             "next_year_issued_atoms": next_year_issued,
             "next_year_issued_coins": coins(next_year_issued),
+            **{"next_year_" + name + "_atoms": value for name, value in zip(ALLOCATION_NAMES, next_year_allocations)},
             "next_year_gross_issuance_percent": None if not issued else f"{100 * next_year_issued / issued:.12f}",
         }
 
@@ -286,7 +328,7 @@ def generated_files() -> dict[str, bytes]:
     }
     metadata = {
         "reference_version": REFERENCE_VERSION,
-        "implementation_status": "monetary research reference; open construction",
+        "implementation_status": "monetary research reference. Protocol construction remains open",
         "atomic_decimals": 8,
         "cap_atoms": CAP_ATOMS,
         "block_seconds": BLOCK_SECONDS,
@@ -296,16 +338,28 @@ def generated_files() -> dict[str, bytes]:
         "long_reward_atoms": LONG_REWARD_ATOMS,
         "long_reward_first_index": LONG_REWARD_FIRST_INDEX,
         "long_reward_first_height": LONG_REWARD_FIRST_HEIGHT,
+        "allocation_profile": {
+            "nominal_shares": {"miner": 60, "staking_budget": 20, "protocol_pool": 10, "development_maintenance": 10},
+            "denominator": 100,
+            "rounding": "floor each share then assign all remaining atomic units to miner",
+            "protocol_pool_credit": "issued at valid block allocation even while unspent",
+            "development_maintenance_credit": "issued at valid block allocation even while unspent",
+            "development_sunset_height": None,
+            "future_activation_and_replacement_profile": "unset. A future hard fork specification is required",
+        },
         "schedule_values_sha256": schedule_values_sha256(),
         "schedule_hash_encoding": "ASCII decimal period:reward_atoms followed by LF for each of 240 entries",
-        "assumptions": ["all scheduled miner and staking budgets fully earned",
-                        "zero-reward genesis; first paid height 1 maps to reward index 0",
-                        "target 120-second block spacing; 365-day model years",
-                        "no burns", "no premine", "no bootstrap or omitted-budget timing adjustment"],
+        "assumptions": ["all staking budgets fully earned and all miner, protocol pool and development allocations credited",
+                        "zero reward genesis. First paid height 1 maps to reward index 0",
+                        "target block spacing of 120 seconds. Model years contain 365 days",
+                        "no burns", "no premine", "no timing adjustment for bootstrap or omitted budgets",
+                        "constant 60/20/10/10 profile throughout the illustrated horizon. No development sunset is modeled"],
         "cap_exhaustion": cap_exhaustion(),
         "artifacts_sha256": {name: hashlib.sha256(data).hexdigest() for name, data in files.items()},
         "open_questions": ["stake eligibility and distribution", "bootstrap and launch rules",
-                           "privacy and post-quantum consensus construction", "fees and security after cap exhaustion"],
+                           "privacy and post quantum consensus construction", "fees and security after cap exhaustion",
+                           "protocol pool governance and authorized ledger destinations",
+                           "development allocation sunset and the future hard fork profile"],
     }
     files["metadata.json"] = _json_bytes(metadata)
     return files

@@ -1,53 +1,64 @@
-# Optional ecosystem funding governance
+# Protocol pool governance research
 
 ## Status and authority
 
-1. This document defines a research design for native ecosystem funding controlled by eligible staked value. It does not activate a fund, change issuance, implement voting, or grant a wallet spending authority. The current Rust accounting profile remains a miner allocation of `floor(7 * S / 10)` and a staking budget containing the remainder. No governance network is implemented here.
+1. This document defines research requirements for protocol pool spending through eligible stake ballots. The current [native subsidy profile](subsidy-allocation.md) allocates nominal shares of 60 percent to miners, 20 percent to eligible staking, 10 percent to the protocol pool, and 10 percent to temporary development maintenance for the designated project developer. The core calculates those amounts and supply counters. It does not create payout notes, authenticate destinations, implement pool balances or reservations, or grant a wallet spending authority. No governance network is implemented.
 
-| Area | Current reference status | Optional research scope |
+| Area | Current reference status | Research scope |
 |---|---|---|
-| Native subsidy | Executable 70/30 accounting with cap clipping and earned staking inputs | A separately activated 60/30/10 profile |
+| Native subsidy | Executable 60/20/10/10 accounting, miner rounding, cap clipping and earned staking inputs | Authorized payout notes and destination validation |
 | Checkpoint voting | Protocol requirements without a completed construction | Branch finality under the checkpoint protocol |
 | Operator external treasury | Operator custody and execution policy documented, integration unimplemented | No automatic change of ownership or authority |
-| Native ecosystem fund | No fund allocation or fund state in the accounting crate | Consensus controlled native balance and grant reservations |
+| Native protocol pool | Pool allocation counts as issued in monetary accounting, with no complete balance or spending state | Authenticated native balance, spending authority and grant reservations |
+| Development maintenance | Separate allocation designated for the project developer | Destination authority and eventual retirement through a future consensus hard fork |
 | Funding ballots | Unimplemented | Eligible stake snapshots, restricted voting authority and verifiable decisions |
 | Qt interface | Wallet architecture requirements, unimplemented | Grant submission, local verification and ballot construction |
 
 2. Checkpoint support and treasury spending are separate authority domains. A checkpoint vote supports a valid branch under [checkpoint consensus](checkpoints.md). A funding ballot selects a bounded grant action. Neither message authorizes the other action. Restricted voting authority must not permit general spending, key recovery, software installation or unrestricted withdrawal.
 
-3. The [operator external treasury](treasury.md) holds assets received on external networks under operator control. Native ecosystem governance cannot transfer those assets, change their destinations or acquire their keys merely because a ballot passes. Any transfer of external custody or accepted spending mandate requires a separate explicit authorization by its existing owner. An external receipt, a native fund balance and a pool worker liability must remain distinct accounting objects.
+3. The [operator external treasury](treasury.md) holds assets received on external networks under operator control. Protocol pool governance cannot transfer those assets, change their destinations or acquire their keys merely because a ballot passes. It also does not authorize spending development maintenance credits. Any transfer of external custody or accepted spending mandate requires a separate explicit authorization by its existing owner. External receipts, protocol pool value, developer credits, and mining pool worker liabilities remain distinct accounting objects.
 
 4. A Qt wallet can display grant content, reconstruct eligibility, verify state and prepare ballots. Consensus rules must validate the resulting transitions independently. Wallet settings, a displayed tally or a local majority cannot authorize a network payment. A private contract has only its explicitly defined capabilities. The existence of private contracts does not create treasury governance or a privileged mint path.
 
-## Optional allocation and monetary conservation
+## Pool allocation and monetary conservation
 
-1. The optional profile changes the planned allocation of a capped subsidy. Let `R(h)` be the existing nominal schedule, `I` cumulative actual issuance and `C` the existing cumulative issuance cap. All quantities below are integer atomic units.
+1. The current native block subsidy rule uses the existing nominal schedule `R(h)`, cumulative actual issuance `I`, and cumulative ceiling `C`. All quantities below are integer atomic units. Fee distribution remains a separate specification item.
 
 ```text
 S = min(R(h), C - I)
-M = floor(6 * S / 10)
-K = floor(3 * S / 10)
-F = S - M - K
-M + K + F = S
+m0 = floor(6 * S / 10)
+K = floor(2 * S / 10)
+P = floor(S / 10)
+D = floor(S / 10)
+M = m0 + S - m0 - K - P - D
+M + K + P + D = S
 0 <= earned_stake <= K
 ```
 
-2. `M` is the miner allocation, `K` the staking budget and `F` the native ecosystem fund allocation. The fund receives the rounding remainder after both floors. These are planned 60/30/10 shares rather than exact percentages for every atomic amount. For `S = 1`, `M = 0`, `K = 0` and `F = 1`. This differs from the current 70/30 rule, whose final atom belongs to the staking budget. An activation specification must identify the exact block height and profile version. Existing source constants, reference fixtures and earlier state transitions retain their current meaning.
+2. `M` is the miner allocation, `K` the staking budget, `P` the protocol pool allocation, and `D` development maintenance for the designated project developer. Every remainder after the four floors belongs to the miner. For `S = 1`, `M = 1` and every other budget is zero. The first 16 THM budget gives 9.6 THM to miners, 3.2 THM to staking, 1.6 THM to the protocol pool, and 1.6 THM to development maintenance. No production genesis has been released.
 
-3. The research baseline credits `F` to a consensus controlled fund balance when the block is issued. That credit is issuance even if no grant has been selected. Unearned staking value `K - earned_stake` remains unissued and cannot be redirected to miners or the fund. It creates no reserve, debt or later catch up entitlement. A block must contain the required valid fund credit under an activated profile. Omitting that credit cannot silently change the allocation.
+3. The protocol pool and developer amounts count as issued when the monetary transition is applied, even if they remain unspent. Unearned staking value `K - earned_stake` remains unissued and cannot be redirected to any other recipient. It creates no reserve, debt or later catch up entitlement. The future kernel must create and authenticate the required payout outputs and prevent omission, substitution or duplicate issuance. Core arithmetic alone does not establish those properties.
 
 ```text
-actual_issued = M + earned_stake + F
+actual_issued = M + P + D + earned_stake
 I_after = I + actual_issued
 unearned_stake = K - earned_stake
 0 <= I_after <= C
 ```
 
-4. Unawarded fund value remains an outstanding fund balance. Queueing a grant reserves existing value. Paying a grant transfers existing value. Neither action mints a second copy. Cancellation releases a reservation back to the same fund and does not create issuance capacity. A policy that instead leaves unawarded block allocations unissued would be a different monetary rule and requires separate specification, activation and vectors.
+4. Once a complete pool balance system exists, unspent pool value remains outstanding rather than becoming new issuance when a grant is selected. Queueing a grant reserves existing value. Paying a grant transfers existing value. Neither action mints a second copy. Cancellation releases a reservation back to the same pool and does not create issuance capacity. Leaving the original pool allocation unissued would be a different monetary rule.
 
-5. Let `T` be the authenticated fund balance and `Q` the sum of outstanding grant reservations. The kernel must maintain `0 <= Q <= T`. A newly queued grant of amount `g` requires `0 <= g <= T - Q` and atomically increases reservations. Concurrent accepted ballots cannot reserve the same value twice. Completed payments reduce both the remaining reservation and the fund balance. Native fund value counts within outstanding supply and cumulative issuance. Authorized burns reduce outstanding supply and never reduce historical issuance or reopen the cap. A fund burn must also preserve its existing reservations. Monetary sums and height arithmetic require bounded integers and explicit overflow rejection. The [existing accounting implementation](../crates/thorum-core/src/accounting.rs) does not yet represent these fund balances or reservations.
+5. Let `T` be the future authenticated pool balance and `Q` the sum of outstanding grant reservations. The kernel must maintain `0 <= Q <= T`. A newly queued grant of amount `g` requires `0 <= g <= T - Q` and atomically increases reservations. Concurrent accepted ballots cannot reserve the same value twice. Completed payments reduce both the remaining reservation and the pool balance. Native pool value counts within outstanding supply and cumulative issuance. Authorized burns reduce outstanding supply and never reduce historical issuance or reopen the cap. A pool burn must preserve its existing reservations. Monetary sums and height arithmetic require bounded integers and explicit overflow rejection. The [existing accounting implementation](../crates/thorum-core/src/accounting.rs) does not yet represent these balances or reservations.
 
-6. Reducing the planned miner share from 70% to 60% reduces the native miner subsidy for the same scheduled block budget, subject to atomic rounding. The 10 percentage point shift is a research change to the mining security budget. Treasury spending or expected ecosystem benefits do not establish that the resulting work incentives remain adequate. Evaluation must cover miner participation, work concentration, fees, unavailable staking and the period after the issuance cap binds.
+6. Native funding allocations do not establish that mining and checkpoint incentives remain adequate. Evaluation must cover miner participation, work concentration, staking availability, fees, pool spending, developer maintenance, and the period after the issuance cap binds. Expected ecosystem benefits do not replace that analysis.
+
+## Temporary developer allocation and handover
+
+The development maintenance allocation is separate from protocol pool governance and is temporary. Its retirement requires a future consensus hard fork after work completion and community handover. The future 10 percent is to be redistributed to mining and staking. The protocol pool remains at 10 percent unless a separate explicit change modifies it.
+
+Completion criteria, the handover and consensus change process, activation height, and successor miner/stake ratio remain unresolved. A pool ballot, wallet setting, checkpoint vote, or developer key does not automatically change the allocation. There is no coded sunset, retirement height, or milestone key.
+
+Only future subsidies under the changed rules are affected by retirement. Existing legitimately earned credits remain unaffected. The change requires a versioned consensus specification, integer conservation vectors, activation and rollback tests, and compatibility rules before deployment. Pool spending research does not supply that missing transition specification.
 
 ## Eligible stake and voting weight
 
@@ -140,7 +151,7 @@ stateDiagram-v2
 
 ## Research gates
 
-1. Activation requires a complete versioned state transition specification, exact allocation vectors, fund conservation tests, historical activation and rollback tests, voting replay tests, queue race tests and explicit upgrade rules. Neither the [current monetary research](../research/emission/README.md) nor the [current subsidy code](../crates/thorum-core/src/emission.rs) models the optional 60/30/10 profile.
+1. Pool governance activation requires a complete versioned state transition specification, authenticated destinations and balances, reservation conservation tests, activation and rollback tests, voting replay tests, queue race tests and explicit upgrade rules. The [monetary research](../research/emission/README.md) and [subsidy code](../crates/thorum-core/src/emission.rs) account for the current 60/20/10/10 amounts. They do not implement pool spending or ballots.
 
 2. Privacy and post quantum eligibility, nullifiers, ballots and tallying require a concrete construction with an adversarial analysis and independent review. Simulations must cover concentration, splitting, delegation, unavailable quorum, withheld tally data, borrowed stake, conflicting votes, snapshot changes, censorship and long execution delays.
 

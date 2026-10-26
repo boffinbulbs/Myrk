@@ -6,11 +6,13 @@ The treasury is project/operator controlled. Independent custodians or a committ
 
 One accounting policy covers separate addresses/wallets on each external network. Eligible work must bind the required destination through the supported proof format. Destination authorization and activation rules remain a protocol specification item.
 
-The [native ecosystem fund research](governance.md) defines a separate funding authority. Its stake ballots do not authorize control of the operator's external accounts. Changing external custody or destination policy requires its own explicit activation rules. The current monetary core contains no native treasury allocation or spending implementation.
+The [native protocol pool research](governance.md) defines a separate funding and spending boundary. Its stake ballots do not authorize control of the operator's external accounts or development maintenance credits. Changing external custody or destination policy requires its own explicit activation rules. The current monetary core calculates native protocol pool and developer allocations, but it does not create payout notes, validate destination authority, or implement pool governance.
 
 ## Funds and liabilities
 
-Scheduled native subsidy uses a nominal 70/30 allocation: floor(7 * capped subsidy / 10) atomic units for miners and the remainder as the eligible staking budget. Pool worker liabilities and native rewards must remain separate from external receipts owned by the treasury. A pool cannot treat unpaid worker balances as a maintenance or purchase budget.
+The current [native subsidy profile](subsidy-allocation.md) assigns nominal shares of 60 percent to miners, 20 percent to eligible staking, 10 percent to the protocol pool, and 10 percent to temporary development maintenance for the designated project developer. Atomic remainders belong to the miner. Unearned staking stays unissued. Native protocol pool and developer allocations count as issued immediately, including while unspent. These shares apply to block subsidy and do not define fee distribution or the use of external mining receipts.
+
+Pool worker liabilities, native rewards, protocol pool value, developer credits, and external treasury assets are distinct accounting objects. A mining pool cannot treat unpaid worker balances as a maintenance or purchase budget. A protocol pool grant or checkpoint vote cannot obtain external treasury keys or spend developer credits.
 
 The available execution budget is:
 
@@ -19,7 +21,9 @@ max(0, eligible receipts - execution costs
        - published maintenance budget - reserve top-up)
 ```
 
-Maintenance/reserve amounts need an explicit published policy. No fixed percentage is embedded in the initial core. Native payouts must not depend on successful external trading.
+Maintenance/reserve amounts for external receipts need an explicit published policy. No fixed external maintenance or burn percentage is defined by the native subsidy allocation. Native payouts must not depend on successful external trading.
+
+The native developer allocation is temporary and separate from this external budget. Its retirement requires a future consensus hard fork after work completion and community handover. The retired future 10 percent is to be redistributed to mining and staking, while the protocol pool remains at 10 percent absent a separate explicit change. Criteria, process, activation height, and successor miner/stake ratio remain unresolved. Previously legitimate credits are unaffected, and the current code contains no automatic sunset.
 
 ## Execution state
 

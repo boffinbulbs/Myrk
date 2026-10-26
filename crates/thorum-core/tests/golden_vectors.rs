@@ -35,42 +35,132 @@ fn independent_schedule_matches_every_frozen_entry_and_height() {
 #[test]
 fn independent_golden_transitions_match_all_accounting_outputs() {
     let mut lines = GOLDEN.lines();
-    assert_eq!(
-        lines.next(),
-        Some("id,height,reward_block_index,cumulative_issued_before_atoms,cumulative_burned_before_atoms,remaining_cap_before_atoms,scheduled_reward_atoms,capped_reward_atoms,miner_atoms,staking_budget_atoms,earned_staking_atoms,unearned_staking_atoms,actual_issued_atoms,burn_after_atoms,cumulative_issued_after_atoms,cumulative_burned_after_atoms,outstanding_after_atoms,remaining_cap_after_atoms")
-    );
+    let columns: Vec<_> = lines.next().unwrap().split(',').collect();
+    let required = [
+        "id",
+        "height",
+        "reward_block_index",
+        "cumulative_issued_before_atoms",
+        "cumulative_burned_before_atoms",
+        "remaining_cap_before_atoms",
+        "scheduled_reward_atoms",
+        "capped_reward_atoms",
+        "miner_atoms",
+        "staking_budget_atoms",
+        "protocol_pool_atoms",
+        "development_maintenance_atoms",
+        "earned_staking_atoms",
+        "unearned_staking_atoms",
+        "actual_issued_atoms",
+        "burn_after_atoms",
+        "cumulative_issued_after_atoms",
+        "cumulative_burned_after_atoms",
+        "outstanding_after_atoms",
+        "remaining_cap_after_atoms",
+    ];
+    assert_eq!(columns.len(), required.len());
+    for name in required {
+        assert_eq!(columns.iter().filter(|column| **column == name).count(), 1);
+    }
     let mut rows = 0;
     for line in lines {
         let fields: Vec<_> = line.split(',').collect();
-        assert_eq!(fields.len(), 18);
-        let id = fields[0];
-        let value = |column: usize| fields[column].parse::<u64>().unwrap();
-        let amount = |column: usize| Amount::from_atomic(value(column));
-        let height = value(1);
-        let expected_index = if fields[2].is_empty() {
+        assert_eq!(fields.len(), columns.len());
+        let field = |name: &str| {
+            let column = columns.iter().position(|column| *column == name).unwrap();
+            fields[column]
+        };
+        let id = field("id");
+        let value = |name: &str| field(name).parse::<u64>().unwrap();
+        let amount = |name: &str| Amount::from_atomic(value(name));
+        let height = value("height");
+        let expected_index = if field("reward_block_index").is_empty() {
             None
         } else {
-            Some(value(2))
+            Some(value("reward_block_index"))
         };
         assert_eq!(reward_block_index(height), expected_index, "{id}");
-        let mut state = SupplyState::new(amount(3), amount(4)).unwrap();
-        assert_eq!(state.remaining_issuance(), amount(5), "{id}");
+        let mut state = SupplyState::new(
+            amount("cumulative_issued_before_atoms"),
+            amount("cumulative_burned_before_atoms"),
+        )
+        .unwrap();
+        assert_eq!(
+            state.remaining_issuance(),
+            amount("remaining_cap_before_atoms"),
+            "{id}"
+        );
         let budget = state.block_budget(height);
-        assert_eq!(budget.scheduled(), amount(6), "{id}");
-        assert_eq!(budget.capped(), amount(7), "{id}");
-        assert_eq!(budget.miner(), amount(8), "{id}");
-        assert_eq!(budget.staking_budget(), amount(9), "{id}");
-        let receipt = state.issue_block(height, amount(10)).unwrap();
+        assert_eq!(budget.scheduled(), amount("scheduled_reward_atoms"), "{id}");
+        assert_eq!(budget.capped(), amount("capped_reward_atoms"), "{id}");
+        assert_eq!(budget.miner(), amount("miner_atoms"), "{id}");
+        assert_eq!(
+            budget.staking_budget(),
+            amount("staking_budget_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            budget.protocol_pool(),
+            amount("protocol_pool_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            budget.development_maintenance(),
+            amount("development_maintenance_atoms"),
+            "{id}"
+        );
+        let receipt = state
+            .issue_block(height, amount("earned_staking_atoms"))
+            .unwrap();
         assert_eq!(receipt.budget(), budget, "{id}");
-        assert_eq!(receipt.earned_staking(), amount(10), "{id}");
-        assert_eq!(receipt.unearned_staking(), amount(11), "{id}");
-        assert_eq!(receipt.actual_issued(), amount(12), "{id}");
-        state.burn(amount(13)).unwrap();
-        assert_eq!(state.cumulative_issued(), amount(14), "{id}");
-        assert_eq!(state.cumulative_burned(), amount(15), "{id}");
-        assert_eq!(state.outstanding(), amount(16), "{id}");
-        assert_eq!(state.remaining_issuance(), amount(17), "{id}");
+        assert_eq!(receipt.miner(), amount("miner_atoms"), "{id}");
+        assert_eq!(
+            receipt.protocol_pool(),
+            amount("protocol_pool_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            receipt.development_maintenance(),
+            amount("development_maintenance_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            receipt.earned_staking(),
+            amount("earned_staking_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            receipt.unearned_staking(),
+            amount("unearned_staking_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            receipt.actual_issued(),
+            amount("actual_issued_atoms"),
+            "{id}"
+        );
+        state.burn(amount("burn_after_atoms")).unwrap();
+        assert_eq!(
+            state.cumulative_issued(),
+            amount("cumulative_issued_after_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            state.cumulative_burned(),
+            amount("cumulative_burned_after_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            state.outstanding(),
+            amount("outstanding_after_atoms"),
+            "{id}"
+        );
+        assert_eq!(
+            state.remaining_issuance(),
+            amount("remaining_cap_after_atoms"),
+            "{id}"
+        );
         rows += 1;
     }
-    assert!(rows >= 18);
+    assert!(rows >= 20);
 }

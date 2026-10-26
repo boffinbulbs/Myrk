@@ -3,13 +3,19 @@
 //! This crate implements an issuance ceiling, a frozen subsidy schedule, planned
 //! reward allocation, and cumulative burns. All monetary calculations use atomic
 //! units. One THM contains 100,000,000 atomic units.
+//! The allocation profile is 60/20/10/10 for miner, staking, protocol pool and
+//! development maintenance budgets. Every atomic rounding remainder goes to the
+//! miner. Required pool and development credits count as issued immediately.
+//! Unearned stake remains unissued. No development sunset height is defined.
 //!
 //! [`SupplyState`] is an accounting component, not a chain or transaction validator.
 //! Its caller must establish valid height ordering, branch membership, replay
 //! prevention, note ownership, transaction conservation, and evidence that staking
 //! rewards were earned. No networking, proof system, or staking cryptography is
 //! implemented here. Constructing a state from totals checks monetary invariants.
-//! it does not authenticate the history that produced them.
+//! It does not authenticate the history that produced them.
+//! The caller must also bind required allocation credits to valid ledger outputs
+//! and destinations. Accounting does not create fund wallets or spending authority.
 
 #![forbid(unsafe_code)]
 

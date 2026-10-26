@@ -15,6 +15,10 @@ fn genesis_has_no_issuance_or_reward_index() {
     assert_eq!(reward_block_index(0), None);
     assert_eq!(scheduled_subsidy(0), Amount::ZERO);
     let receipt = state.issue_block(0, Amount::ZERO).unwrap();
+    assert_eq!(receipt.miner(), Amount::ZERO);
+    assert_eq!(receipt.budget().staking_budget(), Amount::ZERO);
+    assert_eq!(receipt.protocol_pool(), Amount::ZERO);
+    assert_eq!(receipt.development_maintenance(), Amount::ZERO);
     assert_eq!(receipt.actual_issued(), Amount::ZERO);
     assert_eq!(state.cumulative_issued(), Amount::ZERO);
     assert_eq!(state.cumulative_burned(), Amount::ZERO);
@@ -82,28 +86,78 @@ fn planned_split_conserves_every_table_entry_and_small_remainders() {
         let split = planned_allocation(atoms(value));
         let miner = split.miner().atomic();
         let stake = split.staking_budget().atomic();
-        assert_eq!(miner as u128, u128::from(value) * 7 / 10);
-        assert_eq!(miner.checked_add(stake), Some(value));
+        let pool = split.protocol_pool().atomic();
+        let development = split.development_maintenance().atomic();
+        let wide = u128::from(value);
+        assert_eq!(u128::from(stake), wide * 2 / 10);
+        assert_eq!(pool, value / 10);
+        assert_eq!(development, value / 10);
+        let miner_floor = wide * 6 / 10;
+        let remainder = wide - miner_floor - u128::from(stake + pool + development);
+        assert!(remainder <= 3);
+        assert_eq!(u128::from(miner), miner_floor + remainder);
+        assert_eq!(
+            miner
+                .checked_add(stake)
+                .and_then(|sum| sum.checked_add(pool))
+                .and_then(|sum| sum.checked_add(development)),
+            Some(value)
+        );
     }
     let split = planned_allocation(atoms(1_577_061_117));
-    assert_eq!(split.miner(), atoms(1_103_942_781));
-    assert_eq!(split.staking_budget(), atoms(473_118_336));
+    assert_eq!(split.miner(), atoms(946_236_672));
+    assert_eq!(split.staking_budget(), atoms(315_412_223));
+    assert_eq!(split.protocol_pool(), atoms(157_706_111));
+    assert_eq!(split.development_maintenance(), atoms(157_706_111));
 }
 
 #[test]
-fn actual_issuance_credits_only_earned_stake() {
-    for earned in [0, 123_456_789, 480_000_000] {
+fn every_atomic_remainder_goes_to_miner_without_a_development_bonus() {
+    for (subsidy, miner, stake, pool, development) in [
+        (0, 0, 0, 0, 0),
+        (1, 1, 0, 0, 0),
+        (2, 2, 0, 0, 0),
+        (3, 3, 0, 0, 0),
+        (4, 4, 0, 0, 0),
+        (5, 4, 1, 0, 0),
+        (6, 5, 1, 0, 0),
+        (7, 6, 1, 0, 0),
+        (8, 7, 1, 0, 0),
+        (9, 8, 1, 0, 0),
+        (10, 6, 2, 1, 1),
+        (11, 7, 2, 1, 1),
+        (12, 8, 2, 1, 1),
+    ] {
+        let split = planned_allocation(atoms(subsidy));
+        assert_eq!(split.miner(), atoms(miner));
+        assert_eq!(split.staking_budget(), atoms(stake));
+        assert_eq!(split.protocol_pool(), atoms(pool));
+        assert_eq!(split.development_maintenance(), atoms(development));
+    }
+}
+
+#[test]
+fn actual_issuance_includes_required_credits_and_only_earned_stake() {
+    for earned in [0, 123_456_789, 320_000_000] {
         let mut state = SupplyState::genesis();
         let receipt = state.issue_block(1, atoms(earned)).unwrap();
         let budget = receipt.budget();
         assert_eq!(budget.height(), 1);
         assert_eq!(budget.scheduled(), atoms(1_600_000_000));
         assert_eq!(budget.capped(), atoms(1_600_000_000));
-        assert_eq!(budget.miner(), atoms(1_120_000_000));
-        assert_eq!(budget.staking_budget(), atoms(480_000_000));
+        assert_eq!(budget.miner(), atoms(960_000_000));
+        assert_eq!(budget.staking_budget(), atoms(320_000_000));
+        assert_eq!(budget.protocol_pool(), atoms(160_000_000));
+        assert_eq!(budget.development_maintenance(), atoms(160_000_000));
+        assert_eq!(receipt.miner(), budget.miner());
+        assert_eq!(receipt.protocol_pool(), budget.protocol_pool());
+        assert_eq!(
+            receipt.development_maintenance(),
+            budget.development_maintenance()
+        );
         assert_eq!(receipt.earned_staking(), atoms(earned));
-        assert_eq!(receipt.unearned_staking(), atoms(480_000_000 - earned));
-        assert_eq!(receipt.actual_issued(), atoms(1_120_000_000 + earned));
+        assert_eq!(receipt.unearned_staking(), atoms(320_000_000 - earned));
+        assert_eq!(receipt.actual_issued(), atoms(1_280_000_000 + earned));
         assert_eq!(state.outstanding(), receipt.actual_issued());
         assert_eq!(state.cumulative_issued(), receipt.actual_issued());
         assert_eq!(state.cumulative_burned(), Amount::ZERO);
@@ -115,10 +169,24 @@ fn actual_issuance_credits_only_earned_stake() {
 }
 
 #[test]
+fn pool_and_development_credits_have_no_implicit_sunset() {
+    let mut state = SupplyState::genesis();
+    let receipt = state.issue_block(u64::MAX, Amount::ZERO).unwrap();
+    assert_eq!(receipt.miner(), atoms(30_000_000));
+    assert_eq!(receipt.budget().staking_budget(), atoms(10_000_000));
+    assert_eq!(receipt.protocol_pool(), atoms(5_000_000));
+    assert_eq!(receipt.development_maintenance(), atoms(5_000_000));
+    assert_eq!(receipt.actual_issued(), atoms(40_000_000));
+    assert_eq!(receipt.unearned_staking(), atoms(10_000_000));
+    assert_eq!(state.cumulative_issued(), atoms(40_000_000));
+    assert_eq!(state.outstanding(), atoms(40_000_000));
+}
+
+#[test]
 fn invalid_stake_earning_is_rejected_without_mutation() {
     let mut state = SupplyState::new(atoms(500), atoms(100)).unwrap();
     let before = state;
-    for earned in [480_000_001, u64::MAX] {
+    for earned in [320_000_001, u64::MAX] {
         assert!(matches!(
             state.issue_block(1, atoms(earned)),
             Err(AccountingError::StakeExceedsBudget { .. })
@@ -135,7 +203,13 @@ fn near_cap_clips_before_allocating_and_can_reach_the_cap() {
         let budget = state.block_budget(u64::MAX);
         let capped = remaining.min(50_000_000);
         assert_eq!(budget.capped(), atoms(capped));
-        assert_eq!(budget.miner().atomic(), capped * 7 / 10);
+        assert_eq!(budget.staking_budget().atomic(), capped * 2 / 10);
+        assert_eq!(budget.protocol_pool().atomic(), capped / 10);
+        assert_eq!(budget.development_maintenance().atomic(), capped / 10);
+        assert_eq!(
+            budget.miner().atomic(),
+            capped - capped * 2 / 10 - 2 * (capped / 10)
+        );
         let receipt = state
             .issue_block(u64::MAX, budget.staking_budget())
             .unwrap();
@@ -150,19 +224,24 @@ fn near_cap_clips_before_allocating_and_can_reach_the_cap() {
 }
 
 #[test]
-fn final_atom_requires_earned_stake_and_never_redirects_to_miner() {
+fn final_atom_belongs_to_miner_with_zero_stake_pool_and_development_budgets() {
     let mut state = SupplyState::new(atoms(ISSUANCE_CAP_ATOMIC - 1), Amount::ZERO).unwrap();
     let budget = state.block_budget(1);
     assert_eq!(budget.capped(), atoms(1));
-    assert_eq!(budget.miner(), Amount::ZERO);
-    assert_eq!(budget.staking_budget(), atoms(1));
+    assert_eq!(budget.miner(), atoms(1));
+    assert_eq!(budget.staking_budget(), Amount::ZERO);
+    assert_eq!(budget.protocol_pool(), Amount::ZERO);
+    assert_eq!(budget.development_maintenance(), Amount::ZERO);
     let before = state;
-    let unearned = state.issue_block(1, Amount::ZERO).unwrap();
-    assert_eq!(unearned.actual_issued(), Amount::ZERO);
-    assert_eq!(unearned.unearned_staking(), atoms(1));
+    assert!(matches!(
+        state.issue_block(1, atoms(1)),
+        Err(AccountingError::StakeExceedsBudget { .. })
+    ));
     assert_eq!(state, before);
-    let earned = state.issue_block(2, atoms(1)).unwrap();
-    assert_eq!(earned.actual_issued(), atoms(1));
+    let receipt = state.issue_block(1, Amount::ZERO).unwrap();
+    assert_eq!(receipt.actual_issued(), atoms(1));
+    assert_eq!(receipt.miner(), atoms(1));
+    assert_eq!(receipt.unearned_staking(), Amount::ZERO);
     assert_eq!(state.cumulative_issued(), ISSUANCE_CAP);
     assert_eq!(state.remaining_issuance(), Amount::ZERO);
 }
@@ -172,24 +251,28 @@ fn successive_partial_earnings_preserve_remaining_capacity_and_rounding() {
     let mut state = SupplyState::new(atoms(ISSUANCE_CAP_ATOMIC - 11), Amount::ZERO).unwrap();
     let first = state.issue_block(1, atoms(1)).unwrap();
     assert_eq!(first.budget().miner(), atoms(7));
-    assert_eq!(first.unearned_staking(), atoms(3));
-    assert_eq!(first.actual_issued(), atoms(8));
-    assert_eq!(state.remaining_issuance(), atoms(3));
-    state.burn(atoms(8)).unwrap();
-    assert_eq!(state.remaining_issuance(), atoms(3));
+    assert_eq!(first.protocol_pool(), atoms(1));
+    assert_eq!(first.development_maintenance(), atoms(1));
+    assert_eq!(first.unearned_staking(), atoms(1));
+    assert_eq!(first.actual_issued(), atoms(10));
+    assert_eq!(state.remaining_issuance(), atoms(1));
+    state.burn(atoms(10)).unwrap();
+    assert_eq!(state.remaining_issuance(), atoms(1));
 
     let second = state.issue_block(2, Amount::ZERO).unwrap();
-    assert_eq!(second.actual_issued(), atoms(2));
-    assert_eq!(state.remaining_issuance(), atoms(1));
+    assert_eq!(second.miner(), atoms(1));
+    assert_eq!(second.protocol_pool(), Amount::ZERO);
+    assert_eq!(second.development_maintenance(), Amount::ZERO);
+    assert_eq!(second.actual_issued(), atoms(1));
+    assert_eq!(state.remaining_issuance(), Amount::ZERO);
     for height in 3..=5 {
-        let stalled = state.issue_block(height, Amount::ZERO).unwrap();
-        assert_eq!(stalled.actual_issued(), Amount::ZERO);
-        assert_eq!(state.remaining_issuance(), atoms(1));
+        let exhausted = state.issue_block(height, Amount::ZERO).unwrap();
+        assert_eq!(exhausted.actual_issued(), Amount::ZERO);
+        assert_eq!(state.remaining_issuance(), Amount::ZERO);
     }
-    state.issue_block(6, atoms(1)).unwrap();
     assert_eq!(state.cumulative_issued(), ISSUANCE_CAP);
-    assert_eq!(state.cumulative_burned(), atoms(8));
-    assert_eq!(state.outstanding(), atoms(ISSUANCE_CAP_ATOMIC - 8));
+    assert_eq!(state.cumulative_burned(), atoms(10));
+    assert_eq!(state.outstanding(), atoms(ISSUANCE_CAP_ATOMIC - 10));
 }
 
 #[test]
@@ -206,6 +289,9 @@ fn exhausted_cap_and_burns_never_reopen_minting_capacity() {
     for height in [0, 1, FIRST_LONG_TERM_HEIGHT, u64::MAX] {
         let receipt = state.issue_block(height, Amount::ZERO).unwrap();
         assert_eq!(receipt.budget().capped(), Amount::ZERO);
+        assert_eq!(receipt.miner(), Amount::ZERO);
+        assert_eq!(receipt.protocol_pool(), Amount::ZERO);
+        assert_eq!(receipt.development_maintenance(), Amount::ZERO);
         assert_eq!(receipt.actual_issued(), Amount::ZERO);
         assert!(state.issue_block(height, atoms(1)).is_err());
     }
@@ -247,7 +333,7 @@ fn overburn_and_malformed_restored_totals_are_errors() {
 fn budget_is_recomputed_after_state_changes() {
     let mut state = SupplyState::new(atoms(ISSUANCE_CAP_ATOMIC - 100), Amount::ZERO).unwrap();
     let earlier = state.block_budget(1);
-    assert_eq!(earlier.staking_budget(), atoms(30));
+    assert_eq!(earlier.staking_budget(), atoms(20));
     state.issue_block(1, earlier.staking_budget()).unwrap();
     let before = state;
     assert!(matches!(
