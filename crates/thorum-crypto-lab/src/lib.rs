@@ -210,6 +210,19 @@ impl RecipientKey {
     }
 }
 
+/// Check the exact ML-KEM-1024 public key encoding without using randomness.
+///
+/// This checks length and the backend's canonical coefficient decoding. It
+/// does not establish possession of a corresponding secret, intended recipient
+/// identity, key generation provenance or a secure delivery channel.
+pub fn validate_recipient_key(public_key: &[u8]) -> Result<(), Error> {
+    if public_key.len() != RECIPIENT_KEY_BYTES {
+        return Err(Error::InvalidKey);
+    }
+    EncapsulationKey1024::new_from_slice(public_key).map_err(|_| Error::InvalidKey)?;
+    Ok(())
+}
+
 /// Seal one bounded payload with fresh OS encapsulation randomness and nonce.
 ///
 /// The experimental KDF hashes framed domain, KEM secret and public associated

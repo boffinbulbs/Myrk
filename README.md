@@ -13,12 +13,14 @@ The workspace contains deterministic monetary accounting, an independent referen
 | [Core accounting](crates/thorum-core/src/lib.rs) | Atomic unit arithmetic, subsidy schedule, issuance ceiling, 60/20/10/10 allocation, actual issuance and burns |
 | Research | Independent schedule construction, golden vectors, analytical projections, reproducible figures |
 | [Primitive laboratory](docs/crypto-lab.md) | Real signature, key establishment and encrypted envelope experiments, selected official vectors, tamper rejection and local measurements |
-| [Relation laboratory](docs/relation-lab.md) | Transparent local ownership, membership, nullifier, conservation, encrypted delivery and stake eligibility checks |
+| [Relation laboratory](docs/relation-lab.md) | Transparent local ownership, membership, nullifier, conservation, recipient capability, typed note recovery and stake eligibility checks |
 | [Proof feasibility](docs/proof-feasibility.md) | Pinned backend evidence and unresolved hiding, knowledge soundness and quantum security gates |
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |
 | Mining | Parent work validation and operator interface requirements |
 | Wallet | Local validation, `thm` address namespace, restricted staking authority, disclosure and recovery requirements |
+
+The [recipient capability experiment](docs/recipient-capability.md) lets a sender construct a v2 output using public bindings without receiving the recipient's nullifier secret. Typed recovery checks the original commitment, recipient capability and retained secret. Legacy v1 notes retain their original encodings and sender linkage. These local checks do not establish formal unlinkability, anonymous discovery or a production address format.
 
 ## Research targets
 
@@ -96,6 +98,7 @@ The [cryptographic research record](research/crypto/README.md) retains selected 
 15. [Native subsidy allocation](docs/subsidy-allocation.md)
 16. [Transparent relation laboratory](docs/relation-lab.md)
 17. [Proof backend feasibility](docs/proof-feasibility.md)
+18. [Recipient capability and typed recovery](docs/recipient-capability.md)
 
 ## Source and research practice
 

@@ -34,7 +34,7 @@ EXTRA_LICENSE_FILES = {("r-efi", "6.0.0"): ("AUTHORS",)}
 ADVISORY_REVIEW = {
     "checked_on": "2026-10-26",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "fcb640b672dc26ecf5cb051ab76e7e0a26e56dcb8341ca1644dfd160683b931d",
+    "cargo_lock_sha256": "7f78afe1be3f9282a2e58b9e7a18df77f4f842c593a11191b1c589b81df9857a",
     "package_queries": 52,
     "matching_advisories": 0,
     "response_body_bytes": 169,

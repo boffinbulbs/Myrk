@@ -29,7 +29,7 @@ On 2026-10-26, a public OSV query batch for all 52 exact resolved registry versi
 
 | Snapshot field | Value |
 |---|---|
-| Reviewed Cargo.lock SHA256 | `fcb640b672dc26ecf5cb051ab76e7e0a26e56dcb8341ca1644dfd160683b931d` |
+| Reviewed Cargo.lock SHA256 | `7f78afe1be3f9282a2e58b9e7a18df77f4f842c593a11191b1c589b81df9857a` |
 | Raw OSV response body SHA256 | `8f96b1b7aa528c6256c0169be2e70b792354589655daacac7b173cfae52596b9` |
 | Raw OSV response body length | 169 bytes |
 | Source | [OSV query batch API](https://google.github.io/osv.dev/post-v1-querybatch/) |

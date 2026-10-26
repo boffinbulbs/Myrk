@@ -53,3 +53,5 @@ jobs:
         run: python3 research/crypto/plot_results.py --summary-only --check
       - name: Check relation encoding vectors
         run: python3 research/relations/reference_vectors.py --check
+      - name: Check recipient capability vectors
+        run: python3 research/relations/recipient_vectors.py --check

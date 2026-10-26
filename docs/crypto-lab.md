@@ -23,6 +23,8 @@ The exact implementation versions and resolved checksums are recorded in [the de
 
 The key derivation construction is an experiment, with no formal security reduction claimed. This suite does not select the ledger commitment, nullifier, proof, recursion, wallet address, or private staking construction. Its key sizes and tag size must not be described as a demonstrated quantum security level for the complete system.
 
+`validate_recipient_key` checks exact public key size and the backend's canonical ML-KEM coefficient decoding without using randomness. Canonical decoding is not proof of secret key possession, honest key generation or recipient identity. The [recipient capability experiment](recipient-capability.md) uses this validation when constructing or decoding public capabilities. A complete valid capability can still be substituted if its application delivery is unauthenticated.
+
 ## Framing and context
 
 For a byte string $x$, define an unambiguous frame

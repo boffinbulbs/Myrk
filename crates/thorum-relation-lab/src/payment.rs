@@ -220,6 +220,7 @@ pub fn check_payment(
         if note.commitment() != output.commitment || !output_commitments.insert(output.commitment) {
             return Err(RelationError::CommitmentMismatch);
         }
+        note.check_recipient_key(&private.recipient_public_key)?;
         let encryption_context = output_encryption_context(
             statement.chain_id,
             statement.protocol_version,

@@ -12,4 +12,5 @@ repository.workspace = true
 thorum-core = { path = "../thorum-core" }
 thorum-crypto-lab = { path = "../thorum-crypto-lab" }
 sha3 = { version = "=0.12.0", default-features = false }
+getrandom = { version = "=0.4.3", features = ["sys_rng"] }
 zeroize = { version = "=1.9.1", features = ["alloc"] }

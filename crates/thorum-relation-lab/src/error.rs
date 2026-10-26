@@ -2,6 +2,10 @@ use std::fmt;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum RelationError {
+    InvalidEncoding,
+    UnsupportedEncoding,
+    CapabilityMismatch,
+    RecipientKeyMismatch,
     LimitExceeded,
     InvalidPath,
     ChainMismatch,
@@ -43,6 +47,10 @@ impl From<thorum_crypto_lab::Error> for RelationError {
 impl fmt::Display for RelationError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let message = match self {
+            Self::InvalidEncoding => "invalid canonical recipient encoding",
+            Self::UnsupportedEncoding => "unsupported recipient codec or policy",
+            Self::CapabilityMismatch => "opening does not match the recipient capability",
+            Self::RecipientKeyMismatch => "delivery key does not match the committed recipient key",
             Self::LimitExceeded => "local relation input limit exceeded",
             Self::InvalidPath => "invalid bounded Merkle path",
             Self::ChainMismatch => "chain identifier mismatch",

@@ -2,7 +2,7 @@
 
 ## Initial executable boundary
 
-The current executable scope is deterministic monetary accounting under the [60/20/10/10 subsidy profile](subsidy-allocation.md), an isolated [primitive laboratory](crypto-lab.md), and a [transparent relation laboratory](relation-lab.md), with reference vectors and reproducible research artifacts. The relation checkers receive private inputs directly and do not establish zero knowledge or complete private payment feasibility. The workspace does not implement a private transaction system or active consensus network.
+The current executable scope is deterministic monetary accounting under the [60/20/10/10 subsidy profile](subsidy-allocation.md), an isolated [primitive laboratory](crypto-lab.md), and a [transparent relation laboratory](relation-lab.md), with reference vectors and reproducible research artifacts. The [recipient capability laboratory](recipient-capability.md) adds a distinct v2 sender interface and typed local recovery while retaining legacy v1 bytes. The relation checkers receive private inputs directly and do not establish zero knowledge or complete private payment feasibility. The workspace does not implement a private transaction system or active consensus network.
 
 ## Milestones and evidence
 
@@ -11,6 +11,7 @@ The current executable scope is deterministic monetary accounting under the [60/
 | Accounting | Atomic units, frozen subsidy table, 60/20/10/10 allocation, miner rounding, cap, actual issuance and burns | Boundary/rejection/conservation tests and independent vectors |
 | Primitive feasibility laboratory | Isolated operations for signing, verification, encapsulation, decapsulation and authenticated encryption | Exact backend versions and parameters, real primitive operations, altered input rejection, reproducible size and cost measurements |
 | Transparent relation research | Local note, membership, authorization, conservation, encryption and stake eligibility checks | Plaintext witness boundary, independent encoding vectors and adversarial fixtures, no substitution for a hiding proof |
+| Recipient capability laboratory | Public sender capability, KEM key binding, v2 opening without the actual nullifier secret, and strict typed recovery | Preserved v1 bytes, separate receiver authority, canonical and context rejection cases, exact recovery and later authorized local consumption |
 | Private transition feasibility | One fully specified and executable private payment relation | Authorization, ranges, conservation, nullifier binding, malformed proof rejection, measured costs and security rationale |
 | Private stake feasibility | Confidential eligible weight and checkpoint support | No duplicate weight/reuse, epoch/domain binding, PQ assumptions, bounded certificates and adversarial simulations |
 | Ledger kernel | State roots, global nullifiers, canonical decoding, fees, issuance integration and rollback | Independent node agreement, inflation rejection, replay rejection and atomic persistence |
@@ -53,7 +54,11 @@ Separate analytical schedule projections from measured code performance. Record 
 
 The [private protocol research specification](research-target.md) defines the formal relations and privacy evaluation gates. The [pool governance specification](governance.md) records unimplemented pool spending and voting requirements. The monetary core calculates pool and developer amounts but does not create payout notes or authenticate destinations. Transparent local reference checks remain research evidence rather than private proof validation.
 
-The [backend feasibility record](proof-feasibility.md) retains exact source versions and unresolved hiding, primitive coverage, knowledge soundness and quantum model requirements. The local relation's sender knows output nullifier secrets and can recognize their future consumption. Recipient capabilities that remove this linkage, confidential stake statements, typed recovery, and actual hiding proofs remain separate construction work.
+The [backend feasibility record](proof-feasibility.md) retains exact source versions and unresolved hiding, primitive coverage, knowledge soundness and quantum model requirements. Legacy v1 senders know output nullifier secrets and can recognize future consumption. V2 capability construction keeps that secret out of the sender interface and provides strict typed local recovery. This removes deliberate secret disclosure in that interface without proving unlinkability, nullifier pseudorandomness, recipient identity, confidential stake, or composed quantum privacy.
+
+Preserving v1 bytes and vectors is laboratory compatibility evidence. A production privacy default must exclude sender known v1 notes or specify an explicit migration. Changing the current protocol version cannot reinterpret an existing note's encoding or reset its nullifier.
+
+Authenticated capability routing, public capability reuse, note discovery, secret backup, private proof integration, and production wallet recovery remain separate gates. Complete capability substitution is not prevented by internal consistency. A static KEM key does not establish forward secrecy. Key rotation creates a different capability while old note recovery still requires the old committed capability and retained authority. Sharing a capability's nullifier secret with a restricted voting service can grant tracking authority across notes using that secret without granting spending authority. Neither laboratory format implements the `thm` production address encoding.
 
 ## Release gates
 

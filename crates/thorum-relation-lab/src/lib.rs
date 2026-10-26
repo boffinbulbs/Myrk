@@ -4,21 +4,27 @@
 //! encryption randomness directly. It does not implement a proof system, a
 //! private ledger, recipient anonymity, consensus, persistence or networking.
 //! Authenticated anchors, spent sets and snapshot parameters are caller inputs.
-//! The output sender currently knows the nullifier secret and can predict a
-//! later spend nullifier. No sender unlinkability or anonymous recipient claim
-//! follows from this laboratory construction.
+//! Legacy v1 output senders know the nullifier secret and can predict later
+//! spend nullifiers. V2 recipient capabilities keep that secret out of the sender
+//! API. Neither encoding establishes a full unlinkability or recipient anonymity claim.
 
 #![forbid(unsafe_code)]
 
+mod capability;
+mod codec;
 mod error;
 mod merkle;
 mod note;
 mod payment;
 mod stake;
 
+pub use capability::{RecipientCapability, MAX_CAPABILITY_BYTES, RECIPIENT_CAPABILITY_VERSION};
 pub use error::RelationError;
 pub use merkle::{merkle_leaf, merkle_parent, MerklePath, MAX_MERKLE_DEPTH};
-pub use note::{key_binding, BondPolicy, NoteOpening, NoteParameters, NotePolicy, NullifierSecret};
+pub use note::{
+    key_binding, BondPolicy, NoteOpening, NoteParameters, NotePolicy, NullifierSecret,
+    RecoveryContext, MAX_RECIPIENT_OPENING_BYTES, RECIPIENT_NOTE_VERSION,
+};
 pub use payment::{
     check_payment, output_encryption_context, InputWitness, OutputWitness, PaymentContext,
     PaymentOutput, PaymentStatement, PaymentWitness, MAX_PAYMENT_ITEMS,

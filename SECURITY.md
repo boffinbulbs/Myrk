@@ -4,7 +4,9 @@ Thorum is at the reference implementation and protocol research stage. The repos
 
 The monetary module checks amount arithmetic and supply transitions. It does not prove transaction ownership, private value conservation, eligible stake, valid block order, canonical parent acceptance, or recovery data availability. These are separate kernel and protocol requirements.
 
-The relation laboratory checks ownership, conservation and stake eligibility locally with plaintext witnesses and externally supplied state. It produces no privacy proof, consensus certificate or persistent state change. Its sender knows output nullifier secrets, and its stake statements expose claims. Its private openings and encryption witnesses must not be transmitted to validators or remote services. These experiments do not complete the private payment or confidential stake feasibility gates.
+The relation laboratory checks ownership, conservation and stake eligibility locally with plaintext witnesses and externally supplied state. It produces no privacy proof, consensus certificate or persistent state change. Legacy v1 senders know output nullifier secrets. V2 recipient capabilities exclude that secret from sender construction and note delivery, without establishing a formal unlinkability result. Stake statements still expose claims. Plaintext private openings and encryption witnesses must not be transmitted to validators or remote services. These experiments do not complete the private payment or confidential stake feasibility gates.
+
+Recipient capability consistency does not authenticate the intended person or service. Substitution of a complete valid capability remains an application routing threat. Typed recovery requires an authenticated expected commitment and the recipient's separate nullifier authority. Exported nullifier backups are secret material without storage encryption in this API. A voting delegate given shared nullifier authority can track other disclosed openings under that capability, even without spending keys. Static recipient encryption keys do not provide forward secrecy.
 
 ## Security sensitive changes
 

@@ -471,6 +471,7 @@ dependencies = [
 name = "thorum-relation-lab"
 version = "0.1.0"
 dependencies = [
+ "getrandom",
  "sha3",
  "thorum-core",
  "thorum-crypto-lab",
