@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-24.04, windows-2022]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -28,11 +28,13 @@ jobs:
       - name: Fetch locked dependencies
         run: rustup run 1.94.1 cargo fetch --locked
       - name: Run tests
-        run: rustup run 1.94.1 cargo test --workspace --locked --offline
+        run: rustup run 1.94.1 cargo test --workspace --locked --offline -- --test-threads=1
       - name: Run adversarial proof tests
         run: rustup run 1.94.1 cargo test -p thorum-proof-lab --release --locked --offline
       - name: Run adversarial note proof tests
         run: rustup run 1.94.1 cargo test -p thorum-note-proof-lab --release --locked --offline
+      - name: Run adversarial hidden membership tests
+        run: rustup run 1.94.1 cargo test -p thorum-membership-proof-lab --release --locked --offline -- --test-threads=1
       - name: Check lints
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
       - name: Build documentation
@@ -52,6 +54,11 @@ jobs:
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/note-proofs/profile_check.py
+      - name: Check membership proof feature profile
+        if: runner.os == 'Linux'
+        env:
+          RUSTUP_TOOLCHAIN: 1.94.1
+        run: python3 research/membership-proofs/profile_check.py
 
   research:
     name: Reference model
@@ -75,3 +82,5 @@ jobs:
         run: python3 research/proofs/plot_results.py --summary-only --check
       - name: Check note commitment reference vectors
         run: python3 research/note-proofs/reference_vectors.py --check
+      - name: Check private membership reference vectors
+        run: python3 research/membership-proofs/reference_vectors.py --check

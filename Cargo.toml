@@ -5,6 +5,7 @@ members = [
     "crates/thorum-relation-lab",
     "crates/thorum-proof-lab",
     "crates/thorum-note-proof-lab",
+    "crates/thorum-membership-proof-lab",
 ]
 resolver = "2"
 

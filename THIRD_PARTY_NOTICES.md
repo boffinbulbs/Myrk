@@ -37,7 +37,7 @@ The paste record is an informational maintenance notice, with no patched version
 
 | Snapshot field | Value |
 |---|---|
-| Reviewed Cargo.lock SHA256 | `3578513ebc9664d755a595358a37c5a7f05e08929e96d5d39b2bbb7d2f5f0799` |
+| Reviewed Cargo.lock SHA256 | `bdd8ad4493bdeff553dc0c72025d8d7c0f4446160cf48993d15636d9735dbff2` |
 | Raw OSV response body SHA256 | `860fa05d158bf8441deeef59b79900ce68b7b170926a5bb3adbc54818977b748` |
 | Raw OSV response body length | 366 bytes |
 | Source | [OSV query batch API](https://google.github.io/osv.dev/post-v1-querybatch/) |

@@ -1,12 +1,16 @@
 # Private transaction relation
 
-This document defines required relations, not an implemented privacy proof system.
+This document defines the complete private transaction requirements. The workspace implements isolated proof components without a complete private payment system.
 
 The [local relation laboratory](relation-lab.md) makes a bounded subset executable with transparent witnesses. The [proof feasibility record](proof-feasibility.md) distinguishes those native checks from the hiding and knowledge soundness requirements of a private proof. Neither record establishes a production private transaction format.
+
+The [hidden membership component](membership-proof-lab.md) proves canonical note commitments, common root membership, distinct private input commitments and exact amount conservation in one hiding proof. Both input commitments, creation versions, indices and fixed depth 32 paths remain private. Its statement exposes the root, shared asset, chain, fee, two output commitments, output creation versions, context and fixed shape. Ownership, stable nullifiers, authenticated eligible roots, recipient encryption and ledger state transitions remain outside that component. These obligations and the separate confidential stake gate remain open before kernel integration.
 
 ## Public boundary
 
 The verifier receives a canonical versioned transaction envelope, resource class, fee information, relevant state roots, nullifiers, output commitments, encrypted data commitments, application identifiers where public, and a transition proof. Exact encoding and visibility remain part of the construction work.
+
+The production envelope must exclude input commitments, input creation versions, indices and authentication paths. Shared public asset and same asset fee choices in the membership laboratory are explicit component visibility and arithmetic boundaries. They do not freeze production asset visibility or native fee policy. The accepted root must come from authenticated eligible state, with specified history and branch rules.
 
 Private witnesses contain owned notes, openings, authorization material, confidential values/assets, private application state, and execution inputs. They must not be transmitted to validators or an unrestricted remote proving service.
 
