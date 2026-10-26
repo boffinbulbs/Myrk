@@ -6,6 +6,14 @@ The desktop architecture targets a Qt interface with Rust wallet, node and execu
 
 The normal Send path must construct a private transaction. A separate public payment pool or optional privacy toggle is not part of the design.
 
+## Address namespace
+
+The main network wallet address target uses the human readable prefix `thm`, followed by a versioned recipient payload and a checksum. The namespace is compatible with private payments and contract applications. It does not determine the cryptographic key representation or execution model.
+
+The address specification must define the separator, alphabet, checksum construction, network domain, version, recipient type, maximum length, and supported key representation. Network and type fields must be bound by the checksum and checked before transaction construction. Test and development networks require distinct address namespaces. No production encoding or address decoder is implemented.
+
+Contract references and asset identifiers require explicit types. A wallet must reject them in an ordinary recipient field unless the corresponding payment type and spending semantics are supported. Selected key representations determine payload length and require evaluation for QR presentation, copying, recipient discovery, and recovery.
+
 ## Authority separation
 
 Spending, viewing, recipient discovery/encryption, recovery, and restricted staking authority require distinct domains and documented capabilities. An online voting service must not gain unrestricted spend/withdraw authority. Delegation must describe operator influence, availability, privacy leakage, and any misconduct consequences.

@@ -15,7 +15,7 @@ The initial workspace contains deterministic monetary accounting and its tests, 
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |
 | Mining | Parent work validation and operator interface requirements |
-| Wallet | Local validation, restricted staking authority, disclosure and recovery requirements |
+| Wallet | Local validation, `thm` address namespace, restricted staking authority, disclosure and recovery requirements |
 
 ## Research targets
 
