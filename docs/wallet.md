@@ -12,6 +12,12 @@ Spending, viewing, recipient discovery/encryption, recovery, and restricted stak
 
 Running a validating node alone does not earn a subsidy. Eligible stake and compatible mining work have separate protocol duties.
 
+## Governance interface research
+
+The governance extension requires proposal creation, authenticated proposal content, eligible stake status, ballot submission, tally verification, funding status, and payment history in the desktop interface. These actions are separate from automatic checkpoint voting. Wallet submission cannot grant authority that is absent from consensus rules.
+
+The interface must explain the voting snapshot, lock duration, disclosed information, delegation scope, fee, and irreversible actions before signing. Proposal content is untrusted input and must not execute code or silently request wallet permissions. No governance interface or native ecosystem fund is implemented. The authority and research constraints are specified in [ecosystem governance](governance.md).
+
 ## Recovery data
 
 The protocol must define encrypted note and application data availability and the backup material necessary for a complete restore. A recovery secret alone cannot recover essential offchain data that was never made available.

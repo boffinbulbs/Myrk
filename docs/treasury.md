@@ -6,6 +6,8 @@ The treasury is project/operator controlled. Independent custodians or a committ
 
 One accounting policy covers separate addresses/wallets on each external network. Eligible work must bind the required destination through the supported proof format. Destination authorization and activation rules remain a protocol specification item.
 
+The [native ecosystem fund research](governance.md) defines a separate funding authority. Its stake ballots do not authorize control of the operator's external accounts. Changing external custody or destination policy requires its own explicit activation rules. The current monetary core contains no native treasury allocation or spending implementation.
+
 ## Funds and liabilities
 
 Scheduled native subsidy uses a nominal 70/30 allocation: floor(7 * capped subsidy / 10) atomic units for miners and the remainder as the eligible staking budget. Pool worker liabilities and native rewards must remain separate from external receipts owned by the treasury. A pool cannot treat unpaid worker balances as a maintenance or purchase budget.

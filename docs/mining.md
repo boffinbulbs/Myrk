@@ -4,18 +4,18 @@
 
 | Role | Required components |
 |---|---|
-| Pool operator | Synchronized Thorum node, compatible Zcash full node under operator control, adapter for parent templates and submissions, worker accounting, treasury routing and monitoring |
+| Pool operator | Synchronized Thorum node, compatible parent full node under operator control, adapter for parent templates and submissions, worker accounting, treasury routing and monitoring |
 | Solo mining operator | Both node stacks, equivalent job/commitment/submission integration, compatible Equihash work |
 | Pool worker | Compatible miner, pool connection and native payout destination |
-| Ordinary validator or staker | Thorum node and relevant staking duties. No requirement to synchronize Zcash |
+| Ordinary validator or staker | Thorum node and relevant staking duties. No requirement to synchronize the parent network |
 
-The first parent profile targets Equihash (200,9) work in Zcash format. Matching an algorithm name alone is insufficient: parameters, personalization, header rules, activated formats and child commitments must match.
+The first parent profile targets Equihash (200,9) work under the parent formats specified by the primary references below. Matching an algorithm name alone is insufficient: parameters, personalization, header rules, activated formats and child commitments must match.
 
 ## Verification boundary
 
 An auxiliary witness must authenticate the intended child candidate, chain/domain identifiers, supported parent work, relevant parent transaction and authorization commitments, target and treasury destination commitment. Its encoding and resource limits require a dedicated specification and negative vectors.
 
-Zcash transaction formats require careful treatment of both transaction and authorization commitments. The appropriate branches cannot be replaced by an unqualified check of the transaction ID alone. Parent format rules must be pinned to an evaluated version. [Transaction/authorization commitments](https://zips.z.cash/zip-0244), [miner/pool protocol](https://zips.z.cash/zip-0301)
+The referenced parent transaction format requires careful treatment of both transaction and authorization commitments. The appropriate branches cannot be replaced by an unqualified check of the transaction ID alone. Parent format rules must be pinned to an evaluated version. [Transaction/authorization commitments](https://zips.z.cash/zip-0244), [miner/pool protocol](https://zips.z.cash/zip-0301)
 
 A work result that satisfies the child target need not satisfy the external chain's harder target. A valid child witness also does not prove a winning external candidate was broadcast, accepted, remained canonical, or paid the treasury. Operators separately reconcile actual external receipts through their full nodes.
 

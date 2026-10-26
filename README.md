@@ -1,6 +1,6 @@
 # Thorum
 
-Thorum (THM) is a research and implementation effort for a private application blockchain with post quantum authorization, confidential state transitions, auxiliary proof of work, and stake checkpoint finality.
+Thorum (THM) is a privacy blockchain research implementation focused on post quantum cryptography, confidential smart contracts, auxiliary proof of work, and stake checkpoint finality.
 
 The protocol architecture separates the private transaction relation, deterministic state validation, parent work verification, and checkpoint consensus. Each boundary has explicit validation requirements and implementation milestones.
 
@@ -17,6 +17,25 @@ The initial workspace contains deterministic monetary accounting and its tests, 
 | Mining | Parent work validation and operator interface requirements |
 | Wallet | Local validation, restricted staking authority, disclosure and recovery requirements |
 
+## Research targets
+
+1. Private payments and contract state by default. Wallets construct witnesses and proofs locally. Validators check authorized transitions, conservation, and double spending without receiving spending secrets or plaintext private values.
+2. Post quantum protection across authorization, recipient encryption, commitments, nullifiers, proofs, and recovery. Individual standardized primitives do not establish the security of their composition.
+3. Native private payments, timed escrow, and confidential fungible assets under common ledger rules and resource limits.
+4. User controlled viewing permissions, restricted staking authority, encrypted backups, and recovery tests covering lost devices, missing data, and branch changes.
+5. Explicit metadata boundaries with reproducible measurements of transaction shape, fees, timing, application identifiers, wallet queries, and network observations.
+
+These are specification requirements. Their security properties have not been implemented or established by the accounting tests. The [research specification](docs/research-target.md) defines formal relations, information flow, evaluation methods, and acceptance gates.
+
+For each asset $a$, an ordinary valid transition must satisfy
+
+$$
+\sum_i v_{i,a}^{\mathrm{in}} + m_a
+= \sum_j v_{j,a}^{\mathrm{out}} + b_a + f_a
+$$
+
+Here $m_a$ is authorized minting, $b_a$ is authorized destruction, and $f_a$ is the fee in that asset. Ordinary transactions have $m_{\mathrm{THM}}=0$. Native subsidy creation follows a separate kernel rule. This conservation relation is necessary but does not by itself provide authorization, privacy, or proof soundness.
+
 ## Architecture
 
 ```mermaid
@@ -31,6 +50,12 @@ flowchart LR
 ```
 
 This diagram describes component boundaries. Implementation status is recorded separately above.
+
+## Ecosystem governance research
+
+The governance extension studies native ecosystem funding with stake voting through the desktop wallet. It separates treasury decisions from automatic checkpoint votes and from the operator controlled external mining treasury. The current accounting implementation uses a 70 percent miner allocation and a 30 percent staking budget. A 60 percent miner, 30 percent staking, and 10 percent ecosystem profile remains a separate research design, with no treasury minting or governance code implemented.
+
+The [governance specification](docs/governance.md) defines the authority boundary, exact allocation model, voting weight, funding lifecycle, and unresolved privacy and security requirements.
 
 ## Build and check
 
@@ -56,6 +81,8 @@ Reference model and figure generation commands are documented in [research/emiss
 8. [Implementation milestones](docs/development.md)
 9. [Security policy](SECURITY.md)
 10. [Contribution guide](CONTRIBUTING.md)
+11. [Privacy and post quantum research specification](docs/research-target.md)
+12. [Ecosystem governance](docs/governance.md)
 
 ## Source and research practice
 

@@ -4,7 +4,7 @@
 
 Auxiliary proof of work produces candidate blocks. Eligible stake supplies checkpoint support over a valid branch. Ordinary validators continue to reject invalid transactions and proofs independently of stake support.
 
-A staking vote is an automatic protocol message, not an authorization to spend treasury assets or access private payments. Treasury control and governance of software upgrades are separate policies.
+A staking vote is an automatic protocol message, not an authorization to spend treasury assets or access private payments. Treasury control and governance of software upgrades are separate policies. The [ecosystem governance research](governance.md) defines a separate manual ballot and funding lifecycle.
 
 ## Required construction
 
