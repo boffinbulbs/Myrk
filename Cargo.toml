@@ -1,5 +1,5 @@
 [workspace]
-members = ["crates/thorum-core"]
+members = ["crates/thorum-core", "crates/thorum-crypto-lab"]
 resolver = "2"
 
 [workspace.package]
@@ -7,6 +7,8 @@ version = "0.1.0"
 edition = "2021"
 rust-version = "1.94.1"
 publish = false
+license = "MIT"
+repository = "https://github.com/th0rigin/Thorum"
 
 [profile.release]
 overflow-checks = true

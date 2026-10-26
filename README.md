@@ -6,12 +6,13 @@ The protocol architecture separates the private transaction relation, determinis
 
 ## Implementation status
 
-The initial workspace contains deterministic monetary accounting and its tests, an independent reference model, reproducible research data, and protocol specifications. It does not yet implement a network, private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
+The workspace contains deterministic monetary accounting, an independent reference model, an isolated cryptographic laboratory, reproducible research data, and protocol specifications. It does not yet implement a network, private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
 
 | Area | Current scope |
 |---|---|
 | [Core accounting](crates/thorum-core/src/lib.rs) | Atomic unit arithmetic, subsidy schedule, issuance ceiling, reward allocation, burns |
 | Research | Independent schedule construction, golden vectors, analytical projections, reproducible figures |
+| [Primitive laboratory](docs/crypto-lab.md) | Real signature, key establishment and encrypted envelope experiments, selected official vectors, tamper rejection and local measurements |
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |
 | Mining | Parent work validation and operator interface requirements |
@@ -59,10 +60,11 @@ The [governance specification](docs/governance.md) defines the authority boundar
 
 ## Build and check
 
-The Rust workspace has no external crate dependencies at this stage. The validated toolchain is Rust 1.94.1.
+The monetary core has no external crate dependencies. The separate primitive laboratory uses the exact dependency versions in Cargo.lock. The validated toolchain is Rust 1.94.1. Fetch the locked dependencies once before running offline checks.
 
 ```text
-cargo test --workspace --offline
+cargo fetch --locked
+cargo test --workspace --locked --offline
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --offline -- -D warnings
 ```
@@ -83,9 +85,11 @@ Reference model and figure generation commands are documented in [research/emiss
 10. [Contribution guide](CONTRIBUTING.md)
 11. [Privacy and post quantum research specification](docs/research-target.md)
 12. [Ecosystem governance](docs/governance.md)
+13. [Cryptographic feasibility laboratory](docs/crypto-lab.md)
+14. [Third party notices](THIRD_PARTY_NOTICES.md)
 
 ## Source and research practice
 
 Specifications identify assumptions and unresolved constructions. Benchmarks identify the implementation, hardware, configuration, and measurement method. Analytical projections are distinguished from measurements. Required dependency attribution and license notices are retained when components are incorporated.
 
-Project licensing and third party source inventory must be completed before external components are incorporated or a distribution is prepared.
+Original project source is available under the [MIT license](LICENSE). External components retain their own licenses and notices, recorded in the [dependency inventory](research/crypto/dependency-inventory.json). Source and binary distributions must preserve the applicable notices.

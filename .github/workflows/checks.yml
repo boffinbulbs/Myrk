@@ -25,12 +25,19 @@ jobs:
         run: rustup toolchain install 1.94.1 --profile minimal --component rustfmt --component clippy
       - name: Check formatting
         run: rustup run 1.94.1 cargo fmt --all -- --check
+      - name: Fetch locked dependencies
+        run: rustup run 1.94.1 cargo fetch --locked
       - name: Run tests
         run: rustup run 1.94.1 cargo test --workspace --locked --offline
       - name: Check lints
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
       - name: Build documentation
         run: rustup run 1.94.1 cargo doc --workspace --no-deps --locked --offline
+      - name: Check dependency inventory
+        if: runner.os == 'Linux'
+        env:
+          RUSTUP_TOOLCHAIN: 1.94.1
+        run: python3 research/crypto/dependency_inventory.py --check
 
   research:
     name: Reference model

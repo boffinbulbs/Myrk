@@ -22,7 +22,7 @@ State changes are atomic at the kernel boundary. Failed decoding, authorization,
 
 ## Cryptographic evaluation
 
-Primitive and backend evaluation targets include ML-DSA authorization, ML-KEM key establishment, authenticated symmetric encryption, and zero knowledge STARK execution. No executable cryptographic evaluation or integrated backend is present in the initial workspace. These targets do not define a complete private protocol.
+Primitive and backend evaluation targets include ML-DSA authorization, ML-KEM key establishment, authenticated symmetric encryption, and zero knowledge STARK execution. The isolated [primitive laboratory](crypto-lab.md) supplies executable signature, encapsulation, and encrypted envelope experiments. No private proof backend is integrated. These experiments do not define a complete private protocol.
 
 Evaluation must include recipient anonymity, ciphertext binding, commitment hiding/binding, unique nullifiers, value ranges, execution soundness, quantum model assumptions, and confidential stake eligibility. Public key exposure and historical ciphertext retention are part of the threat model.
 
