@@ -4,13 +4,15 @@ This document defines the complete private transaction requirements. The workspa
 
 The [local relation laboratory](relation-lab.md) makes a bounded subset executable with transparent witnesses. The [proof feasibility record](proof-feasibility.md) distinguishes those native checks from the hiding and knowledge soundness requirements of a private proof. Neither record establishes a production private transaction format.
 
-The [hidden membership component](membership-proof-lab.md) proves canonical note commitments, common root membership, distinct private input commitments and exact amount conservation in one hiding proof. Both input commitments, creation versions, indices and fixed depth 32 paths remain private. Its statement exposes the root, shared asset, chain, fee, two output commitments, output creation versions, context and fixed shape. Ownership, stable nullifiers, authenticated eligible roots, recipient encryption and ledger state transitions remain outside that component. These obligations and the separate confidential stake gate remain open before kernel integration.
+The [hidden membership component](membership-proof-lab.md) proves canonical note commitments, common root membership, distinct private input commitments and exact amount conservation in one hiding proof. Both input commitments, creation versions, indices and fixed depth 32 paths remain private. Its statement exposes the root, shared asset, chain, fee, two output commitments, output creation versions, context and fixed shape. Stable nullifiers remain outside that earlier component.
+
+The [nullifier component](nullifier-proof-lab.md) additionally constrains two input secret bindings and stable public nullifiers from the same private retained secrets and canonical commitments. Input commitments, secrets, bindings and paths remain private. The identities exclude root and context, while the proof binds the complete expected public statement. Possession of a nullifier secret remains distinct from owner permission. Authenticated eligible roots, global spent state, private owner authorization, recipient encryption and complete ledger transitions remain open, alongside the separate confidential stake gate before kernel integration.
 
 ## Public boundary
 
 The verifier receives a canonical versioned transaction envelope, resource class, fee information, relevant state roots, nullifiers, output commitments, encrypted data commitments, application identifiers where public, and a transition proof. Exact encoding and visibility remain part of the construction work.
 
-The production envelope must exclude input commitments, input creation versions, indices and authentication paths. Shared public asset and same asset fee choices in the membership laboratory are explicit component visibility and arithmetic boundaries. They do not freeze production asset visibility or native fee policy. The accepted root must come from authenticated eligible state, with specified history and branch rules.
+The production envelope must exclude input commitments, input creation versions, indices, authentication paths and retained nullifier secrets. Shared public asset and same asset fee choices in the membership and nullifier laboratories are explicit component visibility and arithmetic boundaries. They do not freeze production asset visibility or native fee policy. The accepted root must come from authenticated eligible state, with specified history and branch rules.
 
 Private witnesses contain owned notes, openings, authorization material, confidential values/assets, private application state, and execution inputs. They must not be transmitted to validators or an unrestricted remote proving service.
 
@@ -36,6 +38,8 @@ The proof must also establish:
 
 The kernel separately rejects globally spent or duplicated nullifiers, invalid state context, noncanonical encodings, and resource excess. A valid isolated proof does not waive these checks.
 
+Stable nullifier derivation does not establish global uniqueness of acceptance. The kernel must atomically check and consume nullifiers against persistent branch state, including concurrent submissions, repeated inputs within a block, restart and rollback. Changing a root or current network version cannot reset the identity of an existing note. Changing an immutable committed creation version instead creates a different note.
+
 ## Applications
 
 The first contract relations are timed escrow and confidential assets. Escrow must bind release/refund authorization and expiry to a single spendable state. Asset policy must distinguish ordinary transfers from authorized minting and destruction.
@@ -45,3 +49,5 @@ The first contract relations are timed escrow and confidential assets. Escrow mu
 Measure linkage exposed through timing, fees, resource classes, ciphertext shape, application identifiers, note discovery, staking, and network observation. A recipient still knows its own payment details. Plaintext disclosed to a third party cannot be revoked.
 
 No public payment mode or mandatory global viewing authority is part of the transaction design. Dedicated disclosure capabilities must be narrower than spending authority and have explicitly documented scope.
+
+Sharing a reused capability's nullifier secret grants tracking authority over notes whose commitments are known to the recipient, without necessarily granting spending authority. The experimental keyed hash requires known binding image, chosen commitment, repeated secret and quantum query analysis. Successful relation tests do not supply that argument or a sender unlinkability result.

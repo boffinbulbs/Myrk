@@ -61,7 +61,7 @@ P3_NOTICE_FILES = {
 ADVISORY_REVIEW = {
     "checked_on": "2026-10-26",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "bdd8ad4493bdeff553dc0c72025d8d7c0f4446160cf48993d15636d9735dbff2",
+    "cargo_lock_sha256": "6e79791a298d3aeea8f659fdce23695664679f6e5395c6b34b9116f2444a1ae6",
     "package_queries": 92,
     "matching_advisories": 1,
     "response_body_bytes": 366,

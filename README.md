@@ -6,9 +6,9 @@ The protocol architecture separates the private transaction relation, determinis
 
 ## Implementation status
 
-The workspace contains deterministic monetary accounting, an independent reference model, isolated primitive, transparent relation and hiding proof laboratories, reproducible research data, and protocol specifications. The original proof laboratory constrains integer conservation without note linkage. The note proof laboratory connects four canonical SHA3-512 payment commitments to their private amount bits. The membership proof laboratory additionally hides both input commitments, creation versions, indices and depth 32 paths while proving common root membership, distinct input commitments and exact conservation in the same proof. Ownership, nullifiers, recipient encryption and accepted root policy remain unproved. The transparent relation laboratory still receives private witnesses directly. The workspace does not yet implement a network, complete private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
+The workspace contains deterministic monetary accounting, an independent reference model, isolated primitive, transparent relation and hiding proof laboratories, reproducible research data, and protocol specifications. The original proof laboratory constrains integer conservation without note linkage. The note proof laboratory connects four canonical SHA3-512 payment commitments to their private amount bits. The membership proof laboratory additionally hides both input commitments, creation versions, indices and depth 32 paths while proving common root membership, distinct input commitments and exact conservation in the same proof. The nullifier proof laboratory further derives input secret bindings and stable public nullifiers from the same private retained secrets and commitments. Ownership, recipient encryption, global spent state and accepted root policy remain outside these components. The transparent relation laboratory still receives private witnesses directly. The workspace does not yet implement a network, complete private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
 
-The membership component's statement exposes one root, two output commitments, the shared asset, chain, output creation versions, fee, context and fixed two input, two output shape. The earlier note component retains its public input commitments as an isolated experiment. Neither is a production transaction format. A caller supplied root has no ledger authority, and a private membership proof without ownership and stable nullifiers cannot authorize spending or prevent replay.
+The membership component's statement exposes one root, two output commitments, the shared asset, chain, output creation versions, fee, context and fixed two input, two output shape. The nullifier component adds two complete public nullifiers while retaining hidden input commitments and paths. The earlier note component retains its public input commitments as an isolated experiment. None is a production transaction format. A caller supplied root has no ledger authority. Knowledge of a retained nullifier secret does not establish owner permission, and a stable nullifier proof does not replace atomic consumption against persistent spent state.
 
 | Area | Current scope |
 |---|---|
@@ -19,6 +19,7 @@ The membership component's statement exposes one root, two output commitments, t
 | [Hiding proof laboratory](docs/proof-lab.md) | Four private u64 amounts, bounded integer conservation, public fee and context, fixed proof verification without note or authority linkage |
 | [Canonical note proof laboratory](docs/note-proof-lab.md) | Four exact v2 payment commitments and bounded conservation in the same proof, with public input commitments and no authorization, membership or nullifier proof |
 | [Hidden membership proof laboratory](docs/membership-proof-lab.md) | Private input commitments, creation versions and depth 32 paths, common root membership, distinct input commitments and exact conservation, without ownership, nullifiers, encryption or accepted root policy |
+| [Stable nullifier proof laboratory](docs/nullifier-proof-lab.md) | Private retained secrets linked to input bindings and stable public nullifiers in the same hidden membership and conservation proof, without owner permission, global spent state, encryption or accepted root policy |
 | [Proof feasibility](docs/proof-feasibility.md) | Pinned backend inspection, isolated component adoption and unresolved complete relation, knowledge soundness and quantum security gates |
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |
@@ -27,7 +28,7 @@ The membership component's statement exposes one root, two output commitments, t
 
 The [recipient capability experiment](docs/recipient-capability.md) lets a sender construct a v2 output using public bindings without receiving the recipient's nullifier secret. Typed recovery checks the original commitment, recipient capability and retained secret. Legacy v1 notes retain their original encodings and sender linkage. These local checks do not establish formal unlinkability, anonymous discovery or a production address format.
 
-The three isolated proof laboratories adopt exact `p3-* 0.8.0` dependencies. The note and membership components use `p3-keccak-air 0.8.0` for constrained permutation computations. Their verifiers take proof bytes and independently supplied typed public statements. The membership component directly constrains the chain, shared asset, output versions, root, output commitments and fee, while its 64 byte context remains opaque transcript data. The inspected statistical hiding configurations lack a complete quantum knowledge bound and independent review of the local hash composition. This adoption does not select a backend for consensus or complete the private payment and confidential stake gates.
+The four isolated proof laboratories adopt exact `p3-* 0.8.0` dependencies. The note, membership and nullifier components use `p3-keccak-air 0.8.0` for constrained permutation computations. Their verifiers take proof bytes and independently supplied typed public statements. The nullifier component constrains the chain, shared asset, output versions, root, output commitments, stable nullifiers and fee, while its 64 byte context remains opaque transcript data. The inspected statistical hiding configurations lack a complete quantum knowledge bound and independent review of the local hash composition. The experimental keyed hash requires analysis with a known secret binding image, sender chosen commitments and reused authority. This adoption does not select a backend for consensus or complete the private payment and confidential stake gates.
 
 ## Research targets
 
@@ -81,6 +82,7 @@ cargo test --workspace --locked --offline -- --test-threads=1
 cargo test -p thorum-proof-lab --release --locked --offline
 cargo test -p thorum-note-proof-lab --release --locked --offline
 cargo test -p thorum-membership-proof-lab --release --locked --offline -- --test-threads=1
+cargo test -p thorum-nullifier-proof-lab --release --locked --offline -- --test-threads=1
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
 python research/relations/reference_vectors.py --check
@@ -91,11 +93,13 @@ python research/note-proofs/reference_vectors.py --check
 python research/note-proofs/profile_check.py
 python research/membership-proofs/reference_vectors.py --check
 python research/membership-proofs/profile_check.py
+python research/nullifier-proofs/reference_vectors.py --check
+python research/nullifier-proofs/profile_check.py
 ```
 
 Reference model and figure generation commands are documented in [research/emission](research/emission/README.md).
 
-The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot. The [original proof research record](research/proofs/README.md) retains independent integer, trace, public value and hash checks, plus measured costs and sizes for its unbound conservation component. Neither measurement set describes the canonical note or membership relation. The separate [note proof record](research/note-proofs/README.md) and [membership proof record](research/membership-proofs/README.md) retain complete canonical messages, sponge states, relation cases, hash adapter goldens and reproduction commands, without a performance claim. The sparse membership fixture is public synthetic relation data, without an anonymity size or linkage experiment.
+The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot. The [original proof research record](research/proofs/README.md) retains independent integer, trace, public value and hash checks, plus measured costs and sizes for its unbound conservation component. Neither measurement set describes the canonical note, membership or nullifier relation. The separate [note proof record](research/note-proofs/README.md), [membership proof record](research/membership-proofs/README.md) and [nullifier proof record](research/nullifier-proofs/README.md) retain complete canonical messages, sponge states, relation cases, hash adapter goldens and reproduction commands, without a performance claim. Sparse tree fixtures are public synthetic relation data, without an anonymity size or linkage experiment.
 
 ## Documentation
 
@@ -120,6 +124,7 @@ The [cryptographic research record](research/crypto/README.md) retains selected 
 19. [Hiding conservation proof laboratory](docs/proof-lab.md)
 20. [Canonical note conservation proof laboratory](docs/note-proof-lab.md)
 21. [Hidden input membership proof laboratory](docs/membership-proof-lab.md)
+22. [Stable nullifier proof laboratory](docs/nullifier-proof-lab.md)
 
 ## Source and research practice
 
