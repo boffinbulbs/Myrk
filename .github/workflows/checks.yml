@@ -29,6 +29,8 @@ jobs:
         run: rustup run 1.94.1 cargo fetch --locked
       - name: Run tests
         run: rustup run 1.94.1 cargo test --workspace --locked --offline
+      - name: Run adversarial proof tests
+        run: rustup run 1.94.1 cargo test -p thorum-proof-lab --release --locked --offline
       - name: Check lints
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
       - name: Build documentation
@@ -38,6 +40,11 @@ jobs:
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/crypto/dependency_inventory.py --check
+      - name: Check proof feature profile
+        if: runner.os == 'Linux'
+        env:
+          RUSTUP_TOOLCHAIN: 1.94.1
+        run: python3 research/proofs/profile_check.py
 
   research:
     name: Reference model
@@ -55,3 +62,5 @@ jobs:
         run: python3 research/relations/reference_vectors.py --check
       - name: Check recipient capability vectors
         run: python3 research/relations/recipient_vectors.py --check
+      - name: Check proof reference vectors
+        run: python3 research/proofs/reference_vectors.py --check

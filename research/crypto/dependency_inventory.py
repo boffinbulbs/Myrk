@@ -20,25 +20,60 @@ ROOT = Path(__file__).resolve().parents[2]
 ARTIFACT_ROOT = ROOT / "research" / "crypto"
 INVENTORY = ARTIFACT_ROOT / "dependency-inventory.json"
 LICENSES = ARTIFACT_ROOT / "licenses"
+LICENSE_SOURCES = ARTIFACT_ROOT / "license-sources"
 NOTICES = ROOT / "THIRD_PARTY_NOTICES.md"
 REGISTRY = "registry+https://github.com/rust-lang/crates.io-index"
 LICENSE_PREFIXES = ("LICENSE", "COPYING", "NOTICE")
 KNOWN_LICENSES = frozenset(
-    {"MIT", "Apache-2.0", "Unlicense", "BSL-1.0", "Unicode-3.0", "LGPL-2.1-or-later"}
+    {"MIT", "Apache-2.0", "Unlicense", "BSL-1.0", "Unicode-3.0", "LGPL-2.1-or-later", "CC0-1.0"}
 )
 
 # This package contains its license grants and copyright in AUTHORS.
 EXTRA_LICENSE_FILES = {("r-efi", "6.0.0"): ("AUTHORS",)}
 
+# The reviewed archive declares this repository as its homepage instead.
+HOMEPAGE_REPOSITORIES = {
+    ("tiny-keccak", "2.0.2"): "https://github.com/debris/tiny-keccak",
+}
+
+# These published subcrate archives omit the workspace root license texts.
+# Their authenticated VCS metadata must match the release containing these originals.
+P3_RELEASE_COMMIT = "a21e3ed42905040ad49c519e402f018381c12d0c"
+P3_REPOSITORY = "https://github.com/Plonky3/Plonky3"
+P3_PACKAGES = frozenset({
+    "p3-air", "p3-baby-bear", "p3-challenger", "p3-commit", "p3-dft", "p3-field",
+    "p3-fri", "p3-keccak", "p3-matrix", "p3-maybe-rayon", "p3-mds", "p3-merkle-tree",
+    "p3-monty-31", "p3-poseidon1", "p3-poseidon2", "p3-security", "p3-symmetric",
+    "p3-uni-stark", "p3-util",
+})
+P3_NOTICE_FILES = {
+    "LICENSE-APACHE": (
+        "3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026",
+        "1e5006dc141e22213c898c27abaded8d936c32f0",
+    ),
+    "LICENSE-MIT": (
+        "d6543a1b0a0a51d10b5f8c389324c7dfeba556b7f39815efd292927bde808700",
+        "ae8393261a5c288d5efe1208b7ea3de22b861f84",
+    ),
+}
+
 # This is a dated source check. Generation does not query an advisory service.
 ADVISORY_REVIEW = {
     "checked_on": "2026-10-26",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "7f78afe1be3f9282a2e58b9e7a18df77f4f842c593a11191b1c589b81df9857a",
-    "package_queries": 52,
-    "matching_advisories": 0,
-    "response_body_bytes": 169,
-    "response_body_sha256": "8f96b1b7aa528c6256c0169be2e70b792354589655daacac7b173cfae52596b9",
+    "cargo_lock_sha256": "03b13d81fdf2969258557f68fab65b60a64dba68d259e0db4929f7c32ba45034",
+    "package_queries": 91,
+    "matching_advisories": 1,
+    "response_body_bytes": 363,
+    "response_body_sha256": "4ee51b83b081720a916a7282fa6dee43b02db9aeef8fbc41365ba05d939368e6",
+    "matches": [{
+        "package": "paste",
+        "version": "1.0.15",
+        "id": "RUSTSEC-2024-0436",
+        "classification": "informational_unmaintained",
+        "patched_versions": [],
+        "source": "https://rustsec.org/advisories/RUSTSEC-2024-0436.html",
+    }],
 }
 
 
@@ -132,7 +167,49 @@ def metadata() -> dict:
     return data
 
 
-def source_notices(package: dict, checksum: str) -> dict[str, bytes]:
+def upstream_workspace_notices(package: dict, vcs_info: dict | None) -> tuple[dict[str, bytes], dict]:
+    """Read reviewed upstream originals omitted from the authenticated subcrate archive."""
+    name, version = package["name"], package["version"]
+    if (
+        name not in P3_PACKAGES
+        or version != "0.8.0"
+        or package.get("repository") != P3_REPOSITORY
+        or package.get("license") != "MIT OR Apache-2.0"
+        or not isinstance(vcs_info, dict)
+        or not isinstance(vcs_info.get("git"), dict)
+        or vcs_info.get("git", {}).get("sha1") != P3_RELEASE_COMMIT
+        or vcs_info.get("path_in_vcs") != name.removeprefix("p3-")
+    ):
+        raise InventoryError(f"No reviewed original license sources for {name} {version}")
+    expected_files = {".gitattributes"} | {f"p3-0.8.0/{name}" for name in P3_NOTICE_FILES}
+    actual_files = set()
+    if LICENSE_SOURCES.is_symlink():
+        raise InventoryError("The upstream license source directory cannot be a symlink")
+    for path in LICENSE_SOURCES.rglob("*"):
+        if path.is_symlink():
+            raise InventoryError("An upstream license source cannot be a symlink")
+        if path.is_file():
+            actual_files.add(path.relative_to(LICENSE_SOURCES).as_posix())
+    if actual_files != expected_files:
+        raise InventoryError("The upstream license source set differs from its reviewed files")
+    if (LICENSE_SOURCES / ".gitattributes").read_bytes() != b"* -text\n":
+        raise InventoryError("Upstream license originals require stable Git byte handling")
+    originals = {}
+    for filename, (digest, blob) in P3_NOTICE_FILES.items():
+        contents = (LICENSE_SOURCES / "p3-0.8.0" / filename).read_bytes()
+        git_blob = hashlib.sha1(f"blob {len(contents)}\0".encode("ascii") + contents).hexdigest()
+        if sha256(contents) != digest or git_blob != blob:
+            raise InventoryError(f"Reviewed upstream license bytes differ for {filename}")
+        contents.decode("utf-8")
+        originals[filename] = contents
+    return originals, {
+        "source_kind": "upstream_repository",
+        "repository": P3_REPOSITORY,
+        "commit": P3_RELEASE_COMMIT,
+    }
+
+
+def source_notices(package: dict, checksum: str) -> tuple[dict[str, bytes], dict]:
     """Read original bytes from the archive authenticated by Cargo.lock."""
     name = package["name"]
     version = package["version"]
@@ -163,6 +240,7 @@ def source_notices(package: dict, checksum: str) -> dict[str, bytes]:
             raise InventoryError(f"License metadata escapes the source package for {label}") from error
 
     selected: dict[str, bytes] = {}
+    vcs_info = None
     prefix = package_directory + "/"
     try:
         with tarfile.open(fileobj=io.BytesIO(archive_bytes), mode="r:gz") as archive:
@@ -178,6 +256,14 @@ def source_notices(package: dict, checksum: str) -> dict[str, bytes]:
                 if relative in names:
                     raise InventoryError(f"Duplicate registry archive entry for {label}")
                 names.add(relative)
+                if relative == ".cargo_vcs_info.json":
+                    stream = archive.extractfile(member) if member.isfile() else None
+                    if stream is None:
+                        raise InventoryError(f"Invalid VCS source record for {label}")
+                    vcs_bytes = stream.read()
+                    if source_root.joinpath(relative).read_bytes() != vcs_bytes:
+                        raise InventoryError(f"Resolved VCS metadata differs from the archive for {label}")
+                    vcs_info = json.loads(vcs_bytes)
                 is_root_notice = len(path.parts) == 1 and path.name.upper().startswith(LICENSE_PREFIXES)
                 if not is_root_notice and relative not in additional:
                     continue
@@ -199,8 +285,8 @@ def source_notices(package: dict, checksum: str) -> dict[str, bytes]:
     if additional - selected.keys():
         raise InventoryError(f"Missing declared or reviewed license file for {label}")
     if not selected:
-        raise InventoryError(f"No original license notice files found for {label}")
-    return selected
+        return upstream_workspace_notices(package, vcs_info)
+    return selected, {"source_kind": "registry_archive"}
 
 
 def build_inventory(lock_bytes: bytes, data: dict) -> tuple[dict, dict[str, bytes]]:
@@ -231,8 +317,16 @@ def build_inventory(lock_bytes: bytes, data: dict) -> tuple[dict, dict[str, byte
             raise InventoryError(f"Metadata and locked registry records disagree for {label}")
         seen.add(key)
         expression = validate_license(package.get("license"), label)
-        repository = repository_url(package.get("repository"), label)
-        originals = source_notices(package, locked[key])
+        repository_value = package.get("repository")
+        repository_metadata_field = "repository"
+        if repository_value is None:
+            reviewed_homepage = HOMEPAGE_REPOSITORIES.get(key)
+            if reviewed_homepage is None or package.get("homepage") != reviewed_homepage:
+                raise InventoryError(f"Missing reviewed repository metadata for {label}")
+            repository_value = reviewed_homepage
+            repository_metadata_field = "homepage"
+        repository = repository_url(repository_value, label)
+        originals, provenance = source_notices(package, locked[key])
         records = []
         for filename, contents in sorted(originals.items()):
             digest = sha256(contents)
@@ -240,19 +334,24 @@ def build_inventory(lock_bytes: bytes, data: dict) -> tuple[dict, dict[str, byte
             if artifact_name in license_artifacts and license_artifacts[artifact_name] != contents:
                 raise InventoryError("License content hash collision")
             license_artifacts[artifact_name] = contents
-            records.append(
-                {
-                    "source_filename": filename,
-                    "sha256": digest,
-                    "artifact": f"licenses/{artifact_name}",
-                }
-            )
+            record = {
+                "source_filename": filename,
+                "sha256": digest,
+                "artifact": f"licenses/{artifact_name}",
+                **provenance,
+            }
+            if provenance["source_kind"] == "upstream_repository":
+                record["git_blob_sha1"] = P3_NOTICE_FILES[filename][1]
+                record["source_input"] = f"license-sources/p3-0.8.0/{filename}"
+                record["source_url"] = f"{P3_REPOSITORY}/blob/{P3_RELEASE_COMMIT}/{filename}"
+            records.append(record)
         packages.append(
             {
                 "name": key[0],
                 "version": key[1],
                 "spdx_license": expression,
                 "repository": repository,
+                "repository_metadata_field": repository_metadata_field,
                 "registry_checksum_sha256": locked[key],
                 "license_files": records,
             }
@@ -262,6 +361,13 @@ def build_inventory(lock_bytes: bytes, data: dict) -> tuple[dict, dict[str, byte
     lock_hash = sha256(lock_bytes)
     review = dict(ADVISORY_REVIEW)
     review["matches_current_lock"] = lock_hash == review["cargo_lock_sha256"]
+    if review["matching_advisories"] != len(review["matches"]):
+        raise InventoryError("The recorded advisory count differs from its matching records")
+    if review["matches_current_lock"] and (
+        review["package_queries"] != len(locked)
+        or any((match["package"], match["version"]) not in locked for match in review["matches"])
+    ):
+        raise InventoryError("The recorded advisory package coverage differs from this lock")
     return (
         {
             "cargo_lock_sha256": lock_hash,
@@ -280,21 +386,37 @@ def render_notices(inventory: dict) -> bytes:
         if review["matches_current_lock"]
         else "The current lock file differs from that snapshot and requires a new advisory source check."
     )
+    advisory_table = ""
+    if review["matches"]:
+        rows = [
+            "| Package | Version | Record | Classification | Patched versions |",
+            "|---|---|---|---|---|",
+        ]
+        for match in review["matches"]:
+            patched = ", ".join(match["patched_versions"]) or "None recorded"
+            classification = match["classification"].replace("_", " ")
+            rows.append(
+                f"| {match['package']} | {match['version']} | [{match['id']}]({match['source']}) | "
+                f"{classification} | {patched} |"
+            )
+        advisory_table = "\n\n" + "\n".join(rows)
     text = f"""# Third party notices
 
 ## Scope and original notices
 
 Thorum project code is covered by the project [MIT license](LICENSE). Registry dependencies retain their own licensing terms, copyrights and notices. The project license does not replace those terms.
 
-The [dependency inventory](research/crypto/dependency-inventory.json) records all {count} registry packages in the current Cargo.lock, including development and target specific packages across all platforms represented by the resolution. The dependency graph covers the workspace and its isolated primitive and relation laboratories. No released binary distribution is represented by this inventory. A package in the lock file is not necessarily linked on every platform.
+The [dependency inventory](research/crypto/dependency-inventory.json) records all {count} registry packages in the current Cargo.lock, including development and target specific packages across all platforms represented by the resolution. The dependency graph covers the workspace and its isolated primitive, relation and proof laboratories. No released binary distribution is represented by this inventory. A package in the lock file is not necessarily linked on every platform.
 
-Each package record contains its name, version, upstream SPDX expression, repository URL, registry archive checksum, original license filenames and source byte hashes. The [license directory](research/crypto/licenses) preserves the original text bytes. Identical files share one content hash filename. Copyright statements are retained exactly rather than replaced with Thorum attribution. No license alternative is selected by this inventory.
+Each package record contains its name, version, upstream SPDX expression, repository URL and metadata field, registry archive checksum, original license filenames, provenance and source byte hashes. The [license directory](research/crypto/licenses) preserves the original text bytes. Identical files share one content hash filename. Copyright statements are retained exactly rather than replaced with Thorum attribution. No license alternative is selected by this inventory.
 
 The collection includes root LICENSE, COPYING and NOTICE files, explicit license files in package metadata, and reviewed packaging exceptions. The r-efi package stores its license grants and copyright in AUTHORS, which is preserved under its original filename in the inventory. The unicode-ident expression includes Unicode-3.0 in addition to its alternative code licenses. These source terms remain distinct from the project MIT license.
 
+The nineteen p3 0.8.0 subcrate archives declare MIT OR Apache-2.0 but omit the workspace root license texts. Their archive authenticated VCS metadata identifies release commit `{P3_RELEASE_COMMIT}`. The [original workspace license sources](research/crypto/license-sources/p3-0.8.0) preserve both texts from that exact commit. Inventory records include their repository paths, commit, Git blob identifiers, SHA256 hashes and local source inputs. Generation verifies both hashes before copying their original bytes. The tiny-keccak 2.0.2 package declares CC0-1.0 and places its repository URL in the homepage field. The inventory records that reviewed metadata exception and retains the complete original CC0 text.
+
 ## Reproduction and byte verification
 
-The generator uses Python 3.11 or later and captures `cargo metadata --format-version 1 --locked --offline` internally. Cargo.lock is parsed with the standard library TOML reader. Every cached registry archive is verified against its lock checksum before notice bytes are read. The selected bytes must also match the resolved source package. Full Cargo metadata, local paths, environment details and host identifiers are not published.
+The generator uses Python 3.11 or later and captures `cargo metadata --format-version 1 --locked --offline` internally. Cargo.lock is parsed with the standard library TOML reader. Every cached registry archive is verified against its lock checksum before notice bytes are read. Archive notice bytes must also match the resolved source package. The separately preserved workspace originals are checked against their reviewed commit and content hashes. Full Cargo metadata, local paths, environment details and host identifiers are not published.
 
 After the complete locked registry cache is available, the commands are:
 
@@ -307,7 +429,9 @@ Generation reproduces the inventory, this notice and the copied license artifact
 
 ## Dated advisory source check
 
-On {review['checked_on']}, a public OSV query batch for all {review['package_queries']} exact resolved registry versions returned {review['matching_advisories']} matching advisories. {coverage} This is a dated database response and upstream source review, not a security audit or a guarantee of absent vulnerabilities. Inventory generation and check mode do not contact OSV or refresh this snapshot.
+On {review['checked_on']}, a public OSV query batch for all {review['package_queries']} exact resolved registry versions returned {review['matching_advisories']} matching advisory record. {coverage} This is a dated database response and upstream source review, not a security audit or a guarantee of absent vulnerabilities. Inventory generation and check mode do not contact OSV or refresh this snapshot.{advisory_table}
+
+The paste record is an informational maintenance notice, with no patched version recorded. This procedural macro enters the graph through p3-field. The exact resolution is retained for the isolated experiment. Replacement or an upstream dependency migration remains an open maintenance task. This record is not described as a demonstrated runtime exploit.
 
 | Snapshot field | Value |
 |---|---|
@@ -317,6 +441,8 @@ On {review['checked_on']}, a public OSV query batch for all {review['package_que
 | Source | [OSV query batch API](https://google.github.io/osv.dev/post-v1-querybatch/) |
 
 The reviewed resolution contains ml-kem 0.3.3. Its [upstream security repair](https://github.com/RustCrypto/KEMs/pull/386) removes secret indexed CBD table access across all parameter sets, including ML-KEM-1024. That repair was identified through the upstream changelog despite an earlier empty advisory response for the older lock. An empty database result therefore does not replace source review. In the reviewed resolution, ctutils 0.4.6 is above the [RUSTSEC-2026-0385](https://rustsec.org/advisories/RUSTSEC-2026-0385.html) patched threshold, and cmov 0.5.4 is above the [RUSTSEC-2026-0003](https://rustsec.org/advisories/RUSTSEC-2026-0003.html) patched threshold.
+
+The proof dependency source review also inspected the [upstream advisory index](https://github.com/Plonky3/Plonky3/security/advisories), including earlier FRI shape, final polynomial and transcript binding repairs. The retained 0.8.0 sources still contain the hiding RNG lock behavior reported in [issue 2363](https://github.com/Plonky3/Plonky3/issues/2363). The isolated proof profile disables every parallel feature and does not include Rayon. The [proof laboratory record](docs/proof-lab.md) states the exact configuration and remaining security limits. These source findings are separate from the OSV batch response.
 
 The inventory records upstream declarations and original notices. It is not a complete legal review, a dependency implementation audit, a cryptographic composition review, or evidence that private payments, confidential stake or production key management have been implemented. Distribution obligations require review for the actual source and binary artifacts being distributed.
 """

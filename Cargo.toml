@@ -3,6 +3,7 @@ members = [
     "crates/thorum-core",
     "crates/thorum-crypto-lab",
     "crates/thorum-relation-lab",
+    "crates/thorum-proof-lab",
 ]
 resolver = "2"
 
