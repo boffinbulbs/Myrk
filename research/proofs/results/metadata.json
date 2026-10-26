@@ -1,0 +1,132 @@
+{
+  "scope": "One local hiding conservation proof experiment. Amounts are not linked to ledger notes, authorization, membership, nullifiers or encryption.",
+  "started_utc": "2026-10-26T17:12:20.229284+00:00",
+  "completed_utc": "2026-10-26T17:12:21.774377+00:00",
+  "source_revision": "71bd256d404c1391204bb96aae6506414ea6a7ff",
+  "source_files": [
+    {
+      "path": "Cargo.toml",
+      "measured_bytes_sha256": "7a06517e3f3bbb50c350d3388ff5b76d8c83e6f06b67e72d30dc7793b059ecb8",
+      "git_blob_sha256": "7a06517e3f3bbb50c350d3388ff5b76d8c83e6f06b67e72d30dc7793b059ecb8"
+    },
+    {
+      "path": "Cargo.lock",
+      "measured_bytes_sha256": "03b13d81fdf2969258557f68fab65b60a64dba68d259e0db4929f7c32ba45034",
+      "git_blob_sha256": "03b13d81fdf2969258557f68fab65b60a64dba68d259e0db4929f7c32ba45034"
+    },
+    {
+      "path": "crates/thorum-proof-lab/Cargo.toml",
+      "measured_bytes_sha256": "0b516d1a6a1356e97d4d20d2adc1bf6f455ace86009bb8228b297b21c01af506",
+      "git_blob_sha256": "0b516d1a6a1356e97d4d20d2adc1bf6f455ace86009bb8228b297b21c01af506"
+    },
+    {
+      "path": "crates/thorum-proof-lab/src/lib.rs",
+      "measured_bytes_sha256": "6ea03193b26f1bdf6aea7f65041dde8c9c33e856117313ca0ea441dd0d701ee6",
+      "git_blob_sha256": "6ea03193b26f1bdf6aea7f65041dde8c9c33e856117313ca0ea441dd0d701ee6"
+    },
+    {
+      "path": "crates/thorum-proof-lab/src/air.rs",
+      "measured_bytes_sha256": "1e74e430e163e943166552725215c65aec615864bdade66d84e991ae30603fe9",
+      "git_blob_sha256": "1e74e430e163e943166552725215c65aec615864bdade66d84e991ae30603fe9"
+    },
+    {
+      "path": "crates/thorum-proof-lab/src/hash.rs",
+      "measured_bytes_sha256": "39ffb293b9fe99584f1f6b64f114c70ff013c9b884968c7faee57200aeddd517",
+      "git_blob_sha256": "39ffb293b9fe99584f1f6b64f114c70ff013c9b884968c7faee57200aeddd517"
+    },
+    {
+      "path": "crates/thorum-proof-lab/examples/conservation_measure.rs",
+      "measured_bytes_sha256": "a982e0b8ab0bce30e445db5b4566beb49f8799a151fee6a56d1199553840bd94",
+      "git_blob_sha256": "a982e0b8ab0bce30e445db5b4566beb49f8799a151fee6a56d1199553840bd94"
+    }
+  ],
+  "lock_sha256": "03b13d81fdf2969258557f68fab65b60a64dba68d259e0db4929f7c32ba45034",
+  "executable_sha256": "dcb903cb0c96dbc8fad7595dc38a458d70780dd7a295dd3f5e2d305725ba50a4",
+  "raw_csv_sha256": "1c13a07855ab39da95ad86bb6d84630a2478367a7161e0e5cbdc1d5550ff4729",
+  "raw_sample_rows": 80,
+  "proof_count": 40,
+  "samples_per_class": 20,
+  "profile": "thorum.proof-lab.u64-conservation.sha3-512.serial.p3-0.8.0.v1",
+  "workload": {
+    "A": {
+      "amounts": [
+        50,
+        50,
+        60,
+        39
+      ],
+      "total": 100
+    },
+    "B": {
+      "amounts": [
+        18446744073709550615,
+        0,
+        18446744073709550613,
+        1
+      ],
+      "total": 18446744073709550615
+    },
+    "public_fee": 1,
+    "public_context_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+    "order": "A prove, A verify, B prove, B verify, repeated twenty times with fresh proving randomness",
+    "trace_rows": 256,
+    "trace_columns": 77,
+    "fri_queries": 64,
+    "fri_log_blowup": 2,
+    "challenge_extension_degree": 4,
+    "private_random_codewords": 4,
+    "merkle_salt_field_elements": 16
+  },
+  "cpu": {
+    "model": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "physical_cores": 14,
+    "logical_processors": 20
+  },
+  "os": {
+    "name": "Microsoft Windows 11 Home",
+    "version": "10.0.26300",
+    "build": "26300",
+    "architecture": "64-bit"
+  },
+  "hardware_captured_utc": "2026-10-26T17:12:05.8918981Z",
+  "compiler": [
+    "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "binary: rustc",
+    "commit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "commit-date: 2026-03-25",
+    "host: x86_64-pc-windows-msvc",
+    "release: 1.94.1",
+    "LLVM version: 21.1.8"
+  ],
+  "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+  "build": {
+    "profile": "release",
+    "lto": "thin",
+    "overflow_checks": true,
+    "incremental": false,
+    "execution": "serial",
+    "rustflag_overrides": "none in process environment",
+    "target": "x86_64-pc-windows-msvc"
+  },
+  "build_command": "cargo build --release -p thorum-proof-lab --example conservation_measure --locked --offline",
+  "command": "cargo run --release -p thorum-proof-lab --example conservation_measure --locked --offline",
+  "capture": "The locked offline release build completed after source byte checks, with incremental compilation disabled. The resulting example executable was run once. Standard output bytes were retained without newline conversion.",
+  "warmup": "No separate warmup. All observations, including the first proof and verification, are retained.",
+  "timing_boundary": {
+    "prove": "Public API call including local constraints, fresh OS entropy, proving, proof encoding and JSON preflight",
+    "verify": "Public API call including JSON preflight, typed decoding, shape checks, canonical encoding and proof verification. No OS entropy is required.",
+    "excluded": "Compilation, process startup, CSV output and destruction of the returned proof byte vector"
+  },
+  "aggregation": {
+    "median": "Exact middle value or arithmetic mean of the two central samples",
+    "p95": "Nearest rank ceil(0.95*n)",
+    "interval_meaning": "Recorded sample range, not a confidence interval"
+  },
+  "limitations": [
+    "One host and one run with scheduling, background work and thermal state uncontrolled.",
+    "No peak memory, power, network, complete payment, confidential stake or transaction throughput measurement.",
+    "Witness classes and their values are public synthetic experiment parameters. Amounts do not authorize spending.",
+    "Timing and size distributions do not prove witness indistinguishability or constant time execution.",
+    "No composed quantum security level or production parameter selection follows from these measurements."
+  ]
+}

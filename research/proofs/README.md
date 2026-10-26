@@ -48,3 +48,41 @@ cargo run --release -p thorum-proof-lab --example conservation_measure --locked 
 ```
 
 CSV output contains sample indices, public experiment class labels, operation durations and encoded proof sizes. A retained measurement run requires its own source revision, source and executable hashes, compiler, hardware and operating system record. Timing and proof size observations do not establish witness indistinguishability, constant time behavior or a quantum security level.
+
+## Retained local observation
+
+The retained run used source revision [`71bd256d404c1391204bb96aae6506414ea6a7ff`](https://github.com/th0rigin/Thorum/commit/71bd256d404c1391204bb96aae6506414ea6a7ff), an Intel Core i9-13900H, Windows 11 Home build 26300, Rust 1.94.1 and the serial release profile with thin LTO and overflow checks. The locked offline build completed after checking source bytes against that commit. Incremental compilation was disabled. There was no separate warmup. All samples, including the first, are retained.
+
+Forty proofs were constructed and verified, producing 80 timed observations. The two classes each have twenty independently randomized proofs. Their public fee is one and their 64 public context bytes are `00` through `3f`. Class A uses amounts $(50,50,60,39)$. Class B uses $(2^{64}-1001,0,2^{64}-1003,1)$. Classes alternate in the fixed order A prove, A verify, B prove, B verify. The values are synthetic public experiment parameters, without a production privacy claim.
+
+| Class | Operation | Samples | Median milliseconds | p95 milliseconds | Proof byte range |
+|---|---|---|---|---|---|
+| A | Prove | 20 | 31.753 | 32.831 | 574240 to 603150 |
+| A | Verify | 20 | 5.440 | 5.718 | Same paired proofs |
+| B | Prove | 20 | 31.713 | 32.820 | 572331 to 601185 |
+| B | Verify | 20 | 5.485 | 5.656 | Same paired proofs |
+
+![Recorded conservation proof latency and canonical JSON size](charts/conservation_proof.svg)
+
+The median is the arithmetic mean of the central pair for these even sample counts. The percentile is the nearest rank observation at $\lceil0.95n\rceil$. Dots and ranges describe recorded samples, rather than confidence intervals. Latency uses a logarithmic axis. The size panel shows a cropped linear axis in KiB, where one KiB is 1024 bytes.
+
+Proving includes local constraint checks, fresh operating system entropy, actual proof construction, encoding and JSON preflight. Verification includes bounded parsing, fixed shape checks, canonical encoding and actual proof verification. It does not obtain operating system entropy. Compilation, process startup, CSV output and destruction of the returned proof vector are outside the timers.
+
+| Record | Content |
+|---|---|
+| [Raw observations](results/raw.csv) | Every duration and paired proof length, without proof bytes or secret material |
+| [Measurement provenance](results/metadata.json) | Measured source revision and byte hashes, executable and lock hashes, hardware, compiler, profile and limits |
+| [Exact summary](results/summary.csv) | Minimum, exact median, nearest rank p95, maximum and size bounds |
+| [Figure manifest](charts/manifest.json) | Raw, summary and SVG hashes and renderer version |
+| [Summary and figure generator](plot_results.py) | Standard library summary and ReportLab 4.4.9 SVG rendering |
+
+Summary reproduction requires only the Python standard library. Complete figure reproduction additionally requires ReportLab 4.4.9:
+
+```text
+python research/proofs/plot_results.py --summary-only --check
+python research/proofs/plot_results.py --check
+```
+
+A new timing run needs a separate experiment directory and new provenance. It must not replace these observations while retaining the old metadata. The retained primitive measurements in [research/crypto](../crypto/README.md) belong to their earlier source snapshot and remain unchanged.
+
+The observations cover one host and one run, without controlling scheduling, background work or thermal state. They do not measure peak memory, power, network behavior, complete private payments, confidential stake or transaction throughput. Similar sample distributions cannot establish that a witness is hidden or that execution is constant time. This profile and its JSON sizes are laboratory evidence, without selection of production parameters or a composed quantum security level.

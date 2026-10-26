@@ -85,7 +85,7 @@ python research/proofs/profile_check.py
 
 Reference model and figure generation commands are documented in [research/emission](research/emission/README.md).
 
-The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot and do not measure the new proof component. [Proof research fixtures](research/proofs/README.md) retain independent integer, trace, public value and hash checks.
+The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot and do not measure the new proof component. The separate [proof research record](research/proofs/README.md) retains independent integer, trace, public value and hash checks, plus measured proof costs, sizes, raw observations and a reproducible figure.
 
 ## Documentation
 

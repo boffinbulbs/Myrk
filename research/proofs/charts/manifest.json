@@ -1,0 +1,10 @@
+{
+  "renderer": "ReportLab graphics shapes and SVG",
+  "reportlab_version": "4.4.9",
+  "raw_sha256": "1c13a07855ab39da95ad86bb6d84630a2478367a7161e0e5cbdc1d5550ff4729",
+  "summary_sha256": "e155bb0386ee0f64e1c8344c475cfb2cfe94f0e6fa9dfedde5669d5c777b0338",
+  "svg_sha256": "f37a94bee2f430e27af74416a42328b0c5876646a42387559aa39d45542767bb",
+  "p50": "Exact sample median",
+  "p95": "Nearest rank ceil(0.95*n)",
+  "interval_meaning": "Sample range, not a confidence interval"
+}

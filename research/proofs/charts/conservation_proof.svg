@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1120" height="800" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1120 800" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1120" height="800"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-800)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1120" height="800" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="55" y="758" style="font-family: Helvetica-Bold; font-size: 25px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1516) scale(1,-1)">Hiding conservation proof experiment</text>
+			<text x="55" y="732" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,1464) scale(1,-1)">20 proof constructions per witness class. Same public fee and context. Serial release build.</text>
+			<text x="55" y="710" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,1420) scale(1,-1)">13th Gen Intel(R) Core(TM) i9-13900H | Microsoft Windows 11 Home build 26300 | Rust 1.94.1</text>
+			<text x="55" y="674" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1348) scale(1,-1)">A   Proving and verification latency</text>
+			<path d="M 280,432 L 280,645 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="277.22" y="410" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,820) scale(1,-1)">1</text>
+			<path d="M 542.5,432 L 542.5,645 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="536.94" y="410" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,820) scale(1,-1)">10</text>
+			<path d="M 805,432 L 805,645 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="796.66" y="410" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,820) scale(1,-1)">100</text>
+			<text x="850" y="645" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,1290) scale(1,-1)">Median / p95 (ms)</text>
+			<text x="55" y="611" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1222) scale(1,-1)">Prove   class A</text>
+			<path d="M 669.208931,615 L 679.585795,615 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 2;"/>
+			<circle cx="679.5857947051154" cy="612.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="674.8900558866077" cy="615.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="678.0235374432352" cy="617.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="674.8618557408054" cy="619.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="675.3598636243585" cy="610.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="672.3926584492178" cy="612.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="669.2089307484391" cy="615.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="675.7225578753337" cy="617.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="670.6249459874598" cy="619.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="671.3098395814925" cy="610.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="675.6208218472689" cy="612.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.1558654473906" cy="615.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="677.4020175893404" cy="617.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.0746610265976" cy="619.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="672.7467178544855" cy="610.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.5740212158128" cy="612.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="672.0561586041332" cy="615.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="676.3888597523076" cy="617.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="675.4273794834633" cy="619.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.3647733271598" cy="610.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="674.2197569821062" cy="615" r="5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 678.023537,608 L 678.023537,622 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="850" y="611" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1222) scale(1,-1)">31.75 / 32.83</text>
+			<text x="55" y="561" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1122) scale(1,-1)">Prove   class B</text>
+			<path d="M 670.208828,565 L 680.877614,565 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 2;"/>
+			<circle cx="680.8776144856167" cy="562.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="677.2465437622883" cy="565.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="677.9853343148999" cy="567.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="675.180930984292" cy="569.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="676.105645105264" cy="560.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="670.2088279284546" cy="562.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="674.4906778108514" cy="565.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="671.5974921104232" cy="567.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="670.2426640626961" cy="569.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.157315000791" cy="560.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="674.1552938648942" cy="562.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="674.6735570900696" cy="565.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.5747433412353" cy="567.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="671.8114727877387" cy="569.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="676.9304010025041" cy="560.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.9935267471512" cy="562.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="674.7607776735438" cy="565.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.0409296911099" cy="567.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.2822696820643" cy="569.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="673.8282874697564" cy="560.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="674.0744389990818" cy="565" r="5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 677.985334,558 L 677.985334,572 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="850" y="561" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1122) scale(1,-1)">31.71 / 32.82</text>
+			<text x="55" y="511" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1022) scale(1,-1)">Verify   class A</text>
+			<path d="M 460.25844,515 L 479.996195,515 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 2;"/>
+			<circle cx="470.4510426428843" cy="512.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="478.78257071939447" cy="515.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="475.14661692711115" cy="517.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="474.2747100503206" cy="519.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="464.7764089323481" cy="510.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="470.00189682664166" cy="512.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="472.126622305679" cy="515.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="477.9983729479288" cy="517.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="469.6806084814442" cy="519.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="476.0139485782487" cy="510.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="468.7874713528832" cy="512.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="471.9489497526291" cy="515.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="479.996195368029" cy="517.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="469.77126466357277" cy="519.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="468.7134523637079" cy="510.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="474.06503817813245" cy="512.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="460.2584395835273" cy="515.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="476.9740250199959" cy="517.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="478.3871450602304" cy="519.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="474.22699688810883" cy="510.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="473.0999501267484" cy="515" r="5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 478.782571,508 L 478.782571,522 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="850" y="511" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1022) scale(1,-1)">5.44 / 5.718</text>
+			<text x="55" y="461" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,922) scale(1,-1)">Verify   class B</text>
+			<path d="M 467.180961,465 L 479.363232,465 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 2;"/>
+			<circle cx="477.5397643448829" cy="462.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="473.8320789522567" cy="465.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="470.1976754617693" cy="467.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="475.97308827011085" cy="469.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="472.36308912444014" cy="460.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="474.66189937955266" cy="462.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="476.0833775094443" cy="465.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="473.82583242194096" cy="467.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="472.20268300115004" cy="469.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="473.5756901350779" cy="460.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="475.85860143438606" cy="462.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="479.3632322345956" cy="465.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="475.2145189217273" cy="467.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="477.22087093467917" cy="469.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="474.0359442952046" cy="460.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="471.29723331717" cy="462.8" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="467.1809605371053" cy="465.0" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="476.5356711710699" cy="467.2" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="474.0255518230697" cy="469.4" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="470.4810658225348" cy="460.6" r="1.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="474.03074817755964" cy="465" r="5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 477.539764,458 L 477.539764,472 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="850" y="461" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,922) scale(1,-1)">5.485 / 5.656</text>
+			<text x="447.14099999999996" y="383" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,766) scale(1,-1)">Elapsed milliseconds, logarithmic scale</text>
+			<text x="55" y="351" style="font-family: Helvetica-Bold; font-size: 16px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,702) scale(1,-1)">B   Canonical JSON proof size</text>
+			<path d="M 280,218 L 280,322 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="271.66" y="198" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,396) scale(1,-1)">550</text>
+			<path d="M 411.25,218 L 411.25,322 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="402.91" y="198" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,396) scale(1,-1)">560</text>
+			<path d="M 542.5,218 L 542.5,322 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="534.16" y="198" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,396) scale(1,-1)">570</text>
+			<path d="M 673.75,218 L 673.75,322 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="665.41" y="198" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,396) scale(1,-1)">580</text>
+			<path d="M 805,218 L 805,322 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<text x="796.66" y="198" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,396) scale(1,-1)">590</text>
+			<text x="850" y="322" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,644) scale(1,-1)">Minimum / maximum (KiB)</text>
+			<text x="55" y="291" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,582) scale(1,-1)">Witness class A</text>
+			<path d="M 421.503906,295 L 792.054443,295 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1;"/>
+			<circle cx="624.608154296875" cy="290.6" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="649.55078125" cy="292.8" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="735.8758544921875" cy="295.0" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="665.3802490234375" cy="297.2" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="421.50390625" cy="299.4" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="565.545654296875" cy="290.6" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="546.85791015625" cy="292.8" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="676.9671630859375" cy="295.0" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="623.095703125" cy="297.2" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="792.054443359375" cy="299.4" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="699.7052001953125" cy="290.6" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="647.4871826171875" cy="292.8" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="517.275390625" cy="295.0" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="620.8526611328125" cy="297.2" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="704.793701171875" cy="299.4" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="540.013427734375" cy="290.6" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="562.315673828125" cy="292.8" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="559.8931884765625" cy="295.0" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="775.853271484375" cy="297.2" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="653.370361328125" cy="299.4" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="636.0476684570312" cy="295" r="5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<text x="850" y="291" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,582) scale(1,-1)">560.781 / 589.014</text>
+			<text x="55" y="241" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,482) scale(1,-1)">Witness class B</text>
+			<path d="M 397.035522,245 L 766.868286,245 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1;"/>
+			<circle cx="625.2362060546875" cy="240.6" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="570.5059814453125" cy="242.8" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="766.8682861328125" cy="245.0" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="643.3984375" cy="247.2" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="625.40283203125" cy="249.4" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="517.22412109375" cy="240.6" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="621.3397216796875" cy="242.8" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="649.8712158203125" cy="245.0" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="737.2344970703125" cy="247.2" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="599.7808837890625" cy="249.4" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="616.4947509765625" cy="240.6" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="700.333251953125" cy="242.8" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="731.966552734375" cy="245.0" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="662.8936767578125" cy="247.2" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="615.7257080078125" cy="249.4" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="733.812255859375" cy="240.6" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="397.0355224609375" cy="242.8" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="629.9017333984375" cy="245.0" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="675.390625" cy="247.2" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="513.73779296875" cy="249.4" r="2" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(39%,45%,52%); fill-rule: evenodd;"/>
+			<circle cx="627.6522827148438" cy="245" r="5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<text x="850" y="241" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,482) scale(1,-1)">558.917 / 587.095</text>
+			<text x="391.1785" y="174" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,348) scale(1,-1)">Proof bytes / 1024. Horizontal axis shows the observed range.</text>
+			<circle cx="58" cy="139" r="4.5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<text x="71" y="135" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,270) scale(1,-1)">Median</text>
+			<path d="M 158,132 L 158,146 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2;"/>
+			<text x="170" y="135" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,270) scale(1,-1)">p95, nearest rank</text>
+			<text x="340" y="135" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,270) scale(1,-1)">Small dots are individual samples. Ranges are not confidence intervals.</text>
+			<text x="55" y="106" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,212) scale(1,-1)">One host and one run. Proving includes local checks, OS entropy and encoding. Verification includes decoding.</text>
+			<text x="55" y="85" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,170) scale(1,-1)">Amounts are not bound to ledger notes. This is not a full private payment or transaction throughput measurement.</text>
+			<text x="55" y="64" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,128) scale(1,-1)">Timing and size observations do not establish witness indistinguishability, constant time behavior or quantum security.</text>
+			<text x="55" y="37" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,74) scale(1,-1)">Source 71bd256d404c | raw samples and source hashes retained in results/metadata.json</text>
+		</g>
+	</g>
+</svg>

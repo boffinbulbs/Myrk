@@ -192,7 +192,7 @@ def upstream_workspace_notices(package: dict, vcs_info: dict | None) -> tuple[di
             actual_files.add(path.relative_to(LICENSE_SOURCES).as_posix())
     if actual_files != expected_files:
         raise InventoryError("The upstream license source set differs from its reviewed files")
-    if (LICENSE_SOURCES / ".gitattributes").read_bytes() != b"* -text\n":
+    if (LICENSE_SOURCES / ".gitattributes").read_bytes() != b"* -text -whitespace\n":
         raise InventoryError("Upstream license originals require stable Git byte handling")
     originals = {}
     for filename, (digest, blob) in P3_NOTICE_FILES.items():

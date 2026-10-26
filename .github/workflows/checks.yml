@@ -64,3 +64,5 @@ jobs:
         run: python3 research/relations/recipient_vectors.py --check
       - name: Check proof reference vectors
         run: python3 research/proofs/reference_vectors.py --check
+      - name: Check proof measurement summary
+        run: python3 research/proofs/plot_results.py --summary-only --check
