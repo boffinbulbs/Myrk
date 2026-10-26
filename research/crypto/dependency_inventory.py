@@ -42,7 +42,7 @@ P3_RELEASE_COMMIT = "a21e3ed42905040ad49c519e402f018381c12d0c"
 P3_REPOSITORY = "https://github.com/Plonky3/Plonky3"
 P3_PACKAGES = frozenset({
     "p3-air", "p3-baby-bear", "p3-challenger", "p3-commit", "p3-dft", "p3-field",
-    "p3-fri", "p3-keccak", "p3-matrix", "p3-maybe-rayon", "p3-mds", "p3-merkle-tree",
+    "p3-fri", "p3-keccak", "p3-keccak-air", "p3-matrix", "p3-maybe-rayon", "p3-mds", "p3-merkle-tree",
     "p3-monty-31", "p3-poseidon1", "p3-poseidon2", "p3-security", "p3-symmetric",
     "p3-uni-stark", "p3-util",
 })
@@ -61,11 +61,11 @@ P3_NOTICE_FILES = {
 ADVISORY_REVIEW = {
     "checked_on": "2026-10-26",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "03b13d81fdf2969258557f68fab65b60a64dba68d259e0db4929f7c32ba45034",
-    "package_queries": 91,
+    "cargo_lock_sha256": "3578513ebc9664d755a595358a37c5a7f05e08929e96d5d39b2bbb7d2f5f0799",
+    "package_queries": 92,
     "matching_advisories": 1,
-    "response_body_bytes": 363,
-    "response_body_sha256": "4ee51b83b081720a916a7282fa6dee43b02db9aeef8fbc41365ba05d939368e6",
+    "response_body_bytes": 366,
+    "response_body_sha256": "860fa05d158bf8441deeef59b79900ce68b7b170926a5bb3adbc54818977b748",
     "matches": [{
         "package": "paste",
         "version": "1.0.15",
@@ -412,7 +412,7 @@ Each package record contains its name, version, upstream SPDX expression, reposi
 
 The collection includes root LICENSE, COPYING and NOTICE files, explicit license files in package metadata, and reviewed packaging exceptions. The r-efi package stores its license grants and copyright in AUTHORS, which is preserved under its original filename in the inventory. The unicode-ident expression includes Unicode-3.0 in addition to its alternative code licenses. These source terms remain distinct from the project MIT license.
 
-The nineteen p3 0.8.0 subcrate archives declare MIT OR Apache-2.0 but omit the workspace root license texts. Their archive authenticated VCS metadata identifies release commit `{P3_RELEASE_COMMIT}`. The [original workspace license sources](research/crypto/license-sources/p3-0.8.0) preserve both texts from that exact commit. Inventory records include their repository paths, commit, Git blob identifiers, SHA256 hashes and local source inputs. Generation verifies both hashes before copying their original bytes. The tiny-keccak 2.0.2 package declares CC0-1.0 and places its repository URL in the homepage field. The inventory records that reviewed metadata exception and retains the complete original CC0 text.
+The {len(P3_PACKAGES)} p3 0.8.0 subcrate archives declare MIT OR Apache-2.0 but omit the workspace root license texts. Their archive authenticated VCS metadata identifies release commit `{P3_RELEASE_COMMIT}`. The [original workspace license sources](research/crypto/license-sources/p3-0.8.0) preserve both texts from that exact commit. Inventory records include their repository paths, commit, Git blob identifiers, SHA256 hashes and local source inputs. Generation verifies both hashes before copying their original bytes. The tiny-keccak 2.0.2 package declares CC0-1.0 and places its repository URL in the homepage field. The inventory records that reviewed metadata exception and retains the complete original CC0 text.
 
 ## Reproduction and byte verification
 

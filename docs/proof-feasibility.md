@@ -4,9 +4,11 @@
 
 The private ledger relation remains separate from the primitive laboratory and native reference validation. A local reference checker receives note openings, amounts, authorization evidence and encryption randomness in plaintext. Its result is not a proof, a privacy guarantee, or a network acceptance rule. The [research target](research-target.md) defines the required private relation and release gates. The [primitive laboratory](crypto-lab.md) records the current experimental signature and recipient envelope profile.
 
-A separate [hiding proof laboratory](proof-lab.md) generates actual STARK proofs over four private u64 amounts with a public fee and 64 byte context. It proves bounded integer conservation without linkage to notes, ownership, nullifiers, assets or encryption. Its verifier receives proof bytes and the expected public statement. This isolated component does not complete the private payment or confidential stake relation.
+The original [hiding proof laboratory](proof-lab.md) generates actual STARK proofs over four private u64 amounts with a public fee and 64 byte context. It proves bounded integer conservation without note linkage. The separate [canonical note component](note-proof-lab.md) constrains four exact v2 SHA3-512 commitment computations and the same private amount bits in one conservation proof. Both verifiers receive proof bytes and independently supplied typed public statements. Neither component proves ownership, membership, nullifier derivation or uniqueness, recipient encryption or ledger acceptance.
 
-Backend evidence was inspected on October 26, 2026. Exact `p3-* 0.8.0` dependencies are adopted only for the isolated conservation component. No proof backend is selected for consensus. The inspected execution dependency below remains a source evaluation rather than an adopted execution system. Source inspection and successful component builds do not establish a cryptographic audit, complete witness privacy or a composed quantum security argument.
+The note component exposes both input commitments as well as both outputs, a shared asset, per note creation versions, fee, context and a fixed two input, two output shape. Direct transaction use would identify consumed notes and expose input to output linkage. The public commitments are a component boundary, without selection of a production private payment format. Complete private payments must hide input commitments and membership paths behind an authenticated root and stable nullifiers, or use an independently justified alternative.
+
+Backend evidence was inspected on October 26, 2026. Exact `p3-* 0.8.0` dependencies are adopted only for the two isolated proof components. The canonical note component additionally uses `p3-keccak-air 0.8.0` for permutation constraints. No proof backend is selected for consensus. The inspected execution dependency below remains a source evaluation rather than an adopted execution system. Source inspection and successful component builds do not establish a cryptographic audit, complete witness privacy or a composed quantum security argument.
 
 ## Sender encryption relation
 
@@ -83,9 +85,18 @@ A digest length is not a quantum security level. Generic collision search has ap
 
 The target must account for program commitments, state commitments, transcript challenges, field sizes, proof of work grinding, proof aggregation and repeated observations. A stronger wallet signature does not compensate for a weaker ownership proof or an unbound public statement.
 
-## Adopted isolated proof component
+## Adopted isolated proof components
 
 The [conservation proof laboratory](proof-lab.md) adopts exact `p3-* 0.8.0` packages at upstream source commit `a21e3ed42905040ad49c519e402f018381c12d0c`. Their workspace uses `MIT OR Apache-2.0` and edition 2024. The component builds and tests on the repository toolchain. Its fixed AIR proves $a_0+a_1=b_0+b_1+f$ with both totals at most $2^{64}-1$. The public fee and opaque context are transcript bound, but no authenticated note or asset binds the private amounts. [Pinned source manifest](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/Cargo.toml), [release record](https://github.com/Plonky3/Plonky3/releases/tag/p3-fri-v0.8.0).
+
+The [canonical note laboratory](note-proof-lab.md) uses the same exact dependency release and distinct transcript and hash domains. Each 418 byte payment opening produces a 464 byte commitment preimage and seven SHA3-512 absorptions. The AIR constrains 28 permutations for four commitments, exact framing and padding, public chain and asset bindings, per note creation versions and the amount bytes. These amount bits also enter the checked integer equations. Owner, nullifier secret and recipient key bindings remain arbitrary private committed bytes in this component, without verification of their primitive derivations. The fee is expressed in the shared public asset and does not define production fee consensus. [Pinned permutation constraints](https://github.com/Plonky3/Plonky3/tree/a21e3ed42905040ad49c519e402f018381c12d0c/keccak-air).
+
+| Profile | Original trace | FRI queries | Log blowup | Public statement scope |
+|---|---|---|---|---|
+| Unbound conservation | 256 rows, 77 columns | 64 | 2 | Fee and opaque 64 byte context |
+| Canonical note conservation | 1024 rows, 4262 columns | 64 | 3 | Chain, shared asset, four creation versions, fee, four commitments and opaque 64 byte context |
+
+The note profile is `thorum.note-proof-lab.v2-payment.sha3-512.serial.p3-0.8.0.v1`. Its pinned two adic symbolic degree is 4, with 8 quotient chunks and stored hiding degree bits 11. The two profiles are distinct experiments. Historical primitive and unbound conservation measurements retain their source and machine records and do not measure this note relation.
 
 The exact hiding PCS requires both commitment layers to be hiding, unpredictable cryptographic RNG seeding, sufficient independent random codewords and one opening proof per private prover data instance, including across clones. Its conservative masking budget is
 
@@ -93,9 +104,9 @@ $$
 N \ge 2\left(q_{\mathrm{FRI}} + d_{\mathrm{ext}}\,o\right)
 $$
 
-Here $N$ is the mask height, $q_{\mathrm{FRI}}$ the query count, $d_{\mathrm{ext}}$ the challenge extension degree, and $o$ the number of supplied opening points. The adopted profile uses 256 original rows, 64 queries, extension degree 4 and at most two trace opening points, giving the trace budget $144\le256$. Both commitment layers use hiding Merkle schemes, and the PCS supplies four independent random codewords with fresh private proving randomness. These conditions do not replace the surrounding STARK's randomization and challenge sampling requirements. [Pinned hiding PCS contract](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/fri/src/hiding_pcs.rs), [pinned hiding Merkle implementation](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/merkle-tree/src/hiding_mmcs.rs).
+Here $N$ is the mask height, $q_{\mathrm{FRI}}$ the query count, $d_{\mathrm{ext}}$ the challenge extension degree, and $o$ the number of supplied opening points. Both profiles use 64 queries, extension degree 4 and at most two trace opening points. The original profile satisfies $144\le256$, while the note profile satisfies $144\le1024$. Both commitment layers use hiding Merkle schemes, and the PCS supplies four independent random codewords with fresh private proving randomness. These conditions do not replace the surrounding STARK's randomization and challenge sampling requirements. [Pinned hiding PCS contract](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/fri/src/hiding_pcs.rs), [pinned hiding Merkle implementation](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/merkle-tree/src/hiding_mmcs.rs).
 
-The selected backend describes its STARK randomization as statistical rather than perfect zero knowledge. Application transcript chaining and Merkle digests retain all SHA3-512 output bits. Upstream typed transcript metadata also uses Keccak256 fingerprints for fixed interaction patterns and algebra identities. Exact hashing and transcript encodings, masking, fresh commitment rules and bounded canonical transport are recorded in [proof-lab.md](proof-lab.md). These inspected mechanisms do not supply an independent review of the local hash composition or a complete quantum knowledge bound. [Pinned randomization source](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/uni-stark/src/prover.rs#L344), [pattern fingerprint source](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/challenger/src/fs/pattern/sequence.rs#L103).
+The selected backend describes its STARK randomization as statistical rather than perfect zero knowledge. Application transcript chaining and Merkle digests retain all SHA3-512 output bits. Upstream typed transcript metadata also uses Keccak256 fingerprints for fixed interaction patterns and algebra identities. Exact hashing and transcript encodings, masking, fresh commitment rules and bounded canonical transport are recorded separately in the [unbound component](proof-lab.md) and [canonical note component](note-proof-lab.md). These inspected mechanisms do not supply an independent review of the local hash composition or a complete quantum knowledge bound. [Pinned randomization source](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/uni-stark/src/prover.rs#L344), [pattern fingerprint source](https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/challenger/src/fs/pattern/sequence.rs#L103).
 
 The pinned release retains the reported hiding RNG lock behavior during parallel work. The laboratory disables parallel execution. An upstream fix does not alter the exact release source selected here, and any dependency change needs new concurrency and composition checks. Serial execution avoids that specific concurrency path and does not establish general security. [Issue 2363](https://github.com/Plonky3/Plonky3/issues/2363), [upstream fix](https://github.com/Plonky3/Plonky3/pull/2368).
 
@@ -104,9 +115,18 @@ The experimental dependency graph also retains `paste 1.0.15`, covered by inform
 ## Sequential implementation conditions
 
 1. Establish canonical public statements and local witness semantics with valid and invalid reference fixtures. Include note openings, membership, exact authorization binding, deterministic nullifiers, integer conservation, output encryption and recipient recovery.
-2. Reproduce a genuine hiding proof over the complete payment constraints. Every primitive result must be constrained. The isolated conservation component does not prove ownership, membership, nullifiers or recipient encryption. Reject witness transport, missing proof obligations, unsupported relation versions and insufficient security parameters.
+2. Reproduce a genuine hiding proof over the complete payment constraints. Every primitive result must be constrained. Neither isolated component proves ownership, hidden membership, nullifiers or recipient encryption. Public input commitment linkage in the note component must not become an implicit production privacy policy. Reject witness transport, missing proof obligations, unsupported relation versions and insufficient security parameters.
 3. Establish the exact backend's hiding and knowledge soundness arguments in the declared quantum model. Record the dependency revisions, compiler, resource bounds and independent review status.
 4. Complete confidential stake eligibility and checkpoint authority through a separate private relation before kernel integration. Prove weight from eligible locked notes, prevent duplicate weight, bind the snapshot and epoch, and separate voting from spending capability. Splitting the same stake among wallets must not create additional aggregate weight. Private payment evidence cannot satisfy this gate.
 5. Integrate kernel root selection, spent nullifiers, fee policy, atomic state changes and rollback only after both private payment and confidential stake feasibility gates pass. Reference relation validity alone does not establish consensus acceptance.
 
-The implementation currently includes primitive integration, transparent relation checks and an actual isolated hiding conservation proof. Both full private payment and confidential stake feasibility remain open under these conditions. No fallback verifier accepts an absent or placeholder proof.
+The implementation currently includes primitive integration, transparent relation checks, an unbound hiding conservation proof and a canonical note commitment conservation proof. Both full private payment and confidential stake feasibility remain open under these conditions. No fallback verifier accepts an absent or placeholder proof.
+
+The new component's independent references, fixed profile guard and release verification corpus are reproducible with:
+
+```text
+cargo test -p thorum-note-proof-lab --locked --offline
+cargo test -p thorum-note-proof-lab --release --locked --offline
+python research/note-proofs/reference_vectors.py --check
+python research/note-proofs/profile_check.py
+```

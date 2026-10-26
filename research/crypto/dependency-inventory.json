@@ -1,13 +1,13 @@
 {
-  "cargo_lock_sha256": "03b13d81fdf2969258557f68fab65b60a64dba68d259e0db4929f7c32ba45034",
+  "cargo_lock_sha256": "3578513ebc9664d755a595358a37c5a7f05e08929e96d5d39b2bbb7d2f5f0799",
   "advisory_review": {
     "checked_on": "2026-10-26",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "03b13d81fdf2969258557f68fab65b60a64dba68d259e0db4929f7c32ba45034",
-    "package_queries": 91,
+    "cargo_lock_sha256": "3578513ebc9664d755a595358a37c5a7f05e08929e96d5d39b2bbb7d2f5f0799",
+    "package_queries": 92,
     "matching_advisories": 1,
-    "response_body_bytes": 363,
-    "response_body_sha256": "4ee51b83b081720a916a7282fa6dee43b02db9aeef8fbc41365ba05d939368e6",
+    "response_body_bytes": 366,
+    "response_body_sha256": "860fa05d158bf8441deeef59b79900ce68b7b170926a5bb3adbc54818977b748",
     "matches": [
       {
         "package": "paste",
@@ -1098,6 +1098,38 @@
       "repository": "https://github.com/Plonky3/Plonky3",
       "repository_metadata_field": "repository",
       "registry_checksum_sha256": "649a30fbdf0592023f0964563afc118a22c09eb7c214f87f7fd6ea9080930748",
+      "license_files": [
+        {
+          "source_filename": "LICENSE-APACHE",
+          "sha256": "3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026",
+          "artifact": "licenses/3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026.txt",
+          "source_kind": "upstream_repository",
+          "repository": "https://github.com/Plonky3/Plonky3",
+          "commit": "a21e3ed42905040ad49c519e402f018381c12d0c",
+          "git_blob_sha1": "1e5006dc141e22213c898c27abaded8d936c32f0",
+          "source_input": "license-sources/p3-0.8.0/LICENSE-APACHE",
+          "source_url": "https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/LICENSE-APACHE"
+        },
+        {
+          "source_filename": "LICENSE-MIT",
+          "sha256": "d6543a1b0a0a51d10b5f8c389324c7dfeba556b7f39815efd292927bde808700",
+          "artifact": "licenses/d6543a1b0a0a51d10b5f8c389324c7dfeba556b7f39815efd292927bde808700.txt",
+          "source_kind": "upstream_repository",
+          "repository": "https://github.com/Plonky3/Plonky3",
+          "commit": "a21e3ed42905040ad49c519e402f018381c12d0c",
+          "git_blob_sha1": "ae8393261a5c288d5efe1208b7ea3de22b861f84",
+          "source_input": "license-sources/p3-0.8.0/LICENSE-MIT",
+          "source_url": "https://github.com/Plonky3/Plonky3/blob/a21e3ed42905040ad49c519e402f018381c12d0c/LICENSE-MIT"
+        }
+      ]
+    },
+    {
+      "name": "p3-keccak-air",
+      "version": "0.8.0",
+      "spdx_license": "MIT OR Apache-2.0",
+      "repository": "https://github.com/Plonky3/Plonky3",
+      "repository_metadata_field": "repository",
+      "registry_checksum_sha256": "2f27eece036ec32f0e29f7e258321c94596c04ed1d75473df85d1d44dcc70658",
       "license_files": [
         {
           "source_filename": "LICENSE-APACHE",

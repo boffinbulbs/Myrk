@@ -31,6 +31,8 @@ jobs:
         run: rustup run 1.94.1 cargo test --workspace --locked --offline
       - name: Run adversarial proof tests
         run: rustup run 1.94.1 cargo test -p thorum-proof-lab --release --locked --offline
+      - name: Run adversarial note proof tests
+        run: rustup run 1.94.1 cargo test -p thorum-note-proof-lab --release --locked --offline
       - name: Check lints
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
       - name: Build documentation
@@ -45,6 +47,11 @@ jobs:
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/proofs/profile_check.py
+      - name: Check note proof feature profile
+        if: runner.os == 'Linux'
+        env:
+          RUSTUP_TOOLCHAIN: 1.94.1
+        run: python3 research/note-proofs/profile_check.py
 
   research:
     name: Reference model
@@ -66,3 +73,5 @@ jobs:
         run: python3 research/proofs/reference_vectors.py --check
       - name: Check proof measurement summary
         run: python3 research/proofs/plot_results.py --summary-only --check
+      - name: Check note commitment reference vectors
+        run: python3 research/note-proofs/reference_vectors.py --check

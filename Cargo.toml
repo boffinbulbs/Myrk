@@ -4,6 +4,7 @@ members = [
     "crates/thorum-crypto-lab",
     "crates/thorum-relation-lab",
     "crates/thorum-proof-lab",
+    "crates/thorum-note-proof-lab",
 ]
 resolver = "2"
 
@@ -18,3 +19,8 @@ repository = "https://github.com/th0rigin/Thorum"
 [profile.release]
 overflow-checks = true
 lto = "thin"
+
+[profile.test]
+opt-level = 2
+debug-assertions = true
+overflow-checks = true

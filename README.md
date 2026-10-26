@@ -6,7 +6,9 @@ The protocol architecture separates the private transaction relation, determinis
 
 ## Implementation status
 
-The workspace contains deterministic monetary accounting, an independent reference model, isolated primitive, transparent relation and hiding proof laboratories, reproducible research data, and protocol specifications. The proof laboratory generates actual hiding STARK proofs for bounded integer conservation over four private amounts. Those amounts are unbound to ledger notes, ownership, nullifiers, assets or encryption. The transparent relation laboratory still receives private witnesses directly. The workspace does not yet implement a network, private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
+The workspace contains deterministic monetary accounting, an independent reference model, isolated primitive, transparent relation and hiding proof laboratories, reproducible research data, and protocol specifications. The original proof laboratory constrains integer conservation over four private amounts without note linkage. The note proof laboratory constrains the exact SHA3-512 commitments of four canonical payment openings and their shared private amount bits in one hiding STARK proof. Ownership, membership, nullifiers and recipient encryption are not proved. The transparent relation laboratory still receives private witnesses directly. The workspace does not yet implement a network, complete private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
+
+The note proof component exposes both input commitments and both output commitments. Used directly as a transaction format, this would reveal which notes are consumed and link them to the outputs. The shared asset, per note creation versions, fee and fixed two input, two output shape also remain public. This component establishes amount linkage to commitments, without establishing transaction graph privacy or defining the production payment format.
 
 | Area | Current scope |
 |---|---|
@@ -15,6 +17,7 @@ The workspace contains deterministic monetary accounting, an independent referen
 | [Primitive laboratory](docs/crypto-lab.md) | Real signature, key establishment and encrypted envelope experiments, selected official vectors, tamper rejection and local measurements |
 | [Relation laboratory](docs/relation-lab.md) | Transparent local ownership, membership, nullifier, conservation, recipient capability, typed note recovery and stake eligibility checks |
 | [Hiding proof laboratory](docs/proof-lab.md) | Four private u64 amounts, bounded integer conservation, public fee and context, fixed proof verification without note or authority linkage |
+| [Canonical note proof laboratory](docs/note-proof-lab.md) | Four exact v2 payment commitments and bounded conservation in the same proof, with public input commitments and no authorization, membership or nullifier proof |
 | [Proof feasibility](docs/proof-feasibility.md) | Pinned backend inspection, isolated component adoption and unresolved complete relation, knowledge soundness and quantum security gates |
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |
@@ -23,7 +26,7 @@ The workspace contains deterministic monetary accounting, an independent referen
 
 The [recipient capability experiment](docs/recipient-capability.md) lets a sender construct a v2 output using public bindings without receiving the recipient's nullifier secret. Typed recovery checks the original commitment, recipient capability and retained secret. Legacy v1 notes retain their original encodings and sender linkage. These local checks do not establish formal unlinkability, anonymous discovery or a production address format.
 
-The isolated proof laboratory adopts exact `p3-* 0.8.0` dependencies for its conservation component. Its verifier takes proof bytes and an independently supplied public fee and 64 byte context. It uses an inspected statistical hiding configuration without a complete quantum knowledge bound or reviewed hash composition. This adoption does not select a backend for consensus or complete the private payment and confidential stake gates.
+The two isolated proof laboratories adopt exact `p3-* 0.8.0` dependencies, with `p3-keccak-air 0.8.0` additionally supplying the constrained permutation for canonical note hashing. Their verifiers take proof bytes and independently supplied typed public statements. The note component directly constrains the chain, shared asset, per note versions, commitment digests and fee, while its 64 byte context remains opaque transcript data. Both use inspected statistical hiding configurations without a complete quantum knowledge bound or reviewed hash composition. This adoption does not select a backend for consensus or complete the private payment and confidential stake gates.
 
 ## Research targets
 
@@ -33,7 +36,7 @@ The isolated proof laboratory adopts exact `p3-* 0.8.0` dependencies for its con
 4. User controlled viewing permissions, restricted staking authority, encrypted backups, and recovery tests covering lost devices, missing data, and branch changes.
 5. Explicit metadata boundaries with reproducible measurements of transaction shape, fees, timing, application identifiers, wallet queries, and network observations.
 
-These are full protocol requirements. The accounting tests, primitive experiments, transparent checks and isolated conservation proofs do not establish their combined privacy and security properties. The [research specification](docs/research-target.md) defines formal relations, information flow, evaluation methods, and acceptance gates.
+These are full protocol requirements. The accounting tests, primitive experiments, transparent checks and isolated amount or note conservation proofs do not establish their combined privacy and security properties. The [research specification](docs/research-target.md) defines formal relations, information flow, evaluation methods, and acceptance gates.
 
 For each asset $a$, an ordinary valid transition must satisfy
 
@@ -75,17 +78,20 @@ The monetary core has no external crate dependencies. The separate laboratories 
 cargo fetch --locked
 cargo test --workspace --locked --offline
 cargo test -p thorum-proof-lab --release --locked --offline
+cargo test -p thorum-note-proof-lab --release --locked --offline
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
 python research/relations/reference_vectors.py --check
 python research/relations/recipient_vectors.py --check
 python research/proofs/reference_vectors.py --check
 python research/proofs/profile_check.py
+python research/note-proofs/reference_vectors.py --check
+python research/note-proofs/profile_check.py
 ```
 
 Reference model and figure generation commands are documented in [research/emission](research/emission/README.md).
 
-The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot and do not measure the new proof component. The separate [proof research record](research/proofs/README.md) retains independent integer, trace, public value and hash checks, plus measured proof costs, sizes, raw observations and a reproducible figure.
+The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot. The [original proof research record](research/proofs/README.md) retains independent integer, trace, public value and hash checks, plus measured costs and sizes for its unbound conservation component. Neither measurement set describes the canonical note relation. Its separate [note proof research record](research/note-proofs/README.md) retains canonical openings, complete sponge states, exact integer cases, hash adapter goldens and reproduction commands, without a performance claim.
 
 ## Documentation
 
@@ -108,6 +114,7 @@ The [cryptographic research record](research/crypto/README.md) retains selected 
 17. [Proof backend feasibility](docs/proof-feasibility.md)
 18. [Recipient capability and typed recovery](docs/recipient-capability.md)
 19. [Hiding conservation proof laboratory](docs/proof-lab.md)
+20. [Canonical note conservation proof laboratory](docs/note-proof-lab.md)
 
 ## Source and research practice
 
