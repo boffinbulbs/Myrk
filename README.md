@@ -71,6 +71,8 @@ cargo clippy --workspace --all-targets --offline -- -D warnings
 
 Reference model and figure generation commands are documented in [research/emission](research/emission/README.md).
 
+The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures.
+
 ## Documentation
 
 1. [Architecture](docs/architecture.md)

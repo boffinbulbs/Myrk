@@ -49,3 +49,5 @@ jobs:
           persist-credentials: false
       - name: Run reference tests
         run: python3 -m unittest discover -s research/emission -p 'test_*.py' -v
+      - name: Check cryptographic measurement summary
+        run: python3 research/crypto/plot_results.py --summary-only --check

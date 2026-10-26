@@ -1,0 +1,92 @@
+{
+  "scope": "One local primitive and encrypted envelope latency observation. No network, private proof, transaction throughput, memory or side channel measurement.",
+  "captured_utc": "2026-10-26T13:20:15.261689+00:00",
+  "source_revision": "d52d957802aaa325ffd0d371b6ec7d332869eefd",
+  "source_files": [
+    {
+      "path": "Cargo.toml",
+      "measured_bytes_sha256": "6f7f0cf1d07c14d71cc01b5aed8f9aae839ca99478867410e2afc126964f64ec",
+      "git_blob_sha256": "6f7f0cf1d07c14d71cc01b5aed8f9aae839ca99478867410e2afc126964f64ec"
+    },
+    {
+      "path": "Cargo.lock",
+      "measured_bytes_sha256": "3bc0a865e041ab8e07d9f70d7cc97ff2e2d933326bf390b982c1f57ace3a4fd4",
+      "git_blob_sha256": "3bc0a865e041ab8e07d9f70d7cc97ff2e2d933326bf390b982c1f57ace3a4fd4"
+    },
+    {
+      "path": "crates/thorum-crypto-lab/Cargo.toml",
+      "measured_bytes_sha256": "fb4bcf1015dda241af00f3621bd332d01b17d18c493fe173c07772ed3080eb9d",
+      "git_blob_sha256": "fb4bcf1015dda241af00f3621bd332d01b17d18c493fe173c07772ed3080eb9d"
+    },
+    {
+      "path": "crates/thorum-crypto-lab/src/lib.rs",
+      "measured_bytes_sha256": "9c14c59bcf616004bb81819a0d6a602cb70a588dd692442a4cf66fdad1f4d3f5",
+      "git_blob_sha256": "9c14c59bcf616004bb81819a0d6a602cb70a588dd692442a4cf66fdad1f4d3f5"
+    },
+    {
+      "path": "crates/thorum-crypto-lab/src/envelope.rs",
+      "measured_bytes_sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5",
+      "git_blob_sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5"
+    },
+    {
+      "path": "crates/thorum-crypto-lab/examples/measure.rs",
+      "measured_bytes_sha256": "11db7fcdfa94226e4119ea15602b93c41cfbed29c9e218c7d94818ae50e09c61",
+      "git_blob_sha256": "11db7fcdfa94226e4119ea15602b93c41cfbed29c9e218c7d94818ae50e09c61"
+    }
+  ],
+  "lock_sha256": "3bc0a865e041ab8e07d9f70d7cc97ff2e2d933326bf390b982c1f57ace3a4fd4",
+  "executable_sha256": "2184cd19335e29ea1b153e14ef40be28956811c78bacecbc7d0f3e741d07438a",
+  "raw_csv_sha256": "07fcf14268738e5ac01f4d138299e9b72afb2a1143539c4f1cde20bd0d380d3e",
+  "raw_sample_rows": 1150,
+  "operation_groups": 23,
+  "samples_per_group": 50,
+  "payload_bytes": [
+    0,
+    256,
+    1024,
+    16384
+  ],
+  "cpu": {
+    "model": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "physical_cores": 14,
+    "logical_processors": 20
+  },
+  "os": {
+    "name": "Microsoft Windows 11 Home",
+    "version": "10.0.26300",
+    "build": "26300",
+    "architecture": "64-bit"
+  },
+  "compiler": [
+    "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "binary: rustc",
+    "commit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "commit-date: 2026-03-25",
+    "host: x86_64-pc-windows-msvc",
+    "release: 1.94.1",
+    "LLVM version: 21.1.8"
+  ],
+  "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+  "build": {
+    "profile": "release",
+    "lto": "thin",
+    "overflow_checks": true,
+    "rustflag_overrides": "none in process environment",
+    "target": "x86_64-pc-windows-msvc"
+  },
+  "command": "cargo run --release -p thorum-crypto-lab --example measure --locked --offline -- 50",
+  "warmup": "Three sign, verify, seal and open iterations. Other primitives are not separately warmed.",
+  "aggregation": {
+    "median": "Arithmetic midpoint of the two central ordered samples for even counts",
+    "p95": "Nearest rank, ordered sample ceil(0.95*n)",
+    "interval_meaning": "Recorded sample distribution, not a confidence interval"
+  },
+  "limitations": [
+    "One host and one run. Scheduling, background work, clock and thermal state were not isolated.",
+    "Operating system entropy is included in operations ending in _os.",
+    "Byte columns count selected artifacts rather than every argument. See docs/crypto-lab.md.",
+    "No independent confirmation of the selected CPU instruction backend or constant time execution.",
+    "SHA3 digest timing is not a measurement of the full experimental KDF.",
+    "Public key and signature experiments do not establish hidden authorization or recipient anonymity."
+  ]
+}

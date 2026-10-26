@@ -112,6 +112,8 @@ Timing includes allocations, decoding, and context construction inside the measu
 
 Release measurements retain raw samples, source hashes, dependency lock hash, compiler details, CPU model, operating system, workload, aggregation method, and limitations. Analytical envelope size is separate from measured timing. The results are local observations and do not establish consensus capacity.
 
+The retained [measurement record and figures](../research/crypto/README.md) provide one such local run, with 50 samples per group and no simulated performance values.
+
 ## Remaining feasibility gates
 
 Complete private payment and confidential stake relations still require concrete commitments, nullifiers, hidden authorization, proof soundness and zero knowledge analysis, confidential eligibility, recipient discovery, recovery, and independent composition review. The static recipient KEM key does not establish forward secrecy. No complete quantum security, recipient key privacy, or general side channel claim follows from passing laboratory tests.

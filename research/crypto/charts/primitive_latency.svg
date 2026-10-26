@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="1120" height="650" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1120 650" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1120" height="650"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-650)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="1120" height="650" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="55" y="610" style="font-family: Helvetica-Bold; font-size: 24px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,1220) scale(1,-1)">Primitive operation latency</text>
+			<text x="55" y="584" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,1168) scale(1,-1)">Median and p95 of 50 recorded samples per operation. Logarithmic time axis.</text>
+			<text x="55" y="563" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,1126) scale(1,-1)">Intel Core i9-13900H | Windows 11 Home build 26300 | Rust 1.94.1 | release with thin LTO</text>
+			<path d="M 330,155 L 330,525 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.7;"/>
+			<text x="317.49" y="133" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,266) scale(1,-1)">0.001</text>
+			<path d="M 448.75,155 L 448.75,525 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.7;"/>
+			<text x="439.02" y="133" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,266) scale(1,-1)">0.01</text>
+			<path d="M 567.5,155 L 567.5,525 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.7;"/>
+			<text x="560.55" y="133" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,266) scale(1,-1)">0.1</text>
+			<path d="M 686.25,155 L 686.25,525 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.7;"/>
+			<text x="683.47" y="133" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,266) scale(1,-1)">1</text>
+			<path d="M 805,155 L 805,525 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.7;"/>
+			<text x="799.44" y="133" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,266) scale(1,-1)">10</text>
+			<text x="472.14099999999996" y="105" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,210) scale(1,-1)">Elapsed milliseconds, logarithmic scale</text>
+			<text x="850" y="529" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,1058) scale(1,-1)">Median / p95 (ms)</text>
+			<text x="55" y="493" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,986) scale(1,-1)">ML-DSA-87 key generation</text>
+			<path d="M 657.151451,497 L 661.153757,497 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="657.1514510419531" cy="497" r="4.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 661.153757,491 L 661.153757,503 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.2;"/>
+			<text x="850" y="493" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,986) scale(1,-1)">0.5688 / 0.6147</text>
+			<text x="55" y="444" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,888) scale(1,-1)">ML-DSA-87 signing</text>
+			<path d="M 650.244179,448 L 731.770503,448 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="650.2441788534571" cy="448" r="4.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 731.770503,442 L 731.770503,454 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.2;"/>
+			<text x="850" y="444" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,888) scale(1,-1)">0.4975 / 2.417</text>
+			<text x="55" y="395" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,790) scale(1,-1)">ML-DSA-87 verification</text>
+			<path d="M 633.525095,399 L 636.996664,399 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="633.5250953097764" cy="399" r="4.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 636.996664,393 L 636.996664,405 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.2;"/>
+			<text x="850" y="395" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,790) scale(1,-1)">0.3598 / 0.3848</text>
+			<text x="55" y="346" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,692) scale(1,-1)">ML-KEM-1024 key generation</text>
+			<path d="M 561.951565,350 L 567.551547,350 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="561.9515649792424" cy="350" r="4.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 567.551547,344 L 567.551547,356 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.2;"/>
+			<text x="850" y="346" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,692) scale(1,-1)">0.0898 / 0.1001</text>
+			<text x="55" y="297" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,594) scale(1,-1)">ML-KEM-1024 encapsulation</text>
+			<path d="M 558.200269,301 L 570.26123,301 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="558.2002689636778" cy="301" r="4.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 570.26123,295 L 570.26123,307 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.2;"/>
+			<text x="850" y="297" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,594) scale(1,-1)">0.0835 / 0.1055</text>
+			<text x="55" y="248" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,496) scale(1,-1)">ML-KEM-1024 decapsulation</text>
+			<path d="M 568.924182,252 L 573.848684,252 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="568.9241823657867" cy="252" r="4.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 573.848684,246 L 573.848684,258 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.2;"/>
+			<text x="850" y="248" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,496) scale(1,-1)">0.1028 / 0.1131</text>
+			<text x="55" y="199" style="font-family: Helvetica; font-size: 12px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,398) scale(1,-1)">SHA3-512 digest</text>
+			<path d="M 425.733872,203 L 428.096383,203 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<circle cx="425.7338719105866" cy="203" r="4.8" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<path d="M 428.096383,197 L 428.096383,209 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.2;"/>
+			<text x="850" y="199" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,398) scale(1,-1)">0.0064 / 0.0067</text>
+			<circle cx="360" cy="86" r="4.5" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(13%,36%,65%); fill-rule: evenodd;"/>
+			<text x="373" y="82" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,164) scale(1,-1)">Median</text>
+			<path d="M 468,80 L 468,92 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.2;"/>
+			<text x="481" y="82" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,164) scale(1,-1)">p95 sample percentile</text>
+			<text x="55" y="64" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,128) scale(1,-1)">p95 uses nearest rank. Markers describe the recorded distribution and are not confidence intervals.</text>
+			<text x="55" y="43" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,86) scale(1,-1)">One host observation. Operations ending in _os include operating system entropy access.</text>
+			<text x="55" y="22" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,44) scale(1,-1)">Three partial warmup iterations. No network, private proof, or transaction throughput is measured.</text>
+		</g>
+	</g>
+</svg>

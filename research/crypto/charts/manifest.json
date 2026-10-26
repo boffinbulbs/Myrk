@@ -1,0 +1,12 @@
+{
+  "renderer": "ReportLab graphics shapes and SVG",
+  "reportlab_version": "4.4.9",
+  "raw_sha256": "07fcf14268738e5ac01f4d138299e9b72afb2a1143539c4f1cde20bd0d380d3e",
+  "summary_sha256": "f9ad83ad9e8352371a102af813bbe90c2cd8edae8aaa64fc4b36f1825c16e5ae",
+  "p50": "Exact median. An even count averages the two central integer durations.",
+  "p95": "Nearest rank at ceil(0.95 * n), counted from one.",
+  "svg_sha256": {
+    "primitive_latency.svg": "b7196b2fc36473e482de19c92745ab1daac70996066a6c659b7afee63f8ad2e8",
+    "envelope_latency.svg": "5ed029a61ac3e061eecbca63128372d81f462c56370410376355c6769f459412"
+  }
+}

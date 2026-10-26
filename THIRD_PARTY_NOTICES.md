@@ -32,7 +32,7 @@ On 2026-10-26, a public OSV query batch for all 52 exact resolved registry versi
 | Reviewed Cargo.lock SHA256 | `3bc0a865e041ab8e07d9f70d7cc97ff2e2d933326bf390b982c1f57ace3a4fd4` |
 | Raw OSV response body SHA256 | `8f96b1b7aa528c6256c0169be2e70b792354589655daacac7b173cfae52596b9` |
 | Raw OSV response body length | 169 bytes |
-| Source | [OSV query batch API](https://google.github.io/osv.dev/api/#tag/querybatch) |
+| Source | [OSV query batch API](https://google.github.io/osv.dev/post-v1-querybatch/) |
 
 The reviewed resolution contains ml-kem 0.3.3. Its [upstream security repair](https://github.com/RustCrypto/KEMs/pull/386) removes secret indexed CBD table access across all parameter sets, including ML-KEM-1024. That repair was identified through the upstream changelog despite an earlier empty advisory response for the older lock. An empty database result therefore does not replace source review. In the reviewed resolution, ctutils 0.4.6 is above the [RUSTSEC-2026-0385](https://rustsec.org/advisories/RUSTSEC-2026-0385.html) patched threshold, and cmov 0.5.4 is above the [RUSTSEC-2026-0003](https://rustsec.org/advisories/RUSTSEC-2026-0003.html) patched threshold.
 
