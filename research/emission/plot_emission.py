@@ -1,4 +1,4 @@
-"""Render data-derived emission charts with optional ReportLab 4.4.9.
+"""Render emission charts from data with optional ReportLab 4.4.9.
 
 The monetary generator and its tests require only the Python standard library.
 This separate renderer reads frozen CSVs and writes deterministic SVG charts.
@@ -78,7 +78,7 @@ def chart(title, subtitle, datasets, labels, palette, x_max, x_step,
         drawing.add(String(left + 32, 87, label, fontName="Helvetica", fontSize=10, fillColor=INK))
         left += max(180, 32 + len(label) * 6)
     drawing.add(String(64, 35, footer, fontName="Helvetica", fontSize=10, fillColor=GRAY))
-    drawing.add(String(64, 18, "Development parameters; monetary reference only. Target spacing is not a wall-clock guarantee.",
+    drawing.add(String(64, 18, "Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.",
                        fontName="Helvetica", fontSize=9, fillColor=GRAY))
     return renderSVG.drawToString(drawing).encode("utf-8")
 
@@ -111,27 +111,27 @@ def generated_charts():
     inflation = [(float(row["model_years"]), float(row["next_year_gross_issuance_percent"]))
                  for row in monthly if row["next_year_gross_issuance_percent"] and
                  1 <= float(row["model_years"]) <= 50]
-    assumptions = "Fully earned budgets; no burns, premine, bootstrap, or omitted-budget timing adjustment."
+    assumptions = "Fully earned budgets. No burns, premine, or timing adjustment for bootstrap or omitted budgets."
     return {
         "reward_schedule.svg": chart(
-            "Scheduled reward and budget split", "240 monthly reward periods, followed by a 0.5-coin long reward until the cap binds.",
+            "Scheduled reward and budget split", "240 monthly reward periods, followed by a long reward of 0.5 coins until the cap binds.",
             [reward, miner, staking], ["Scheduled reward", "Miner budget", "Staking budget"],
             [BLUE, GREEN, ORANGE], 24, 4, 16, 4, "Coins per paid block", assumptions),
         "issued_supply.svg": chart(
-            "Cumulative issued supply", "The 63-million-coin limit applies to cumulative issuance; burns cannot reopen minting capacity.",
+            "Cumulative issued supply", "The limit of 63 million coins applies to cumulative issuance. Burns cannot reopen minting capacity.",
             [supply, [(0, 63), (330, 63)]], ["Fully earned issuance", "Cumulative issuance cap"],
             [BLUE, ORANGE], 330, 50, 70, 10, "Million coins",
             f"Cap reached at height 83,902,342 (about {cap_year:.6f} target model years). " +
-            "No burns; all budgets earned."),
+            "No burns. All budgets earned."),
         "annual_issuance.svg": chart(
-            "Annual newly issued coins", "Each step is the issuance during the following complete 365-day model year.",
+            "Annual newly issued coins", "Each step is the issuance during the following complete model year of 365 days.",
             [annual_issuance], ["Fully earned annual issuance"], [BLUE],
             50, 10, 4, 1, "Million coins per model year", assumptions),
         "gross_issuance_rate.svg": chart(
-            "Forward annual gross issuance rate", "Next-year newly issued coins divided by cumulative issued coins at the observation height.",
-            [inflation], ["Forward one-year gross rate"], [BLUE],
+            "Forward annual gross issuance rate", "New coins issued in the next year divided by cumulative issued coins at the observation height.",
+            [inflation], ["Forward annual gross rate"], [BLUE],
             50, 10, 100, 20, "Percent of cumulative issued supply",
-            "Shown from year 1; the rate at genesis is undefined because cumulative issued supply is zero.",
+            "Shown from year 1. The rate at genesis is undefined because cumulative issued supply is zero.",
             y_suffix="%"),
     }
 
@@ -144,7 +144,7 @@ def main():
     manifest = {
         "renderer": "ReportLab graphics.charts.lineplots.LinePlot",
         "reportlab_version": reportlab.Version,
-        "units": "chart labels specify coins or percent; source amounts are integer atomic units",
+        "units": "chart labels specify coins or percent. Source amounts are integer atomic units",
         "source_sha256": {name: hashlib.sha256((HERE / name).read_bytes()).hexdigest() for name in SOURCES},
         "svg_sha256": {name: hashlib.sha256(data).hexdigest() for name, data in files.items()},
     }
@@ -162,7 +162,7 @@ def main():
             destination.write_bytes(data)
     if mismatches:
         parser.exit(1, "Chart artifacts differ: " + ", ".join(mismatches) + "\n")
-    print("Chart artifacts match." if args.check else "Generated four data-derived SVG charts and source manifest.")
+    print("Chart artifacts match." if args.check else "Generated four SVG charts from data and source manifest.")
 
 
 if __name__ == "__main__":

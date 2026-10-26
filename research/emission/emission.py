@@ -1,4 +1,4 @@
-"""Exact-integer emission and accounting research reference.
+"""Exact integer emission and accounting research reference.
 
 This module models monetary arithmetic. It does not implement consensus,
 staking eligibility, transaction validation, privacy, or cryptography.
@@ -52,7 +52,7 @@ def generate_schedule() -> tuple[int, ...]:
     """Exact floor(16 * 10**8 * 2**(-period / 48)), period 0..239.
 
     floor(root48(floor(A**48 / 2**period))) equals
-    floor(A * 2**(-period / 48)); no floating-point decision is involved.
+    floor(A * 2**(-period / 48)). No floating point decision is involved.
     """
     power = (16 * ATOMS_PER_COIN) ** 48
     return tuple(integer_nth_root(power >> period, 48)

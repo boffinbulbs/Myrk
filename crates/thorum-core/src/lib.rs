@@ -2,13 +2,13 @@
 //!
 //! This crate implements an issuance ceiling, a frozen subsidy schedule, planned
 //! reward allocation, and cumulative burns. All monetary calculations use atomic
-//! units; one THM contains 100,000,000 atomic units.
+//! units. One THM contains 100,000,000 atomic units.
 //!
 //! [`SupplyState`] is an accounting component, not a chain or transaction validator.
 //! Its caller must establish valid height ordering, branch membership, replay
 //! prevention, note ownership, transaction conservation, and evidence that staking
 //! rewards were earned. No networking, proof system, or staking cryptography is
-//! implemented here. Constructing a state from totals checks monetary invariants;
+//! implemented here. Constructing a state from totals checks monetary invariants.
 //! it does not authenticate the history that produced them.
 
 #![forbid(unsafe_code)]

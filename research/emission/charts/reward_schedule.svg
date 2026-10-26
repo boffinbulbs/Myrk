@@ -12,7 +12,7 @@
 		<g transform="">
 			<rect x="0" y="0" width="960" height="530" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
 			<text x="64" y="492" style="font-family: Helvetica-Bold; font-size: 22px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,984) scale(1,-1)">Scheduled reward and budget split</text>
-			<text x="64" y="467" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,934) scale(1,-1)">240 monthly reward periods, followed by a 0.5-coin long reward until the cap binds.</text>
+			<text x="64" y="467" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,934) scale(1,-1)">240 monthly reward periods, followed by a long reward of 0.5 coins until the cap binds.</text>
 			<g transform="">
 				<g transform="">
 					<g transform="">
@@ -98,8 +98,8 @@
 			<text x="307" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Miner budget</text>
 			<path d="M 455,91 L 479,91 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.4;"/>
 			<text x="487" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Staking budget</text>
-			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">Fully earned budgets; no burns, premine, bootstrap, or omitted-budget timing adjustment.</text>
-			<text x="64" y="18" style="font-family: Helvetica; font-size: 9px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,36) scale(1,-1)">Development parameters; monetary reference only. Target spacing is not a wall-clock guarantee.</text>
+			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">Fully earned budgets. No burns, premine, or timing adjustment for bootstrap or omitted budgets.</text>
+			<text x="64" y="18" style="font-family: Helvetica; font-size: 9px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,36) scale(1,-1)">Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.</text>
 		</g>
 	</g>
 </svg>

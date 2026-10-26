@@ -6,7 +6,7 @@ use crate::ATOMIC_UNITS_PER_THM;
 /// A nonnegative quantity of atomic units.
 ///
 /// An amount is not evidence of issuance or ownership. It can represent any
-/// `u64` quantity; [`crate::SupplyState`] separately enforces the issuance cap.
+/// `u64` quantity. [`crate::SupplyState`] separately enforces the issuance cap.
 #[derive(Clone, Copy, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
 pub struct Amount(u64);
 
@@ -51,7 +51,7 @@ impl fmt::Display for Amount {
 /// Parse an unsigned THM decimal with zero to eight fractional digits.
 ///
 /// A decimal point requires digits on both sides. Signs, whitespace, exponent
-/// notation, separators, non-ASCII digits, and rounding are not accepted.
+/// notation, separators, digits outside ASCII, and rounding are not accepted.
 impl FromStr for Amount {
     type Err = AmountError;
 
@@ -118,7 +118,7 @@ impl fmt::Display for AmountError {
         f.write_str(match self {
             Self::InvalidDecimal => "expected an unsigned THM decimal",
             Self::TooManyDecimals => "THM amounts allow at most eight fractional digits",
-            Self::Overflow => "amount exceeds the atomic-unit range",
+            Self::Overflow => "amount exceeds the atomic unit range",
             Self::Underflow => "amount subtraction would be negative",
         })
     }

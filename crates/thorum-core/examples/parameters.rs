@@ -9,7 +9,7 @@ fn main() {
     println!("Cumulative issuance ceiling: {ISSUANCE_CAP} {TICKER}");
     println!("Target spacing: {BLOCK_TARGET_SECONDS} seconds");
     println!(
-        "Subsidy period: {BLOCKS_PER_SUBSIDY_PERIOD} blocks; frozen periods: {SUBSIDY_PERIODS}"
+        "Subsidy period: {BLOCKS_PER_SUBSIDY_PERIOD} blocks. Frozen periods: {SUBSIDY_PERIODS}"
     );
     let state = SupplyState::genesis();
     for height in [0, 1, 21_900, 21_901, FIRST_LONG_TERM_HEIGHT, u64::MAX] {
@@ -21,5 +21,5 @@ fn main() {
             budget.staking_budget()
         );
     }
-    println!("Staking budgets are issued only when earned; burns never reopen the ceiling.");
+    println!("Staking budgets are issued only when earned. Burns never reopen the ceiling.");
 }

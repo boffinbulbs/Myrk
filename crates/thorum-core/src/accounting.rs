@@ -56,7 +56,7 @@ impl SupplyState {
         self.cumulative_burned
     }
 
-    /// Total outstanding supply; a ledger's balances, including locked balances,
+    /// Total outstanding supply. A ledger's balances, including locked balances,
     /// must sum to this after all transaction conservation checks.
     pub const fn outstanding(self) -> Amount {
         // Construction and every mutation preserve burned <= issued.
@@ -89,7 +89,7 @@ impl SupplyState {
     /// The caller must prove staking eligibility and duty evidence. The supplied
     /// earned amount must lie in `0..=staking_budget`. Unearned staking allocation
     /// is not credited to the miner, issued, or burned. Budgets are recomputed
-    /// against the current totals; an earlier quote cannot authorize extra minting.
+    /// against the current totals. An earlier quote cannot authorize extra minting.
     /// Errors leave the state unchanged.
     pub fn issue_block(
         &mut self,
@@ -123,7 +123,7 @@ impl SupplyState {
     /// Destroy authorized outstanding supply without restoring issuance capacity.
     ///
     /// The caller must establish ownership and transaction conservation. Errors
-    /// leave the state unchanged; zero is a valid no-op burn.
+    /// leave the state unchanged. Zero is a valid burn with no state change.
     pub fn burn(&mut self, amount: Amount) -> Result<(), AccountingError> {
         if amount > self.outstanding() {
             return Err(AccountingError::InsufficientOutstanding {

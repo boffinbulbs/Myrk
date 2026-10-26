@@ -2,13 +2,13 @@
 
 ## Custody and purpose
 
-The treasury is project/operator controlled. Independent custodians or a threshold-spending committee are not required. Its purposes are disclosed maintenance expenditure and purchases/burns of native THM. This is a centrally controlled financial component, separate from independently verifiable consensus and open mining integration.
+The treasury is project/operator controlled. Independent custodians or a committee requiring threshold approval for spending are not required. Its purposes are disclosed maintenance expenditure and purchases/burns of native THM. This is a centrally controlled financial component, separate from independently verifiable consensus and open mining integration.
 
 One accounting policy covers separate addresses/wallets on each external network. Eligible work must bind the required destination through the supported proof format. Destination authorization and activation rules remain a protocol specification item.
 
 ## Funds and liabilities
 
-Scheduled native subsidy uses a nominal 70/30 allocation: floor(7 * capped subsidy / 10) atomic units for miners and the remainder as the eligible staking budget. Pool worker liabilities and native rewards must remain separate from treasury-owned external receipts. A pool cannot treat unpaid worker balances as a maintenance or purchase budget.
+Scheduled native subsidy uses a nominal 70/30 allocation: floor(7 * capped subsidy / 10) atomic units for miners and the remainder as the eligible staking budget. Pool worker liabilities and native rewards must remain separate from external receipts owned by the treasury. A pool cannot treat unpaid worker balances as a maintenance or purchase budget.
 
 The available execution budget is:
 
@@ -25,7 +25,7 @@ Track eligible confirmed receipt, deposit, available funds, pending/partial orde
 
 Mandatory external maturity and conservative confirmation policy are different checks. Expected mining revenue is not budgeted as a received asset. Orphaned blocks, rejected deposits, partial fills, delayed withdrawals and reorganization require explicit reconciliation.
 
-Use restricted exchange permissions where supported, limited hot balances, spending and price limits, destination restrictions, and a pause on unexplained differences. Operator custody and exchanges retain real control; automation does not make the process trustless.
+Use restricted exchange permissions where supported, limited hot balances, spending and price limits, destination restrictions, and a pause on unexplained differences. Operator custody and exchanges retain real control. Automation does not make the process trustless.
 
 ## Evidence
 

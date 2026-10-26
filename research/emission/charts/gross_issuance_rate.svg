@@ -12,7 +12,7 @@
 		<g transform="">
 			<rect x="0" y="0" width="960" height="530" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
 			<text x="64" y="492" style="font-family: Helvetica-Bold; font-size: 22px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,984) scale(1,-1)">Forward annual gross issuance rate</text>
-			<text x="64" y="467" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,934) scale(1,-1)">Next-year newly issued coins divided by cumulative issued coins at the observation height.</text>
+			<text x="64" y="467" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,934) scale(1,-1)">New coins issued in the next year divided by cumulative issued coins at the observation height.</text>
 			<g transform="">
 				<g transform="">
 					<g transform="">
@@ -92,9 +92,9 @@
 			<text x="416.1355" y="67" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,134) scale(1,-1)">Elapsed model years (365 days)</text>
 			<text x="95" y="434" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,868) scale(1,-1)">Percent of cumulative issued supply</text>
 			<path d="M 95,91 L 119,91 Z" style="stroke: rgb(13%,36%,65%); stroke-linecap: butt; stroke-width: 2.4;"/>
-			<text x="127" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Forward one-year gross rate</text>
-			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">Shown from year 1; the rate at genesis is undefined because cumulative issued supply is zero.</text>
-			<text x="64" y="18" style="font-family: Helvetica; font-size: 9px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,36) scale(1,-1)">Development parameters; monetary reference only. Target spacing is not a wall-clock guarantee.</text>
+			<text x="127" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Forward annual gross rate</text>
+			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">Shown from year 1. The rate at genesis is undefined because cumulative issued supply is zero.</text>
+			<text x="64" y="18" style="font-family: Helvetica; font-size: 9px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,36) scale(1,-1)">Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.</text>
 		</g>
 	</g>
 </svg>

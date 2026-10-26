@@ -4,7 +4,7 @@ This document defines required relations, not an implemented privacy proof syste
 
 ## Public boundary
 
-The verifier receives a canonical versioned transaction envelope, resource class, fee information, relevant state roots, nullifiers, output commitments, encrypted-data commitments, application identifiers where public, and a transition proof. Exact encoding and visibility remain part of the construction work.
+The verifier receives a canonical versioned transaction envelope, resource class, fee information, relevant state roots, nullifiers, output commitments, encrypted data commitments, application identifiers where public, and a transition proof. Exact encoding and visibility remain part of the construction work.
 
 Private witnesses contain owned notes, openings, authorization material, confidential values/assets, private application state, and execution inputs. They must not be transmitted to validators or an unrestricted remote proving service.
 
@@ -17,7 +17,7 @@ sum(inputs[a]) + authorized_mint[a]
     = sum(outputs[a]) + burn[a] + fee[a]
 ```
 
-Fees belong to the native asset under the fee policy. Ordinary transactions cannot mint the native asset. Native issuance has a distinct kernel-authorized path constrained by height, allocation, eligible duties, and cumulative issuance.
+Fees belong to the native asset under the fee policy. Ordinary transactions cannot mint the native asset. Native issuance has a distinct path authorized by the kernel and constrained by height, allocation, eligible duties, and cumulative issuance.
 
 The proof must also establish:
 
@@ -25,7 +25,7 @@ The proof must also establish:
 2. The transition is authorized by the correct ownership/application policy.
 3. Values and intermediate arithmetic remain within their specified ranges.
 4. Nullifiers bind to owned inputs and the protocol domain.
-5. Output commitments, asset policies, encrypted-data commitments and public outputs match the same execution.
+5. Output commitments, asset policies, encrypted data commitments and public outputs match the same execution.
 6. Contract execution follows its metered program and state rules.
 
 The kernel separately rejects globally spent or duplicated nullifiers, invalid state context, noncanonical encodings, and resource excess. A valid isolated proof does not waive these checks.

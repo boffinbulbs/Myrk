@@ -1,4 +1,4 @@
-"""Invariants and frozen-artifact checks for the monetary reference."""
+"""Invariants and checks of frozen artifacts for the monetary reference."""
 
 import json
 from pathlib import Path

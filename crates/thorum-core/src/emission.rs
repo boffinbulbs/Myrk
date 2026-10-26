@@ -11,7 +11,7 @@ pub const ISSUANCE_CAP: Amount = Amount::from_atomic(ISSUANCE_CAP_ATOMIC);
 pub const LONG_TERM_SUBSIDY: Amount = Amount::from_atomic(50_000_000);
 pub const FIRST_LONG_TERM_HEIGHT: u64 = SUBSIDY_PERIODS * BLOCKS_PER_SUBSIDY_PERIOD + 1;
 
-/// The reward index is `height - 1`; genesis has no reward index.
+/// The reward index is `height - 1`. Genesis has no reward index.
 pub const fn reward_block_index(height: u64) -> Option<u64> {
     height.checked_sub(1)
 }
@@ -20,8 +20,8 @@ pub const fn reward_block_index(height: u64) -> Option<u64> {
 ///
 /// Height zero is genesis and pays zero. For other heights, the period is
 /// `floor((height - 1) / 21_900)`. Periods 0 through 239 use the frozen table
-/// `floor(16 * 10^8 * 2^(-period/48))`; subsequent periods use 50,000,000 atoms.
-/// The table avoids floating-point arithmetic and platform-dependent rounding.
+/// `floor(16 * 10^8 * 2^(-period/48))`. Subsequent periods use 50,000,000 atoms.
+/// The table avoids floating point arithmetic and rounding that depends on the platform.
 pub fn scheduled_subsidy(height: u64) -> Amount {
     match reward_block_index(height) {
         None => Amount::ZERO,

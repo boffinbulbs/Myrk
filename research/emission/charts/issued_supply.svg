@@ -12,7 +12,7 @@
 		<g transform="">
 			<rect x="0" y="0" width="960" height="530" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
 			<text x="64" y="492" style="font-family: Helvetica-Bold; font-size: 22px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,984) scale(1,-1)">Cumulative issued supply</text>
-			<text x="64" y="467" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,934) scale(1,-1)">The 63-million-coin limit applies to cumulative issuance; burns cannot reopen minting capacity.</text>
+			<text x="64" y="467" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,934) scale(1,-1)">The limit of 63 million coins applies to cumulative issuance. Burns cannot reopen minting capacity.</text>
 			<g transform="">
 				<g transform="">
 					<g transform="">
@@ -110,8 +110,8 @@
 			<text x="127" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Fully earned issuance</text>
 			<path d="M 275,91 L 299,91 Z" style="stroke: rgb(71%,36%,13%); stroke-linecap: butt; stroke-width: 2.4;"/>
 			<text x="307" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Cumulative issuance cap</text>
-			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">Cap reached at height 83,902,342 (about 319.263097 target model years). No burns; all budgets earned.</text>
-			<text x="64" y="18" style="font-family: Helvetica; font-size: 9px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,36) scale(1,-1)">Development parameters; monetary reference only. Target spacing is not a wall-clock guarantee.</text>
+			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">Cap reached at height 83,902,342 (about 319.263097 target model years). No burns. All budgets earned.</text>
+			<text x="64" y="18" style="font-family: Helvetica; font-size: 9px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,36) scale(1,-1)">Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.</text>
 		</g>
 	</g>
 </svg>

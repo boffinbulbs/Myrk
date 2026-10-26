@@ -1,4 +1,4 @@
-//! Cross-check the Rust implementation against the independent Decimal model.
+//! Check Rust accounting against the independent exact integer reference model.
 
 use thorum_core::{
     reward_block_index, scheduled_subsidy, Amount, SupplyState, PERIOD_SUBSIDIES_ATOMIC,

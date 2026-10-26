@@ -1,8 +1,8 @@
 # Thorum
 
-Thorum (THM) is a research and implementation effort for a private application blockchain with post-quantum authorization, confidential state transitions, auxiliary proof of work, and stake checkpoint finality.
+Thorum (THM) is a research and implementation effort for a private application blockchain with post quantum authorization, confidential state transitions, auxiliary proof of work, and stake checkpoint finality.
 
-The protocol architecture separates the private transaction relation, deterministic state validation, parent-work verification, and checkpoint consensus. Each boundary has explicit validation requirements and implementation milestones.
+The protocol architecture separates the private transaction relation, deterministic state validation, parent work verification, and checkpoint consensus. Each boundary has explicit validation requirements and implementation milestones.
 
 ## Implementation status
 
@@ -10,11 +10,11 @@ The initial workspace contains deterministic monetary accounting and its tests, 
 
 | Area | Current scope |
 |---|---|
-| [Core accounting](crates/thorum-core/src/lib.rs) | Atomic-unit arithmetic, subsidy schedule, issuance ceiling, reward allocation, burns |
+| [Core accounting](crates/thorum-core/src/lib.rs) | Atomic unit arithmetic, subsidy schedule, issuance ceiling, reward allocation, burns |
 | Research | Independent schedule construction, golden vectors, analytical projections, reproducible figures |
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |
-| Mining | Parent-work validation and operator interface requirements |
+| Mining | Parent work validation and operator interface requirements |
 | Wallet | Local validation, restricted staking authority, disclosure and recovery requirements |
 
 ## Architecture
@@ -42,23 +42,23 @@ cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --offline -- -D warnings
 ```
 
-Reference-model and figure generation commands are documented in [research/emission](research/emission/README.md).
+Reference model and figure generation commands are documented in [research/emission](research/emission/README.md).
 
 ## Documentation
 
-- [Architecture](docs/architecture.md)
-- [Private transaction relation](docs/private-transactions.md)
-- [Checkpoint consensus](docs/checkpoints.md)
-- [Mining integration](docs/mining.md)
-- [Wallet and recovery](docs/wallet.md)
-- [Treasury operations](docs/treasury.md)
-- [Development parameters](docs/parameters.md)
-- [Implementation milestones](docs/development.md)
-- [Security policy](SECURITY.md)
-- [Contribution guide](CONTRIBUTING.md)
+1. [Architecture](docs/architecture.md)
+2. [Private transaction relation](docs/private-transactions.md)
+3. [Checkpoint consensus](docs/checkpoints.md)
+4. [Mining integration](docs/mining.md)
+5. [Wallet and recovery](docs/wallet.md)
+6. [Treasury operations](docs/treasury.md)
+7. [Development parameters](docs/parameters.md)
+8. [Implementation milestones](docs/development.md)
+9. [Security policy](SECURITY.md)
+10. [Contribution guide](CONTRIBUTING.md)
 
 ## Source and research practice
 
 Specifications identify assumptions and unresolved constructions. Benchmarks identify the implementation, hardware, configuration, and measurement method. Analytical projections are distinguished from measurements. Required dependency attribution and license notices are retained when components are incorporated.
 
-Project licensing and third-party source inventory must be completed before external components are incorporated or a distribution is prepared.
+Project licensing and third party source inventory must be completed before external components are incorporated or a distribution is prepared.
