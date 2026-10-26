@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="960" height="530" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 530" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="960" height="530"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-530)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="0" width="960" height="530" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="64" y="492" style="font-family: Helvetica-Bold; font-size: 22px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,984) scale(1,-1)">Annual newly issued coins</text>
+			<text x="64" y="467" style="font-family: Helvetica; font-size: 11px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,934) scale(1,-1)">Each step is the issuance during the following complete 365-day model year.</text>
+			<g transform="">
+				<g transform="">
+					<g transform="">
+						<path d="M 95,135 L 895,135 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+					</g>
+					<g transform="">
+						<path d="M 95,135 L 95,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 255,135 L 255,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 415,135 L 415,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 575,135 L 575,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 735,135 L 735,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 895,135 L 895,130 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+					</g>
+					<g transform="">
+						<g transform=" matrix(1,0,0,1,95,127)">
+							<text x="-2.7800000000000002" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">0</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,255,127)">
+							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">10</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,415,127)">
+							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">20</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,575,127)">
+							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">30</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,735,127)">
+							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">40</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,895,127)">
+							<text x="-5.5600000000000005" y="-10.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-20) scale(1,-1)">50</text>
+						</g>
+					</g>
+				</g>
+				<g transform="">
+					<g transform="">
+						<path d="M 95,135 L 95,419 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+					</g>
+					<g transform="">
+						<path d="M 95,135 L 90,135 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,206 L 90,206 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,277 L 90,277 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,348 L 90,348 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+						<path d="M 95,419 L 90,419 Z" style="stroke: rgb(39%,45%,52%); stroke-linecap: butt; stroke-width: 0.6;"/>
+					</g>
+					<g transform="">
+						<g transform=" matrix(1,0,0,1,87,135)">
+							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">0</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,87,206)">
+							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">1</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,87,277)">
+							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">2</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,87,348)">
+							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">3</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,87,419)">
+							<text x="-5.5600000000000005" y="-4.0" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,-8) scale(1,-1)">4</text>
+						</g>
+					</g>
+				</g>
+				<path d="M 95,206 L 895,206 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
+				<path d="M 95,277 L 895,277 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
+				<path d="M 95,348 L 895,348 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
+				<path d="M 95,419 L 895,419 Z" style="stroke: rgb(87%,89%,91%); stroke-linecap: butt; stroke-width: 0.6;"/>
+				<g transform="">
+					<polyline points="95 411.0897, 111 411.0897, 111 367.1628, 127 367.1628, 127 330.2249, 143 330.2249, 143 299.1639, 159 299.1639, 159 273.0448, 175 273.0448, 175 251.0814, 191 251.0814, 191 232.6124, 207 232.6124, 207 217.0819, 223 217.0819, 223 204.0224, 239 204.0224, 239 193.0407, 255 193.0407, 255 183.8062, 271 183.8062, 271 176.041, 287 176.041, 287 169.5112, 303 169.5112, 303 164.0204, 319 164.0204, 319 159.4031, 335 159.4031, 335 155.5205, 351 155.5205, 351 152.2556, 367 152.2556, 367 149.5102, 383 149.5102, 383 147.2016, 399 147.2016, 399 145.2602, 415 145.2602, 415 144.3294, 431 144.3294, 431 144.3294, 447 144.3294, 447 144.3294, 463 144.3294, 463 144.3294, 479 144.3294, 479 144.3294, 495 144.3294, 495 144.3294, 511 144.3294, 511 144.3294, 527 144.3294, 527 144.3294, 543 144.3294, 543 144.3294, 559 144.3294, 559 144.3294, 575 144.3294, 575 144.3294, 591 144.3294, 591 144.3294, 607 144.3294, 607 144.3294, 623 144.3294, 623 144.3294, 639 144.3294, 639 144.3294, 655 144.3294, 655 144.3294, 671 144.3294, 671 144.3294, 687 144.3294, 687 144.3294, 703 144.3294, 703 144.3294, 719 144.3294, 719 144.3294, 735 144.3294, 735 144.3294, 751 144.3294, 751 144.3294, 767 144.3294, 767 144.3294, 783 144.3294, 783 144.3294, 799 144.3294, 799 144.3294, 815 144.3294, 815 144.3294, 831 144.3294, 831 144.3294, 847 144.3294, 847 144.3294, 863 144.3294, 863 144.3294, 879 144.3294, 879 144.3294, 895 144.3294" style="stroke: rgb(13%,36%,65%); stroke-linecap: round; stroke-width: 2.4; fill: None; fill-rule: evenodd;"/>
+				</g>
+			</g>
+			<text x="416.1355" y="67" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,134) scale(1,-1)">Elapsed model years (365 days)</text>
+			<text x="95" y="434" style="font-family: Helvetica; font-size: 11px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,868) scale(1,-1)">Million coins per model year</text>
+			<path d="M 95,91 L 119,91 Z" style="stroke: rgb(13%,36%,65%); stroke-linecap: butt; stroke-width: 2.4;"/>
+			<text x="127" y="87" style="font-family: Helvetica; font-size: 10px;fill: rgb(9%,16%,22%); stroke:none;" transform="translate(0,174) scale(1,-1)">Fully earned annual issuance</text>
+			<text x="64" y="35" style="font-family: Helvetica; font-size: 10px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,70) scale(1,-1)">Fully earned budgets; no burns, premine, bootstrap, or omitted-budget timing adjustment.</text>
+			<text x="64" y="18" style="font-family: Helvetica; font-size: 9px;fill: rgb(39%,45%,52%); stroke:none;" transform="translate(0,36) scale(1,-1)">Development parameters; monetary reference only. Target spacing is not a wall-clock guarantee.</text>
+		</g>
+	</g>
+</svg>

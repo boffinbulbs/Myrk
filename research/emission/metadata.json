@@ -1,0 +1,63 @@
+{
+  "reference_version": "1",
+  "implementation_status": "monetary research reference; open construction",
+  "atomic_decimals": 8,
+  "cap_atoms": 6300000000000000,
+  "block_seconds": 120,
+  "blocks_per_model_year": 262800,
+  "blocks_per_reward_period": 21900,
+  "declining_periods": 240,
+  "long_reward_atoms": 50000000,
+  "long_reward_first_index": 5256000,
+  "long_reward_first_height": 5256001,
+  "schedule_values_sha256": "ab8097f05a6993a38a3666ca5056c0cd30a6609ab2d5c3192a038bf2e27c8f7b",
+  "schedule_hash_encoding": "ASCII decimal period:reward_atoms followed by LF for each of 240 entries",
+  "assumptions": [
+    "all scheduled miner and staking budgets fully earned",
+    "zero-reward genesis; first paid height 1 maps to reward index 0",
+    "target 120-second block spacing; 365-day model years",
+    "no burns",
+    "no premine",
+    "no bootstrap or omitted-budget timing adjustment"
+  ],
+  "cap_exhaustion": {
+    "first_exhausted_height": 83902342,
+    "reward_block_index": 83902341,
+    "target_elapsed_seconds": 10068281040,
+    "target_model_years": "319.263097412481",
+    "issued_before_final_block_atoms": 6299999987882100,
+    "final_capped_reward_atoms": 12117900,
+    "final_block": {
+      "height": 83902342,
+      "reward_block_index": 83902341,
+      "cumulative_issued_before_atoms": 6299999987882100,
+      "cumulative_burned_before_atoms": 0,
+      "remaining_cap_before_atoms": 12117900,
+      "scheduled_reward_atoms": 50000000,
+      "capped_reward_atoms": 12117900,
+      "miner_atoms": 8482530,
+      "staking_budget_atoms": 3635370,
+      "earned_staking_atoms": 3635370,
+      "unearned_staking_atoms": 0,
+      "actual_issued_atoms": 12117900,
+      "burn_after_atoms": 0,
+      "cumulative_issued_after_atoms": 6300000000000000,
+      "cumulative_burned_after_atoms": 0,
+      "outstanding_after_atoms": 6300000000000000,
+      "remaining_cap_after_atoms": 0
+    }
+  },
+  "artifacts_sha256": {
+    "schedule.csv": "1a06338798693b63261c76bcc4dc873437f716b4d6f413a961f32c8ecd336918",
+    "golden_vectors.json": "a878275bd8ba5828d118f6379c6765192ba538d575f89ab68746c47a45756a9a",
+    "golden_vectors.csv": "1f1af7b570075de61e7c5f45f56133ff675732a3e339f0550b7a2b6f503588bd",
+    "projection_annual.csv": "571ea11482bbcfbde7b8b83d40093fc31cafc7246916dada5c6886418b4e6b1a",
+    "projection_monthly.csv": "e44ca0c2417ad5ac2d59a528f33f516a70e8c4c6cc29e09640712d30e5022661"
+  },
+  "open_questions": [
+    "stake eligibility and distribution",
+    "bootstrap and launch rules",
+    "privacy and post-quantum consensus construction",
+    "fees and security after cap exhaustion"
+  ]
+}

@@ -1,0 +1,44 @@
+name: Checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rust:
+    name: Rust (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install toolchain
+        run: rustup toolchain install 1.94.1 --profile minimal --component rustfmt --component clippy
+      - name: Check formatting
+        run: rustup run 1.94.1 cargo fmt --all -- --check
+      - name: Run tests
+        run: rustup run 1.94.1 cargo test --workspace --locked --offline
+      - name: Check lints
+        run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
+      - name: Build documentation
+        run: rustup run 1.94.1 cargo doc --workspace --no-deps --locked --offline
+
+  research:
+    name: Reference model
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run reference tests
+        run: python3 -m unittest discover -s research/emission -p 'test_*.py' -v

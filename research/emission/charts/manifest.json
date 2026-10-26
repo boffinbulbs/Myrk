@@ -1,0 +1,17 @@
+{
+  "renderer": "ReportLab graphics.charts.lineplots.LinePlot",
+  "reportlab_version": "4.4.9",
+  "units": "chart labels specify coins or percent; source amounts are integer atomic units",
+  "source_sha256": {
+    "schedule.csv": "1a06338798693b63261c76bcc4dc873437f716b4d6f413a961f32c8ecd336918",
+    "projection_annual.csv": "571ea11482bbcfbde7b8b83d40093fc31cafc7246916dada5c6886418b4e6b1a",
+    "projection_monthly.csv": "e44ca0c2417ad5ac2d59a528f33f516a70e8c4c6cc29e09640712d30e5022661",
+    "metadata.json": "21957ed4db59623202f4019168f5f7fe9e3313b244ff778b80e0f8221bedfb39"
+  },
+  "svg_sha256": {
+    "reward_schedule.svg": "f23011862e286f44f1875bb4ab9dd9954d0138f40b410968f1d99bc0c10a664f",
+    "issued_supply.svg": "284a354b11bad5ecb5c80719fb45ca17cfd1cc67ddbfb60b54073e784bb14731",
+    "annual_issuance.svg": "3eff292858f48a41c30253aa7e4070dbd889e80861fc42322e38514213e708a7",
+    "gross_issuance_rate.svg": "826496e85371260da85a4fb332ccadffd34af0a0c03478799196bee718f87d81"
+  }
+}
