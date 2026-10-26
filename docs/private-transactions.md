@@ -2,6 +2,8 @@
 
 This document defines required relations, not an implemented privacy proof system.
 
+The [local relation laboratory](relation-lab.md) makes a bounded subset executable with transparent witnesses. The [proof feasibility record](proof-feasibility.md) distinguishes those native checks from the hiding and knowledge soundness requirements of a private proof. Neither record establishes a production private transaction format.
+
 ## Public boundary
 
 The verifier receives a canonical versioned transaction envelope, resource class, fee information, relevant state roots, nullifiers, output commitments, encrypted data commitments, application identifiers where public, and a transition proof. Exact encoding and visibility remain part of the construction work.

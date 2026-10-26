@@ -2,6 +2,8 @@
 
 The isolated [primitive laboratory](../../docs/crypto-lab.md) supplies real signature, key establishment, encrypted envelope, and rejection experiments. It does not implement private ledger authorization, private transaction proofs, confidential stake, or anonymous recipient discovery.
 
+The [relation laboratory](../../docs/relation-lab.md) applies these primitives to local transparent payment and stake checks. The separate [proof feasibility record](../../docs/proof-feasibility.md) records backend evidence and the remaining private proof gates. Historical primitive measurements below retain their original source revision and are not measurements of these later interfaces.
+
 ## Evidence records
 
 | Record | Content |

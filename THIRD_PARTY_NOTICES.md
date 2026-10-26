@@ -4,7 +4,7 @@
 
 Thorum project code is covered by the project [MIT license](LICENSE). Registry dependencies retain their own licensing terms, copyrights and notices. The project license does not replace those terms.
 
-The [dependency inventory](research/crypto/dependency-inventory.json) records all 52 registry packages in the current Cargo.lock, including development and target specific packages across all platforms represented by the resolution. The dependency graph belongs to the isolated cryptographic research laboratory. No released binary distribution is represented by this inventory. A package in the lock file is not necessarily linked on every platform.
+The [dependency inventory](research/crypto/dependency-inventory.json) records all 52 registry packages in the current Cargo.lock, including development and target specific packages across all platforms represented by the resolution. The dependency graph covers the workspace and its isolated primitive and relation laboratories. No released binary distribution is represented by this inventory. A package in the lock file is not necessarily linked on every platform.
 
 Each package record contains its name, version, upstream SPDX expression, repository URL, registry archive checksum, original license filenames and source byte hashes. The [license directory](research/crypto/licenses) preserves the original text bytes. Identical files share one content hash filename. Copyright statements are retained exactly rather than replaced with Thorum attribution. No license alternative is selected by this inventory.
 
@@ -29,7 +29,7 @@ On 2026-10-26, a public OSV query batch for all 52 exact resolved registry versi
 
 | Snapshot field | Value |
 |---|---|
-| Reviewed Cargo.lock SHA256 | `3bc0a865e041ab8e07d9f70d7cc97ff2e2d933326bf390b982c1f57ace3a4fd4` |
+| Reviewed Cargo.lock SHA256 | `fcb640b672dc26ecf5cb051ab76e7e0a26e56dcb8341ca1644dfd160683b931d` |
 | Raw OSV response body SHA256 | `8f96b1b7aa528c6256c0169be2e70b792354589655daacac7b173cfae52596b9` |
 | Raw OSV response body length | 169 bytes |
 | Source | [OSV query batch API](https://google.github.io/osv.dev/post-v1-querybatch/) |

@@ -6,13 +6,15 @@ The protocol architecture separates the private transaction relation, determinis
 
 ## Implementation status
 
-The workspace contains deterministic monetary accounting, an independent reference model, an isolated cryptographic laboratory, reproducible research data, and protocol specifications. Transparent local relation research is underway. It receives private data directly and does not establish a private proof. The workspace does not yet implement a network, private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
+The workspace contains deterministic monetary accounting, an independent reference model, isolated primitive and relation laboratories, reproducible research data, and protocol specifications. Local relation checks receive private witnesses directly and do not establish a private proof. The workspace does not yet implement a network, private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
 
 | Area | Current scope |
 |---|---|
 | [Core accounting](crates/thorum-core/src/lib.rs) | Atomic unit arithmetic, subsidy schedule, issuance ceiling, 60/20/10/10 allocation, actual issuance and burns |
 | Research | Independent schedule construction, golden vectors, analytical projections, reproducible figures |
 | [Primitive laboratory](docs/crypto-lab.md) | Real signature, key establishment and encrypted envelope experiments, selected official vectors, tamper rejection and local measurements |
+| [Relation laboratory](docs/relation-lab.md) | Transparent local ownership, membership, nullifier, conservation, encrypted delivery and stake eligibility checks |
+| [Proof feasibility](docs/proof-feasibility.md) | Pinned backend evidence and unresolved hiding, knowledge soundness and quantum security gates |
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |
 | Mining | Parent work validation and operator interface requirements |
@@ -92,6 +94,8 @@ The [cryptographic research record](research/crypto/README.md) retains selected 
 13. [Cryptographic feasibility laboratory](docs/crypto-lab.md)
 14. [Third party notices](THIRD_PARTY_NOTICES.md)
 15. [Native subsidy allocation](docs/subsidy-allocation.md)
+16. [Transparent relation laboratory](docs/relation-lab.md)
+17. [Proof backend feasibility](docs/proof-feasibility.md)
 
 ## Source and research practice
 

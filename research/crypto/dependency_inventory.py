@@ -34,7 +34,7 @@ EXTRA_LICENSE_FILES = {("r-efi", "6.0.0"): ("AUTHORS",)}
 ADVISORY_REVIEW = {
     "checked_on": "2026-10-26",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "3bc0a865e041ab8e07d9f70d7cc97ff2e2d933326bf390b982c1f57ace3a4fd4",
+    "cargo_lock_sha256": "fcb640b672dc26ecf5cb051ab76e7e0a26e56dcb8341ca1644dfd160683b931d",
     "package_queries": 52,
     "matching_advisories": 0,
     "response_body_bytes": 169,
@@ -286,7 +286,7 @@ def render_notices(inventory: dict) -> bytes:
 
 Thorum project code is covered by the project [MIT license](LICENSE). Registry dependencies retain their own licensing terms, copyrights and notices. The project license does not replace those terms.
 
-The [dependency inventory](research/crypto/dependency-inventory.json) records all {count} registry packages in the current Cargo.lock, including development and target specific packages across all platforms represented by the resolution. The dependency graph belongs to the isolated cryptographic research laboratory. No released binary distribution is represented by this inventory. A package in the lock file is not necessarily linked on every platform.
+The [dependency inventory](research/crypto/dependency-inventory.json) records all {count} registry packages in the current Cargo.lock, including development and target specific packages across all platforms represented by the resolution. The dependency graph covers the workspace and its isolated primitive and relation laboratories. No released binary distribution is represented by this inventory. A package in the lock file is not necessarily linked on every platform.
 
 Each package record contains its name, version, upstream SPDX expression, repository URL, registry archive checksum, original license filenames and source byte hashes. The [license directory](research/crypto/licenses) preserves the original text bytes. Identical files share one content hash filename. Copyright statements are retained exactly rather than replaced with Thorum attribution. No license alternative is selected by this inventory.
 

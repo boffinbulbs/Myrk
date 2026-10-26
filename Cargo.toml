@@ -1,5 +1,9 @@
 [workspace]
-members = ["crates/thorum-core", "crates/thorum-crypto-lab"]
+members = [
+    "crates/thorum-core",
+    "crates/thorum-crypto-lab",
+    "crates/thorum-relation-lab",
+]
 resolver = "2"
 
 [workspace.package]

@@ -85,6 +85,14 @@ This diagram describes the implemented laboratory ordering. It does not include 
 
 Secret key wrappers have no serialization or Debug interface. Secret seeds, shared secrets, derived keys, and returned plaintext use available erasure support. This does not establish complete removal of stack copies, compiler intermediates, allocator history, swap, crash dumps, or hardware state.
 
+## Sender encryption witness
+
+`seal_for_relation` retains the fresh 32 byte ML-KEM encapsulation randomness in an `EncryptionWitness`. Its envelope uses the same suite, framing, associated data and nonce rules as `seal`. The witness has no Debug, cloning, serialization or secret export interface and uses erasure support on drop.
+
+`verify_encryption_witness` receives the recipient public key, context, plaintext, witness and completed envelope. It recomputes deterministic encapsulation from that private randomness, derives the same key, encrypts with the envelope nonce and compares the complete encapsulation and authenticated ciphertexts. It does not require the recipient secret key. This permits a sender relation to bind the encrypted note to the same opening used by its output commitment.
+
+The witness reveals enough information to reproduce the shared secret and payload. It belongs inside a trusted local witness boundary and must never appear in public transactions, logs, proof transport or remote validation requests. The local checker is transparent to its own process. It provides no zero knowledge, recipient anonymity or formal composition result. Equality checks in this research path do not establish constant time behavior.
+
 ## Rejection and state boundaries
 
 Tests alter keys, messages, signatures, chains, protocol versions, output tags, encapsulation bytes, nonces, encrypted payloads, tags, lengths, and suite fields. Valid length KEM corruption follows implicit rejection and must ultimately fail authenticated decryption. Malformed lengths are rejected separately. No plaintext value is returned on authentication failure.
@@ -112,7 +120,7 @@ Timing includes allocations, decoding, and context construction inside the measu
 
 Release measurements retain raw samples, source hashes, dependency lock hash, compiler details, CPU model, operating system, workload, aggregation method, and limitations. Analytical envelope size is separate from measured timing. The results are local observations and do not establish consensus capacity.
 
-The retained [measurement record and figures](../research/crypto/README.md) provide one such local run, with 50 samples per group and no simulated performance values.
+The retained [measurement record and figures](../research/crypto/README.md) provide one such local run, with 50 samples per group and no simulated performance values. They identify their historical source revision and do not measure the later sender witness interface or complete transaction relations.
 
 ## Remaining feasibility gates
 

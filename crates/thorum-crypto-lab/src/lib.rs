@@ -154,6 +154,14 @@ pub fn verify_authorization(
 /// Independent recipient secret key. A recipient key does not authorize spending.
 pub struct RecipientKey(DecapsulationKey1024);
 
+/// Local sender witness for reproducing one recipient envelope.
+///
+/// The encapsulation randomness can reveal the envelope's shared secret and
+/// payload. Keep this value inside the trusted local prover boundary. It has
+/// no Debug, cloning, serialization, or secret export interface. It is not a
+/// proof, a public validation input, or recipient spending authority.
+pub struct EncryptionWitness(Zeroizing<ml_kem::B32>);
+
 impl RecipientKey {
     /// Generate a recipient key from a fresh uniformly random 64 byte seed.
     pub fn generate() -> Result<Self, Error> {
@@ -229,8 +237,103 @@ pub fn seal(
     let shared = Zeroizing::new(shared);
     let mut nonce = [0_u8; 12];
     getrandom::fill(&mut nonce).map_err(|_| Error::EntropyUnavailable)?;
-    let aad = envelope_aad(context, recipient_key, kem_ciphertext.as_slice(), &nonce);
-    let key = derive_key(shared.as_slice(), &aad);
+    encrypt_encapsulation(
+        recipient_key,
+        context,
+        plaintext,
+        kem_ciphertext.as_slice(),
+        shared.as_slice(),
+        nonce,
+    )
+}
+
+/// Seal a payload and retain its secret sender witness for local relation work.
+///
+/// This uses the same envelope profile as [`seal`]. Fresh operating system
+/// randomness is required for each invocation. The returned witness must not
+/// be placed in a transaction, proof transport, log, or benchmark output.
+pub fn seal_for_relation(
+    recipient_key: &[u8],
+    context: &Context,
+    plaintext: &[u8],
+) -> Result<(SealedNote, EncryptionWitness), Error> {
+    if plaintext.len() > MAX_NOTE_BYTES {
+        return Err(Error::LimitExceeded);
+    }
+    if recipient_key.len() != RECIPIENT_KEY_BYTES {
+        return Err(Error::InvalidKey);
+    }
+    let recipient =
+        EncapsulationKey1024::new_from_slice(recipient_key).map_err(|_| Error::InvalidKey)?;
+    let mut randomness = Zeroizing::new(ml_kem::B32::default());
+    getrandom::fill(randomness.as_mut_slice()).map_err(|_| Error::EntropyUnavailable)?;
+    let (kem_ciphertext, shared) = recipient.encapsulate_deterministic(&randomness);
+    let shared = Zeroizing::new(shared);
+    let mut nonce = [0_u8; 12];
+    getrandom::fill(&mut nonce).map_err(|_| Error::EntropyUnavailable)?;
+    let sealed = encrypt_encapsulation(
+        recipient_key,
+        context,
+        plaintext,
+        kem_ciphertext.as_slice(),
+        shared.as_slice(),
+        nonce,
+    )?;
+    Ok((sealed, EncryptionWitness(randomness)))
+}
+
+/// Check exact sender encryption semantics without a recipient secret key.
+///
+/// This local reference check receives the private plaintext and randomness.
+/// It recomputes encapsulation, context binding, key derivation and AEAD, then
+/// compares every encapsulation and note ciphertext byte. It returns no
+/// plaintext or intermediate secret. It is not a zero knowledge proof check
+/// and must not be exposed as a remote witness or decryption service.
+pub fn verify_encryption_witness(
+    recipient_key: &[u8],
+    context: &Context,
+    plaintext: &[u8],
+    witness: &EncryptionWitness,
+    sealed: &SealedNote,
+) -> Result<(), Error> {
+    if plaintext.len() > MAX_NOTE_BYTES {
+        return Err(Error::LimitExceeded);
+    }
+    sealed.validate()?;
+    if recipient_key.len() != RECIPIENT_KEY_BYTES {
+        return Err(Error::InvalidKey);
+    }
+    let recipient =
+        EncapsulationKey1024::new_from_slice(recipient_key).map_err(|_| Error::InvalidKey)?;
+    let (kem_ciphertext, shared) = recipient.encapsulate_deterministic(&witness.0);
+    let shared = Zeroizing::new(shared);
+    let reproduced = encrypt_encapsulation(
+        recipient_key,
+        context,
+        plaintext,
+        kem_ciphertext.as_slice(),
+        shared.as_slice(),
+        sealed.nonce,
+    )?;
+    if reproduced.kem_ciphertext == sealed.kem_ciphertext
+        && reproduced.ciphertext == sealed.ciphertext
+    {
+        Ok(())
+    } else {
+        Err(Error::AuthenticationFailed)
+    }
+}
+
+fn encrypt_encapsulation(
+    recipient_key: &[u8],
+    context: &Context,
+    plaintext: &[u8],
+    kem_ciphertext: &[u8],
+    shared: &[u8],
+    nonce: [u8; 12],
+) -> Result<SealedNote, Error> {
+    let aad = envelope_aad(context, recipient_key, kem_ciphertext, &nonce);
+    let key = derive_key(shared, &aad);
     let cipher = Aes256Gcm::new_from_slice(key.as_ref()).map_err(|_| Error::InvalidKey)?;
     let ciphertext = cipher
         .encrypt(

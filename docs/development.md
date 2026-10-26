@@ -2,7 +2,7 @@
 
 ## Initial executable boundary
 
-The current executable scope is deterministic monetary accounting under the [60/20/10/10 subsidy profile](subsidy-allocation.md) and an isolated [primitive laboratory](crypto-lab.md), with reference vectors and reproducible research artifacts. Transparent local relation research is underway. Its checkers receive private inputs directly and do not establish zero knowledge or complete private payment feasibility. The workspace does not implement a private transaction system or active consensus network.
+The current executable scope is deterministic monetary accounting under the [60/20/10/10 subsidy profile](subsidy-allocation.md), an isolated [primitive laboratory](crypto-lab.md), and a [transparent relation laboratory](relation-lab.md), with reference vectors and reproducible research artifacts. The relation checkers receive private inputs directly and do not establish zero knowledge or complete private payment feasibility. The workspace does not implement a private transaction system or active consensus network.
 
 ## Milestones and evidence
 
@@ -10,7 +10,7 @@ The current executable scope is deterministic monetary accounting under the [60/
 |---|---|---|
 | Accounting | Atomic units, frozen subsidy table, 60/20/10/10 allocation, miner rounding, cap, actual issuance and burns | Boundary/rejection/conservation tests and independent vectors |
 | Primitive feasibility laboratory | Isolated operations for signing, verification, encapsulation, decapsulation and authenticated encryption | Exact backend versions and parameters, real primitive operations, altered input rejection, reproducible size and cost measurements |
-| Transparent relation research | Local reference checks for note, authorization, conservation and encryption semantics | Explicit plaintext witness boundary, valid and invalid fixtures, no substitution for a hiding proof |
+| Transparent relation research | Local note, membership, authorization, conservation, encryption and stake eligibility checks | Plaintext witness boundary, independent encoding vectors and adversarial fixtures, no substitution for a hiding proof |
 | Private transition feasibility | One fully specified and executable private payment relation | Authorization, ranges, conservation, nullifier binding, malformed proof rejection, measured costs and security rationale |
 | Private stake feasibility | Confidential eligible weight and checkpoint support | No duplicate weight/reuse, epoch/domain binding, PQ assumptions, bounded certificates and adversarial simulations |
 | Ledger kernel | State roots, global nullifiers, canonical decoding, fees, issuance integration and rollback | Independent node agreement, inflation rejection, replay rejection and atomic persistence |
@@ -52,6 +52,8 @@ The combined demonstration uses the current 60/20/10/10 monetary profile, includ
 Separate analytical schedule projections from measured code performance. Record workload, machine, operating system, toolchain, dependency versions, parameters, repetitions, resource use and uncertainty. Retain raw data and generation commands for published figures.
 
 The [private protocol research specification](research-target.md) defines the formal relations and privacy evaluation gates. The [pool governance specification](governance.md) records unimplemented pool spending and voting requirements. The monetary core calculates pool and developer amounts but does not create payout notes or authenticate destinations. Transparent local reference checks remain research evidence rather than private proof validation.
+
+The [backend feasibility record](proof-feasibility.md) retains exact source versions and unresolved hiding, primitive coverage, knowledge soundness and quantum model requirements. The local relation's sender knows output nullifier secrets and can recognize their future consumption. Recipient capabilities that remove this linkage, confidential stake statements, typed recovery, and actual hiding proofs remain separate construction work.
 
 ## Release gates
 
