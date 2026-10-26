@@ -1,0 +1,78 @@
+{
+  "q": 8380417,
+  "air_field_prime": 2013265921,
+  "radix": 4096,
+  "q_limbs_low_high": [
+    1,
+    2046
+  ],
+  "value_bit_width": 23,
+  "value_unconstrained_bit_maximum": 8388607,
+  "canonical_value_range": [
+    0,
+    8380416
+  ],
+  "canonical_high_limb_maximum": 2046,
+  "low_limb_range": [
+    0,
+    4095
+  ],
+  "complement_residual_range_before_canonicality": [
+    -8380416,
+    8396798
+  ],
+  "valid_carry0_numerator_range": [
+    -8190,
+    16769025
+  ],
+  "valid_carry0_conservative_range": [
+    -1,
+    4094
+  ],
+  "valid_carry1_numerator_range": [
+    -8382463,
+    16760834
+  ],
+  "valid_carry1_conservative_range": [
+    -2046,
+    4092
+  ],
+  "carry0_shift": 2,
+  "carry0_bits": 13,
+  "encoded_carry0_signed_range": [
+    -2,
+    8189
+  ],
+  "carry1_shift": 4096,
+  "carry1_bits": 14,
+  "encoded_carry1_signed_range": [
+    -4096,
+    12287
+  ],
+  "limb_residual_ranges_under_all_encoded_carries": [
+    [
+      -33550334,
+      16777217
+    ],
+    [
+      -58710016,
+      33542145
+    ],
+    [
+      -4190212,
+      4198403
+    ]
+  ],
+  "bounds_are_conservative_not_all_claimed_attainable": true,
+  "recombination_identity": "R0 + B*R1 + B^2*R2 = x*y - q*k - z",
+  "soundness_steps": [
+    "Boolean value and complement bits bound each decoded integer by 2^23-1.",
+    "The complement residual lies strictly between -p and p, so its field zero is exact integer zero.",
+    "Each value and its nonnegative complement sum to q-1, so each value is canonical.",
+    "Boolean shifted carry bits establish the recorded signed intervals.",
+    "Each limb residual lies strictly between -p and p under these bounds.",
+    "Each field limb equality is therefore an exact integer equality.",
+    "The weighted sum cancels both carries and gives exact x*y=q*k+z.",
+    "Canonical z and nonnegative k make k and z the unique Euclidean quotient and remainder."
+  ]
+}

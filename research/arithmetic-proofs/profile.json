@@ -1,0 +1,40 @@
+{
+  "format": "thorum.arithmetic-proof-lab.reference.v1",
+  "public_synthetic_fixture": true,
+  "scope": "Primitive exact multiplication only. The test harness publishes operands and result, not a private NTT, signature, owner or ledger proof.",
+  "q": 8380417,
+  "air_field_prime": 2013265921,
+  "radix": 4096,
+  "trace_width": 211,
+  "value_offsets": [
+    0,
+    23,
+    46,
+    69
+  ],
+  "complement_offsets": [
+    92,
+    115,
+    138,
+    161
+  ],
+  "carry0_offset": 184,
+  "carry1_offset": 197,
+  "trace_height": 256,
+  "public_vector_length": 76,
+  "case_count": 206,
+  "valid_case_count": 166,
+  "invalid_case_count": 40,
+  "api_rejection_count": 9,
+  "deterministic_pair_count": 128,
+  "deterministic_generator": "xorshift64 with shifts 13,7,17 and explicit 64 bit masking",
+  "deterministic_seed_hex": "54484f52554d0087",
+  "observed_valid_carry0_range": [
+    -1,
+    4094
+  ],
+  "observed_valid_carry1_range": [
+    -2046,
+    2268
+  ]
+}

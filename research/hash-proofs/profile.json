@@ -1,0 +1,53 @@
+{
+  "format": "thorum.hash-proof-lab.reference.v1",
+  "public_synthetic_fixture": true,
+  "scope": "Standalone unframed FIPS 202 hash primitive relation. Outputs and lengths are public in this component only. No owner permission, private signature verification, composed transaction binding, hiding of these public results or production payment format is established.",
+  "mode_codes": {
+    "1": "SHA3-512",
+    "2": "SHAKE128",
+    "3": "SHAKE256"
+  },
+  "maximum_input_length": 2592,
+  "maximum_output_length": 840,
+  "public_vector_length": 913,
+  "original_trace_height": 1024,
+  "maximum_permutations": 37,
+  "case_count": 89,
+  "valid_case_count": 66,
+  "api_rejection_count": 8,
+  "selected_trace_count": 11,
+  "selected_stage_count": 158,
+  "selected_round_state_count": 1080,
+  "input_boundary_lengths": [
+    0,
+    1,
+    71,
+    72,
+    73,
+    135,
+    136,
+    137,
+    167,
+    168,
+    169,
+    2592
+  ],
+  "output_boundary_lengths": [
+    1,
+    63,
+    64,
+    135,
+    136,
+    137,
+    167,
+    168,
+    169,
+    839,
+    840
+  ],
+  "hashlib_self_check_count": 2409,
+  "state_lane_index": "x + 5*y",
+  "state_lane_byte_order": "little endian",
+  "permutation_rounds": 24,
+  "source_public_key_sha256": "33f49649f05ec2fc3b050007b18ade043bbc8d1c0ded03a269d540486daaa5f4"
+}
