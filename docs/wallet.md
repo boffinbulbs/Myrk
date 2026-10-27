@@ -6,6 +6,10 @@ The desktop architecture targets a Qt interface with Rust wallet, node and execu
 
 The normal Send path must construct a private transaction. A separate public payment pool or optional privacy toggle is not part of the design.
 
+The [private Safe](protocol-extensions.md#private-safe) requires a protected balance, pending withdrawal state, authenticated unlock condition and separate recovery cancellation restricted to the committed protected destination. Consensus enforces its rules. The wallet must distinguish certified payment locks, checkpoint finality, reward maturity and staking principal availability. Ordinary transfers do not inherit the seven day mining/staking reward delay.
+
+Private cryptographic migration and compact history verification remain separate development targets. Migration must preserve old consumption identity and restrictions while hiding input commitments. Any later compact wallet mode must retain explicit chain selection, data availability and note recovery requirements.
+
 ## Address namespace
 
 The main network wallet address target uses the human readable prefix `thm`, followed by a versioned recipient payload and a checksum. The namespace is compatible with private payments and contract applications. It does not determine the cryptographic key representation or execution model.

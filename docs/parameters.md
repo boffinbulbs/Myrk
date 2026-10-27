@@ -1,6 +1,23 @@
 # Development parameters
 
-These values define the current reference profile. A production genesis and consensus encoding have not been released.
+The selected testnet target and retained executable accounting reference are separate profiles. A production genesis and consensus encoding have not been released.
+
+## Testnet development target
+
+| Parameter | Target |
+|---|---|
+| Average block interval | 60 seconds |
+| Checkpoint opportunity interval | Four blocks |
+| Mining and staking reward maturity | 10080 blocks per newly issued reward |
+| Ordinary incoming payments | Acceptance and checkpoint finality rules without a seven day reward delay |
+| Initial onward spending | After checkpoint finality |
+| Fast payment indication | A valid private payment lock certificate, separately from finality |
+
+The [protocol safety requirements](protocol-extensions.md) define the timing boundaries, private Safe, migration, compact history and payment capacity targets. The maturity delay does not define staking principal withdrawal or pool/developer spendability. The testnet schedule must adjust subsidy amounts and period lengths together before implementation. Current cryptographic components do not implement these consensus services.
+
+## Retained accounting reference
+
+The values below describe the existing executable monetary model and its historical figures. Its 120 second cadence is retained for reproducibility. The new testnet timing target is documented separately above.
 
 | Parameter | Value |
 |---|---:|
@@ -8,8 +25,7 @@ These values define the current reference profile. A production genesis and cons
 | Ticker | THM |
 | Atomic units per THM | 100,000,000 |
 | Cumulative issuance ceiling | 63,000,000 THM |
-| Average target block interval | 120 seconds |
-| Checkpoint test interval | 5 blocks |
+| Accounting reference block interval | 120 seconds |
 | Subsidy period | 21,900 consecutive non genesis block heights |
 | Declining periods | 240 |
 | Initial maximum subsidy | 16 THM |

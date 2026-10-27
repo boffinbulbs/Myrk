@@ -131,6 +131,8 @@ python research/owner-bindings/profile_check.py
 
 ## Node and desktop integration
 
+The [protocol safety and verification requirements](protocol-extensions.md) add the private Safe, private cryptographic migration, ordinary payment resource reservation, compact chain history research and fast payment locks. The selected testnet timing target is 60 second blocks, four block checkpoint opportunities and 10080 block maturity for mining/staking rewards. Ordinary transfer acceptance and staking principal withdrawal remain separate. The existing 120 second accounting model is a retained reference. A time consistent new schedule and independent vectors precede activation. These additions do not bypass the complete private payment and confidential stake feasibility gates.
+
 The intended deliverable is a complete chain with node software and a desktop wallet. The private network integration milestone follows ledger, mining and finality integration and precedes final desktop wallet integration and public network trials. It does not exist yet. Component proofs precede authenticated state validation, durable persistence, rollback and network synchronization.
 
 Private server trials must use independent node instances and cover peering, initial and ongoing synchronization, persistence and restart, inconsistent peers, partitions and reconnection, reorganizations, resource limits and work/checkpoint interaction. The node RPC and wallet trust boundary must be defined and tested. Independent nodes must agree on valid and rejected transitions and recover the same durable state after restart or a branch change. Starting one process on a server is not sufficient acceptance evidence.

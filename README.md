@@ -129,6 +129,8 @@ The [cryptographic research record](research/crypto/README.md) retains selected 
 
 ## Documentation
 
+The [protocol safety and verification roadmap](docs/protocol-extensions.md) covers the private Safe, private migration, compact chain history, protected payment capacity, reward maturity and testnet timing targets. These requirements extend the current implementation milestones and remain subject to their cryptographic and consensus gates.
+
 1. [Architecture](docs/architecture.md)
 2. [Private transaction relation](docs/private-transactions.md)
 3. [Checkpoint consensus](docs/checkpoints.md)

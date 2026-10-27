@@ -8,7 +8,7 @@ A staking vote is an automatic protocol message, not an authorization to spend t
 
 ## Required construction
 
-The complete checkpoint protocol is open research. It must specify eligibility, randomness, quorum assumptions, voting rounds, certificate encoding, branch selection, safety, liveness, and recovery. A checkpoint interval of five blocks is a development parameter. It does not establish a finality guarantee of ten minutes.
+The complete checkpoint protocol is open research. It must specify eligibility, randomness, quorum assumptions, voting rounds, certificate encoding, branch selection, safety, liveness, and recovery. The testnet target is a checkpoint opportunity every four blocks at a 60 second block target. Approximately four minutes between opportunities is not a finality deadline. Finality requires a valid certificate.
 
 Confidential eligibility must bind committed stake, ownership, epoch, chain, referenced state, and authorized voting key. It must reject weight forgery, double counting, reuse after spending, replay across networks, and conflicting use of the same authority. Splitting the same value across many positions must not increase aggregate stake or expected influence.
 
@@ -17,6 +17,8 @@ The randomness construction must address grinding, withholding, and adaptive par
 ## Lifecycle and rewards
 
 Specify activation, maturity, bonding/unbonding, key rotation, delegation, reward vesting, equivocation evidence, and penalties. Restricted online voting authority must not be general spending authority.
+
+New mining and staking reward rights have a 10080 block maturity target, independently anchored to each valid issuance origin. Staking principal withdrawal and misconduct penalties remain separate. The initial onward spending rule requires checkpoint finality. [Fast private payment locks](protocol-extensions.md#fast-private-payment-locks) provide a separate certified status and do not enable spending unmined locked outputs.
 
 The current [native subsidy allocation](subsidy-allocation.md) assigns nominal shares of 60 percent to miners, 20 percent to eligible staking, 10 percent to the protocol pool, and 10 percent to temporary development maintenance for the designated project developer. For capped subsidy $S$, the staking budget is $K=\lfloor 2S/10\rfloor$. Atomic remainders belong to the miner, including the final available atom.
 
