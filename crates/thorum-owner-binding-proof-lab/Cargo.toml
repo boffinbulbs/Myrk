@@ -1,0 +1,32 @@
+[package]
+name = "thorum-owner-binding-proof-lab"
+description = "Private owner key hash binding in hidden membership and nullifier proofs"
+version.workspace = true
+edition = "2024"
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+p3-air = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-challenger = { version = "=0.8.0", default-features = false }
+p3-commit = { version = "=0.8.0", default-features = false }
+p3-dft = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-fri = { version = "=0.8.0", default-features = false }
+p3-keccak-air = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+p3-merkle-tree = { version = "=0.8.0", default-features = false }
+p3-symmetric = { version = "=0.8.0", default-features = false }
+p3-uni-stark = { version = "=0.8.0", default-features = false }
+rand = { version = "=0.10.3", default-features = false, features = ["std_rng"] }
+getrandom = { version = "=0.4.3", default-features = false, features = ["sys_rng"] }
+sha3 = { version = "=0.12.0", default-features = false }
+serde_json = { version = "=1.0.145", default-features = false, features = ["std"] }
+
+[dev-dependencies]
+thorum-core = { path = "../thorum-core" }
+thorum-crypto-lab = { path = "../thorum-crypto-lab" }
+thorum-relation-lab = { path = "../thorum-relation-lab" }

@@ -10,6 +10,7 @@ members = [
     "crates/thorum-hash-proof-lab",
     "crates/thorum-arithmetic-proof-lab",
     "crates/thorum-ntt-proof-lab",
+    "crates/thorum-owner-binding-proof-lab",
 ]
 resolver = "2"
 

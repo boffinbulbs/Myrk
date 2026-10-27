@@ -1,0 +1,16 @@
+{
+  "format": "thorum.owner-binding-proof-lab.source-record.v1",
+  "identity_source": {
+    "revision": "6d29c99992de2163400d737cc1e2459dd54fe390",
+    "path": "crates/thorum-relation-lab/src/note.rs",
+    "function": "key_binding",
+    "source_sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035",
+    "url": "https://github.com/th0rigin/Thorum/blob/6d29c99992de2163400d737cc1e2459dd54fe390/crates/thorum-relation-lab/src/note.rs"
+  },
+  "retained_vectors": {
+    "path": "research/nullifier-proofs/nullifier_vectors.json",
+    "sha256": "09648ca4131bd77ab07592461c89e2fc164d2c76218613f328a5e0a1aba84368"
+  },
+  "primitive_standard": "NIST FIPS 202 SHA3-512",
+  "scope": "The hash preimage is fixed by the existing local note format. The reference generator imports neither Rust nor a proof backend. It does not establish a generated key or signature."
+}

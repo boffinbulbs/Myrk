@@ -23,6 +23,7 @@ The membership component's statement exposes one root, two output commitments, t
 | [SHA3 and SHAKE proof laboratory](docs/hash-proof-lab.md) | Bounded private input hashing and XOF squeezing with public expected outputs, as a primitive foundation without signature verification, owner permission or complete transaction binding |
 | [Exact modular multiplication laboratory](docs/arithmetic-proof-lab.md) | Canonical multiplication modulo 8380417 through bounded integer limbs, with public operand and result harness, without NTT, signature verification or owner permission |
 | [Normal residue NTT laboratory](docs/ntt-proof-lab.md) | Exact forward and inverse polynomial transforms with fixed stages and normalization, in a public polynomial harness without signature verification, private ownership or transaction binding |
+| [Private owner key binding laboratory](docs/owner-binding-proof-lab.md) | Private verification key preimages linked to owner fields in the same hidden note, membership, nullifier and conservation proof, without signature verification or spending permission |
 | [Proof feasibility](docs/proof-feasibility.md) | Pinned backend inspection, isolated component adoption and unresolved complete relation, knowledge soundness and quantum security gates |
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |
@@ -31,13 +32,17 @@ The membership component's statement exposes one root, two output commitments, t
 
 The [recipient capability experiment](docs/recipient-capability.md) lets a sender construct a v2 output using public bindings without receiving the recipient's nullifier secret. Typed recovery checks the original commitment, recipient capability and retained secret. Legacy v1 notes retain their original encodings and sender linkage. These local checks do not establish formal unlinkability, anonymous discovery or a production address format.
 
-The seven isolated proof laboratories adopt exact `p3-* 0.8.0` dependencies. The note, membership, nullifier and hash components use `p3-keccak-air 0.8.0` for constrained permutation computations. Their verifiers take proof bytes and independently supplied typed public statements. The nullifier component constrains the chain, shared asset, output versions, root, output commitments, stable nullifiers and fee, while its 64 byte context remains opaque transcript data. The inspected statistical hiding configurations lack a complete quantum knowledge bound and independent review of the local hash composition. The experimental keyed hash requires analysis with a known secret binding image, sender chosen commitments and reused authority. This adoption does not select a backend for consensus or complete the private payment and confidential stake gates.
+The eight isolated proof laboratories adopt exact `p3-* 0.8.0` dependencies. The note, membership, nullifier, hash and owner binding components use `p3-keccak-air 0.8.0` for constrained permutation computations. Their verifiers take proof bytes and independently supplied typed public statements. The nullifier component constrains the chain, shared asset, output versions, root, output commitments, stable nullifiers and fee, while its 64 byte context remains opaque transcript data. The inspected statistical hiding configurations lack a complete quantum knowledge bound and independent review of the local hash composition. The experimental keyed hash requires analysis with a known secret binding image, sender chosen commitments and reused authority. This adoption does not select a backend for consensus or complete the private payment and confidential stake gates.
 
 The separate hash component publishes mode, lengths and hash output only within its primitive experiment. It is not a ledger payment path. Hashing a public verification key does not grant spending permission. The future complete authorization relation must keep owner keys, owner bindings, `tr`, `mu` and signatures internal while verifying the exact authorized transaction against the same hidden note. Exact modular multiplication and standalone NTT stages are separate foundations. Signature decoding, sampling, complete signature dataflow and signature challenge verification remain unimplemented in the proof.
 
 The arithmetic component publishes operands and result only in an isolated test harness. Its bounded carries and canonical values establish exact multiplication under the ML-DSA modulus rather than an equality only modulo the AIR field. This does not prove a private NTT, signature or owner authorization. Future composition must link the gadget's private operands and results to the actual internal computation without exposing keys, signatures or derived matrices.
 
 The NTT component connects complete forward and inverse stages over canonical normal residues, including both normalization halves and exact bytewise input and output binding. Its polynomials are public. The transform is invertible and provides no polynomial confidentiality or owner permission. Future signature composition must keep coefficients, keys, signatures, hashes and matrices internal and connect them to the same hidden note and authorized transaction. Signed decoding, sampling, hints, norm checks and full challenge verification remain open.
+
+The owner binding component adds two private unframed SHA3-512 key hashes to the existing private note relation. Each exact 2592 byte key is linked to the owner field of the same hidden input opening, while the public vector stays at 520 fields and old note and nullifier identities remain unchanged. Verification keys are public knowledge, so a private hash preimage is not a signature or permission to spend. The same hidden key and valid signature still need complete coupling to the exact authorized transaction.
+
+The separate [transparent signature reference](research/signatures/README.md) retains complete independent ML-DSA-87 verification calculations, official answers, public synthetic authorization signatures and native comparison cases. It exposes its keys, signatures and intermediate values. It is a reference artifact rather than a ninth proof component, a private signature verifier or a payment acceptance path.
 
 ## Research targets
 
@@ -95,6 +100,7 @@ cargo test -p thorum-nullifier-proof-lab --release --locked --offline -- --test-
 cargo test -p thorum-hash-proof-lab --release --locked --offline -- --test-threads=1
 cargo test -p thorum-arithmetic-proof-lab --release --locked --offline -- --test-threads=1
 cargo test -p thorum-ntt-proof-lab --release --locked --offline -- --test-threads=1
+cargo test -p thorum-owner-binding-proof-lab --release --locked --offline -- --test-threads=1
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
 python research/relations/reference_vectors.py --check
@@ -113,11 +119,13 @@ python research/arithmetic-proofs/reference_vectors.py --check
 python research/arithmetic-proofs/profile_check.py
 python research/ntt-proofs/reference_vectors.py --check
 python research/ntt-proofs/profile_check.py
+python research/owner-bindings/reference_vectors.py --check
+python research/owner-bindings/profile_check.py
 ```
 
 Reference model and figure generation commands are documented in [research/emission](research/emission/README.md).
 
-The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot. The [original proof research record](research/proofs/README.md) retains independent integer, trace, public value and hash checks, plus measured costs and sizes for its unbound conservation component. Neither measurement set describes the canonical note, membership, nullifier, hash, arithmetic or NTT relation. The separate [note proof record](research/note-proofs/README.md), [membership proof record](research/membership-proofs/README.md), [nullifier proof record](research/nullifier-proofs/README.md), [hash proof record](research/hash-proofs/README.md), [arithmetic proof record](research/arithmetic-proofs/README.md) and [NTT proof record](research/ntt-proofs/README.md) retain relation cases, exact messages or integer bounds, stage data, hash adapter goldens and reproduction commands, without a performance claim. Sparse tree fixtures are public synthetic relation data, without an anonymity size or linkage experiment.
+The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot. The [original proof research record](research/proofs/README.md) retains independent integer, trace, public value and hash checks, plus measured costs and sizes for its unbound conservation component. Neither measurement set describes the canonical note, membership, nullifier, hash, arithmetic, NTT or owner binding relation. The separate [note proof record](research/note-proofs/README.md), [membership proof record](research/membership-proofs/README.md), [nullifier proof record](research/nullifier-proofs/README.md), [hash proof record](research/hash-proofs/README.md), [arithmetic proof record](research/arithmetic-proofs/README.md), [NTT proof record](research/ntt-proofs/README.md) and [owner binding record](research/owner-bindings/README.md) retain relation cases, exact messages or integer bounds, stage data, hash adapter goldens and reproduction commands, without a performance claim. Sparse tree fixtures are public synthetic relation data, without an anonymity size or linkage experiment.
 
 ## Documentation
 
@@ -146,6 +154,7 @@ The [cryptographic research record](research/crypto/README.md) retains selected 
 23. [SHA3 and SHAKE proof laboratory](docs/hash-proof-lab.md)
 24. [Exact modular multiplication proof laboratory](docs/arithmetic-proof-lab.md)
 25. [Normal residue NTT proof laboratory](docs/ntt-proof-lab.md)
+26. [Private owner key binding proof laboratory](docs/owner-binding-proof-lab.md)
 
 ## Source and research practice
 

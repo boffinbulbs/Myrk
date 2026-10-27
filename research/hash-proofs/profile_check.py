@@ -17,7 +17,7 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "crates/thorum-hash-proof-lab/Cargo.toml"
 PROFILE = "thorum.hash-proof-lab.keccak.sha3-shake.serial.p3-0.8.0.v1"
-WORKSPACE_PACKAGES = 10
+WORKSPACE_PACKAGES = 11
 REGISTRY_PACKAGES = 92
 P3_PACKAGES = 20
 

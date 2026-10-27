@@ -1041,6 +1041,31 @@ dependencies = [
 ]
 
 [[package]]
+name = "thorum-owner-binding-proof-lab"
+version = "0.1.0"
+dependencies = [
+ "getrandom",
+ "p3-air",
+ "p3-baby-bear",
+ "p3-challenger",
+ "p3-commit",
+ "p3-dft",
+ "p3-field",
+ "p3-fri",
+ "p3-keccak-air",
+ "p3-matrix",
+ "p3-merkle-tree",
+ "p3-symmetric",
+ "p3-uni-stark",
+ "rand",
+ "serde_json",
+ "sha3",
+ "thorum-core",
+ "thorum-crypto-lab",
+ "thorum-relation-lab",
+]
+
+[[package]]
 name = "thorum-proof-lab"
 version = "0.1.0"
 dependencies = [

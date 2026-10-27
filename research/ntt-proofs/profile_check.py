@@ -17,7 +17,7 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "crates/thorum-ntt-proof-lab/Cargo.toml"
 PROFILE = "thorum.ntt-proof-lab.modq8380417.radix4096.serial.p3-0.8.0.v1"
-WORKSPACE_PACKAGES = 10
+WORKSPACE_PACKAGES = 11
 REGISTRY_PACKAGES = 92
 P3_PACKAGES = 20
 

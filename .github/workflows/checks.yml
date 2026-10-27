@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-24.04, windows-2022]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -43,6 +43,10 @@ jobs:
         run: rustup run 1.94.1 cargo test -p thorum-arithmetic-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial polynomial transform tests
         run: rustup run 1.94.1 cargo test -p thorum-ntt-proof-lab --release --locked --offline -- --test-threads=1
+      - name: Run adversarial private owner binding tests
+        run: rustup run 1.94.1 cargo test -p thorum-owner-binding-proof-lab --release --locked --offline -- --test-threads=1
+      - name: Check synthetic authorization signatures
+        run: rustup run 1.94.1 cargo run -p thorum-crypto-lab --example signature_reference_fixture --locked --offline -- --check
       - name: Check lints
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
       - name: Build documentation
@@ -87,6 +91,11 @@ jobs:
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/ntt-proofs/profile_check.py
+      - name: Check private owner binding profile
+        if: runner.os == 'Linux'
+        env:
+          RUSTUP_TOOLCHAIN: 1.94.1
+        run: python3 research/owner-bindings/profile_check.py
 
   research:
     name: Reference model
@@ -120,3 +129,7 @@ jobs:
         run: python3 research/arithmetic-proofs/reference_vectors.py --check
       - name: Check authorization transform reference vectors
         run: python3 research/ntt-proofs/reference_vectors.py --check
+      - name: Check private owner binding reference vectors
+        run: python3 research/owner-bindings/reference_vectors.py --check
+      - name: Check complete signature verification references
+        run: python3 research/signatures/reference_vectors.py --check

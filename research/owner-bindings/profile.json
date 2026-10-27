@@ -1,0 +1,44 @@
+{
+  "format": "thorum.owner-binding-proof-lab.reference.v1",
+  "synthetic_fixture": true,
+  "scope": "Private exact public key preimage binding only. Knowledge of a public key or its hash preimage is not owner permission, signature verification, key generation provenance or complete payment authorization.",
+  "key_length": 2592,
+  "owner_hash_unframed": true,
+  "owner_preimage_length": 2592,
+  "owner_padded_length": 2664,
+  "owner_absorb_blocks": 37,
+  "owner_opening_byte_range": [
+    141,
+    205
+  ],
+  "owner_outer_message_byte_range": [
+    187,
+    251
+  ],
+  "owner_cross_block_bytes": [
+    215,
+    216
+  ],
+  "owner_cross_block_opening_bytes": [
+    169,
+    170
+  ],
+  "combined_hash_count": 76,
+  "combined_absorb_blocks": 308,
+  "real_round_rows": 7392,
+  "selected_round_states": 2184,
+  "depth": 32,
+  "public_vector_length": 520,
+  "case_count": 85,
+  "valid_case_count": 46,
+  "fixed_shape_rejection_count": 3,
+  "hashlib_cross_checks": 222,
+  "original_nullifier_case_count": 64,
+  "original_nullifier_valid_count": 42,
+  "original_nullifier_vectors_sha256": "09648ca4131bd77ab07592461c89e2fc164d2c76218613f328a5e0a1aba84368",
+  "rate_bytes": 72,
+  "capacity_bits": 1024,
+  "rounds": 24,
+  "state_lane_index": "x + 5*y",
+  "state_lane_byte_order": "little endian"
+}

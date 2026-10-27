@@ -1,0 +1,50 @@
+{
+  "format": "thorum.signature-reference.source-record.v1",
+  "standards": [
+    {
+      "name": "NIST FIPS 204",
+      "publication_date": "2024-08-13",
+      "record": "https://csrc.nist.gov/pubs/fips/204/final",
+      "publication": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf",
+      "potential_updates": "https://csrc.nist.gov/files/pubs/fips/204/final/docs/fips-204-potential-updates.xlsx",
+      "potential_updates_last_updated": "2026-07-31",
+      "potential_errata_sha256": "5bc93ce63bc647e6d1d456cb2d3a171426c15aca4a7a0e0edd40d08b7a34c793",
+      "potential_errata_review_scope": "Potential updates, not a replacement standard. Reviewed mu followed by encoded w1, distinct M prime, odd root ordering, w1 coefficient bound 15 and normal residue arithmetic independent of Montgomery representation."
+    },
+    {
+      "name": "NIST FIPS 202",
+      "record": "https://csrc.nist.gov/pubs/fips/202/final"
+    }
+  ],
+  "official_vectors": {
+    "source": "National Institute of Standards and Technology ACVP sample data",
+    "upstream_commit": "975de31eb83d87039ec88934fdc47d8c312b892d",
+    "retained_path": "research/crypto/vectors/selected.json",
+    "retained_sha256": "fe61306ae7bafad8b36d2ef8cac9cf12ce3706afe12171b8e7b27d97edba7de4",
+    "upstream_notice": "research/crypto/vectors/UPSTREAM-NOTICE.txt",
+    "changes": "Two original verification cases are selected without changing cryptographic values. Additional synthetic cases and diagnostic intermediate values were created on 2026-10-27."
+  },
+  "native_comparison": {
+    "package": "ml-dsa",
+    "version": "0.1.1",
+    "vcs_commit": "f75d5b829948988f18d9463f286805fb9410bcdd",
+    "registry_archive_sha256": "add6b9d92e496f16f4526d68ff29da1483aba4b119baeab8bed3b9e3544a6f3d",
+    "source_url": "https://github.com/RustCrypto/signatures/tree/f75d5b829948988f18d9463f286805fb9410bcdd/ml-dsa",
+    "verification_source_sha256": "966ac3d6f20db9c200755302fce29826211eed2a03a99a7c214fc12cad678eca",
+    "ntt_source_sha256": "6461fa2933c816906a9baae09df8b6f989a2e9e058fd7607cdc7c8951100af06",
+    "module_lattice_version": "0.2.3",
+    "module_lattice_vcs_commit": "ac34c85db783520bda5a8fbe8e7b694c7c72d6fe"
+  },
+  "public_inputs": {
+    "synthetic_authorization_sha256": "61959ca6b2d0e8ea88c5313798266915ebed1589c4e6428001d79d559f019f22",
+    "application_inputs_path": "research/hash-proofs/application_inputs.json",
+    "application_inputs_sha256": "6af4c71d53401bbd373399bbf7292ac0cd29c174040e9f5b9dcb56589dfb71ad",
+    "seed_source_case": "ml_dsa_87_keygen",
+    "seed_scope": "The original seed and the one byte changed alternate seed are known public fixtures and must never be operational signing authority."
+  },
+  "independent_verifier": {
+    "path": "research/signatures/verify_reference.py",
+    "sha256": "05ba244ecb91c3eb0f1c51a7b42b92f6ea49d5bca54fde9c25881a5ce47b2406",
+    "scope": "Python integers and standard library SHAKE. No Rust implementation or proof backend is imported."
+  }
+}
