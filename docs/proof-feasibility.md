@@ -154,6 +154,8 @@ The [compact transform module](compact-ntt.md) adds a separate eight slot regist
 
 The hash crate's separate [matrix sampler profile](matrix-sampling.md) connects SHAKE128 state and exact rejection sampling in one AIR. It requires terminal completion within its fixed six block capacity. The public polynomial interface and unsupported resource boundary are experimental. Complete standard support, private signature composition and a deterministic production resource policy remain open gates.
 
+The separate [sparse challenge profile](challenge-sampling.md) connects SHAKE256 state, sign bits, exact index acceptance and read before replacement. Its actual proof tests include locally Boolean weight preserving false state transitions and altered hash continuation. The public diagnostic does not connect the challenge seed to signature decoding or reconstructed final challenge equality. Private same witness composition remains required.
+
 The note, membership, nullifier, hash, arithmetic, NTT and owner binding components' independent references, fixed profile guards and verification corpora are reproducible with:
 
 ```text

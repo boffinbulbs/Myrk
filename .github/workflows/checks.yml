@@ -147,3 +147,7 @@ jobs:
         run: python3 research/matrix-sampling/reference_vectors.py --check
       - name: Check connected matrix sampling profile
         run: python3 research/matrix-sampling/profile_check.py
+      - name: Check connected sparse challenge references
+        run: python3 research/challenge-sampling/reference_vectors.py --check
+      - name: Check connected sparse challenge profile
+        run: python3 research/challenge-sampling/profile_check.py

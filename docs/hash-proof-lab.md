@@ -2,6 +2,8 @@
 
 The crate also contains a separately profiled [connected matrix sampler](matrix-sampling.md). It binds one private seed to six complete SHAKE128 blocks, exact rejected candidates and ordered canonical outputs in the same AIR. Its bounded public polynomial diagnostic supplies no key anonymity, complete signature permission or production resource policy. The original primitive profile below retains its existing parameters.
 
+The separate [sparse challenge sampler](challenge-sampling.md) connects two complete SHAKE256 blocks to exact index rejection, sign consumption and read before replacement. Its diagnostic public polynomial and fixed capacity remain separate from full private signature verification. Both sampler modules preserve the original primitive interface and profile below.
+
 ## Authorization foundation boundary
 
 The [hash proof component](../crates/thorum-hash-proof-lab/src/lib.rs) constrains unframed SHA3-512, SHAKE128 and SHAKE256 over a bounded private byte input. It includes exact absorption, padding, complete state transitions and extended output squeezing in one hiding STARK. Its expected public statement selects the mode, input length, output length, output bytes and context.

@@ -5,6 +5,7 @@
 
 #[cfg(test)]
 mod causal;
+pub mod challenge_sampler;
 mod hash;
 pub mod matrix_sampler;
 #[cfg(test)]

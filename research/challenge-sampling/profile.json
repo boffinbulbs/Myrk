@@ -1,0 +1,36 @@
+{
+  "scope": "Bounded sparse challenge diagnostic profile without complete signature permission or full standard completeness",
+  "profile": "thorum.challenge-sampler-proof-lab.shake256.sampleinball.two-blocks.serial.p3-0.8.0.v1",
+  "height": 512,
+  "width": 6598,
+  "actual_degree": 3,
+  "public_values": 1088,
+  "rate_bytes": 136,
+  "output_blocks": 2,
+  "candidate_capacity": 264,
+  "required_acceptances": 60,
+  "stored_degree_bits": 10,
+  "quotient_chunks": 8,
+  "fri_rounds": 10,
+  "queries": 64,
+  "log_blowup": 3,
+  "extension_degree": 4,
+  "random_codewords": 4,
+  "row_salts": 16,
+  "grinding_bits": 0,
+  "closed_transport": {
+    "bytes": 16777216,
+    "tokens": 2000000,
+    "items": 16384,
+    "depth": 24,
+    "string_bytes": 64,
+    "integer_digits": 20,
+    "merkle_siblings": 832
+  },
+  "analytical_arrays": {
+    "raw_trace_bytes": 13512704,
+    "randomized_trace_bytes": 27041792,
+    "main_lde_payload_bytes": 216334336,
+    "scope": "Field array payload dimensions without measured peak memory or runtime"
+  }
+}
