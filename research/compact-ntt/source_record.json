@@ -1,6 +1,6 @@
 {
   "source": "Existing retained normal residue transform references and pinned backend version0.8.0.",
-  "lock_sha256": "9e30bca185acf840c38f0e11469030aa1639cb7f0fe66223b81b8703fa4bb17e",
+  "lock_sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
   "references": {
     "ntt_vectors.json": "0939c11dc21f8ca980a5b4df34dc5d0f2d3fffe4214799decf20afea0a983a52",
     "stage_vectors.json": "7f866b6b5e9605d22f8dd2dafe8b33f8be81816098255ffc0bedef3e197f3e6a",
