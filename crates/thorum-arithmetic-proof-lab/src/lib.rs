@@ -1,5 +1,5 @@
-//! Isolated hiding proof harness for exact multiplication modulo 8380417.
-//! Signature verification, NTT and spending authorization are not proved.
+//! Exact modular multiplication, coefficient decoding and hint constraints.
+//! The multiplication proof is isolated from complete spending authorization.
 
 #![forbid(unsafe_code)]
 
@@ -7,7 +7,9 @@ mod air;
 #[cfg(test)]
 mod causal;
 mod hash;
+pub mod hints;
 pub mod mul;
+pub mod packing;
 #[cfg(test)]
 mod reference;
 #[cfg(test)]

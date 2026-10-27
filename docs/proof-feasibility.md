@@ -148,6 +148,8 @@ The experimental dependency graph also retains `paste 1.0.15`, covered by inform
 
 The implementation currently includes primitive integration, transparent relation checks, an unbound hiding conservation proof, canonical note conservation, hidden depth 32 membership with internal input distinctness, stable nullifiers linked to the same private input authority, standalone SHA3 or SHAKE constraints, exact canonical modular multiplication, normal residue NTT execution and private owner key preimage binding. Both full private payment and confidential stake feasibility remain open under these conditions. No fallback verifier accepts an absent or placeholder proof.
 
+The reusable [coefficient and hint constraints](coefficient-constraints.md) cover canonical windows, strict response norms, signed conversion and exact hint application. A test only synthetic hint harness exercises hiding proof construction and rejection under a separate fixed domain. It supplies no ledger authorization route. Complete same witness composition, full sampling and signature verification remain open gates.
+
 The note, membership, nullifier, hash, arithmetic, NTT and owner binding components' independent references, fixed profile guards and verification corpora are reproducible with:
 
 ```text

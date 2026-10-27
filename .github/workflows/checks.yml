@@ -133,3 +133,9 @@ jobs:
         run: python3 research/owner-bindings/reference_vectors.py --check
       - name: Check complete signature verification references
         run: python3 research/signatures/reference_vectors.py --check
+      - name: Check coefficient rounding reference vectors
+        run: python3 research/coefficient-constraints/reference_vectors.py --check
+      - name: Check coefficient packing reference vectors
+        run: python3 research/coefficient-constraints/packing_vectors.py --check
+      - name: Check coefficient constraint profile
+        run: python3 research/coefficient-constraints/profile_check.py

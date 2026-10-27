@@ -79,6 +79,8 @@ The reusable `mul` constraints expose reconstructed canonical values for future 
 
 The evaluator requires `AirBuilder<F = BabyBear>`. Its no wrap bounds use the exact prime 2013265921 and do not establish portability to arbitrary smaller fields.
 
+The same crate exposes reusable [coefficient and hint constraints](coefficient-constraints.md). `packing` constrains five byte windows, strict response norms and canonical signed conversion. `hints` constrains exact decomposition, strict low part signs and hint application. Their returned expressions need connection to the same hidden key, signature and reconstruction in a complete verifier. A test only hiding proof harness exercises hint arithmetic, false proof rejection and canonical transport with public synthetic diagnostics. It adds no production signature acceptance interface and leaves the multiplication profile below unchanged.
+
 ## Proof profile
 
 The profile is `thorum.arithmetic-proof-lab.modq8380417.mul.radix4096.serial.p3-0.8.0.v1`. Existing proof profiles and note identities remain unchanged.
@@ -122,6 +124,6 @@ Reference classifications, actual AIR comparison and raw invalid proof rejection
 
 Separate tests distinguish the reusable evaluator's row local equations from the wrapper's constant trace. A future composed program must supply its own correct dataflow. The primitive operands and result are public in this harness, and the quotient is mathematically recoverable from them. This harness therefore supplies arithmetic evidence rather than a private ownership capability.
 
-Remaining private authorization work includes signed coefficient conversion, exact NTT and inverse NTT dataflow, reductions, matrix and challenge sampling, canonical key and signature decoding, strict norm bounds, hints, `UseHint`, `w1` encoding and final challenge equality. Cached host values cannot replace constrained derivations. A valid owner authorization must bind the same complete transaction, including its root, nullifiers, outputs, delivery bytes, fee and authenticated context.
+Remaining private authorization work includes complete key and signature parsing, matrix and challenge sampling, connected transform and reconstruction dataflow, `w1` encoding and final challenge equality. The coefficient window and hint evaluators need connection to that same computation. Cached host values cannot replace constrained derivations. A valid owner authorization must bind the same complete transaction, including its root, nullifiers, outputs, delivery bytes, fee and authenticated context.
 
 Global spent state, eligible roots, authenticated recipient delivery, recovery, confidential staking and metadata evaluation retain their existing gates. The corpus contains deterministic public synthetic fixtures rather than entropy evidence. No new timing, peak memory, throughput, independent audit or quantum security result is asserted. Historical measurements retain their original versions and workloads.
