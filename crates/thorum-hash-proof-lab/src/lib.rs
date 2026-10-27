@@ -6,6 +6,7 @@
 #[cfg(test)]
 mod causal;
 mod hash;
+pub mod matrix_sampler;
 #[cfg(test)]
 mod reference;
 mod sponge;

@@ -1,0 +1,36 @@
+{
+  "scope": "Bounded matrix sampling diagnostic profile, without complete signature permission or standard completeness",
+  "profile": "thorum.matrix-sampler-proof-lab.shake128.rejnttpoly.six-blocks.serial.p3-0.8.0.v1",
+  "height": 512,
+  "width": 7276,
+  "actual_degree": 3,
+  "public_values": 1090,
+  "rate_bytes": 168,
+  "output_blocks": 6,
+  "candidate_capacity": 336,
+  "required_acceptances": 256,
+  "stored_degree_bits": 10,
+  "quotient_chunks": 8,
+  "fri_rounds": 10,
+  "queries": 64,
+  "log_blowup": 3,
+  "extension_degree": 4,
+  "random_codewords": 4,
+  "row_salts": 16,
+  "grinding_bits": 0,
+  "closed_transport": {
+    "bytes": 16777216,
+    "tokens": 2000000,
+    "items": 16384,
+    "depth": 24,
+    "string_bytes": 64,
+    "integer_digits": 20,
+    "merkle_siblings": 832
+  },
+  "analytical_arrays": {
+    "raw_trace_bytes": 14901248,
+    "randomized_trace_bytes": 29818880,
+    "main_lde_payload_bytes": 238551040,
+    "scope": "Field array payload dimensions only, without measured peak memory or runtime"
+  }
+}

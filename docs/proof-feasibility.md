@@ -152,6 +152,8 @@ The reusable [coefficient and hint constraints](coefficient-constraints.md) cove
 
 The [compact transform module](compact-ntt.md) adds a separate eight slot register program within the existing NTT crate. Its shared typed inputs, canonical write induction and full holds are constrained directly. The 256 by 2921 layout and analytical array dimensions are component evidence, without measured full signature feasibility or a private initialization policy. The older transform profile and historical records remain unchanged.
 
+The hash crate's separate [matrix sampler profile](matrix-sampling.md) connects SHAKE128 state and exact rejection sampling in one AIR. It requires terminal completion within its fixed six block capacity. The public polynomial interface and unsupported resource boundary are experimental. Complete standard support, private signature composition and a deterministic production resource policy remain open gates.
+
 The note, membership, nullifier, hash, arithmetic, NTT and owner binding components' independent references, fixed profile guards and verification corpora are reproducible with:
 
 ```text
