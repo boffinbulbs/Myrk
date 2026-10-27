@@ -941,6 +941,7 @@ dependencies = [
  "serde_json",
  "sha3",
  "shake",
+ "thorum-arithmetic-proof-lab",
 ]
 
 [[package]]

@@ -13,7 +13,7 @@ import sys
 BASE = Path(__file__).resolve().parent
 ROOT = BASE.parents[1]
 FINGERPRINTS = {
-    "crates/thorum-hash-proof-lab/src/challenge_sampler.rs": "96497daa81422e8ddefeedc262d9383981cee7e36bc10f59eea97dc8594989f2",
+    "crates/thorum-hash-proof-lab/src/challenge_sampler.rs": "30a03c087231e22447c75ea890832ae64f26ea20e9dc07c4b4a724b143bff77c",
     "crates/thorum-hash-proof-lab/src/challenge_sampler/air.rs": "8cf10b38aaecf618cd0ef8f4aa3fddaa0dd7cab48e0cf7b302550beaa8ec7371",
     "crates/thorum-hash-proof-lab/src/challenge_sampler/hash.rs": "8a5e2df607b7606bd3e0bc042d70cfc422b23440201d78e6cececb3fefc67ed1",
     "crates/thorum-hash-proof-lab/src/challenge_sampler/proof.rs": "deeac0b7a9f6b9a9af5ac98dbe150cdcb1f4d2cdb00772869a499cde18346a3a",

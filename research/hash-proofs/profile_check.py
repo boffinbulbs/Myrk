@@ -36,6 +36,11 @@ def main() -> int:
     try:
         manifest = tomllib.loads(MANIFEST.read_text(encoding="utf-8"))
         dependencies = manifest["dependencies"]
+        require(dependencies.get("thorum-arithmetic-proof-lab") == {
+            "path": "../thorum-arithmetic-proof-lab", "default-features": False,
+        }, "The joint signature response gadget requires the exact retained workspace dependency.")
+        dependencies = {name: value for name, value in dependencies.items()
+                        if name != "thorum-arithmetic-proof-lab"}
         expected_p3 = baseline.P3_DIRECT | {"p3-keccak-air"}
         expected = {name: ("0.8.0", set()) for name in expected_p3} | baseline.WRAPPER
         require(set(dependencies) == set(expected), "The direct hash dependency set changed.")
@@ -172,6 +177,14 @@ def main() -> int:
             require(len(nodes) == 1, "Expected one resolved hash proof package.")
             direct = {dependency["name"].replace("_", "-"): packages[dependency["pkg"]]
                       for dependency in nodes[0]["deps"]}
+            arithmetic = direct.pop("thorum-arithmetic-proof-lab", None)
+            workspace_version = tomllib.loads((ROOT / "Cargo.toml").read_text(encoding="utf-8"))["workspace"]["package"]["version"]
+            require(arithmetic is not None and arithmetic["source"] is None
+                    and arithmetic["id"] in metadata["workspace_members"]
+                    and arithmetic["version"] == workspace_version
+                    and Path(arithmetic["manifest_path"]).resolve()
+                    == (ROOT / "crates/thorum-arithmetic-proof-lab/Cargo.toml").resolve(),
+                    "The response gadget must resolve to the exact existing workspace crate.")
             expected_resolved = expected | {"shake": ("0.1.0", set())}
             require(set(direct) == {name.replace("_", "-") for name in expected_resolved},
                     "The resolved direct hash dependency set changed.")

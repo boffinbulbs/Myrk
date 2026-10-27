@@ -9,6 +9,7 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
+thorum-arithmetic-proof-lab = { path = "../thorum-arithmetic-proof-lab", default-features = false }
 p3-air = { version = "=0.8.0", default-features = false }
 p3-baby-bear = { version = "=0.8.0", default-features = false }
 p3-challenger = { version = "=0.8.0", default-features = false }

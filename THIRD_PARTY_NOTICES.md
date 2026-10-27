@@ -27,7 +27,7 @@ Generation reproduces the inventory, this notice and the copied license artifact
 
 ## Dated advisory source check
 
-On 2026-10-26, a public OSV query batch for all 92 exact resolved registry versions returned 1 matching advisory record. The recorded response covers the current lock file. This is a dated database response and upstream source review, not a security audit or a guarantee of absent vulnerabilities. Inventory generation and check mode do not contact OSV or refresh this snapshot.
+On 2026-10-27, a public OSV query batch for all 92 exact resolved registry versions returned 1 matching advisory record. The recorded response covers the current lock file. This is a dated database response and upstream source review, not a security audit or a guarantee of absent vulnerabilities. Inventory generation and check mode do not contact OSV or refresh this snapshot.
 
 | Package | Version | Record | Classification | Patched versions |
 |---|---|---|---|---|
@@ -37,7 +37,7 @@ The paste record is an informational maintenance notice, with no patched version
 
 | Snapshot field | Value |
 |---|---|
-| Reviewed Cargo.lock SHA256 | `9e30bca185acf840c38f0e11469030aa1639cb7f0fe66223b81b8703fa4bb17e` |
+| Reviewed Cargo.lock SHA256 | `79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5` |
 | Raw OSV response body SHA256 | `860fa05d158bf8441deeef59b79900ce68b7b170926a5bb3adbc54818977b748` |
 | Raw OSV response body length | 366 bytes |
 | Source | [OSV query batch API](https://google.github.io/osv.dev/post-v1-querybatch/) |

@@ -151,3 +151,7 @@ jobs:
         run: python3 research/challenge-sampling/reference_vectors.py --check
       - name: Check connected sparse challenge profile
         run: python3 research/challenge-sampling/profile_check.py
+      - name: Check same signature challenge references
+        run: python3 research/signature-challenge/reference_vectors.py --check
+      - name: Check same signature challenge profile
+        run: python3 research/signature-challenge/profile_check.py

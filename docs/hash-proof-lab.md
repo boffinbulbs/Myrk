@@ -4,6 +4,8 @@ The crate also contains a separately profiled [connected matrix sampler](matrix-
 
 The separate [sparse challenge sampler](challenge-sampling.md) connects two complete SHAKE256 blocks to exact index rejection, sign consumption and read before replacement. Its diagnostic public polynomial and fixed capacity remain separate from full private signature verification. Both sampler modules preserve the original primitive interface and profile below.
 
+The challenge module's [joint signature child](signature-challenge.md) connects the same private represented signature to canonical response and hint decoding. It reuses the actual parent AIR and arithmetic response gadget, without a host equality callback. It has a distinct proof namespace and wider closed transport. Full private key ownership, signature arithmetic and exact transaction authorization remain unfinished.
+
 ## Authorization foundation boundary
 
 The [hash proof component](../crates/thorum-hash-proof-lab/src/lib.rs) constrains unframed SHA3-512, SHAKE128 and SHAKE256 over a bounded private byte input. It includes exact absorption, padding, complete state transitions and extended output squeezing in one hiding STARK. Its expected public statement selects the mode, input length, output length, output bytes and context.

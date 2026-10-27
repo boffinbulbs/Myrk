@@ -1,0 +1,36 @@
+{
+  "scope": "Same represented signature canonicality and sparse challenge without full signature validity or spending permission",
+  "profile": "thorum.signature-challenge-proof-lab.mldsa87.canonical-sampleinball.serial.p3-0.8.0.v1",
+  "height": 512,
+  "width": 16650,
+  "actual_degree": 3,
+  "public_values": 1088,
+  "rate_bytes": 136,
+  "output_blocks": 2,
+  "candidate_capacity": 264,
+  "required_acceptances": 60,
+  "stored_degree_bits": 10,
+  "quotient_chunks": 8,
+  "fri_rounds": 10,
+  "queries": 64,
+  "log_blowup": 3,
+  "extension_degree": 4,
+  "random_codewords": 4,
+  "row_salts": 16,
+  "grinding_bits": 0,
+  "closed_transport": {
+    "bytes": 16777216,
+    "tokens": 2000000,
+    "items": 32768,
+    "depth": 24,
+    "string_bytes": 64,
+    "integer_digits": 20,
+    "merkle_siblings": 832
+  },
+  "analytical_arrays": {
+    "raw_trace_bytes": 34099200,
+    "randomized_trace_bytes": 68214784,
+    "main_lde_payload_bytes": 545718272,
+    "scope": "Field array payload dimensions without measured peak memory or runtime"
+  }
+}

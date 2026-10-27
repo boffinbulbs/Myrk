@@ -59,10 +59,14 @@ P3_NOTICE_FILES = {
 
 # This is a dated source check. Generation does not query an advisory service.
 ADVISORY_REVIEW = {
-    "checked_on": "2026-10-26",
+    "checked_on": "2026-10-27",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "9e30bca185acf840c38f0e11469030aa1639cb7f0fe66223b81b8703fa4bb17e",
+    "cargo_lock_sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
     "package_queries": 92,
+    "request_file": "research/crypto/advisories/2026-10-27-request.json",
+    "request_body_bytes": 6877,
+    "request_body_sha256": "e7f378b12464590b22c4d1b70f50bdf70eae362875cb959f4a82a69eb902f4ec",
+    "response_file": "research/crypto/advisories/2026-10-27-response.json",
     "matching_advisories": 1,
     "response_body_bytes": 366,
     "response_body_sha256": "860fa05d158bf8441deeef59b79900ce68b7b170926a5bb3adbc54818977b748",
@@ -360,11 +364,31 @@ def build_inventory(lock_bytes: bytes, data: dict) -> tuple[dict, dict[str, byte
         raise InventoryError("Cargo metadata omits locked registry packages")
     lock_hash = sha256(lock_bytes)
     review = dict(ADVISORY_REVIEW)
+    request_bytes = (ROOT / review["request_file"]).read_bytes()
+    response_bytes = (ROOT / review["response_file"]).read_bytes()
+    for role, contents in (("request", request_bytes), ("response", response_bytes)):
+        if len(contents) != review[f"{role}_body_bytes"] or sha256(contents) != review[f"{role}_body_sha256"]:
+            raise InventoryError(f"The retained advisory {role} bytes differ from the dated record")
+    queries = json.loads(request_bytes)["queries"]
+    responses = json.loads(response_bytes)["results"]
+    query_pairs = [(query["package"]["name"], query["version"]) for query in queries]
+    if (len(queries) != review["package_queries"] or len(set(query_pairs)) != len(queries)
+            or any(query["package"]["ecosystem"] != "crates.io" for query in queries)
+            or len(responses) != len(queries)):
+        raise InventoryError("The retained advisory request and response coverage differs")
+    actual_matches = {(name, version, advisory["id"])
+                      for (name, version), response in zip(query_pairs, responses)
+                      for advisory in response.get("vulns", [])}
+    recorded_matches = {(match["package"], match["version"], match["id"])
+                        for match in review["matches"]}
+    if actual_matches != recorded_matches:
+        raise InventoryError("The retained advisory response differs from its matching records")
     review["matches_current_lock"] = lock_hash == review["cargo_lock_sha256"]
     if review["matching_advisories"] != len(review["matches"]):
         raise InventoryError("The recorded advisory count differs from its matching records")
     if review["matches_current_lock"] and (
         review["package_queries"] != len(locked)
+        or set(query_pairs) != locked.keys()
         or any((match["package"], match["version"]) not in locked for match in review["matches"])
     ):
         raise InventoryError("The recorded advisory package coverage differs from this lock")

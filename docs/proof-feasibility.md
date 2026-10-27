@@ -156,6 +156,8 @@ The hash crate's separate [matrix sampler profile](matrix-sampling.md) connects 
 
 The separate [sparse challenge profile](challenge-sampling.md) connects SHAKE256 state, sign bits, exact index acceptance and read before replacement. Its actual proof tests include locally Boolean weight preserving false state transitions and altered hash continuation. The public diagnostic does not connect the challenge seed to signature decoding or reconstructed final challenge equality. Private same witness composition remains required.
 
+The [joint signature profile](signature-challenge.md) now connects canonical response and hint decoding to the same private seed and tail in one AIR. Its private registers and complete bank holds reject source splices, while the deliberately joined canonical string remains an accepted scope case. It does not establish the full signature equation, hidden key identity, exact transaction mapping or a production resource policy. Its wider transport and explicit existing workspace dependency have separate source and dependency guards.
+
 The note, membership, nullifier, hash, arithmetic, NTT and owner binding components' independent references, fixed profile guards and verification corpora are reproducible with:
 
 ```text

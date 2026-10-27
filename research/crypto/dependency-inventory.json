@@ -1,10 +1,14 @@
 {
-  "cargo_lock_sha256": "9e30bca185acf840c38f0e11469030aa1639cb7f0fe66223b81b8703fa4bb17e",
+  "cargo_lock_sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
   "advisory_review": {
-    "checked_on": "2026-10-26",
+    "checked_on": "2026-10-27",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "9e30bca185acf840c38f0e11469030aa1639cb7f0fe66223b81b8703fa4bb17e",
+    "cargo_lock_sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
     "package_queries": 92,
+    "request_file": "research/crypto/advisories/2026-10-27-request.json",
+    "request_body_bytes": 6877,
+    "request_body_sha256": "e7f378b12464590b22c4d1b70f50bdf70eae362875cb959f4a82a69eb902f4ec",
+    "response_file": "research/crypto/advisories/2026-10-27-response.json",
     "matching_advisories": 1,
     "response_body_bytes": 366,
     "response_body_sha256": "860fa05d158bf8441deeef59b79900ce68b7b170926a5bb3adbc54818977b748",

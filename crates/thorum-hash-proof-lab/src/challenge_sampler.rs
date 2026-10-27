@@ -6,6 +6,7 @@
 mod air;
 mod hash;
 mod proof;
+pub mod signature;
 pub use proof::{MAX_PROOF_BYTES, PROFILE, prove_challenge_sampler, verify_challenge_sampler};
 #[cfg(test)]
 mod tests;
