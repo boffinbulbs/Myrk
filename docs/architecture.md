@@ -4,6 +4,8 @@
 
 Thorum uses one ledger and one set of native conservation and authorization rules. Payment, asset, application, and staking transitions must share compatible ownership, nullifier, commitment, and rollback semantics.
 
+The implementation targets a custom chain with reviewed cryptographic dependencies. [Node operation and service integration](node-integration.md) defines ordinary validation independently from mining, staking and wallet authority. Server and exchange interfaces remain subject to the same private relation and consensus gates.
+
 | Component | Responsibility | Evidence required |
 |---|---|---|
 | Wallet and executor | Discover notes, construct witnesses, execute private application logic, encrypt recovery data | Local reconstruction, restricted key handling, recovery and leakage tests |

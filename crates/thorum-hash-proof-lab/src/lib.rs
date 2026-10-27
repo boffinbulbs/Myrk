@@ -7,6 +7,7 @@
 mod causal;
 pub mod challenge_sampler;
 mod hash;
+pub mod key_source;
 pub mod matrix_sampler;
 #[cfg(test)]
 mod reference;

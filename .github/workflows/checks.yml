@@ -155,3 +155,7 @@ jobs:
         run: python3 research/signature-challenge/reference_vectors.py --check
       - name: Check same signature challenge profile
         run: python3 research/signature-challenge/profile_check.py
+      - name: Check private key source references
+        run: python3 research/key-source/reference_vectors.py --check
+      - name: Check private key source profile
+        run: python3 research/key-source/profile_check.py --check

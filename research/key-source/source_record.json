@@ -1,0 +1,31 @@
+{
+  "public_input_revision": "061a4ba5a930f8031ea39aa93595311305d07bd8",
+  "previous_input_revision": "a586c32004f9ef499a855caf4c9574976ad6bd25",
+  "revision_scope": "The unchanged retained public inputs and mathematical references exist at both revisions. No public revision of this new key source implementation is asserted.",
+  "scope": "Independent standard-library key decoding and hash reference calculations without importing Rust trace or witness builders",
+  "source_sha256": {
+    "research/signatures/synthetic_authorization.json": "61959ca6b2d0e8ea88c5313798266915ebed1589c4e6428001d79d559f019f22",
+    "research/signatures/verify_reference.py": "05ba244ecb91c3eb0f1c51a7b42b92f6ea49d5bca54fde9c25881a5ce47b2406",
+    "research/hash-proofs/reference_vectors.py": "2ad944ceccf50ad1e088a3e6626641c23519e2bd3d642e3f90980d6212dac877",
+    "research/owner-bindings/reference_vectors.py": "e13274ae1856a530fa23cd5cb76cb4f2172bc15d1a54e6bd1a05ded8d1524d4e",
+    "research/coefficient-constraints/packing_vectors.py": "d9e4781aec66ce2b18e5e4409c630bede350ff914b09450ca4ac67600faa717a"
+  },
+  "generator_sha256": "91cb13adaa4e6925c1ed8c8adbfb4560f1d9dbc2b0819b024c25c03b40b93c54",
+  "unique_key_encodings": 13,
+  "ordered_two_slot_cases": 14,
+  "t1_coefficients_per_key": 2048,
+  "sponges_per_key": 57,
+  "rounds_per_key": 1368,
+  "full_sponge_records": 741,
+  "full_round_records": 17784,
+  "logical_schedule_rows": 4096,
+  "hash_faults": 8,
+  "source_lifetime_faults": 9,
+  "independent_zero_dummy_rounds": 24,
+  "compiler_run": false,
+  "prover_run": false,
+  "air_acceptance_claim": false,
+  "adapter_profile": "thorum.private-key-source-proof-lab.mldsa87.two-slots.four-rounds.serial.p3-0.8.0.v1",
+  "adapter_sha3_goldens": 3,
+  "interface_requirement": "Only an opaque 64 byte context may be public. All key-derived outputs here are synthetic reference expectations for private banks, not public protocol tags"
+}

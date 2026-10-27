@@ -131,7 +131,11 @@ The [cryptographic research record](research/crypto/README.md) retains selected 
 
 ## Documentation
 
+The [private verification key source](docs/key-source.md) connects two hidden key encodings to their retained verification inputs. It remains separate from complete signature verification and owner permission.
+
 The [development stages](docs/delivery-roadmap.md) separate the core chain and private wallet from later Safe and fast payment milestones. The [protocol safety and verification roadmap](docs/protocol-extensions.md) covers the private Safe, private migration, compact chain history, protected payment capacity, reward maturity and testnet timing targets. These requirements extend the current implementation milestones and remain subject to their cryptographic and consensus gates.
+
+The [node and service architecture](docs/node-integration.md) includes regular validating nodes, optional mining and stake duties, server operation and private exchange integration requirements.
 
 1. [Architecture](docs/architecture.md)
 2. [Private transaction relation](docs/private-transactions.md)

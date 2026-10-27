@@ -1,0 +1,43 @@
+{
+  "scope": "Two ordered private key sources, canonical t1 decoding and retained private hashes without note ownership, signature verification or transaction authorization",
+  "profile": "thorum.private-key-source-proof-lab.mldsa87.two-slots.four-rounds.serial.p3-0.8.0.v1",
+  "height": 1024,
+  "width": 20168,
+  "actual_degree": 4,
+  "public_values": 64,
+  "public_scope": "Opaque context only, without an AIR canonical transaction mapping",
+  "key_bytes": 2592,
+  "input_slots": 2,
+  "keccak_rounds_per_row": 4,
+  "meaningful_permutations": 114,
+  "owner_permutations_per_key": 37,
+  "tr_permutations_per_key": 20,
+  "t1_coefficients_per_key": 2048,
+  "t1_window_events_per_key": 256,
+  "rows_per_key": 342,
+  "terminal_first_row": 684,
+  "stored_degree_bits": 11,
+  "quotient_chunks": 8,
+  "fri_rounds": 11,
+  "queries": 64,
+  "log_blowup": 3,
+  "extension_degree": 4,
+  "random_codewords": 4,
+  "row_salts": 16,
+  "grinding_bits": 0,
+  "closed_transport": {
+    "bytes": 25165824,
+    "tokens": 2000000,
+    "items": 32768,
+    "depth": 24,
+    "string_bytes": 64,
+    "integer_digits": 20,
+    "merkle_siblings": 896
+  },
+  "analytical_arrays": {
+    "raw_trace_bytes": 82608128,
+    "randomized_trace_bytes": 165249024,
+    "main_lde_payload_bytes": 1321992192,
+    "scope": "Array dimensions only, without a process memory or runtime measurement"
+  }
+}
