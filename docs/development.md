@@ -14,6 +14,8 @@ Reusable [coefficient and hint evaluators](coefficient-constraints.md) add canon
 
 The [NTT component](ntt-proof-lab.md) adds connected forward and inverse stages over canonical normal residues, including exact reduction and both normalization halves. Its public polynomial harness is invertible and supplies no coefficient privacy or owner permission. Future private signature composition must keep coefficients, keys, signatures, hashes and matrices internal and bind the same note and exact transaction. Complete private linkage of decoding, sampling, norm and hint constraints through signature challenge equality remains unfinished.
 
+Its separate [compact register profile](compact-ntt.md) uses eight multiplication slots and exact canonical writes with complete bank holds. It retains the same typed diagnostic statement and exact transform, with independent dataflow attacks and actual proof rejection tests. The smaller trace layout does not establish complete private signature feasibility or change the original profile.
+
 The [owner binding component](owner-binding-proof-lab.md) links two private exact verification key preimages to the same input note owner fields through unframed SHA3-512. It retains hidden commitments, stable nullifiers, full depth 32 membership, conservation and the existing 520 public fields. This is a preimage connection rather than a signature or owner permission. Public verification keys can be known without spending authority. The complete same key, signature and transaction relation remains unfinished.
 
 ## Milestones and evidence

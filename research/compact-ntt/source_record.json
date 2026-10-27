@@ -1,0 +1,17 @@
+{
+  "source": "Existing retained normal residue transform references and pinned backend version0.8.0.",
+  "lock_sha256": "9e30bca185acf840c38f0e11469030aa1639cb7f0fe66223b81b8703fa4bb17e",
+  "references": {
+    "ntt_vectors.json": "0939c11dc21f8ca980a5b4df34dc5d0f2d3fffe4214799decf20afea0a983a52",
+    "stage_vectors.json": "7f866b6b5e9605d22f8dd2dafe8b33f8be81816098255ffc0bedef3e197f3e6a",
+    "butterfly_operations.csv": "e4fc026ebfbfbf9a11eb4e032c9c462defe71060fad218628301c10287f4ab16"
+  },
+  "q": 8380417,
+  "psi": 1753,
+  "inverse_256": 8347681,
+  "classification_cases": 47,
+  "valid_dft_cases": 31,
+  "valid_stage_states": 309,
+  "valid_arithmetic_records": 35584,
+  "scope": "Source identity and reproducible fixed parameters, without a performance or security claim."
+}

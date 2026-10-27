@@ -6,6 +6,7 @@
 mod air;
 #[cfg(test)]
 mod causal;
+pub mod compact;
 mod hash;
 mod ntt;
 use thorum_arithmetic_proof_lab::mul;

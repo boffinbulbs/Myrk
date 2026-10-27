@@ -139,3 +139,7 @@ jobs:
         run: python3 research/coefficient-constraints/packing_vectors.py --check
       - name: Check coefficient constraint profile
         run: python3 research/coefficient-constraints/profile_check.py
+      - name: Check compact transform reference vectors
+        run: python3 research/compact-ntt/reference_vectors.py --check
+      - name: Check compact transform profile
+        run: python3 research/compact-ntt/profile_check.py

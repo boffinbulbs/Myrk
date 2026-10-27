@@ -1,5 +1,7 @@
 # Normal residue NTT proof laboratory
 
+The crate also exposes a separately namespaced [compact register profile](compact-ntt.md). It uses eight arithmetic slots, exact canonical writes and a fixed serial program with the same typed polynomial statement. The original profile and all reference data below retain their existing parameters. Neither diagnostic profile supplies private signature verification or owner permission.
+
 ## Implementation boundary
 
 The [NTT component](../crates/thorum-ntt-proof-lab/src/lib.rs) constrains length 256 forward and inverse polynomial transforms under $q=8380417$. It connects canonical coefficient states, fixed twiddles, exact modular multiplication, modular additions and subtractions, all eight butterfly stages and inverse normalization inside one hiding STARK configuration.

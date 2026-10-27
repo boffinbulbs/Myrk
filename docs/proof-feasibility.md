@@ -150,6 +150,8 @@ The implementation currently includes primitive integration, transparent relatio
 
 The reusable [coefficient and hint constraints](coefficient-constraints.md) cover canonical windows, strict response norms, signed conversion and exact hint application. A test only synthetic hint harness exercises hiding proof construction and rejection under a separate fixed domain. It supplies no ledger authorization route. Complete same witness composition, full sampling and signature verification remain open gates.
 
+The [compact transform module](compact-ntt.md) adds a separate eight slot register program within the existing NTT crate. Its shared typed inputs, canonical write induction and full holds are constrained directly. The 256 by 2921 layout and analytical array dimensions are component evidence, without measured full signature feasibility or a private initialization policy. The older transform profile and historical records remain unchanged.
+
 The note, membership, nullifier, hash, arithmetic, NTT and owner binding components' independent references, fixed profile guards and verification corpora are reproducible with:
 
 ```text

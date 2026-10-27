@@ -1,0 +1,43 @@
+{
+  "scope": "Public polynomial diagnostic proof profile. No private signature, payment permission or composed security claim.",
+  "profile": "thorum.compact-ntt-proof-lab.modq8380417.radix4096.eight-slots.p3-0.8.0.v1",
+  "modulus": 8380417,
+  "root": 1753,
+  "inverse_256": 8347681,
+  "height": 256,
+  "width": 2921,
+  "public_values": 2113,
+  "actual_degree": 2,
+  "layout": {
+    "program": 225,
+    "bank": 256,
+    "products": 1688,
+    "writes": 736,
+    "flags": 16
+  },
+  "active_rows": {
+    "forward": 192,
+    "inverse": 224
+  },
+  "terminal_pc": 224,
+  "stored_degree_bits": 9,
+  "quotient_chunks": 4,
+  "fri_rounds": 9,
+  "queries": 64,
+  "log_blowup": 2,
+  "random_codewords": 4,
+  "row_salts": 16,
+  "transport": {
+    "bytes": 8388608,
+    "tokens": 2000000,
+    "items": 8192,
+    "depth": 24,
+    "string_bytes": 64,
+    "integer_digits": 20
+  },
+  "analytical_arrays": {
+    "raw_trace_bytes": 2991104,
+    "main_lde_payload_bytes": 23961600,
+    "scope": "Field array payload dimensions only, without measured peak memory or a runtime benchmark."
+  }
+}
