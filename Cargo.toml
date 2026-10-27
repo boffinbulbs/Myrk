@@ -9,6 +9,7 @@ members = [
     "crates/thorum-nullifier-proof-lab",
     "crates/thorum-hash-proof-lab",
     "crates/thorum-arithmetic-proof-lab",
+    "crates/thorum-ntt-proof-lab",
 ]
 resolver = "2"
 

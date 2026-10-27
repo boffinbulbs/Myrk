@@ -1,9 +1,9 @@
 {
-  "cargo_lock_sha256": "0dc77f7480fc185d1387d3e08435ca78d31bf1d0d2b4ff704f422e66478c0c52",
+  "cargo_lock_sha256": "6e295ed8e9abda9b5d6fc16f8ac4b482eec823ed4f7b79a11b3983c1b65fb071",
   "advisory_review": {
     "checked_on": "2026-10-26",
     "source": "https://api.osv.dev/v1/querybatch",
-    "cargo_lock_sha256": "0dc77f7480fc185d1387d3e08435ca78d31bf1d0d2b4ff704f422e66478c0c52",
+    "cargo_lock_sha256": "6e295ed8e9abda9b5d6fc16f8ac4b482eec823ed4f7b79a11b3983c1b65fb071",
     "package_queries": 92,
     "matching_advisories": 1,
     "response_body_bytes": 366,

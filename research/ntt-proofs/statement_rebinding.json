@@ -1,0 +1,6 @@
+{
+  "scope": "The transform remains valid under fresh opaque context, but an existing proof must fail verification under a changed expected statement. This is a verifier obligation rather than an invalid transform equation.",
+  "source_case": "dense_deterministic_0_forward",
+  "fresh_context_case": "same_transform_under_fresh_context",
+  "old_proof_under_fresh_context_expected": "reject"
+}

@@ -1,0 +1,30 @@
+{
+  "format": "thorum.ntt-proof-lab.source-record.v1",
+  "standard": {
+    "name": "NIST FIPS 204",
+    "publication_date": "2024-08-13",
+    "algorithms": [
+      41,
+      42
+    ],
+    "record": "https://csrc.nist.gov/pubs/fips/204/final",
+    "potential_errata_recorded": true
+  },
+  "schedule_source": {
+    "package": "ml-dsa",
+    "version": "0.1.1",
+    "vcs_commit": "f75d5b829948988f18d9463f286805fb9410bcdd",
+    "path": "ml-dsa/src/ntt.rs",
+    "source_sha256": "6461fa2933c816906a9baae09df8b6f989a2e9e058fd7607cdc7c8951100af06",
+    "source_url": "https://github.com/RustCrypto/signatures/blob/f75d5b829948988f18d9463f286805fb9410bcdd/ml-dsa/src/ntt.rs"
+  },
+  "algebra_source": {
+    "package": "module-lattice",
+    "version": "0.2.3",
+    "vcs_commit": "ac34c85db783520bda5a8fbe8e7b694c7c72d6fe",
+    "path": "module-lattice/src/algebra.rs",
+    "source_sha256": "61f486ec36d712898b080cd13788d3909b6a6c48856a1b597668168e832e19e3",
+    "scope": "Pinned generic algebra dependency. The ML-DSA package implements the inspected butterfly schedule."
+  },
+  "reference_scope": "The generator does not import or execute either Rust source. Independent direct DFT and inverse DFT establish its comparison outputs."
+}

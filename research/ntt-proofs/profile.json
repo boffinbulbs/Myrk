@@ -1,0 +1,34 @@
+{
+  "format": "thorum.ntt-proof-lab.reference.v1",
+  "public_synthetic_fixture": true,
+  "q": 8380417,
+  "air_field_prime": 2013265921,
+  "length": 256,
+  "psi": 1753,
+  "inverse_256": 8347681,
+  "residue_representation": "Canonical normal residues, not Montgomery form or signed coefficient decoding",
+  "forward_order": "Evaluation at psi^(2*bitrev8(index)+1)",
+  "independent_forward": "Direct Horner evaluation at all 256 odd roots, without butterflies",
+  "independent_inverse": "Direct inverse DFT coefficient sums with inverse root powers and inverse 256, without butterfly reuse",
+  "case_count": 47,
+  "valid_case_count": 31,
+  "api_rejection_count": 8,
+  "stage_case_count": 47,
+  "operation_row_count": 54016,
+  "valid_forward_stage_count": 8,
+  "valid_inverse_stage_count": 10,
+  "coefficients_per_state": 256,
+  "butterflies_per_layer": 128,
+  "normalization_halves": [
+    [
+      0,
+      128
+    ],
+    [
+      128,
+      256
+    ]
+  ],
+  "public_vector_length": 2113,
+  "scope": "Public input and output polynomial primitive harness. No actual signature polynomial decoding, complete ML-DSA verifier, owner permission, hidden ledger input disclosure or production payment mode is established."
+}

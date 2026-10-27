@@ -17,7 +17,7 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "crates/thorum-membership-proof-lab/Cargo.toml"
 PROFILE = "thorum.membership-proof-lab.v2-payment.depth32.sha3-512.serial.p3-0.8.0.v1"
-WORKSPACE_PACKAGES = 9
+WORKSPACE_PACKAGES = 10
 REGISTRY_PACKAGES = 92
 P3_PACKAGES = 20
 

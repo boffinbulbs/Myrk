@@ -12,6 +12,8 @@ The separate [hash component](hash-proof-lab.md) adds exact SHA3 and SHAKE compu
 
 The separate [arithmetic component](arithmetic-proof-lab.md) constrains exact canonical multiplication under the ML-DSA modulus, with operands and result public only in its isolated harness. It is a prerequisite for later private NTT arithmetic rather than a signature or owner proof. Future composition must keep operands, derived matrices and signature intermediates internal and constrain their connections to the same authorized transaction. The complete private relation and ledger gates remain unchanged.
 
+The [NTT component](ntt-proof-lab.md) adds complete normal residue forward and inverse transforms as another isolated prerequisite. Input and output polynomials are public in its harness, and the transform is invertible. This provides no polynomial confidentiality, private ownership or payment authorization. A complete signature relation must keep coefficients, keys, signatures, hashes and matrices internal while checking exact signed decoding, sampling, norms, hints, challenge equality and transaction binding against the same hidden input notes.
+
 ## Public boundary
 
 The verifier receives a canonical versioned transaction envelope, resource class, fee information, relevant state roots, nullifiers, output commitments, encrypted data commitments, application identifiers where public, and a transition proof. Exact encoding and visibility remain part of the construction work.
