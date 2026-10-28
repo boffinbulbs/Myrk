@@ -10,11 +10,12 @@ permissions:
 
 jobs:
   rust:
-    name: Rust (${{ matrix.os }})
+    name: Rust (${{ matrix.os }}, ${{ matrix.suite }})
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04, windows-2022]
+        suite: [development, adversarial]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 90
     steps:
@@ -24,75 +25,88 @@ jobs:
       - name: Install toolchain
         run: rustup toolchain install 1.94.1 --profile minimal --component rustfmt --component clippy
       - name: Check formatting
+        if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo fmt --all -- --check
       - name: Fetch locked dependencies
         run: rustup run 1.94.1 cargo fetch --locked
       - name: Run tests
+        if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo test --workspace --locked --offline -- --test-threads=1
       - name: Run adversarial proof tests
-        run: rustup run 1.94.1 cargo test -p thorum-proof-lab --release --locked --offline
+        if: matrix.suite == 'adversarial'
+        run: rustup run 1.94.1 cargo test -p thorum-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial note proof tests
-        run: rustup run 1.94.1 cargo test -p thorum-note-proof-lab --release --locked --offline
+        if: matrix.suite == 'adversarial'
+        run: rustup run 1.94.1 cargo test -p thorum-note-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial hidden membership tests
+        if: matrix.suite == 'adversarial'
         run: rustup run 1.94.1 cargo test -p thorum-membership-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial stable nullifier tests
+        if: matrix.suite == 'adversarial'
         run: rustup run 1.94.1 cargo test -p thorum-nullifier-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial hash and XOF tests
+        if: matrix.suite == 'adversarial'
         run: rustup run 1.94.1 cargo test -p thorum-hash-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial modular arithmetic tests
+        if: matrix.suite == 'adversarial'
         run: rustup run 1.94.1 cargo test -p thorum-arithmetic-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial polynomial transform tests
+        if: matrix.suite == 'adversarial'
         run: rustup run 1.94.1 cargo test -p thorum-ntt-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial private owner binding tests
+        if: matrix.suite == 'adversarial'
         run: rustup run 1.94.1 cargo test -p thorum-owner-binding-proof-lab --release --locked --offline -- --test-threads=1
       - name: Check synthetic authorization signatures
+        if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo run -p thorum-crypto-lab --example signature_reference_fixture --locked --offline -- --check
       - name: Check lints
+        if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
       - name: Build documentation
+        if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo doc --workspace --no-deps --locked --offline
       - name: Check dependency inventory
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/crypto/dependency_inventory.py --check
       - name: Check proof feature profile
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/proofs/profile_check.py
       - name: Check note proof feature profile
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/note-proofs/profile_check.py
       - name: Check membership proof feature profile
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/membership-proofs/profile_check.py
       - name: Check nullifier proof feature profile
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/nullifier-proofs/profile_check.py
       - name: Check hash proof feature profile
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/hash-proofs/profile_check.py
       - name: Check arithmetic proof feature profile
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/arithmetic-proofs/profile_check.py
       - name: Check transform proof feature profile
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/ntt-proofs/profile_check.py
       - name: Check private owner binding profile
-        if: runner.os == 'Linux'
+        if: runner.os == 'Linux' && matrix.suite == 'development'
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/owner-bindings/profile_check.py
