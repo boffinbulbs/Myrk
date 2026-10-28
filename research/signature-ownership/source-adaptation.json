@@ -1,0 +1,96 @@
+{
+  "format": "thorum.signature-ownership.source-adaptation.v1",
+  "status": "Native verification and independent integer reference generation completed on the retained six signature fixture.",
+  "preserved_inputs": [
+    "raw-fixture.json",
+    "authorization.rs",
+    "producer/Cargo.lock",
+    "LICENSE",
+    "UPSTREAM-NOTICE.txt",
+    "licenses/ml-dsa-LICENSE-MIT",
+    "licenses/ml-dsa-LICENSE-APACHE"
+  ],
+  "oracle_change": "Only retained repository path literals changed. All mathematical definitions and function bodies retain the same syntax after this path substitution.",
+  "producer_changes": [
+    "Local mapper include and three public crate paths",
+    "Bounded verification-only mode with fixed key, context, transaction, schema and two native signature checks",
+    "Existing output mode retains six deterministic signatures and create_new destination reservation"
+  ],
+  "static_checks": {
+    "python_ast_files": 2,
+    "toml_parsed": true,
+    "standalone_registry_tuples": 52,
+    "registry_tuples_are_public_subset": true,
+    "copied_raw_byte_equal": true,
+    "mapper_byte_equal": true,
+    "oracle_path_only": true,
+    "private_paths_absent": true,
+    "reference_output_present": true
+  },
+  "files": {
+    "authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "execution_record.json": {
+      "bytes": 3317,
+      "sha256": "9047dcc0f08e9dadf536c18aa4f1c180f6aacd70329cf5fa0ef9d985bd9f99c0"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "licenses/ml-dsa-LICENSE-APACHE": {
+      "bytes": 10834,
+      "sha256": "391a7404ef6f0ad2b21e5270dd0b95c69ed09dc03be45252442542c010c9a9f6"
+    },
+    "licenses/ml-dsa-LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "4621bda86773a67b5645bbd25cf1bf8b6820d4fcec3885b23b9ceec612007f63"
+    },
+    "producer/Cargo.lock": {
+      "bytes": 12483,
+      "sha256": "aa454149da3750a296bf6429d86ba191e395c078ab4396cd8b0b7ae0715dc494"
+    },
+    "producer/Cargo.toml": {
+      "bytes": 572,
+      "sha256": "2cf403d430bfeb3f841fe07f67afe1fb2a24bb928cd3e477a17fed6957a5c4e5"
+    },
+    "producer/src/main.rs": {
+      "bytes": 11457,
+      "sha256": "7b281d0937fc6f68a67be470e5aaf13188698102374987873551adfaab3d02b1"
+    },
+    "raw-fixture.json": {
+      "bytes": 88947,
+      "sha256": "10426a9bbfd10707b2a339c63c787bd8d119ee2c76a78316aa03c1edab80c2f2"
+    },
+    "README.md": {
+      "bytes": 9817,
+      "sha256": "4ef7c20be693613ac5a0bf27eb3b20ddcea794cec69f933a0b4523fae809233f"
+    },
+    "reference-fixture.json": {
+      "bytes": 8008075,
+      "sha256": "d9d6e61fb842512318b67d49a95efafe1100053eb9d2d1449b6ba425e708a3d9"
+    },
+    "reference_vectors.py": {
+      "bytes": 16191,
+      "sha256": "96e7ae07be3057b06f87ca7709e40810293edf12cc753487da30e6d0afdbaa06"
+    },
+    "source_inventory.json": {
+      "bytes": 4832,
+      "sha256": "22ae0d708272d78c13d4ee20ef7761dffd055ed23138af1ea54fd4febd0dae1b"
+    },
+    "source_record.json": {
+      "bytes": 2998,
+      "sha256": "62511191749eaf85cc4f30a333e4cb701f50919696057fdc2ee1601351eb1d3e"
+    },
+    "static_check.py": {
+      "bytes": 4007,
+      "sha256": "3dc92cb5a4cf07032ce1e570677de67bafda6c422ead576cb7960d75b0ee7711"
+    },
+    "UPSTREAM-NOTICE.txt": {
+      "bytes": 2333,
+      "sha256": "d9c407b57ed3a34dbb750ed7a2b4e969de4772f4b751e1bbbaed2101e891bbcd"
+    }
+  }
+}

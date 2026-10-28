@@ -1,0 +1,90 @@
+{
+  "format": "thorum.signature-ownership.execution.v1",
+  "scope": "Native verification and complete independent integer signature and canonical note owner references. No private AIR or backend proof execution.",
+  "platform": {
+    "os": "Windows",
+    "architecture": "x86_64",
+    "rust": "1.94.1",
+    "python": "3.14.5"
+  },
+  "checks": {
+    "release_build": {
+      "passed": true,
+      "evidence_sha256": "c1cce0a54ee43e7a02e6b768bffd22ba7a92f2844d2185391e2521e60662cac2"
+    },
+    "strict_release_all_targets_clippy": {
+      "passed": true,
+      "evidence_sha256": "344745e7f51616d39252132609694f2665a05fc7c672cd83312bb9e2c792e577"
+    },
+    "format_check": {
+      "passed": true,
+      "evidence_sha256": "6201387eae57aea62ce030c253d96ba457a471b205690e1c0da0090ba924f732"
+    },
+    "native_verify_only": {
+      "passed": true,
+      "evidence_sha256": "0ef73fd3d9a35309a892ccff81e24d7b05e118df67ad15345440fdc47a450e81"
+    },
+    "independent_reference_generation": {
+      "passed": true,
+      "evidence_sha256": "453e6e18d6539611dc1999c512796b312b2244854191a09092369b2b6c9e8a75"
+    },
+    "exact_reference_reproduction": {
+      "passed": true,
+      "evidence_sha256": "2650b46060aed810c7c58dd919e6ed42ba158a547c5e83eba60a3e9c661eb5c5"
+    },
+    "optimized_python_refusal": {
+      "passed": true,
+      "tools": [
+        "static_check.py",
+        "reference_vectors.py"
+      ]
+    }
+  },
+  "source_inventory": {
+    "bytes": 4832,
+    "sha256": "22ae0d708272d78c13d4ee20ef7761dffd055ed23138af1ea54fd4febd0dae1b"
+  },
+  "producer_source": {
+    "bytes": 11457,
+    "sha256": "7b281d0937fc6f68a67be470e5aaf13188698102374987873551adfaab3d02b1"
+  },
+  "producer_lock": {
+    "bytes": 12483,
+    "sha256": "aa454149da3750a296bf6429d86ba191e395c078ab4396cd8b0b7ae0715dc494"
+  },
+  "producer_executable": {
+    "bytes": 459776,
+    "sha256": "fa75ec038d33763f62974b63600c630964760ed1b6257b1a9bab1a0d1a94021a"
+  },
+  "registry_packages": 52,
+  "raw": {
+    "bytes": 88947,
+    "sha256": "10426a9bbfd10707b2a339c63c787bd8d119ee2c76a78316aa03c1edab80c2f2"
+  },
+  "reference": {
+    "bytes": 8008075,
+    "sha256": "d9d6e61fb842512318b67d49a95efafe1100053eb9d2d1449b6ba425e708a3d9"
+  },
+  "signatures_verified": 6,
+  "native_own_context_accepts": 6,
+  "native_target_context_accepts": 4,
+  "native_target_context_rejections": 2,
+  "independent_rows": 48,
+  "independent_transforms": 144,
+  "final_challenge_byte_comparisons": 384,
+  "key_matrix_polynomials": 112,
+  "conditional_tuples": {
+    "accept": 5,
+    "reject": 5,
+    "unsupported": 0
+  },
+  "private_backend_proofs": 0,
+  "private_payment_acceptance": false,
+  "verification_commands": [
+    "cargo fmt --manifest-path research/signature-ownership/producer/Cargo.toml --all -- --check",
+    "cargo clippy --release --manifest-path research/signature-ownership/producer/Cargo.toml --all-targets --locked --offline -- -D warnings",
+    "cargo run --release --manifest-path research/signature-ownership/producer/Cargo.toml --locked --offline -- --verify-only research/signature-ownership/raw-fixture.json",
+    "python research/signature-ownership/reference_vectors.py --input research/signature-ownership/raw-fixture.json --output research/signature-ownership/reference-fixture.json --check"
+  ],
+  "signing_calls_during_verification": 0
+}

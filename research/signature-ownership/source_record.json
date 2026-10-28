@@ -1,0 +1,86 @@
+{
+  "format": "thorum.signature-ownership.source-record.v1",
+  "scope": "Complete independent integer signature and canonical note owner references. No native AIR, backend proof, membership, nullifier coupling or payment authority.",
+  "raw_fixture": {
+    "path": "raw-fixture.json",
+    "bytes": 88947,
+    "sha256": "10426a9bbfd10707b2a339c63c787bd8d119ee2c76a78316aa03c1edab80c2f2",
+    "signature_count": 6,
+    "public_synthetic_seeds": true,
+    "signing_budget": 6,
+    "modified": false
+  },
+  "public_authorization_mapper": {
+    "path": "authorization.rs",
+    "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b",
+    "retained_byte_for_byte": true,
+    "input": "PaymentStatement",
+    "outputs": [
+      "canonical T",
+      "message64",
+      "Context80",
+      "A196",
+      "pure239"
+    ],
+    "private_acceptance": false
+  },
+  "source_inventory": {
+    "path": "source_inventory.json",
+    "sha256": "22ae0d708272d78c13d4ee20ef7761dffd055ed23138af1ea54fd4febd0dae1b"
+  },
+  "source_versions": {
+    "nist_acvp": {
+      "revision": "975de31eb83d87039ec88934fdc47d8c312b892d",
+      "source": "https://github.com/usnistgov/ACVP-Server",
+      "selected_case": "ml_dsa_87_keygen",
+      "selected_sha256": "fe61306ae7bafad8b36d2ef8cac9cf12ce3706afe12171b8e7b27d97edba7de4",
+      "notice": "UPSTREAM-NOTICE.txt",
+      "seed_b_mutation": "seed_b[0] = seed_a[0] XOR 1"
+    },
+    "rustcrypto_signatures": {
+      "revision": "f75d5b829948988f18d9463f286805fb9410bcdd",
+      "source": "https://github.com/RustCrypto/signatures",
+      "crate": "ml-dsa",
+      "version": "0.1.1",
+      "archive_sha256": "add6b9d92e496f16f4526d68ff29da1483aba4b119baeab8bed3b9e3544a6f3d",
+      "license": "MIT OR Apache-2.0",
+      "license_paths": [
+        "licenses/ml-dsa-LICENSE-MIT",
+        "licenses/ml-dsa-LICENSE-APACHE"
+      ]
+    }
+  },
+  "public_reproduction_status": {
+    "source_prepared": true,
+    "relocated_producer_compiled": true,
+    "verification_only_executed": true,
+    "reference_generated": true,
+    "native_air_executed": false,
+    "backend_proofs_constructed": 0,
+    "exact_reference_check": true
+  },
+  "reference_output": {
+    "path": "reference-fixture.json",
+    "status": "Complete integer reference generated from the unchanged six signature raw fixture.",
+    "maximum_bytes": 33554432,
+    "bytes": 8008075,
+    "sha256": "d9d6e61fb842512318b67d49a95efafe1100053eb9d2d1449b6ba425e708a3d9"
+  },
+  "bounds": {
+    "raw_bytes": 524288,
+    "producer_read_limit_bytes": 524289,
+    "reference_bytes": 33554432,
+    "optimized_python_supported": false
+  },
+  "licenses": {
+    "original_code_and_derivative_data": "MIT",
+    "project_notice": "LICENSE",
+    "nist_notice": "UPSTREAM-NOTICE.txt",
+    "dependency_inventory": "../crypto/dependency-inventory.json"
+  },
+  "execution_record": {
+    "path": "execution_record.json",
+    "bytes": 3317,
+    "sha256": "9047dcc0f08e9dadf536c18aa4f1c180f6aacd70329cf5fa0ef9d985bd9f99c0"
+  }
+}

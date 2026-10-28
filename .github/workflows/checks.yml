@@ -27,6 +27,9 @@ jobs:
       - name: Check formatting
         if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo fmt --all -- --check
+      - name: Check signature ownership producer formatting
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-ownership/producer/Cargo.toml -- --check
       - name: Fetch locked dependencies
         run: rustup run 1.94.1 cargo fetch --locked
       - name: Run tests
@@ -59,6 +62,12 @@ jobs:
       - name: Check synthetic authorization signatures
         if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo run -p thorum-crypto-lab --example signature_reference_fixture --locked --offline -- --check
+      - name: Check exact transaction signature ownership fixtures
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo run --manifest-path research/signature-ownership/producer/Cargo.toml --release --locked --offline --target-dir target/signature-ownership -- --verify-only research/signature-ownership/raw-fixture.json
+      - name: Check signature ownership producer lints
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-ownership/producer/Cargo.toml --release --all-targets --locked --offline --target-dir target/signature-ownership -- -D warnings
       - name: Check lints
         if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
@@ -176,6 +185,10 @@ jobs:
         run: python3 research/owner-bindings/reference_vectors.py --check
       - name: Check complete signature verification references
         run: python3 research/signatures/reference_vectors.py --check
+      - name: Check signature ownership source inventory
+        run: python3 research/signature-ownership/static_check.py
+      - name: Check exact transaction signature ownership references
+        run: python3 research/signature-ownership/reference_vectors.py --input research/signature-ownership/raw-fixture.json --output research/signature-ownership/reference-fixture.json --check
       - name: Check coefficient rounding reference vectors
         run: python3 research/coefficient-constraints/reference_vectors.py --check
       - name: Check coefficient packing reference vectors

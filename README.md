@@ -9,6 +9,7 @@ The protocol separates private transition proofs, deterministic ledger validatio
 | [Protocol research specification](docs/research-target.md) | Definitions, private relations, information boundaries and security requirements |
 | [Architecture](docs/architecture.md) | Wallet, proof, kernel, work, consensus and storage boundaries |
 | [Implementation record](docs/development.md) | Executable scope and supporting component evidence |
+| [Signature and ownership references](research/signature-ownership/README.md) | Exact transaction signatures, complete integer verification and canonical note owner comparisons |
 | [Delivery roadmap](docs/delivery-roadmap.md) | Initial chain gates and separate later application milestones |
 | [Private Safe design](docs/private-safe.md) | Protected receiving, user selected delays, independent authorities and local key protection |
 
@@ -68,6 +69,8 @@ The workspace contains eight isolated hiding proof crates. Their component and d
 The hash crate additionally contains [matrix sampling](docs/matrix-sampling.md), [sparse challenge sampling](docs/challenge-sampling.md), [canonical signature and challenge linkage](docs/signature-challenge.md), [private key source constraints](docs/key-source.md) and a [conditional private signature row](docs/reconstructed-row.md). Canonical key parsing and conditional row computation are implemented components. Their actual key, signature, all eight row, note and transaction connections remain incomplete. Knowledge of a verification key or its hash preimage grants no spending permission.
 
 [Coefficient constraints](docs/coefficient-constraints.md) and [compact transforms](docs/compact-ntt.md) retain their exact arithmetic and layout evidence. The [transparent signature reference](research/signatures/README.md) supplies full independent verification calculations over public synthetic data. It is an oracle, not private authorization.
+
+The [transaction signature and note ownership reference](research/signature-ownership/README.md) adds six existing signatures over exact typed transactions, two native verification paths and complete independent integer calculations through all eight signature rows and final challenge equality. Canonical v2 notes supply explicit owner match and mismatch cases. This is reference evidence for the missing complete private authorization relation, without a native AIR, backend proof or payment authority claim.
 
 The [proof feasibility record](docs/proof-feasibility.md) distinguishes implemented experiments from open hiding, knowledge soundness, quantum model, resource and composition obligations. Standardized primitives and full digests do not establish the composed protocol's security level.
 

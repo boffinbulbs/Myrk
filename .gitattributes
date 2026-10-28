@@ -3,3 +3,4 @@
 *.pdf binary
 research/crypto/licenses/*.txt -text -whitespace
 research/crypto/vectors/UPSTREAM-NOTICE.txt -text -whitespace
+research/signature-ownership/UPSTREAM-NOTICE.txt -text -whitespace

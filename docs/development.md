@@ -35,6 +35,8 @@ Its separate [compact register profile](compact-ntt.md) uses eight multiplicatio
 
 The [owner binding component](owner-binding-proof-lab.md) links two private exact verification key preimages to the same input note owner fields through unframed SHA3-512. It retains hidden commitments, stable nullifiers, full depth 32 membership, conservation and the existing 520 public fields. This is a preimage connection rather than a signature or owner permission. Public verification keys can be known without spending authority. The complete same key, signature and transaction relation remains unfinished.
 
+The [transaction signature and note ownership reference](../research/signature-ownership/README.md) contains six existing synthetic signatures over two exact typed transactions differing only in fee. Its native verifier checks the retained contextual API and authorization wrapper without signing. The independent integer reference covers all eight reconstructed rows, 24 transforms, all hint applications, packed output bytes and the complete 64 byte challenge comparison. Canonical v2 note tuples distinguish matching owners, alternate notes with the same owner, wrong owners, wrong keys and a changed expected transaction. These are complete mathematical reference calculations and native primitive checks. They do not implement a complete private authorization AIR, backend proof or payment verifier.
+
 ## Milestones and evidence
 
 | Milestone | Deliverable | Acceptance evidence |
@@ -51,6 +53,7 @@ The [owner binding component](owner-binding-proof-lab.md) links two private exac
 | Exact modular multiplication foundation | Canonical multiplication modulo 8380417 through bounded integer limbs, with an isolated public operand and result harness | Independent residual bounds, false field aliases, canonical and carry rejection, bytewise public binding and actual proof verification, without NTT or signature authorization |
 | Normal residue NTT foundation | Connected fixed forward and inverse stages, exact butterfly arithmetic and inverse normalization in a public polynomial harness | Independent direct negacyclic DFT and inverse DFT, stage and auxiliary records, bytewise binding and altered computation rejection, without private signature or owner authorization |
 | Private owner key binding | Exact private verification key hashes linked to the same canonical inputs, hidden membership, stable nullifiers and conservation | Complete unframed key sponge states, preserved identities and hostile owner crosswires, without signature verification or spending permission |
+| Transaction signature and ownership references | Six fixed signatures, exact transaction mapping, full independent integer verification and canonical v2 note owner comparisons | Native contextual and wrapper checks, all eight rows, 24 transforms, complete challenge equality, mismatch rejection and separate finite capacity classification |
 | Private transition feasibility | One fully specified and executable private payment relation | Authorization, ranges, conservation, nullifier binding, malformed proof rejection, measured costs and security rationale |
 | Private stake feasibility | Confidential eligible weight and checkpoint support | No duplicate weight/reuse, epoch/domain binding, PQ assumptions, bounded certificates and adversarial simulations |
 | Ledger kernel | State roots, global nullifiers, canonical decoding, fees, issuance integration and rollback | Independent node agreement, inflation rejection, replay rejection and atomic persistence |
@@ -144,6 +147,16 @@ python research/ntt-proofs/reference_vectors.py --check
 python research/ntt-proofs/profile_check.py
 python research/owner-bindings/reference_vectors.py --check
 python research/owner-bindings/profile_check.py
+```
+
+The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
+
+```text
+cargo fmt --manifest-path research/signature-ownership/producer/Cargo.toml -- --check
+cargo clippy --manifest-path research/signature-ownership/producer/Cargo.toml --release --all-targets --locked --offline --target-dir target/signature-ownership -- -D warnings
+cargo run --manifest-path research/signature-ownership/producer/Cargo.toml --release --locked --offline --target-dir target/signature-ownership -- --verify-only research/signature-ownership/raw-fixture.json
+python research/signature-ownership/static_check.py
+python research/signature-ownership/reference_vectors.py --input research/signature-ownership/raw-fixture.json --output research/signature-ownership/reference-fixture.json --check
 ```
 
 ## Node and desktop integration
