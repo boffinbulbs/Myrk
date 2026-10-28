@@ -12,7 +12,7 @@ $$
 \rho\mathbin\Vert\operatorname{u8}(s)\mathbin\Vert\operatorname{u8}(r).
 $$
 
-The column byte precedes the row byte. SHAKE128 uses rate 168 and capacity 32 bytes. The first permutation starts from the exact 34 byte input, suffix 31 at byte 34, zeros and the terminal 128 bit at byte 167. Each later squeeze starts from the complete previous 200 byte state and absorbs no new seed or padding. All rate and capacity limbs are linked directly.
+The column byte precedes the row byte. SHAKE128 uses rate 168 and capacity 32 bytes. The first permutation starts from the exact 34 byte input, suffix `0x1f` at byte 34, zeros and the terminal high bit (`0x80`) at byte 167. Each later squeeze starts from the complete previous 200 byte state and absorbs no new seed or padding. All rate and capacity limbs are linked directly.
 
 All 1008 output bytes enter the same immutable XOF bank through individual eight bit links, including unused bytes in the sixth block. For each active candidate, the next three bytes give
 

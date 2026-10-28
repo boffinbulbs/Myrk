@@ -1,0 +1,111 @@
+{
+  "format": "thorum.documentation-figures.source-record.v1",
+  "recorded_date": "2026-10-28",
+  "scope": "Original architecture and development reference figures. No runtime, consensus, performance or composed security measurement.",
+  "public_code_base": "b499f0946ab196396eb411a4e035a210d6ff6a63",
+  "generator": {
+    "path": "research/aegis/generate_figures.py",
+    "bytes": 22766,
+    "sha256": "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430"
+  },
+  "implementation_source_dependencies": [],
+  "generated_artifacts": [
+    {
+      "path": "research/aegis/figure-data.json",
+      "bytes": 2238,
+      "sha256": "296f0ff7f26a0795d7bff546669e4b1f0ce771e41063ae2045eb731e23187719"
+    },
+    {
+      "path": "research/aegis/figures/aegis-architecture-dark.svg",
+      "bytes": 9593,
+      "sha256": "f960056864c306b1fa4a6f84e7d178a5f977f6072290ada03d8386e3043613a9"
+    },
+    {
+      "path": "research/aegis/figures/aegis-architecture.svg",
+      "bytes": 9594,
+      "sha256": "4bd870ac9ea63ffe2f721e284afe8f285806dd2e7e4e9ff83269eca649fc659b"
+    },
+    {
+      "path": "research/aegis/figures/aegis-certification-order-dark.svg",
+      "bytes": 8106,
+      "sha256": "6347c4d41e358cddc32c8baf39a7f8b011e33d7d95ee7dd0f1b9fe828577d367"
+    },
+    {
+      "path": "research/aegis/figures/aegis-certification-order.svg",
+      "bytes": 8107,
+      "sha256": "aa020c203fbbe8f4b6c1bfe4cc75421b351b8dba0dc26baea5cdd58d0f53ffb2"
+    },
+    {
+      "path": "research/aegis/figures/aegis-architecture-dark.png",
+      "bytes": 148037,
+      "sha256": "53b3001af209b688f517d10295cecbfc1ead9efc8519e6b2a115a6aa927a608c"
+    },
+    {
+      "path": "research/aegis/figures/aegis-architecture.png",
+      "bytes": 147923,
+      "sha256": "219f85f6634880c03c8da42ea67ecfbaff3ba363793d6a2b04e62dc1eb42674a"
+    },
+    {
+      "path": "research/aegis/figures/aegis-certification-order-dark.png",
+      "bytes": 106855,
+      "sha256": "2a0c3102dfb21cfd45392fa18f1dbebfe5b75023687a063a5d1ed08a90a67082"
+    },
+    {
+      "path": "research/aegis/figures/aegis-certification-order.png",
+      "bytes": 106766,
+      "sha256": "849bde2ece8fbf5be4e834c84c482d5d48912f9e9a790dbec8e7f825426559e4"
+    }
+  ],
+  "svg_dimensions": [
+    {
+      "path": "research/aegis/figures/aegis-architecture-dark.svg",
+      "width": "1560",
+      "height": "1230",
+      "viewBox": "0 0 1560 1230"
+    },
+    {
+      "path": "research/aegis/figures/aegis-architecture.svg",
+      "width": "1560",
+      "height": "1230",
+      "viewBox": "0 0 1560 1230"
+    },
+    {
+      "path": "research/aegis/figures/aegis-certification-order-dark.svg",
+      "width": "1560",
+      "height": "1270",
+      "viewBox": "0 0 1560 1270"
+    },
+    {
+      "path": "research/aegis/figures/aegis-certification-order.svg",
+      "width": "1560",
+      "height": "1270",
+      "viewBox": "0 0 1560 1270"
+    }
+  ],
+  "svg_reproduction": {
+    "python": "Standard library",
+    "command": "python research/aegis/generate_figures.py --check",
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "canvas": "transparent"
+  },
+  "production_emission_parameters": "Development references subject to a later versioned selection",
+  "font_files_distributed": false,
+  "optional_preview_environment": {
+    "python": "3.12.14",
+    "pillow": "12.3.0",
+    "arial.ttf_sha256": "b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a",
+    "arialbd.ttf_sha256": "e8f4e3baf6cc35fed6fcce3a540e8b39e8f6cda1d22a28f2ec8f526fef7a43f5"
+  },
+  "inspection_references": [
+    "https://github.com/cometbft/cometbft/blob/d03254d3599b973f979314e6383b89fa1802e679/spec/consensus/consensus.md",
+    "https://github.com/cometbft/cometbft/blob/d03254d3599b973f979314e6383b89fa1802e679/spec/consensus/signing.md",
+    "https://github.com/cometbft/cometbft/blob/d03254d3599b973f979314e6383b89fa1802e679/spec/consensus/wal.md",
+    "https://arxiv.org/abs/1807.04938v3",
+    "https://arxiv.org/abs/1803.05069v6",
+    "https://csrc.nist.gov/pubs/fips/204/final"
+  ],
+  "external_code_imported": false
+}

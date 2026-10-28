@@ -1,0 +1,79 @@
+{
+  "format": "thorum.aegis.design-figures.v1",
+  "status": "Later protocol design",
+  "scope": "Planned protocol ordering and analytical state cursor examples only",
+  "implemented_performance": false,
+  "elapsed_time_scale": false,
+  "changes_current_base_scope": false,
+  "base_onward_spending": "After checkpoint finality",
+  "svg_canvas": "transparent",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "png_preview_canvas": "Explicit theme composite",
+  "pow_chains": 1,
+  "certified_states_and_logs": 1,
+  "participants": {
+    "C": "Sending wallet",
+    "Y": "Intermediate wallet",
+    "Z": "Receiving wallet",
+    "S": "Stakers",
+    "M": "Miner",
+    "N": "Regular validator"
+  },
+  "definitions": {
+    "q": "Highest final stake certified sequence in the single transaction log",
+    "k": "Contiguous certified sequence prefix recorded by the single PoW chain",
+    "S_q": "Certified private state at sequence q",
+    "ordering_invariant": "0 <= k <= q",
+    "recording_rule": "A block records each sequence k+1 through k_next once, with 0 <= k <= k_next <= q"
+  },
+  "state_examples": [
+    {
+      "event": "Initial state",
+      "q": 0,
+      "k": 0,
+      "newly_recorded": []
+    },
+    {
+      "event": "C payment certified for Y",
+      "q": 1,
+      "k": 0,
+      "newly_recorded": []
+    },
+    {
+      "event": "Y onward payment certified for Z",
+      "q": 2,
+      "k": 0,
+      "newly_recorded": []
+    },
+    {
+      "event": "One PoW block records the certified prefix",
+      "q": 2,
+      "k": 2,
+      "newly_recorded": [
+        1,
+        2
+      ]
+    }
+  ],
+  "privacy_boundary": "Arrows denote protocol messages or local steps, not public note input links",
+  "requirements": [
+    "Complete private proof verification before certification",
+    "Global spent right validation before final stake commit",
+    "Private note recovery and membership checks before onward construction",
+    "Contiguous exactly once recording in a single PoW chain",
+    "Independent verification of certificates, transitions and PoW records"
+  ],
+  "figures": {
+    "aegis-architecture": {
+      "width": 1560,
+      "height": 1230
+    },
+    "aegis-certification-order": {
+      "width": 1560,
+      "height": 1270
+    }
+  }
+}

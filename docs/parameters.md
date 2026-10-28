@@ -2,6 +2,8 @@
 
 The selected testnet target and retained executable accounting reference are separate profiles. A production genesis and consensus encoding have not been released.
 
+Emission values are development parameters rather than frozen production commitments. A production selection or later change requires an explicit version, integer schedule, allocation rules and independent vectors. The retained reference remains reproducible while that selection is open.
+
 ## Testnet development target
 
 | Parameter | Target |
@@ -14,6 +16,8 @@ The selected testnet target and retained executable accounting reference are sep
 | Fast payment indication | A valid private payment lock certificate, separately from finality |
 
 The [protocol safety requirements](protocol-extensions.md) define the timing boundaries, private Safe, migration, compact history and payment capacity targets. The maturity delay does not define staking principal withdrawal or pool/developer spendability. The testnet schedule must adjust subsidy amounts and period lengths together before implementation. Current cryptographic components do not implement these consensus services.
+
+The later [Aegis protocol](aegis.md) evaluates certified spending before mining through a separate consensus version. Its initial latency experiment target is approximately eight seconds after submission of a complete valid transaction, excluding local proving and recipient synchronization. No such latency has been measured. Aegis activation, committee and backlog limits are unset. It does not change the base targets above or the first chain scope.
 
 ## Retained accounting reference
 

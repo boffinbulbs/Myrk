@@ -92,6 +92,12 @@ The construction needs a quorum and authority model that prevents conflicting lo
 
 The wallet distinguishes received data, local proving, certified lock, inclusion, checkpoint finality and spendability. The initial construction allows onward spending after checkpoint finality. It does not accept chains of unmined locked outputs. Fast lock latency is a measurement target after proof generation, without a promised number of seconds or a finality deadline.
 
+## Later Aegis protocol
+
+[Thorum Aegis](aegis.md) is a later consensus milestone for ordinary private outputs that become spendable after a completed stake commit and before mining. It requires an authoritative ordered state, global spent identities, complete payload availability, confidential quorum evidence, durable signing and compatible PoW recording. A preliminary lock cannot supply this eligibility.
+
+The initial construction and first chain scope remain unchanged. A separately reviewed activation would replace its ordinary onward spending boundary for supported Aegis transactions. Mining and staking rewards still require their authenticated maturity, and Safe, stake, asset and migration restrictions remain applicable. Certified payments cannot expire merely because mining is delayed. The architecture includes figures, failure requirements and independent implementation gates without claiming an executable protocol.
+
 ## Capacity for ordinary payments
 
 Ordinary private payments need a reserved share of bounded network resources, with separate ceilings for contract work. Classification must follow the validated transaction relation rather than a caller supplied cheap payment label.

@@ -1,0 +1,205 @@
+{
+  "format": "thorum.documentation-figures.source-record.v1",
+  "recorded_date": "2026-10-28",
+  "scope": "Original architecture and development reference figures. No runtime, consensus, performance or composed security measurement.",
+  "public_code_base": "b499f0946ab196396eb411a4e035a210d6ff6a63",
+  "generator": {
+    "path": "research/protocol-figures/generate_figures.py",
+    "bytes": 15971,
+    "sha256": "05e585eb0b8530274cd72da2b66f460554639141da17ec3213c204036ad46340"
+  },
+  "implementation_source_dependencies": [
+    {
+      "path": "research/aegis/generate_figures.py",
+      "bytes": 22766,
+      "sha256": "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430"
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "path": "research/protocol-figures/figure-data.json",
+      "bytes": 1959,
+      "sha256": "739b08bf3fe6cd60241ee88f978b24fb3973352b8415362e1449fd3179233b3f"
+    },
+    {
+      "path": "research/protocol-figures/figures/base-architecture-dark.svg",
+      "bytes": 6732,
+      "sha256": "c732226f7e8257436b6139f5a166b59ce28c4cdf45dfe5d6499bcf3ddce931f8"
+    },
+    {
+      "path": "research/protocol-figures/figures/base-architecture.svg",
+      "bytes": 6733,
+      "sha256": "7289e079441076812bc691b5c4bff5cbac8d895248b82a4d7cdd11355516f0c6"
+    },
+    {
+      "path": "research/protocol-figures/figures/development-stages-dark.svg",
+      "bytes": 6673,
+      "sha256": "9ffe5511a0d137c73bc813c17dfb7ec9159bf2482fcf6b0e4a40e1428bb0690e"
+    },
+    {
+      "path": "research/protocol-figures/figures/development-stages.svg",
+      "bytes": 6674,
+      "sha256": "f069ccc01dadd96caa4764e1c669fc39897a82f379bd3a510617a41af4bd15d1"
+    },
+    {
+      "path": "research/protocol-figures/figures/private-payment-flow-dark.svg",
+      "bytes": 6948,
+      "sha256": "212ac34997a300dba7558da7bdaeea076d013dd1bd912633d69a523c44a8ed25"
+    },
+    {
+      "path": "research/protocol-figures/figures/private-payment-flow.svg",
+      "bytes": 6949,
+      "sha256": "1e4040195e97f6b25614e1db7316255c20fedfc4a4dfa21b28ebc940bbff2645"
+    },
+    {
+      "path": "research/protocol-figures/figures/wallet-safe-lifecycle-dark.svg",
+      "bytes": 6280,
+      "sha256": "7d31e51e35de19948d106671c766ee26cd5f0280a3a62c8dcf086618ba54712f"
+    },
+    {
+      "path": "research/protocol-figures/figures/wallet-safe-lifecycle.svg",
+      "bytes": 6281,
+      "sha256": "278aa97d9785b15f0c2b559f0bc5f11e8e20b716691133345416a51ef0fd2a17"
+    },
+    {
+      "path": "research/protocol-figures/figures/work-checkpoint-flow-dark.svg",
+      "bytes": 6389,
+      "sha256": "f1372cbb0a38e8b6a87637f85c5122359221e53f954c3e27953466d32dcfffb5"
+    },
+    {
+      "path": "research/protocol-figures/figures/work-checkpoint-flow.svg",
+      "bytes": 6390,
+      "sha256": "d9dec5ef4e8a8e4d1084cf9486ab695bb14f9b0c7b0efb280f357c877f03d97a"
+    },
+    {
+      "path": "research/protocol-figures/figures/base-architecture-dark.png",
+      "bytes": 118336,
+      "sha256": "8872ac6b0cb78bcaf64a940a975acf98b6572df987e04a708ff5cc18b0b7229a"
+    },
+    {
+      "path": "research/protocol-figures/figures/base-architecture.png",
+      "bytes": 118226,
+      "sha256": "ba98cce1a68fb610a72c73922c184ed7fcf249cecbdd51cb19f1014523f3fa94"
+    },
+    {
+      "path": "research/protocol-figures/figures/development-stages-dark.png",
+      "bytes": 87181,
+      "sha256": "ab56114f8a92195df0947040a9c148c87b2a6c782f2d45bcfd0151834f800ff6"
+    },
+    {
+      "path": "research/protocol-figures/figures/development-stages.png",
+      "bytes": 86982,
+      "sha256": "758221291511fb6c9b3ac5cfb5b2e75146763959440d8b39b724d94f318fd37f"
+    },
+    {
+      "path": "research/protocol-figures/figures/private-payment-flow-dark.png",
+      "bytes": 123592,
+      "sha256": "5bf48f8e6de605828373a72b49be7224a6131514df2ce5ff21264894f4ab012f"
+    },
+    {
+      "path": "research/protocol-figures/figures/private-payment-flow.png",
+      "bytes": 123462,
+      "sha256": "2420fa796409e3c6578d79cd23489c03a174b8eb34ae2bacd411634b399dd8d3"
+    },
+    {
+      "path": "research/protocol-figures/figures/wallet-safe-lifecycle-dark.png",
+      "bytes": 98384,
+      "sha256": "74de182ad40501b7b263a3908f4e943dfc2681ad18c111b8fe85518f2ed3ad3b"
+    },
+    {
+      "path": "research/protocol-figures/figures/wallet-safe-lifecycle.png",
+      "bytes": 98274,
+      "sha256": "d064f96a416c5d6266b42540ad7f0e9fc6e13f2d6f2f41425a75a79ef4f99588"
+    },
+    {
+      "path": "research/protocol-figures/figures/work-checkpoint-flow-dark.png",
+      "bytes": 121840,
+      "sha256": "70220678a9385a847cc5087bc9380b43f716015f9e12d4c6d91788be0a9f7274"
+    },
+    {
+      "path": "research/protocol-figures/figures/work-checkpoint-flow.png",
+      "bytes": 121492,
+      "sha256": "74d04063ff211b3bd4a6d06f1533419561d2ec96393fd65feeeefcf3714e70b5"
+    }
+  ],
+  "svg_dimensions": [
+    {
+      "path": "research/protocol-figures/figures/base-architecture-dark.svg",
+      "width": "1560",
+      "height": "1040",
+      "viewBox": "0 0 1560 1040"
+    },
+    {
+      "path": "research/protocol-figures/figures/base-architecture.svg",
+      "width": "1560",
+      "height": "1040",
+      "viewBox": "0 0 1560 1040"
+    },
+    {
+      "path": "research/protocol-figures/figures/development-stages-dark.svg",
+      "width": "1560",
+      "height": "1020",
+      "viewBox": "0 0 1560 1020"
+    },
+    {
+      "path": "research/protocol-figures/figures/development-stages.svg",
+      "width": "1560",
+      "height": "1020",
+      "viewBox": "0 0 1560 1020"
+    },
+    {
+      "path": "research/protocol-figures/figures/private-payment-flow-dark.svg",
+      "width": "1560",
+      "height": "1040",
+      "viewBox": "0 0 1560 1040"
+    },
+    {
+      "path": "research/protocol-figures/figures/private-payment-flow.svg",
+      "width": "1560",
+      "height": "1040",
+      "viewBox": "0 0 1560 1040"
+    },
+    {
+      "path": "research/protocol-figures/figures/wallet-safe-lifecycle-dark.svg",
+      "width": "1560",
+      "height": "1010",
+      "viewBox": "0 0 1560 1010"
+    },
+    {
+      "path": "research/protocol-figures/figures/wallet-safe-lifecycle.svg",
+      "width": "1560",
+      "height": "1010",
+      "viewBox": "0 0 1560 1010"
+    },
+    {
+      "path": "research/protocol-figures/figures/work-checkpoint-flow-dark.svg",
+      "width": "1560",
+      "height": "1000",
+      "viewBox": "0 0 1560 1000"
+    },
+    {
+      "path": "research/protocol-figures/figures/work-checkpoint-flow.svg",
+      "width": "1560",
+      "height": "1000",
+      "viewBox": "0 0 1560 1000"
+    }
+  ],
+  "svg_reproduction": {
+    "python": "Standard library",
+    "command": "python research/protocol-figures/generate_figures.py --check",
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "canvas": "transparent"
+  },
+  "production_emission_parameters": "Development references subject to a later versioned selection",
+  "font_files_distributed": false,
+  "optional_preview_environment": {
+    "python": "3.12.14",
+    "pillow": "12.3.0",
+    "arial.ttf_sha256": "b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a",
+    "arialbd.ttf_sha256": "e8f4e3baf6cc35fed6fcce3a540e8b39e8f6cda1d22a28f2ec8f526fef7a43f5"
+  },
+  "shared_helper_scope": "Drawing and palette reuse only. Base consensus has no runtime dependency on the later Aegis protocol."
+}

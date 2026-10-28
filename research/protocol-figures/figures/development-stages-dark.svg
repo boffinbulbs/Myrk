@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1020" viewBox="0 0 1560 1020" role="img" aria-labelledby="figure-title figure-description" data-theme="dark" data-canvas="transparent">
+  <title id="figure-title">Protocol development stages</title>
+  <desc id="figure-description">Development order. Protocol architecture and development order, not performance measurements</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#80b4ff" />
+    </marker>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="60" y="58" font-size="31" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="60" y="58">Protocol development stages</tspan>
+    </text>
+    <text x="60" y="94" font-size="20" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="94">Component evidence feeds integration gates and executable chain tests.</tspan>
+    </text>
+    <rect x="60" y="145" width="1440" height="120" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="88" y="183" font-size="24" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="88" y="183">Executable research components</tspan>
+    </text>
+    <text x="88" y="222" font-size="21" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="88" y="222">Accounting, note relations, source constraints, arithmetic and bounded proof profiles.</tspan>
+    </text>
+    <rect x="60" y="365" width="330" height="250" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="403" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="403">Private relation</tspan>
+      <tspan x="82" y="432">feasibility gates</tspan>
+    </text>
+    <text x="82" y="483" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="483">Complete private payments</tspan>
+      <tspan x="82" y="512">Confidential stake</tspan>
+      <tspan x="82" y="541">Same witness authorization</tspan>
+      <tspan x="82" y="570">Measured resource bounds</tspan>
+    </text>
+    <rect x="430" y="365" width="330" height="250" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="452" y="403" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="452" y="403">Kernel and</tspan>
+      <tspan x="452" y="432">consensus</tspan>
+    </text>
+    <text x="452" y="483" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="452" y="483">Ledger kernel</tspan>
+      <tspan x="452" y="512">Work and checkpoint rules</tspan>
+      <tspan x="452" y="541">Mining integration</tspan>
+      <tspan x="452" y="570">Resource enforcement</tspan>
+    </text>
+    <rect x="800" y="365" width="330" height="250" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="822" y="403" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="822" y="403">Independent</tspan>
+      <tspan x="822" y="432">server tests</tspan>
+    </text>
+    <text x="822" y="483" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="822" y="483">Isolated development network</tspan>
+      <tspan x="822" y="512">Adversarial and recovery cases</tspan>
+      <tspan x="822" y="541">Independent verification</tspan>
+      <tspan x="822" y="570">Measured network behavior</tspan>
+    </text>
+    <rect x="1170" y="365" width="330" height="250" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="1192" y="403" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1192" y="403">Private</tspan>
+      <tspan x="1192" y="432">desktop wallet</tspan>
+    </text>
+    <text x="1192" y="483" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1192" y="483">Private note recovery</tspan>
+      <tspan x="1192" y="512">Payments and staking</tspan>
+      <tspan x="1192" y="541">Scoped local services</tspan>
+      <tspan x="1192" y="570">User controlled viewing</tspan>
+    </text>
+    <polyline points="225,265 225,365" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <polyline points="390,490 430,490" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <polyline points="760,490 800,490" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <polyline points="1130,490 1170,490" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="60" y="706" font-size="24" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="60" y="706">Later feature branches</tspan>
+    </text>
+    <rect x="60" y="775" width="430" height="155" rx="10" fill="#16372d" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="810" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="810">Private contracts</tspan>
+    </text>
+    <text x="82" y="850" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="850">Private escrow and confidential assets</tspan>
+      <tspan x="82" y="879">Private application state</tspan>
+    </text>
+    <rect x="565" y="775" width="430" height="155" rx="10" fill="#16372d" stroke="#42546b" stroke-width="1.5" />
+    <text x="587" y="810" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="587" y="810">Wallet Safe</tspan>
+    </text>
+    <text x="587" y="850" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="587" y="850">Chain enforced delayed withdrawals</tspan>
+      <tspan x="587" y="879">Restricted recovery authority</tspan>
+    </text>
+    <rect x="1070" y="775" width="430" height="155" rx="10" fill="#16372d" stroke="#42546b" stroke-width="1.5" />
+    <text x="1092" y="810" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1092" y="810">Aegis</tspan>
+    </text>
+    <text x="1092" y="850" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1092" y="850">Certified private spending state</tspan>
+      <tspan x="1092" y="879">Later PoW recording integration</tspan>
+    </text>
+    <text x="60" y="985" font-size="19" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="985">Development order. Later feature branches remain separate from initial chain tests.</tspan>
+    </text>
+  </g>
+</svg>

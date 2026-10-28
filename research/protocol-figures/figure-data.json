@@ -1,0 +1,66 @@
+{
+  "format": "thorum.protocol-design-figures.v1",
+  "scope": "Protocol architecture and development order, not performance measurements",
+  "runtime_integration": "Pending",
+  "svg_canvas": "transparent",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "png_preview_canvas": "Explicit theme composite",
+  "public_owner_or_key_tag": false,
+  "base_onward_spending": "After valid checkpoint finality",
+  "implemented_labs": "Independent component constraints and bounded proof profiles",
+  "integration_gates": [
+    "Complete private payment relation",
+    "Confidential stake feasibility"
+  ],
+  "base_development_order": [
+    "Private payment and confidential stake gates",
+    "Kernel, work and checkpoint rules",
+    "Independent isolated server tests",
+    "Private wallet"
+  ],
+  "later_branches": [
+    "Private contracts",
+    "Wallet Safe",
+    "Aegis"
+  ],
+  "safe_policy": {
+    "enforcement": "Chain rules",
+    "withdrawal_delay": "Policy parameter remains to be specified",
+    "recovery_authority": "Cancel to predetermined protected destination",
+    "pending_right": "Consumed exactly once by release or cancellation"
+  },
+  "rpc_boundary": {
+    "public": "Chain status, commitments, nullifiers and encrypted delivery data",
+    "wallet_scoped": "Locally recovered notes and own balances with restricted authority"
+  },
+  "figures": {
+    "base-architecture": {
+      "width": 1560,
+      "height": 1040,
+      "status": "Planned base runtime"
+    },
+    "private-payment-flow": {
+      "width": 1560,
+      "height": 1040,
+      "status": "Planned base protocol"
+    },
+    "work-checkpoint-flow": {
+      "width": 1560,
+      "height": 1000,
+      "status": "Planned base consensus"
+    },
+    "wallet-safe-lifecycle": {
+      "width": 1560,
+      "height": 1010,
+      "status": "Later contract and wallet policy"
+    },
+    "development-stages": {
+      "width": 1560,
+      "height": 1020,
+      "status": "Development order"
+    }
+  }
+}

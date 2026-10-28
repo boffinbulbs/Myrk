@@ -42,10 +42,20 @@ SVG figures and source hashes identify the canonical plotted content. PNG raster
 
 ## Local observations
 
-![Primitive operation latency](charts/primitive_latency.svg)
+The [transparent display variants](../presentation/README.md) preserve the original plot geometry, data labels and recorded measurements. Detailed notes accompany the research record, and the historical benchmark scope remains unchanged.
 
-![Envelope latency by payload size](charts/envelope_latency.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../presentation/figures/crypto-primitive-latency-dark.svg">
+  <img alt="Historical primitive operation latency on the recorded hardware and source revision" src="../presentation/figures/crypto-primitive-latency-light.svg">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../presentation/figures/crypto-envelope-latency-dark.svg">
+  <img alt="Historical envelope latency by payload size under the recorded primitive profile" src="../presentation/figures/crypto-envelope-latency-light.svg">
+</picture>
 
 Primitive operations ending in `_os` include operating system entropy costs. Median and p95 describe this sample distribution and are not confidence bounds. The log scale in the first figure is explicitly marked. Payload groups in the second figure use equal categorical spacing.
+
+In the envelope figure, bars show medians, while caps and numeric labels show p95. The percentile calculation uses the nearest rank rule recorded with the source observations.
 
 Envelope overhead is an analytical encoding result of 1,618 bytes above plaintext length. The payload is synthetic. Byte columns count selected public artifacts and payloads, with exclusions documented in the laboratory specification. No graph measures private proof cost, network capacity, consensus throughput, memory use, or side channel resistance.

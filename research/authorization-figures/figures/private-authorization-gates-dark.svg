@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1410" viewBox="0 0 1800 1410" role="img" aria-labelledby="figure-title figure-description" font-family="Arial, Helvetica, sans-serif">
+  <title id="figure-title">Private authorization: implemented components and required joins</title>
+  <desc id="figure-description">Four separate public component proof relations feed dashed, unfinished same-witness authorization joins. Native public transaction preprocessing does not complete those joins. Recipient delivery, ledger state and composition security remain separate integration gates. The outer canvas is transparent.</desc>
+  <defs>
+    <marker id="required-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f1c87b" />
+    </marker>
+  </defs>
+  <text x="44" y="54" fill="#f0f6ff" font-size="31" font-weight="bold" text-anchor="start">Private authorization: components and required joins</text>
+  <text x="44" y="90" fill="#b1c0d1" font-size="20" font-weight="normal" text-anchor="start">Public research components and the same-witness joins still required</text>
+  <line x1="44" y1="123" x2="94" y2="123" stroke="#81baff" stroke-width="2.5" />
+  <text x="108" y="129" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Solid component boundary</text>
+  <line x1="430" y1="123" x2="480" y2="123" stroke="#f1c87b" stroke-width="2.5" stroke-dasharray="8 7" />
+  <text x="494" y="129" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Dashed: required join or integration gate</text>
+  <text x="1040" y="129" fill="#b1c0d1" font-size="17" font-weight="normal" text-anchor="start">Private values unless labeled public</text>
+  <g id="owner-binding">
+    <rect x="44" y="170" width="410" height="360" rx="12" fill="#81baff" fill-opacity="0.035" stroke="#81baff" stroke-width="2" />
+    <text x="64" y="200" fill="#81baff" font-size="12" font-weight="bold" text-anchor="start">IMPLEMENTED COMPONENT PROOF</text>
+    <text x="64" y="234" fill="#f0f6ff" font-size="22" font-weight="bold" text-anchor="start">Owner binding</text>
+    <text x="64" y="276" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Hidden verification key preimages</text>
+    <text x="64" y="306" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">SHA3 owner fields in the same notes</text>
+    <text x="64" y="336" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Hidden depth 32 membership</text>
+    <text x="64" y="366" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Stable public nullifiers</text>
+    <text x="64" y="396" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Exact amount conservation</text>
+    <line x1="64" y1="448" x2="434" y2="448" stroke="#81baff" stroke-width="1" stroke-opacity="0.5" />
+    <text x="64" y="478" fill="#b1c0d1" font-size="16" font-weight="normal" text-anchor="start">Public root, nullifiers and outputs</text>
+    <text x="64" y="503" fill="#b1c0d1" font-size="16" font-weight="normal" text-anchor="start">Signature permission remains unproved</text>
+  </g>
+  <path d="M 249.0 530 L 249.0 650" fill="none" stroke="#f1c87b" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#required-arrow)" />
+  <text x="269.0" y="576" fill="#f1c87b" font-size="16" font-weight="normal" text-anchor="start">Same hidden note</text>
+  <text x="269.0" y="600" fill="#f1c87b" font-size="16" font-weight="normal" text-anchor="start">and owner key</text>
+  <g id="key-source">
+    <rect x="478" y="170" width="410" height="360" rx="12" fill="#81baff" fill-opacity="0.035" stroke="#81baff" stroke-width="2" />
+    <text x="498" y="200" fill="#81baff" font-size="12" font-weight="bold" text-anchor="start">IMPLEMENTED COMPONENT PROOF</text>
+    <text x="498" y="234" fill="#f0f6ff" font-size="22" font-weight="bold" text-anchor="start">Key source</text>
+    <text x="498" y="276" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Two hidden key encodings</text>
+    <text x="498" y="306" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">The same bytes produce</text>
+    <text x="498" y="336" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">owner / tr / rho / t1</text>
+    <text x="498" y="366" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Private retained result banks</text>
+    <line x1="498" y1="448" x2="868" y2="448" stroke="#81baff" stroke-width="1" stroke-opacity="0.5" />
+    <text x="498" y="478" fill="#b1c0d1" font-size="16" font-weight="normal" text-anchor="start">Public PV64 is opaque context</text>
+    <text x="498" y="503" fill="#b1c0d1" font-size="16" font-weight="normal" text-anchor="start">No canonical transaction mapping</text>
+  </g>
+  <path d="M 683.0 530 L 683.0 650" fill="none" stroke="#f1c87b" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#required-arrow)" />
+  <text x="703.0" y="576" fill="#f1c87b" font-size="16" font-weight="normal" text-anchor="start">Same key</text>
+  <text x="703.0" y="600" fill="#f1c87b" font-size="16" font-weight="normal" text-anchor="start">and derived values</text>
+  <g id="signature-challenge">
+    <rect x="912" y="170" width="410" height="360" rx="12" fill="#81baff" fill-opacity="0.035" stroke="#81baff" stroke-width="2" />
+    <text x="932" y="200" fill="#81baff" font-size="12" font-weight="bold" text-anchor="start">IMPLEMENTED COMPONENT PROOF</text>
+    <text x="932" y="234" fill="#f0f6ff" font-size="22" font-weight="bold" text-anchor="start">Signature and challenge</text>
+    <text x="932" y="276" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">One represented private signature</text>
+    <text x="932" y="306" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Same seed and held tail</text>
+    <text x="932" y="336" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Strict z and canonical hint decoding</text>
+    <text x="932" y="366" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Bounded challenge sampling</text>
+    <text x="932" y="396" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Diagnostic polynomial is public</text>
+    <line x1="932" y1="448" x2="1302" y2="448" stroke="#81baff" stroke-width="1" stroke-opacity="0.5" />
+    <text x="932" y="478" fill="#b1c0d1" font-size="16" font-weight="normal" text-anchor="start">Canonicality is constrained</text>
+    <text x="932" y="503" fill="#b1c0d1" font-size="16" font-weight="normal" text-anchor="start">Full signature validity is unproved</text>
+  </g>
+  <path d="M 1117.0 530 L 1117.0 650" fill="none" stroke="#f1c87b" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#required-arrow)" />
+  <text x="1137.0" y="576" fill="#f1c87b" font-size="16" font-weight="normal" text-anchor="start">Same signature</text>
+  <text x="1137.0" y="600" fill="#f1c87b" font-size="16" font-weight="normal" text-anchor="start">and decoded values</text>
+  <g id="conditional-row">
+    <rect x="1346" y="170" width="410" height="360" rx="12" fill="#81baff" fill-opacity="0.035" stroke="#81baff" stroke-width="2" />
+    <text x="1366" y="200" fill="#81baff" font-size="12" font-weight="bold" text-anchor="start">IMPLEMENTED COMPONENT PROOF</text>
+    <text x="1366" y="234" fill="#f0f6ff" font-size="22" font-weight="bold" text-anchor="start">Conditional row</text>
+    <text x="1366" y="276" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Private rho, zhat, t1, chat and hints</text>
+    <text x="1366" y="306" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Seven matrix streams and arithmetic</text>
+    <text x="1366" y="336" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">Transforms, normalization, UseHint</text>
+    <text x="1366" y="366" fill="#dbe7f5" font-size="17" font-weight="normal" text-anchor="start">128 packed row bytes stay private</text>
+    <line x1="1366" y1="448" x2="1736" y2="448" stroke="#81baff" stroke-width="1" stroke-opacity="0.5" />
+    <text x="1366" y="478" fill="#b1c0d1" font-size="16" font-weight="normal" text-anchor="start">Operand source identity is unproved</text>
+    <text x="1366" y="503" fill="#b1c0d1" font-size="16" font-weight="normal" text-anchor="start">Public row index and opaque context</text>
+  </g>
+  <path d="M 1551.0 530 L 1551.0 650" fill="none" stroke="#f1c87b" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#required-arrow)" />
+  <text x="1571.0" y="576" fill="#f1c87b" font-size="16" font-weight="normal" text-anchor="start">Same operands</text>
+  <text x="1571.0" y="600" fill="#f1c87b" font-size="16" font-weight="normal" text-anchor="start">and every row output</text>
+  <rect x="44" y="650" width="1712" height="378" rx="12" fill="#f1c87b" fill-opacity="0.025" stroke="#f1c87b" stroke-width="2" stroke-dasharray="8 7" />
+  <text x="70" y="692" fill="#f1c87b" font-size="22" font-weight="bold" text-anchor="start">REQUIRED COMPLETE AUTHORIZATION</text>
+  <text x="1726" y="691" fill="#f1c87b" font-size="15" font-weight="bold" text-anchor="end">UNFINISHED</text>
+  <rect x="70" y="751" width="320" height="177" rx="12" fill="#9fb3cc" fill-opacity="0.025" stroke="#9fb3cc" stroke-width="2" />
+  <text x="88" y="780" fill="#9fb3cc" font-size="12" font-weight="bold" text-anchor="start">NATIVE PUBLIC PREPROCESSING</text>
+  <text x="88" y="815" fill="#f0f6ff" font-size="21" font-weight="bold" text-anchor="start">Expected public T</text>
+  <text x="88" y="852" fill="#dbe7f5" font-size="16" font-weight="normal" text-anchor="start">Canonical public encoding</text>
+  <text x="88" y="877" fill="#dbe7f5" font-size="16" font-weight="normal" text-anchor="start">Verifier-owned expected data</text>
+  <text x="88" y="902" fill="#dbe7f5" font-size="16" font-weight="normal" text-anchor="start">Native preprocessing exists</text>
+  <path d="M 390 840 L 442 840" fill="none" stroke="#f1c87b" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#required-arrow)" />
+  <text x="466" y="758" fill="#dbe7f5" font-size="20" font-weight="normal" text-anchor="start">Same key -&gt; tr -&gt; private mu for the exact T and fixed pure context</text>
+  <text x="466" y="798" fill="#dbe7f5" font-size="20" font-weight="normal" text-anchor="start">Same decoded signature sources supply every private operand</text>
+  <text x="466" y="838" fill="#dbe7f5" font-size="20" font-weight="normal" text-anchor="start">All eight packed rows feed SHAKE256(mu || encoded w1)</text>
+  <text x="466" y="878" fill="#dbe7f5" font-size="20" font-weight="normal" text-anchor="start">Full 64-byte equality to that same signature challenge</text>
+  <text x="466" y="918" fill="#dbe7f5" font-size="20" font-weight="normal" text-anchor="start">Valid authorization binds the owner of the same hidden note</text>
+  <text x="70" y="988" fill="#f1c87b" font-size="19" font-weight="normal" text-anchor="start">Same private values, constrained across every component</text>
+  <path d="M 319 1028 L 319 1138" fill="none" stroke="#f1c87b" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#required-arrow)" />
+  <rect x="44" y="1140" width="550" height="148" rx="12" fill="#f1c87b" fill-opacity="0.025" stroke="#f1c87b" stroke-width="2" stroke-dasharray="8 7" />
+  <text x="64" y="1178" fill="#f0f6ff" font-size="22" font-weight="bold" text-anchor="start">Recipient delivery</text>
+  <text x="64" y="1219" fill="#dbe7f5" font-size="18" font-weight="normal" text-anchor="start">Bind encryption to the same output</text>
+  <text x="64" y="1247" fill="#dbe7f5" font-size="18" font-weight="normal" text-anchor="start">Authenticated recovery and availability</text>
+  <path d="M 900 1028 L 900 1138" fill="none" stroke="#f1c87b" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#required-arrow)" />
+  <rect x="625" y="1140" width="550" height="148" rx="12" fill="#f1c87b" fill-opacity="0.025" stroke="#f1c87b" stroke-width="2" stroke-dasharray="8 7" />
+  <text x="645" y="1178" fill="#f0f6ff" font-size="22" font-weight="bold" text-anchor="start">Ledger acceptance</text>
+  <text x="645" y="1219" fill="#dbe7f5" font-size="18" font-weight="normal" text-anchor="start">Eligible roots and persistent spent state</text>
+  <text x="645" y="1247" fill="#dbe7f5" font-size="18" font-weight="normal" text-anchor="start">Atomic consumption and persistence</text>
+  <path d="M 1481 1028 L 1481 1138" fill="none" stroke="#f1c87b" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#required-arrow)" />
+  <rect x="1206" y="1140" width="550" height="148" rx="12" fill="#f1c87b" fill-opacity="0.025" stroke="#f1c87b" stroke-width="2" stroke-dasharray="8 7" />
+  <text x="1226" y="1178" fill="#f0f6ff" font-size="22" font-weight="bold" text-anchor="start">Composition and security</text>
+  <text x="1226" y="1219" fill="#dbe7f5" font-size="18" font-weight="normal" text-anchor="start">Private consistency and knowledge soundness</text>
+  <text x="1226" y="1247" fill="#dbe7f5" font-size="18" font-weight="normal" text-anchor="start">Resources, PQ assumptions and metadata</text>
+  <text x="44" y="1340" fill="#f0f6ff" font-size="20" font-weight="bold" text-anchor="start">Public status: standalone component proofs and native references.</text>
+  <text x="44" y="1375" fill="#b1c0d1" font-size="18" font-weight="normal" text-anchor="start">Complete private authorization remains unfinished.</text>
+</svg>

@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1270" viewBox="0 0 1560 1270" role="img" aria-labelledby="figure-title figure-description" data-theme="dark" data-canvas="transparent">
+  <title id="figure-title">Thorum Aegis planned certification ordering</title>
+  <desc id="figure-description">Illustrative later protocol ordering with certified sequences zero, one and two. The PoW recording cursor remains zero until one block records sequences one and two. Vertical spacing is not an elapsed time scale and no performance is measured.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#80b4ff" />
+    </marker>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="60" y="58" font-size="31" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="60" y="58">Thorum Aegis certification and PoW recording</tspan>
+    </text>
+    <text x="60" y="94" font-size="20" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="94">Planned ordering for a later protocol upgrade.</tspan>
+    </text>
+    <text x="60" y="132" font-size="19" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="132">S validates the complete proof and global spent rights before every final commit.</tspan>
+    </text>
+    <text x="160" y="192" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="160" y="192">Wallet C</tspan>
+    </text>
+    <polyline points="160,215 160,1168" fill="none" stroke="#42546b" stroke-width="1.5" stroke-dasharray="7 7" />
+    <text x="390" y="192" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="390" y="192">Stakers S</tspan>
+    </text>
+    <polyline points="390,215 390,1168" fill="none" stroke="#42546b" stroke-width="1.5" stroke-dasharray="7 7" />
+    <text x="620" y="192" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="620" y="192">Wallet Y</tspan>
+    </text>
+    <polyline points="620,215 620,1168" fill="none" stroke="#42546b" stroke-width="1.5" stroke-dasharray="7 7" />
+    <text x="850" y="192" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="850" y="192">Wallet Z</tspan>
+    </text>
+    <polyline points="850,215 850,1168" fill="none" stroke="#42546b" stroke-width="1.5" stroke-dasharray="7 7" />
+    <text x="1080" y="192" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="1080" y="192">Miner M</tspan>
+    </text>
+    <polyline points="1080,215 1080,1168" fill="none" stroke="#42546b" stroke-width="1.5" stroke-dasharray="7 7" />
+    <text x="1310" y="192" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="1310" y="192">Validator N</tspan>
+    </text>
+    <polyline points="1310,215 1310,1168" fill="none" stroke="#42546b" stroke-width="1.5" stroke-dasharray="7 7" />
+    <rect x="60" y="230" width="1440" height="69" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="257" font-size="21" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="257">Initial state: q = 0, k = 0</tspan>
+    </text>
+    <text x="82" y="284" font-size="18" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="284">Certified state S_0 and recorded prefix agree.</tspan>
+    </text>
+    <polyline points="160,365 390,365" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="275.0" y="328" font-size="17" font-weight="400" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="275.0" y="328">Private payment proof</tspan>
+      <tspan x="275.0" y="351">+ delivery for Y</tspan>
+    </text>
+    <rect x="60" y="395" width="1440" height="69" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="422" font-size="21" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="422">Final stake commit: q = 1, k = 0</tspan>
+    </text>
+    <text x="82" y="449" font-size="18" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="449">S_1 is certified. No new PoW block has recorded sequence 1.</tspan>
+    </text>
+    <polyline points="390,523 620,523" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="505.0" y="486" font-size="17" font-weight="400" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="505.0" y="486">Certificate q = 1</tspan>
+      <tspan x="505.0" y="509">+ private delivery</tspan>
+    </text>
+    <rect x="494" y="550" width="252" height="66" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="620" y="576" font-size="17" font-weight="400" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="620" y="576">Y recovers privately</tspan>
+      <tspan x="620" y="601">Checks membership in S_1</tspan>
+    </text>
+    <polyline points="620,684 390,684" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="505.0" y="647" font-size="17" font-weight="400" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="505.0" y="647">Spend from S_1</tspan>
+      <tspan x="505.0" y="670">+ delivery for Z</tspan>
+    </text>
+    <rect x="60" y="713" width="1440" height="69" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="740" font-size="21" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="740">Final stake commit: q = 2, k = 0</tspan>
+    </text>
+    <text x="82" y="767" font-size="18" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="767">S_2 is certified. Both certified sequences are still unrecorded by PoW.</tspan>
+    </text>
+    <polyline points="390,840 850,840" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="620.0" y="803" font-size="17" font-weight="400" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="620.0" y="803">Certificate q = 2 + private delivery</tspan>
+    </text>
+    <rect x="724" y="867" width="252" height="66" rx="10" fill="#16372d" stroke="#42546b" stroke-width="1.5" />
+    <text x="850" y="893" font-size="17" font-weight="400" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="850" y="893">Z recovers privately</tspan>
+      <tspan x="850" y="918">Checks membership in S_2</tspan>
+    </text>
+    <polyline points="390,1001 1080,1001" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="735.0" y="964" font-size="17" font-weight="400" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="735.0" y="964">Contiguous certified batches 1 and 2</tspan>
+    </text>
+    <rect x="60" y="1031" width="1440" height="69" rx="10" fill="#16372d" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="1058" font-size="21" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="1058">PoW recording: q = 2, k = 2</tspan>
+    </text>
+    <text x="82" y="1085" font-size="18" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="1085">One block records sequences 1 and 2 once. The certified state transition is not replayed.</tspan>
+    </text>
+    <polyline points="1080,1160 1310,1160" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="1195.0" y="1123" font-size="17" font-weight="400" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="1195.0" y="1123">PoW block + certificates</tspan>
+      <tspan x="1195.0" y="1146">Independent N checks both</tspan>
+    </text>
+    <text x="60" y="1211" font-size="19" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="1211">0 &lt;= k &lt;= q. One certified state and log. One PoW chain.</tspan>
+    </text>
+    <text x="60" y="1241" font-size="19" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="1241">Later protocol design.</tspan>
+    </text>
+  </g>
+</svg>

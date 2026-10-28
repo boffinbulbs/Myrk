@@ -2,6 +2,11 @@
 
 ## Status and authority
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/accounting-figures/figures/funding-authorities-dark.svg">
+  <img alt="Native funding ballot authority separated from developer credits and operator external custody" src="../research/accounting-figures/figures/funding-authorities.svg">
+</picture>
+
 1. This document defines research requirements for protocol pool spending through eligible stake ballots. The current [native subsidy profile](subsidy-allocation.md) allocates nominal shares of 60 percent to miners, 20 percent to eligible staking, 10 percent to the protocol pool, and 10 percent to temporary development maintenance for the designated project developer. The core calculates those amounts and supply counters. It does not create payout notes, authenticate destinations, implement pool balances or reservations, or grant a wallet spending authority. No governance network is implemented.
 
 | Area | Current reference status | Research scope |

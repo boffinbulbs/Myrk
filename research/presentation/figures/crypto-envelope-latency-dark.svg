@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="650" preserveAspectRatio="xMinYMin meet" viewBox="0 0 1120 650" version="1.0" fill-rule="evenodd" role="img">
+	<title>Envelope latency by payload size</title>
+	<desc>Historical recorded primitive experiment. Transparent dark display variant. Plot geometry and data labels are retained. Detailed scope notes accompany the research record.</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="1120" height="650" />
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-650)" style="clip-path: url(#clip);">
+		<g transform="">
+			<rect x="0" y="0" width="1120" height="650" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: none; fill-rule: evenodd;" />
+			<text x="55" y="610" style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; fill: #e6edf3; stroke: none; font-weight: bold;" transform="translate(0,1220) scale(1,-1)">Recipient envelope latency by payload size</text>
+			<text x="55" y="584" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #a8b8cd; stroke: none;" transform="translate(0,1168) scale(1,-1)">Complete experimental envelope sealing and opening. 50 recorded samples per group.</text>
+			<text x="55" y="563" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #a8b8cd; stroke: none;" transform="translate(0,1126) scale(1,-1)">Intel Core i9-13900H | Windows 11 Home build 26300 | Rust 1.94.1 | release with thin LTO</text>
+			<path d="M 105,160 L 1055,160 Z" style="stroke: #344258; stroke-linecap: butt; stroke-width: 0.7;" />
+			<text x="84.44" y="156.0" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #a8b8cd; stroke: none;" transform="translate(0,312) scale(1,-1)">0</text>
+			<path d="M 105,247.5 L 1055,247.5 Z" style="stroke: #344258; stroke-linecap: butt; stroke-width: 0.7;" />
+			<text x="70.53999999999999" y="243.5" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #a8b8cd; stroke: none;" transform="translate(0,487) scale(1,-1)">0.05</text>
+			<path d="M 105,335 L 1055,335 Z" style="stroke: #344258; stroke-linecap: butt; stroke-width: 0.7;" />
+			<text x="76.1" y="331.0" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #a8b8cd; stroke: none;" transform="translate(0,662) scale(1,-1)">0.1</text>
+			<path d="M 105,422.5 L 1055,422.5 Z" style="stroke: #344258; stroke-linecap: butt; stroke-width: 0.7;" />
+			<text x="70.53999999999999" y="418.50000000000006" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #a8b8cd; stroke: none;" transform="translate(0,837) scale(1,-1)">0.15</text>
+			<path d="M 105,510 L 1055,510 Z" style="stroke: #344258; stroke-linecap: butt; stroke-width: 0.7;" />
+			<text x="76.1" y="506.0" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #a8b8cd; stroke: none;" transform="translate(0,1012) scale(1,-1)">0.2</text>
+			<text x="105" y="527" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #e6edf3; stroke: none;" transform="translate(0,1054) scale(1,-1)">Elapsed milliseconds</text>
+			<rect x="184.75" y="160" width="32.0" height="186.72500000000002" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #7bb3ff; fill-rule: evenodd;" />
+			<path d="M 200.75,346.725 L 200.75,360.375 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1;" />
+			<path d="M 192.75,360.375 L 208.75,360.375 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="189.49099999999999" y="370.375" style="font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #a8b8cd; stroke: none;" transform="translate(0,740) scale(1,-1)">0.115</text>
+			<rect x="230.75" y="160" width="32.0" height="210.7" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #65d2ab; fill-rule: evenodd;" />
+			<path d="M 246.75,370.7 L 246.75,381.55 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1;" />
+			<path d="M 238.75,381.55 L 254.75,381.55 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="235.49099999999999" y="391.54999999999995" style="font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #a8b8cd; stroke: none;" transform="translate(0,783) scale(1,-1)">0.127</text>
+			<text x="220.692" y="135" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #e6edf3; stroke: none;" transform="translate(0,270) scale(1,-1)">0</text>
+			<rect x="422.25" y="160" width="32.0" height="188.125" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #7bb3ff; fill-rule: evenodd;" />
+			<path d="M 438.25,348.125 L 438.25,373.15 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1;" />
+			<path d="M 430.25,373.15 L 446.25,373.15 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="426.991" y="383.15" style="font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #a8b8cd; stroke: none;" transform="translate(0,766) scale(1,-1)">0.122</text>
+			<rect x="468.25" y="160" width="32.0" height="211.57499999999993" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #65d2ab; fill-rule: evenodd;" />
+			<path d="M 484.25,371.575 L 484.25,394.85 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1;" />
+			<path d="M 476.25,394.85 L 492.25,394.85 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="472.991" y="404.85" style="font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #a8b8cd; stroke: none;" transform="translate(0,809) scale(1,-1)">0.134</text>
+			<text x="452.076" y="135" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #e6edf3; stroke: none;" transform="translate(0,270) scale(1,-1)">256</text>
+			<rect x="659.75" y="160" width="32.0" height="188.825" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #7bb3ff; fill-rule: evenodd;" />
+			<path d="M 675.75,348.825 L 675.75,367.9 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1;" />
+			<path d="M 667.75,367.9 L 683.75,367.9 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="664.491" y="377.9" style="font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #a8b8cd; stroke: none;" transform="translate(0,755) scale(1,-1)">0.119</text>
+			<rect x="705.75" y="160" width="32.0" height="213.9375" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #65d2ab; fill-rule: evenodd;" />
+			<path d="M 721.75,373.9375 L 721.75,397.475 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1;" />
+			<path d="M 713.75,397.475 L 729.75,397.475 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="710.491" y="407.47499999999997" style="font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #a8b8cd; stroke: none;" transform="translate(0,814) scale(1,-1)">0.136</text>
+			<text x="684.989" y="135" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #e6edf3; stroke: none;" transform="translate(0,270) scale(1,-1)">1,024</text>
+			<rect x="897.25" y="160" width="32.0" height="201.07500000000005" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #7bb3ff; fill-rule: evenodd;" />
+			<path d="M 913.25,361.075 L 913.25,363.525 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1;" />
+			<path d="M 905.25,363.525 L 921.25,363.525 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="901.991" y="373.525" style="font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #a8b8cd; stroke: none;" transform="translate(0,747) scale(1,-1)">0.116</text>
+			<rect x="943.25" y="160" width="32.0" height="225.22500000000002" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #65d2ab; fill-rule: evenodd;" />
+			<path d="M 959.25,385.225 L 959.25,393.625 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1;" />
+			<path d="M 951.25,393.625 L 967.25,393.625 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="947.991" y="403.625" style="font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #a8b8cd; stroke: none;" transform="translate(0,807) scale(1,-1)">0.134</text>
+			<text x="919.431" y="135" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #e6edf3; stroke: none;" transform="translate(0,270) scale(1,-1)">16,384</text>
+			<text x="475.45050000000003" y="108" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #e6edf3; stroke: none;" transform="translate(0,216) scale(1,-1)">Plaintext payload bytes, categorical groups</text>
+			<rect x="345" y="83" width="16" height="10" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #7bb3ff; fill-rule: evenodd;" />
+			<text x="370" y="83" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #e6edf3; stroke: none;" transform="translate(0,166) scale(1,-1)">Seal with OS entropy</text>
+			<rect x="530" y="83" width="16" height="10" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: #65d2ab; fill-rule: evenodd;" />
+			<text x="555" y="83" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #e6edf3; stroke: none;" transform="translate(0,166) scale(1,-1)">Open</text>
+			<path d="M 650,88 L 668,88 Z" style="stroke: #e6edf3; stroke-linecap: butt; stroke-width: 1.7;" />
+			<text x="677" y="83" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #e6edf3; stroke: none;" transform="translate(0,166) scale(1,-1)">p95</text>
+			<text x="55" y="22" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; fill: #a8b8cd; stroke: none;" transform="translate(0,44) scale(1,-1)" id="presentation-scope-note">Recorded primitive experiment. Workload and assumptions: research record.</text>
+		</g>
+	</g>
+</svg>

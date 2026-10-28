@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1420" viewBox="0 0 1560 1420" role="img" aria-labelledby="figure-title figure-description">
+  <title id="figure-title">Thorum separate funding and authority domains</title>
+  <desc id="figure-description">Native protocol pool allocation, temporary developer allocation, operator external receipts and unpaid worker liabilities have separate accounting and authority boundaries. Pool governance and external execution are unimplemented. A grant or transfer moves existing value. A purchase does not destroy value. Only authorized actual destruction is a burn. Retiring future developer allocation requires a future consensus hard fork.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#7bb3ff" />
+    </marker>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="60" y="60" font-size="33" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="60" y="60">Funding sources and authority boundaries</tspan>
+    </text>
+    <text x="60" y="99" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="60" y="99">Development accounting reference</tspan>
+    </text>
+    <rect x="60" y="150" width="940" height="92" rx="10" fill="#16263c" stroke="#344258" stroke-width="1.5" />
+    <text x="84" y="189" font-size="25" font-weight="700" fill="#7bb3ff" text-anchor="start">
+      <tspan x="84" y="189">Native capped subsidy S</tspan>
+    </text>
+    <text x="84" y="224" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="224">P and D are included once in cumulative issued supply.</tspan>
+    </text>
+    <rect x="1060" y="150" width="440" height="92" rx="10" fill="#33251e" stroke="#344258" stroke-width="1.5" />
+    <text x="1082" y="189" font-size="24" font-weight="700" fill="#ffa66b" text-anchor="start">
+      <tspan x="1082" y="189">External mining receipts</tspan>
+    </text>
+    <text x="1082" y="224" font-size="20" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="1082" y="224">Confirmed and eligible funds only</tspan>
+    </text>
+    <polyline points="280,242 280,294" fill="none" stroke="#7bb3ff" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)" />
+    <polyline points="780,242 780,294" fill="none" stroke="#7bb3ff" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)" />
+    <polyline points="1280,242 1280,294" fill="none" stroke="#7bb3ff" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)" />
+    <rect x="60" y="294" width="440" height="434" rx="10" fill="#16263c" stroke="#344258" stroke-width="1.5" />
+    <text x="82" y="333" font-size="23" font-weight="700" fill="#7bb3ff" text-anchor="start">
+      <tspan x="82" y="333">Native protocol pool P</tspan>
+    </text>
+    <text x="82" y="374" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="82" y="374">Future eligible stake governance</tspan>
+      <tspan x="82" y="404">Authenticated pool balance</tspan>
+      <tspan x="82" y="434">Atomic grant reservations</tspan>
+      <tspan x="82" y="464">Bounded recipient authorization</tspan>
+    </text>
+    <text x="82" y="534" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="82" y="534">Grants transfer existing THM.</tspan>
+      <tspan x="82" y="564">They do not mint another copy.</tspan>
+    </text>
+    <text x="82" y="652" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="82" y="652">Pool state and governance</tspan>
+      <tspan x="82" y="682">unimplemented.</tspan>
+    </text>
+    <rect x="560" y="294" width="440" height="434" rx="10" fill="#152d28" stroke="#344258" stroke-width="1.5" />
+    <text x="582" y="333" font-size="23" font-weight="700" fill="#65d2ab" text-anchor="start">
+      <tspan x="582" y="333">Development maintenance D</tspan>
+    </text>
+    <text x="582" y="374" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="582" y="374">Designated project developer</tspan>
+      <tspan x="582" y="404">Temporary native allocation</tspan>
+      <tspan x="582" y="434">Destination authority still open</tspan>
+    </text>
+    <text x="582" y="504" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="582" y="504">Future consensus hard fork</tspan>
+      <tspan x="582" y="534">retires future D into mining</tspan>
+      <tspan x="582" y="564">and staking allocations.</tspan>
+    </text>
+    <text x="582" y="622" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="582" y="622">Existing credits remain unaffected.</tspan>
+      <tspan x="582" y="652">No automatic sunset.</tspan>
+      <tspan x="582" y="682">Activation and split remain open.</tspan>
+    </text>
+    <rect x="1060" y="294" width="440" height="434" rx="10" fill="#33251e" stroke="#344258" stroke-width="1.5" />
+    <text x="1082" y="333" font-size="23" font-weight="700" fill="#ffa66b" text-anchor="start">
+      <tspan x="1082" y="333">Operator external treasury</tspan>
+    </text>
+    <text x="1082" y="374" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="1082" y="374">Operator custody</tspan>
+      <tspan x="1082" y="404">Separate receipt policy</tspan>
+      <tspan x="1082" y="434">Durable reconciliation</tspan>
+      <tspan x="1082" y="464">Published execution limits</tspan>
+    </text>
+    <text x="1082" y="534" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="1082" y="534">Native payouts do not depend</tspan>
+      <tspan x="1082" y="564">on successful external trading.</tspan>
+    </text>
+    <text x="1082" y="652" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="1082" y="652">External execution unimplemented.</tspan>
+    </text>
+    <rect x="60" y="762" width="1440" height="107" rx="10" fill="#151c27" stroke="#344258" stroke-width="1.5" />
+    <text x="84" y="800" font-size="24" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="800">Separate authority domains</tspan>
+    </text>
+    <text x="84" y="843" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="843">Pool ballots do not authorize developer spending or external treasury keys. No shared key control is implied.</tspan>
+    </text>
+    <rect x="60" y="902" width="440" height="198" rx="10" fill="#161e2b" stroke="#344258" stroke-width="1.5" />
+    <text x="82" y="941" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="82" y="941">Worker liabilities</tspan>
+    </text>
+    <text x="82" y="982" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="82" y="982">Unpaid balances remain owed.</tspan>
+      <tspan x="82" y="1012">They cannot fund maintenance,</tspan>
+      <tspan x="82" y="1042">purchases or protocol grants.</tspan>
+    </text>
+    <rect x="560" y="902" width="940" height="198" rx="10" fill="#151c27" stroke="#344258" stroke-width="1.5" />
+    <text x="584" y="941" font-size="24" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="584" y="941">External execution budget</tspan>
+    </text>
+    <text x="584" y="986" font-size="23" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="584" y="986">max(0, eligible receipts - execution costs</tspan>
+      <tspan x="584" y="1019">        - published maintenance budget - reserve top-up)</tspan>
+    </text>
+    <text x="584" y="1066" font-size="20" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="584" y="1066">Worker liabilities are excluded. No external allocation ratio is defined.</tspan>
+    </text>
+    <text x="60" y="1146" font-size="25" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="60" y="1146">Future execution semantics</tspan>
+    </text>
+    <rect x="60" y="1172" width="330" height="181" rx="10" fill="#16263c" stroke="#344258" stroke-width="1.5" />
+    <text x="82" y="1211" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="82" y="1211">Grant</tspan>
+    </text>
+    <text x="82" y="1252" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="82" y="1252">Pool value to recipient.</tspan>
+      <tspan x="82" y="1282">Existing issued THM.</tspan>
+      <tspan x="82" y="1312">No new mint.</tspan>
+    </text>
+    <rect x="430" y="1172" width="330" height="181" rx="10" fill="#33251e" stroke="#344258" stroke-width="1.5" />
+    <text x="452" y="1211" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="452" y="1211">Purchase</tspan>
+    </text>
+    <text x="452" y="1252" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="452" y="1252">External asset to THM.</tspan>
+      <tspan x="452" y="1282">Existing issued THM.</tspan>
+      <tspan x="452" y="1312">No mint or automatic burn.</tspan>
+    </text>
+    <rect x="800" y="1172" width="330" height="181" rx="10" fill="#151c27" stroke="#344258" stroke-width="1.5" />
+    <text x="822" y="1211" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="822" y="1211">Transfer</tspan>
+    </text>
+    <text x="822" y="1252" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="822" y="1252">Owned THM to recipient.</tspan>
+      <tspan x="822" y="1282">Conservation required.</tspan>
+      <tspan x="822" y="1312">No new mint.</tspan>
+    </text>
+    <rect x="1170" y="1172" width="330" height="181" rx="10" fill="#152d28" stroke="#344258" stroke-width="1.5" />
+    <text x="1192" y="1211" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="1192" y="1211">Burn</tspan>
+    </text>
+    <text x="1192" y="1252" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="1192" y="1252">Authorized destruction.</tspan>
+      <tspan x="1192" y="1282">Outstanding decreases.</tspan>
+      <tspan x="1192" y="1312">Issued I is unchanged.</tspan>
+    </text>
+    <text x="60" y="1393" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="60" y="1393">Allocation arithmetic implemented. Authority and execution systems unimplemented.</tspan>
+    </text>
+  </g>
+</svg>

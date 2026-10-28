@@ -1,0 +1,133 @@
+{
+  "format": "thorum.accounting-figures.v1",
+  "scope": "Implemented integer accounting and separate future funding authority requirements",
+  "production_parameter_status": "Development references, subject to change before production",
+  "units": "Nonnegative integer atomic units",
+  "subsidy_formulas": {
+    "capped_subsidy": "S = min(R(h), C - I)",
+    "miner_floor": "m0 = floor(6S / 10)",
+    "staking_budget": "K = floor(2S / 10)",
+    "protocol_pool": "P = floor(S / 10)",
+    "development": "D = floor(S / 10)",
+    "remainder": "r = S - m0 - K - P - D",
+    "miner": "M = m0 + r",
+    "budget_conservation": "M + K + P + D = S",
+    "earned_staking": "0 <= e <= K",
+    "actual_issuance": "A = M + P + D + e",
+    "next_issued": "I' = I + A <= C",
+    "unearned": "K - e remains unissued",
+    "supply_invariant": "0 <= B <= I <= C",
+    "outstanding": "Outstanding = I - B",
+    "remaining": "Remaining allowance = C - I",
+    "burn": "B' = B + b, I' = I",
+    "burn_range": "0 <= b <= I - B"
+  },
+  "allocation_vectors_atomic": [
+    {
+      "S": 0,
+      "M": 0,
+      "K": 0,
+      "P": 0,
+      "D": 0
+    },
+    {
+      "S": 1,
+      "M": 1,
+      "K": 0,
+      "P": 0,
+      "D": 0
+    },
+    {
+      "S": 9,
+      "M": 8,
+      "K": 1,
+      "P": 0,
+      "D": 0
+    },
+    {
+      "S": 10,
+      "M": 6,
+      "K": 2,
+      "P": 1,
+      "D": 1
+    },
+    {
+      "S": 1600000000,
+      "M": 960000000,
+      "K": 320000000,
+      "P": 160000000,
+      "D": 160000000
+    }
+  ],
+  "worked_case_atomic": {
+    "S": 9,
+    "earned_staking": 0,
+    "actual_issued": 8,
+    "unearned_staking": 1
+  },
+  "implemented": [
+    "Cap clipping",
+    "Integer allocation and miner remainder",
+    "Earned staking amount range",
+    "Issued and burned supply counters"
+  ],
+  "unimplemented": [
+    "Payout notes",
+    "Staking duty proofs",
+    "Destination authorization",
+    "Persistent ledger and atomic rollback",
+    "Pool governance",
+    "External trading and burn automation"
+  ],
+  "authority_domains": [
+    {
+      "name": "Native protocol pool",
+      "funding": "P",
+      "authority": "Future eligible stake governance",
+      "balance_and_governance_implemented": false
+    },
+    {
+      "name": "Development maintenance",
+      "funding": "D",
+      "authority": "Designated project developer",
+      "destination_authorization_implemented": false
+    },
+    {
+      "name": "Operator external treasury",
+      "funding": "Eligible confirmed external receipts",
+      "authority": "Operator custody under separate policy",
+      "execution_implemented": false
+    },
+    {
+      "name": "Mining pool worker liabilities",
+      "funding": "Amounts owed to workers",
+      "authority": "Existing worker claims",
+      "available_as_operator_budget": false
+    }
+  ],
+  "external_budget": "max(0, eligible receipts - execution costs - published maintenance budget - reserve top-up)",
+  "external_receipt_allocation_ratio": null,
+  "native_payouts_depend_on_external_trading": false,
+  "retirement": {
+    "mechanism": "Future consensus hard fork",
+    "automatic_sunset": false,
+    "scope": "Future development allocation redistributed to mining and staking",
+    "existing_earned_credits_affected": false,
+    "unresolved": [
+      "Completion criteria",
+      "Handover process",
+      "Activation height",
+      "Successor split"
+    ]
+  },
+  "figures": {
+    "subsidy-and-supply": {
+      "width": 1560,
+      "height": 1380
+    },
+    "funding-authorities": {
+      "width": 1560,
+      "height": 1420
+    }
+  }
+}

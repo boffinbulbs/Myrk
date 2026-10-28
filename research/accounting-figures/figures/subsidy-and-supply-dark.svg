@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1380" viewBox="0 0 1560 1380" role="img" aria-labelledby="figure-title figure-description">
+  <title id="figure-title">Thorum native subsidy and supply accounting</title>
+  <desc id="figure-description">Implemented atomic integer allocation clips nominal subsidy to unused cumulative issuance capacity. All floor remainders go to miners. Only earned staking is issued. Burns reduce outstanding supply without restoring issuance capacity. Payout notes, duty proofs and persistent ledger integration are unimplemented.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#7bb3ff" />
+    </marker>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="60" y="60" font-size="33" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="60" y="60">Native subsidy and supply accounting</tspan>
+    </text>
+    <text x="60" y="99" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="60" y="99">Development accounting reference</tspan>
+    </text>
+    <text x="60" y="138" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="60" y="138">R(h): nominal subsidy    C: issuance ceiling    I: cumulative issued    B: cumulative burned</tspan>
+    </text>
+    <rect x="60" y="174" width="1440" height="134" rx="10" fill="#16263c" stroke="#344258" stroke-width="1.5" />
+    <text x="84" y="215" font-size="25" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="215">1. Capped subsidy</tspan>
+    </text>
+    <text x="84" y="267" font-size="29" font-weight="700" fill="#7bb3ff" text-anchor="start">
+      <tspan x="84" y="267">S = min(R(h), C - I)</tspan>
+    </text>
+    <text x="824" y="215" font-size="25" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="824" y="215">0 &lt;= B &lt;= I &lt;= C</tspan>
+    </text>
+    <text x="824" y="260" font-size="22" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="824" y="260">All amounts are integer atomic units.</tspan>
+    </text>
+    <polyline points="780,308 780,351" fill="none" stroke="#7bb3ff" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)" />
+    <text x="60" y="385" font-size="25" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="60" y="385">2. Budget floors and exact remainder</tspan>
+    </text>
+    <rect x="60" y="412" width="330" height="125" rx="10" fill="#161e2b" stroke="#344258" stroke-width="1.5" />
+    <text x="82" y="451" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="82" y="451">Miner floor</tspan>
+    </text>
+    <text x="82" y="492" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="82" y="492">m0 = floor(6S / 10)</tspan>
+    </text>
+    <rect x="430" y="412" width="330" height="125" rx="10" fill="#161e2b" stroke="#344258" stroke-width="1.5" />
+    <text x="452" y="451" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="452" y="451">Staking budget</tspan>
+    </text>
+    <text x="452" y="492" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="452" y="492">K = floor(2S / 10)</tspan>
+    </text>
+    <rect x="800" y="412" width="330" height="125" rx="10" fill="#161e2b" stroke="#344258" stroke-width="1.5" />
+    <text x="822" y="451" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="822" y="451">Protocol pool</tspan>
+    </text>
+    <text x="822" y="492" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="822" y="492">P = floor(S / 10)</tspan>
+    </text>
+    <rect x="1170" y="412" width="330" height="125" rx="10" fill="#161e2b" stroke="#344258" stroke-width="1.5" />
+    <text x="1192" y="451" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="1192" y="451">Development</tspan>
+    </text>
+    <text x="1192" y="492" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="1192" y="492">D = floor(S / 10)</tspan>
+    </text>
+    <rect x="60" y="559" width="1440" height="119" rx="10" fill="#16263c" stroke="#344258" stroke-width="1.5" />
+    <text x="84" y="600" font-size="25" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="600">r = S - m0 - K - P - D</tspan>
+    </text>
+    <text x="1030" y="600" font-size="26" font-weight="700" fill="#7bb3ff" text-anchor="start">
+      <tspan x="1030" y="600">M = m0 + r</tspan>
+    </text>
+    <text x="84" y="647" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="647">Every remaining atom goes to the miner.</tspan>
+    </text>
+    <text x="1030" y="647" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="1030" y="647">M + K + P + D = S</tspan>
+    </text>
+    <polyline points="780,678 780,720" fill="none" stroke="#7bb3ff" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)" />
+    <rect x="60" y="720" width="1440" height="182" rx="10" fill="#152d28" stroke="#344258" stroke-width="1.5" />
+    <text x="84" y="761" font-size="25" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="761">3. Earned staking and actual issuance</tspan>
+    </text>
+    <text x="84" y="810" font-size="25" font-weight="700" fill="#65d2ab" text-anchor="start">
+      <tspan x="84" y="810">0 &lt;= e &lt;= K</tspan>
+    </text>
+    <text x="545" y="810" font-size="25" font-weight="700" fill="#65d2ab" text-anchor="start">
+      <tspan x="545" y="810">A = M + P + D + e</tspan>
+    </text>
+    <text x="1090" y="810" font-size="25" font-weight="700" fill="#65d2ab" text-anchor="start">
+      <tspan x="1090" y="810">I' = I + A &lt;= C</tspan>
+    </text>
+    <text x="84" y="862" font-size="21" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="862">K - e remains unissued. It creates no reserve, debt or automatic catch up.</tspan>
+    </text>
+    <text x="60" y="942" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="60" y="942">P and D count as issued in this transition, including while unspent.</tspan>
+    </text>
+    <rect x="60" y="976" width="700" height="190" rx="10" fill="#151c27" stroke="#344258" stroke-width="1.5" />
+    <text x="84" y="1017" font-size="24" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="1017">4. Every accepted supply state</tspan>
+    </text>
+    <text x="84" y="1067" font-size="25" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="1067">Outstanding = I - B</tspan>
+    </text>
+    <text x="84" y="1112" font-size="23" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="1112">Remaining allowance = C - I</tspan>
+    </text>
+    <rect x="800" y="976" width="700" height="190" rx="10" fill="#151c27" stroke="#344258" stroke-width="1.5" />
+    <text x="824" y="1017" font-size="24" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="824" y="1017">A separate authorized burn b</tspan>
+    </text>
+    <text x="824" y="1067" font-size="25" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="824" y="1067">B' = B + b, I' = I</tspan>
+    </text>
+    <text x="824" y="1108" font-size="22" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="824" y="1108">0 &lt;= b &lt;= I - B</tspan>
+    </text>
+    <text x="824" y="1141" font-size="22" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="824" y="1141">Outstanding falls by b. The cap does not reopen.</tspan>
+    </text>
+    <rect x="60" y="1182" width="1440" height="111" rx="10" fill="#151c27" stroke="#344258" stroke-width="1.5" />
+    <text x="84" y="1221" font-size="23" font-weight="700" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="1221">Rounding example in atoms</tspan>
+    </text>
+    <text x="84" y="1263" font-size="22" font-weight="400" fill="#e6edf3" text-anchor="start">
+      <tspan x="84" y="1263">S = 9 gives M = 8, K = 1, P = D = 0. With e = 0, A = 8 and one atom stays unissued.</tspan>
+    </text>
+    <text x="60" y="1341" font-size="21" font-weight="400" fill="#a8b8cd" text-anchor="start">
+      <tspan x="60" y="1341">Arithmetic implemented. Payout notes, duty proofs and persistence unimplemented.</tspan>
+    </text>
+  </g>
+</svg>

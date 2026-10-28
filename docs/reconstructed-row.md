@@ -80,6 +80,20 @@ The executable tests retain complete constraint and reference checks. The serial
 
 The [test inventory check](../research/reconstructed-row/check_test_inventory.py) requires the exact ignored library and external API tests before CI invokes them. The dedicated row jobs execute those tests explicitly. Default summaries containing ignored proof tests do not establish actual proof execution. Local large provers run serially under separately recorded source and resource gates.
 
+### Explicit proof reproduction
+
+The [dedicated workflow jobs](../.github/workflows/checks.yml) perform the inventory check before the following exact selections. Each proof command executes actual backend proving and verification. Local reproduction requires the separately recorded resource gates and serial execution with the validated toolchain and locked offline dependencies. The mathematical reference generator remains a separate Python only check.
+
+```text
+python research/reconstructed-row/check_test_inventory.py
+cargo test -p thorum-hash-proof-lab --release --lib --locked --offline reconstructed_row::proof::tests::one_honest_private_reconstructed_row_proof -- --exact --ignored --nocapture --test-threads=1
+cargo test -p thorum-hash-proof-lab --release --lib --locked --offline reconstructed_row::proof::tests::corpus_tests::three_fresh_private_rows_public_mutations_and_transport -- --exact --ignored --nocapture --test-threads=1
+cargo test -p thorum-hash-proof-lab --release --lib --locked --offline reconstructed_row::proof::tests::corpus_tests::sixteen_raw_false_row_proofs_reject_backend_and_wrapper -- --exact --ignored --nocapture --test-threads=1
+cargo test -p thorum-hash-proof-lab --release --test reconstructed_row --locked --offline conditional_row_external_api_and_separate_profiles -- --exact --ignored --nocapture --test-threads=1
+```
+
+These selections do not complete private signature verification or note ownership. The canonical reference package and its frozen records retain their original bytes.
+
 Analytical payloads for four byte base elements are
 
 $$

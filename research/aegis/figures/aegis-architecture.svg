@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1230" viewBox="0 0 1560 1230" role="img" aria-labelledby="figure-title figure-description" data-theme="light" data-canvas="transparent">
+  <title id="figure-title">Thorum Aegis later protocol architecture</title>
+  <desc id="figure-description">Later design for one globally certified private state and one PoW recording chain. C pays Y, Y recovers and spends from certified state to Z before later PoW recording. Regular validator N independently verifies certificates and records. No timing claim.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#245ca5" />
+    </marker>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="60" y="58" font-size="31" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="60" y="58">Thorum Aegis private payment flow</tspan>
+    </text>
+    <text x="60" y="94" font-size="20" font-weight="400" fill="#52657b" text-anchor="start">
+      <tspan x="60" y="94">Later protocol design. Private onward spending follows a final stake commit.</tspan>
+    </text>
+    <rect x="60" y="155" width="320" height="185" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="82" y="190" font-size="23" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="82" y="190">Wallet C</tspan>
+    </text>
+    <text x="82" y="230" font-size="19" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="82" y="230">Constructs the private proof</tspan>
+      <tspan x="82" y="259">Encrypts delivery for Y</tspan>
+      <tspan x="82" y="288">Submits the payment</tspan>
+    </text>
+    <rect x="620" y="155" width="320" height="185" rx="10" fill="#eaf1fc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="642" y="190" font-size="23" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="642" y="190">Stakers S</tspan>
+    </text>
+    <text x="642" y="230" font-size="19" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="642" y="230">Validate the complete proof</tspan>
+      <tspan x="642" y="259">Check global spent rights</tspan>
+      <tspan x="642" y="288">Final stake commit of S_q</tspan>
+    </text>
+    <rect x="1180" y="155" width="320" height="185" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="1202" y="190" font-size="23" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="1202" y="190">Wallet Y</tspan>
+    </text>
+    <text x="1202" y="230" font-size="19" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="1202" y="230">Recovers the note privately</tspan>
+      <tspan x="1202" y="259">Checks membership in S_q</tspan>
+      <tspan x="1202" y="288">Confirms certified availability</tspan>
+    </text>
+    <polyline points="380,248 620,248" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="500" y="211" font-size="18" font-weight="400" fill="#152b43" text-anchor="middle">
+      <tspan x="500" y="211">Private proof</tspan>
+      <tspan x="500" y="235">+ encrypted delivery</tspan>
+    </text>
+    <polyline points="940,248 1180,248" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="1060" y="211" font-size="18" font-weight="400" fill="#152b43" text-anchor="middle">
+      <tspan x="1060" y="211">Final certificate</tspan>
+      <tspan x="1060" y="235">+ encrypted delivery</tspan>
+    </text>
+    <rect x="1180" y="435" width="320" height="185" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="1202" y="470" font-size="23" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="1202" y="470">Wallet Y</tspan>
+    </text>
+    <text x="1202" y="510" font-size="19" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="1202" y="510">Constructs a spend from S_q</tspan>
+      <tspan x="1202" y="539">Keeps its input witness private</tspan>
+      <tspan x="1202" y="568">Encrypts delivery for Z</tspan>
+    </text>
+    <polyline points="1340,340 1340,435" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="1315" y="389" font-size="17" font-weight="400" fill="#152b43" text-anchor="end">
+      <tspan x="1315" y="389">Local construction</tspan>
+    </text>
+    <rect x="620" y="435" width="320" height="185" rx="10" fill="#eaf1fc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="642" y="470" font-size="23" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="642" y="470">Stakers S</tspan>
+    </text>
+    <text x="642" y="510" font-size="19" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="642" y="510">Validate proof and spent rights</tspan>
+      <tspan x="642" y="539">Commit S_(q+1)</tspan>
+      <tspan x="642" y="568">Extend the same ordered log</tspan>
+    </text>
+    <rect x="60" y="435" width="320" height="185" rx="10" fill="#eaf5ef" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="82" y="470" font-size="23" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="82" y="470">Wallet Z</tspan>
+    </text>
+    <text x="82" y="510" font-size="19" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="82" y="510">Recovers the note privately</tspan>
+      <tspan x="82" y="539">Checks membership in S_(q+1)</tspan>
+      <tspan x="82" y="568">Funds become available</tspan>
+    </text>
+    <polyline points="1180,528 940,528" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="1060" y="491" font-size="18" font-weight="400" fill="#152b43" text-anchor="middle">
+      <tspan x="1060" y="491">Y spend proof</tspan>
+      <tspan x="1060" y="515">+ encrypted delivery</tspan>
+    </text>
+    <polyline points="620,528 380,528" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="500" y="491" font-size="18" font-weight="400" fill="#152b43" text-anchor="middle">
+      <tspan x="500" y="491">Final certificate</tspan>
+      <tspan x="500" y="515">+ encrypted delivery</tspan>
+    </text>
+    <polyline points="780,620 780,705" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="805" y="669" font-size="18" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="805" y="669">One global transition order</tspan>
+    </text>
+    <rect x="60" y="705" width="1440" height="160" rx="10" fill="#eaf1fc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="88" y="742" font-size="24" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="88" y="742">One certified private state and transaction log</tspan>
+    </text>
+    <text x="88" y="782" font-size="21" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="88" y="782">S_(q+1) = Apply(S_q, tx). Every final certificate extends the same spent right state.</tspan>
+      <tspan x="88" y="816">PoW records the next contiguous batches. Recording advances k without reapplying payments.</tspan>
+    </text>
+    <polyline points="385,865 385,955" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="410" y="916" font-size="18" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="410" y="916">Certified batches</tspan>
+    </text>
+    <polyline points="1180,865 1180,955" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="1205" y="916" font-size="18" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="1205" y="916">Independent validation</tspan>
+    </text>
+    <rect x="60" y="955" width="640" height="170" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="82" y="990" font-size="23" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="82" y="990">Miner M</tspan>
+    </text>
+    <text x="82" y="1030" font-size="19" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="82" y="1030">A later PoW block records each certified batch once.</tspan>
+      <tspan x="82" y="1059">One PoW chain anchors the contiguous recorded prefix.</tspan>
+      <tspan x="82" y="1088">Recording advances k without replaying the state change.</tspan>
+    </text>
+    <rect x="860" y="955" width="640" height="170" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="882" y="990" font-size="23" font-weight="700" fill="#152b43" text-anchor="start">
+      <tspan x="882" y="990">Regular validator N</tspan>
+    </text>
+    <text x="882" y="1030" font-size="19" font-weight="400" fill="#152b43" text-anchor="start">
+      <tspan x="882" y="1030">Verifies complete proofs, spent rights and certificates.</tspan>
+      <tspan x="882" y="1059">Verifies batch order, the recording cursor and PoW.</tspan>
+      <tspan x="882" y="1088">Checks the certified state and recorded chain independently.</tspan>
+    </text>
+    <polyline points="700,1040 860,1040" fill="none" stroke="#245ca5" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="780" y="1002" font-size="17" font-weight="400" fill="#152b43" text-anchor="middle">
+      <tspan x="780" y="1002">PoW record</tspan>
+      <tspan x="780" y="1026">+ certificates</tspan>
+    </text>
+    <text x="60" y="1185" font-size="19" font-weight="400" fill="#52657b" text-anchor="start">
+      <tspan x="60" y="1185">Later protocol design.</tspan>
+    </text>
+  </g>
+</svg>

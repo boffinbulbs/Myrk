@@ -2,13 +2,20 @@
 
 ## Current profile and scope
 
-The current native block subsidy profile allocates nominal shares of 60 percent to miners, 20 percent to eligible staking duties, 10 percent to the protocol pool, and 10 percent to development maintenance for the designated project developer. This profile supersedes the earlier 70/30 profile and the separate 60/30/10 research allocation.
+The current development subsidy profile allocates nominal shares of 60 percent to miners, 20 percent to eligible staking duties, 10 percent to the protocol pool, and 10 percent to development maintenance for the designated project developer. Production emission choices remain open before genesis. Any revision requires a versioned specification and independent atomic unit vectors while preserving the recorded reference.
 
 These shares apply to native block subsidy. They do not define transaction fee distribution, external mining receipts, protocol pool spending authority, or developer destination authority. Fee allocation remains a separate specification item. No production genesis has been released.
 
 The monetary core calculates the allocation and cumulative issuance. It does not create payout notes, authenticate destinations, implement pool governance, or establish that a stake reward was earned. Those are ledger kernel and protocol requirements.
 
 ## Integer allocation and conservation
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/accounting-figures/figures/subsidy-and-supply-dark.svg">
+  <img alt="Development accounting formulas for capped subsidy, exact allocation, earned stake, issuance and completed burns" src="../research/accounting-figures/figures/subsidy-and-supply.svg">
+</picture>
+
+The [figure record](../research/accounting-figures/README.md) identifies its fixed data and reproduction command. The equations below define the exact current reference.
 
 Let $R(h)$ be the nominal subsidy at height $h$, $C$ the cumulative issuance ceiling, and $I$ cumulative actual issuance before the transition. Every quantity below is a nonnegative integer number of atomic units, with $I\le C$. The available subsidy is
 

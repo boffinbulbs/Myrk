@@ -1,5 +1,9 @@
 # Auxiliary work integration
 
+## Implementation status
+
+This document specifies the mining boundary. The repository does not implement an auxiliary work verifier, mining adapter, pool service or live parent submission path. The current monetary core calculates native allocations. Compatible work, destinations, payouts and external receipts require the separate validation and integration gates below.
+
 ## Operator roles
 
 | Role | Required components |
@@ -12,6 +16,11 @@
 The first parent profile targets Equihash (200,9) work under the parent formats specified by the primary references below. Matching an algorithm name alone is insufficient: parameters, personalization, header rules, activated formats and child commitments must match.
 
 ## Verification boundary
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/work-checkpoint-flow-dark.svg">
+  <img alt="Planned auxiliary work and checkpoint boundaries, with independent validation" src="../research/protocol-figures/figures/work-checkpoint-flow.svg">
+</picture>
 
 An auxiliary witness must authenticate the intended child candidate, chain/domain identifiers, supported parent work, relevant parent transaction and authorization commitments, target and treasury destination commitment. Its encoding and resource limits require a dedicated specification and negative vectors.
 
@@ -26,3 +35,9 @@ Independent compatible operators can integrate under common verification rules w
 Submit matching solutions to every supported compatible target. Additional auxiliary chains require tested simultaneous commitment and payout compatibility. Arbitrary algorithm or parent switching is outside the initial profile.
 
 Expected external income depends on actual winning work, acceptance, difficulty, liquidity, fees, and settlement policy. Shares and submission acknowledgments are accounting events, not spendable external coins.
+
+## Later certified state recording
+
+The [Aegis architecture](aegis.md#certified-state-and-recorded-prefix) defines a separate later recording boundary. After its consensus activation, work candidates would authenticate contiguous certified batches while retaining the supported auxiliary witness rules. Recording cannot reapply payment state, issue duplicate rewards or override committed private consumption. The initial chain milestone retains its existing work and checkpoint scope.
+
+The recording cursor, deterministic inclusion obligations, compatible fork selection and finalized reward imports require dedicated header and transition specifications. A node's locally newest certificate cannot define block validity. Mining keeps its own block cadence, and Aegis batch count creates no subsidy or evidence of external mining receipts.

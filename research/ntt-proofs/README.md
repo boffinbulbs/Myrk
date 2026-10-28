@@ -127,15 +127,15 @@ The mathematical transform remains valid under a changed context, but an existin
 
 | Executable boundary | Recorded result |
 |---|---|
-| Release suite | 12 unit tests and one external integration test pass |
-| Debug suite | 11 unit tests and one external integration test pass |
+| Recorded original profile release corpus | 12 unit tests and one external integration test pass |
+| Recorded original profile debug corpus | 11 unit tests and one external integration test pass |
 | Real proofs | Both transform directions and fresh randomized repeated proving verify |
 | Invalid proofs and constrained wiring | Seven raw false proofs fail verification, with 25 causal wiring faults and four field aliases rejected by their checks |
 | Public binding | 52 targeted public mutations fail acceptance |
 | Independent data | All 47 cases and 2113 public fields, 309 valid stage states and 35584 valid product, carry and flag records match |
 | Adapters | Three full digest goldens match |
 
-The corpus retains 54016 operation rows in total, including hostile cases. The 35584 valid arithmetic comparisons refer to the valid subset rather than every retained row. These results are correctness evidence, without a performance, privacy or independent audit claim.
+These test counts describe the recorded original profile corpus. The whole crate commands below also select the separately documented compact profile. The corpus retains 54016 operation rows in total, including hostile cases. The 35584 valid arithmetic comparisons refer to the valid subset rather than every retained row. These results are correctness evidence, without a performance, privacy or independent audit claim.
 
 ```text
 python research/ntt-proofs/reference_vectors.py --check
@@ -146,6 +146,6 @@ cargo test -p thorum-ntt-proof-lab --release --locked --offline -- --test-thread
 
 The generator uses Python integers and standard library modules. It neither creates nor verifies a STARK proof. Direct DFT comparison, stage reference checks, actual AIR evaluation and raw invalid proof rejection are separate evidence. Operation counts are analytical. No timing, memory, proof size, throughput or cryptographic security result is inferred from the fixture dimensions.
 
-Private authorization must keep keys, signatures, matrices and intermediate polynomials internal to the same proof and bind the exact signed transaction. Signed coefficient conversion, signature and key decoding, matrix and challenge sampling, hints, `UseHint`, reconstructed `w1`, challenge equality, note ownership and complete payment composition remain unfinished. Public polynomial test data do not define a production privacy mode. Hidden input commitments, stable nullifiers, private payments by default and the separate confidential stake and kernel gates remain unchanged.
+Private authorization must keep keys, signatures, matrices and intermediate polynomials internal to the same relation and bind the exact signed transaction. Separate components now implement coefficient conversion, canonical key and signature sources, finite samplers, hints and conditional row reconstruction. Their complete common witness linkage, all eight row challenge equality, hidden note authorization and payment composition remain unfinished. The [component map](../../README.md#proof-research-map) links those exact boundaries. Public polynomial test data do not define a production privacy mode. Hidden input commitments, stable nullifiers, private payments by default and the separate confidential stake and kernel gates remain unchanged.
 
 The transform is invertible. A published transform output permits recovery of its input, so the public harness does not establish polynomial confidentiality. Source inspection and these deterministic vectors do not constitute complete NIST conformance validation, an audit or a composed quantum security argument.

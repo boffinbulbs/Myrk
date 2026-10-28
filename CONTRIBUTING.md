@@ -17,10 +17,8 @@ Do not introduce a placeholder proof, signature, randomness source, or checkpoin
 
 Write directly about Kova's architecture, implementation, and results. Record definitions, assumptions, equations, parameter values, references, and open questions. Include source data and a reproducible generation command for each research figure.
 
-Commit subjects describe the actual change using a concise imperative sentence. Commit bodies include motivation, validation, and compatibility effects when those details help review.
-
 ## Dependencies and source attribution
 
 Record the source, version, license, security assumptions, and review scope of an incorporated dependency. Preserve upstream notices. Adding a library is not evidence that its composition with the protocol has been reviewed.
 
-Project distribution licensing remains an explicit release decision. The initial Rust core has no dependencies. Later third party integration requires an inventory.
+Project source is distributed under the [MIT license](LICENSE). Incorporated dependencies retain their original licenses and notices in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The monetary core has no external dependencies. Laboratories use the exact versions and source inventory recorded with their research artifacts. New integration must extend that inventory before publication.

@@ -1,0 +1,62 @@
+{
+  "format": "thorum.private-authorization-gates.figure.v1",
+  "scope": "Current public component evidence and required private authorization joins",
+  "only_public_repository_components": true,
+  "complete_private_authorization_implemented": false,
+  "performance_or_security_measurement": false,
+  "width": 1800,
+  "height": 1410,
+  "components": [
+    {
+      "id": "owner-binding",
+      "title": "Owner binding",
+      "body": ["Hidden verification key preimages", "SHA3 owner fields in the same notes", "Hidden depth 32 membership", "Stable public nullifiers", "Exact amount conservation"],
+      "boundary": ["Public root, nullifiers and outputs", "Signature permission remains unproved"],
+      "join_label": ["Same hidden note", "and owner key"],
+      "source": "crates/thorum-owner-binding-proof-lab/src/lib.rs"
+    },
+    {
+      "id": "key-source",
+      "title": "Key source",
+      "body": ["Two hidden key encodings", "The same bytes produce", "owner / tr / rho / t1", "Private retained result banks"],
+      "boundary": ["Public PV64 is opaque context", "No canonical transaction mapping"],
+      "join_label": ["Same key", "and derived values"],
+      "source": "crates/thorum-hash-proof-lab/src/key_source.rs"
+    },
+    {
+      "id": "signature-challenge",
+      "title": "Signature and challenge",
+      "body": ["One represented private signature", "Same seed and held tail", "Strict z and canonical hint decoding", "Bounded challenge sampling", "Diagnostic polynomial is public"],
+      "boundary": ["Canonicality is constrained", "Full signature validity is unproved"],
+      "join_label": ["Same signature", "and decoded values"],
+      "source": "crates/thorum-hash-proof-lab/src/challenge_sampler/signature.rs"
+    },
+    {
+      "id": "conditional-row",
+      "title": "Conditional row",
+      "body": ["Private rho, zhat, t1, chat and hints", "Seven matrix streams and arithmetic", "Transforms, normalization, UseHint", "128 packed row bytes stay private"],
+      "boundary": ["Operand source identity is unproved", "Public row index and opaque context"],
+      "join_label": ["Same operands", "and every row output"],
+      "source": "crates/thorum-hash-proof-lab/src/reconstructed_row.rs"
+    }
+  ],
+  "public_transaction": {
+    "title": "Expected public T",
+    "body": ["Canonical public encoding", "Verifier-owned expected data", "Native preprocessing exists"],
+    "source": "crates/thorum-relation-lab/src/payment.rs"
+  },
+  "required_authorization": [
+    "Same key -> tr -> private mu for the exact T and fixed pure context",
+    "Same decoded signature sources supply every private operand",
+    "All eight packed rows feed SHAKE256(mu || encoded w1)",
+    "Full 64-byte equality to that same signature challenge",
+    "Valid authorization binds the owner of the same hidden note"
+  ],
+  "additional_gates": [
+    {"title": "Recipient delivery", "body": ["Bind encryption to the same output", "Authenticated recovery and availability"]},
+    {"title": "Ledger acceptance", "body": ["Eligible roots and persistent spent state", "Atomic consumption and persistence"]},
+    {"title": "Composition and security", "body": ["Private consistency and knowledge soundness", "Resources, PQ assumptions and metadata"]}
+  ],
+  "root_status": "Public status: standalone component proofs and native references.",
+  "footer": "Complete private authorization remains unfinished."
+}

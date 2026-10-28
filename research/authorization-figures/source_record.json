@@ -1,0 +1,89 @@
+{
+  "format": "thorum.documentation-figures.source-record.v1",
+  "recorded_date": "2026-10-28",
+  "scope": "Original architecture and development reference figures. No runtime, consensus, performance or composed security measurement.",
+  "public_code_base": "b499f0946ab196396eb411a4e035a210d6ff6a63",
+  "generator": {
+    "path": "research/authorization-figures/generate_figures.py",
+    "bytes": 9410,
+    "sha256": "44f04251b4b4fa71337961507593abf52ea31eaa0c55c1aa0b24fa65186954e4"
+  },
+  "implementation_source_dependencies": [
+    {
+      "path": "crates/thorum-hash-proof-lab/src/key_source.rs",
+      "bytes": 705,
+      "sha256": "85e2e01090150477bfa2c412f73660e99bb77213154e3ef1edbcf8e9aacc0545"
+    },
+    {
+      "path": "crates/thorum-hash-proof-lab/src/key_source/air.rs",
+      "bytes": 16373,
+      "sha256": "95cf26b7e799cce3ca87f51246258b84d532eb2993113dc1f9cd9c7bbc03dc66"
+    },
+    {
+      "path": "crates/thorum-hash-proof-lab/src/challenge_sampler/signature/air.rs",
+      "bytes": 15290,
+      "sha256": "ebc1ab0b6b4c4f7a6bd09a2dadcf1a3ed841ad7d4398046fe5819294fa4fa7b3"
+    },
+    {
+      "path": "crates/thorum-hash-proof-lab/src/reconstructed_row/air.rs",
+      "bytes": 4931,
+      "sha256": "024c2c61609328ad132a28899774b5553f27aa559e473ade0064c97253927042"
+    },
+    {
+      "path": "crates/thorum-owner-binding-proof-lab/src/lib.rs",
+      "bytes": 12762,
+      "sha256": "20b723f6def89753401ae5bf3e612696eba2ce5d2e3cd02d8a5ee0aeb6a68fa6"
+    },
+    {
+      "path": "crates/thorum-relation-lab/src/payment.rs",
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176"
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "path": "research/authorization-figures/figure-data.json",
+      "bytes": 3407,
+      "sha256": "efc3036592620c47ddae00dec7e6c30f1a2e5bdca20caf892913371a28b5cd39"
+    },
+    {
+      "path": "research/authorization-figures/figures/private-authorization-gates-dark.svg",
+      "bytes": 13649,
+      "sha256": "73a797c4befc4b21d25850b393b3e15c9af0ea8f5a8b27ff2a09676ef0446350"
+    },
+    {
+      "path": "research/authorization-figures/figures/private-authorization-gates-light.svg",
+      "bytes": 13649,
+      "sha256": "88caeeb64c081416606cfb1bf99abe3e21d7a48f2fd2d9b787600e9911779446"
+    }
+  ],
+  "svg_dimensions": [
+    {
+      "path": "research/authorization-figures/figures/private-authorization-gates-dark.svg",
+      "width": "1800",
+      "height": "1410",
+      "viewBox": "0 0 1800 1410"
+    },
+    {
+      "path": "research/authorization-figures/figures/private-authorization-gates-light.svg",
+      "width": "1800",
+      "height": "1410",
+      "viewBox": "0 0 1800 1410"
+    }
+  ],
+  "svg_reproduction": {
+    "python": "Standard library",
+    "command": "python research/authorization-figures/generate_figures.py --check",
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "canvas": "transparent"
+  },
+  "production_emission_parameters": "Development references subject to a later versioned selection",
+  "font_files_distributed": false,
+  "optional_preview_environment": {
+    "renderer": "Installed sharp",
+    "png_artifacts": "Local visual review only"
+  }
+}

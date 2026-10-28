@@ -1,0 +1,290 @@
+{
+  "format": "thorum.research.figure-presentation.v1",
+  "renderer": "Python standard library SVG paint transformation",
+  "generator_sha256": "d5160c1a3a6db3cb3f9dde4bd784c57ac2c84a0c0777be724d2b01f087728c79",
+  "canonical_inputs_modified": false,
+  "measurements_recomputed": false,
+  "plot_numerical_or_coordinate_changes": false,
+  "footer_presentation_revised": true,
+  "original_notes_preserved_in_manifest": true,
+  "text_contrast_against_reference_canvas": {
+    "light": {
+      "body": 5.989301547634837,
+      "heading": 14.398490724635472
+    },
+    "dark": {
+      "body": 9.374647081956947,
+      "heading": 16.016082890827004
+    }
+  },
+  "figures": [
+    {
+      "canonical_source": "research/emission/charts/reward_schedule.svg",
+      "source_sha256": "6d5cfcbbb588d101dacf09218893ebdf91eafa9773bdc77cf469e8e400522edd",
+      "scope": "Analytical monetary reference",
+      "display_scope_label": "Development accounting reference. Production parameters remain open.",
+      "detailed_notes_moved_to_research_record": [
+        {
+          "original_text": "All allocations issued. No burns, premine, or bootstrap adjustment. No development sunset modeled.",
+          "original_y": "35"
+        },
+        {
+          "original_text": "Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.",
+          "original_y": "18"
+        }
+      ],
+      "variants": {
+        "light": {
+          "path": "figures/emission-reward-schedule-light.svg",
+          "bytes": 43954,
+          "sha256": "7a1c8c3be0b0af8c13f2de031db931fbcc7932c2c46945129bec1ced8d68fab8",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "a6ef1d4b7179c104d97328c7dc3d1d2e6278d82841a350a92b507e9850894214",
+          "source_canvas_rectangles_made_transparent": 1
+        },
+        "dark": {
+          "path": "figures/emission-reward-schedule-dark.svg",
+          "bytes": 43953,
+          "sha256": "0ed70843dddbda84175a3b880c09d9f019e5ffb0ca6bba9a1b9611f367f4e7ce",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "a6ef1d4b7179c104d97328c7dc3d1d2e6278d82841a350a92b507e9850894214",
+          "source_canvas_rectangles_made_transparent": 1
+        }
+      }
+    },
+    {
+      "canonical_source": "research/emission/charts/issued_supply.svg",
+      "source_sha256": "da7b1ad412a1f9b9ed5935439ee523217f2b65c8f6bb49d59fbf7a47988b9f96",
+      "scope": "Analytical monetary reference",
+      "display_scope_label": "Development accounting reference. Production parameters remain open.",
+      "detailed_notes_moved_to_research_record": [
+        {
+          "original_text": "Cap reached at height 83,902,342 (about 319.263097 target model years). No burns. All allocations issued.",
+          "original_y": "35"
+        },
+        {
+          "original_text": "Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.",
+          "original_y": "18"
+        }
+      ],
+      "variants": {
+        "light": {
+          "path": "figures/emission-issued-supply-light.svg",
+          "bytes": 83569,
+          "sha256": "8771dd2fa340390e18ca3e1b568273dcfd606257346e2d721b6a68c26443f30b",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "7e77f53aaca75989b43efddaf6245a8c77df8b385153e68f735471c155f460da",
+          "source_canvas_rectangles_made_transparent": 1
+        },
+        "dark": {
+          "path": "figures/emission-issued-supply-dark.svg",
+          "bytes": 83568,
+          "sha256": "32c00225711daf64edebacf85002145bbb50b5de21150dd8a4bc15729fa52146",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "7e77f53aaca75989b43efddaf6245a8c77df8b385153e68f735471c155f460da",
+          "source_canvas_rectangles_made_transparent": 1
+        }
+      }
+    },
+    {
+      "canonical_source": "research/emission/charts/annual_issuance.svg",
+      "source_sha256": "5889573b7d60796581744aa0008ea585d51b2961ba12250c11db1320ac2ea021",
+      "scope": "Analytical monetary reference",
+      "display_scope_label": "Development accounting reference. Production parameters remain open.",
+      "detailed_notes_moved_to_research_record": [
+        {
+          "original_text": "All allocations issued. No burns, premine, or bootstrap adjustment. No development sunset modeled.",
+          "original_y": "35"
+        },
+        {
+          "original_text": "Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.",
+          "original_y": "18"
+        }
+      ],
+      "variants": {
+        "light": {
+          "path": "figures/emission-annual-issuance-light.svg",
+          "bytes": 14015,
+          "sha256": "2f7f73b025154879b48fbe958a3d07c69bf9faa6159e0614882f8642604daf78",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "6855f569d26716ac0c15d52627b95c7a67d661513622e84dfd222cd9f35c96c5",
+          "source_canvas_rectangles_made_transparent": 1
+        },
+        "dark": {
+          "path": "figures/emission-annual-issuance-dark.svg",
+          "bytes": 14014,
+          "sha256": "21aac7bbc7bb03fc1dd7ef3a7d281977b7058f4ccb6b3dffff970f96f2071624",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "6855f569d26716ac0c15d52627b95c7a67d661513622e84dfd222cd9f35c96c5",
+          "source_canvas_rectangles_made_transparent": 1
+        }
+      }
+    },
+    {
+      "canonical_source": "research/emission/charts/gross_issuance_rate.svg",
+      "source_sha256": "110beeb2fc2134ba1d772c77549998c32a47cc6ffd972cfc12850b87506c6015",
+      "scope": "Analytical monetary reference",
+      "display_scope_label": "Development accounting reference. Production parameters remain open.",
+      "detailed_notes_moved_to_research_record": [
+        {
+          "original_text": "Shown from year 1. The rate at genesis is undefined because cumulative issued supply is zero.",
+          "original_y": "35"
+        },
+        {
+          "original_text": "Development parameters. Monetary reference only. Target spacing does not guarantee elapsed calendar time.",
+          "original_y": "18"
+        }
+      ],
+      "variants": {
+        "light": {
+          "path": "figures/emission-gross-issuance-rate-light.svg",
+          "bytes": 17867,
+          "sha256": "4ba2c8b2bc8051286655a9294c563d503e1857d9474ff759f308fa457ba4a35b",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "5a9dbbb78a75e3aa646744bbff3e2205140412a02c6626a914d4986abe3af813",
+          "source_canvas_rectangles_made_transparent": 1
+        },
+        "dark": {
+          "path": "figures/emission-gross-issuance-rate-dark.svg",
+          "bytes": 17866,
+          "sha256": "4911040463cdd3c34a9e3d47f7ce37d0dbc6721f0f50eaefa37e71fdc5999668",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "5a9dbbb78a75e3aa646744bbff3e2205140412a02c6626a914d4986abe3af813",
+          "source_canvas_rectangles_made_transparent": 1
+        }
+      }
+    },
+    {
+      "canonical_source": "research/crypto/charts/primitive_latency.svg",
+      "source_sha256": "b7196b2fc36473e482de19c92745ab1daac70996066a6c659b7afee63f8ad2e8",
+      "scope": "Historical recorded primitive experiment",
+      "display_scope_label": "Recorded primitive experiment. Workload and assumptions: research record.",
+      "detailed_notes_moved_to_research_record": [
+        {
+          "original_text": "p95 uses nearest rank. Markers describe the recorded distribution and are not confidence intervals.",
+          "original_y": "64"
+        },
+        {
+          "original_text": "One host observation. Operations ending in _os include operating system entropy access.",
+          "original_y": "43"
+        },
+        {
+          "original_text": "Three partial warmup iterations. No network, private proof, or transaction throughput is measured.",
+          "original_y": "22"
+        }
+      ],
+      "variants": {
+        "light": {
+          "path": "figures/crypto-primitive-latency-light.svg",
+          "bytes": 9571,
+          "sha256": "bbe93d7f4e503b21781881f1c1afedfdabd00aaef485b46b7f0c65f652aaa87d",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "7fc3e192c1c24cc12f4b5b384101862a1a65ffb028ebd63006728335b927ae41",
+          "source_canvas_rectangles_made_transparent": 1
+        },
+        "dark": {
+          "path": "figures/crypto-primitive-latency-dark.svg",
+          "bytes": 9570,
+          "sha256": "727d901f9f664a4eeff62c61f6e0b8da893608c052e0f20dec40edb901123762",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "7fc3e192c1c24cc12f4b5b384101862a1a65ffb028ebd63006728335b927ae41",
+          "source_canvas_rectangles_made_transparent": 1
+        }
+      }
+    },
+    {
+      "canonical_source": "research/crypto/charts/envelope_latency.svg",
+      "source_sha256": "5ed029a61ac3e061eecbca63128372d81f462c56370410376355c6769f459412",
+      "scope": "Historical recorded primitive experiment",
+      "display_scope_label": "Recorded primitive experiment. Workload and assumptions: research record.",
+      "detailed_notes_moved_to_research_record": [
+        {
+          "original_text": "Bars show medians. Caps and numeric labels show p95. Payload groups use equal spacing.",
+          "original_y": "64"
+        },
+        {
+          "original_text": "One host observation. Operations ending in _os include operating system entropy access.",
+          "original_y": "43"
+        },
+        {
+          "original_text": "Three partial warmup iterations. No network, private proof, or transaction throughput is measured.",
+          "original_y": "22"
+        }
+      ],
+      "variants": {
+        "light": {
+          "path": "figures/crypto-envelope-latency-light.svg",
+          "bytes": 10000,
+          "sha256": "16eeb8c4113c9db79e87c28644fc7dfdc88448c5243474dfa32374e9c0a30f08",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "9541f711c78a29c5420a0939a79d71b6f48b4229ee0c11f6a9ff5aa9a394a71d",
+          "source_canvas_rectangles_made_transparent": 1
+        },
+        "dark": {
+          "path": "figures/crypto-envelope-latency-dark.svg",
+          "bytes": 9999,
+          "sha256": "93b067e7d207dd2ca0c2e18a7cdd99a9b7ccb6444dfb21464f01bc9d108fdaae",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "9541f711c78a29c5420a0939a79d71b6f48b4229ee0c11f6a9ff5aa9a394a71d",
+          "source_canvas_rectangles_made_transparent": 1
+        }
+      }
+    },
+    {
+      "canonical_source": "research/proofs/charts/conservation_proof.svg",
+      "source_sha256": "f37a94bee2f430e27af74416a42328b0c5876646a42387559aa39d45542767bb",
+      "scope": "Historical unbound conservation proof experiment",
+      "display_scope_label": "Recorded conservation component. Source 71bd256d404c.",
+      "detailed_notes_moved_to_research_record": [
+        {
+          "original_text": "One host and one run. Proving includes local checks, OS entropy and encoding. Verification includes decoding.",
+          "original_y": "106"
+        },
+        {
+          "original_text": "Amounts are not bound to ledger notes. This is not a full private payment or transaction throughput measurement.",
+          "original_y": "85"
+        },
+        {
+          "original_text": "Timing and size observations do not establish witness indistinguishability, constant time behavior or quantum security.",
+          "original_y": "64"
+        },
+        {
+          "original_text": "Source 71bd256d404c | raw samples and source hashes retained in results/metadata.json",
+          "original_y": "37"
+        }
+      ],
+      "variants": {
+        "light": {
+          "path": "figures/proof-conservation-light.svg",
+          "bytes": 28603,
+          "sha256": "15085f92f92a6a810d31662539b8e2b2d88d1a7bd91e395611da011b2962cd34",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "53c63dee1b9bd77511bae72401236f2dece659163b85f2474c1ac88f4d847253",
+          "source_canvas_rectangles_made_transparent": 1
+        },
+        "dark": {
+          "path": "figures/proof-conservation-dark.svg",
+          "bytes": 28602,
+          "sha256": "49ef20e685bbe73ce78261a13e5092b586e3d0845f4bbb77e30eb3450fa45825",
+          "transparent_canvas": true,
+          "unchanged_plot_geometry_and_data_labels": true,
+          "geometry_sha256": "53c63dee1b9bd77511bae72401236f2dece659163b85f2474c1ac88f4d847253",
+          "source_canvas_rectangles_made_transparent": 1
+        }
+      }
+    }
+  ]
+}

@@ -2,6 +2,11 @@
 
 The [development stages and feature boundaries](delivery-roadmap.md) define the delivery sequence. Private authorization and confidential stake remain current feasibility gates. The Safe, its Qt interface and fast payment locks have distinct later milestones and acceptance evidence.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/development-stages-dark.svg">
+  <img alt="Base chain dependencies and separate later wallet application and Aegis milestones" src="../research/protocol-figures/figures/development-stages.svg">
+</picture>
+
 ## Initial executable boundary
 
 The current executable scope is deterministic monetary accounting under the [60/20/10/10 subsidy profile](subsidy-allocation.md), an isolated [primitive laboratory](crypto-lab.md), a [transparent relation laboratory](relation-lab.md), and eight isolated hiding proof laboratories, with reference vectors and reproducible research artifacts. The [recipient capability laboratory](recipient-capability.md) adds a distinct v2 sender interface and typed local recovery while retaining legacy v1 bytes. Transparent relation checkers receive private inputs directly. The [original proof laboratory](proof-lab.md) constrains unbound integer conservation. The [canonical note proof laboratory](note-proof-lab.md) connects exact SHA3-512 payment commitments to conservation. The [membership component](membership-proof-lab.md) additionally hides both input commitments, creation versions, indices and depth 32 paths, proving common root membership and distinct input commitments in the same conservation proof. The [nullifier component](nullifier-proof-lab.md) further links retained input secrets to their private committed bindings and stable public nullifiers in the same proof. The separate [hash component](hash-proof-lab.md) constrains unframed SHA3 and SHAKE over private bytes as a foundation for later private signature verification. Ownership, recipient encryption, global spent state and eligible root policy remain outside these components. The workspace does not implement complete private payments, confidential stake, a private transaction system or an active consensus network.
@@ -146,6 +151,8 @@ python research/owner-bindings/profile_check.py
 The [protocol safety and verification requirements](protocol-extensions.md) add the private Safe, private cryptographic migration, ordinary payment resource reservation, compact chain history research and fast payment locks. The selected testnet timing target is 60 second blocks, four block checkpoint opportunities and 10080 block maturity for mining/staking rewards. Ordinary transfer acceptance and staking principal withdrawal remain separate. The existing 120 second accounting model is a retained reference. A time consistent new schedule and independent vectors precede activation. These additions do not bypass the complete private payment and confidential stake feasibility gates.
 
 The intended deliverable is a complete chain with node software and a desktop wallet. The private network integration milestone follows ledger, mining and finality integration and precedes final desktop wallet integration and public network trials. It does not exist yet. Component proofs precede authenticated state validation, durable persistence, rollback and network synchronization.
+
+The [Thorum Aegis Protocol](aegis.md) is architecture for a separate later milestone. It evaluates spendable private state after stake consensus, with subsequent PoW recording, and includes explicit consensus, privacy, data availability, maturity and recovery gates. Aegis has no runtime or latency result. It does not expand the initial chain milestone or replace its checkpoint onward spending rule.
 
 The [node and service boundary](node-integration.md) includes ordinary validating nodes without mining or stake authority, server operation and later exchange deposit/withdrawal integration. Integration tests require private scanning, idempotent accounting, explicit finality and recovery. Exchange listing decisions remain external to protocol development.
 

@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1040" viewBox="0 0 1560 1040" role="img" aria-labelledby="figure-title figure-description" data-theme="dark" data-canvas="transparent">
+  <title id="figure-title">Ordinary private payment lifecycle</title>
+  <desc id="figure-description">Planned base protocol. Protocol architecture and development order, not performance measurements</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#80b4ff" />
+    </marker>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="60" y="58" font-size="31" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="60" y="58">Ordinary private payment lifecycle</tspan>
+    </text>
+    <text x="60" y="94" font-size="20" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="94">Planned base protocol. Onward spending follows checkpoint finality.</tspan>
+    </text>
+    <rect x="60" y="170" width="430" height="205" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="205" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="205">Wallet C constructs</tspan>
+    </text>
+    <text x="82" y="245" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="245">Select private notes and witnesses</tspan>
+      <tspan x="82" y="274">Construct the complete private proof</tspan>
+      <tspan x="82" y="303">Bind the exact public transaction</tspan>
+      <tspan x="82" y="332">Encrypt recipient delivery</tspan>
+    </text>
+    <rect x="565" y="170" width="430" height="205" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="587" y="205" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="587" y="205">Validator admission</tspan>
+    </text>
+    <text x="587" y="245" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="587" y="245">Verify the complete proof</tspan>
+      <tspan x="587" y="274">Check spent rights and accepted roots</tspan>
+      <tspan x="587" y="303">Enforce conservation and delivery</tspan>
+      <tspan x="587" y="332">Apply maturity and resource rules</tspan>
+    </text>
+    <rect x="1070" y="170" width="430" height="205" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="1092" y="205" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1092" y="205">PoW inclusion</tspan>
+    </text>
+    <text x="1092" y="245" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1092" y="245">Include the accepted transaction</tspan>
+      <tspan x="1092" y="274">Verify the candidate work block</tspan>
+      <tspan x="1092" y="303">Advance the ordered ledger state</tspan>
+      <tspan x="1092" y="332">Await a valid checkpoint certificate</tspan>
+    </text>
+    <polyline points="490,272 565,272" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <polyline points="995,272 1070,272" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <rect x="1070" y="495" width="430" height="205" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="1092" y="530" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1092" y="530">Checkpoint finality</tspan>
+    </text>
+    <text x="1092" y="570" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1092" y="570">Validate eligible stake votes</tspan>
+      <tspan x="1092" y="599">Verify the checkpoint certificate</tspan>
+      <tspan x="1092" y="628">Finalize the covered state</tspan>
+      <tspan x="1092" y="657">Expose finality to independent nodes</tspan>
+    </text>
+    <rect x="565" y="495" width="430" height="205" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="587" y="530" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="587" y="530">Wallet Y recovers</tspan>
+    </text>
+    <text x="587" y="570" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="587" y="570">Recover and authenticate delivery</tspan>
+      <tspan x="587" y="599">Check note membership and finality</tspan>
+      <tspan x="587" y="628">Track the locally owned balance</tspan>
+      <tspan x="587" y="657">Construct onward spend after finality</tspan>
+    </text>
+    <rect x="60" y="495" width="430" height="205" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="530" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="530">Next private payment</tspan>
+    </text>
+    <text x="82" y="570" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="570">Y constructs a new proof for Z</tspan>
+      <tspan x="82" y="599">Keep its input witness hidden</tspan>
+      <tspan x="82" y="628">Derive the note's stable nullifier</tspan>
+      <tspan x="82" y="657">Repeat the base acceptance lifecycle</tspan>
+    </text>
+    <polyline points="1285,375 1285,495" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <polyline points="1070,597 995,597" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <polyline points="565,597 490,597" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <rect x="60" y="805" width="700" height="140" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="840" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="840">Public chain data</tspan>
+    </text>
+    <text x="82" y="880" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="880">Nullifiers, commitments, ciphertexts and fees</tspan>
+      <tspan x="82" y="909">Independent validation and explorer access</tspan>
+    </text>
+    <rect x="820" y="805" width="680" height="140" rx="10" fill="#16372d" stroke="#42546b" stroke-width="1.5" />
+    <text x="842" y="840" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="842" y="840">Wallet scoped data</tspan>
+    </text>
+    <text x="842" y="880" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="842" y="880">Recovered notes and own balances</tspan>
+      <tspan x="842" y="909">Restricted services with local spending authority</tspan>
+    </text>
+    <text x="60" y="1005" font-size="19" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="1005">Planned base protocol. Payment and wallet integration pending.</tspan>
+    </text>
+  </g>
+</svg>

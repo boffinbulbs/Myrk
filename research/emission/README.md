@@ -2,6 +2,8 @@
 
 This directory contains an executable monetary research reference, frozen atomic unit data, accounting vectors for tests across languages, and charts generated from data. It specifies development parameters and tests their arithmetic. Stake eligibility, consensus, privacy, post quantum security, network behavior, bootstrap rules, and a mainnet implementation remain open construction work. Passing these tests establishes arithmetic consistency within the stated model. It does not establish network security or complete the broader research.
 
+The 120 second cadence below belongs to the retained executable reference. The separate [60 second development target](../../docs/parameters.md#testnet-development-target) requires a versioned schedule mapping before activation. These historical data and charts are not relabeled as that future schedule.
+
 ## Definitions and development parameters
 
 | Quantity | Value or meaning |
@@ -134,10 +136,24 @@ PNG font rasterization can vary by platform. The SVG and source data hashes in t
 
 ## Charts
 
-![Scheduled reward and budget split](charts/reward_schedule.svg)
+The [transparent display variants](../presentation/README.md) preserve these canonical plot coordinates, data labels and source values. Detailed notes accompany the research record, with a concise development scope label on each figure.
 
-![Cumulative issued supply](charts/issued_supply.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../presentation/figures/emission-reward-schedule-dark.svg">
+  <img alt="Scheduled reward and budget split under the retained accounting reference" src="../presentation/figures/emission-reward-schedule-light.svg">
+</picture>
 
-![Annual newly issued coins](charts/annual_issuance.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../presentation/figures/emission-issued-supply-dark.svg">
+  <img alt="Analytical cumulative issued supply under the stated earning assumptions" src="../presentation/figures/emission-issued-supply-light.svg">
+</picture>
 
-![Forward annual gross issuance rate](charts/gross_issuance_rate.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../presentation/figures/emission-annual-issuance-dark.svg">
+  <img alt="Analytical annual newly issued coins" src="../presentation/figures/emission-annual-issuance-light.svg">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../presentation/figures/emission-gross-issuance-rate-dark.svg">
+  <img alt="Analytical forward annual gross issuance rate, distinct from price or staking return" src="../presentation/figures/emission-gross-issuance-rate-light.svg">
+</picture>

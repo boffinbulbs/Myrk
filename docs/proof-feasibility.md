@@ -2,6 +2,11 @@
 
 ## Status and evidence boundary
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/authorization-figures/figures/private-authorization-gates-dark.svg">
+  <img alt="Implemented component proof boundaries and outstanding complete authorization joins" src="../research/authorization-figures/figures/private-authorization-gates-light.svg">
+</picture>
+
 The private ledger relation remains separate from the primitive laboratory and native reference validation. A local reference checker receives note openings, amounts, authorization evidence and encryption randomness in plaintext. Its result is not a proof, a privacy guarantee, or a network acceptance rule. The [research target](research-target.md) defines the required private relation and release gates. The [primitive laboratory](crypto-lab.md) records the current experimental signature and recipient envelope profile.
 
 The original [hiding proof laboratory](proof-lab.md) generates actual STARK proofs over four private u64 amounts with a public fee and 64 byte context. It proves bounded integer conservation without note linkage. The [canonical note component](note-proof-lab.md) connects four exact v2 SHA3-512 commitment computations to the same private amount bits. The [membership component](membership-proof-lab.md) additionally hides input commitments, creation versions, indices and depth 32 paths, proving membership under one root and distinct hidden input commitments with conservation. The [nullifier component](nullifier-proof-lab.md) further constrains input secret bindings and stable public nullifiers using the same private retained secrets and canonical commitments. The separate [hash component](hash-proof-lab.md) adds exact unframed SHA3 and SHAKE as a primitive foundation for later signature verification. All eight verifiers receive proof bytes and independently supplied typed public statements. Ownership, global spent state, eligible root policy, recipient encryption and ledger acceptance remain outside these components.
@@ -111,7 +116,9 @@ The [NTT laboratory](ntt-proof-lab.md) uses eight exact forward stages or eight 
 
 The [owner binding laboratory](owner-binding-proof-lab.md) adds two unframed SHA3-512 computations over exact private 2592 byte key encodings. Each requires 36 data blocks and one complete padding block, with the digest linked to the owner bytes in the same private input opening. Both sides of the outer message boundary at bytes 215 and 216 are connected. The complete relation has 308 permutations and 7392 real round rows while retaining existing note identities, stable nullifiers, membership, conservation and public fields. Preimage binding does not verify a signature or grant owner permission.
 
-| Profile | Original trace | FRI queries | Log blowup | Public statement scope |
+The table records the original profile of each of the eight laboratory crates. Additional bounded profiles for compact transforms, samplers, signature decoding, key sources and conditional rows are indexed in the [component map](../README.md#proof-research-map). They retain separate namespaces and statements.
+
+| Original crate profile | Original trace | FRI queries | Log blowup | Public statement scope |
 |---|---|---|---|---|
 | Unbound conservation | 256 rows, 77 columns | 64 | 2 | Fee and opaque 64 byte context |
 | Canonical note conservation | 1024 rows, 4262 columns | 64 | 3 | Chain, shared asset, four creation versions, fee, four commitments and opaque 64 byte context |

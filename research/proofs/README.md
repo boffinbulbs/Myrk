@@ -62,7 +62,12 @@ Forty proofs were constructed and verified, producing 80 timed observations. The
 | B | Prove | 20 | 31.713 | 32.820 | 572331 to 601185 |
 | B | Verify | 20 | 5.485 | 5.656 | Same paired proofs |
 
-![Recorded conservation proof latency and canonical JSON size](charts/conservation_proof.svg)
+The [transparent display variants](../presentation/README.md) preserve the original plot geometry, data labels and measurements. Detailed scope notes accompany the research record. The recorded experiment remains the unbound conservation relation.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../presentation/figures/proof-conservation-dark.svg">
+  <img alt="Historical unbound conservation proof latency and canonical JSON size" src="../presentation/figures/proof-conservation-light.svg">
+</picture>
 
 The median is the arithmetic mean of the central pair for these even sample counts. The percentile is the nearest rank observation at $\lceil0.95n\rceil$. Dots and ranges describe recorded samples, rather than confidence intervals. Latency uses a logarithmic axis. The size panel shows a cropped linear axis in KiB, where one KiB is 1024 bytes.
 

@@ -206,3 +206,13 @@ jobs:
         run: python3 research/reconstructed-row/reference_vectors.py --check
       - name: Check conditional row profile
         run: python3 research/reconstructed-row/profile_check.py --check
+      - name: Check protocol architecture figures
+        run: python3 research/protocol-figures/generate_figures.py --check
+      - name: Check private authorization figures
+        run: python3 research/authorization-figures/generate_figures.py --check
+      - name: Check accounting and authority figures
+        run: python3 research/accounting-figures/generate_figures.py --check
+      - name: Check Aegis design figures
+        run: python3 research/aegis/generate_figures.py --check
+      - name: Check transparent research chart variants
+        run: python3 research/presentation/render_figures.py --check

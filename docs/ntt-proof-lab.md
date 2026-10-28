@@ -129,8 +129,8 @@ Basis, dense, maximum coefficient and alternating patterns exercise ordering, si
 
 | Validation boundary | Recorded result |
 |---|---|
-| Release suite | 12 unit tests and one external integration test pass |
-| Debug suite | 11 unit tests and one external integration test pass |
+| Recorded original profile release corpus | 12 unit tests and one external integration test pass |
+| Recorded original profile debug corpus | 11 unit tests and one external integration test pass |
 | Actual proof construction | Forward and inverse proofs verify, with fresh commitments on repeated proving |
 | Raw false proofs | Seven constructions bypass the local witness precheck and fail actual verification |
 | Constrained wiring | 25 causal faults and four field alias cases fail their required checks |
@@ -139,7 +139,7 @@ Basis, dense, maximum coefficient and alternating patterns exercise ordering, si
 | Valid stage and arithmetic data | 309 coefficient states and 35584 valid product, carry and flag records match |
 | Proof adapter hashing | Three independent full digest goldens match |
 
-The retained 54016 operation records include hostile constructions. The 35584 actual valid auxiliary comparisons are a distinct subset and are not a claim that every retained record describes valid arithmetic.
+These counts describe the recorded original profile corpus. Current whole crate test commands additionally select the separate compact profile. The retained 54016 operation records include hostile constructions. The 35584 actual valid auxiliary comparisons are a distinct subset and are not a claim that every retained record describes valid arithmetic.
 
 ```text
 cargo test -p thorum-ntt-proof-lab --locked --offline -- --test-threads=1

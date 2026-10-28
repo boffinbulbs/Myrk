@@ -1,172 +1,120 @@
 # Thorum
 
-Thorum (THM) is a privacy blockchain research implementation focused on post quantum cryptography, confidential smart contracts, auxiliary proof of work, and stake checkpoint finality.
+Thorum (THM) is a privacy blockchain research implementation focused on post quantum authorization and encryption, confidential applications, auxiliary proof of work and stake checkpoint finality.
 
-The protocol architecture separates the private transaction relation, deterministic state validation, parent work verification, and checkpoint consensus. Each boundary has explicit validation requirements and implementation milestones.
+The protocol separates private transition proofs, deterministic ledger validation, parent work and stake consensus. Each component has a documented interface, explicit assumptions and reproducible acceptance requirements. The standard wallet payment path targets privacy by default.
+
+| Reading path | Contents |
+|---|---|
+| [Protocol research specification](docs/research-target.md) | Definitions, private relations, information boundaries and security requirements |
+| [Architecture](docs/architecture.md) | Wallet, proof, kernel, work, consensus and storage boundaries |
+| [Implementation record](docs/development.md) | Executable scope and supporting component evidence |
+| [Delivery roadmap](docs/delivery-roadmap.md) | Initial chain gates and separate later application milestones |
 
 ## Implementation status
 
-The workspace contains deterministic monetary accounting, an independent reference model, isolated primitive, transparent relation and hiding proof laboratories, reproducible research data, and protocol specifications. The original proof laboratory constrains integer conservation without note linkage. The note proof laboratory connects four canonical SHA3-512 payment commitments to their private amount bits. The membership proof laboratory additionally hides both input commitments, creation versions, indices and depth 32 paths while proving common root membership, distinct input commitments and exact conservation in the same proof. The nullifier proof laboratory further derives input secret bindings and stable public nullifiers from the same private retained secrets and commitments. A separate hash proof laboratory adds unframed SHA3 and SHAKE with exact squeezing as a foundation for later private signature verification. Ownership, recipient encryption, global spent state and accepted root policy remain outside these components. The transparent relation laboratory still receives private witnesses directly. The workspace does not yet implement a network, complete private payment proofs, private staking, a wallet, or a mining service. No combined cryptographic security claim or independent audit is asserted.
+The current stage is private cryptographic feasibility. Monetary accounting, primitive integration, transparent references and isolated hiding proof components are executable. A complete private payment relation, confidential stake, a network node and a desktop wallet are not implemented. No production network or combined security audit is asserted.
 
-The membership component's statement exposes one root, two output commitments, the shared asset, chain, output creation versions, fee, context and fixed two input, two output shape. The nullifier component adds two complete public nullifiers while retaining hidden input commitments and paths. The earlier note component retains its public input commitments as an isolated experiment. None is a production transaction format. A caller supplied root has no ledger authority. Knowledge of a retained nullifier secret does not establish owner permission, and a stable nullifier proof does not replace atomic consumption against persistent spent state.
+| Area | Executable boundary | Remaining boundary |
+|---|---|---|
+| [Monetary core](crates/thorum-core/src/lib.rs) | Atomic arithmetic, capped scheduled subsidy, earned stake allocation, actual issuance and burns | Owned payout notes, duty evidence, destinations and ledger persistence |
+| [Primitive laboratory](docs/crypto-lab.md) | Signatures, key establishment, authenticated envelope experiments and official vector comparisons | Complete protocol composition, anonymous discovery and production recovery |
+| [Transparent relation](docs/relation-lab.md) | Local payment, capability, recovery and stake checks with plaintext witnesses | Private proofs, authenticated state and consensus admission |
+| Hiding proof components | Exact bounded relations with independent vectors and actual proof rejection tests | Complete same witness authorization, delivery and ledger coupling |
+| Ledger, stake, mining and networking | Specifications and integration gates | Runtime implementation and independent server agreement |
+| Contracts, Qt wallet and Safe | Authority, state, recovery and application architecture | Executable applications and wallet integration |
+| [Aegis](docs/aegis.md) | Later protocol architecture and reproducible diagrams | Separate consensus implementation, review and activation |
 
-| Area | Current scope |
-|---|---|
-| [Core accounting](crates/thorum-core/src/lib.rs) | Atomic unit arithmetic, subsidy schedule, issuance ceiling, 60/20/10/10 allocation, actual issuance and burns |
-| Research | Independent schedule construction, golden vectors, analytical projections, reproducible figures |
-| [Primitive laboratory](docs/crypto-lab.md) | Real signature, key establishment and encrypted envelope experiments, selected official vectors, tamper rejection and local measurements |
-| [Relation laboratory](docs/relation-lab.md) | Transparent local ownership, membership, nullifier, conservation, recipient capability, typed note recovery and stake eligibility checks |
-| [Hiding proof laboratory](docs/proof-lab.md) | Four private u64 amounts, bounded integer conservation, public fee and context, fixed proof verification without note or authority linkage |
-| [Canonical note proof laboratory](docs/note-proof-lab.md) | Four exact v2 payment commitments and bounded conservation in the same proof, with public input commitments and no authorization, membership or nullifier proof |
-| [Hidden membership proof laboratory](docs/membership-proof-lab.md) | Private input commitments, creation versions and depth 32 paths, common root membership, distinct input commitments and exact conservation, without ownership, nullifiers, encryption or accepted root policy |
-| [Stable nullifier proof laboratory](docs/nullifier-proof-lab.md) | Private retained secrets linked to input bindings and stable public nullifiers in the same hidden membership and conservation proof, without owner permission, global spent state, encryption or accepted root policy |
-| [SHA3 and SHAKE proof laboratory](docs/hash-proof-lab.md) | Bounded hashing and XOF squeezing, plus connected matrix and sparse challenge sampling, as diagnostic foundations for private authorization |
-| [Authorization arithmetic laboratory](docs/arithmetic-proof-lab.md) | Canonical multiplication modulo 8380417, reusable coefficient decoding and exact hint constraints, with synthetic primitive tests rather than complete signature verification or owner permission |
-| [Normal residue NTT laboratory](docs/ntt-proof-lab.md) | Exact forward and inverse polynomial transforms, including a separate compact register profile with canonical writes and complete holds, in a public polynomial diagnostic harness |
-| [Private owner key binding laboratory](docs/owner-binding-proof-lab.md) | Private verification key preimages linked to owner fields in the same hidden note, membership, nullifier and conservation proof, without signature verification or spending permission |
-| [Conditional private signature row](docs/reconstructed-row.md) | Private matrix streams, transforms, subtraction, hint application and retained output in one conditional row relation. Complete key/signature/note/transaction linkage remains unfinished. |
-| [Proof feasibility](docs/proof-feasibility.md) | Pinned backend inspection, isolated component adoption and unresolved complete relation, knowledge soundness and quantum security gates |
-| Private ledger | Transaction relation and kernel requirements |
-| Consensus | Work/checkpoint boundaries and open construction questions |
-| Mining | Parent work validation and operator interface requirements |
-| Wallet | Local validation, `thm` address namespace, restricted staking authority, disclosure and recovery requirements |
+The base chain design is illustrated below. Arrows identify required interfaces. They do not represent a completed runtime.
 
-The [recipient capability experiment](docs/recipient-capability.md) lets a sender construct a v2 output using public bindings without receiving the recipient's nullifier secret. Typed recovery checks the original commitment, recipient capability and retained secret. Legacy v1 notes retain their original encodings and sender linkage. These local checks do not establish formal unlinkability, anonymous discovery or a production address format.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="research/protocol-figures/figures/base-architecture-dark.svg">
+  <img alt="Planned base chain architecture with independent wallet, proof, kernel, mining, stake and storage responsibilities" src="research/protocol-figures/figures/base-architecture.svg">
+</picture>
 
-The eight isolated proof laboratories adopt exact `p3-* 0.8.0` dependencies. The note, membership, nullifier, hash and owner binding components use `p3-keccak-air 0.8.0` for constrained permutation computations. Their verifiers take proof bytes and independently supplied typed public statements. The nullifier component constrains the chain, shared asset, output versions, root, output commitments, stable nullifiers and fee, while its 64 byte context remains opaque transcript data. The inspected statistical hiding configurations lack a complete quantum knowledge bound and independent review of the local hash composition. The experimental keyed hash requires analysis with a known secret binding image, sender chosen commitments and reused authority. This adoption does not select a backend for consensus or complete the private payment and confidential stake gates.
+## Private transition requirements
 
-The separate hash component publishes mode, lengths and hash output only within its primitive experiment. It is not a ledger payment path. Hashing a public verification key does not grant spending permission. The future complete authorization relation must keep owner keys, owner bindings, `tr`, `mu` and signatures internal while verifying the exact authorized transaction against the same hidden note. Exact modular multiplication and standalone NTT stages are separate foundations. The [sparse challenge sampler](docs/challenge-sampling.md) constrains hash continuation, signed relocation and completion within its fixed resource class. Complete private key parsing, connected verification dataflow and final signature challenge equality remain unfinished.
+Wallets construct witnesses and proofs locally. Validators must verify the same hidden input ownership, accepted membership, stable nullifiers, conservation, restrictions and encrypted output delivery. They also enforce authenticated roots, persistent spent state, replay prevention and bounded resources. Successful separate component proofs do not establish that combined relation.
 
-The [joint signature component](docs/signature-challenge.md) connects canonical response and hint decoding to that same private challenge seed and signature tail. Its private decoder state, exact source links and actual false proof rejection tests advance the authorization dataflow. The full signature equation, hidden key and note ownership, exact transaction binding and recipient delivery remain unfinished.
-
-The arithmetic component publishes operands and result only in an isolated test harness. Its bounded carries and canonical values establish exact multiplication under the ML-DSA modulus rather than an equality only modulo the AIR field. This does not prove a private NTT, signature or owner authorization. Future composition must link the gadget's private operands and results to the actual internal computation without exposing keys, signatures or derived matrices.
-
-The NTT component connects complete forward and inverse stages over canonical normal residues, including both normalization halves and exact bytewise input and output binding. Its polynomials are public. The transform is invertible and provides no polynomial confidentiality or owner permission. Future signature composition must keep coefficients, keys, signatures, hashes and matrices internal and connect them to the same hidden note and authorized transaction. Signed decoding, sampling, hints, norm checks and full challenge verification remain open.
-
-The owner binding component adds two private unframed SHA3-512 key hashes to the existing private note relation. Each exact 2592 byte key is linked to the owner field of the same hidden input opening, while the public vector stays at 520 fields and old note and nullifier identities remain unchanged. Verification keys are public knowledge, so a private hash preimage is not a signature or permission to spend. The same hidden key and valid signature still need complete coupling to the exact authorized transaction.
-
-The separate [transparent signature reference](research/signatures/README.md) retains complete independent ML-DSA-87 verification calculations, official answers, public synthetic authorization signatures and native comparison cases. It exposes its keys, signatures and intermediate values. It is a reference artifact rather than a ninth proof component, a private signature verifier or a payment acceptance path.
-
-## Research targets
-
-1. Private payments and contract state by default. Wallets construct witnesses and proofs locally. Validators check authorized transitions, conservation, and double spending without receiving spending secrets or plaintext private values.
-2. Post quantum protection across authorization, recipient encryption, commitments, nullifiers, proofs, and recovery. Individual standardized primitives do not establish the security of their composition.
-3. Native private payments, timed escrow, and confidential fungible assets under common ledger rules and resource limits.
-4. User controlled viewing permissions, restricted staking authority, encrypted backups, and recovery tests covering lost devices, missing data, and branch changes.
-5. Explicit metadata boundaries with reproducible measurements of transaction shape, fees, timing, application identifiers, wallet queries, and network observations.
-
-These are full protocol requirements. The accounting tests, primitive experiments, transparent checks and isolated conservation or membership proofs do not establish their combined privacy and security properties. The standard wallet payment path must satisfy the complete private relation. It has no transparent fallback. The [research specification](docs/research-target.md) defines formal relations, information flow, evaluation methods, and acceptance gates.
-
-For each asset $a$, an ordinary valid transition must satisfy
+For each asset a, a valid transition requires
 
 $$
 \sum_i v_{i,a}^{\mathrm{in}} + m_a
-= \sum_j v_{j,a}^{\mathrm{out}} + b_a + f_a
+= \sum_j v_{j,a}^{\mathrm{out}} + b_a + f_a.
 $$
 
-Here $m_a$ is authorized minting, $b_a$ is authorized destruction, and $f_a$ is the fee in that asset. Ordinary transactions have $m_{\mathrm{THM}}=0$. Native subsidy creation follows a separate kernel rule. This conservation relation is necessary but does not by itself provide authorization, privacy, or proof soundness.
+Here m denotes authorized minting, b completed destruction and f the applicable fee. Ordinary native payments have no subsidy minting. Native reward issuance has separate consensus rules. Conservation is necessary but does not establish ownership or privacy.
 
-## Architecture
+Input commitments, membership paths, owner keys, signatures and signature intermediates remain private in the complete payment target. Public roots, nullifiers, output commitments, fees, sizes and network observations retain explicit leakage analysis. The normal Send path has no transparent fallback.
 
-```mermaid
-flowchart LR
-    W[Wallet and local execution] --> P[Private transition proof]
-    P --> K[Validation kernel]
-    M[Mining adapter and parent work] --> A[Auxiliary work proof]
-    A --> K
-    S[Eligible stake] --> C[Checkpoint certificate]
-    C --> K
-    K --> D[Authenticated ledger state]
-```
+The [recipient capability experiment](docs/recipient-capability.md) separates sender construction from the recipient's nullifier secret and checks typed local recovery. Legacy sender known v1 behavior remains documented. Neither interface supplies a formal unlinkability result, authenticated discovery or the production `thm` address codec.
 
-This diagram describes component boundaries. Implementation status is recorded separately above.
+## Proof research map
 
-## Native subsidy allocation
+The workspace contains eight isolated hiding proof crates. Their component and diagnostic statements are research interfaces rather than a production payment format. Exact dependencies, independent references, closed transport profiles and test scope are recorded with each component.
 
-The current native subsidy profile assigns 60 percent to miners, 20 percent to eligible staking duties, 10 percent to the protocol pool, and 10 percent to development maintenance for the designated project developer. Atomic rounding remainders belong to the miner. The first 16 THM budget gives 9.6, 3.2, 1.6, and 1.6 THM respectively. Unearned staking budget remains unissued. Pool and developer allocations count as issued immediately, even while unspent.
+| Component | Verified relation scope |
+|---|---|
+| [Conservation](docs/proof-lab.md) | Four private u64 amounts and bounded integer conservation without note linkage |
+| [Canonical notes](docs/note-proof-lab.md) | Four exact commitments linked to private amounts, with public input commitments |
+| [Hidden membership](docs/membership-proof-lab.md) | Hidden input commitments and depth 32 paths, common root membership, distinct inputs and conservation |
+| [Stable nullifiers](docs/nullifier-proof-lab.md) | Same retained secrets and hidden commitments linked to stable public nullifiers within membership and conservation |
+| [Hash and XOF](docs/hash-proof-lab.md) | Bounded SHA3 and SHAKE, with further signature source and sampling components |
+| [Exact arithmetic](docs/arithmetic-proof-lab.md) | Canonical integer multiplication modulo 8380417 and reusable coefficient constraints |
+| [Polynomial transforms](docs/ntt-proof-lab.md) | Complete forward and inverse normal residue transforms in a public polynomial harness |
+| [Owner key binding](docs/owner-binding-proof-lab.md) | Private verification key preimages connected to owner fields in the same hidden note relation |
 
-The developer allocation is temporary and requires retirement through a future consensus hard fork after work completion and community handover. Its future 10 percent is to be redistributed to mining and staking. The successor ratio, criteria, process, and activation height remain unresolved. The pool share remains 10 percent absent a separate explicit change. Existing legitimately earned credits are unaffected, and the code contains no automatic sunset.
+The hash crate additionally contains [matrix sampling](docs/matrix-sampling.md), [sparse challenge sampling](docs/challenge-sampling.md), [canonical signature and challenge linkage](docs/signature-challenge.md), [private key source constraints](docs/key-source.md) and a [conditional private signature row](docs/reconstructed-row.md). Canonical key parsing and conditional row computation are implemented components. Their actual key, signature, all eight row, note and transaction connections remain incomplete. Knowledge of a verification key or its hash preimage grants no spending permission.
 
-The [allocation specification](docs/subsidy-allocation.md) defines the exact integer rule and issuance boundary. It applies to block subsidy, with fee distribution left separate. The core does not create payout notes or validate destinations. Pool governance remains unimplemented and separate from developer credits, checkpoint voting, and the operator controlled external mining treasury. Its [research specification](docs/governance.md) records the spending and ballot requirements. No production genesis has been released.
+[Coefficient constraints](docs/coefficient-constraints.md) and [compact transforms](docs/compact-ntt.md) retain their exact arithmetic and layout evidence. The [transparent signature reference](research/signatures/README.md) supplies full independent verification calculations over public synthetic data. It is an oracle, not private authorization.
 
-## Build and check
+The [proof feasibility record](docs/proof-feasibility.md) distinguishes implemented experiments from open hiding, knowledge soundness, quantum model, resource and composition obligations. Standardized primitives and full digests do not establish the composed protocol's security level.
 
-The monetary core has no external crate dependencies. The separate laboratories use the exact dependency versions in Cargo.lock. The validated toolchain is Rust 1.94.1. Locked dependencies are fetched once before offline checks.
+## Native accounting and consensus targets
+
+The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.
+
+| Subsidy destination | Nominal budget |
+|---|---:|
+| Miners | 60 percent plus all atomic rounding remainders |
+| Eligible staking duties | 20 percent, with only earned value issued |
+| Protocol pool | 10 percent |
+| Temporary development maintenance | 10 percent |
+
+Unearned staking remains unissued. Fee distribution, native pool governance and operator controlled external receipts have separate authorities. Development allocation retirement requires a future consensus hard fork after completion and community handover, with criteria, activation and successor mining/staking ratio still undefined. No automatic sunset is implemented. The [allocation specification](docs/subsidy-allocation.md) defines the exact integer rules.
+
+The testnet target is 60 second work blocks, checkpoint opportunities every four blocks and 10080 block maturity for new mining and staking rewards. Ordinary payments do not inherit a new reward delay. The executable 120 second accounting model remains a frozen reference pending a separately versioned cadence mapping. [Development parameters](docs/parameters.md) distinguish those profiles.
+
+## Delivery boundaries
+
+Complete private payment and confidential stake feasibility precede ledger integration. The initial chain milestone includes ledger, work, checkpoints and independent network testing, followed by the private wallet. Private escrow, confidential assets, the wallet Safe and Aegis retain separate executable milestones.
+
+[Aegis](docs/aegis.md) studies spendable private state after completed stake consensus and before subsequent mining. The architecture is documented now. It does not change the initial checkpoint finality rule or add a requirement to the first test chain scope. No Aegis latency has been measured.
+
+The [node and service boundary](docs/node-integration.md) includes ordinary validating nodes without mining or stake authority, server operation and future private exchange integration. Exchange listing remains an external decision.
+
+[RPC and private data access](docs/rpc-and-data.md) separates public explorer and synchronization data from scoped wallet discovery, viewing, balances and local authorization. Services recover their own notes while public verification keeps hidden inputs and spending authority private.
+
+## Reproduction and evidence
+
+The validated Rust toolchain is 1.94.1. Laboratory dependencies use the exact versions in Cargo.lock. Fetch locked dependencies once before offline checks.
 
 ```text
 cargo fetch --locked
 cargo test --workspace --locked --offline -- --test-threads=1
-cargo test -p thorum-proof-lab --release --locked --offline
-cargo test -p thorum-note-proof-lab --release --locked --offline
-cargo test -p thorum-membership-proof-lab --release --locked --offline -- --test-threads=1
-cargo test -p thorum-nullifier-proof-lab --release --locked --offline -- --test-threads=1
-cargo test -p thorum-hash-proof-lab --release --locked --offline -- --test-threads=1
-cargo test -p thorum-arithmetic-proof-lab --release --locked --offline -- --test-threads=1
-cargo test -p thorum-ntt-proof-lab --release --locked --offline -- --test-threads=1
-cargo test -p thorum-owner-binding-proof-lab --release --locked --offline -- --test-threads=1
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
-python research/relations/reference_vectors.py --check
-python research/relations/recipient_vectors.py --check
-python research/proofs/reference_vectors.py --check
-python research/proofs/profile_check.py
-python research/note-proofs/reference_vectors.py --check
-python research/note-proofs/profile_check.py
-python research/membership-proofs/reference_vectors.py --check
-python research/membership-proofs/profile_check.py
-python research/nullifier-proofs/reference_vectors.py --check
-python research/nullifier-proofs/profile_check.py
-python research/hash-proofs/reference_vectors.py --check
-python research/hash-proofs/profile_check.py
-python research/arithmetic-proofs/reference_vectors.py --check
-python research/arithmetic-proofs/profile_check.py
-python research/ntt-proofs/reference_vectors.py --check
-python research/ntt-proofs/profile_check.py
-python research/owner-bindings/reference_vectors.py --check
-python research/owner-bindings/profile_check.py
 ```
 
-Reference model and figure generation commands are documented in [research/emission](research/emission/README.md).
+The [implementation record](docs/development.md#proof-component-checks) lists the required serial release suites. Each research directory retains its source data and independent reproduction commands. Large provers execute serially.
 
-The [cryptographic research record](research/crypto/README.md) retains selected official vectors, dependency provenance, local measurements, and reproducible latency figures. Historical primitive measurements describe their recorded source snapshot. The [original proof research record](research/proofs/README.md) retains independent integer, trace, public value and hash checks, plus measured costs and sizes for its unbound conservation component. Neither measurement set describes the canonical note, membership, nullifier, hash, arithmetic, NTT or owner binding relation. The separate [note proof record](research/note-proofs/README.md), [membership proof record](research/membership-proofs/README.md), [nullifier proof record](research/nullifier-proofs/README.md), [hash proof record](research/hash-proofs/README.md), [arithmetic proof record](research/arithmetic-proofs/README.md), [NTT proof record](research/ntt-proofs/README.md) and [owner binding record](research/owner-bindings/README.md) retain relation cases, exact messages or integer bounds, stage data, hash adapter goldens and reproduction commands, without a performance claim. Sparse tree fixtures are public synthetic relation data, without an anonymity size or linkage experiment.
+1. [Monetary reference and analytical figures](research/emission/README.md).
+2. [Primitive measurements and provenance](research/crypto/README.md).
+3. [Conservation proof measurements](research/proofs/README.md).
+4. [Transparent display variants of canonical charts](research/presentation/README.md).
+5. [Protocol architecture figures](research/protocol-figures/README.md).
+6. [Aegis design figures](research/aegis/README.md).
 
-## Documentation
+Historical measurements describe their recorded source, hardware and workload. They do not measure a complete private payment, wallet, consensus service or deployed chain.
 
-The [private verification key source](docs/key-source.md) connects two hidden key encodings to their retained verification inputs. It remains separate from complete signature verification and owner permission.
-
-The [development stages](docs/delivery-roadmap.md) separate the core chain and private wallet from later Safe and fast payment milestones. The [protocol safety and verification roadmap](docs/protocol-extensions.md) covers the private Safe, private migration, compact chain history, protected payment capacity, reward maturity and testnet timing targets. These requirements extend the current implementation milestones and remain subject to their cryptographic and consensus gates.
-
-The [node and service architecture](docs/node-integration.md) includes regular validating nodes, optional mining and stake duties, server operation and private exchange integration requirements.
-
-1. [Architecture](docs/architecture.md)
-2. [Private transaction relation](docs/private-transactions.md)
-3. [Checkpoint consensus](docs/checkpoints.md)
-4. [Mining integration](docs/mining.md)
-5. [Wallet and recovery](docs/wallet.md)
-6. [Treasury operations](docs/treasury.md)
-7. [Development parameters](docs/parameters.md)
-8. [Implementation milestones](docs/development.md)
-9. [Security policy](SECURITY.md)
-10. [Contribution guide](CONTRIBUTING.md)
-11. [Privacy and post quantum research specification](docs/research-target.md)
-12. [Protocol pool governance](docs/governance.md)
-13. [Cryptographic feasibility laboratory](docs/crypto-lab.md)
-14. [Third party notices](THIRD_PARTY_NOTICES.md)
-15. [Native subsidy allocation](docs/subsidy-allocation.md)
-16. [Transparent relation laboratory](docs/relation-lab.md)
-17. [Proof backend feasibility](docs/proof-feasibility.md)
-18. [Recipient capability and typed recovery](docs/recipient-capability.md)
-19. [Hiding conservation proof laboratory](docs/proof-lab.md)
-20. [Canonical note conservation proof laboratory](docs/note-proof-lab.md)
-21. [Hidden input membership proof laboratory](docs/membership-proof-lab.md)
-22. [Stable nullifier proof laboratory](docs/nullifier-proof-lab.md)
-23. [SHA3 and SHAKE proof laboratory](docs/hash-proof-lab.md)
-24. [Exact modular multiplication proof laboratory](docs/arithmetic-proof-lab.md)
-25. [Normal residue NTT proof laboratory](docs/ntt-proof-lab.md)
-26. [Private owner key binding proof laboratory](docs/owner-binding-proof-lab.md)
-
-## Source and research practice
-
-Specifications identify assumptions and unresolved constructions. Benchmarks identify the implementation, hardware, configuration, and measurement method. Analytical projections are distinguished from measurements. Required dependency attribution and license notices are retained when components are incorporated.
-
-Original project source is available under the [MIT license](LICENSE). External components retain their own licenses and notices, recorded in the [dependency inventory](research/crypto/dependency-inventory.json). Source and binary distributions must preserve the applicable notices.
+Project source uses the [MIT license](LICENSE). [Third party notices](THIRD_PARTY_NOTICES.md), [security status](SECURITY.md) and [contribution requirements](CONTRIBUTING.md) retain their separate scope.

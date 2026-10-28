@@ -1,4 +1,10 @@
-# Privacy and post quantum research target
+# Protocol research specification
+
+## Abstract
+
+Thorum studies a private note ledger with local witness construction, post quantum authorization and encryption, independently verified state transitions, auxiliary work and stake checkpoint consensus. The required relation combines hidden ownership and membership, stable consumption identities, exact monetary conservation, policy enforcement and recoverable encrypted outputs. Public metadata, state authority, cryptographic assumptions and failure behavior remain explicit parts of that construction.
+
+This specification defines requirements and evidence gates. The executable workspace contains a monetary core, transparent references and bounded proof components. A complete payment, confidential stake, network node and wallet remain unfinished. The [implementation record](development.md), [component map](../README.md#proof-research-map) and [delivery roadmap](delivery-roadmap.md) separate that evidence from the required protocol. Later Aegis, Safe and application work retains its own activation and implementation boundaries.
 
 ## Implementation status and scope
 
@@ -12,9 +18,9 @@ The separate [arithmetic component](arithmetic-proof-lab.md) adds exact canonica
 
 The arithmetic crate also supplies [canonical coefficient windows and exact hint application](coefficient-constraints.md). It constrains strict response norms, canonical signed conversion, decomposition and four bit hint outputs. Its synthetic diagnostic tests and test only hint proofs do not complete canonical signature parsing, sampling, private transform linkage or final challenge equality. Returned expressions must be connected to the same hidden witnesses throughout the complete authorization relation.
 
-The hash crate's [connected matrix sampler](matrix-sampling.md) constrains one complete polynomial within its six block resource class, including full hash continuation and exact rejected candidates. Its separate [sparse challenge sampler](challenge-sampling.md) connects two full SHAKE256 blocks, sign bits, accepted indices and signed relocation. Their diagnostic coefficients are public, and capacity outside each class remains unsupported. Same hidden key linkage, full key parsing, final challenge equality and complete verification dataflow remain separate requirements. No production restriction of standard signature validity follows from these experiments.
+The hash crate's [connected matrix sampler](matrix-sampling.md) constrains one complete polynomial within its six block resource class, including full hash continuation and exact rejected candidates. Its separate [sparse challenge sampler](challenge-sampling.md) connects two full SHAKE256 blocks, sign bits, accepted indices and signed relocation. Their diagnostic coefficients are public, and capacity outside each class remains unsupported. The [private key source](key-source.md) separately implements canonical key parsing and private owner, tr, rho and t1 derivations. Joining those exact sources to the complete signature and authorized hidden note remains unfinished. No production restriction of standard signature validity follows from these experiments.
 
-The [joint signature decoder and challenge relation](signature-challenge.md) connects canonical signature bytes, private response registers and private hint state to the same challenge seed. It reuses the constrained challenge and arithmetic implementations. Canonicality alone does not imply a valid signature or permission. Full public key parsing, matrix arithmetic, transforms, reconstruction, final challenge equality and hidden note/transaction binding remain open.
+The [joint signature decoder and challenge relation](signature-challenge.md) connects canonical signature bytes, private response registers and private hint state to the same challenge seed. It reuses the constrained challenge and arithmetic implementations. The [conditional row](reconstructed-row.md) separately connects matrix arithmetic, transforms, hints and packed reconstruction. Canonicality and conditional computation do not imply a valid signature or permission. Their common key, signature, all eight row, final challenge and hidden note/transaction connections remain unfinished.
 
 The separate [NTT component](ntt-proof-lab.md) connects forward and inverse normal residue stages with exact arithmetic, fixed ordering, normalization and bytewise input and output. Its polynomials are public, and the transform is invertible. This harness therefore establishes neither coefficient confidentiality nor spending permission. A future private signature relation must keep coefficients, keys, signatures, hashes and matrices internal while connecting signed decoding, sampling, norms, hints and full challenge equality to the same note and authorized transaction.
 
@@ -136,6 +142,13 @@ Accepted changes to commitments, nullifiers, application state, asset policies, 
 
 ## Separate authorization and cryptographic evaluation
 
+The implemented component boundaries and required missing joins are illustrated below. Dashed relationships identify future coupling rather than a verified composition.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/authorization-figures/figures/private-authorization-gates-dark.svg">
+  <img alt="Published private authorization components and the outstanding same witness and ledger acceptance gates" src="../research/authorization-figures/figures/private-authorization-gates-light.svg">
+</picture>
+
 Spending authorization, encryption, viewing, recovery, recipient discovery, and checkpoint voting require separate capabilities. Possession of a viewing key, an encryption secret, or an online voting key must not imply spending authority. Key derivation requires explicit domains, compromise analysis, backup rules, and versioned migration.
 
 ML-DSA-87 is the required signature evaluation target. ML-KEM-1024 is the required key establishment evaluation target. Their parameter definitions come from [NIST FIPS 204](https://csrc.nist.gov/pubs/fips/204/final) and [NIST FIPS 203](https://csrc.nist.gov/pubs/fips/203/final). Selection of these targets does not establish the security of a transaction, proof relation, wallet, or consensus protocol.
@@ -150,7 +163,7 @@ $$
 
 The construction must establish this condition without exposing a reusable spending public key or signature when that exposure would violate the declared privacy target. Verifying the authorization inside a private relation is a research requirement whose feasibility and cost must be measured. A publicly verified signature path requires a separate leakage analysis and cannot silently replace the private authorization target.
 
-The current version 2 owner binding is unframed SHA3-512 over the complete encoded ML-DSA-87 public key. Existing pure contextual authorization uses the exact application object and the 41 byte context `Thorum crypto laboratory authorization v1`. The new hash laboratory supplies relevant SHA3 and SHAKE computations without constraining canonical key or signature decoding, strict norm bounds, rejection sampling, NTT arithmetic, hints or final challenge equality. A bounded matrix stream prefix does not establish complete rejection sampling. The exact signed transaction's relation to public roots, nullifiers, outputs, delivery bytes, fee and authenticated protocol context remains a required internal connection.
+The current version 2 owner binding is unframed SHA3-512 over the complete encoded ML-DSA-87 public key. Existing pure contextual authorization uses the exact application object and the 41 byte context `Thorum crypto laboratory authorization v1`. The original primitive hash profile supplies SHA3 and SHAKE computation. The separately documented key, signature, sampler, transform, hint and conditional row components supply their own bounded relations. Their exact common witness integration and complete final challenge equality remain unfinished. A finite sampler class also requires a production completeness and resource policy. The signed transaction's relation to public roots, nullifiers, outputs, delivery bytes, fee and authenticated protocol context remains a required internal connection.
 
 The arithmetic laboratory proves exact canonical multiplication rather than a weaker equality modulo the unrelated AIR field. That primitive does not establish signed coefficient conversion, matrix generation, hint use or signature challenge equality. The separate NTT laboratory supplies its own transform dataflow. All these operations still require connection to the same complete private signature relation.
 

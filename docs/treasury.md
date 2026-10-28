@@ -1,5 +1,9 @@
 # Treasury operations
 
+## Implementation status
+
+This document defines custody, accounting and reconciliation requirements. No treasury daemon, exchange integration, purchase execution or live burn operation is implemented. The native monetary core accounts for actual burns and subsidy allocations within its narrow arithmetic boundary. It does not execute external financial operations.
+
 ## Custody and purpose
 
 The treasury is project/operator controlled. Independent custodians or a committee requiring threshold approval for spending are not required. Its purposes are disclosed maintenance expenditure and purchases/burns of native THM. This is a centrally controlled financial component, separate from independently verifiable consensus and open mining integration.
@@ -9,6 +13,11 @@ One accounting policy covers separate addresses/wallets on each external network
 The [native protocol pool research](governance.md) defines a separate funding and spending boundary. Its stake ballots do not authorize control of the operator's external accounts or development maintenance credits. Changing external custody or destination policy requires its own explicit activation rules. The current monetary core calculates native protocol pool and developer allocations, but it does not create payout notes, validate destination authority, or implement pool governance.
 
 ## Funds and liabilities
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/accounting-figures/figures/funding-authorities-dark.svg">
+  <img alt="Separate native pool, developer allocation, operator receipts and worker liability authorities" src="../research/accounting-figures/figures/funding-authorities.svg">
+</picture>
 
 The current [native subsidy profile](subsidy-allocation.md) assigns nominal shares of 60 percent to miners, 20 percent to eligible staking, 10 percent to the protocol pool, and 10 percent to temporary development maintenance for the designated project developer. Atomic remainders belong to the miner. Unearned staking stays unissued. Native protocol pool and developer allocations count as issued immediately, including while unspent. These shares apply to block subsidy and do not define fee distribution or the use of external mining receipts.
 

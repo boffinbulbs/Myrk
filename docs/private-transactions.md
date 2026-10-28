@@ -2,6 +2,13 @@
 
 This document defines the complete private transaction requirements. The workspace implements isolated proof components without a complete private payment system.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/private-payment-flow-dark.svg">
+  <img alt="Planned private payment flow with local witnesses, public proof validation and authenticated ledger state" src="../research/protocol-figures/figures/private-payment-flow.svg">
+</picture>
+
+The figure describes the required complete flow. The component interfaces and evidence below retain their narrower executable scope.
+
 The [local relation laboratory](relation-lab.md) makes a bounded subset executable with transparent witnesses. The [proof feasibility record](proof-feasibility.md) distinguishes those native checks from the hiding and knowledge soundness requirements of a private proof. Neither record establishes a production private transaction format.
 
 The [hidden membership component](membership-proof-lab.md) proves canonical note commitments, common root membership, distinct private input commitments and exact amount conservation in one hiding proof. Both input commitments, creation versions, indices and fixed depth 32 paths remain private. Its statement exposes the root, shared asset, chain, fee, two output commitments, output creation versions, context and fixed shape. Stable nullifiers remain outside that earlier component.

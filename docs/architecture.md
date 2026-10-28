@@ -14,17 +14,37 @@ The implementation targets a custom chain with reviewed cryptographic dependenci
 | Monetary accounting | Scheduled allocation, actual issuance, cumulative cap, completed burns | Integer boundaries, conservation and reference vectors |
 | Work adapter | Construct and authenticate child commitments within supported parent jobs | Acceptance of the same work, malformed witness rejection, compatible operator integration |
 | Checkpoint consensus | Select eligible support and finalize a valid branch | Explicit assumptions, quorum/liveness rules and adversarial simulations |
+| Aegis later protocol | Certify ordered private state for spending before PoW recording after separate activation | Confidential quorum, complete consensus, availability, replay and work interaction gates |
 | Storage and synchronization | Persist authenticated state and perform consistent rollback | Crash/restart, branch change, pruning and recovery tests |
+| RPC and indexing | Serve bounded public verification data and capability scoped wallet operations | Authenticated state, query privacy, idempotent service accounting and recovery |
 
 ## State separation
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/base-architecture-dark.svg">
+  <img alt="Planned base architecture and independent validation responsibilities" src="../research/protocol-figures/figures/base-architecture.svg">
+</picture>
 
 The monetary module owns a narrow accounting transition. A future chain state additionally needs authenticated commitment roots, spent nullifier state, asset policy, execution commitments, block identity/order, and finalized checkpoint context. Passing an amount to an accounting function does not authorize its creation or destruction.
 
 State changes are atomic at the kernel boundary. Failed decoding, authorization, proofs, limits, or checkpoint checks must leave persisted state unchanged. Branch rollback restores monetary counters and private ledger roots from the same state version.
 
+The [RPC and data boundary](rpc-and-data.md) separates public explorer/index data from private wallet views and local spending authority. Data availability and an authenticated state context are part of every supported service mode.
+
+## Later Aegis state boundary
+
+The [Thorum Aegis Protocol](aegis.md) extends this architecture through a separately versioned later consensus milestone. It is not part of the initial onward spending rule. Under its design, eligible stakers commit one authoritative private transition sequence and miners record its contiguous prefix. Recording advances a cursor without executing the transition again. An unfinalized work reorganization cannot erase already committed Aegis consumption or its dependent payments.
+
+Certified note roots, global spent identities, restrictions, finalized mined height, monetary imports, encrypted data and epoch authority must share the same authenticated state. Checkpoint advancement and epoch changes are serialized controls. Aegis requires its own consensus, confidential quorum, data availability, bootstrap and activation review. Current runtime behavior and the first chain milestone remain unchanged. Its [figures](../research/aegis/README.md) illustrate planned ordering without a performance claim.
+
 ## Private wallet Safe
 
 The Safe is a protected savings vault within the Qt wallet. Its consensus policy and private state are part of the architecture before the ledger and application interfaces are frozen. The executable transitions and wallet view remain a later [delivery milestone](delivery-roadmap.md#private-safe-milestone).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/wallet-safe-lifecycle-dark.svg">
+  <img alt="Later wallet Safe policy with delayed withdrawal and protected recovery destination" src="../research/protocol-figures/figures/wallet-safe-lifecycle.svg">
+</picture>
 
 The common private note and application relation must support three typed rights: a protected balance, a pending withdrawal and its authorized completion or protected return. Their commitments bind the policy version, asset and value, spending authority, distinct recovery authority, protected return destination and applicable delay. A pending right also binds its fixed withdrawal destination and authenticated request origin. Exact encodings and field visibility require a versioned specification before implementation.
 
@@ -43,7 +63,7 @@ The [Safe requirements](protocol-extensions.md#private-safe) define the initial 
 
 ## Cryptographic evaluation
 
-Primitive and backend evaluation targets include ML-DSA authorization, ML-KEM key establishment, authenticated symmetric encryption, and zero knowledge STARK execution. The isolated [primitive laboratory](crypto-lab.md) supplies executable signature, encapsulation, and encrypted envelope experiments. No private proof backend is integrated. These experiments do not define a complete private protocol.
+Primitive and backend evaluation targets include ML-DSA authorization, ML-KEM key establishment, authenticated symmetric encryption, and zero knowledge STARK execution. The isolated [primitive laboratory](crypto-lab.md) supplies executable signature, encapsulation, and encrypted envelope experiments. Separate hiding proof laboratories implement bounded relations. No complete private payment proof is integrated into a running ledger. These experiments do not define a complete private protocol.
 
 Evaluation must include recipient anonymity, ciphertext binding, commitment hiding/binding, unique nullifiers, value ranges, execution soundness, quantum model assumptions, and confidential stake eligibility. Public key exposure and historical ciphertext retention are part of the threat model.
 

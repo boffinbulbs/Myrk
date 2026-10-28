@@ -6,7 +6,7 @@ This diagnostic interface publishes the expected polynomial and a 64 byte contex
 
 ## Hash and byte linkage
 
-The same private seed bank supplies the exact 64 byte message. SHAKE256 uses rate 136 and capacity 64 bytes. Initial padding has suffix 31 at byte 64 and the terminal 128 bit at byte 135. The second permutation starts from all 200 bytes of the first result, including the complete capacity. It absorbs no additional seed or padding.
+The same private seed bank supplies the exact 64 byte message. SHAKE256 uses rate 136 and capacity 64 bytes. Initial padding has suffix `0x1f` at byte 64 and the terminal high bit (`0x80`) at byte 135. The second permutation starts from all 200 bytes of the first result, including the complete capacity. It absorbs no additional seed or padding.
 
 All 272 output bytes are individually linked to eight Boolean bits and retained in one immutable XOF bank. The first eight bytes give 64 little endian sign bits. Only the first 60 signs are used. The remaining four header bits are not required to be zero. All second block bytes remain bound even when the sampler completes in the first block.
 

@@ -6,7 +6,11 @@ The desktop architecture targets a Qt interface with Rust wallet, node and execu
 
 The normal Send path must construct a private transaction. A separate public payment pool or optional privacy toggle is not part of the design.
 
+The [RPC and data boundary](rpc-and-data.md) defines local private scanning, public encrypted data retrieval and scoped service access. Wallet balances and private history require the relevant capability. Complete transaction proofs permit ordinary nodes and explorers to verify public effects while spending witnesses stay local.
+
 The [delivery sequence](delivery-roadmap.md) places the initial private wallet before Safe presentation and fast payment lock integration. Those later features retain separate consensus and recovery gates. Private Send, local validation and reliable recovery remain core wallet requirements.
+
+The later [Aegis protocol](aegis.md#latency-target-and-wallet-states) reserves distinct wallet states for provisional locks, committed data awaiting recovery, certified available funds, policy restrictions and subsequent mining recording. The wallet must verify the complete certificate, local note and accepted membership before offering onward spending. This is future integration after separate consensus activation. The initial wallet continues to use checkpoint finality.
 
 The [private Safe](protocol-extensions.md#private-safe) requires a protected balance, pending withdrawal state, authenticated unlock condition and separate recovery cancellation restricted to the committed protected destination. Consensus enforces its rules. The wallet must distinguish certified payment locks, checkpoint finality, reward maturity and staking principal availability. Ordinary transfers do not inherit the seven day mining/staking reward delay.
 
@@ -33,6 +37,11 @@ The governance extension requires proposal creation, authenticated proposal cont
 The interface must explain the voting snapshot, lock duration, disclosed information, delegation scope, fee, and irreversible actions before signing. Proposal content is untrusted input and must not execute code or silently request wallet permissions. No governance interface or native ecosystem fund is implemented. The authority and research constraints are specified in [ecosystem governance](governance.md).
 
 ## Recovery data
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/private-payment-flow-dark.svg">
+  <img alt="Local private note construction and recipient recovery within the planned payment flow" src="../research/protocol-figures/figures/private-payment-flow.svg">
+</picture>
 
 The protocol must define encrypted note and application data availability and the backup material necessary for a complete restore. A recovery secret alone cannot recover essential offchain data that was never made available.
 

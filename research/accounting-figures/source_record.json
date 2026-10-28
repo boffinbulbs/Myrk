@@ -1,0 +1,93 @@
+{
+  "format": "thorum.documentation-figures.source-record.v1",
+  "recorded_date": "2026-10-28",
+  "scope": "Original architecture and development reference figures. No runtime, consensus, performance or composed security measurement.",
+  "public_code_base": "b499f0946ab196396eb411a4e035a210d6ff6a63",
+  "generator": {
+    "path": "research/accounting-figures/generate_figures.py",
+    "bytes": 26491,
+    "sha256": "1d531dfa9a20875dba6d67efecbac8a78b6c698ebb1af71c157f2c1878863b1a"
+  },
+  "implementation_source_dependencies": [
+    {
+      "path": "crates/thorum-core/src/accounting.rs",
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d"
+    },
+    {
+      "path": "crates/thorum-core/src/emission.rs",
+      "bytes": 3344,
+      "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7"
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "path": "research/accounting-figures/figure-data.json",
+      "bytes": 3545,
+      "sha256": "be1bdb1f6388ef6efb7701632e50fdd7c5a7dda6d3d67686a999cdfc7a1810fc"
+    },
+    {
+      "path": "research/accounting-figures/figures/funding-authorities-dark.svg",
+      "bytes": 10602,
+      "sha256": "0b26e75ed9f0e10edca0da4149a3e19b595ec11934e01a365b9cc1b66bf5a179"
+    },
+    {
+      "path": "research/accounting-figures/figures/funding-authorities.svg",
+      "bytes": 10602,
+      "sha256": "b74b2f70e4d488a7da8f2c710a8b84b1eb1ca8161a80f8f4fd5804c2b89a756a"
+    },
+    {
+      "path": "research/accounting-figures/figures/subsidy-and-supply-dark.svg",
+      "bytes": 8624,
+      "sha256": "4284675941de47db56aed7dd664d6e1e0f230875d410f72bcb9b5c3080b63aaa"
+    },
+    {
+      "path": "research/accounting-figures/figures/subsidy-and-supply.svg",
+      "bytes": 8624,
+      "sha256": "af68273e789f0858d608c28546432c259c2e013f360c7379b7dd861418c6b503"
+    }
+  ],
+  "svg_dimensions": [
+    {
+      "path": "research/accounting-figures/figures/funding-authorities-dark.svg",
+      "width": "1560",
+      "height": "1420",
+      "viewBox": "0 0 1560 1420"
+    },
+    {
+      "path": "research/accounting-figures/figures/funding-authorities.svg",
+      "width": "1560",
+      "height": "1420",
+      "viewBox": "0 0 1560 1420"
+    },
+    {
+      "path": "research/accounting-figures/figures/subsidy-and-supply-dark.svg",
+      "width": "1560",
+      "height": "1380",
+      "viewBox": "0 0 1560 1380"
+    },
+    {
+      "path": "research/accounting-figures/figures/subsidy-and-supply.svg",
+      "width": "1560",
+      "height": "1380",
+      "viewBox": "0 0 1560 1380"
+    }
+  ],
+  "svg_reproduction": {
+    "python": "Standard library",
+    "command": "python research/accounting-figures/generate_figures.py --check",
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "canvas": "transparent"
+  },
+  "production_emission_parameters": "Development references subject to a later versioned selection",
+  "font_files_distributed": false,
+  "optional_preview_environment": {
+    "python": "3.12.14",
+    "pillow": "12.3.0",
+    "arial.ttf_sha256": "b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a",
+    "arialbd.ttf_sha256": "e8f4e3baf6cc35fed6fcce3a540e8b39e8f6cda1d22a28f2ec8f526fef7a43f5"
+  }
+}

@@ -17,7 +17,11 @@ Roles may share a process after their interfaces are defined, but their permissi
 
 Public peer messages and an ordinary node RPC must not require plaintext note amounts, hidden input commitments, private authentication paths or owner keys. Private wallet operations belong to an authenticated local or explicitly authorized wallet boundary. Logs, metrics, crash reports and remote queries must preserve that separation.
 
+The [RPC data specification](rpc-and-data.md) defines public chain retrieval for explorers and synchronization, scoped wallet and exchange recovery, local private membership construction, submission identity and versioned receipt states. Public APIs expose verification data while each service recovers its own private information through authorized capabilities.
+
 The first server trials require multiple independent instances, restart and synchronization checks, malformed peers, partitions, resource exhaustion, branch changes and consistent atomic rollback. Full validation and any later pruning mode must retain the state and recovery availability obligations in the [wallet specification](wallet.md).
+
+The later [Aegis state architecture](aegis.md) adds verification and synchronization of a certified private sequence and its mined recording prefix. A normal node would verify both without a voting or spending key. Restart and pruning must retain outstanding certified payloads and prevent duplicate state application during recording. This additional protocol is not implemented or required for the first server trial milestone.
 
 ## Service and exchange boundary
 

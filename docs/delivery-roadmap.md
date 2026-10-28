@@ -12,30 +12,23 @@ The current stage is private cryptographic feasibility. The workspace contains m
 | Confidential stake | Private eligible weight, epoch and state binding, restricted voting authority and stake lifecycle | No duplicate weight or reused eligibility, bounded certificates, withdrawal and conflicting vote cases |
 | Ledger and consensus | Authenticated roots, spent state, atomic persistence, issuance, reward maturity, supported auxiliary work and checkpoint rules | Independent state agreement, crash recovery, replay rejection, branch changes and miner/staker disagreement |
 | Private server network | Peering, synchronization and the node RPC boundary | Multiple independent instances, restarts, partitions, reconnection and resource limit tests |
-| Initial applications | Private timed escrow and confidential assets through the common ledger rules | Release/refund conflict rejection, exact expiry boundaries, conservation and authorized issuance |
+| Private application milestone | Private timed escrow and confidential assets through the common ledger rules | Release/refund conflict rejection, exact expiry boundaries, conservation and authorized issuance |
 | Desktop wallet | Local validation, private Send, private scanning, scoped viewing, encrypted backup, recovery and restricted staking/voting | End to end private transfers, device restoration, reorganizations and metadata measurements |
 | Private Safe | Chain enforced delayed withdrawal, restricted recovery cancellation and a separate protected balance view | Consensus transition tests, recovery monitoring and Qt integration against the same rules |
 | Fast payment locks | Committee certified reservation of a fully authorized private payment | Conflicting certificate rejection, expiration, unavailable quorum, partition recovery and measured latency |
+| Aegis later protocol | Spendable certified private state before PoW recording through a separately activated consensus version | Complete weighted consensus, confidential quorum, available payloads, exactly once recording, chained private payments, bounded backlog and independent review |
 | Further verification and upgrades | Private migration, measured payment capacity protection and compact history research | Version transition tests, resource isolation measurements and complete history obligations |
 
 Complete private payment and confidential stake feasibility both precede ledger integration. Private authorization includes ownership, membership, stable nullifiers, value conservation and delivery binding for the same transaction. Success in separate component harnesses does not complete that relation.
 
 The initial public network depends on the applicable consensus, privacy, recovery, resource and independent review gates. Later application milestones may be delivered separately. An unfinished application is not an exception to the ledger rules.
 
-```mermaid
-flowchart TD
-    A[Private payment feasibility] --> K[Ledger and consensus]
-    S[Confidential stake feasibility] --> K
-    K --> N[Independent server network]
-    N --> W[Private desktop wallet]
-    K --> E[Escrow and confidential assets]
-    E --> V[Private Safe consensus rules]
-    V --> Q[Safe wallet and monitoring]
-    W --> Q
-    K --> L[Fast payment lock research]
-    W --> L
-    K --> H[Compact history research]
-```
+Aegis is outside the first chain test milestone. The initial onward spending boundary remains checkpoint finality. Contract and Safe architecture can be developed before their executable stages, with unsupported operations rejected by the active protocol. Documentation alone does not represent partial runtime completion.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/development-stages-dark.svg">
+  <img alt="Base chain feasibility and integration stages with separate later applications and Aegis" src="../research/protocol-figures/figures/development-stages.svg">
+</picture>
 
 ## Core privacy boundary
 
