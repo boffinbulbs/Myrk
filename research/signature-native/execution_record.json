@@ -1,0 +1,100 @@
+{
+  "format": "thorum.signature-native.execution.v1",
+  "scope": "Private source and forward transform native checks. Complete signature verification and payments remain unfinished.",
+  "source_record_sha256": "5f97a67a25f380901f2869b37a2fd71b9f96ce352a59d605f5467eac5e64dfeb",
+  "platform": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "architecture": "AMD64",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "rust": "1.94.1",
+    "python": "3.14.5"
+  },
+  "checks": {
+    "release_no_run_build": true,
+    "strict_release_all_targets_clippy": true,
+    "rustfmt": true,
+    "source_and_executable_pins_unchanged": true
+  },
+  "dependencies": {
+    "registry_packages": 80,
+    "local_packages": 4,
+    "retained_registry_tuples": true,
+    "rayon_or_p3_parallel": false
+  },
+  "actual_constraints_per_row": 146260,
+  "actual_degree": 4,
+  "main_field_payload_bytes": 1464008704,
+  "maximum_simultaneous_wide_traces": 1,
+  "native_tuple_constructions": 1,
+  "direct_coefficient_comparisons": 4096,
+  "test_inventory": {
+    "total": 3,
+    "ignored": 3
+  },
+  "backend_proofs": 0,
+  "selected_tests": [
+    {
+      "test": "tests::shape_schedule_and_private_routes",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        2
+      ],
+      "installed_process_limit_bytes": 2147483648,
+      "installed_aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9555206144,
+      "peak_job_commit_bytes": 2121728,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "guard_result_sha256": "b8593ecfb4515087f8d6555f1351d48d9dd12fd7d1844b0796f7a3b896302656",
+      "stdout": "\nrunning 1 test\ntest tests::shape_schedule_and_private_routes ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.00s\n\n"
+    },
+    {
+      "test": "tests::actual_symbolic_shape_and_degree",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        2
+      ],
+      "installed_process_limit_bytes": 2147483648,
+      "installed_aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9555968000,
+      "peak_job_commit_bytes": 121184256,
+      "timeout_seconds": 180,
+      "timed_out": false,
+      "guard_result_sha256": "58e5f9dad695880196df2d396452da34d812dbe093b02db50fc310cd13f0e46f",
+      "stdout": "\nrunning 1 test\nActual private forward NTT symbolic constraints_per_row 146260, degree 4; collection dropped. No backend result.\ntest tests::actual_symbolic_shape_and_degree ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.15s\n\n"
+    },
+    {
+      "test": "tests::sixteen_direct_source_transforms_and_locally_exact_crosswires",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        2
+      ],
+      "installed_process_limit_bytes": 2147483648,
+      "installed_aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9550692352,
+      "peak_job_commit_bytes": 1509404672,
+      "timeout_seconds": 1200,
+      "timed_out": false,
+      "guard_result_sha256": "4d3da38419539c81eb823a546462c49290fa52daad958d7e91c20977824e088c",
+      "stdout": "\nrunning 1 test\ntest tests::sixteen_direct_source_transforms_and_locally_exact_crosswires ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; finished in 55.24s\n\n"
+    }
+  ]
+}

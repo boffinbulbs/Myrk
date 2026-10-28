@@ -1,0 +1,185 @@
+{
+  "format": "thorum.signature-native.source.v1",
+  "scope": "Native source derivation and sixteen connected forward transforms. No complete signature, ownership, payment verifier or backend proof.",
+  "shape": {
+    "height": 8192,
+    "width": 44678,
+    "public_values": 196,
+    "retained_measured_degree": 4,
+    "retained_constraints_per_row": 146260
+  },
+  "constructor": {
+    "inputs": [
+      "private K2592",
+      "private sigma4627",
+      "private canonical v2 N418",
+      "typed PaymentStatement"
+    ],
+    "public_values": "A196 derived from typed T",
+    "output": "One native witness matrix with private source and forward transform banks"
+  },
+  "arithmetic": {
+    "signature_modulus": 8380417,
+    "base_field_prime": 2013265921,
+    "root": 1753,
+    "forward_transforms": 16,
+    "inverse_transforms_implemented": 0
+  },
+  "retained_native_scope": {
+    "source_freeze_sha256": "c46533b1a98e82b7e9297a2e8e24b46553809f9733138cc5b6c346c21511fd64",
+    "test_source_sha256": "503b87db4413b30ff206557351bc3a9cfd3ed53fe8db1562c5f2e89c6a3365dc",
+    "result_record_sha256": "cb79f882e4de2075ed8adbe0d04c807bda5cb58fd26e2f38386425688d1b5ff5",
+    "harness": [
+      1,
+      0,
+      0,
+      0,
+      2
+    ],
+    "direct_output_comparisons": 4096,
+    "limited_local_crosswire_controls": true,
+    "backend_proofs": 0
+  },
+  "adapted_layout_validation": {
+    "compiled": true,
+    "strict_lint": true,
+    "native_executed": true,
+    "backend_proofs": 0
+  },
+  "runtime_fixtures": {
+    "../signature-ownership/raw-fixture.json": {
+      "bytes": 88947,
+      "sha256": "10426a9bbfd10707b2a339c63c787bd8d119ee2c76a78316aa03c1edab80c2f2"
+    },
+    "../signature-ownership/reference-fixture.json": {
+      "bytes": 8008075,
+      "sha256": "d9d6e61fb842512318b67d49a95efafe1100053eb9d2d1449b6ba425e708a3d9"
+    },
+    "reference_math_equal_to_retained_source": true,
+    "only_reference_provenance_fields_differ": [
+      "source_inventory_sha256",
+      "retained_source_pins"
+    ]
+  },
+  "public_source_origins": {
+    "research/signature-ownership/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "crates/thorum-arithmetic-proof-lab/src/mul.rs": {
+      "bytes": 2518,
+      "sha256": "fdf7c8dcb834539b566dab21baf2762de25bc56f907e393f01e8d9b05b09a7e1"
+    },
+    "crates/thorum-ntt-proof-lab/src/ntt.rs": {
+      "bytes": 4597,
+      "sha256": "b9c6bd044d9a91a1ef187bd0c334079d89870b7fff3a1f99a4da70c44e77492d"
+    },
+    "research/ntt-proofs/source_record.json": {
+      "bytes": 1225,
+      "sha256": "2801a99f6d642a095b1b185a013aed324c9a82c68b30974e25fa65d6f66a6b1a"
+    }
+  },
+  "adaptations": {
+    "public_mapper": "Local byte identical public data module with no witness, key or note getters",
+    "product_encoder": "mul::VALUES is0, so named offset+23*i equals23*i",
+    "paths": "Standalone repository dependencies and existing public fixture paths",
+    "test_module": "staged_tests renamed tests. Gate values unchanged",
+    "cryptographic_domains_changed": false,
+    "production_equations_changed": false,
+    "formatting": "Rustfmt formatting and two equivalent enumerated iterator loops in the transform equations"
+  },
+  "licenses": {
+    "original_and_thorum_adaptations": "MIT",
+    "project_notice": "LICENSE",
+    "p3_dependencies": "MIT OR Apache-2.0",
+    "dependency_notices": "../../THIRD_PARTY_NOTICES.md",
+    "p3_license_sources": "../crypto/license-sources/p3-0.8.0",
+    "implementation_basis": "../ntt-proofs/source_record.json"
+  },
+  "files": {
+    "Cargo.lock": {
+      "bytes": 19738,
+      "sha256": "eaa35c6bf6130732bb5cd9d7bd308f371462337092b0061a9f4a7c922c4bee09"
+    },
+    "Cargo.toml": {
+      "bytes": 891,
+      "sha256": "fdea1a3c70815528b6ad284b99bd4211183ba7821289f92258c94cba1f0770be"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "README.md": {
+      "bytes": 4211,
+      "sha256": "1dc2c96889ebcd481c2f1622f9554b1e28f17be516d924650ab93a1b64ae1caa"
+    },
+    "src/air.rs": {
+      "bytes": 1844,
+      "sha256": "42219186dc47b25f3432571e60e10fdffb0e173a564df85bcc24036117498255"
+    },
+    "src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "src/build/decode.rs": {
+      "bytes": 6229,
+      "sha256": "529723c997f70825d918310f3f7ab49bc2465531328a9177467ef2f922ecbc29"
+    },
+    "src/build/sample.rs": {
+      "bytes": 2439,
+      "sha256": "e2a1881c852ec427953ddd153fde8caccedc1e042576f8d5da6efd0feef754d5"
+    },
+    "src/build.rs": {
+      "bytes": 8265,
+      "sha256": "742d3b4da420b8ce6681ded0f3a56da257f94b5ebb4b26a6b42e3376a2b5d01c"
+    },
+    "src/decoding.rs": {
+      "bytes": 7325,
+      "sha256": "0308df4f1519a27c9bbe9aca31f79030d7838c53d1074bafc86b4ea431df9c43"
+    },
+    "src/keccak.rs": {
+      "bytes": 2561,
+      "sha256": "d619093afdd30b630ddc7c88817644c7257c1bdbd2d24f38ca29cd8b4d5db76c"
+    },
+    "src/layout.rs": {
+      "bytes": 2482,
+      "sha256": "3018129a2fb5bfba1635276103763c27c8942f0ddfdf0daf6a7afea6086e9f40"
+    },
+    "src/lib.rs": {
+      "bytes": 1612,
+      "sha256": "5a1a6c074b6533757cec4eac4ddf621a65e9f310ca2c8f76a714d27ca4d99b5c"
+    },
+    "src/mul.rs": {
+      "bytes": 2518,
+      "sha256": "fdf7c8dcb834539b566dab21baf2762de25bc56f907e393f01e8d9b05b09a7e1"
+    },
+    "src/ntt.rs": {
+      "bytes": 12607,
+      "sha256": "b5841d83bb17fab622e128409b8ac07632827b103828730c713190721dc05f53"
+    },
+    "src/packing.rs": {
+      "bytes": 2138,
+      "sha256": "bd4a1ed77192af82a32f15a6104eab8f68677ac1aa6beb50dbf630ac1bb8d9ce"
+    },
+    "src/program.rs": {
+      "bytes": 1667,
+      "sha256": "2ed33297cb5557e977096e313ca2dfe4e9c7bac8d9d2549f00d883c7c4375ca1"
+    },
+    "src/sampler.rs": {
+      "bytes": 6157,
+      "sha256": "19f4be28bb5d21e0b23479bbfd014a990790f8e5c58dcef71e908ea6c954b22d"
+    },
+    "src/sources.rs": {
+      "bytes": 10272,
+      "sha256": "791e5d2bf88b2e2b968652eca2afb71f3311e429a34ea2ecba1f3b813cf6b1a3"
+    },
+    "src/tests.rs": {
+      "bytes": 10456,
+      "sha256": "e228b5fac56d2e1edb37c0fcc1fff9aa660a838311ee4c85919d2ca255608325"
+    },
+    "static_check.py": {
+      "bytes": 3314,
+      "sha256": "fd1abe88a200416e9f2039c925b151d092cd8da03e5ba273e77319c2a0fd050e"
+    }
+  }
+}
