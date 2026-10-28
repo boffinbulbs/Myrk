@@ -1,0 +1,56 @@
+{
+  "scope": "Independent fixed finite row reconstruction references without Rust trace or proof code",
+  "public_math_source_sha256": {
+    "research/signatures/synthetic_authorization.json": "61959ca6b2d0e8ea88c5313798266915ebed1589c4e6428001d79d559f019f22",
+    "research/signatures/verify_reference.py": "05ba244ecb91c3eb0f1c51a7b42b92f6ea49d5bca54fde9c25881a5ce47b2406",
+    "research/ntt-proofs/reference_vectors.py": "021c8d5600e43d813bfd73ab5885e553e852ba5fa9ec2078c296e6ad823d1650",
+    "research/coefficient-constraints/reference_vectors.py": "2bad900a9b4c4cfe6e8dc63ac68e3d6b8e99713d4091676c807afcc8dd35455a",
+    "research/coefficient-constraints/packing_vectors.py": "d9e4781aec66ce2b18e5e4409c630bede350ff914b09450ca4ac67600faa717a",
+    "research/hash-proofs/reference_vectors.py": "2ad944ceccf50ad1e088a3e6626641c23519e2bd3d642e3f90980d6212dac877",
+    "research/matrix-sampling/vectors.json": "d52a052141c0b9b13eaa412a6dabac5d695bde1f76c9ae003fff98ac0c062e2d",
+    "research/crypto/vectors/selected.json": "fe61306ae7bafad8b36d2ef8cac9cf12ce3706afe12171b8e7b27d97edba7de4"
+  },
+  "independent_integer_model": {
+    "path": "research/reconstructed-row/stream_math.py",
+    "sha256": "6ab75a2334e2993b30d325942acf5dc1ae51e3be4fb144dee94850a2edabe9a6"
+  },
+  "integer_math_provenance": {
+    "origin_source_sha256": "44b016e9977318763bd5f043485eef2434618eaa856deaa3594d7ee9db835126",
+    "retained_functions": [
+      "multiplication",
+      "stream_model",
+      "changed_continuation"
+    ],
+    "scope": "Independently authored Python integer and manual sponge math. The exact reproducible helper is retained in this reference package."
+  },
+  "generator_sha256": "37e96dbe699874af010ede8f543701e167f6b2a1383772bbcdeaaf88148ba17e",
+  "retained_sources": 2,
+  "retained_complete_rows": 4,
+  "synthetic_endpoint_rows": 4,
+  "matrix_records": 28,
+  "full_sponge_records": 168,
+  "selected_full_round_records": 288,
+  "candidate_events_per_row": 2352,
+  "false_splices": 13,
+  "valid_whole_input_alternatives": 3,
+  "injected_late_completion_lanes": 8,
+  "injected_unsupported_capacity": 3,
+  "compiler_run": false,
+  "prover_run": false,
+  "actual_air_verdict_claim": false,
+  "external_streamed_data_file_read": false,
+  "retained_public_input_revision": "061a4ba5a930f8031ea39aa93595311305d07bd8",
+  "selected_continuation_faults": 1,
+  "full_proof_hash_goldens": 3,
+  "reference_scope": "Complete mathematical row only. No final full signature challenge, key ownership, transaction, hidden note, private payment or confidential stake relation is proved",
+  "generated_sha256": {
+    "vectors.json": "d2c733933eb0367c3c2b5af7dfcc06aca2a516dd2faa081122fa9b103f961e2d",
+    "hostile_cases.json": "8fab2f07cf8fffd0d3827e519f21c0d3d0b124bdbebabbf17d69b1671704b2ee",
+    "schedule.json": "0207670c4f0ac3ea19f8c6ff7dac31bebad26fa731376e5c0356e923f6da998f",
+    "injected_boundaries.json": "9f11942063b0efef79dd5c3142c77e83ed582ac4721490efe504f11a168b3c5d",
+    "continuation_faults.json": "1e8481f36b5cc7bd41bde1b8ef200508320b50456bdfe8fc5f77f4138b9f6df3",
+    "hash_vectors.csv": "8e57c4f935911ba2c2213e173a24f689dd2a8f7d910961886c44a4258edc01f7",
+    "hash_preimages.json": "d510c8e79e67f63237c346589adb0978abb1f56916118c11ca37ef6820e40cc2",
+    "profile.json": "85f02b4209496dceec22c5ea703a4b05900ee40dbff574215d822b6f974a3412"
+  }
+}

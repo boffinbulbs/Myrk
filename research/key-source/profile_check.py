@@ -143,16 +143,17 @@ def check_dependencies(sources):
     }, "The shared t1 decoder must use the exact existing workspace dependency")
     parent = compact(sources[PREFIX + "/src/lib.rs"])
     require(parent.count("pubmodkey_source;") == 1, "Expected exactly one public key_source child")
-    old_parent = parent.replace("pubmodkey_source;", "")
+    require(parent.count("pubmodreconstructed_row;") == 1, "Expected exactly one public reconstructed_row child")
+    old_parent = parent.replace("pubmodkey_source;", "").replace("pubmodreconstructed_row;", "")
     require(hashlib.sha256(old_parent.encode()).hexdigest()
             == "c1a9461ffd145498710e05817c71d5dee1bc5799742bf3aff4dc50e6af5a3445",
-            "Existing parent hash source changed beyond the one child declaration")
+            "Existing parent hash source changed beyond the two allowed child declarations")
 
 
 def check_source_contracts(sources):
     module = compact(sources[MODULE + ".rs"])
     fragments(module, ["pubconstKEY_BYTES:usize=2592;", "modair;", "modhash;",
-                       "modkeccak;", "modpacking;", "modproof;",
+                       "pub(super)modkeccak;", "modpacking;", "modproof;",
                        "pubfnfrom_keys(keys:[[u8;KEY_BYTES];2])->Self{Self{keys}}",
                        "pubfnnew(context:[u8;64])->Self{Self{context}}",
                        "prove_key_slots", "verify_key_slots", "MAX_PROOF_BYTES", "PROFILE"], "API")
@@ -162,8 +163,10 @@ def check_source_contracts(sources):
             "The witness must retain two private fixed key arrays")
     require(re.search(r"pubuse(?:super|crate)::Error;", module) is not None,
             "Use the existing parent Error type")
-    require(not re.search(r"pub(?:\([^)]*\))?mod(?:air|hash|keccak|packing|proof);", module),
+    require(not re.search(r"pub(?:\([^)]*\))?mod(?:air|hash|packing|proof);", module),
             "Key source implementation modules must remain private")
+    require(re.findall(r"pub(?:\([^)]*\))?modkeccak;", module) == ["pub(super)modkeccak;"],
+            "Only the exact parent visible shared Keccak adapter is permitted")
 
     air = sources[MODULE + "/air.rs"]
     fragments(air, [

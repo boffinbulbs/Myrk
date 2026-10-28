@@ -24,6 +24,7 @@ The membership component's statement exposes one root, two output commitments, t
 | [Authorization arithmetic laboratory](docs/arithmetic-proof-lab.md) | Canonical multiplication modulo 8380417, reusable coefficient decoding and exact hint constraints, with synthetic primitive tests rather than complete signature verification or owner permission |
 | [Normal residue NTT laboratory](docs/ntt-proof-lab.md) | Exact forward and inverse polynomial transforms, including a separate compact register profile with canonical writes and complete holds, in a public polynomial diagnostic harness |
 | [Private owner key binding laboratory](docs/owner-binding-proof-lab.md) | Private verification key preimages linked to owner fields in the same hidden note, membership, nullifier and conservation proof, without signature verification or spending permission |
+| [Conditional private signature row](docs/reconstructed-row.md) | Private matrix streams, transforms, subtraction, hint application and retained output in one conditional row relation. Complete key/signature/note/transaction linkage remains unfinished. |
 | [Proof feasibility](docs/proof-feasibility.md) | Pinned backend inspection, isolated component adoption and unresolved complete relation, knowledge soundness and quantum security gates |
 | Private ledger | Transaction relation and kernel requirements |
 | Consensus | Work/checkpoint boundaries and open construction questions |

@@ -3,7 +3,7 @@
 
 mod air;
 mod hash;
-mod keccak;
+pub(super) mod keccak;
 mod packing;
 mod proof;
 #[cfg(test)]

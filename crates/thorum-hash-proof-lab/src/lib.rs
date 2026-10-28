@@ -9,6 +9,7 @@ pub mod challenge_sampler;
 mod hash;
 pub mod key_source;
 pub mod matrix_sampler;
+pub mod reconstructed_row;
 #[cfg(test)]
 mod reference;
 mod sponge;
