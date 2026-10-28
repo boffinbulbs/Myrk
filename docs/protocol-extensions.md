@@ -48,16 +48,20 @@ The initial onward spending rule also requires the creating transition to belong
 
 The Qt wallet requires a separate protected savings view backed by consensus enforced state. A wallet setting alone cannot protect funds from a different client or a compromised spending key. Deposits and withdrawals retain the mandatory private transaction relation and value conservation.
 
+The [Safe design and authority model](private-safe.md) specifies receiving modes, independent backups and local encryption choices. Each user selects a positive delay from the durations supported by the active policy version. Production bounds and the encoding remain open. The countdown begins at the authenticated withdrawal request origin, rather than the original deposit. The validation clock must follow finalized mined height and cannot advance through additional fast payment certificates.
+
 A Safe policy commits a spending authority, distinct recovery authority, withdrawal delay and protected return destination. A withdrawal request creates a pending right with an authenticated request origin, fixed destination and unlock condition. Its delay cannot be shortened by changing wallets, transferring a pending note or using another application.
 
 Cancellation by the recovery authority returns value only to the protected destination committed by the policy. It grants no general permission to choose a recipient, mint assets or withdraw arbitrary wallet value. Changes to that protected destination need their own reviewed authorization and delay rule.
 
-For authenticated request origin $h_0$ and delay $D>0$, the initial branch boundary is
+The protected recovery destination must retire the compromised withdrawal authority for the recovered value. Shortening a delay or replacing recovery protection cannot take effect through an immediate settings change. The old policy must govern a protected update transition before weaker conditions become active. Migration of other protected notes needs a separately specified transition.
+
+For authenticated finalized request origin $h_0$, delay $D>0$ and finalized mined height $H_f$, the initial branch boundary is
 
 $$
-\operatorname{cancel}:h<h_0+D,
+\operatorname{cancel}:H_f<h_0+D,
 \qquad
-\operatorname{complete}:h\ge h_0+D.
+\operatorname{complete}:H_f\ge h_0+D.
 $$
 
 The exact cancellation deadline and validation context must be frozen with the application. Both branches consume the same pending spending right and therefore the same deterministic nullifier. Only one branch can enter finalized history, including when different versions or applications reference the same right. Competing provisional histories require normal fork selection and atomic rollback. The origin must be authenticated by consensus rather than backdated by the requester. Delay arithmetic must reject overflow.
@@ -72,7 +76,7 @@ stateDiagram-v2
     Withdrawal --> [*]
 ```
 
-Implementation must specify partial withdrawals, minimum and maximum delays, policy changes, finalized request handling, reorganization, fee payment, missing encrypted data and each key loss case. Cancellation alone does not promise recovery when a key is lost. Protection depends on detecting the request and getting a valid cancellation included before its deadline. Monitoring must work with local private scanning and preserve recoverability after restart or device restoration. Private escrow and the common note kernel provide the initial application boundary. Arbitrary private contracts may build on it later.
+Implementation must specify partial withdrawals, minimum and maximum delays, policy changes, finalized request handling, reorganization, fee payment, missing encrypted data and each key loss case. Cancellation alone does not promise recovery when a key is lost. Protection depends on detecting the request and getting a valid cancellation finalized under the valid before unlock context. Monitoring must work with local private scanning and preserve recoverability after restart or device restoration. Private escrow and the common note kernel provide the initial application boundary. Arbitrary private contracts may build on it later.
 
 ## Private cryptographic migration
 

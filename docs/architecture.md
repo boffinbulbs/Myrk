@@ -41,6 +41,8 @@ Certified note roots, global spent identities, restrictions, finalized mined hei
 
 The Safe is a protected savings vault within the Qt wallet. Its consensus policy and private state are part of the architecture before the ledger and application interfaces are frozen. The executable transitions and wallet view remain a later [delivery milestone](delivery-roadmap.md#private-safe-milestone).
 
+The [detailed Safe design](private-safe.md) defines direct protected receiving, user selected supported delays, independent everyday, withdrawal and recovery authorities, and optional separate local Safe encryption. Consensus consumes the committed private policy. Wallet passwords and backup phrases stay outside consensus and application calls.
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/wallet-safe-lifecycle-dark.svg">
   <img alt="Later wallet Safe policy with delayed withdrawal and protected recovery destination" src="../research/protocol-figures/figures/wallet-safe-lifecycle.svg">

@@ -216,3 +216,5 @@ jobs:
         run: python3 research/aegis/generate_figures.py --check
       - name: Check transparent research chart variants
         run: python3 research/presentation/render_figures.py --check
+      - name: Check private Safe design figure
+        run: python3 research/safe-design/generate_figures.py --check

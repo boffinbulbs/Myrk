@@ -1,0 +1,27 @@
+{
+  "format": "thorum.private-safe.figure-source.v1",
+  "scope": "Later chain and Qt wallet architecture. No runtime or performance measurement.",
+  "original_project_source": true,
+  "runtime_or_consensus_change": false,
+  "source_sha256": {
+    "research/safe-design/generate_figures.py": "6f3d38bf29a65eb403b4c67dc40663273dc08ca9804b82f5479fe2d037bf64d7",
+    "research/aegis/generate_figures.py": "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430",
+    "docs/private-safe.md": "6b05f987a90a51d4f1b25fd65c877207066167af1a22f73b9d1bceb54f138fef",
+    "research/safe-design/README.md": "898ebaad34f6392d505354026dda355c45b58d020d3f5ae8a81da613f76272a2"
+  },
+  "shared_renderer_expected_sha256": "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430",
+  "outputs_sha256": {
+    "figure-data.json": "510cb0ea3b06a068248c2ffbd6bb9b990f4dcbe9ef24b7804d340d0be5012e27",
+    "figures/private-safe.svg": "6e86f78d88de91a82b538103694a847eb77b229e2e9971de08b2afb1710bcc74",
+    "figures/private-safe-dark.svg": "bbce6553c9e8cac2fe3a0293fb0f55de9377cccaa7c86385a2f841b7accc5b68"
+  },
+  "checks": {
+    "svg_xml": true,
+    "finite_bounded_coordinates": true,
+    "transparent_svg_canvas": true,
+    "matching_theme_structure_and_text": true,
+    "reference_canvas_text_contrast": "Existing pinned renderer checks at least 4.5 to 1"
+  },
+  "font_family": "Arial, Helvetica, sans-serif",
+  "license": "MIT. Original Thorum source."
+}

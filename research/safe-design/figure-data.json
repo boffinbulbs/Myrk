@@ -1,0 +1,62 @@
+{
+  "format": "thorum.private-safe.design-figure.v1",
+  "scope": "Later chain and Qt wallet architecture. No runtime or performance measurement.",
+  "implemented_safe": false,
+  "initial_chain_prerequisite": false,
+  "svg_canvas": "transparent",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "receiving_types": [
+    "Spending",
+    "Safe"
+  ],
+  "receiving_default_affects": "New authenticated typed requests only",
+  "existing_ordinary_notes": "An accepted private deposit transition is required",
+  "authority_roles": [
+    {
+      "role": "Everyday Spending",
+      "permission": "Ordinary private spending",
+      "seed": "Independent everyday backup"
+    },
+    {
+      "role": "Safe withdrawal",
+      "permission": "Request fixed delayed withdrawal",
+      "seed": "Independent withdrawal backup"
+    },
+    {
+      "role": "Safe recovery",
+      "permission": "Cancel selected pending right to fixed protected Safe",
+      "seed": "Independent recovery backup"
+    }
+  ],
+  "seed_storage_independence": "Wallet setup property, not proved by consensus",
+  "local_encryption": {
+    "default": "Wallet password with an independent Safe key",
+    "optional_extra": "Separate Safe password and independent lock state",
+    "unencrypted": "Separate explicit storage decision",
+    "rotation_changes_chain_policy": false
+  },
+  "clock": "Consensus authenticated finalized mined height H_f",
+  "origin": "h0 = H_f of first finalized request state",
+  "unlock": "H_u = h0 + D",
+  "delay": {
+    "positive": true,
+    "user_selected_supported_value": true,
+    "production_min": null,
+    "production_max": null
+  },
+  "cancel": "H_f < H_u",
+  "complete": "H_f >= H_u",
+  "shared_pending_nullifier": true,
+  "recovery_destination": "Fixed protected Safe with independently controlled withdrawal authority",
+  "old_withdrawal_authority_valid_at_recovery_safe": false,
+  "cancel_scope": "Selected pending right only",
+  "remaining_safe_recovery": "Additional transition and construction remain open",
+  "public_stable_safe_id_required": false,
+  "figure": {
+    "width": 1560,
+    "height": 1380
+  }
+}

@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1380" viewBox="0 0 1560 1380" role="img" aria-labelledby="figure-title figure-description" data-theme="dark" data-canvas="transparent">
+  <title id="figure-title">Private Safe authority and withdrawal policy</title>
+  <desc id="figure-description">Later design with one Qt app and three independent authorities. Safe receiving binds a private policy. A finalized request starts the chosen delay under finalized mined height. Recovery before unlock and authorized completion afterward consume the same pending right. Recovery returns only to a fixed protected Safe where the old withdrawal authority is invalid. No performance is measured.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#80b4ff" />
+    </marker>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="60" y="58" font-size="31" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="60" y="58">Private Safe authorities and withdrawal policy</tspan>
+    </text>
+    <text x="60" y="94" font-size="20" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="94">Later chain and Qt wallet architecture</tspan>
+    </text>
+    <rect x="60" y="135" width="1440" height="240" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="84" y="174" font-size="24" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="84" y="174">One Qt wallet. Separate seeds, capabilities and backups.</tspan>
+    </text>
+    <rect x="84" y="202" width="424" height="150" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="106" y="237" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="106" y="237">Everyday Spending</tspan>
+    </text>
+    <text x="106" y="277" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="106" y="277">Ordinary private payments</tspan>
+      <tspan x="106" y="306">Everyday backup</tspan>
+      <tspan x="106" y="335">Local unlock to sign</tspan>
+    </text>
+    <rect x="568" y="202" width="424" height="150" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="590" y="237" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="590" y="237">Safe withdrawal</tspan>
+    </text>
+    <text x="590" y="277" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="590" y="277">Request a delayed withdrawal</tspan>
+      <tspan x="590" y="306">Independent Safe backup</tspan>
+      <tspan x="590" y="335">Unlock the selected signer</tspan>
+    </text>
+    <rect x="1052" y="202" width="424" height="150" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="1074" y="237" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1074" y="237">Safe recovery</tspan>
+    </text>
+    <text x="1074" y="277" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1074" y="277">Cancel a pending right</tspan>
+      <tspan x="1074" y="306">Fixed protected destination</tspan>
+      <tspan x="1074" y="335">Independent recovery backup</tspan>
+    </text>
+    <rect x="60" y="404" width="1440" height="92" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="84" y="439" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="84" y="439">Local key protection</tspan>
+    </text>
+    <text x="84" y="474" font-size="21" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="84" y="474">Wallet password by default. Optional separate Safe password. Unencrypted storage is a separate choice.</tspan>
+    </text>
+    <text x="60" y="539" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="60" y="539">Receiving choice: Spending or Private Safe</tspan>
+    </text>
+    <rect x="60" y="572" width="430" height="192" rx="10" fill="#16372d" stroke="#42546b" stroke-width="1.5" />
+    <text x="82" y="607" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="607">Protected Safe</tspan>
+    </text>
+    <text x="82" y="647" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="82" y="647">Authenticated private receiving policy</tspan>
+      <tspan x="82" y="676">Existing funds need a private deposit</tspan>
+      <tspan x="82" y="705">Choose a supported delay D &gt; 0</tspan>
+      <tspan x="82" y="734">New receiving requests retain that type</tspan>
+    </text>
+    <rect x="565" y="572" width="430" height="192" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="587" y="607" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="587" y="607">Finalized withdrawal request</tspan>
+    </text>
+    <text x="587" y="647" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="587" y="647">Fix the requested value and destination</tspan>
+      <tspan x="587" y="676">Finalized origin h0 = H_f</tspan>
+      <tspan x="587" y="705">Unlock height H_u = h0 + D</tspan>
+      <tspan x="587" y="734">Retain one pending spending right</tspan>
+    </text>
+    <polyline points="490,668 565,668" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <rect x="1070" y="572" width="430" height="192" rx="10" fill="#172231" stroke="#42546b" stroke-width="1.5" />
+    <text x="1092" y="607" font-size="23" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1092" y="607">Policy clock H_f</tspan>
+    </text>
+    <text x="1092" y="647" font-size="19" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="1092" y="647">Finalized mined height only</tspan>
+      <tspan x="1092" y="676">A chain halt stops the countdown</tspan>
+      <tspan x="1092" y="705">Certification rounds do not advance it</tspan>
+      <tspan x="1092" y="734">Calendar duration remains an estimate</tspan>
+    </text>
+    <polyline points="1070,668 995,668" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <polyline points="780,764 780,835" fill="none" stroke="#80b4ff" stroke-width="2.5" />
+    <polyline points="365,835 1195,835" fill="none" stroke="#80b4ff" stroke-width="2.5" />
+    <polyline points="365,835 365,947" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <polyline points="1195,835 1195,947" fill="none" stroke="#80b4ff" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="365" y="813" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="365" y="813">Recovery authority</tspan>
+    </text>
+    <text x="1195" y="813" font-size="22" font-weight="700" fill="#e2e8f0" text-anchor="middle">
+      <tspan x="1195" y="813">Authorized completion</tspan>
+    </text>
+    <rect x="60" y="947" width="610" height="217" rx="10" fill="#16372d" stroke="#42546b" stroke-width="1.5" />
+    <text x="84" y="987" font-size="25" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="84" y="987">Recovery cancellation</tspan>
+    </text>
+    <text x="84" y="1032" font-size="27" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="84" y="1032">H_f &lt; H_u</tspan>
+    </text>
+    <text x="84" y="1077" font-size="21" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="84" y="1077">Only the fixed protected Safe receives value.</tspan>
+      <tspan x="84" y="1106">The old withdrawal authority is invalid there.</tspan>
+      <tspan x="84" y="1135">Cancellation covers the selected pending right.</tspan>
+    </text>
+    <rect x="890" y="947" width="610" height="217" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="914" y="987" font-size="25" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="914" y="987">Withdrawal completion</tspan>
+    </text>
+    <text x="914" y="1032" font-size="27" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="914" y="1032">H_f &gt;= H_u</tspan>
+    </text>
+    <text x="914" y="1077" font-size="21" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="914" y="1077">Complete the fixed authorized payment.</tspan>
+      <tspan x="914" y="1106">The same pending nullifier is consumed.</tspan>
+      <tspan x="914" y="1135">Only one branch may enter finalized history.</tspan>
+    </text>
+    <rect x="60" y="1206" width="1440" height="90" rx="10" fill="#172e4b" stroke="#42546b" stroke-width="1.5" />
+    <text x="84" y="1242" font-size="24" font-weight="700" fill="#e2e8f0" text-anchor="start">
+      <tspan x="84" y="1242">Protection follows the right</tspan>
+    </text>
+    <text x="84" y="1277" font-size="21" font-weight="400" fill="#e2e8f0" text-anchor="start">
+      <tspan x="84" y="1277">Contracts, Aegis and cryptographic migration retain delay, recovery and consumption restrictions.</tspan>
+    </text>
+    <text x="60" y="1340" font-size="21" font-weight="400" fill="#b3c3d8" text-anchor="start">
+      <tspan x="60" y="1340">Later design. Finalized height controls the countdown. Calendar time is an estimate.</tspan>
+    </text>
+  </g>
+</svg>

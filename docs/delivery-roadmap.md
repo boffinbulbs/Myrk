@@ -40,9 +40,11 @@ Early implementation also needs versioned cryptographic and application boundari
 
 ## Private Safe milestone
 
-The [Safe specification](protocol-extensions.md#private-safe) remains architecture work until the common ledger and application relation can enforce it. Its first implementation includes protected deposits, an authenticated delayed withdrawal request and recovery cancellation only to the predetermined protected destination. Cancellation and completion consume the same pending right.
+The [Safe specification](protocol-extensions.md#private-safe) and [wallet authority design](private-safe.md) remain architecture work until the common ledger and application relation can enforce them. The first implementation includes protected receiving, a user selected supported delay, an authenticated withdrawal request and recovery cancellation only to the predetermined protected destination. Cancellation and completion consume the same pending right.
 
 The chain transition precedes the Qt presentation. A wallet label or local coin freeze cannot supply consensus protection. Later wallet work adds protected balance discovery, pending request monitoring, deadline display and recovery after restart or device loss. Key loss behavior, partial withdrawals and policy changes require explicit rules and tests.
+
+Wallet completion requires three independent authority backups, authenticated receiving type checks, default wallet password encryption, optional separate Safe encryption and explicit local unencrypted storage. Restoration, password changes, locked Safe behavior, hostile recipient substitution and attempted policy weakening need validation alongside consensus cancellation and completion tests. Safe implementation remains outside the first runnable chain milestone.
 
 ## Fast payment milestone
 

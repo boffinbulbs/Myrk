@@ -10,6 +10,7 @@ The protocol separates private transition proofs, deterministic ledger validatio
 | [Architecture](docs/architecture.md) | Wallet, proof, kernel, work, consensus and storage boundaries |
 | [Implementation record](docs/development.md) | Executable scope and supporting component evidence |
 | [Delivery roadmap](docs/delivery-roadmap.md) | Initial chain gates and separate later application milestones |
+| [Private Safe design](docs/private-safe.md) | Protected receiving, user selected delays, independent authorities and local key protection |
 
 ## Implementation status
 

@@ -16,6 +16,16 @@ The [private Safe](protocol-extensions.md#private-safe) requires a protected bal
 
 Private cryptographic migration and compact history verification remain separate development targets. Migration must preserve old consumption identity and restrictions while hiding input commitments. Any later compact wallet mode must retain explicit chain selection, data availability and note recovery requirements.
 
+## Private Safe setup
+
+The [Safe design](private-safe.md) separates ordinary spending, delayed Safe withdrawals and restricted emergency recovery within one application. Each authority has independent key material and backup. Reusing the wallet password for local encryption does not make the Safe backup depend on the ordinary wallet backup.
+
+Safe setup offers the existing wallet password as its default encryption choice and a separate Safe password as an alternative. With a separate password, the Safe remains locked when the ordinary wallet is unlocked. Unencrypted local key storage is a separate explicit choice. These settings affect local storage, while every payment retains the mandatory private relation.
+
+The Receive view selects ordinary spending or a supported Safe policy for new authenticated receiving requests. The user chooses a supported withdrawal delay when creating the Safe. Changing that preference does not protect existing ordinary notes or alter previously issued receiving requests. A withdrawal uses normal confirmation and signing after unlock. Backup phrases are restoration material and are not entered for each withdrawal.
+
+Monitoring and balance display may operate with scoped viewing data without loading withdrawal or recovery secrets. The recovery destination and authority must be verified during setup. Cancellation protects the selected pending right under the chain rules, with recovery material kept independently from the everyday device where practical.
+
 ## Address namespace
 
 The main network wallet address target uses the human readable prefix `thm`, followed by a versioned recipient payload and a checksum. The namespace is compatible with private payments and contract applications. It does not determine the cryptographic key representation or execution model.
