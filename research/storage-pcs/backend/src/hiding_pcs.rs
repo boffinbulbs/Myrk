@@ -12,7 +12,6 @@ use p3_dft::TwoAdicSubgroupDft;
 use p3_field::coset::TwoAdicMultiplicativeCoset;
 use p3_field::{ExtensionField, PrimeField64, TwoAdicField, batch_multiplicative_inverse};
 use p3_matrix::Matrix;
-use p3_matrix::bitrev::BitReversibleMatrix;
 use p3_matrix::dense::{DenseMatrix, RowMajorMatrix};
 use p3_matrix::horizontally_truncated::HorizontallyTruncated;
 use p3_util::log2_strict_usize;
@@ -152,6 +151,69 @@ impl<Val, Dft, InputMmcs, FriMmcs, R, Store> HidingFriPcs<Val, Dft, InputMmcs, F
             num_random_codewords: self.num_random_codewords,
             rng: self.rng,
         }
+    }
+
+    fn map_quotient_chunks<Challenge, T>(
+        &self,
+        evaluations: impl IntoIterator<Item = (TwoAdicMultiplicativeCoset<Val>, RowMajorMatrix<Val>)>,
+        num_chunks: usize,
+        mut construct: impl FnMut(Val, RowMajorMatrix<Val>, &[Val]) -> T,
+    ) -> Result<Vec<T>, HidingFriProverError>
+    where
+        Val: TwoAdicField,
+        Challenge: ExtensionField<Val>,
+        StandardUniform: Distribution<Val>,
+        R: CryptoRng + Send + Sync,
+    {
+        assert!(
+            num_chunks > 1,
+            "num_chunks must be > 1 to preserve hiding (got {num_chunks})"
+        );
+        let (domains, evaluations): (Vec<_>, Vec<_>) = evaluations.into_iter().unzip();
+        for mat in &evaluations {
+            self.check_hiding_budget(mat.height(), Challenge::DIMENSION, 1)?;
+        }
+        let cis = get_zp_cis(&domains);
+        let last_chunk = num_chunks - 1;
+        let last_chunk_ci_inv = cis[last_chunk].inverse();
+        let mul_coeffs = (0..last_chunk)
+            .map(|i| cis[i] * last_chunk_ci_inv)
+            .collect_vec();
+
+        let mut rng = self.rng.lock();
+        let randomized_evaluations: Vec<RowMajorMatrix<Val>> = evaluations
+            .into_iter()
+            .map(|mat| mat.with_random_cols(self.num_random_codewords, &mut *rng))
+            .collect();
+        // Add random values to the LDE evaluations as described in https://eprint.iacr.org/2024/1037.pdf.
+        // If we have `d` chunks, let q'_i(X) = q_i(X) + v_H_i(X) * t_i(X) where t(X) is random, for 1 <= i < d.
+        // q'_d(X) = q_d(X) - v_H_d(X) c_i \sum t_i(X) where c_i is a Lagrange normalization constant.
+        let h = randomized_evaluations[0].height();
+        let w = randomized_evaluations[0].width();
+        let mut all_random_values = (0..(randomized_evaluations.len() - 1) * h * w)
+            .map(|_| rng.random())
+            .chain(core::iter::repeat_n(Val::ZERO, h * w))
+            .collect::<Vec<_>>();
+
+        // Set the random values for the final chunk accordingly
+        for j in 0..last_chunk {
+            let mul_coeff = mul_coeffs[j];
+            for k in 0..h * w {
+                let t = all_random_values[j * h * w + k] * mul_coeff;
+                all_random_values[last_chunk * h * w + k] -= t;
+            }
+        }
+
+        Ok(domains
+            .into_iter()
+            .zip(randomized_evaluations)
+            .enumerate()
+            .map(|(i, (domain, evals))| {
+                assert_eq!(domain.size(), evals.height());
+                let shift = Val::GENERATOR / domain.shift();
+                construct(shift, evals, &all_random_values[i * h * w..(i + 1) * h * w])
+            })
+            .collect())
     }
 
     fn hiding_budget(&self, extension_degree: usize, num_points: usize) -> Option<usize> {
@@ -502,96 +564,51 @@ where
         evaluations: impl IntoIterator<Item = (Self::Domain, RowMajorMatrix<Val>)>,
         num_chunks: usize,
     ) -> Result<Vec<RowMajorMatrix<Val>>, Self::ProverError> {
-        assert!(
-            num_chunks > 1,
-            "num_chunks must be > 1 to preserve hiding (got {num_chunks})"
-        );
-        let (domains, evaluations): (Vec<_>, Vec<_>) = evaluations.into_iter().unzip();
-        for mat in &evaluations {
-            self.check_hiding_budget(mat.height(), Challenge::DIMENSION, 1)?;
+        self.map_quotient_chunks::<Challenge, _>(evaluations, num_chunks, |shift, evals, masks| {
+            crate::storage::masked_quotient_lde(
+                &self.inner.dft,
+                evals,
+                masks,
+                self.inner.fri.log_blowup,
+                shift,
+            )
+        })
+    }
+
+    fn commit_quotient(
+        &self,
+        quotient_domain: Self::Domain,
+        quotient_evaluations: RowMajorMatrix<Val>,
+        num_chunks: usize,
+    ) -> Result<(Self::Commitment, Self::ProverData), Self::ProverError> {
+        let evaluations = quotient_domain.split_evals(num_chunks, quotient_evaluations);
+        let domains = quotient_domain.split_domains(num_chunks);
+        let ldes = self.map_quotient_chunks::<Challenge, _>(
+            domains.into_iter().zip(evaluations),
+            num_chunks,
+            |shift, evals, masks| {
+                self.inner.storage.extend_quotient(
+                    &self.inner.dft,
+                    evals,
+                    masks,
+                    self.inner.fri.log_blowup,
+                    shift,
+                )
+            },
+        )?;
+        for lde in &ldes {
+            self.check_hiding_budget(self.lde_mask_height(lde.height()), Challenge::DIMENSION, 1)?;
         }
-        let cis = get_zp_cis(&domains);
-        let last_chunk = num_chunks - 1;
-        let last_chunk_ci_inv = cis[last_chunk].inverse();
-        let mul_coeffs = (0..last_chunk)
-            .map(|i| cis[i] * last_chunk_ci_inv)
-            .collect_vec();
-
-        let mut rng = self.rng.lock();
-        let randomized_evaluations: Vec<RowMajorMatrix<Val>> = evaluations
-            .into_iter()
-            .map(|mat| mat.with_random_cols(self.num_random_codewords, &mut *rng))
-            .collect();
-        // Add random values to the LDE evaluations as described in https://eprint.iacr.org/2024/1037.pdf.
-        // If we have `d` chunks, let q'_i(X) = q_i(X) + v_H_i(X) * t_i(X) where t(X) is random, for 1 <= i < d.
-        // q'_d(X) = q_d(X) - v_H_d(X) c_i \sum t_i(X) where c_i is a Lagrange normalization constant.
-        let h = randomized_evaluations[0].height();
-        let w = randomized_evaluations[0].width();
-        let mut all_random_values = (0..(randomized_evaluations.len() - 1) * h * w)
-            .map(|_| rng.random())
-            .chain(core::iter::repeat_n(Val::ZERO, h * w))
-            .collect::<Vec<_>>();
-
-        // Set the random values for the final chunk accordingly
-        for j in 0..last_chunk {
-            let mul_coeff = mul_coeffs[j];
-            for k in 0..h * w {
-                let t = all_random_values[j * h * w + k] * mul_coeff;
-                all_random_values[last_chunk * h * w + k] -= t;
-            }
-        }
-
-        Ok(domains
-            .into_iter()
-            .zip(randomized_evaluations)
-            .enumerate()
-            .map(|(i, (domain, evals))| {
-                assert_eq!(domain.size(), evals.height());
-                let shift = Val::GENERATOR / domain.shift();
-                let random_values = &all_random_values[i * h * w..(i + 1) * h * w];
-
-                // The quotient chunk and its mask are both extended onto the same coset, and the
-                // DFT is linear, so they share a single forward transform. Recovering the chunk's
-                // coefficients with `shift.inverse()` scales coefficient `j` by `shift^j`, placing
-                // them on the coset exactly as `coset_lde_batch(evals, log_blowup + 1, shift)` would.
-                //
-                // Why the coset LDE's own coefficient hook cannot host this:
-                //
-                // - That hook runs before the buffer is zero-extended, so the mask's upper half
-                //   has no room.
-                // - The coset scaling applied afterwards would scale the mask by `shift^j` too.
-                let mut lde_coeffs = self
-                    .inner
-                    .dft
-                    .coset_idft_batch(evals, shift.inverse())
-                    .values;
-                lde_coeffs.resize((h * w) << (self.inner.fri.log_blowup + 1), Val::ZERO);
-
-                // Add in the coefficients of `v_H(X) * r(X)`, where:
-                // - `v_H` is the coset vanishing polynomial, here equal to (GENERATOR * X / domain.shift)^n - 1,
-                // - and `r` is a random polynomial.
-                // These are already coset-adjusted, so they are not scaled by `shift^j`.
-                let p = shift.exp_u64(h as u64);
-                Val::GENERATOR
-                    .powers()
-                    .take(h)
-                    .enumerate()
-                    .for_each(|(i, p_i)| {
-                        for j in 0..w {
-                            let mul_coeff = p_i * random_values[i * w + j];
-                            lde_coeffs[i * w + j] -= mul_coeff;
-                            lde_coeffs[(h + i) * w + j] += p * mul_coeff;
-                        }
-                    });
-
-                // Commit to the bit-reversed LDE.
-                self.inner
-                    .dft
-                    .dft_batch(DenseMatrix::new(lde_coeffs, w))
-                    .bit_reverse_rows()
-                    .to_row_major_matrix()
-            })
-            .collect())
+        let (commitment, data) = self.inner.commit_stored_ldes(ldes);
+        Ok((
+            commitment,
+            HidingFriPcsProverData::new(
+                data,
+                false,
+                self.num_random_codewords,
+                self.inner.fri.log_blowup,
+            ),
+        ))
     }
 
     /// The LDEs must contain fresh masks, as produced by [`Self::get_quotient_ldes`].

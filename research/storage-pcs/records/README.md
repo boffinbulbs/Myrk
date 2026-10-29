@@ -4,4 +4,6 @@
 
 That earlier execution corrected a one MiB field file allowance after an attempt stopped before proof completion. Eight quotient chunks alone occupy one MiB. The complete ten file total is 1277952 bytes, under the two MiB allowance. No memory limit was exceeded.
 
-The current [validation.json](../validation.json) describes version 0.2.0 with column construction for ordinary main and separate randomization commitments. Both versions retain the same finite quartic relation and proof profile. Historical source hashes do not describe later source revisions.
+[validation-v2.json](validation-v2.json) is retained byte identical from revision [85a42294119f46c55113ee43727b915d173b5d75](https://github.com/th0rigin/Kova/commit/85a42294119f46c55113ee43727b915d173b5d75). It describes version 0.2.0 with column construction for ordinary main and separate randomization commitments. Its SHA256 is 22875efeaf454fb2918d2e16bcb0dbbc5bdb3cb24dc66750917ed5188cade173.
+
+The current [validation.json](../validation.json) describes version 0.3.0, which also constructs the coupled quotient commitments by column. All versions retain the same finite quartic relation and proof profile. Historical source hashes do not describe later source revisions.

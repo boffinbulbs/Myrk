@@ -8,20 +8,19 @@
  use itertools::Itertools;
  use p3_challenger::{CanObserve, FieldChallenger, GrindingChallenger};
  use p3_commit::{
-@@ -11,10 +12,9 @@
+@@ -11,10 +12,8 @@
  use p3_field::coset::TwoAdicMultiplicativeCoset;
  use p3_field::{ExtensionField, PrimeField64, TwoAdicField, batch_multiplicative_inverse};
  use p3_matrix::Matrix;
 -use p3_matrix::bitrev::{BitReversalPerm, BitReversibleMatrix};
 -use p3_matrix::dense::{DenseMatrix, RowMajorMatrix, RowMajorMatrixCow};
-+use p3_matrix::bitrev::BitReversibleMatrix;
 +use p3_matrix::dense::{DenseMatrix, RowMajorMatrix};
  use p3_matrix::horizontally_truncated::HorizontallyTruncated;
 -use p3_matrix::row_index_mapped::RowIndexMappedView;
  use p3_util::log2_strict_usize;
  use rand::distr::{Distribution, StandardUniform};
  use rand::{CryptoRng, RngExt, SeedableRng};
-@@ -78,8 +78,8 @@
+@@ -78,8 +77,8 @@
  /// These checks do not replace the hiding-MMCS and unpredictable-seeding requirements above,
  /// or the STARK protocol's randomization polynomial and out-of-domain challenge sampling.
  #[derive(Debug)]
@@ -32,7 +31,7 @@
      num_random_codewords: usize,
      rng: Mutex<R>,
  }
-@@ -109,7 +109,8 @@
+@@ -109,7 +108,8 @@
  
  /// Cloning forks the RNG stream by drawing a fresh seed from the source RNG,
  /// so the clone and the original never produce the same sequence of masks.
@@ -42,7 +41,7 @@
  where
      Val: Clone,
      Dft: Clone,
-@@ -141,6 +142,17 @@
+@@ -141,6 +141,80 @@
              rng: Mutex::new(rng),
          }
      }
@@ -57,10 +56,73 @@
 +            rng: self.rng,
 +        }
 +    }
++
++    fn map_quotient_chunks<Challenge, T>(
++        &self,
++        evaluations: impl IntoIterator<Item = (TwoAdicMultiplicativeCoset<Val>, RowMajorMatrix<Val>)>,
++        num_chunks: usize,
++        mut construct: impl FnMut(Val, RowMajorMatrix<Val>, &[Val]) -> T,
++    ) -> Result<Vec<T>, HidingFriProverError>
++    where
++        Val: TwoAdicField,
++        Challenge: ExtensionField<Val>,
++        StandardUniform: Distribution<Val>,
++        R: CryptoRng + Send + Sync,
++    {
++        assert!(
++            num_chunks > 1,
++            "num_chunks must be > 1 to preserve hiding (got {num_chunks})"
++        );
++        let (domains, evaluations): (Vec<_>, Vec<_>) = evaluations.into_iter().unzip();
++        for mat in &evaluations {
++            self.check_hiding_budget(mat.height(), Challenge::DIMENSION, 1)?;
++        }
++        let cis = get_zp_cis(&domains);
++        let last_chunk = num_chunks - 1;
++        let last_chunk_ci_inv = cis[last_chunk].inverse();
++        let mul_coeffs = (0..last_chunk)
++            .map(|i| cis[i] * last_chunk_ci_inv)
++            .collect_vec();
++
++        let mut rng = self.rng.lock();
++        let randomized_evaluations: Vec<RowMajorMatrix<Val>> = evaluations
++            .into_iter()
++            .map(|mat| mat.with_random_cols(self.num_random_codewords, &mut *rng))
++            .collect();
++        // Add random values to the LDE evaluations as described in https://eprint.iacr.org/2024/1037.pdf.
++        // If we have `d` chunks, let q'_i(X) = q_i(X) + v_H_i(X) * t_i(X) where t(X) is random, for 1 <= i < d.
++        // q'_d(X) = q_d(X) - v_H_d(X) c_i \sum t_i(X) where c_i is a Lagrange normalization constant.
++        let h = randomized_evaluations[0].height();
++        let w = randomized_evaluations[0].width();
++        let mut all_random_values = (0..(randomized_evaluations.len() - 1) * h * w)
++            .map(|_| rng.random())
++            .chain(core::iter::repeat_n(Val::ZERO, h * w))
++            .collect::<Vec<_>>();
++
++        // Set the random values for the final chunk accordingly
++        for j in 0..last_chunk {
++            let mul_coeff = mul_coeffs[j];
++            for k in 0..h * w {
++                let t = all_random_values[j * h * w + k] * mul_coeff;
++                all_random_values[last_chunk * h * w + k] -= t;
++            }
++        }
++
++        Ok(domains
++            .into_iter()
++            .zip(randomized_evaluations)
++            .enumerate()
++            .map(|(i, (domain, evals))| {
++                assert_eq!(domain.size(), evals.height());
++                let shift = Val::GENERATOR / domain.shift();
++                construct(shift, evals, &all_random_values[i * h * w..(i + 1) * h * w])
++            })
++            .collect())
++    }
  
      fn hiding_budget(&self, extension_degree: usize, num_points: usize) -> Option<usize> {
          extension_degree
-@@ -194,9 +206,10 @@
+@@ -194,9 +268,10 @@
      }
  }
  
@@ -73,7 +135,7 @@
      Val: TwoAdicField + PrimeField64,
      StandardUniform: Distribution<Val>,
      Dft: TwoAdicSubgroupDft<Val>,
-@@ -209,7 +222,7 @@
+@@ -209,7 +284,7 @@
  {
      type Domain = TwoAdicMultiplicativeCoset<Val>;
      type Commitment = InputMmcs::Commitment;
@@ -82,7 +144,7 @@
  
      /// The first item contains the openings of the random polynomials added by this wrapper.
      /// The second item is the usual FRI proof.
-@@ -222,7 +235,7 @@
+@@ -222,7 +297,7 @@
      type ProverError = HidingFriProverError;
  
      fn natural_domain_for_degree(&self, degree: usize) -> Self::Domain {
@@ -91,7 +153,7 @@
              &self.inner, degree)
      }
  
-@@ -287,9 +300,11 @@
+@@ -287,9 +362,11 @@
      }
  }
  
@@ -105,7 +167,7 @@
      Val: TwoAdicField + PrimeField64,
      StandardUniform: Distribution<Val>,
      Dft: TwoAdicSubgroupDft<Val>,
-@@ -300,8 +315,13 @@
+@@ -300,8 +377,13 @@
          FieldChallenger<Val> + CanObserve<FriMmcs::Commitment> + GrindingChallenger<Witness = Val>,
      R: CryptoRng + Send + Sync,
  {
@@ -121,7 +183,7 @@
  
      const ZK: bool = true;
  
-@@ -415,14 +435,18 @@
+@@ -415,14 +497,18 @@
      }
  
      fn log_max_trace_height(&self) -> usize {
@@ -144,7 +206,149 @@
      }
  
      fn commit_preprocessing(
-@@ -600,7 +624,7 @@
+@@ -478,96 +564,51 @@
+         evaluations: impl IntoIterator<Item = (Self::Domain, RowMajorMatrix<Val>)>,
+         num_chunks: usize,
+     ) -> Result<Vec<RowMajorMatrix<Val>>, Self::ProverError> {
+-        assert!(
+-            num_chunks > 1,
+-            "num_chunks must be > 1 to preserve hiding (got {num_chunks})"
+-        );
+-        let (domains, evaluations): (Vec<_>, Vec<_>) = evaluations.into_iter().unzip();
+-        for mat in &evaluations {
+-            self.check_hiding_budget(mat.height(), Challenge::DIMENSION, 1)?;
+-        }
+-        let cis = get_zp_cis(&domains);
+-        let last_chunk = num_chunks - 1;
+-        let last_chunk_ci_inv = cis[last_chunk].inverse();
+-        let mul_coeffs = (0..last_chunk)
+-            .map(|i| cis[i] * last_chunk_ci_inv)
+-            .collect_vec();
+-
+-        let mut rng = self.rng.lock();
+-        let randomized_evaluations: Vec<RowMajorMatrix<Val>> = evaluations
+-            .into_iter()
+-            .map(|mat| mat.with_random_cols(self.num_random_codewords, &mut *rng))
+-            .collect();
+-        // Add random values to the LDE evaluations as described in https://eprint.iacr.org/2024/1037.pdf.
+-        // If we have `d` chunks, let q'_i(X) = q_i(X) + v_H_i(X) * t_i(X) where t(X) is random, for 1 <= i < d.
+-        // q'_d(X) = q_d(X) - v_H_d(X) c_i \sum t_i(X) where c_i is a Lagrange normalization constant.
+-        let h = randomized_evaluations[0].height();
+-        let w = randomized_evaluations[0].width();
+-        let mut all_random_values = (0..(randomized_evaluations.len() - 1) * h * w)
+-            .map(|_| rng.random())
+-            .chain(core::iter::repeat_n(Val::ZERO, h * w))
+-            .collect::<Vec<_>>();
+-
+-        // Set the random values for the final chunk accordingly
+-        for j in 0..last_chunk {
+-            let mul_coeff = mul_coeffs[j];
+-            for k in 0..h * w {
+-                let t = all_random_values[j * h * w + k] * mul_coeff;
+-                all_random_values[last_chunk * h * w + k] -= t;
+-            }
+-        }
+-
+-        Ok(domains
+-            .into_iter()
+-            .zip(randomized_evaluations)
+-            .enumerate()
+-            .map(|(i, (domain, evals))| {
+-                assert_eq!(domain.size(), evals.height());
+-                let shift = Val::GENERATOR / domain.shift();
+-                let random_values = &all_random_values[i * h * w..(i + 1) * h * w];
+-
+-                // The quotient chunk and its mask are both extended onto the same coset, and the
+-                // DFT is linear, so they share a single forward transform. Recovering the chunk's
+-                // coefficients with `shift.inverse()` scales coefficient `j` by `shift^j`, placing
+-                // them on the coset exactly as `coset_lde_batch(evals, log_blowup + 1, shift)` would.
+-                //
+-                // Why the coset LDE's own coefficient hook cannot host this:
+-                //
+-                // - That hook runs before the buffer is zero-extended, so the mask's upper half
+-                //   has no room.
+-                // - The coset scaling applied afterwards would scale the mask by `shift^j` too.
+-                let mut lde_coeffs = self
+-                    .inner
+-                    .dft
+-                    .coset_idft_batch(evals, shift.inverse())
+-                    .values;
+-                lde_coeffs.resize((h * w) << (self.inner.fri.log_blowup + 1), Val::ZERO);
+-
+-                // Add in the coefficients of `v_H(X) * r(X)`, where:
+-                // - `v_H` is the coset vanishing polynomial, here equal to (GENERATOR * X / domain.shift)^n - 1,
+-                // - and `r` is a random polynomial.
+-                // These are already coset-adjusted, so they are not scaled by `shift^j`.
+-                let p = shift.exp_u64(h as u64);
+-                Val::GENERATOR
+-                    .powers()
+-                    .take(h)
+-                    .enumerate()
+-                    .for_each(|(i, p_i)| {
+-                        for j in 0..w {
+-                            let mul_coeff = p_i * random_values[i * w + j];
+-                            lde_coeffs[i * w + j] -= mul_coeff;
+-                            lde_coeffs[(h + i) * w + j] += p * mul_coeff;
+-                        }
+-                    });
+-
+-                // Commit to the bit-reversed LDE.
+-                self.inner
+-                    .dft
+-                    .dft_batch(DenseMatrix::new(lde_coeffs, w))
+-                    .bit_reverse_rows()
+-                    .to_row_major_matrix()
+-            })
+-            .collect())
++        self.map_quotient_chunks::<Challenge, _>(evaluations, num_chunks, |shift, evals, masks| {
++            crate::storage::masked_quotient_lde(
++                &self.inner.dft,
++                evals,
++                masks,
++                self.inner.fri.log_blowup,
++                shift,
++            )
++        })
++    }
++
++    fn commit_quotient(
++        &self,
++        quotient_domain: Self::Domain,
++        quotient_evaluations: RowMajorMatrix<Val>,
++        num_chunks: usize,
++    ) -> Result<(Self::Commitment, Self::ProverData), Self::ProverError> {
++        let evaluations = quotient_domain.split_evals(num_chunks, quotient_evaluations);
++        let domains = quotient_domain.split_domains(num_chunks);
++        let ldes = self.map_quotient_chunks::<Challenge, _>(
++            domains.into_iter().zip(evaluations),
++            num_chunks,
++            |shift, evals, masks| {
++                self.inner.storage.extend_quotient(
++                    &self.inner.dft,
++                    evals,
++                    masks,
++                    self.inner.fri.log_blowup,
++                    shift,
++                )
++            },
++        )?;
++        for lde in &ldes {
++            self.check_hiding_budget(self.lde_mask_height(lde.height()), Challenge::DIMENSION, 1)?;
++        }
++        let (commitment, data) = self.inner.commit_stored_ldes(ldes);
++        Ok((
++            commitment,
++            HidingFriPcsProverData::new(
++                data,
++                false,
++                self.num_random_codewords,
++                self.inner.fri.log_blowup,
++            ),
++        ))
+     }
+ 
+     /// The LDEs must contain fresh masks, as produced by [`Self::get_quotient_ldes`].
+@@ -600,7 +641,7 @@
      ) -> Self::EvaluationsOnDomain<'a> {
          self.assert_prover_data_config(prover_data);
          let inner_evals =
@@ -153,7 +357,7 @@
                  Challenge,
                  Challenger,
              >>::get_evaluations_on_domain(&self.inner, &prover_data.inner, idx, domain);
-@@ -618,7 +642,7 @@
+@@ -618,7 +659,7 @@
      ) -> Self::EvaluationsOnDomain<'a> {
          self.assert_prover_data_config(prover_data);
          let inner_evals =
@@ -261,7 +465,7 @@
      InputMmcs: Mmcs<Val>,
 --- /dev/null
 +++ adapted/src/storage.rs
-@@ -0,0 +1,128 @@
+@@ -0,0 +1,180 @@
 +//! Input matrix representation without changes to proof or verifier fields.
 +
 +use alloc::vec::Vec;
@@ -296,6 +500,58 @@
 +                .to_row_major_matrix(),
 +        )
 +    }
++
++    /// Construct the supplied coupled quotient mask without sampling entropy.
++    fn extend_quotient<Dft>(
++        &self,
++        dft: &Dft,
++        evaluations: RowMajorMatrix<F>,
++        masks: &[F],
++        log_blowup: usize,
++        shift: F,
++    ) -> Self::Stored
++    where
++        F: TwoAdicField,
++        Dft: TwoAdicSubgroupDft<F>,
++    {
++        self.store(masked_quotient_lde(
++            dft,
++            evaluations,
++            masks,
++            log_blowup,
++            shift,
++        ))
++    }
++}
++
++/// Retained dense coefficient calculation for an already coupled mask.
++pub(crate) fn masked_quotient_lde<F: TwoAdicField, Dft: TwoAdicSubgroupDft<F>>(
++    dft: &Dft,
++    evaluations: RowMajorMatrix<F>,
++    masks: &[F],
++    log_blowup: usize,
++    shift: F,
++) -> RowMajorMatrix<F> {
++    let h = evaluations.height();
++    let w = evaluations.width();
++    assert_eq!(masks.len(), h * w);
++    let mut coefficients = dft.coset_idft_batch(evaluations, shift.inverse()).values;
++    coefficients.resize((h * w) << (log_blowup + 1), F::ZERO);
++    let p = shift.exp_u64(h as u64);
++    F::GENERATOR
++        .powers()
++        .take(h)
++        .enumerate()
++        .for_each(|(i, power)| {
++            for column in 0..w {
++                let value = power * masks[i * w + column];
++                coefficients[i * w + column] -= value;
++                coefficients[(h + i) * w + column] += p * value;
++            }
++        });
++    dft.dft_batch(RowMajorMatrix::new(coefficients, w))
++        .bit_reverse_rows()
++        .to_row_major_matrix()
 +}
 +
 +#[derive(Clone, Copy, Debug, Default)]
@@ -422,11 +678,11 @@
  #[derive(Clone, Debug)]
 -pub struct TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> {
 +pub struct TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store = DenseStore> {
-+    storage: Store,
++    pub(crate) storage: Store,
      pub(crate) dft: Dft,
      pub(crate) mmcs: InputMmcs,
      pub(crate) fri: FriParameters<FriMmcs>,
-@@ -70,12 +71,29 @@
+@@ -70,6 +71,7 @@
  impl<Val, Dft, InputMmcs, FriMmcs> TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> {
      pub const fn new(dft: Dft, mmcs: InputMmcs, fri: FriParameters<FriMmcs>) -> Self {
          Self {
@@ -434,10 +690,10 @@
              dft,
              mmcs,
              fri,
-             #[cfg(test)]
+@@ -77,6 +79,43 @@
              forged_fold_schedule: None,
              _phantom: PhantomData,
-+        }
+         }
 +    }
 +}
 +
@@ -453,10 +709,32 @@
 +            #[cfg(test)]
 +            forged_fold_schedule: self.forged_fold_schedule,
 +            _phantom: self._phantom,
-         }
++        }
++    }
++}
++
++impl<Val, Dft, InputMmcs, FriMmcs, Store> TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store>
++where
++    Val: TwoAdicField,
++    InputMmcs: Mmcs<Val>,
++    Store: MatrixStore<Val>,
++{
++    pub(crate) fn commit_stored_ldes(
++        &self,
++        ldes: Vec<Store::Stored>,
++    ) -> (InputMmcs::Commitment, InputMmcs::ProverData<Store::Stored>) {
++        let min_height = 1 << self.fri.log_blowup;
++        for lde in &ldes {
++            assert!(
++                lde.height() >= min_height,
++                "committed LDE shorter than blowup"
++            );
++        }
++        self.mmcs.commit(ldes)
      }
  }
-@@ -397,9 +415,10 @@
+ 
+@@ -397,9 +436,10 @@
      result * l_z
  }
  
@@ -469,7 +747,7 @@
      Val: TwoAdicField + PrimeField64,
      Dft: TwoAdicSubgroupDft<Val>,
      InputMmcs: Mmcs<Val, MultiProof: Sync, Error: Sync>,
-@@ -410,7 +429,7 @@
+@@ -410,7 +450,7 @@
  {
      type Domain = TwoAdicMultiplicativeCoset<Val>;
      type Commitment = InputMmcs::Commitment;
@@ -478,7 +756,7 @@
      type Proof = FriProof<Challenge, FriMmcs, Val, Vec<BatchMultiOpening<Val, InputMmcs>>>;
      type Error = FriError<FriMmcs::Error, InputMmcs::Error>;
      type ProverError = FriProverError;
-@@ -446,10 +465,8 @@
+@@ -446,10 +486,8 @@
                  let shift = Val::GENERATOR / domain.shift();
                  // Compute the LDE with blowup factor fri.log_blowup.
                  // We bit reverse as this is required by our implementation of the FRI protocol.
@@ -491,7 +769,7 @@
              })
              .collect();
  
-@@ -525,7 +542,7 @@
+@@ -525,7 +563,7 @@
                          .mmcs
                          .get_matrices(data)
                          .into_iter()
@@ -500,7 +778,7 @@
                          .collect_vec();
                      debug_assert_eq!(
                          mats.len(),
-@@ -602,7 +619,7 @@
+@@ -602,7 +640,7 @@
                          let h = mat.height() >> self.fri.log_blowup;
  
                          // `subgroup` and `mat` are both in bit-reversed order, so we can truncate.
@@ -509,7 +787,7 @@
  
                          points_for_mat
                              .iter()
-@@ -891,9 +908,10 @@
+@@ -891,9 +929,10 @@
      }
  }
  
@@ -522,7 +800,7 @@
      Val: TwoAdicField + PrimeField64,
      Dft: TwoAdicSubgroupDft<Val>,
      InputMmcs: Mmcs<Val, MultiProof: Sync, Error: Sync>,
-@@ -902,7 +920,7 @@
+@@ -902,7 +941,7 @@
      Challenger:
          FieldChallenger<Val> + CanObserve<FriMmcs::Commitment> + GrindingChallenger<Witness = Val>,
  {
@@ -531,7 +809,7 @@
  
      const ZK: bool = false;
  
-@@ -954,7 +972,9 @@
+@@ -954,7 +993,9 @@
                  lde.height()
              );
          }
@@ -542,7 +820,7 @@
      }
  
      /// Given the evaluations on a domain `gH`, return the evaluations on a different domain `g'K`.
-@@ -976,7 +996,10 @@
+@@ -976,7 +1017,10 @@
      ) -> Self::EvaluationsOnDomain<'a> {
          let lde = self.mmcs.get_matrices(prover_data)[idx];
          if domain.shift() == Val::GENERATOR && lde.height() >= domain.size() {
@@ -554,7 +832,7 @@
          }
  
          // The committed LDE contains bit-reversed evaluations over `gH`. Its first
-@@ -987,11 +1010,8 @@
+@@ -987,11 +1031,8 @@
          // and taking a `poly_height`-sized coset iDFT therefore recovers the polynomial's
          // coefficients directly, without touching the rest of the LDE.
          let poly_height = lde.height() >> self.fri.log_blowup;
@@ -568,7 +846,7 @@
          let mut coeffs = self.dft.coset_idft_batch(lde_mat, Val::GENERATOR);
          let width = coeffs.width();
          coeffs.values.resize(domain.size() * width, Val::ZERO);
-@@ -1000,9 +1020,7 @@
+@@ -1000,9 +1041,7 @@
              .coset_dft_batch(coeffs, domain.shift())
              .bit_reverse_rows()
              .to_row_major_matrix();

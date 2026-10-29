@@ -1,6 +1,6 @@
 # Stored polynomial proofs
 
-This laboratory connects checked field storage and column construction to a complete small hiding STARK. The stored prover produces the same serialized proof as the retained dense prover, and that proof is checked by the unmodified retained verifier. The experiment uses a synthetic quartic relation. It is separate from private signature and payment integration.
+This laboratory connects checked field storage and column construction to a complete small hiding STARK. Main, coupled quotient and separate randomization commitments use actual column construction. The stored prover produces the same serialized proof as the retained dense prover, and that proof is checked by the unmodified retained verifier. The experiment uses a synthetic quartic relation. It is separate from private signature and payment integration.
 
 ## Relation and profile
 
@@ -29,7 +29,7 @@ These settings identify an interoperability experiment. They do not select deplo
 
 ## Storage and polynomial evaluation
 
-The retained prover computes its actual main trace, coupled quotient masks and separate randomization polynomial. A construction hook receives the actual already randomized input, the configured DFT and its supplied shift. The default policy retains dense construction. The finite file policy extends one input column at a time and writes the exact output in its existing physical row order. It neither samples randomness nor generates substitute polynomial values.
+The retained prover computes its actual main trace, coupled quotient masks and separate randomization polynomial. Construction hooks receive the actual prepared inputs, configured DFT, supplied shift and any already coupled mask coefficients. The default policy retains dense construction. The finite file policy extends one input column at a time and writes the exact output in its existing physical row order. It neither samples randomness nor generates substitute polynomial values.
 
 For a committed column f_c, physical row r represents
 
@@ -39,11 +39,35 @@ $$
 
 A prefix of a matrix in this order represents the corresponding smaller subgroup. Polynomial opening preparation reads that prefix without another permutation. Quotient evaluation applies the retained bit reversal view to obtain the requested domain order and removes the hidden columns. Alternate domains retain the original coefficient reconstruction and evaluation calculation.
 
-For input height N, output height L and width W, the ordinary file construction uses an explicit input column of N fields and output column of L fields. It does not allocate a dense L by W output. The actual already randomized N by W input remains in memory. The complete test streams six main columns and eight separate randomization columns, with a largest explicit output column of 4096 fields or 16384 bytes. DFT workspace and other prover allocations are separate from this column count.
+For input height N, output height L and width W, ordinary file construction uses an explicit input column of N fields and output column of L fields. Quotient construction adds a padded coefficient column of L fields. Neither path allocates a complete dense L by W output. The actual prepared N by W inputs and coupled masks remain in memory. The complete test streams six main columns, 64 quotient columns and eight separate randomization columns, with a largest explicit output column of 4096 fields or 16384 bytes. DFT workspace and other prover allocations are separate from this column count.
 
 $$
 \text{explicit column fields} = N + L, \qquad \text{dense output fields} = LW.
 $$
+
+## Coupled quotient construction
+
+The actual quotient is split into the same subdomains and order as the retained PCS. Its random columns and masks come from one shared preparation path with the original draw order. For subdomain shift s_i and chunk height h, the normalized vanishing polynomial and selector constant are
+
+$$
+Z_i(X) = (X/s_i)^h - 1, \qquad c_i = \left(\prod_{j\ne i} Z_j(s_i)\right)^{-1}.
+$$
+
+The final mask polynomial is derived from the earlier masks rather than independently sampled. Coefficient by coefficient,
+
+$$
+R_{d-1} = -\sum_{i=0}^{d-2}(c_i/c_{d-1})R_i, \qquad \sum_{i=0}^{d-1} c_i R_i = 0.
+$$
+
+Let g be the field generator and a_i = g/s_i. The retained inverse coset DFT produces a coefficient column A_i. For mask coefficient R_i[k], the construction applies
+
+$$
+\mu_{i,k} = g^k R_i[k], \qquad A'_i[k] = A_i[k]-\mu_{i,k}, \qquad A'_i[h+k] = a_i^h\mu_{i,k}.
+$$
+
+The high coefficients begin at zero. After padding, the actual forward DFT and bit reversal produce the committed column. The coset scaling and mask scaling remain separate. Independent integer references check both scales and the normalized coupling constants.
+
+The complete uni-STARK path uses the local commit_quotient override to construct and commit these stored columns. The legacy get_quotient_ldes interface still returns dense matrices for compatibility and shares the same entropy preparation. Neither interface supplies an acceptance decision to a ledger.
 
 | Commitment phase | Stored matrices | Field bytes |
 | :--- | :--- | ---: |
@@ -54,7 +78,7 @@ $$
 
 The test policy admits at most sixteen files, 4096 rows, twelve columns and two MiB of field data. File descriptors and directory ownership remain live through borrowed evaluation views and opening queries. A storage decoding failure aborts evaluation through a typed failure. It is distinct from rejection of an invalid proof.
 
-The policy does not prevent external file modification. Data is public synthetic material. Immutable storage and secret data handling require further work. Main and separate randomization LDE construction is streamed by column. The eight coupled quotient LDEs, randomized inputs, salts, tree layers, quotient scratch, reduction vectors and FRI folds still use memory. This experiment establishes this finite construction path and complete opening compatibility. It does not establish a general full prover memory bound or lower total peak memory.
+The policy does not prevent external file modification. Data is public synthetic material. Immutable storage and secret data handling require further work. All ten committed LDEs in the complete test use column construction. Randomized inputs, coupled mask arrays, salts, tree layers, quotient scratch, reduction vectors and FRI folds still use memory. This experiment establishes this finite construction path and complete opening compatibility. It does not establish a general full prover memory bound or lower total peak memory.
 
 ## Verification evidence
 
@@ -64,20 +88,23 @@ The policy does not prevent external file modification. Data is public synthetic
 4. A false quartic cell is sent through the actual release prover without a host validity precheck. It produces a proof that the unchanged verifier rejects.
 5. Three independent Python polynomial domains check every physical output field, including a distinct shift and no blowup. Both default and streamed construction match them.
 6. An injected write failure after one column and one further field leaves no completed matrix or partial file. Invalid dimensions and shifts are refused. A cloned matrix retains its descriptor after the creator and original matrix are dropped.
+7. Two independent quotient coefficient domains check coset and mask scaling. Actual mask preparation satisfies four independently computed normalized selector constants, and its commitment matches the retained dense PCS.
+8. A valid trace with a deliberately corrupted final mask reaches the real release prover and produces a proof rejected by the unchanged verifier.
 
 The complete proof includes actual trace, quotient and randomization commitments, polynomial openings and FRI queries. It is not a bundle of independently accepted component proofs. The test does not establish a complete signature, ownership or payment relation.
 
-Local proof runs use verified Windows process and job commit ceilings of 256 MiB, a sixty second timeout and a finite file allowance. The current source and measured results are retained in [validation.json](validation.json). The [version one record](records/README.md) preserves the earlier construction and its resource correction at an exact source revision.
+Local proof runs use verified Windows process and job commit ceilings of 256 MiB, a sixty second timeout and a finite file allowance. The current source and measured results are retained in [validation.json](validation.json). The [versioned records](records/README.md) preserve earlier construction and measurements at exact source revisions.
 
 The [Windows execution guard](run_guarded_windows.ps1) accepts the built test executable and an exact test selection. It installs and reads back both commit limits before resuming the child process. Local result files are excluded from version control.
 
 ## Reproduction
 
-Run from the repository root with Rust 1.94.1. Ordinary tests do not invoke the two explicit complete proof tests.
+Run from the repository root with Rust 1.94.1. Ordinary tests do not invoke the three explicit complete proof tests.
 
 ```text
 python research/storage-pcs/reference.py --check
 python research/storage-pcs/stream_reference.py --check
+python research/storage-pcs/quotient_reference.py --check
 cargo fmt --manifest-path research/storage-pcs/Cargo.toml --all -- --check
 cargo test --manifest-path research/storage-pcs/Cargo.toml --locked --release --test integration -- --test-threads=1
 cargo test --manifest-path research/storage-pcs/Cargo.toml --locked --release --test integration -- --ignored --test-threads=1

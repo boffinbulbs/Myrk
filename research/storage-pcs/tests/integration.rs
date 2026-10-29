@@ -1,4 +1,6 @@
 mod common;
+#[path = "common/quotient_tests.rs"]
+mod quotient_tests;
 #[path = "common/stream_tests.rs"]
 mod stream_tests;
 
@@ -120,9 +122,16 @@ fn complete_stored_proof_matches_retained_dense_verifier() {
     expected_shapes.extend(vec![[4096, 8]; 9]);
     assert_eq!(files.shapes(), expected_shapes);
     let events = files.streamed();
-    assert_eq!(events.len(), 2);
+    assert_eq!(events.len(), 10);
     assert_eq!(events[0].input, [512, 6]);
-    assert_eq!(events[1].input, [512, 8]);
+    assert!(!events[0].quotient);
+    assert_eq!(events[9].input, [512, 8]);
+    assert!(!events[9].quotient);
+    for event in &events[1..9] {
+        assert!(event.quotient);
+        assert_eq!(event.input, [256, 8]);
+        assert_eq!(event.inverse_column_dft_calls, 8);
+    }
     for event in &events {
         assert_eq!(event.column_dft_calls, event.input[1]);
         assert_eq!(event.largest_output_column_fields, 4096);

@@ -54,7 +54,7 @@ use crate::{
 /// `gH` are low degree.
 #[derive(Clone, Debug)]
 pub struct TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store = DenseStore> {
-    storage: Store,
+    pub(crate) storage: Store,
     pub(crate) dft: Dft,
     pub(crate) mmcs: InputMmcs,
     pub(crate) fri: FriParameters<FriMmcs>,
@@ -95,6 +95,27 @@ impl<Val, Dft, InputMmcs, FriMmcs, Store> TwoAdicFriPcs<Val, Dft, InputMmcs, Fri
             forged_fold_schedule: self.forged_fold_schedule,
             _phantom: self._phantom,
         }
+    }
+}
+
+impl<Val, Dft, InputMmcs, FriMmcs, Store> TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store>
+where
+    Val: TwoAdicField,
+    InputMmcs: Mmcs<Val>,
+    Store: MatrixStore<Val>,
+{
+    pub(crate) fn commit_stored_ldes(
+        &self,
+        ldes: Vec<Store::Stored>,
+    ) -> (InputMmcs::Commitment, InputMmcs::ProverData<Store::Stored>) {
+        let min_height = 1 << self.fri.log_blowup;
+        for lde in &ldes {
+            assert!(
+                lde.height() >= min_height,
+                "committed LDE shorter than blowup"
+            );
+        }
+        self.mmcs.commit(ldes)
     }
 }
 

@@ -32,6 +32,58 @@ pub trait MatrixStore<F: Clone + Send + Sync>: Clone + Send + Sync {
                 .to_row_major_matrix(),
         )
     }
+
+    /// Construct the supplied coupled quotient mask without sampling entropy.
+    fn extend_quotient<Dft>(
+        &self,
+        dft: &Dft,
+        evaluations: RowMajorMatrix<F>,
+        masks: &[F],
+        log_blowup: usize,
+        shift: F,
+    ) -> Self::Stored
+    where
+        F: TwoAdicField,
+        Dft: TwoAdicSubgroupDft<F>,
+    {
+        self.store(masked_quotient_lde(
+            dft,
+            evaluations,
+            masks,
+            log_blowup,
+            shift,
+        ))
+    }
+}
+
+/// Retained dense coefficient calculation for an already coupled mask.
+pub(crate) fn masked_quotient_lde<F: TwoAdicField, Dft: TwoAdicSubgroupDft<F>>(
+    dft: &Dft,
+    evaluations: RowMajorMatrix<F>,
+    masks: &[F],
+    log_blowup: usize,
+    shift: F,
+) -> RowMajorMatrix<F> {
+    let h = evaluations.height();
+    let w = evaluations.width();
+    assert_eq!(masks.len(), h * w);
+    let mut coefficients = dft.coset_idft_batch(evaluations, shift.inverse()).values;
+    coefficients.resize((h * w) << (log_blowup + 1), F::ZERO);
+    let p = shift.exp_u64(h as u64);
+    F::GENERATOR
+        .powers()
+        .take(h)
+        .enumerate()
+        .for_each(|(i, power)| {
+            for column in 0..w {
+                let value = power * masks[i * w + column];
+                coefficients[i * w + column] -= value;
+                coefficients[(h + i) * w + column] += p * value;
+            }
+        });
+    dft.dft_batch(RowMajorMatrix::new(coefficients, w))
+        .bit_reverse_rows()
+        .to_row_major_matrix()
 }
 
 #[derive(Clone, Copy, Debug, Default)]
