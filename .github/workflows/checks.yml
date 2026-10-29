@@ -9,7 +9,26 @@ permissions:
   contents: read
 
 jobs:
+  scope:
+    name: Change scope
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      core: ${{ steps.determine.outputs.core }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Test conservative check selection
+        run: python -m unittest discover -s .github/scripts -p test_check_scope.py -v
+      - name: Select shared checks
+        id: determine
+        run: python .github/scripts/check_scope.py
+
   rust:
+    needs: scope
+    if: ${{ !cancelled() }}
     name: Rust (${{ matrix.os }}, ${{ matrix.suite }})
     strategy:
       fail-fast: false
@@ -20,158 +39,166 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: needs.scope.outputs.core != 'false'
         with:
           persist-credentials: false
       - name: Install toolchain
+        if: needs.scope.outputs.core != 'false'
         run: rustup toolchain install 1.94.1 --profile minimal --component rustfmt --component clippy
       - name: Check formatting
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo fmt --all -- --check
       - name: Check signature ownership producer formatting
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-ownership/producer/Cargo.toml -- --check
       - name: Check native signature formatting
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-native/Cargo.toml -- --check
       - name: Check complete native signature formatting
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-complete-native/Cargo.toml -- --check
       - name: Fetch locked dependencies
+        if: needs.scope.outputs.core != 'false'
         run: rustup run 1.94.1 cargo fetch --locked
       - name: Fetch native signature dependencies
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-native/Cargo.toml --locked
       - name: Fetch complete native signature dependencies
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-complete-native/Cargo.toml --locked
       - name: Run tests
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo test --workspace --locked --offline -- --test-threads=1
       - name: Run adversarial proof tests
-        if: matrix.suite == 'adversarial'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'adversarial')
         run: rustup run 1.94.1 cargo test -p thorum-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial note proof tests
-        if: matrix.suite == 'adversarial'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'adversarial')
         run: rustup run 1.94.1 cargo test -p thorum-note-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial hidden membership tests
-        if: matrix.suite == 'adversarial'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'adversarial')
         run: rustup run 1.94.1 cargo test -p thorum-membership-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial stable nullifier tests
-        if: matrix.suite == 'adversarial'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'adversarial')
         run: rustup run 1.94.1 cargo test -p thorum-nullifier-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial hash and XOF tests
-        if: matrix.suite == 'adversarial'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'adversarial')
         run: rustup run 1.94.1 cargo test -p thorum-hash-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial modular arithmetic tests
-        if: matrix.suite == 'adversarial'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'adversarial')
         run: rustup run 1.94.1 cargo test -p thorum-arithmetic-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial polynomial transform tests
-        if: matrix.suite == 'adversarial'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'adversarial')
         run: rustup run 1.94.1 cargo test -p thorum-ntt-proof-lab --release --locked --offline -- --test-threads=1
       - name: Run adversarial private owner binding tests
-        if: matrix.suite == 'adversarial'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'adversarial')
         run: rustup run 1.94.1 cargo test -p thorum-owner-binding-proof-lab --release --locked --offline -- --test-threads=1
       - name: Check synthetic authorization signatures
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo run -p thorum-crypto-lab --example signature_reference_fixture --locked --offline -- --check
       - name: Check exact transaction signature ownership fixtures
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo run --manifest-path research/signature-ownership/producer/Cargo.toml --release --locked --offline --target-dir target/signature-ownership -- --verify-only research/signature-ownership/raw-fixture.json
       - name: Check signature ownership producer lints
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-ownership/producer/Cargo.toml --release --all-targets --locked --offline --target-dir target/signature-ownership -- -D warnings
       - name: Compile native signature experiments
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo test --manifest-path research/signature-native/Cargo.toml --release --lib --no-run --locked --offline --target-dir target/signature-native
       - name: Check native signature lints
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-native/Cargo.toml --release --all-targets --locked --offline --target-dir target/signature-native -- -D warnings
       - name: Compile complete native signature experiments
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo test --manifest-path research/signature-complete-native/Cargo.toml --release --lib --no-run --locked --offline --jobs 1 --target-dir target/signature-complete-native
       - name: Check complete native signature lints
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-complete-native/Cargo.toml --release --all-targets --locked --offline --target-dir target/signature-complete-native -- -D warnings
       - name: Check storage matrix formatting
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo fmt --manifest-path research/storage-matrix/Cargo.toml -- --check
       - name: Test checked storage matrix
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo test --manifest-path research/storage-matrix/Cargo.toml --locked --offline --jobs 1 --target-dir target/storage-matrix -- --test-threads=1
       - name: Check storage matrix lints
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/storage-matrix/Cargo.toml --all-targets --locked --offline --target-dir target/storage-matrix -- -D warnings
       - name: Check storage commitment formatting
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo fmt --manifest-path research/storage-commitments/Cargo.toml -- --check
       - name: Test storage commitments
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo test --manifest-path research/storage-commitments/Cargo.toml --locked --offline --jobs 1 --target-dir target/storage-commitments -- --test-threads=1
       - name: Check storage commitment lints
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/storage-commitments/Cargo.toml --all-targets --locked --offline --target-dir target/storage-commitments -- -D warnings
       - name: Check lints
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
       - name: Build documentation
-        if: matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo doc --workspace --no-deps --locked --offline
       - name: Check dependency inventory
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/crypto/dependency_inventory.py --check
       - name: Check native signature records
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         run: python3 research/signature-native/static_check.py
       - name: Check complete native signature records
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         run: python3 research/signature-complete-native/static_check.py
       - name: Check complete native signature figures
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         run: python3 research/signature-complete-native/generate_figure.py --check
       - name: Check proof feature profile
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/proofs/profile_check.py
       - name: Check note proof feature profile
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/note-proofs/profile_check.py
       - name: Check membership proof feature profile
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/membership-proofs/profile_check.py
       - name: Check nullifier proof feature profile
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/nullifier-proofs/profile_check.py
       - name: Check hash proof feature profile
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/hash-proofs/profile_check.py
       - name: Check arithmetic proof feature profile
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/arithmetic-proofs/profile_check.py
       - name: Check transform proof feature profile
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/ntt-proofs/profile_check.py
       - name: Check private owner binding profile
-        if: runner.os == 'Linux' && matrix.suite == 'development'
+        if: needs.scope.outputs.core != 'false' && (runner.os == 'Linux' && matrix.suite == 'development')
         env:
           RUSTUP_TOOLCHAIN: 1.94.1
         run: python3 research/owner-bindings/profile_check.py
+      - name: Record isolated proof check scope
+        if: needs.scope.outputs.core == 'false'
+        run: echo "Shared checks are outside this isolated proof change. Proof and reference jobs remain selected."
 
   row:
+    needs: scope
+    if: ${{ !cancelled() }}
     name: Conditional row (${{ matrix.os }})
     strategy:
       fail-fast: false
@@ -183,22 +210,33 @@ jobs:
       RUSTUP_TOOLCHAIN: 1.94.1
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: needs.scope.outputs.core != 'false'
         with:
           persist-credentials: false
       - name: Install toolchain
+        if: needs.scope.outputs.core != 'false'
         run: rustup toolchain install 1.94.1 --profile minimal
       - name: Fetch locked dependencies
+        if: needs.scope.outputs.core != 'false'
         run: cargo fetch --locked
       - name: Check required row proof inventory
+        if: needs.scope.outputs.core != 'false'
         run: python research/reconstructed-row/check_test_inventory.py
       - name: Verify conditional row proof
+        if: needs.scope.outputs.core != 'false'
         run: cargo test -p thorum-hash-proof-lab --release --lib --locked --offline reconstructed_row::proof::tests::one_honest_private_reconstructed_row_proof -- --exact --ignored --nocapture --test-threads=1
       - name: Verify fresh row proofs and transport rejection
+        if: needs.scope.outputs.core != 'false'
         run: cargo test -p thorum-hash-proof-lab --release --lib --locked --offline reconstructed_row::proof::tests::corpus_tests::three_fresh_private_rows_public_mutations_and_transport -- --exact --ignored --nocapture --test-threads=1
       - name: Reject raw false row proofs
+        if: needs.scope.outputs.core != 'false'
         run: cargo test -p thorum-hash-proof-lab --release --lib --locked --offline reconstructed_row::proof::tests::corpus_tests::sixteen_raw_false_row_proofs_reject_backend_and_wrapper -- --exact --ignored --nocapture --test-threads=1
       - name: Verify row API and separate profiles
+        if: needs.scope.outputs.core != 'false'
         run: cargo test -p thorum-hash-proof-lab --release --test reconstructed_row --locked --offline conditional_row_external_api_and_separate_profiles -- --exact --ignored --nocapture --test-threads=1
+      - name: Record isolated proof check scope
+        if: needs.scope.outputs.core == 'false'
+        run: echo "Shared checks are outside this isolated proof change. Proof and reference jobs remain selected."
 
   research:
     name: Reference model
