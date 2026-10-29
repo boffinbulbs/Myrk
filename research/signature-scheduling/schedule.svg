@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="210" viewBox="0 0 840 210" role="img" aria-labelledby="title description">
+  <title id="title">Factorized fixed schedule</title>
+  <desc id="description">Two constrained indicator banks select the fixed source routes. The complete relation still requires degree and resource analysis.</desc>
+  <style>
+    :root { --ink:#202820; --line:#667466; --accent:#466347; }
+    @media (prefers-color-scheme:dark) { :root { --ink:#e3e9e1; --line:#9baa98; --accent:#b8cdb3; } }
+    text { fill:var(--ink); font-family:Georgia,serif; font-size:18px; }
+    .note { font-family:Arial,sans-serif; font-size:13px; }
+    .equation { font-size:14px; }
+    .route { font-size:16px; }
+    .node { fill:none; stroke:var(--line); stroke-width:1.2; }
+    .arrow { fill:none; stroke:var(--accent); stroke-width:1.4; marker-end:url(#tip); }
+  </style>
+  <defs><marker id="tip" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="var(--accent)"/></marker></defs>
+  <rect class="node" x="18" y="23" width="180" height="61" rx="3"/>
+  <text x="108" y="49" text-anchor="middle">Low bank l</text>
+  <text class="note" x="108" y="69" text-anchor="middle">64 indicators, one active</text>
+  <rect class="node" x="18" y="123" width="180" height="61" rx="3"/>
+  <text x="108" y="149" text-anchor="middle">High bank h</text>
+  <text class="note" x="108" y="169" text-anchor="middle">128 indicators, one active</text>
+  <path class="arrow" d="M198 53 H238 V103 H277"/>
+  <path class="arrow" d="M198 153 H238 V103 H277"/>
+  <rect class="node" x="280" y="72" width="215" height="62" rx="3"/>
+  <text class="equation" x="387" y="99" text-anchor="middle">s(r) = l(r mod 64) h(⌊r/64⌋)</text>
+  <text class="note" x="387" y="119" text-anchor="middle">Exact row selector</text>
+  <path class="arrow" d="M495 103 H551"/>
+  <rect class="node" x="554" y="72" width="266" height="62" rx="3"/>
+  <text class="route" x="687" y="99" text-anchor="middle">Fixed source and arithmetic routes</text>
+  <text class="note" x="687" y="119" text-anchor="middle">Private witness joins remain constrained</text>
+  <text class="note" x="554" y="172">Complete symbolic degree: 6</text>
+  <text class="note" x="554" y="192">Quotient chunks at the retained profile: 16</text>
+</svg>

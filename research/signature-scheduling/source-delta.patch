@@ -1,0 +1,113 @@
+--- reference/src/lib.rs
++++ experiment/src/lib.rs
+@@ -1 +1 @@
+-//! Bounded same witness private signature and canonical note owner AIR.
++//! Factorized schedule experiment for the bounded private signature relation.
+@@ -5,0 +6 @@
++#[path = "../../signature-complete-native/src/authorization.rs"]
+@@ -7,0 +9,2 @@
++pub mod clock;
++#[path = "../../signature-complete-native/src/decoding.rs"]
+@@ -9,0 +13 @@
++#[path = "../../signature-complete-native/src/hint_rows.rs"]
+@@ -10,0 +15 @@
++#[path = "../../signature-complete-native/src/hints.rs"]
+@@ -11,0 +17 @@
++#[path = "../../signature-complete-native/src/keccak.rs"]
+@@ -13,0 +20 @@
++#[path = "../../signature-complete-native/src/matrix.rs"]
+@@ -14,0 +22 @@
++#[path = "../../signature-complete-native/src/mul.rs"]
+@@ -15,0 +24 @@
++#[path = "../../signature-complete-native/src/ntt.rs"]
+@@ -16,0 +26 @@
++#[path = "../../signature-complete-native/src/packing.rs"]
+@@ -18,0 +29 @@
++#[path = "../../signature-complete-native/src/sampler.rs"]
+@@ -19,0 +31 @@
++#[path = "../../signature-complete-native/src/sources.rs"]
+@@ -20,0 +33 @@
++#[path = "../../signature-complete-native/src/sponge.rs"]
+@@ -23 +36 @@
+-pub use air::FullPrivateSignatureOwnerAir;
++pub use air::FactorSignatureOwnerAir;
+@@ -39 +52 @@
+-mod full_tests;
++mod tests;
+--- reference/src/layout.rs
++++ experiment/src/layout.rs
+@@ -6 +6,3 @@
+-pub const KEY: usize = CLOCK + HEIGHT;
++pub const CLOCK_LOW: usize = 64;
++pub const CLOCK_HIGH: usize = 128;
++pub const KEY: usize = CLOCK + CLOCK_LOW + CLOCK_HIGH;
+--- reference/src/program.rs
++++ experiment/src/program.rs
+@@ -1,2 +1,2 @@
+-//! Fixed global source schedule. Later row programs are not implemented yet.
+-use crate::layout::{CLOCK, HEIGHT};
++//! Fixed global source schedule with factorized exact row indicators.
++use crate::layout::{CLOCK, CLOCK_HIGH, CLOCK_LOW, HEIGHT};
+@@ -45 +45 @@
+-    row[CLOCK + pc].into()
++    crate::clock::at::<AB>(row, CLOCK, CLOCK_LOW, CLOCK_HIGH, pc)
+@@ -49,5 +49 @@
+-    row[CLOCK + from..CLOCK + to]
+-        .iter()
+-        .copied()
+-        .map(Into::into)
+-        .sum()
++    crate::clock::interval::<AB>(row, CLOCK, CLOCK_LOW, CLOCK_HIGH, from, to)
+--- reference/src/full_program.rs
++++ experiment/src/full_program.rs
+@@ -14 +14 @@
+-const _: [(); 55049] = [(); WIDTH];
++const _: [(); 47049] = [(); WIDTH];
+--- reference/src/build.rs
++++ experiment/src/build.rs
+@@ -16,0 +17 @@
++#[path = "../../signature-complete-native/src/build/decode.rs"]
+@@ -17,0 +19 @@
++#[path = "../../signature-complete-native/src/build/sample.rs"]
+@@ -235 +237,2 @@
+-        row[CLOCK + at] = BabyBear::ONE;
++        row[CLOCK + at % CLOCK_LOW] = BabyBear::ONE;
++        row[CLOCK + CLOCK_LOW + at / CLOCK_LOW] = BabyBear::ONE;
+--- reference/src/air.rs
++++ experiment/src/air.rs
+@@ -1 +1 @@
+-use crate::{decoding, hint_rows, keccak, layout::*, matrix, ntt, program, sampler, sources};
++use crate::{decoding, hint_rows, keccak, layout::*, matrix, ntt, sampler, sources};
+@@ -4 +3,0 @@
+-use p3_field::PrimeCharacteristicRing;
+@@ -7,2 +6,2 @@
+-pub struct FullPrivateSignatureOwnerAir;
+-impl<F> BaseAir<F> for FullPrivateSignatureOwnerAir {
++pub struct FactorSignatureOwnerAir;
++impl<F> BaseAir<F> for FactorSignatureOwnerAir {
+@@ -16 +15 @@
+-impl<AB: AirBuilder<F = BabyBear>> Air<AB> for FullPrivateSignatureOwnerAir {
++impl<AB: AirBuilder<F = BabyBear>> Air<AB> for FactorSignatureOwnerAir {
+@@ -21,21 +20 @@
+-        let mut total = AB::Expr::ZERO;
+-        for pc in 0..HEIGHT {
+-            let value = local[CLOCK + pc];
+-            builder.assert_bool(value);
+-            total += value.into();
+-            builder
+-                .when_first_row()
+-                .assert_eq(value, BabyBear::from_bool(pc == 0));
+-            let predecessor = if pc == 0 {
+-                AB::Expr::ZERO
+-            } else {
+-                program::at::<AB>(local, pc - 1)
+-            };
+-            builder
+-                .when_transition()
+-                .assert_eq(next[CLOCK + pc], predecessor);
+-        }
+-        builder.assert_one(total);
+-        builder
+-            .when_last_row()
+-            .assert_one(local[CLOCK + HEIGHT - 1]);
++        crate::clock::eval(builder, local, next, CLOCK, CLOCK_LOW, CLOCK_HIGH);
