@@ -1,6 +1,6 @@
 # Stored polynomial proofs
 
-This laboratory connects checked field storage to a complete small hiding STARK. The stored prover produces the same serialized proof as the retained dense prover, and that proof is checked by the unmodified retained verifier. The experiment uses a synthetic quartic relation. It is separate from private signature and payment integration.
+This laboratory connects checked field storage and column construction to a complete small hiding STARK. The stored prover produces the same serialized proof as the retained dense prover, and that proof is checked by the unmodified retained verifier. The experiment uses a synthetic quartic relation. It is separate from private signature and payment integration.
 
 ## Relation and profile
 
@@ -29,7 +29,7 @@ These settings identify an interoperability experiment. They do not select deplo
 
 ## Storage and polynomial evaluation
 
-The retained prover computes its actual main trace, coupled quotient masks and separate randomization polynomial. A storage policy consumes each exact dense LDE in its existing physical row order. It neither samples randomness nor generates substitute polynomial values.
+The retained prover computes its actual main trace, coupled quotient masks and separate randomization polynomial. A construction hook receives the actual already randomized input, the configured DFT and its supplied shift. The default policy retains dense construction. The finite file policy extends one input column at a time and writes the exact output in its existing physical row order. It neither samples randomness nor generates substitute polynomial values.
 
 For a committed column f_c, physical row r represents
 
@@ -38,6 +38,12 @@ E_{r,c} = f_c(g\omega^{\operatorname{rev}(r)}).
 $$
 
 A prefix of a matrix in this order represents the corresponding smaller subgroup. Polynomial opening preparation reads that prefix without another permutation. Quotient evaluation applies the retained bit reversal view to obtain the requested domain order and removes the hidden columns. Alternate domains retain the original coefficient reconstruction and evaluation calculation.
+
+For input height N, output height L and width W, the ordinary file construction uses an explicit input column of N fields and output column of L fields. It does not allocate a dense L by W output. The actual already randomized N by W input remains in memory. The complete test streams six main columns and eight separate randomization columns, with a largest explicit output column of 4096 fields or 16384 bytes. DFT workspace and other prover allocations are separate from this column count.
+
+$$
+\text{explicit column fields} = N + L, \qquad \text{dense output fields} = LW.
+$$
 
 | Commitment phase | Stored matrices | Field bytes |
 | :--- | :--- | ---: |
@@ -48,7 +54,7 @@ A prefix of a matrix in this order represents the corresponding smaller subgroup
 
 The test policy admits at most sixteen files, 4096 rows, twelve columns and two MiB of field data. File descriptors and directory ownership remain live through borrowed evaluation views and opening queries. A storage decoding failure aborts evaluation through a typed failure. It is distinct from rejection of an invalid proof.
 
-The policy does not prevent external file modification. Data is public synthetic material. Immutable storage and secret data handling require further work. Dense LDE construction, salts, tree layers, quotient scratch, reduction vectors and FRI folds still use memory. This experiment establishes complete opening compatibility rather than streaming construction or a general memory reduction.
+The policy does not prevent external file modification. Data is public synthetic material. Immutable storage and secret data handling require further work. Main and separate randomization LDE construction is streamed by column. The eight coupled quotient LDEs, randomized inputs, salts, tree layers, quotient scratch, reduction vectors and FRI folds still use memory. This experiment establishes this finite construction path and complete opening compatibility. It does not establish a general full prover memory bound or lower total peak memory.
 
 ## Verification evidence
 
@@ -56,10 +62,12 @@ The policy does not prevent external file modification. Data is public synthetic
 2. The complete honest stored proof deserializes to the retained proof type and passes its ordinary verifier. All 596650 serialized bytes equal the unmodified dense prover output under identical fixed seeds.
 3. Changed public data, trace claims, quotient claims, randomization claims, input query values and hidden codeword openings are rejected.
 4. A false quartic cell is sent through the actual release prover without a host validity precheck. It produces a proof that the unchanged verifier rejects.
+5. Three independent Python polynomial domains check every physical output field, including a distinct shift and no blowup. Both default and streamed construction match them.
+6. An injected write failure after one column and one further field leaves no completed matrix or partial file. Invalid dimensions and shifts are refused. A cloned matrix retains its descriptor after the creator and original matrix are dropped.
 
 The complete proof includes actual trace, quotient and randomization commitments, polynomial openings and FRI queries. It is not a bundle of independently accepted component proofs. The test does not establish a complete signature, ownership or payment relation.
 
-Local proof runs use verified Windows process and job commit ceilings of 256 MiB, a sixty second timeout and a finite file allowance. The first run stopped at an underestimated one MiB file allowance before completing a proof. The revised allowance follows the exact ten file calculation above. The source and measured results are retained in [validation.json](validation.json).
+Local proof runs use verified Windows process and job commit ceilings of 256 MiB, a sixty second timeout and a finite file allowance. The current source and measured results are retained in [validation.json](validation.json). The [version one record](records/README.md) preserves the earlier construction and its resource correction at an exact source revision.
 
 The [Windows execution guard](run_guarded_windows.ps1) accepts the built test executable and an exact test selection. It installs and reads back both commit limits before resuming the child process. Local result files are excluded from version control.
 
@@ -69,6 +77,7 @@ Run from the repository root with Rust 1.94.1. Ordinary tests do not invoke the 
 
 ```text
 python research/storage-pcs/reference.py --check
+python research/storage-pcs/stream_reference.py --check
 cargo fmt --manifest-path research/storage-pcs/Cargo.toml --all -- --check
 cargo test --manifest-path research/storage-pcs/Cargo.toml --locked --release --test integration -- --test-threads=1
 cargo test --manifest-path research/storage-pcs/Cargo.toml --locked --release --test integration -- --ignored --test-threads=1

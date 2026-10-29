@@ -465,17 +465,14 @@ where
                 let shift = Val::GENERATOR / domain.shift();
                 // Compute the LDE with blowup factor fri.log_blowup.
                 // We bit reverse as this is required by our implementation of the FRI protocol.
-                self.dft
-                    .coset_lde_batch(evals, self.fri.log_blowup, shift)
-                    .bit_reverse_rows()
-                    .to_row_major_matrix()
+                self.storage
+                    .extend(&self.dft, evals, self.fri.log_blowup, shift)
             })
             .collect();
 
         Ok(
             // Commit to the bit-reversed LDEs.
-            self.mmcs
-                .commit(ldes.into_iter().map(|m| self.storage.store(m)).collect()),
+            self.mmcs.commit(ldes),
         )
     }
 

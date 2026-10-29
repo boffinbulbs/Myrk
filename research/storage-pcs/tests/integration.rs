@@ -1,4 +1,6 @@
 mod common;
+#[path = "common/stream_tests.rs"]
+mod stream_tests;
 
 use common::{air, store::FileStore};
 use p3_commit::{Pcs, UnivariateStarkPcs};
@@ -74,6 +76,10 @@ fn committed_domain_views_and_ownership() {
         }
     }
     assert_eq!(files.shapes(), vec![[4096, 6]]);
+    let events = files.streamed();
+    assert_eq!(events.len(), 1);
+    assert_eq!(events[0].input, [512, 6]);
+    assert_eq!(events[0].column_dft_calls, 6);
 }
 
 #[test]
@@ -113,6 +119,24 @@ fn complete_stored_proof_matches_retained_dense_verifier() {
     let mut expected_shapes = vec![[4096, 6]];
     expected_shapes.extend(vec![[4096, 8]; 9]);
     assert_eq!(files.shapes(), expected_shapes);
+    let events = files.streamed();
+    assert_eq!(events.len(), 2);
+    assert_eq!(events[0].input, [512, 6]);
+    assert_eq!(events[1].input, [512, 8]);
+    for event in &events {
+        assert_eq!(event.column_dft_calls, event.input[1]);
+        assert_eq!(event.largest_output_column_fields, 4096);
+        assert_eq!(event.written_fields, event.output[0] * event.output[1]);
+    }
+    println!(
+        "streamed_columns={} max_output_column_fields={}",
+        events.iter().map(|e| e.column_dft_calls).sum::<usize>(),
+        events
+            .iter()
+            .map(|e| e.largest_output_column_fields)
+            .max()
+            .unwrap()
+    );
     println!(
         "proof_bytes={} stored_shapes={:?}",
         encoded.len(),

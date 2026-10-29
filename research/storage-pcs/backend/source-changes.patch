@@ -261,18 +261,41 @@
      InputMmcs: Mmcs<Val>,
 --- /dev/null
 +++ adapted/src/storage.rs
-@@ -0,0 +1,105 @@
+@@ -0,0 +1,128 @@
 +//! Input matrix representation without changes to proof or verifier fields.
 +
 +use alloc::vec::Vec;
++use p3_dft::TwoAdicSubgroupDft;
++use p3_field::TwoAdicField;
 +use p3_matrix::Matrix;
++use p3_matrix::bitrev::BitReversibleMatrix;
 +use p3_matrix::dense::RowMajorMatrix;
 +
-+/// A policy consumes the exact dense LDE produced by the retained algorithm.
-+/// It does not randomize, reorder or regenerate the matrix.
++/// A policy constructs and retains exact physically ordered LDE values.
++/// It does not sample masks or change the commitment protocol.
 +pub trait MatrixStore<F: Clone + Send + Sync>: Clone + Send + Sync {
 +    type Stored: Matrix<F> + 'static;
 +    fn store(&self, matrix: RowMajorMatrix<F>) -> Self::Stored;
++
++    /// The default construction is the retained dense DFT and bit reversal.
++    /// A storage policy may construct the same values without a full LDE buffer.
++    fn extend<Dft>(
++        &self,
++        dft: &Dft,
++        evaluations: RowMajorMatrix<F>,
++        log_blowup: usize,
++        shift: F,
++    ) -> Self::Stored
++    where
++        F: TwoAdicField,
++        Dft: TwoAdicSubgroupDft<F>,
++    {
++        self.store(
++            dft.coset_lde_batch(evaluations, log_blowup, shift)
++                .bit_reverse_rows()
++                .to_row_major_matrix(),
++        )
++    }
 +}
 +
 +#[derive(Clone, Copy, Debug, Default)]
@@ -455,17 +478,20 @@
      type Proof = FriProof<Challenge, FriMmcs, Val, Vec<BatchMultiOpening<Val, InputMmcs>>>;
      type Error = FriError<FriMmcs::Error, InputMmcs::Error>;
      type ProverError = FriProverError;
-@@ -455,7 +474,8 @@
+@@ -446,10 +465,8 @@
+                 let shift = Val::GENERATOR / domain.shift();
+                 // Compute the LDE with blowup factor fri.log_blowup.
+                 // We bit reverse as this is required by our implementation of the FRI protocol.
+-                self.dft
+-                    .coset_lde_batch(evals, self.fri.log_blowup, shift)
+-                    .bit_reverse_rows()
+-                    .to_row_major_matrix()
++                self.storage
++                    .extend(&self.dft, evals, self.fri.log_blowup, shift)
+             })
+             .collect();
  
-         Ok(
-             // Commit to the bit-reversed LDEs.
--            self.mmcs.commit(ldes),
-+            self.mmcs
-+                .commit(ldes.into_iter().map(|m| self.storage.store(m)).collect()),
-         )
-     }
- 
-@@ -525,7 +545,7 @@
+@@ -525,7 +542,7 @@
                          .mmcs
                          .get_matrices(data)
                          .into_iter()
@@ -474,7 +500,7 @@
                          .collect_vec();
                      debug_assert_eq!(
                          mats.len(),
-@@ -602,7 +622,7 @@
+@@ -602,7 +619,7 @@
                          let h = mat.height() >> self.fri.log_blowup;
  
                          // `subgroup` and `mat` are both in bit-reversed order, so we can truncate.
@@ -483,7 +509,7 @@
  
                          points_for_mat
                              .iter()
-@@ -891,9 +911,10 @@
+@@ -891,9 +908,10 @@
      }
  }
  
@@ -496,7 +522,7 @@
      Val: TwoAdicField + PrimeField64,
      Dft: TwoAdicSubgroupDft<Val>,
      InputMmcs: Mmcs<Val, MultiProof: Sync, Error: Sync>,
-@@ -902,7 +923,7 @@
+@@ -902,7 +920,7 @@
      Challenger:
          FieldChallenger<Val> + CanObserve<FriMmcs::Commitment> + GrindingChallenger<Witness = Val>,
  {
@@ -505,7 +531,7 @@
  
      const ZK: bool = false;
  
-@@ -954,7 +975,9 @@
+@@ -954,7 +972,9 @@
                  lde.height()
              );
          }
@@ -516,7 +542,7 @@
      }
  
      /// Given the evaluations on a domain `gH`, return the evaluations on a different domain `g'K`.
-@@ -976,7 +999,10 @@
+@@ -976,7 +996,10 @@
      ) -> Self::EvaluationsOnDomain<'a> {
          let lde = self.mmcs.get_matrices(prover_data)[idx];
          if domain.shift() == Val::GENERATOR && lde.height() >= domain.size() {
@@ -528,7 +554,7 @@
          }
  
          // The committed LDE contains bit-reversed evaluations over `gH`. Its first
-@@ -987,11 +1013,8 @@
+@@ -987,11 +1010,8 @@
          // and taking a `poly_height`-sized coset iDFT therefore recovers the polynomial's
          // coefficients directly, without touching the rest of the LDE.
          let poly_height = lde.height() >> self.fri.log_blowup;
@@ -542,7 +568,7 @@
          let mut coeffs = self.dft.coset_idft_batch(lde_mat, Val::GENERATOR);
          let width = coeffs.width();
          coeffs.values.resize(domain.size() * width, Val::ZERO);
-@@ -1000,9 +1023,7 @@
+@@ -1000,9 +1020,7 @@
              .coset_dft_batch(coeffs, domain.shift())
              .bit_reverse_rows()
              .to_row_major_matrix();

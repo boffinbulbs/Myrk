@@ -307,6 +307,8 @@ jobs:
         run: rustup run 1.94.1 cargo fetch --manifest-path research/storage-pcs/Cargo.toml --locked
       - name: Check independent quartic reference
         run: python research/storage-pcs/reference.py --check
+      - name: Check independent column construction reference
+        run: python research/storage-pcs/stream_reference.py --check
       - name: Check domain views and actual constraint degree
         run: rustup run 1.94.1 cargo test --manifest-path research/storage-pcs/Cargo.toml --locked --offline --release --test integration -- --test-threads=1
       - name: Check complete proof compatibility and false trace rejection

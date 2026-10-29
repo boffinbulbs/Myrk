@@ -1,14 +1,37 @@
 //! Input matrix representation without changes to proof or verifier fields.
 
 use alloc::vec::Vec;
+use p3_dft::TwoAdicSubgroupDft;
+use p3_field::TwoAdicField;
 use p3_matrix::Matrix;
+use p3_matrix::bitrev::BitReversibleMatrix;
 use p3_matrix::dense::RowMajorMatrix;
 
-/// A policy consumes the exact dense LDE produced by the retained algorithm.
-/// It does not randomize, reorder or regenerate the matrix.
+/// A policy constructs and retains exact physically ordered LDE values.
+/// It does not sample masks or change the commitment protocol.
 pub trait MatrixStore<F: Clone + Send + Sync>: Clone + Send + Sync {
     type Stored: Matrix<F> + 'static;
     fn store(&self, matrix: RowMajorMatrix<F>) -> Self::Stored;
+
+    /// The default construction is the retained dense DFT and bit reversal.
+    /// A storage policy may construct the same values without a full LDE buffer.
+    fn extend<Dft>(
+        &self,
+        dft: &Dft,
+        evaluations: RowMajorMatrix<F>,
+        log_blowup: usize,
+        shift: F,
+    ) -> Self::Stored
+    where
+        F: TwoAdicField,
+        Dft: TwoAdicSubgroupDft<F>,
+    {
+        self.store(
+            dft.coset_lde_batch(evaluations, log_blowup, shift)
+                .bit_reverse_rows()
+                .to_row_major_matrix(),
+        )
+    }
 }
 
 #[derive(Clone, Copy, Debug, Default)]
