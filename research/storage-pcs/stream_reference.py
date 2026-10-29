@@ -18,7 +18,7 @@ def polynomial(column, point):
 
 def corpus():
     cases = []
-    for height, width, log_blowup, shift in [(16, 3, 2, 31), (32, 2, 1, 17), (8, 1, 0, 1)]:
+    for height, width, log_blowup, shift in [(16, 3, 2, 31), (32, 2, 1, 17), (8, 1, 0, 1), (16, 5, 2, 17)]:
         output_height = height << log_blowup
         input_root = pow(GENERATOR, (FIELD - 1) // height, FIELD)
         output_root = pow(GENERATOR, (FIELD - 1) // output_height, FIELD)
@@ -38,7 +38,7 @@ def main():
     if sys.argv[1:] == ["--check"]:
         if PATH.read_text(encoding="utf8") != encoded:
             raise SystemExit("Streamed polynomial reference differs")
-        print("Three independent polynomial domains match")
+        print("Four independent polynomial domains match")
     elif not sys.argv[1:]:
         with PATH.open("x", encoding="utf8", newline="\n") as output:
             output.write(encoded)

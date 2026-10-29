@@ -16,6 +16,13 @@ class ResourceTests(unittest.TestCase):
             self.assertEqual(calculated['main_mask_field_draws'], execution['prepared_field_draws'])
         self.assertTrue(calculated['current_field_store_shape_accepts'])
         self.assertTrue(calculated['current_field_store_byte_budget_accepts'])
+        self.assertEqual(calculated['all_source_window_reads'], measured['exact_source_windows'])
+        self.assertEqual(calculated['all_source_fields_read'], measured['source_fields_read'])
+        self.assertEqual(calculated['commitment_row_span_writes'], measured['output_write_calls'])
+        self.assertEqual(calculated['forward_dft_batches'], measured['forward_dft_batches'])
+        self.assertEqual(calculated['quotient_inverse_dft_batches'], measured['inverse_dft_batches'])
+        self.assertEqual(calculated['largest_explicit_input_tile_bytes'], measured['largest_input_tile_fields'] * 4)
+        self.assertEqual(calculated['largest_explicit_output_tile_bytes'], measured['largest_output_tile_bytes'])
 
     def test_enumerated_tiny_file_layout(self):
         calculated = model.payloads(2, 3, 1)
@@ -25,7 +32,11 @@ class ResourceTests(unittest.TestCase):
         files.extend([[[0] * 8 for _ in range(32)] for _ in range(9)])
         count = sum(1 for matrix in [prepared] + files for row in matrix for _ in row)
         self.assertEqual(calculated['all_field_file_bytes'], count * 4)
-        self.assertEqual(calculated['main_preparation_scalar_window_reads'], len(prepared) * len(prepared[0]))
+        self.assertEqual(calculated['prior_scalar_main_window_reads'], len(prepared) * len(prepared[0]))
+        windows = [row[start:start + 4] for row in prepared for start in range(0, len(row), 4)]
+        self.assertEqual(calculated['main_preparation_window_reads'], len(windows))
+        writes = [row[start:start + 4] for matrix in files for row in matrix for start in range(0, len(row), 4)]
+        self.assertEqual(calculated['commitment_row_span_writes'], len(writes))
 
     def test_native_shape_exceeds_existing_limits(self):
         native = model.payloads(8192, 55049, 205201)
@@ -33,7 +44,8 @@ class ResourceTests(unittest.TestCase):
         self.assertFalse(native['current_field_store_shape_accepts'])
         self.assertFalse(native['current_field_store_byte_budget_accepts'])
         self.assertGreater(native['main_query_field_payload_at_64_distinct_queries_bytes'], 2 * 1024**2)
-        self.assertEqual(native['main_preparation_scalar_window_reads'], 901988352)
+        self.assertEqual(native['prior_scalar_main_window_reads'], 901988352)
+        self.assertEqual(native['main_preparation_window_reads'], 225509376)
 
     def test_invalid_dimensions_are_rejected_before_calculation(self):
         for values in [(0, 2, 4), (3, 2, 4), (-2, 2, 4), (256, 0, 4),

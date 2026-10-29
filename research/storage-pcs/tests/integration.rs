@@ -149,7 +149,49 @@ fn complete_stored_proof_matches_retained_dense_verifier() {
         assert_eq!(event.column_dft_calls, event.input[1]);
         assert_eq!(event.largest_output_column_fields, 4096);
         assert_eq!(event.written_fields, event.output[0] * event.output[1]);
+        assert_eq!(event.source_fields, event.input[0] * event.input[1]);
+        assert_eq!(
+            event.source_windows,
+            event.input[0] * event.input[1].div_ceil(4)
+        );
+        assert_eq!(
+            event.output_write_calls,
+            event.output[0] * event.output[1].div_ceil(4)
+        );
+        assert!(event.largest_input_tile_fields <= 2048);
+        assert!(event.largest_output_tile_fields <= 16384);
     }
+    assert_eq!(
+        events
+            .iter()
+            .map(|event| event.source_windows)
+            .sum::<usize>(),
+        6144
+    );
+    assert_eq!(
+        events
+            .iter()
+            .map(|event| event.output_write_calls)
+            .sum::<usize>(),
+        81920
+    );
+    assert_eq!(
+        events
+            .iter()
+            .map(|event| event.forward_dft_batches)
+            .sum::<usize>(),
+        20
+    );
+    assert_eq!(
+        events
+            .iter()
+            .map(|event| event.inverse_dft_batches)
+            .sum::<usize>(),
+        16
+    );
+    println!(
+        "tile_columns=4 source_windows=6144 output_write_calls=81920 forward_batches=20 inverse_batches=16 max_input_tile_fields=2048 max_output_tile_fields=16384"
+    );
     println!(
         "streamed_columns={} max_output_column_fields={}",
         events.iter().map(|e| e.column_dft_calls).sum::<usize>(),

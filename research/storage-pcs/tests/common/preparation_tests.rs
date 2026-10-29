@@ -2,7 +2,7 @@ use crate::common::{
     self,
     store::{ConstructionError, FileStore},
 };
-use kova_storage_fri::storage::{DenseStore, MatrixStore};
+use kova_storage_fri::storage::{DenseStore, MatrixStore, RowSource};
 use p3_baby_bear::BabyBear;
 use p3_commit::Pcs;
 use p3_dft::Radix2DitParallel;
@@ -150,6 +150,11 @@ fn input_write_failure_cleans_up_without_rewinding_entropy() {
 }
 
 struct ReadOnlySource(RowMajorMatrix<BabyBear>);
+impl RowSource<BabyBear> for ReadOnlySource {
+    fn read_window(&self, row: usize, start: usize, end: usize) -> Option<Vec<BabyBear>> {
+        self.0.read_window(row, start, end)
+    }
+}
 impl Matrix<BabyBear> for ReadOnlySource {
     fn width(&self) -> usize {
         self.0.width()
@@ -162,7 +167,8 @@ impl Matrix<BabyBear> for ReadOnlySource {
         row: usize,
     ) -> impl IntoIterator<Item = BabyBear, IntoIter = impl Iterator<Item = BabyBear> + Send + Sync>
     {
-        self.0.row(row).unwrap().into_iter().collect::<Vec<_>>()
+        let _ = row;
+        std::iter::once_with(|| -> BabyBear { panic!("prepared source must use exact windows") })
     }
     fn to_row_major_matrix(self) -> RowMajorMatrix<BabyBear> {
         panic!("prepared source must not materialize a dense bank")

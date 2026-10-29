@@ -11,10 +11,25 @@ use rand::{
     distr::{Distribution, StandardUniform},
 };
 
+/// Owned exact windows from an internal evaluation source.
+/// Invalid bounds return None. Storage failures abort through the source policy.
+pub trait RowSource<F: Clone + Send + Sync>: Matrix<F> {
+    fn read_window(&self, row: usize, start: usize, end: usize) -> Option<Vec<F>>;
+}
+
+impl<F: Clone + Send + Sync> RowSource<F> for RowMajorMatrix<F> {
+    fn read_window(&self, row: usize, start: usize, end: usize) -> Option<Vec<F>> {
+        if row >= self.height() || start > end || end > self.width() {
+            return None;
+        }
+        Some(self.values[row * self.width() + start..row * self.width() + end].to_vec())
+    }
+}
+
 /// A policy prepares inputs and retains exact physically ordered LDE values.
 /// Main preparation consumes only the caller's continuing mask generator.
 pub trait MatrixStore<F: Clone + Send + Sync>: Clone + Send + Sync {
-    type Stored: Matrix<F> + 'static;
+    type Stored: RowSource<F> + 'static;
     fn store(&self, matrix: RowMajorMatrix<F>) -> Self::Stored;
 
     /// Prepare the exact retained main masking layout from the continuing RNG.
@@ -46,7 +61,7 @@ pub trait MatrixStore<F: Clone + Send + Sync>: Clone + Send + Sync {
     where
         F: TwoAdicField,
         Dft: TwoAdicSubgroupDft<F>,
-        M: Matrix<F>,
+        M: RowSource<F>,
     {
         self.extend(dft, evaluations.to_row_major_matrix(), log_blowup, shift)
     }

@@ -4,7 +4,7 @@ use std::path::PathBuf;
 use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::{Arc, Mutex};
 
-use kova_storage_fri::storage::MatrixStore;
+use kova_storage_fri::storage::{MatrixStore, RowSource};
 use kova_storage_matrix::{CheckedFileMatrix, StorageError};
 use p3_baby_bear::BabyBear;
 use p3_dft::TwoAdicSubgroupDft;
@@ -14,6 +14,10 @@ use p3_matrix::{Matrix, dense::RowMajorMatrix};
 use rand::{Rng, RngExt};
 
 static NEXT: AtomicUsize = AtomicUsize::new(0);
+pub const TILE_COLUMNS: usize = 4;
+
+#[path = "tile_tests.rs"]
+mod tile_tests;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum ConstructionError {
@@ -40,9 +44,16 @@ pub struct StreamEvent {
     pub inverse_column_dft_calls: usize,
     pub largest_output_column_fields: usize,
     pub written_fields: usize,
+    pub source_windows: usize,
+    pub source_fields: usize,
+    pub output_write_calls: usize,
+    pub forward_dft_batches: usize,
+    pub inverse_dft_batches: usize,
+    pub largest_input_tile_fields: usize,
+    pub largest_output_tile_fields: usize,
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 struct State {
     shapes: Vec<[usize; 2]>,
     streamed: Vec<StreamEvent>,
@@ -187,7 +198,7 @@ impl FileStore {
     }
 
     /// The optional field count injects an explicit write failure for testing.
-    pub fn try_extend<Dft: TwoAdicSubgroupDft<BabyBear>, M: Matrix<BabyBear>>(
+    pub fn try_extend<Dft: TwoAdicSubgroupDft<BabyBear>, M: RowSource<BabyBear>>(
         &self,
         dft: &Dft,
         evaluations: M,
@@ -208,50 +219,25 @@ impl FileStore {
             return Err(ConstructionError::Shape);
         }
         self.create(height, width, |file| {
-            let mut written = 0;
-            for column in 0..width {
-                let values = (0..input_height)
-                    .map(|r| {
-                        evaluations
-                            .get(r, column)
-                            .ok_or(ConstructionError::Incomplete)
-                    })
-                    .collect::<Result<Vec<_>, _>>()?;
+            let mut event = StreamEvent::new(false, [input_height, width], [height, width]);
+            for start in (0..width).step_by(TILE_COLUMNS) {
+                let end = (start + TILE_COLUMNS).min(width);
+                let input = input_tile(&evaluations, start, end, &mut event)?;
                 let output = dft
-                    .coset_lde_batch(RowMajorMatrix::new(values, 1), log_blowup, shift)
+                    .coset_lde_batch(input, log_blowup, shift)
                     .bit_reverse_rows();
-                if output.height() != height || output.width() != 1 {
+                if output.height() != height || output.width() != end - start {
                     return Err(ConstructionError::Shape);
                 }
-                for row in 0..height {
-                    if fail_after_fields == Some(written) {
-                        return Err(ConstructionError::Io(std::io::ErrorKind::WriteZero));
-                    }
-                    let value = output
-                        .row(row)
-                        .ok_or(ConstructionError::Incomplete)?
-                        .into_iter()
-                        .next()
-                        .ok_or(ConstructionError::Incomplete)?;
-                    let offset = u64::try_from((row * width + column) * 4)
-                        .map_err(|_| ConstructionError::Limit)?;
-                    file.seek(SeekFrom::Start(offset))?;
-                    file.write_all(&value.as_canonical_u32().to_le_bytes())?;
-                    written += 1;
-                }
+                event.forward_dft_batches += 1;
+                event.largest_output_tile_fields =
+                    event.largest_output_tile_fields.max(height * (end - start));
+                write_tile(file, &output, start, width, fail_after_fields, &mut event)?;
             }
-            if written != height * width {
+            if event.written_fields != height * width {
                 return Err(ConstructionError::Incomplete);
             }
-            Ok(Some(StreamEvent {
-                quotient: false,
-                input: [input_height, width],
-                output: [height, width],
-                column_dft_calls: width,
-                inverse_column_dft_calls: 0,
-                largest_output_column_fields: height,
-                written_fields: written,
-            }))
+            Ok(Some(event))
         })
     }
 }
@@ -297,7 +283,7 @@ impl MatrixStore<BabyBear> for FileStore {
             .unwrap_or_else(|error| std::panic::panic_any(error))
     }
 
-    fn extend_prepared<D: TwoAdicSubgroupDft<BabyBear>, M: Matrix<BabyBear>>(
+    fn extend_prepared<D: TwoAdicSubgroupDft<BabyBear>, M: RowSource<BabyBear>>(
         &self,
         dft: &D,
         evaluations: M,
@@ -400,63 +386,153 @@ impl FileStore {
             return Err(ConstructionError::Shape);
         }
         self.create(height, width, |file| {
-            let mut written = 0;
-            for column in 0..width {
-                let values = (0..h)
-                    .map(|row| evaluations.values[row * width + column])
-                    .collect();
-                let coefficients =
-                    dft.coset_idft_batch(RowMajorMatrix::new(values, 1), shift.inverse());
-                if coefficients.height() != h || coefficients.width() != 1 {
+            let mut event = StreamEvent::new(true, [h, width], [height, width]);
+            for start in (0..width).step_by(TILE_COLUMNS) {
+                let end = (start + TILE_COLUMNS).min(width);
+                let tile_width = end - start;
+                let input = input_tile(&evaluations, start, end, &mut event)?;
+                let coefficients = dft.coset_idft_batch(input, shift.inverse());
+                if coefficients.height() != h || coefficients.width() != tile_width {
                     return Err(ConstructionError::Shape);
                 }
                 let mut coefficients = coefficients.values;
-                coefficients.resize(height, BabyBear::ZERO);
+                coefficients.resize(height * tile_width, BabyBear::ZERO);
                 let p = shift.exp_u64(h as u64);
                 let mut power = BabyBear::ONE;
                 for row in 0..h {
-                    let value = power * masks[row * width + column];
-                    coefficients[row] -= value;
-                    coefficients[h + row] += p * value;
+                    for column in 0..tile_width {
+                        let value = power * masks[row * width + start + column];
+                        coefficients[row * tile_width + column] -= value;
+                        coefficients[(h + row) * tile_width + column] += p * value;
+                    }
                     power *= BabyBear::GENERATOR;
                 }
                 let output = dft
-                    .dft_batch(RowMajorMatrix::new(coefficients, 1))
+                    .dft_batch(RowMajorMatrix::new(coefficients, tile_width))
                     .bit_reverse_rows();
-                if output.height() != height || output.width() != 1 {
+                if output.height() != height || output.width() != tile_width {
                     return Err(ConstructionError::Shape);
                 }
-                for row in 0..height {
-                    if fail_after_fields == Some(written) {
-                        return Err(ConstructionError::Io(std::io::ErrorKind::WriteZero));
-                    }
-                    let value = output
-                        .row(row)
-                        .ok_or(ConstructionError::Incomplete)?
-                        .into_iter()
-                        .next()
-                        .ok_or(ConstructionError::Incomplete)?;
-                    let offset = u64::try_from((row * width + column) * 4)
-                        .map_err(|_| ConstructionError::Limit)?;
-                    file.seek(SeekFrom::Start(offset))?;
-                    file.write_all(&value.as_canonical_u32().to_le_bytes())?;
-                    written += 1;
-                }
+                event.forward_dft_batches += 1;
+                event.inverse_dft_batches += 1;
+                event.largest_output_tile_fields =
+                    event.largest_output_tile_fields.max(height * tile_width);
+                write_tile(file, &output, start, width, fail_after_fields, &mut event)?;
             }
-            if written != height * width {
+            if event.written_fields != height * width {
                 return Err(ConstructionError::Incomplete);
             }
-            Ok(Some(StreamEvent {
-                quotient: true,
-                input: [h, width],
-                output: [height, width],
-                column_dft_calls: width,
-                inverse_column_dft_calls: width,
-                largest_output_column_fields: height,
-                written_fields: written,
-            }))
+            Ok(Some(event))
         })
     }
+}
+
+impl RowSource<BabyBear> for StoredMatrix {
+    fn read_window(&self, row: usize, start: usize, end: usize) -> Option<Vec<BabyBear>> {
+        if row >= self.height() || start > end || end > self.width() {
+            return None;
+        }
+        Some(
+            self.matrix
+                .try_window(row, start, end)
+                .unwrap_or_else(|error| {
+                    std::panic::panic_any(kova_storage_matrix::StorageAccessFailure(error))
+                }),
+        )
+    }
+}
+
+impl StreamEvent {
+    fn new(quotient: bool, input: [usize; 2], output: [usize; 2]) -> Self {
+        Self {
+            quotient,
+            input,
+            output,
+            column_dft_calls: input[1],
+            inverse_column_dft_calls: if quotient { input[1] } else { 0 },
+            largest_output_column_fields: output[0],
+            written_fields: 0,
+            source_windows: 0,
+            source_fields: 0,
+            output_write_calls: 0,
+            forward_dft_batches: 0,
+            inverse_dft_batches: 0,
+            largest_input_tile_fields: 0,
+            largest_output_tile_fields: 0,
+        }
+    }
+}
+
+fn input_tile<M: RowSource<BabyBear>>(
+    source: &M,
+    start: usize,
+    end: usize,
+    event: &mut StreamEvent,
+) -> Result<RowMajorMatrix<BabyBear>, ConstructionError> {
+    let width = end - start;
+    let mut values = Vec::with_capacity(source.height() * width);
+    for row in 0..source.height() {
+        let window = source
+            .read_window(row, start, end)
+            .ok_or(ConstructionError::Incomplete)?;
+        if window.len() != width {
+            return Err(ConstructionError::Incomplete);
+        }
+        event.source_windows += 1;
+        event.source_fields += window.len();
+        values.extend(window);
+    }
+    event.largest_input_tile_fields = event.largest_input_tile_fields.max(values.len());
+    Ok(RowMajorMatrix::new(values, width))
+}
+
+fn write_tile<M: Matrix<BabyBear>>(
+    file: &mut File,
+    output: &M,
+    start: usize,
+    full_width: usize,
+    fail_after_fields: Option<usize>,
+    event: &mut StreamEvent,
+) -> Result<(), ConstructionError> {
+    let width = output.width();
+    if width == 0 || width > TILE_COLUMNS || start + width > full_width {
+        return Err(ConstructionError::Shape);
+    }
+    let mut bytes = [0u8; TILE_COLUMNS * 4];
+    for row in 0..output.height() {
+        let values = output.row(row).ok_or(ConstructionError::Incomplete)?;
+        let mut count = 0;
+        for value in values {
+            if count >= width {
+                return Err(ConstructionError::Incomplete);
+            }
+            bytes[count * 4..(count + 1) * 4]
+                .copy_from_slice(&value.as_canonical_u32().to_le_bytes());
+            count += 1;
+        }
+        if count != width {
+            return Err(ConstructionError::Incomplete);
+        }
+        let allowed = fail_after_fields.map_or(width, |limit| {
+            limit.saturating_sub(event.written_fields).min(width)
+        });
+        if allowed > 0 {
+            let offset = row
+                .checked_mul(full_width)
+                .and_then(|v| v.checked_add(start))
+                .and_then(|v| v.checked_mul(4))
+                .and_then(|v| u64::try_from(v).ok())
+                .ok_or(ConstructionError::Limit)?;
+            file.seek(SeekFrom::Start(offset))?;
+            file.write_all(&bytes[..allowed * 4])?;
+            event.output_write_calls += 1;
+            event.written_fields += allowed;
+        }
+        if allowed != width {
+            return Err(ConstructionError::Io(std::io::ErrorKind::WriteZero));
+        }
+    }
+    Ok(())
 }
 
 impl Matrix<BabyBear> for StoredMatrix {

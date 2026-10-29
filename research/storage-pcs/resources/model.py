@@ -18,6 +18,7 @@ SOURCES = [
     'research/storage-pcs/tests/common/store.rs',
     'research/storage-pcs/backend/src/hiding_pcs.rs',
     'research/storage-pcs/backend/src/two_adic_pcs.rs',
+    'research/storage-pcs/backend/src/storage.rs',
     'research/storage-matrix/src/lib.rs',
 ]
 
@@ -49,8 +50,17 @@ def payloads(height, width, constraints):
         'committed_field_file_shapes': output_shapes,
         'committed_field_file_bytes': output_bytes,
         'all_field_file_bytes': source_bytes + output_bytes,
-        'main_preparation_scalar_window_reads': prepared_height * prepared_width,
+        'prior_scalar_main_window_reads': prepared_height * prepared_width,
+        'main_preparation_window_reads': prepared_height * ((prepared_width + 3) // 4),
+        'all_source_window_reads': prepared_height * ((prepared_width + 3) // 4) + 20 * height,
+        'all_source_fields_read': prepared_height * prepared_width + 80 * height,
         'commitment_scalar_field_writes': sum(h * w for h, w in output_shapes),
+        'commitment_row_span_writes': sum(h * ((w + 3) // 4) for h, w in output_shapes),
+        'tile_columns': 4,
+        'forward_dft_batches': sum((w + 3) // 4 for w in output_widths),
+        'quotient_inverse_dft_batches': 16,
+        'largest_explicit_input_tile_bytes': prepared_height * min(4, prepared_width) * 4,
+        'largest_explicit_output_tile_bytes': lde_height * min(4, max(output_widths)) * 4,
         'forward_column_dfts': sum(output_widths),
         'quotient_inverse_column_dfts': 64,
         'largest_explicit_column_bytes': lde_height * 4,
@@ -84,7 +94,7 @@ def record():
         raw = (ROOT / name).read_bytes().replace(b'\r\n', b'\n')
         sources[name] = dict(bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest())
     return {
-        'format': 'kova.storage-pcs.resource-model.v1',
+        'format': 'kova.storage-pcs.resource-model.v2',
         'scope': 'Static shape arithmetic with the retained synthetic profile. No native proof execution or resource admission.',
         'source_files': sources,
         'measured_small_shape': payloads(256, 2, 4),

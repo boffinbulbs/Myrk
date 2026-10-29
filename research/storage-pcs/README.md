@@ -37,7 +37,7 @@ $$
 
 field elements. The file policy writes these rows directly without a widened dense input bank. Independent flat append and reshape indices check placement against actual field samples, and continued generator output matches the retained dense preparation. All matrices in a batch are prepared before any LDE commitment. Hiding budget refusal precedes every mask draw and file creation.
 
-The retained prover computes its actual main trace, coupled quotient masks and separate randomization polynomial. Construction hooks receive the actual prepared inputs, configured DFT, supplied shift and any already coupled mask coefficients. The default policy retains dense construction. The finite file policy extends one input column at a time and writes the exact output in its existing physical row order. It neither samples randomness nor generates substitute polynomial values.
+The retained prover computes its actual main trace, coupled quotient masks and separate randomization polynomial. Construction hooks receive the actual prepared inputs, configured DFT, supplied shift and any already coupled mask coefficients. The default policy retains dense construction. The finite file policy extends at most four columns per tile and writes exact contiguous spans within each physical output row. It neither samples randomness nor generates substitute polynomial values.
 
 For a committed column f_c, physical row r represents
 
@@ -47,11 +47,15 @@ $$
 
 A prefix of a matrix in this order represents the corresponding smaller subgroup. Polynomial opening preparation reads that prefix without another permutation. Quotient evaluation applies the retained bit reversal view to obtain the requested domain order and removes the hidden columns. Alternate domains retain the original coefficient reconstruction and evaluation calculation.
 
-For prepared height N, output height L and width W, ordinary file construction uses an explicit input column of N fields and output column of L fields. A generic source view supplies actual stored scalar windows without materializing the main prepared bank. Quotient construction adds a padded coefficient column of L fields. Neither path allocates a complete dense L by W output. Prepared quotient inputs and coupled masks remain in memory. The complete test streams six main columns, 64 quotient columns and eight separate randomization columns, with a largest explicit output column of 4096 fields or 16384 bytes. DFT workspace and other prover allocations are separate from this column count.
+For prepared height N, output height L and tile width t at most four, ordinary construction uses an explicit input tile of Nt fields and output tile of Lt fields. The checked RowSource interface supplies exactly the requested column window. It has no whole row fallback, cache or validity callback. Dense and file sources retain the same bounds semantics. Quotient construction adds a padded coefficient tile of Lt fields. Prepared quotient inputs and coupled masks remain in memory.
 
 $$
-\text{explicit column fields} = N + L, \qquad \text{dense output fields} = LW.
+\text{explicit tile field lengths} = Nt + Lt, \qquad \text{dense output fields} = LW.
 $$
+
+The complete test covers six main columns, 64 quotient columns and eight separate randomization columns in twenty forward DFT batches and sixteen inverse batches. The largest explicit input tile is 2048 fields and output tile is 16384 fields or 65536 bytes. Encoding scratch is sixteen bytes. The implementation does not build a complete dense output across all columns when its width exceeds the tile. A matrix narrower than four columns fits in one tile. DFT workspace, vector overlap, allocator behavior and remaining prover buffers are separate from these lengths.
+
+Actual source windows number 6144 and contain 23552 fields in total. Output writes number 81920 and contain the same 319488 output fields as earlier versions. The prior scalar construction made one source window and one output write per corresponding field. These are observed source operation counters, not measured physical disk operations or a runtime speedup. The [resource model](resources/README.md) distinguishes these costs from native proof feasibility.
 
 ## Coupled quotient construction
 
@@ -96,12 +100,13 @@ The policy does not prevent external file modification. Data is public synthetic
 2. The complete honest stored proof deserializes to the retained proof type and passes its ordinary verifier. All 596650 serialized bytes equal the unmodified dense prover output under identical fixed seeds.
 3. Changed public data, trace claims, quotient claims, randomization claims, input query values and hidden codeword openings are rejected.
 4. A false quartic cell is sent through the actual release prover without a host validity precheck. It produces a proof that the unchanged verifier rejects.
-5. Three independent Python polynomial domains check every physical output field, including a distinct shift and no blowup. Both default and streamed construction match them.
-6. An injected write failure after one column and one further field leaves no completed matrix or partial file. Invalid dimensions and shifts are refused. A cloned matrix retains its descriptor after the creator and original matrix are dropped.
+5. Four independent Python polynomial domains check every physical output field, including a distinct shift, no blowup and a partial final tile. Both default and stored construction match them.
+6. Injected failures before and inside ordinary and quotient tile writes leave no completed matrix or partial file. Invalid dimensions and shifts are refused. A cloned matrix retains its descriptor after the creator and original matrix are dropped.
 7. Two independent quotient coefficient domains check coset and mask scaling. Actual mask preparation satisfies four independently computed normalized selector constants, and its commitment matches the retained dense PCS.
 8. A valid trace with a deliberately corrupted final mask reaches the real release prover and produces a proof rejected by the unchanged verifier.
 9. Two independent main preparation layouts check raw and random field placement, scalar draw counts and generator continuation. A mixed width batch matches the retained commitment and preserves preparation order. A refused batch creates no files and consumes no entropy.
-10. A source whose dense materialization method fails still extends correctly through the file policy. An injected main input write failure removes the partial source without rolling back consumed randomness.
+10. Sources whose whole row, scalar access and dense materialization fail still extend through exact windows. Short windows refuse construction and allow a later valid retry. An injected main input write failure removes the partial source without rolling back consumed randomness.
+11. Noncanonical or truncated prepared source reads retain the typed storage abort and remove the unfinished output. The construction mutex becomes poisoned during that abort and refuses later writes. It does not return replacement fields or claim cryptographic rejection.
 
 The complete proof includes actual trace, quotient and randomization commitments, polynomial openings and FRI queries. It is not a bundle of independently accepted component proofs. The test does not establish a complete signature, ownership or payment relation.
 

@@ -8,4 +8,6 @@ That earlier execution corrected a one MiB field file allowance after an attempt
 
 [validation-v3.json](validation-v3.json) is retained byte identical from revision [ae5d9cf1a2a5ece9ee5136bde74cf01bd2d78e82](https://github.com/th0rigin/Kova/commit/ae5d9cf1a2a5ece9ee5136bde74cf01bd2d78e82). It describes version 0.3.0 with coupled quotient column construction. Its SHA256 is 2424a76deb507e785963abf6f5e899fb671781a246e9446521977d56e2ba9cbe.
 
-The current [validation.json](../validation.json) describes version 0.4.0, which also prepares main randomized rows directly in storage. All versions retain the same finite quartic relation and proof profile. Historical source hashes do not describe later source revisions.
+[validation-v4.json](validation-v4.json) is retained byte identical from revision [646ff27d84b24314c2130793b250f4b7b05da441](https://github.com/th0rigin/Kova/commit/646ff27d84b24314c2130793b250f4b7b05da441). It describes version 0.4.0 with main randomized rows prepared directly in storage. Its SHA256 is bfe7a7e6193265c06e8755f88e61b161e33128927f9eba8948af322e894db758.
+
+The current [validation.json](../validation.json) describes version 0.5.0, which reads exact source windows and writes bounded column tiles. All versions retain the same finite quartic relation and proof profile. Historical source hashes do not describe later source revisions. The auxiliary resource model has its own source identities and versioned records, separately from complete proof execution evidence.

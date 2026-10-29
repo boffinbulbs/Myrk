@@ -5,7 +5,7 @@ use crate::common::{
     self, air,
     store::{ConstructionError, FileStore, StoredMatrix},
 };
-use kova_storage_fri::storage::{DenseStore, MatrixStore};
+use kova_storage_fri::storage::{DenseStore, MatrixStore, RowSource};
 use p3_baby_bear::BabyBear;
 use p3_commit::{PolynomialSpace, UnivariateStarkPcs};
 use p3_dft::{Radix2DitParallel, TwoAdicSubgroupDft};
@@ -217,7 +217,7 @@ impl MatrixStore<BabyBear> for BrokenLastMask {
     ) -> Self::Stored {
         self.files.randomize(matrix, random_columns, rng)
     }
-    fn extend_prepared<D: TwoAdicSubgroupDft<BabyBear>, M: Matrix<BabyBear>>(
+    fn extend_prepared<D: TwoAdicSubgroupDft<BabyBear>, M: RowSource<BabyBear>>(
         &self,
         dft: &D,
         evaluations: M,

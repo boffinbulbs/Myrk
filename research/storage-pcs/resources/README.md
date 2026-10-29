@@ -32,18 +32,21 @@ The prepared file remains owned by the construction directory in the tested impl
 | Ten commitment files | 1,277,952 bytes | 28,901,376,000 bytes |
 | All eleven field files | 1,290,240 bytes | 32,509,329,408 bytes |
 | Largest explicit output column | 16,384 bytes | 524,288 bytes |
+| Largest explicit output tile | 65,536 bytes | 2,097,152 bytes |
 
 The small column is an explicit buffer length, not a total prover memory bound. Input and output DFT vectors, implementation scratch and twiddle tables can overlap. The raw matrix is consumed by main preparation and is not retained by that commitment call after preparation returns.
 
 ## Access and computation costs
 
-The present ordinary construction reads one checked source window per scalar and seeks to each scalar output position. Its main source read count is
+For tile width $t=4$, ordinary construction reads one exact checked column window per row and tile. Its main source window count is
 
 $$
-R_{\mathrm{main}}=2N(W+k).
+R_{\mathrm{main}}=2N\left\lceil\frac{W+k}{t}\right\rceil.
 $$
 
-For the native shape this is 901,988,352 checked scalar windows, each using the descriptor lock, length check, seek and canonical decoding. The ten commitment files require 7,225,344,000 scalar field writes. These are source level call counts, not measured physical disk operations or runtime estimates. A larger memory allowance would leave this access pattern impractical to assess without a separate batching design and measurements.
+The completed small proof records 6144 source windows across main, quotient and separate randomization inputs. They contain exactly 23552 fields, with no full row reread for each tile. The 81920 contiguous output spans contain 319488 fields. The largest explicit input tile contains 2048 fields and output tile 16384 fields. Byte encoding uses sixteen bytes of scratch. These lengths exclude DFT scratch, twiddle tables and overlapping vector allocations.
+
+For the conditional native shape, main access is 225,509,376 windows, compared with 901,988,352 scalar windows in the previous construction. The ten commitment files contain 7,225,344,000 scalar fields written in 1,806,434,304 row spans. These are source level counts, not measured physical disk operations or runtime estimates. File contents remain unchanged and the native shape remains outside current limits. Four columns are a finite test setting, not a selected native tuning parameter.
 
 The quotient domain has $8N$ rows. With $C$ constraints per row, $8NC$ counts scalar constraint positions. The native record gives $C=205201$, yielding 13,448,052,736 positions. Vectorization can evaluate several positions together. This product is not an instruction count or a prediction of elapsed time.
 
@@ -70,6 +73,8 @@ under a canonical four byte field encoding. Query deduplication may change the d
 5. Security analysis must cover hiding, knowledge, field and hash assumptions, the quantum model and complete ledger composition. Resource compatibility does not establish those properties.
 
 ## Reproduction
+
+[record-v1.json](record-v1.json) preserves the prior scalar access calculation and its original source identities. The current [record](record.json) describes bounded four column construction. Neither record authorizes native proof execution.
 
 From the repository root:
 

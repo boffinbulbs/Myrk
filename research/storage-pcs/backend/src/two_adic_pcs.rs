@@ -17,7 +17,7 @@ use alloc::vec::Vec;
 use core::fmt::Debug;
 use core::marker::PhantomData;
 
-use crate::storage::{DenseStore, DomainMatrix, MatrixStore, RowPrefix};
+use crate::storage::{DenseStore, DomainMatrix, MatrixStore, RowPrefix, RowSource};
 use itertools::{Itertools, izip};
 use p3_challenger::{CanObserve, FieldChallenger, GrindingChallenger};
 use p3_commit::{
@@ -104,7 +104,7 @@ where
     InputMmcs: Mmcs<Val>,
     Store: MatrixStore<Val>,
 {
-    pub(crate) fn commit_prepared<M: Matrix<Val>>(
+    pub(crate) fn commit_prepared<M: RowSource<Val>>(
         &self,
         evaluations: impl IntoIterator<Item = (TwoAdicMultiplicativeCoset<Val>, M)>,
     ) -> (InputMmcs::Commitment, InputMmcs::ProverData<Store::Stored>)
