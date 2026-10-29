@@ -80,6 +80,8 @@ The [native signature laboratory](research/signature-native/README.md) constrain
 
 The [complete bounded native relation](research/signature-complete-native/README.md) adds all 56 matrix streams, eight reconstructed rows, normalized inverse transforms, actual hints, private packed bytes and the full final challenge equality. It binds the same key and note owner to authorization derived from the typed transaction. Native evaluation receives private data directly. A hiding proof backend, private ledger composition and their security and resource analysis remain separate gates before payment acceptance.
 
+The [private verifier scheduling experiment](research/signature-scheduling/README.md) uses two constrained clock banks and explicit activity producers in the complete degree four relation. Ten native reference verdicts match, and 77 hostile source routes reject with baseline and restoration controls. These are native witness checks. A complete hiding signature proof remains separate work.
+
 The [checked storage matrix](research/storage-matrix/README.md) supplies owned synthetic rows through the retained matrix interface, with canonical field decoding, checked windows and explicit storage failures. It is a storage integration component. Complete commitment, quotient and FRI integration remains separate from these accessor tests.
 
 The [storage commitment experiment](research/storage-commitments/README.md) connects those rows to the actual retained salted MMCS. Independent integer and SHA3 references cover four roots, including a mixed height batch. Memory and storage paths are compared through ordinary openings and pruned multiproofs.

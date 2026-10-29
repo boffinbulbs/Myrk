@@ -43,7 +43,7 @@ Here $\phi$ has degree two, so its activity binding has degree three. If a sourc
 
 ## Measured symbolic scope
 
-The [validation record](validation.json) reports seven ordinary tests and one separately guarded symbolic test. The tests check all selectors and intervals for a 32 row integer reference, 8192 native selector positions, source dimensions, carry and boundary failures, fractional or multiple indicators and repeated schedule refusal. Restoration provides positive controls for eight local clock mutations. Activity tests cover all eight Boolean phase/completion combinations, cache corruption and a deliberately detached negative control that would hide a false source read without the producer equality.
+The [validation record](validation.json) reports eight ordinary tests and one separately guarded symbolic test. The tests check all selectors and intervals for a 32 row integer reference, 8192 native selector positions, source dimensions, carry and boundary failures, fractional or multiple indicators and repeated schedule refusal. Restoration provides positive controls for eight local clock mutations. Activity tests cover all eight Boolean phase/completion combinations, cache corruption and a deliberately detached negative control that would hide a false source read without the producer equality.
 
 The complete equation set contains 181221 constraints per row and has degree four at width 47058. The symbolic process used a verified 512 MiB process and aggregate limit, a 120 second deadline and at least 2 GiB free memory admission. Its peak process commit was 308523008 bytes and peak aggregate commit 309809152 bytes on Windows with Rust 1.94.1. It built expression trees, not a native field trace.
 
@@ -63,7 +63,26 @@ The rejected cases cover an empty context, a wrong context, a note with another 
 
 The recorded corpus execution constructs nine traces, never more than one at a time. Peak process commit is 1548148736 bytes and aggregate commit is 1549393920 bytes, under the same 2 GiB readback limits and 5 GiB free memory admission, with a 1200 second deadline. The original A0 activity mutations are retained from [its separate record](records/validation-v3.json), rather than repeated in the corpus execution.
 
-These are finite native reference cases. Reconstructed hostile suffixes and a complete hiding proof remain separate gates. Native checks directly receive the private witness and do not establish network privacy or proof security.
+These are finite native reference cases. A complete hiding proof remains a separate gate. Native checks directly receive the private witness and do not establish network privacy or proof security.
+
+## Reconstructed source rejection
+
+A third guarded execution checks 77 hostile mutation routes against one complete A0 trace. It retains the two earlier tuple records without repeating their corpus executions. The nine equation and constructor source files remain byte identical to the degree four relation.
+
+| Mutation family | Routes | Control |
+| :--- | ---: | :--- |
+| Wrong matrix nonce with reconstructed suffix | 1 | Complete Keccak and local arithmetic pass |
+| Detached corrected accumulator with reconstructed suffix | 1 | Complete local arithmetic passes |
+| Exact multiplication with detached operand | 1 | Complete local arithmetic passes |
+| Matrix, transform, hint and digest source cells | 9 | Full relation rejects, exact cells restored |
+| Final received signature seed bytes | 64 | Both affected global frames reject, exact cells restored |
+| Noncanonical correction write | 1 | Full relation rejects and restored baseline accepts |
+
+Reconstructing matrix counts also changes their activity producers. The test rebuilds all nine activity fields from the actual low and high clock banks and the actual private completion indicators. It accepts no independent phase input. For selected row $r$ and completion indicator $d$, reconstruction uses the same relation $a=s_{[u,v)}(r)(1-d)$ as the AIR. Before each reconstructed suffix negative, all 8192 rows are checked for agreement with those producers. A stale cache cannot explain those suffix rejections.
+
+The test performs four complete positive baseline or restoration checks and fifteen complete negative checks. The 64 seed mutations use actual borrowed current and next frames with unchanged global selectors. The first and last also retain complete negative evaluations. The count of 77 describes distinct routes, not isolated equations or independent security properties. Several mutations violate multiple joins.
+
+The exact selected process retains one native trace without cloning. Peak process commit is 1547710464 bytes and aggregate commit is 1548984320 bytes. The guard installed and read back both 2 GiB limits before resume, required 5 GiB free physical memory and enforced an 1800 second deadline. A small ordinary test separately exercises clock bank decoding, the matrix boundary and changed completion producers. No backend proof, signing or fixture generation occurs.
 
 ## Conditional complete cost
 
@@ -96,7 +115,7 @@ Version two retains the original quotient size and eleven field files while redu
 2. A structured controller can retain explicit indicators for expensive events. Its producer, reset and hold rules must bind every consumer before register reuse is valid.
 3. The retained AIR interface supports verifier defined periodic columns and authenticated preprocessed columns. Their public values, transcript binding, queried widths and evaluation tables have costs. Moving a wide schedule into public preprocessing does not make that cost disappear.
 
-Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is adversarial source and reconstructed suffix validation for the changed schedule before full proof integration.
+Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is complete proof resource and security composition analysis before full proof integration.
 
 ## Reproduction
 
@@ -110,4 +129,4 @@ cargo test --manifest-path research/signature-scheduling/Cargo.toml --release --
 cargo clippy --manifest-path research/signature-scheduling/Cargo.toml --release --all-targets --locked -- -D warnings
 ```
 
-All three ignored tests require their own exact resource admission and environment markers. A marker acknowledges an installed external limit and does not install one. Ordinary tests execute none of them. For the baseline, build the release test executable, set KOVA_BOUND_NATIVE_GATE to reviewed-external-resource-admission and pass that executable to the guard with the exact selection native_tests::a0_native_baseline_and_activity_mutations, --exact --ignored --nocapture --test-threads=1, ExpectedTests 1 and TimeoutSeconds 300. For the nine remaining tuples, use KOVA_BOUND_NATIVE_CORPUS_GATE with the same marker value, native_tests::remaining_native_reference_tuples and TimeoutSeconds 1200. Run them serially with fresh output prefixes and fresh memory admission. No complete signature prover is included.
+All four ignored tests require their own exact resource admission and environment markers. A marker acknowledges an installed external limit and does not install one. Ordinary tests execute none of them. For the baseline, build the release test executable, set KOVA_BOUND_NATIVE_GATE to reviewed-external-resource-admission and pass that executable to the guard with the exact selection native_tests::a0_native_baseline_and_activity_mutations, --exact --ignored --nocapture --test-threads=1, ExpectedTests 1 and TimeoutSeconds 300. For the nine remaining tuples, use KOVA_BOUND_NATIVE_CORPUS_GATE with the same marker value, native_tests::remaining_native_reference_tuples and TimeoutSeconds 1200. For the hostile routes, use KOVA_BOUND_NATIVE_HOSTILE_GATE with that marker value, native_tests::bound_reconstructed_suffixes_and_source_routes_reject and TimeoutSeconds 1800. Run the selected tests serially with fresh output prefixes and fresh memory admission. No complete signature prover is included.

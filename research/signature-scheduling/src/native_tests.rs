@@ -3,7 +3,9 @@ use super::*;
 use crate::FactorSignatureOwnerAir as FullPrivateSignatureOwnerAir;
 use full_program as fp;
 use layout::*;
-use p3_air::{check_all_constraints, Air, BaseAir, DebugConstraintBuilder};
+use p3_air::{
+    check_all_constraints, Air, AirBuilder, BaseAir, DebugConstraintBuilder, WindowAccess,
+};
 use p3_field::{PrimeCharacteristicRing, PrimeField32};
 use p3_matrix::{
     dense::{RowMajorMatrix, RowMajorMatrixView},
@@ -473,4 +475,301 @@ fn remaining_native_reference_tuples() {
     }
     assert_eq!((constructed, accepted, rejected), (9, 4, 5));
     println!("native_remaining_traces=9 native_accept=4 native_reject=5 max_live_native_traces=1 backend_proofs=0");
+}
+
+// Reconstruction reads the actual two clock banks and private completion
+// producers. No independent host phase or source acceptance bit is supplied.
+fn activity_values(row: &[BabyBear]) -> [BabyBear; 9] {
+    let active_index = |bank: &[BabyBear]| {
+        let mut found = None;
+        for (index, value) in bank.iter().enumerate() {
+            assert!(*value == BabyBear::ZERO || *value == BabyBear::ONE);
+            if *value == BabyBear::ONE {
+                assert!(found.replace(index).is_none());
+            }
+        }
+        found.expect("actual clock bank must select one position")
+    };
+    let low = active_index(&row[CLOCK..CLOCK + CLOCK_LOW]);
+    let high = active_index(&row[CLOCK + CLOCK_LOW..CLOCK + CLOCK_LOW + CLOCK_HIGH]);
+    let position = high * CLOCK_LOW + low;
+    let mut values = [BabyBear::ZERO; 9];
+    values[0] =
+        BabyBear::from_bool((program::SAMPLE_START..program::SAMPLE_END).contains(&position))
+            * (BabyBear::ONE - row[COUNT + 60]);
+    let matrix_phase = fp::matrix(position).is_some_and(|(_, _, local)| local >= 6);
+    for index in 0..8 {
+        values[index + 1] = BabyBear::from_bool(matrix_phase)
+            * (BabyBear::ONE - row[MATRIX_COUNT + 257 * index + 256]);
+    }
+    values
+}
+fn rebuild_activity(trace: &mut RowMajorMatrix<BabyBear>) {
+    for row in trace.values.chunks_exact_mut(WIDTH) {
+        let values = activity_values(row);
+        row[ACTIVE_CHALLENGE..ACTIVE_MATRIX + 8].copy_from_slice(&values);
+    }
+}
+fn assert_activity_producers(trace: &RowMajorMatrix<BabyBear>) {
+    for row in trace.values.chunks_exact(WIDTH) {
+        assert_eq!(
+            &row[ACTIVE_CHALLENGE..ACTIVE_MATRIX + 8],
+            &activity_values(row),
+            "reconstructed suffix must retain actual activity producers",
+        );
+    }
+}
+
+#[test]
+fn reconstruction_tracks_clock_banks_and_changed_completion() {
+    let mut row = vec![BabyBear::ZERO; WIDTH];
+    // Two positions with different high banks distinguish phase decoding
+    // from a low bank alias. A changed private count must invalidate stale
+    // activity before reconstruction.
+    for (position, channel) in [(12, 0), (fp::MATRIX_START + 6, 1), (12 + 64, 0)] {
+        row.fill(BabyBear::ZERO);
+        row[CLOCK + position % CLOCK_LOW] = BabyBear::ONE;
+        row[CLOCK + CLOCK_LOW + position / CLOCK_LOW] = BabyBear::ONE;
+        let values = activity_values(&row);
+        assert_eq!(values[channel], BabyBear::ONE);
+        row[ACTIVE_CHALLENGE..ACTIVE_MATRIX + 8].copy_from_slice(&values);
+        let completion = if channel == 0 {
+            COUNT + 60
+        } else {
+            MATRIX_COUNT + 256
+        };
+        row[completion] = BabyBear::ONE;
+        let changed = activity_values(&row);
+        assert_eq!(changed[channel], BabyBear::ZERO);
+        assert_ne!(&row[ACTIVE_CHALLENGE..ACTIVE_MATRIX + 8], &changed);
+    }
+    row.fill(BabyBear::ZERO);
+    let position = fp::MATRIX_START + 5;
+    row[CLOCK + position % CLOCK_LOW] = BabyBear::ONE;
+    row[CLOCK + CLOCK_LOW + position / CLOCK_LOW] = BabyBear::ONE;
+    assert_eq!(activity_values(&row), [BabyBear::ZERO; 9]);
+}
+
+struct LocalPrimitives;
+impl<F> BaseAir<F> for LocalPrimitives {
+    fn width(&self) -> usize {
+        WIDTH
+    }
+    fn num_public_values(&self) -> usize {
+        196
+    }
+}
+impl<AB: AirBuilder<F = BabyBear>> Air<AB> for LocalPrimitives {
+    fn eval(&self, b: &mut AB) {
+        let main = b.main();
+        let row = main.current_slice();
+        for base in [NTT_PRODUCTS, EXTRA_PRODUCTS] {
+            for s in 0..8 {
+                mul::eval_mul(b, &row[base + s * mul::WIDTH..base + (s + 1) * mul::WIDTH]);
+            }
+        }
+        for s in 0..8 {
+            hints::eval_use_hint(
+                b,
+                &row[USE_HINT + s * hints::WIDTH..USE_HINT + (s + 1) * hints::WIDTH],
+            );
+        }
+    }
+}
+struct KeccakOnly;
+impl<F> BaseAir<F> for KeccakOnly {
+    fn width(&self) -> usize {
+        WIDTH
+    }
+    fn num_public_values(&self) -> usize {
+        196
+    }
+}
+impl<AB: AirBuilder> Air<AB> for KeccakOnly {
+    fn eval(&self, b: &mut AB) {
+        keccak::eval(b);
+    }
+}
+fn rebuild_matrix_suffix(trace: &mut RowMajorMatrix<BabyBear>) {
+    matrix::fill_xof(&mut trace.values);
+    // A second test construction pass must erase earlier count/enable one hot
+    // cells before writing its new complete prefixes. No trace clone is kept.
+    for row in trace.values.chunks_exact_mut(WIDTH) {
+        row[MATRIX_COUNT..EXTRA_PRODUCTS].fill(BabyBear::ZERO);
+    }
+    matrix::fill(&mut trace.values);
+    rebuild_activity(trace);
+    ntt::fill_inverse(&mut trace.values);
+    hint_rows::fill(&mut trace.values);
+    sponge::fill_final(&mut trace.values);
+}
+fn wrong_first_matrix_nonce(trace: &mut RowMajorMatrix<BabyBear>) {
+    use core::borrow::Borrow;
+    use p3_keccak_air::KeccakCols;
+    let start = fp::MATRIX_START;
+    let mut message = [0u8; 168];
+    for (byte, value) in message.iter_mut().take(32).enumerate() {
+        *value = trace.values[start * WIDTH + RHO + byte].as_canonical_u32() as u8;
+    }
+    message[32] = 1;
+    message[33] = 0;
+    message[34] = 31;
+    message[167] = 128;
+    let mut state = [0u64; 25];
+    for lane in 0..21 {
+        state[lane] = u64::from_le_bytes(message[8 * lane..8 * (lane + 1)].try_into().unwrap());
+    }
+    for block in 0..6 {
+        let logical = build::permutation(state);
+        for local in 0..6 {
+            let at = start + 6 * block + local;
+            let row = &mut trace.values[at * WIDTH..(at + 1) * WIDTH];
+            build::copy_rounds(row, &logical, 4 * local);
+            for (byte, value) in message.iter().enumerate() {
+                build::bits(
+                    row,
+                    MESSAGE + 8 * byte,
+                    if block == 0 { u32::from(*value) } else { 0 },
+                    8,
+                );
+            }
+            let round = logical.row_slice(4 * local + 3).unwrap();
+            let k: &KeccakCols<BabyBear> = (*round).borrow();
+            for limb in 0..84 {
+                build::bits(
+                    row,
+                    OUTPUT + 16 * limb,
+                    k.a_prime_prime_prime(limb / 20, (limb / 4) % 5, limb % 4)
+                        .as_canonical_u32(),
+                    16,
+                );
+            }
+        }
+        state = build::state_after(&logical);
+        drop(logical);
+    }
+}
+#[test]
+#[ignore = "Requires separate native hostile suffix admission, one wide trace only"]
+fn bound_reconstructed_suffixes_and_source_routes_reject() {
+    gate("KOVA_BOUND_NATIVE_HOSTILE_GATE");
+    let raw: Raw = read("raw-fixture.json");
+    let reference: Reference = read("reference-fixture.json");
+    let tuple = &reference.tuples[0];
+    let (w, tx) = fixture(&raw, &reference, tuple);
+    let public = Statement::from_transaction(&tx).unwrap().public_values();
+    let mut trace = build_full_private_signature_owner_sources(&w, &tx).unwrap();
+    compare_matrix(&trace, &reference, tuple);
+    compare_stages(&trace, &reference, tuple);
+    assert_activity_producers(&trace);
+    assert!(valid(&trace, &public));
+    let mut rejected_routes = 0;
+    // Slot(0,0) receives the genuine retained rho/nonce(1,0) stream. That
+    // existing fixed stream is supported. All downstream arithmetic and final
+    // hash are rebuilt, while the verifier fixed slot nonce remains(0,0).
+    wrong_first_matrix_nonce(&mut trace);
+    rebuild_matrix_suffix(&mut trace);
+    assert!(check_all_constraints(&KeccakOnly, &trace, &public, Some(1)).is_ok());
+    assert!(check_all_constraints(&LocalPrimitives, &trace, &public, Some(1)).is_ok());
+    assert_activity_producers(&trace);
+    assert!(!valid(&trace, &public));
+    rejected_routes += 1;
+    sponge::fill_matrix(&mut trace.values);
+    rebuild_matrix_suffix(&mut trace);
+    assert!(valid(&trace, &public));
+    // A changed actual corrected row drives a genuine downstream inverse,
+    // UseHint and final sponge in the same trace, with exact local gadgets.
+    let from = fp::POINT_START + 1;
+    let col = ACCUMULATOR;
+    let old = trace.values[from * WIDTH + col];
+    let changed = BabyBear::from_u32((old.as_canonical_u32() + 1) % MODULUS);
+    for at in from..HEIGHT {
+        trace.values[at * WIDTH + col] = changed;
+    }
+    ntt::fill_inverse(&mut trace.values);
+    hint_rows::fill(&mut trace.values);
+    sponge::fill_final(&mut trace.values);
+    assert!(check_all_constraints(&LocalPrimitives, &trace, &public, Some(1)).is_ok());
+    assert_activity_producers(&trace);
+    assert!(!valid(&trace, &public));
+    rejected_routes += 1;
+    for at in from..HEIGHT {
+        trace.values[at * WIDTH + col] = old;
+    }
+    ntt::fill_inverse(&mut trace.values);
+    hint_rows::fill(&mut trace.values);
+    sponge::fill_final(&mut trace.values);
+    assert!(valid(&trace, &public));
+    // An exact alternative extra multiplication cannot detach its operands.
+    let at = (fp::MATRIX_START + 6) * WIDTH + EXTRA_PRODUCTS;
+    let saved = trace.values[at..at + mul::WIDTH].to_vec();
+    let x = bits(&saved, 0, 23);
+    let y = bits(&saved, 23, 23);
+    ntt::encode_product(
+        ntt::product(x, (y + 1) % MODULUS),
+        &mut trace.values[at..at + mul::WIDTH],
+    );
+    assert!(check_all_constraints(&LocalPrimitives, &trace, &public, Some(1)).is_ok());
+    assert_activity_producers(&trace);
+    assert!(!valid(&trace, &public));
+    rejected_routes += 1;
+    trace.values[at..at + mul::WIDTH].copy_from_slice(&saved);
+    for (row, col) in [
+        (fp::MATRIX_START + 6, MATRIX_XOF),
+        (fp::MATRIX_START + 47, MATRIX_COUNT + 8 * 257 + 256),
+        (fp::MATRIX_START + 48, ACCUMULATOR),
+        (fp::INVERSE_START, NTT_SCRATCH + 255),
+        (fp::INVERSE_START + 192, USE_HINT + hints::HINT),
+        (fp::INVERSE_END, W1 + 1023),
+        (HEIGHT - 1, W1),
+        (HEIGHT - 1, NTT_OUTPUT + 4095),
+        (HEIGHT - 1, MU),
+    ] {
+        let at = row * WIDTH + col;
+        let old = trace.values[at];
+        trace.values[at] += BabyBear::ONE;
+        assert!(!valid(&trace, &public));
+        rejected_routes += 1;
+        trace.values[at] = old;
+    }
+    // Every final received seed byte remains part of the same immutable sigma.
+    // These are route mutations, not isolation of one hash equality equation.
+    let mutation_row = fp::FINAL_END - 1;
+    for byte in 0..64 {
+        assert!(single_cell_affected_frames_valid(
+            &trace,
+            &public,
+            mutation_row
+        ));
+        let at = mutation_row * WIDTH + SIGNATURE + byte;
+        let old = trace.values[at];
+        trace.values[at] += BabyBear::ONE;
+        assert!(!single_cell_affected_frames_valid(
+            &trace,
+            &public,
+            mutation_row
+        ));
+        rejected_routes += 1;
+        // The first and last routes also retain full trace negative checks.
+        if byte == 0 || byte == 63 {
+            assert!(!valid(&trace, &public));
+        }
+        trace.values[at] = old;
+        assert!(single_cell_affected_frames_valid(
+            &trace,
+            &public,
+            mutation_row
+        ));
+    }
+    let at = (fp::POINT_START) * WIDTH + EXTRA_WRITES + 46;
+    let saved_write = trace.values[at..at + 46].to_vec();
+    build::bits(&mut trace.values[at..at + 46], 0, MODULUS, 23);
+    build::bits(&mut trace.values[at..at + 46], 23, 0, 23);
+    assert!(!valid(&trace, &public));
+    rejected_routes += 1;
+    trace.values[at..at + 46].copy_from_slice(&saved_write);
+    assert_activity_producers(&trace);
+    assert!(valid(&trace, &public));
+    assert_eq!(rejected_routes, 77);
+    println!("hostile_native_traces=1 rejected_routes=77 reconstructed_suffixes=2 detached_products=1 source_cells=9 seed_routes=64 noncanonical_writes=1 activity_producers=pass max_live_native_traces=1 backend_proofs=0");
 }
