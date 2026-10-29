@@ -1,5 +1,5 @@
 {
-  "format": "kova.signature-scheduling.provenance.v3",
+  "format": "kova.signature-scheduling.provenance.v4",
   "base_revision": "b0342d4d0874da712c4ca0be1644ebdb1549d914",
   "reference_directory": "research/signature-complete-native",
   "reference_files": {
@@ -162,14 +162,18 @@
       "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
     },
     "README.md": {
-      "bytes": 9553,
-      "sha256": "4d0b1eec3a470e90aa57cb6e873fd0bdd1eb0c831792e3b4f364921df1edc7ef"
+      "bytes": 10927,
+      "sha256": "f6706018e3ab324ed0f38adc8f559217a53e27ec72a4fb087afc1bc6ba1c9498"
     },
     "records/costs-v1.json": {
       "bytes": 1668,
       "sha256": "b268d07f42c2c53e5d9becdb799a9a166dc7eefcb0484d6693f8d9390129f617"
     },
     "records/costs-v2.json": {
+      "bytes": 2414,
+      "sha256": "c1d0e64419f8d9c83797fc1fff7bf0aa6da5720c17686ef31ea20f8fb6754c36"
+    },
+    "records/costs-v3.json": {
       "bytes": 2414,
       "sha256": "c1d0e64419f8d9c83797fc1fff7bf0aa6da5720c17686ef31ea20f8fb6754c36"
     },
@@ -181,9 +185,13 @@
       "bytes": 9560,
       "sha256": "613f1868ec1614a86b5725658fd027f3f464bcbecd19c0ee50c3dfdd4578f0f9"
     },
+    "records/provenance-v3.json": {
+      "bytes": 10917,
+      "sha256": "1c70068e9eddd81c29400b27972eb33fb737579d6e68ff5c4d2c5d72e1b89dc7"
+    },
     "records/README.md": {
-      "bytes": 1182,
-      "sha256": "e18dc435747c6bdaaae245a6744edc4d40a24a819e3793ea054a1a44a25fc79f"
+      "bytes": 1632,
+      "sha256": "69a7d7fe3108dde79ec85109c64154367802c8d1c5a666cabf533fd02a6e1bf9"
     },
     "records/validation-v1.json": {
       "bytes": 1205,
@@ -192,6 +200,10 @@
     "records/validation-v2.json": {
       "bytes": 1309,
       "sha256": "4c50e8938a36c5ef951eecfec138ef3a74fbae4501e65b07d3535d8ef84dfc6c"
+    },
+    "records/validation-v3.json": {
+      "bytes": 2182,
+      "sha256": "362d7e548bd53e1ed6c3976ae79b2a1157f0a77e4d0641a3c90470613e438d63"
     },
     "reference.py": {
       "bytes": 738,
@@ -242,8 +254,8 @@
       "sha256": "e1cd98932ee0729db7269d070c505a3827a424f219339754cc8d5b68e4f13db3"
     },
     "src/native_tests.rs": {
-      "bytes": 14992,
-      "sha256": "33c1debbb97e8d5281354bd514a29db758d116b0dd2ea0b10a4ff5649e6337a2"
+      "bytes": 16820,
+      "sha256": "216ef1b0f0d154f7141f0c4301e352139c55b2621242f20cd168ebe92f867c8c"
     },
     "src/program.rs": {
       "bytes": 1692,
@@ -258,8 +270,8 @@
       "sha256": "fd2ea835e57fa443edf58f08985207e04cdb4df21d950fb5746970d8e3cab828"
     },
     "static_check.py": {
-      "bytes": 1966,
-      "sha256": "8fd7dc4e4c14e2fcf7e5ce37cb5d9b6ea957829d74e22196ac395ca952bb3d85"
+      "bytes": 2098,
+      "sha256": "c52852331acfb5ed22efe56f0ad32440acc29e1b50a462339733c77604b50d89"
     },
     "test_compare.py": {
       "bytes": 2028,
@@ -276,7 +288,7 @@
     "sampler.rs",
     "matrix.rs"
   ],
-  "previous_experiment_revision": "c855cd3722834fe4bb0fa9bfefe8ca60901a6fdd",
+  "previous_experiment_revision": "e549c6077a4904689b3b54ecb859f0192f4b2b31",
   "registry_packages": 80,
   "retained_registry_identities": true,
   "registry_feature_closure_unchanged": true,

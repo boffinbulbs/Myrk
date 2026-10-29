@@ -20,9 +20,11 @@ for name, expected in provenance['experiment_files'].items():
 record = json.loads((HERE / 'validation.json').read_text(encoding='utf8'))
 assert record['provenance'] == identity(HERE / 'provenance.json')
 assert (record['height'], record['width'], record['constraints_per_row'], record['degree']) == (8192, 47058, 181221, 4)
-assert record['backend_proofs'] == 0 and record['native_trace_allocations'] == 1
+assert record['backend_proofs'] == 0 and record['native_trace_allocations'] == 9
 assert record['native_signature_tuple_validation']
-assert record['native_tuple_checks'] == {'A0':'AcceptConditional'}
+assert len(record['native_tuple_checks']) == 10
+assert sum(value == 'AcceptConditional' for value in record['native_tuple_checks'].values()) == 5
+assert record['max_simultaneous_native_traces'] == 1
 assert record['native_guard']['readback_verified'] and record['native_guard']['aggregate_limit_bytes'] == 2147483648
 assert 0 < record['native_guard']['peak_job_commit_bytes'] <= 2147483648
 assert record['native_guard']['minimum_available_bytes'] == 5368709120

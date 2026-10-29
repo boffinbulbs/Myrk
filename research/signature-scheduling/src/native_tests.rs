@@ -425,3 +425,52 @@ fn a0_native_baseline_and_activity_mutations() {
     assert!(single_cell_affected_frames_valid(&trace, &public, 12));
     println!("native_A0_accept=1 independent_stages=pass activity_local_rejections=9 full_negative=1 native_traces=1 raw_field_bytes=1541996544 backend_proofs=0");
 }
+
+#[test]
+#[ignore = "Separate sequential native corpus and memory admission"]
+fn remaining_native_reference_tuples() {
+    gate("KOVA_BOUND_NATIVE_CORPUS_GATE");
+    let raw: Raw = read("raw-fixture.json");
+    let reference: Reference = read("reference-fixture.json");
+    assert_eq!(reference.tuples.len(), 10);
+    let mut accepted = 0;
+    let mut rejected = 0;
+    let mut constructed = 0;
+    for tuple in reference.tuples.iter().filter(|tuple| tuple.id != "A0") {
+        assert!(tuple.bounded_supported);
+        let (witness, transaction) = fixture(&raw, &reference, tuple);
+        let public = Statement::from_transaction(&transaction)
+            .unwrap()
+            .public_values();
+        let trace = build_full_private_signature_owner_sources(&witness, &transaction)
+            .unwrap_or_else(|error| {
+                panic!(
+                    "Construction refusal is not native rejection for {}: {error:?}",
+                    tuple.id
+                )
+            });
+        assert_eq!((trace.height(), trace.width()), (8192, 47058));
+        compare_matrix(&trace, &reference, tuple);
+        compare_stages(&trace, &reference, tuple);
+        let actual = valid(&trace, &public);
+        assert_eq!(
+            actual,
+            tuple.conditional_verdict == "AcceptConditional",
+            "tuple {}",
+            tuple.id
+        );
+        if actual {
+            accepted += 1;
+        } else {
+            rejected += 1;
+        }
+        constructed += 1;
+        println!(
+            "native_tuple={} accepted={actual} independent_stages=pass",
+            tuple.id
+        );
+        drop(trace);
+    }
+    assert_eq!((constructed, accepted, rejected), (9, 4, 5));
+    println!("native_remaining_traces=9 native_accept=4 native_reject=5 max_live_native_traces=1 backend_proofs=0");
+}

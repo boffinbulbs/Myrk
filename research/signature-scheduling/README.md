@@ -55,7 +55,15 @@ The complete valid baseline and the AIR's current and next row access justify th
 
 The [native guard](run_native_guarded_windows.ps1) and exact ignored test are public. The signature and note values are existing public synthetic fixtures. No signing or fixture regeneration occurs. The original degree four symbolic result is retained from [version two](records/validation-v2.json), with exact equality of the nine equation source files checked before this native record.
 
-Only A0 has native tuple validation in this scheduling variant. The other reference tuples, reconstructed hostile suffixes and complete hiding proof remain separate gates. Native checks directly receive the private witness and do not establish network privacy or proof security.
+## Native reference corpus
+
+A second guarded execution checks the other nine supported reference tuples sequentially. Each trace is compared with its independent matrix and signature intermediates, evaluated through the complete native AIR and dropped before the next trace is constructed. Four cases accept and five reject. Together with the earlier A0 baseline, all ten supported tuple verdicts match: five accepting and five rejecting cases.
+
+The rejected cases cover an empty context, a wrong context, a note with another owner, a wrong verification key and a wrong expected transaction. An alternate note with the same owner remains conditionally accepted by this authorization layer. Exact note membership, stable nullifiers, creation rules and conservation must still bind that note in the full payment relation.
+
+The recorded corpus execution constructs nine traces, never more than one at a time. Peak process commit is 1548148736 bytes and aggregate commit is 1549393920 bytes, under the same 2 GiB readback limits and 5 GiB free memory admission, with a 1200 second deadline. The original A0 activity mutations are retained from [its separate record](records/validation-v3.json), rather than repeated in the corpus execution.
+
+These are finite native reference cases. Reconstructed hostile suffixes and a complete hiding proof remain separate gates. Native checks directly receive the private witness and do not establish network privacy or proof security.
 
 ## Conditional complete cost
 
@@ -88,7 +96,7 @@ Version two retains the original quotient size and eleven field files while redu
 2. A structured controller can retain explicit indicators for expensive events. Its producer, reset and hold rules must bind every consumer before register reuse is valid.
 3. The retained AIR interface supports verifier defined periodic columns and authenticated preprocessed columns. Their public values, transcript binding, queried widths and evaluation tables have costs. Moving a wide schedule into public preprocessing does not make that cost disappear.
 
-Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is the remaining native reference tuples and adversarial source validation for the changed schedule before any full proof integration.
+Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is adversarial source and reconstructed suffix validation for the changed schedule before full proof integration.
 
 ## Reproduction
 
@@ -102,4 +110,4 @@ cargo test --manifest-path research/signature-scheduling/Cargo.toml --release --
 cargo clippy --manifest-path research/signature-scheduling/Cargo.toml --release --all-targets --locked -- -D warnings
 ```
 
-Both ignored tests require their own exact resource admission and environment markers. A marker acknowledges an installed external limit and does not install one. Ordinary tests execute neither ignored test. For the native case, build the release test executable, set KOVA_BOUND_NATIVE_GATE to reviewed-external-resource-admission and pass that executable to the guard with the exact selection native_tests::a0_native_baseline_and_activity_mutations, --exact --ignored --nocapture --test-threads=1, ExpectedTests 1 and TimeoutSeconds 300. Use a fresh output prefix. No complete signature prover is included.
+All three ignored tests require their own exact resource admission and environment markers. A marker acknowledges an installed external limit and does not install one. Ordinary tests execute none of them. For the baseline, build the release test executable, set KOVA_BOUND_NATIVE_GATE to reviewed-external-resource-admission and pass that executable to the guard with the exact selection native_tests::a0_native_baseline_and_activity_mutations, --exact --ignored --nocapture --test-threads=1, ExpectedTests 1 and TimeoutSeconds 300. For the nine remaining tuples, use KOVA_BOUND_NATIVE_CORPUS_GATE with the same marker value, native_tests::remaining_native_reference_tuples and TimeoutSeconds 1200. Run them serially with fresh output prefixes and fresh memory admission. No complete signature prover is included.
