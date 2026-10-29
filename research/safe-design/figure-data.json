@@ -1,5 +1,5 @@
 {
-  "format": "thorum.private-safe.design-figure.v1",
+  "format": "kova.private-safe.design-figure.v1",
   "scope": "Later chain and Qt wallet architecture. No runtime or performance measurement.",
   "implemented_safe": false,
   "initial_chain_prerequisite": false,

@@ -1,6 +1,6 @@
-# Thorum Aegis Protocol
+# Kova Aegis Protocol
 
-Thorum Aegis is the later protocol design for private payments that become spendable after stake consensus, before their recording in the mined chain. Wallets construct complete private payment proofs locally. Eligible stakers commit an ordered state transition. Miners subsequently record that committed history under the existing auxiliary work rules.
+Kova Aegis is the later protocol design for private payments that become spendable after stake consensus, before their recording in the mined chain. Wallets construct complete private payment proofs locally. Eligible stakers commit an ordered state transition. Miners subsequently record that committed history under the existing auxiliary work rules.
 
 ## Development boundary
 
@@ -124,7 +124,7 @@ Explicit ML-DSA-87 signatures are the initial certificate evaluation baseline. T
 
 Confidential eligibility requires an actual construction proving authorized distinct signers and the hidden weight threshold. Separate individual eligibility proofs do not automatically provide an aggregate of hidden weights. Distributed generation of that evidence, transcript privacy, canonical ordering, signer accountability and bounded verification are unresolved gates. Revealing holdings or adopting an unsupported classical aggregate is not a completion of this requirement.
 
-Votes bind chain, version, epoch, sequence, round, phase, batch digest and eligibility snapshot. Persistent signing records must survive crashes, restores and duplicated services before votes leave the signer. The [durable signing and replay reference](https://github.com/cometbft/cometbft/blob/d03254d3599b973f979314e6383b89fa1802e679/spec/consensus/wal.md) motivates a dedicated crash and replay test gate. Exact Thorum domains and encodings remain unfrozen.
+Votes bind chain, version, epoch, sequence, round, phase, batch digest and eligibility snapshot. Persistent signing records must survive crashes, restores and duplicated services before votes leave the signer. The [durable signing and replay reference](https://github.com/cometbft/cometbft/blob/d03254d3599b973f979314e6383b89fa1802e679/spec/consensus/wal.md) motivates a dedicated crash and replay test gate. Exact Kova domains and encodings remain unfrozen.
 
 Proofs, commitments, nullifiers, encryption, consensus signatures, history and recovery each retain their own post quantum analysis. Current component experiments do not establish a combined quantum security level or confidential quorum protocol.
 

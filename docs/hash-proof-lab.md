@@ -165,7 +165,7 @@ same opening and retained nullifier key -> stable public nullifier
 same input and output openings -> asset rules and bounded integer conservation
 ```
 
-The existing pure contextual ML-DSA-87 interface signs a 196 byte framed authorization object under the 41 byte context `Thorum crypto laboratory authorization v1`. Its required hash input for `mu` is `tr || 00 || 29 || context41 || A196`, with 303 bytes. Replacing that context, using internal verification or changing to HashML-DSA would change the accepted authorization. The existing owner binding and note encodings remain unchanged.
+The existing pure contextual ML-DSA-87 interface signs a 196 byte framed authorization object under the 41 byte context `Kova crypto laboratory authorization v1`. Its required hash input for `mu` is `tr || 00 || 29 || context41 || A196`, with 303 bytes. Replacing that context, using internal verification or changing to HashML-DSA would change the accepted authorization. The existing owner binding and note encodings remain unchanged.
 
 The original primitive hash profile supplies bounded hash and XOF computation. Separate components now implement canonical key and signature sources, coefficient and hint rules, finite samplers, transforms and conditional row reconstruction. Remaining work connects their actual private operands and outputs to the same signature, all eight rows, complete challenge equality, hidden note owner and exact authorized transaction. The finite sampler classes still require a production completeness and resource policy. Derived matrices, cached public key hashes and host signature results cannot replace constrained derivations.
 

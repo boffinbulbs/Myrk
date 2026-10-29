@@ -28,7 +28,7 @@ Monitoring and balance display may operate with scoped viewing data without load
 
 ## Address namespace
 
-The main network wallet address target uses the human readable prefix `thm`, followed by a versioned recipient payload and a checksum. The namespace is compatible with private payments and contract applications. It does not determine the cryptographic key representation or execution model.
+The main network wallet address target uses the intended human readable prefix `kova`, followed by a versioned recipient payload and a checksum. The namespace is compatible with private payments and contract applications. It does not determine the cryptographic key representation or execution model.
 
 The address specification must define the separator, alphabet, checksum construction, network domain, version, recipient type, maximum length, and supported key representation. Network and type fields must be bound by the checksum and checked before transaction construction. Test and development networks require distinct address namespaces. No production encoding or address decoder is implemented.
 

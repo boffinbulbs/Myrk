@@ -1,6 +1,8 @@
-# Thorum
+# Kova
 
-Thorum (THM) is a privacy blockchain research implementation focused on post quantum authorization and encryption, confidential applications, auxiliary proof of work and stake checkpoint finality.
+Kova is a privacy blockchain research implementation focused on post quantum authorization and encryption, confidential applications, auxiliary proof of work and stake checkpoint finality.
+
+Project identity and the intended `kova` address namespace are defined in the [protocol identity record](docs/project-identity.md). Historical laboratory names and cryptographic fixtures retain their exact bytes until a separately verified protocol version replaces them.
 
 The protocol separates private transition proofs, deterministic ledger validation, parent work and stake consensus. Each component has a documented interface, explicit assumptions and reproducible acceptance requirements. The standard wallet payment path targets privacy by default.
 
@@ -51,7 +53,7 @@ Here m denotes authorized minting, b completed destruction and f the applicable 
 
 Input commitments, membership paths, owner keys, signatures and signature intermediates remain private in the complete payment target. Public roots, nullifiers, output commitments, fees, sizes and network observations retain explicit leakage analysis. The normal Send path has no transparent fallback.
 
-The [recipient capability experiment](docs/recipient-capability.md) separates sender construction from the recipient's nullifier secret and checks typed local recovery. Legacy sender known v1 behavior remains documented. Neither interface supplies a formal unlinkability result, authenticated discovery or the production `thm` address codec.
+The [recipient capability experiment](docs/recipient-capability.md) separates sender construction from the recipient's nullifier secret and checks typed local recovery. Legacy sender known v1 behavior remains documented. Neither interface supplies a formal unlinkability result, authenticated discovery or the intended `kova` address codec.
 
 ## Proof research map
 

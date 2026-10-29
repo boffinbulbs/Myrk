@@ -1,6 +1,6 @@
 # Security status
 
-Thorum is at the reference implementation and protocol research stage. The repository does not contain a production network or an independently audited private transaction or checkpoint construction.
+Kova is at the reference implementation and protocol research stage. The repository does not contain a production network or an independently audited private transaction or checkpoint construction.
 
 The monetary module checks amount arithmetic and supply transitions. It does not prove transaction ownership, private value conservation, eligible stake, valid block order, canonical parent acceptance, or recovery data availability. These are separate kernel and protocol requirements.
 

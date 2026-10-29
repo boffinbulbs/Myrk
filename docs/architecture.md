@@ -2,7 +2,7 @@
 
 ## Component boundaries
 
-Thorum uses one ledger and one set of native conservation and authorization rules. Payment, asset, application, and staking transitions must share compatible ownership, nullifier, commitment, and rollback semantics.
+Kova uses one ledger and one set of native conservation and authorization rules. Payment, asset, application, and staking transitions must share compatible ownership, nullifier, commitment, and rollback semantics.
 
 The implementation targets a custom chain with reviewed cryptographic dependencies. [Node operation and service integration](node-integration.md) defines ordinary validation independently from mining, staking and wallet authority. Server and exchange interfaces remain subject to the same private relation and consensus gates.
 
@@ -33,7 +33,7 @@ The [RPC and data boundary](rpc-and-data.md) separates public explorer/index dat
 
 ## Later Aegis state boundary
 
-The [Thorum Aegis Protocol](aegis.md) extends this architecture through a separately versioned later consensus milestone. It is not part of the initial onward spending rule. Under its design, eligible stakers commit one authoritative private transition sequence and miners record its contiguous prefix. Recording advances a cursor without executing the transition again. An unfinalized work reorganization cannot erase already committed Aegis consumption or its dependent payments.
+The [Kova Aegis Protocol](aegis.md) extends this architecture through a separately versioned later consensus milestone. It is not part of the initial onward spending rule. Under its design, eligible stakers commit one authoritative private transition sequence and miners record its contiguous prefix. Recording advances a cursor without executing the transition again. An unfinalized work reorganization cannot erase already committed Aegis consumption or its dependent payments.
 
 Certified note roots, global spent identities, restrictions, finalized mined height, monetary imports, encrypted data and epoch authority must share the same authenticated state. Checkpoint advancement and epoch changes are serialized controls. Aegis requires its own consensus, confidential quorum, data availability, bootstrap and activation review. Current runtime behavior and the first chain milestone remain unchanged. Its [figures](../research/aegis/README.md) illustrate planned ordering without a performance claim.
 

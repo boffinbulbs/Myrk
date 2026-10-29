@@ -23,7 +23,7 @@ Figure = DRAWING.Figure
 MUTED, BLUE_TINT, GREEN_TINT = DRAWING.MUTED, DRAWING.BLUE_TINT, DRAWING.GREEN_TINT
 
 DATA = {
-    "format": "thorum.protocol-design-figures.v1",
+    "format": "kova.protocol-design-figures.v1",
     "scope": "Protocol architecture and development order, not performance measurements",
     "runtime_integration": "Pending",
     "svg_canvas": "transparent",
@@ -73,7 +73,7 @@ def footer(value, text):
 
 
 def base_architecture():
-    value = figure("base-architecture", "Thorum base protocol architecture",
+    value = figure("base-architecture", "Kova base protocol architecture",
                    "Planned runtime with private payment and confidential stake integration gates.")
     value.card(60, 165, 430, 205, "Private wallet", [
         "Local keys and note recovery", "Private proof construction",

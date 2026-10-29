@@ -1,17 +1,17 @@
 {
-  "format": "thorum.private-safe.figure-source.v1",
+  "format": "kova.private-safe.figure-source.v1",
   "scope": "Later chain and Qt wallet architecture. No runtime or performance measurement.",
   "original_project_source": true,
   "runtime_or_consensus_change": false,
   "source_sha256": {
-    "research/safe-design/generate_figures.py": "6f3d38bf29a65eb403b4c67dc40663273dc08ca9804b82f5479fe2d037bf64d7",
-    "research/aegis/generate_figures.py": "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430",
-    "docs/private-safe.md": "6b05f987a90a51d4f1b25fd65c877207066167af1a22f73b9d1bceb54f138fef",
-    "research/safe-design/README.md": "898ebaad34f6392d505354026dda355c45b58d020d3f5ae8a81da613f76272a2"
+    "research/safe-design/generate_figures.py": "7b723701cc811cbeb4d2101316fed5d3b54426716116e6c2e3d7a248a1d378de",
+    "research/aegis/generate_figures.py": "7cdb4cb94bb5296ba7e79876159cef3fe568691a3ce3694e87839cec1c2f1ef7",
+    "docs/private-safe.md": "1a2742d422c84197e8c9de8d4a9ef192870d29b641f85d892d290c3b31c15b16",
+    "research/safe-design/README.md": "e69ed71bdb2a47ffca63e5b31b70139f0577e152c0ac1ed1b8f457cc78782738"
   },
-  "shared_renderer_expected_sha256": "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430",
+  "shared_renderer_expected_sha256": "7cdb4cb94bb5296ba7e79876159cef3fe568691a3ce3694e87839cec1c2f1ef7",
   "outputs_sha256": {
-    "figure-data.json": "510cb0ea3b06a068248c2ffbd6bb9b990f4dcbe9ef24b7804d340d0be5012e27",
+    "figure-data.json": "403e1aa9521d6dca105bac0bb234d85b67f2236adff5763d8c9e09cb1c33781a",
     "figures/private-safe.svg": "6e86f78d88de91a82b538103694a847eb77b229e2e9971de08b2afb1710bcc74",
     "figures/private-safe-dark.svg": "bbce6553c9e8cac2fe3a0293fb0f55de9377cccaa7c86385a2f841b7accc5b68"
   },
@@ -23,5 +23,5 @@
     "reference_canvas_text_contrast": "Existing pinned renderer checks at least 4.5 to 1"
   },
   "font_family": "Arial, Helvetica, sans-serif",
-  "license": "MIT. Original Thorum source."
+  "license": "MIT. Original Kova source."
 }

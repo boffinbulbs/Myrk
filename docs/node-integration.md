@@ -1,6 +1,6 @@
 # Node operation and service integration
 
-Thorum targets a custom ledger and consensus implementation with reviewed cryptographic dependencies. The current workspace contains research components and specifications. A network node, wallet RPC service and exchange integration are not implemented yet. Complete private payment and confidential stake feasibility precede their dependent interfaces.
+Kova targets a custom ledger and consensus implementation with reviewed cryptographic dependencies. The current workspace contains research components and specifications. A network node, wallet RPC service and exchange integration are not implemented yet. Complete private payment and confidential stake feasibility precede their dependent interfaces.
 
 ## Independent node operation
 

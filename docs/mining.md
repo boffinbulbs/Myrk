@@ -8,10 +8,10 @@ This document specifies the mining boundary. The repository does not implement a
 
 | Role | Required components |
 |---|---|
-| Pool operator | Synchronized Thorum node, compatible parent full node under operator control, adapter for parent templates and submissions, worker accounting, treasury routing and monitoring |
+| Pool operator | Synchronized Kova node, compatible parent full node under operator control, adapter for parent templates and submissions, worker accounting, treasury routing and monitoring |
 | Solo mining operator | Both node stacks, equivalent job/commitment/submission integration, compatible Equihash work |
 | Pool worker | Compatible miner, pool connection and native payout destination |
-| Ordinary validator or staker | Thorum node and relevant staking duties. No requirement to synchronize the parent network |
+| Ordinary validator or staker | Kova node and relevant staking duties. No requirement to synchronize the parent network |
 
 The first parent profile targets Equihash (200,9) work under the parent formats specified by the primary references below. Matching an algorithm name alone is insufficient: parameters, personalization, header rules, activated formats and child commitments must match.
 

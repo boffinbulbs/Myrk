@@ -25,7 +25,7 @@ The values below describe the existing executable monetary model and its histori
 
 | Parameter | Value |
 |---|---:|
-| Name | Thorum |
+| Name | Kova |
 | Ticker | THM |
 | Atomic units per THM | 100,000,000 |
 | Cumulative issuance ceiling | 63,000,000 THM |

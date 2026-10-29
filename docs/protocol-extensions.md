@@ -98,7 +98,7 @@ The wallet distinguishes received data, local proving, certified lock, inclusion
 
 ## Later Aegis protocol
 
-[Thorum Aegis](aegis.md) is a later consensus milestone for ordinary private outputs that become spendable after a completed stake commit and before mining. It requires an authoritative ordered state, global spent identities, complete payload availability, confidential quorum evidence, durable signing and compatible PoW recording. A preliminary lock cannot supply this eligibility.
+[Kova Aegis](aegis.md) is a later consensus milestone for ordinary private outputs that become spendable after a completed stake commit and before mining. It requires an authoritative ordered state, global spent identities, complete payload availability, confidential quorum evidence, durable signing and compatible PoW recording. A preliminary lock cannot supply this eligibility.
 
 The initial construction and first chain scope remain unchanged. A separately reviewed activation would replace its ordinary onward spending boundary for supported Aegis transactions. Mining and staking rewards still require their authenticated maturity, and Safe, stake, asset and migration restrictions remain applicable. Certified payments cannot expire merely because mining is delayed. The architecture includes figures, failure requirements and independent implementation gates without claiming an executable protocol.
 

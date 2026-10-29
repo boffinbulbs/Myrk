@@ -1,39 +1,39 @@
 {
-  "format": "thorum.documentation-figures.source-record.v1",
+  "format": "kova.documentation-figures.source-record.v1",
   "recorded_date": "2026-10-28",
   "scope": "Original architecture and development reference figures. No runtime, consensus, performance or composed security measurement.",
-  "public_code_base": "b499f0946ab196396eb411a4e035a210d6ff6a63",
+  "public_code_base": "2e35c317dba7754f889e1437bcef348489a7042a",
   "generator": {
     "path": "research/aegis/generate_figures.py",
-    "bytes": 22766,
-    "sha256": "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430"
+    "bytes": 22756,
+    "sha256": "7cdb4cb94bb5296ba7e79876159cef3fe568691a3ce3694e87839cec1c2f1ef7"
   },
   "implementation_source_dependencies": [],
   "generated_artifacts": [
     {
       "path": "research/aegis/figure-data.json",
-      "bytes": 2238,
-      "sha256": "296f0ff7f26a0795d7bff546669e4b1f0ce771e41063ae2045eb731e23187719"
+      "bytes": 2236,
+      "sha256": "02b519e7af3db573f8c229d961e069b58c203e317e0db0490799daf73ad768a5"
     },
     {
       "path": "research/aegis/figures/aegis-architecture-dark.svg",
-      "bytes": 9593,
-      "sha256": "f960056864c306b1fa4a6f84e7d178a5f977f6072290ada03d8386e3043613a9"
+      "bytes": 9589,
+      "sha256": "d6bd1b2560fb4669781ab15bf3ddbc78e0ba3c12d59aea069b99d3d8bfd45cdd"
     },
     {
       "path": "research/aegis/figures/aegis-architecture.svg",
-      "bytes": 9594,
-      "sha256": "4bd870ac9ea63ffe2f721e284afe8f285806dd2e7e4e9ff83269eca649fc659b"
+      "bytes": 9590,
+      "sha256": "6794ea445f3eeefab547a33031e3a2b65834b75648de46eff32fa06df7bebb7f"
     },
     {
       "path": "research/aegis/figures/aegis-certification-order-dark.svg",
-      "bytes": 8106,
-      "sha256": "6347c4d41e358cddc32c8baf39a7f8b011e33d7d95ee7dd0f1b9fe828577d367"
+      "bytes": 8102,
+      "sha256": "3605ae62c41ab4214dde759dc73177c767fdfc3e0985e259f7e878937c2ab818"
     },
     {
       "path": "research/aegis/figures/aegis-certification-order.svg",
-      "bytes": 8107,
-      "sha256": "aa020c203fbbe8f4b6c1bfe4cc75421b351b8dba0dc26baea5cdd58d0f53ffb2"
+      "bytes": 8103,
+      "sha256": "3c5a8e700b31c287299f3e19942014fae0dcb98e251b2c5f4eca29c11b7d9f2c"
     },
     {
       "path": "research/aegis/figures/aegis-architecture-dark.png",

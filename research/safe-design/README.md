@@ -18,7 +18,7 @@ python research/safe-design/generate_figures.py
 python research/safe-design/generate_figures.py --check
 ```
 
-Generation uses the standard library and the existing original Thorum renderer at `research/aegis/generate_figures.py`, pinned to SHA256 `08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430`. A changed renderer fails before import. It is read without modification and its main generation path is not called. No external package, network access or font file is needed for SVG reproduction.
+Generation uses the standard library and the existing original Kova renderer at `research/aegis/generate_figures.py`, pinned to SHA256 `08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430`. A changed renderer fails before import. It is read without modification and its main generation path is not called. No external package, network access or font file is needed for SVG reproduction.
 
 The [fixed data](figure-data.json) records the exact design scope. The [source record](source_record.json) hashes the generator, pinned renderer, specification, this research text and both SVG variants. A light variant and matching dark variant share geometry and labels. Their outer canvas is transparent and their text uses Arial with Helvetica and sans serif fallbacks. The renderer checks XML, coordinates, transparency and contrast against reference canvases. These are presentation checks rather than protocol tests.
 

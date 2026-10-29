@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1560" height="1230" viewBox="0 0 1560 1230" role="img" aria-labelledby="figure-title figure-description" data-theme="light" data-canvas="transparent">
-  <title id="figure-title">Thorum Aegis later protocol architecture</title>
+  <title id="figure-title">Kova Aegis later protocol architecture</title>
   <desc id="figure-description">Later design for one globally certified private state and one PoW recording chain. C pays Y, Y recovers and spends from certified state to Z before later PoW recording. Regular validator N independently verifies certificates and records. No timing claim.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="7" orient="auto-start-reverse">
@@ -9,7 +9,7 @@
   </defs>
   <g font-family="Arial, Helvetica, sans-serif">
     <text x="60" y="58" font-size="31" font-weight="700" fill="#152b43" text-anchor="start">
-      <tspan x="60" y="58">Thorum Aegis private payment flow</tspan>
+      <tspan x="60" y="58">Kova Aegis private payment flow</tspan>
     </text>
     <text x="60" y="94" font-size="20" font-weight="400" fill="#52657b" text-anchor="start">
       <tspan x="60" y="94">Later protocol design. Private onward spending follows a final stake commit.</tspan>

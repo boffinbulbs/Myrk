@@ -1,35 +1,35 @@
 {
-  "format": "thorum.documentation-figures.source-record.v1",
+  "format": "kova.documentation-figures.source-record.v1",
   "recorded_date": "2026-10-28",
   "scope": "Original architecture and development reference figures. No runtime, consensus, performance or composed security measurement.",
-  "public_code_base": "b499f0946ab196396eb411a4e035a210d6ff6a63",
+  "public_code_base": "2e35c317dba7754f889e1437bcef348489a7042a",
   "generator": {
     "path": "research/protocol-figures/generate_figures.py",
-    "bytes": 15971,
-    "sha256": "05e585eb0b8530274cd72da2b66f460554639141da17ec3213c204036ad46340"
+    "bytes": 15967,
+    "sha256": "a3c02a8c8b6aedf7dc0497e2057325c25eff939c2a2b766630b7519682806174"
   },
   "implementation_source_dependencies": [
     {
       "path": "research/aegis/generate_figures.py",
-      "bytes": 22766,
-      "sha256": "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430"
+      "bytes": 22756,
+      "sha256": "7cdb4cb94bb5296ba7e79876159cef3fe568691a3ce3694e87839cec1c2f1ef7"
     }
   ],
   "generated_artifacts": [
     {
       "path": "research/protocol-figures/figure-data.json",
-      "bytes": 1959,
-      "sha256": "739b08bf3fe6cd60241ee88f978b24fb3973352b8415362e1449fd3179233b3f"
+      "bytes": 1957,
+      "sha256": "158626cbfa9eaff70bfcb77bd4b7f95925f398f9877d9073c854253d0cceccc8"
     },
     {
       "path": "research/protocol-figures/figures/base-architecture-dark.svg",
-      "bytes": 6732,
-      "sha256": "c732226f7e8257436b6139f5a166b59ce28c4cdf45dfe5d6499bcf3ddce931f8"
+      "bytes": 6728,
+      "sha256": "0efed1cbba3a034571d0441a74848c70a07220a8e0649e48f739721e73f6c6ea"
     },
     {
       "path": "research/protocol-figures/figures/base-architecture.svg",
-      "bytes": 6733,
-      "sha256": "7289e079441076812bc691b5c4bff5cbac8d895248b82a4d7cdd11355516f0c6"
+      "bytes": 6729,
+      "sha256": "2ee6c42462f10267a042ad6aa2943021616b3b4186e0ad4483443b05495f28da"
     },
     {
       "path": "research/protocol-figures/figures/development-stages-dark.svg",

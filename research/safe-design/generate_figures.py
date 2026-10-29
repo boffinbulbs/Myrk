@@ -1,7 +1,7 @@
 """Reproduce the later Private Safe authority and state diagram.
 
 SVG generation and --check use only the standard library and the pinned original
-Thorum drawing helper. Optional previews use already installed Pillow and fonts.
+Kova drawing helper. Optional previews use already installed Pillow and fonts.
 """
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 SHARED = HERE.parent / "aegis/generate_figures.py"
-SHARED_SHA256 = "08a29659344c2e17601a4c6410cf042f5b70126caffbfb428e7212c288be4430"
+SHARED_SHA256 = "7cdb4cb94bb5296ba7e79876159cef3fe568691a3ce3694e87839cec1c2f1ef7"
 sys.dont_write_bytecode = True
 assert hashlib.sha256(SHARED.read_bytes()).hexdigest() == SHARED_SHA256, "Drawing helper changed"
 SPEC = importlib.util.spec_from_file_location("thorum_safe_drawing", SHARED)
@@ -24,7 +24,7 @@ DRAW = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(DRAW)
 
 DATA = {
-    "format": "thorum.private-safe.design-figure.v1",
+    "format": "kova.private-safe.design-figure.v1",
     "scope": "Later chain and Qt wallet architecture. No runtime or performance measurement.",
     "implemented_safe": False,
     "initial_chain_prerequisite": False,
@@ -147,7 +147,7 @@ def outputs():
                "docs/private-safe.md": ROOT / "docs/private-safe.md",
                "research/safe-design/README.md": HERE / "README.md"}
     record = {
-        "format": "thorum.private-safe.figure-source.v1", "scope": DATA["scope"],
+        "format": "kova.private-safe.figure-source.v1", "scope": DATA["scope"],
         "original_project_source": True, "runtime_or_consensus_change": False,
         "source_sha256": {name: hashlib.sha256(path.read_bytes()).hexdigest() for name, path in sources.items()},
         "shared_renderer_expected_sha256": SHARED_SHA256,
@@ -155,7 +155,7 @@ def outputs():
         "checks": {"svg_xml": True, "finite_bounded_coordinates": True,
                    "transparent_svg_canvas": True, "matching_theme_structure_and_text": True,
                    "reference_canvas_text_contrast": "Existing pinned renderer checks at least 4.5 to 1"},
-        "font_family": "Arial, Helvetica, sans-serif", "license": "MIT. Original Thorum source.",
+        "font_family": "Arial, Helvetica, sans-serif", "license": "MIT. Original Kova source.",
     }
     generated["source_record.json"] = (json.dumps(record, indent=2) + "\n").encode()
     return generated, figure

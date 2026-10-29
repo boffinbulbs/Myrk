@@ -169,7 +169,7 @@ The [protocol safety and verification requirements](protocol-extensions.md) add 
 
 The intended deliverable is a complete chain with node software and a desktop wallet. The private network integration milestone follows ledger, mining and finality integration and precedes final desktop wallet integration and public network trials. It does not exist yet. Component proofs precede authenticated state validation, durable persistence, rollback and network synchronization.
 
-The [Thorum Aegis Protocol](aegis.md) is architecture for a separate later milestone. It evaluates spendable private state after stake consensus, with subsequent PoW recording, and includes explicit consensus, privacy, data availability, maturity and recovery gates. Aegis has no runtime or latency result. It does not expand the initial chain milestone or replace its checkpoint onward spending rule.
+The [Kova Aegis Protocol](aegis.md) is architecture for a separate later milestone. It evaluates spendable private state after stake consensus, with subsequent PoW recording, and includes explicit consensus, privacy, data availability, maturity and recovery gates. Aegis has no runtime or latency result. It does not expand the initial chain milestone or replace its checkpoint onward spending rule.
 
 The [node and service boundary](node-integration.md) includes ordinary validating nodes without mining or stake authority, server operation and later exchange deposit/withdrawal integration. Integration tests require private scanning, idempotent accounting, explicit finality and recovery. Exchange listing decisions remain external to protocol development.
 

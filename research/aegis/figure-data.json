@@ -1,5 +1,5 @@
 {
-  "format": "thorum.aegis.design-figures.v1",
+  "format": "kova.aegis.design-figures.v1",
   "status": "Later protocol design",
   "scope": "Planned protocol ordering and analytical state cursor examples only",
   "implemented_performance": false,

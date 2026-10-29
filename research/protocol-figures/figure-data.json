@@ -1,5 +1,5 @@
 {
-  "format": "thorum.protocol-design-figures.v1",
+  "format": "kova.protocol-design-figures.v1",
   "scope": "Protocol architecture and development order, not performance measurements",
   "runtime_integration": "Pending",
   "svg_canvas": "transparent",

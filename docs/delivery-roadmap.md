@@ -1,6 +1,6 @@
 # Development stages and feature boundaries
 
-Thorum develops through independently reviewable increments. Each stage records its executable boundary, supporting evidence and remaining dependencies. Architecture documents describe intended rules. A feature becomes an implemented capability only after its required behavior and rejection cases are reproducible.
+Kova develops through independently reviewable increments. Each stage records its executable boundary, supporting evidence and remaining dependencies. Architecture documents describe intended rules. A feature becomes an implemented capability only after its required behavior and rejection cases are reproducible.
 
 The current stage is private cryptographic feasibility. The workspace contains monetary accounting, transparent references and isolated hiding proof components. It has no running chain, complete private payment relation, confidential staking service or desktop wallet. Component results are recorded in [implementation milestones](development.md).
 

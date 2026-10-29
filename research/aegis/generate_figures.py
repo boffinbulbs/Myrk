@@ -36,7 +36,7 @@ THEMES = {
 }
 
 DATA = {
-    "format": "thorum.aegis.design-figures.v1",
+    "format": "kova.aegis.design-figures.v1",
     "status": "Later protocol design",
     "scope": "Planned protocol ordering and analytical state cursor examples only",
     "implemented_performance": False,
@@ -269,11 +269,11 @@ class Figure:
 
 
 def architecture():
-    figure = Figure("aegis-architecture", "Thorum Aegis later protocol architecture",
+    figure = Figure("aegis-architecture", "Kova Aegis later protocol architecture",
                     "Later design for one globally certified private state and one PoW recording chain. "
                     "C pays Y, Y recovers and spends from certified state to Z before later PoW recording. "
                     "Regular validator N independently verifies certificates and records. No timing claim.")
-    figure.header("Thorum Aegis private payment flow",
+    figure.header("Kova Aegis private payment flow",
                   "Later protocol design. Private onward spending follows a final stake commit.")
     figure.card(60, 155, 320, 185, "Wallet C", [
         "Constructs the private proof", "Encrypts delivery for Y", "Submits the payment",
@@ -339,11 +339,11 @@ def architecture():
 
 
 def certification_order():
-    figure = Figure("aegis-certification-order", "Thorum Aegis planned certification ordering",
+    figure = Figure("aegis-certification-order", "Kova Aegis planned certification ordering",
                     "Illustrative later protocol ordering with certified sequences zero, one and two. "
                     "The PoW recording cursor remains zero until one block records sequences one and two. "
                     "Vertical spacing is not an elapsed time scale and no performance is measured.")
-    figure.header("Thorum Aegis certification and PoW recording",
+    figure.header("Kova Aegis certification and PoW recording",
                   "Planned ordering for a later protocol upgrade.")
     figure.text(60, 132, "S validates the complete proof and global spent rights before every final commit.",
                 size=19, color=MUTED, max_width=1440)

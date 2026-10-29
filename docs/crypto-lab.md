@@ -71,7 +71,7 @@ Its overhead is exactly 1,618 bytes above plaintext length. The parser rejects u
 
 ## Authorization and information flow
 
-Authorization signs framed domain, suite, context, and bounded message bytes using the fixed FIPS context `Thorum crypto laboratory authorization v1`. A completed envelope can be serialized first and then authorized. Neither encryption nor key derivation depends on its later signature.
+Authorization signs framed domain, suite, context, and bounded message bytes using the fixed FIPS context `Kova crypto laboratory authorization v1`. A completed envelope can be serialized first and then authorized. Neither encryption nor key derivation depends on its later signature.
 
 ```mermaid
 flowchart LR

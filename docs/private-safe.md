@@ -2,7 +2,7 @@
 
 ## Scope and implementation status
 
-The Private Safe is an optional protected balance managed through the Thorum Qt wallet and enforced by the chain. Users choose between ordinary Spending receiving and Safe receiving, with a supported withdrawal delay selected for each Safe policy. Both paths retain the private payment requirements. Spending does not mean a transparent payment mode.
+The Private Safe is an optional protected balance managed through the Kova Qt wallet and enforced by the chain. Users choose between ordinary Spending receiving and Safe receiving, with a supported withdrawal delay selected for each Safe policy. Both paths retain the private payment requirements. Spending does not mean a transparent payment mode.
 
 This document defines later application and wallet architecture. Safe note encodings, private proofs, consensus transitions, monitoring and the Qt interface are not implemented. The first chain milestone retains its existing private payment, confidential stake, kernel and network gates. Safe delivery is a separate later milestone.
 
@@ -186,7 +186,7 @@ Migration, cancellation and completion cannot independently consume the same old
 
 Moving between cryptographic versions is not a withdrawal or a way to reset the response interval. A compromised or broken old scheme cannot be assumed to distinguish legitimate migration after the fact.
 
-Contracts on Thorum may use a supported Safe interface only through the same kernel and private relation. A contract, privileged wallet endpoint or later Aegis path cannot bypass the policy. Aegis must use the specified finalized mined clock and retain the pending consumption identity rather than replacing it with certification sequence. Unsupported rights remain unsupported under every client.
+Contracts on Kova may use a supported Safe interface only through the same kernel and private relation. A contract, privileged wallet endpoint or later Aegis path cannot bypass the policy. Aegis must use the specified finalized mined clock and retain the pending consumption identity rather than replacing it with certification sequence. Unsupported rights remain unsupported under every client.
 
 ## Privacy target and observable limits
 

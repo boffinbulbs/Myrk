@@ -1,6 +1,6 @@
 # Aegis architecture figures
 
-This directory retains reproducible figures for the later [Thorum Aegis Protocol](../../docs/aegis.md). The figures describe architecture and an illustrative ordering. They are not execution results, consensus simulations, privacy measurements or latency benchmarks. Aegis has no runtime implementation. The initial chain milestone retains checkpoint finality before onward spending.
+This directory retains reproducible figures for the later [Kova Aegis Protocol](../../docs/aegis.md). The figures describe architecture and an illustrative ordering. They are not execution results, consensus simulations, privacy measurements or latency benchmarks. Aegis has no runtime implementation. The initial chain milestone retains checkpoint finality before onward spending.
 
 ## Figures and definitions
 
