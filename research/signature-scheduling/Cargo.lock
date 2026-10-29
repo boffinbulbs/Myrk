@@ -752,7 +752,7 @@ dependencies = [
 
 [[package]]
 name = "kova-signature-scheduling"
-version = "0.2.0"
+version = "0.2.1"
 dependencies = [
  "p3-air",
  "p3-baby-bear",

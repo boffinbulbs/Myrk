@@ -1,5 +1,5 @@
 {
-  "format": "kova.signature-scheduling.provenance.v2",
+  "format": "kova.signature-scheduling.provenance.v3",
   "base_revision": "b0342d4d0874da712c4ca0be1644ebdb1549d914",
   "reference_directory": "research/signature-complete-native",
   "reference_files": {
@@ -126,6 +126,14 @@
     "research/signature-complete-native/static_check.py": {
       "bytes": 5770,
       "sha256": "b634dee8ba1ea4f82bb92008a48faa6eee3fdb8ca1175def5baead494f36cb64"
+    },
+    "research/signature-ownership/raw-fixture.json": {
+      "bytes": 88947,
+      "sha256": "10426a9bbfd10707b2a339c63c787bd8d119ee2c76a78316aa03c1edab80c2f2"
+    },
+    "research/signature-ownership/reference-fixture.json": {
+      "bytes": 8008075,
+      "sha256": "d9d6e61fb842512318b67d49a95efafe1100053eb9d2d1449b6ba425e708a3d9"
     }
   },
   "experiment_files": {
@@ -135,11 +143,11 @@
     },
     "Cargo.lock": {
       "bytes": 19750,
-      "sha256": "112335c39ab9efce8969249b239409ed73b452051e752f7aef12bcddcb617384"
+      "sha256": "e0119392542c4b6e055f9fc7832d40058ee9af4cccb7ef66f8cb708e28c03356"
     },
     "Cargo.toml": {
       "bytes": 975,
-      "sha256": "b604791f24d72ca02ba4c1e782475684f9713fdf6203ec8288c6fb3801316411"
+      "sha256": "4a275680e67e23589418dcf674ca59ebb85d4275c958bf768052a15c5140324d"
     },
     "clock-reference.json": {
       "bytes": 2947,
@@ -154,36 +162,52 @@
       "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
     },
     "README.md": {
-      "bytes": 7681,
-      "sha256": "9676140652b08cf139ce9308389b5d053a5ef825424512ed20e5ab13b37ee8e5"
+      "bytes": 9553,
+      "sha256": "4d0b1eec3a470e90aa57cb6e873fd0bdd1eb0c831792e3b4f364921df1edc7ef"
     },
     "records/costs-v1.json": {
       "bytes": 1668,
       "sha256": "b268d07f42c2c53e5d9becdb799a9a166dc7eefcb0484d6693f8d9390129f617"
     },
+    "records/costs-v2.json": {
+      "bytes": 2414,
+      "sha256": "c1d0e64419f8d9c83797fc1fff7bf0aa6da5720c17686ef31ea20f8fb6754c36"
+    },
     "records/provenance-v1.json": {
       "bytes": 8468,
       "sha256": "621b0ea815e8ea8461738173700a94e63a98ed558da641b6932aae1e2a93dc4c"
     },
+    "records/provenance-v2.json": {
+      "bytes": 9560,
+      "sha256": "613f1868ec1614a86b5725658fd027f3f464bcbecd19c0ee50c3dfdd4578f0f9"
+    },
     "records/README.md": {
-      "bytes": 807,
-      "sha256": "b023ca861fa11f26b2d8eb1e571ed68153a9a536cd77ba1d5449bf4f2f81ff9b"
+      "bytes": 1182,
+      "sha256": "e18dc435747c6bdaaae245a6744edc4d40a24a819e3793ea054a1a44a25fc79f"
     },
     "records/validation-v1.json": {
       "bytes": 1205,
       "sha256": "c935eca687511806349beebf18ec38ba6fd0c2dbaebe499ee2d6bcd5cf4d2918"
     },
+    "records/validation-v2.json": {
+      "bytes": 1309,
+      "sha256": "4c50e8938a36c5ef951eecfec138ef3a74fbae4501e65b07d3535d8ef84dfc6c"
+    },
     "reference.py": {
       "bytes": 738,
       "sha256": "018ff4b320aa9c74d9d8da242d5431ab2a08a691fcb18798356486d86e014b43"
+    },
+    "run_native_guarded_windows.ps1": {
+      "bytes": 13348,
+      "sha256": "dc515dd9cb5e1901bc15a230e14ec31171c63971f729bece2f4d646dc7a40711"
     },
     "schedule.svg": {
       "bytes": 2326,
       "sha256": "729e9fdaba396bb5d58c33d0f832b9d03628abeef4d84b726b726bcc2c180312"
     },
     "source-delta.patch": {
-      "bytes": 5272,
-      "sha256": "3c2727da3fb2b3fe41eade7121b83e1a5f5a0d004e867bce92a541cc3d78507e"
+      "bytes": 5325,
+      "sha256": "d8811f6470ea9c9dbf2cbe1a288bce502e2a5af70379a775252b6812e64f2356"
     },
     "src/activity.rs": {
       "bytes": 3215,
@@ -210,12 +234,16 @@
       "sha256": "1fd11b93f39bfb8a36facf374555d82f363f62b6bbf1a38f917be2c99791c76f"
     },
     "src/lib.rs": {
-      "bytes": 2247,
-      "sha256": "d5d9352d7287cebf47db72d731d95f4c49b5f6772efdc4868d5b58d850c3bbb6"
+      "bytes": 2279,
+      "sha256": "01e8d4f32f9201a4709eff15a1d4cc43252e7925b93fc42695ad3c36fa37c934"
     },
     "src/matrix.rs": {
       "bytes": 15430,
       "sha256": "e1cd98932ee0729db7269d070c505a3827a424f219339754cc8d5b68e4f13db3"
+    },
+    "src/native_tests.rs": {
+      "bytes": 14992,
+      "sha256": "33c1debbb97e8d5281354bd514a29db758d116b0dd2ea0b10a4ff5649e6337a2"
     },
     "src/program.rs": {
       "bytes": 1692,
@@ -230,8 +258,8 @@
       "sha256": "fd2ea835e57fa443edf58f08985207e04cdb4df21d950fb5746970d8e3cab828"
     },
     "static_check.py": {
-      "bytes": 1625,
-      "sha256": "eed3d6d39686507b215992d41dd78702edf44ad9c403df0246e64a89a6090049"
+      "bytes": 1966,
+      "sha256": "8fd7dc4e4c14e2fcf7e5ce37cb5d9b6ea957829d74e22196ac395ca952bb3d85"
     },
     "test_compare.py": {
       "bytes": 2028,
@@ -248,9 +276,21 @@
     "sampler.rs",
     "matrix.rs"
   ],
-  "previous_experiment_revision": "87c50b570c380cd8d9f0297b9b1dbea775d1cba1",
+  "previous_experiment_revision": "c855cd3722834fe4bb0fa9bfefe8ca60901a6fdd",
   "registry_packages": 80,
   "retained_registry_identities": true,
   "registry_feature_closure_unchanged": true,
-  "original_license_retained": true
+  "original_license_retained": true,
+  "preserved_equation_files": [
+    "air.rs",
+    "layout.rs",
+    "program.rs",
+    "full_program.rs",
+    "build.rs",
+    "clock.rs",
+    "activity.rs",
+    "sampler.rs",
+    "matrix.rs"
+  ],
+  "native_test_adapter_reference": "research/signature-complete-native/src/full_tests.rs"
 }

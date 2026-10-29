@@ -77,3 +77,6 @@ impl Statement {
             .collect()
     }
 }
+
+#[cfg(test)]
+mod native_tests;

@@ -1,0 +1,427 @@
+//! Native constraint, reference and source-route tests for the bounded relation.
+use super::*;
+use crate::FactorSignatureOwnerAir as FullPrivateSignatureOwnerAir;
+use full_program as fp;
+use layout::*;
+use p3_air::{check_all_constraints, Air, BaseAir, DebugConstraintBuilder};
+use p3_field::{PrimeCharacteristicRing, PrimeField32};
+use p3_matrix::{
+    dense::{RowMajorMatrix, RowMajorMatrixView},
+    stack::ViewPair,
+    Matrix,
+};
+use serde::{de::DeserializeOwned, Deserialize};
+use std::collections::BTreeMap;
+use thorum_core::Amount;
+use thorum_crypto_lab::{SealedNote, KEM_CIPHERTEXT_BYTES};
+use thorum_relation_lab::PaymentOutput;
+
+fn gate(name: &str) {
+    assert_eq!(
+        std::env::var(name).as_deref(),
+        Ok("reviewed-external-resource-admission"),
+        "Actual external resource limits and separate source review must precede test selection"
+    );
+}
+#[derive(Deserialize)]
+struct Raw {
+    keys: Vec<Key>,
+    signatures: Vec<Signature>,
+}
+#[derive(Deserialize)]
+struct Key {
+    id: String,
+    public_key_hex: String,
+}
+#[derive(Deserialize)]
+struct Signature {
+    id: String,
+    signature_hex: String,
+}
+#[derive(Deserialize)]
+struct Reference {
+    raw_sha256: String,
+    notes: BTreeMap<String, Note>,
+    transactions: Vec<Transaction>,
+    key_matrices: BTreeMap<String, Vec<MatrixReference>>,
+    signature_records: Vec<Record>,
+    tuples: Vec<Tuple>,
+}
+#[derive(Deserialize)]
+struct Note {
+    opening_hex: String,
+}
+#[derive(Deserialize)]
+struct Transaction {
+    id: String,
+    fee_atoms: u64,
+}
+#[derive(Deserialize)]
+struct Tuple {
+    id: String,
+    signature_id: String,
+    key_id: String,
+    transaction_id: String,
+    note_id: String,
+    bounded_supported: bool,
+    conditional_verdict: String,
+}
+#[derive(Deserialize)]
+struct Record {
+    id: String,
+    key_id: String,
+    transaction_id: String,
+    fixed_target_stages: Stages,
+}
+#[derive(Deserialize)]
+struct Stages {
+    zhat: Vec<Vec<u32>>,
+    chat: Vec<u32>,
+    rows: Vec<RowReference>,
+    mu_hex: String,
+    packed_w1_hex: String,
+    challenge_expected_hex: String,
+}
+#[derive(Deserialize)]
+struct RowReference {
+    row: usize,
+    columns: Vec<ColumnReference>,
+    t1hat: Vec<u32>,
+    challenge_products: Vec<u32>,
+    inverse_input: Vec<u32>,
+    inverse_output: Vec<u32>,
+    hints: Vec<u8>,
+    packed_w1_hex: String,
+}
+#[derive(Deserialize)]
+struct ColumnReference {
+    column: usize,
+    after: Vec<u32>,
+}
+#[derive(Deserialize)]
+struct MatrixReference {
+    row: usize,
+    column: usize,
+    coefficients: Vec<u32>,
+    cursor: Cursor,
+    six_block_stream_hex: String,
+}
+#[derive(Deserialize)]
+struct Cursor {
+    bytes_consumed: usize,
+}
+
+// Unknown large diagnostic fields are skipped by serde instead of becoming a
+// serde_json::Value tree. File bytes pass through one bounded16KiB reader.
+fn read<T: DeserializeOwned>(name: &str) -> T {
+    use std::io::Read;
+    const LIMIT: u64 = 9 * 1024 * 1024;
+    let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("../signature-ownership")
+        .join(name);
+    let file = std::fs::File::open(path).unwrap();
+    let metadata = file.metadata().unwrap();
+    assert!(metadata.is_file() && metadata.len() <= LIMIT);
+    let reader = std::io::BufReader::with_capacity(16 * 1024, file.take(LIMIT + 1));
+    serde_json::from_reader(reader).unwrap()
+}
+fn bytes<const N: usize>(s: &str) -> [u8; N] {
+    assert_eq!(s.len(), 2 * N);
+    core::array::from_fn(|i| u8::from_str_radix(&s[2 * i..2 * i + 2], 16).unwrap())
+}
+fn transaction(fee: u64) -> PaymentStatement {
+    PaymentStatement {
+        chain_id: core::array::from_fn(|i| i as u8),
+        protocol_version: 7,
+        validation_tag: [0x33; 32],
+        anchor: [0x44; 64],
+        input_nullifiers: vec![[0x50; 64], [0x51; 64]],
+        outputs: (0..2)
+            .map(|i| PaymentOutput {
+                commitment: [0x60 + i; 64],
+                envelope: SealedNote {
+                    kem_ciphertext: vec![0x70 + i; KEM_CIPHERTEXT_BYTES],
+                    nonce: [0x80 + i; 12],
+                    ciphertext: vec![0x90 + i; 32],
+                },
+            })
+            .collect(),
+        native_fee: Amount::from_atomic(fee),
+    }
+}
+fn fixture(raw: &Raw, r: &Reference, t: &Tuple) -> (Witness, PaymentStatement) {
+    let key = raw.keys.iter().find(|v| v.id == t.key_id).unwrap();
+    let sig = raw
+        .signatures
+        .iter()
+        .find(|v| v.id == t.signature_id)
+        .unwrap();
+    let note = &r.notes[&t.note_id];
+    let tx = r
+        .transactions
+        .iter()
+        .find(|v| v.id == t.transaction_id)
+        .unwrap();
+    (
+        Witness::from_sources(
+            bytes(&key.public_key_hex),
+            bytes(&sig.signature_hex),
+            bytes(&note.opening_hex),
+        ),
+        transaction(tx.fee_atoms),
+    )
+}
+fn bits(row: &[BabyBear], at: usize, n: usize) -> u32 {
+    (0..n).map(|i| row[at + i].as_canonical_u32() << i).sum()
+}
+fn valid(trace: &RowMajorMatrix<BabyBear>, public: &[BabyBear]) -> bool {
+    check_all_constraints(&FullPrivateSignatureOwnerAir, trace, public, Some(1)).is_ok()
+}
+fn single_cell_affected_frames_valid(
+    trace: &RowMajorMatrix<BabyBear>,
+    public: &[BabyBear],
+    mutation_row: usize,
+) -> bool {
+    assert_eq!(
+        (trace.height(), trace.width(), public.len()),
+        (HEIGHT, WIDTH, PUBLIC_VALUES)
+    );
+    assert!(mutation_row > 0 && mutation_row + 1 < HEIGHT);
+    let air = FullPrivateSignatureOwnerAir;
+    assert_eq!(
+        <FullPrivateSignatureOwnerAir as BaseAir<BabyBear>>::preprocessed_width(&air),
+        0
+    );
+    assert!(
+        <FullPrivateSignatureOwnerAir as BaseAir<BabyBear>>::preprocessed_trace(&air).is_none()
+    );
+    assert_eq!(
+        <FullPrivateSignatureOwnerAir as BaseAir<BabyBear>>::num_periodic_columns(&air),
+        0
+    );
+    assert!(
+        <FullPrivateSignatureOwnerAir as BaseAir<BabyBear>>::public_boundary_io(&air).is_empty()
+    );
+
+    // The AIR reads only the current and next main rows. With a known valid
+    // complete trace and unchanged public values, metadata and selectors, a
+    // single changed cell on interior row r can affect only frames r-1 and r.
+    // Each case below changes exactly that cell and restores its exact value.
+    // These are borrowed frames of the full trace, not a two-row mini trace.
+    let mut frames_valid = true;
+    for row_index in [mutation_row - 1, mutation_row] {
+        let local = &trace.values[row_index * WIDTH..(row_index + 1) * WIDTH];
+        let next = &trace.values[(row_index + 1) * WIDTH..(row_index + 2) * WIDTH];
+        let main = ViewPair::new(
+            RowMajorMatrixView::new_row(local),
+            RowMajorMatrixView::new_row(next),
+        );
+        let empty: &[BabyBear] = &[];
+        let preprocessed = ViewPair::new(
+            RowMajorMatrixView::new(empty, 0),
+            RowMajorMatrixView::new(empty, 0),
+        );
+        let periodic =
+            <FullPrivateSignatureOwnerAir as BaseAir<BabyBear>>::periodic_values(&air, row_index);
+        assert!(periodic.is_empty());
+        let mut builder = DebugConstraintBuilder::new(
+            row_index,
+            main,
+            preprocessed,
+            public,
+            BabyBear::from_bool(row_index == 0),
+            BabyBear::from_bool(row_index == HEIGHT - 1),
+            BabyBear::from_bool(row_index != HEIGHT - 1),
+            &periodic,
+        );
+        air.eval(&mut builder);
+        frames_valid &= !builder.has_failures();
+    }
+    frames_valid
+}
+fn assert_poly(row: &[BabyBear], at: usize, expected: &[u32]) {
+    assert_eq!(expected.len(), 256);
+    for (k, v) in expected.iter().enumerate() {
+        assert!(
+            row[at + k].as_canonical_u32() == *v,
+            "private polynomial reference mismatch"
+        );
+    }
+}
+fn assert_bytes(row: &[BabyBear], at: usize, expected: &[u8]) {
+    for (k, v) in expected.iter().enumerate() {
+        assert!(
+            row[at + k].as_canonical_u32() == u32::from(*v),
+            "private byte reference mismatch"
+        );
+    }
+}
+fn compare_matrix(trace: &RowMajorMatrix<BabyBear>, r: &Reference, t: &Tuple) {
+    let matrices = &r.key_matrices[&t.key_id];
+    assert_eq!(matrices.len(), 56);
+    for i in 0..8 {
+        for j in 0..7 {
+            let expected = &matrices[7 * i + j];
+            assert_eq!((expected.row, expected.column), (i, j));
+            let start = fp::matrix_start(i, j);
+            let stream = bytes::<1008>(&expected.six_block_stream_hex);
+            assert_bytes(&trace.row_slice(start + 36).unwrap(), MATRIX_XOF, &stream);
+            for block in 0..6 {
+                let row = trace.row_slice(start + 6 * (block + 1)).unwrap();
+                assert_bytes(
+                    &row,
+                    MATRIX_XOF + 168 * block,
+                    &stream[168 * block..168 * (block + 1)],
+                );
+            }
+            let zero = trace.row_slice(start).unwrap();
+            assert!(zero[MATRIX_XOF..MATRIX_XOF + 1008]
+                .iter()
+                .all(|v| *v == BabyBear::ZERO));
+            let terminal = trace.row_slice(start + 47).unwrap();
+            assert!(
+                terminal[MATRIX_COUNT + 8 * 257 + 256] == BabyBear::ONE,
+                "matrix completion sentinel mismatch"
+            );
+            assert!(
+                bits(&terminal, MATRIX_CURSOR + 80, 10) as usize == expected.cursor.bytes_consumed,
+                "private matrix cursor reference mismatch"
+            );
+            let mut accepted = 0;
+            for u in 0..42 {
+                let row = trace.row_slice(start + 6 + u).unwrap();
+                for s in 0..8 {
+                    if row[MATRIX_TAKE + s] == BabyBear::ONE {
+                        assert!(
+                            bits(&row, MATRIX_CANDIDATE + 24 * s, 23)
+                                == expected.coefficients[accepted],
+                            "private matrix coefficient reference mismatch"
+                        );
+                        accepted += 1;
+                    }
+                }
+            }
+            assert_eq!(accepted, 256);
+        }
+    }
+}
+fn compare_stages(trace: &RowMajorMatrix<BabyBear>, r: &Reference, t: &Tuple) {
+    let record = r
+        .signature_records
+        .iter()
+        .find(|v| v.id == t.signature_id)
+        .unwrap();
+    if record.key_id != t.key_id {
+        return;
+    }
+    let stage = &record.fixed_target_stages;
+    let last = trace.row_slice(HEIGHT - 1).unwrap();
+    for j in 0..7 {
+        assert_poly(&last, NTT_OUTPUT + 256 * j, &stage.zhat[j]);
+    }
+    assert_poly(&last, NTT_OUTPUT + 7 * 256, &stage.chat);
+    for i in 0..8 {
+        let row = &stage.rows[i];
+        assert_eq!(row.row, i);
+        assert_poly(&last, NTT_OUTPUT + 256 * (8 + i), &row.t1hat);
+        for j in 0..7 {
+            assert_eq!(row.columns[j].column, j);
+            assert_poly(
+                &trace.row_slice(fp::matrix_start(i, j) + 48).unwrap(),
+                ACCUMULATOR + 256 * i,
+                &row.columns[j].after,
+            );
+        }
+        let point = fp::POINT_START + 32 * i;
+        for g in 0..32 {
+            let actual = trace.row_slice(point + g).unwrap();
+            for s in 0..8 {
+                assert!(
+                    bits(&actual, EXTRA_PRODUCTS + s * mul::WIDTH + 3 * 23, 23)
+                        == row.challenge_products[8 * g + s],
+                    "private challenge product reference mismatch"
+                );
+            }
+        }
+        assert_poly(
+            &trace.row_slice(point + 32).unwrap(),
+            ACCUMULATOR + 256 * i,
+            &row.inverse_input,
+        );
+        assert_poly(
+            &trace.row_slice(fp::INVERSE_START + 224 * i + 192).unwrap(),
+            NTT_SCRATCH,
+            &row.inverse_output,
+        );
+        for k in 0..256 {
+            assert!(
+                last[HINTS + 256 * i + k].as_canonical_u32() == u32::from(row.hints[k]),
+                "private hint reference mismatch"
+            );
+        }
+        assert_bytes(&last, W1 + 128 * i, &bytes::<128>(&row.packed_w1_hex));
+    }
+    assert_bytes(&last, W1, &bytes::<1024>(&stage.packed_w1_hex));
+    if record.transaction_id == t.transaction_id {
+        assert_bytes(&last, MU, &bytes::<64>(&stage.mu_hex));
+        let final_row = trace.row_slice(fp::FINAL_END - 1).unwrap();
+        let expected = bytes::<64>(&stage.challenge_expected_hex);
+        for (k, expected_byte) in expected.iter().enumerate() {
+            assert!(
+                bits(&final_row, OUTPUT + 8 * k, 8) == u32::from(*expected_byte),
+                "private final digest reference mismatch"
+            );
+        }
+    }
+}
+
+#[test]
+#[ignore = "Separate native trace construction and constraint resource admission"]
+fn a0_native_baseline_and_activity_mutations() {
+    gate("KOVA_BOUND_NATIVE_GATE");
+    let raw: Raw = read("raw-fixture.json");
+    let reference: Reference = read("reference-fixture.json");
+    assert_eq!(
+        reference.raw_sha256,
+        "10426a9bbfd10707b2a339c63c787bd8d119ee2c76a78316aa03c1edab80c2f2"
+    );
+    let tuple = reference
+        .tuples
+        .iter()
+        .find(|tuple| tuple.id == "A0")
+        .unwrap();
+    assert!(tuple.bounded_supported && tuple.conditional_verdict == "AcceptConditional");
+    let (witness, transaction) = fixture(&raw, &reference, tuple);
+    let public = Statement::from_transaction(&transaction)
+        .unwrap()
+        .public_values();
+    let mut trace = build_full_private_signature_owner_sources(&witness, &transaction).unwrap();
+    assert_eq!(
+        (trace.height(), trace.width(), trace.values.len() * 4),
+        (8192, 47058, 1541996544)
+    );
+    compare_matrix(&trace, &reference, tuple);
+    compare_stages(&trace, &reference, tuple);
+    assert!(valid(&trace, &public), "complete A0 native relation");
+    let mut mutations = vec![(12, ACTIVE_CHALLENGE)];
+    mutations.extend((0..8).map(|index| (fp::MATRIX_START + 6, ACTIVE_MATRIX + index)));
+    for (row, column) in mutations {
+        assert!(single_cell_affected_frames_valid(&trace, &public, row));
+        let index = row * WIDTH + column;
+        let original = trace.values[index];
+        assert_eq!(original, BabyBear::ONE);
+        trace.values[index] = BabyBear::ZERO;
+        assert!(!single_cell_affected_frames_valid(&trace, &public, row));
+        trace.values[index] = original;
+        assert!(single_cell_affected_frames_valid(&trace, &public, row));
+    }
+    let index = 12 * WIDTH + ACTIVE_CHALLENGE;
+    trace.values[index] = BabyBear::ZERO;
+    assert!(
+        !valid(&trace, &public),
+        "actual full relation rejects corrupted activity"
+    );
+    trace.values[index] = BabyBear::ONE;
+    assert!(single_cell_affected_frames_valid(&trace, &public, 12));
+    println!("native_A0_accept=1 independent_stages=pass activity_local_rejections=9 full_negative=1 native_traces=1 raw_field_bytes=1541996544 backend_proofs=0");
+}

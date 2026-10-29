@@ -32,6 +32,10 @@
 @@ -39 +51 @@
 -mod full_tests;
 +mod tests;
+@@ -67,0 +80,3 @@
++
++#[cfg(test)]
++mod native_tests;
 --- reference/src/layout.rs
 +++ experiment/src/layout.rs
 @@ -6 +6,3 @@

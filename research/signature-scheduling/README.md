@@ -47,7 +47,15 @@ The [validation record](validation.json) reports seven ordinary tests and one se
 
 The complete equation set contains 181221 constraints per row and has degree four at width 47058. The symbolic process used a verified 512 MiB process and aggregate limit, a 120 second deadline and at least 2 GiB free memory admission. Its peak process commit was 308523008 bytes and peak aggregate commit 309809152 bytes on Windows with Rust 1.94.1. It built expression trees, not a native field trace.
 
-No native signature tuple, complete native trace or hiding proof was executed for this variant. Source reuse and symbolic inspection do not substitute for those validation gates. The exported research constructor is unmeasured in this variant and is not used by the ordinary or symbolic tests.
+## Native baseline
+
+The separately gated native test constructs one actual synthetic A0 trace, checks the supported matrix and signature stages against the retained independent integer reference and evaluates the complete signature and owner equations. That case passes. Nine activity cell mutations reject through the two affected full AIR frames, with their original global row selectors and exact restoration. One corrupted activity field also rejects in complete AIR evaluation. Several equations may detect a mutation. These cases do not isolate a single producer assertion.
+
+The complete valid baseline and the AIR's current and next row access justify the localized mutation checks. They are borrowed frames of the full trace, not a two row replacement trace. The test keeps one wide trace at a time and never clones it. Its raw field contents are 1541996544 bytes. On the recorded Windows execution, peak process commit was 1547743232 bytes and aggregate commit was 1549017088 bytes. Both limits were installed and read back at 2 GiB before resume, with 5 GiB free physical memory admission and a 300 second deadline.
+
+The [native guard](run_native_guarded_windows.ps1) and exact ignored test are public. The signature and note values are existing public synthetic fixtures. No signing or fixture regeneration occurs. The original degree four symbolic result is retained from [version two](records/validation-v2.json), with exact equality of the nine equation source files checked before this native record.
+
+Only A0 has native tuple validation in this scheduling variant. The other reference tuples, reconstructed hostile suffixes and complete hiding proof remain separate gates. Native checks directly receive the private witness and do not establish network privacy or proof security.
 
 ## Conditional complete cost
 
@@ -80,7 +88,7 @@ Version two retains the original quotient size and eleven field files while redu
 2. A structured controller can retain explicit indicators for expensive events. Its producer, reset and hold rules must bind every consumer before register reuse is valid.
 3. The retained AIR interface supports verifier defined periodic columns and authenticated preprocessed columns. Their public values, transcript binding, queried widths and evaluation tables have costs. Moving a wide schedule into public preprocessing does not make that cost disappear.
 
-Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is native reference tuple and adversarial source validation for the changed schedule before any full proof integration.
+Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is the remaining native reference tuples and adversarial source validation for the changed schedule before any full proof integration.
 
 ## Reproduction
 
@@ -94,4 +102,4 @@ cargo test --manifest-path research/signature-scheduling/Cargo.toml --release --
 cargo clippy --manifest-path research/signature-scheduling/Cargo.toml --release --all-targets --locked -- -D warnings
 ```
 
-The ignored symbolic test requires its exact resource admission and environment marker. The marker acknowledges an installed external limit and does not install one. Ordinary tests do not run the symbolic test. No complete signature prover is included.
+Both ignored tests require their own exact resource admission and environment markers. A marker acknowledges an installed external limit and does not install one. Ordinary tests execute neither ignored test. For the native case, build the release test executable, set KOVA_BOUND_NATIVE_GATE to reviewed-external-resource-admission and pass that executable to the guard with the exact selection native_tests::a0_native_baseline_and_activity_mutations, --exact --ignored --nocapture --test-threads=1, ExpectedTests 1 and TimeoutSeconds 300. Use a fresh output prefix. No complete signature prover is included.
