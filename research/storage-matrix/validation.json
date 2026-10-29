@@ -1,0 +1,60 @@
+{
+  "format": "kova.storage-matrix.validation.v1",
+  "scope": "Synthetic checked row access and retained Matrix trait integration only",
+  "host": "Windows x86_64",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "backend_proofs": 0,
+  "full_prover_memory_measurement": false,
+  "hard_runtime_memory_guard": false,
+  "maximum_fixture_bytes": 196608,
+  "source_files": {
+    "Cargo.lock": {
+      "bytes": 9280,
+      "sha256": "c698c7c75343742f9fc9497a7e550372f8fcf5a831987f3c6865ae5743413e9a"
+    },
+    "Cargo.toml": {
+      "bytes": 473,
+      "sha256": "5f6fb53da00ba7b5505c74cebc47183452579f035c72192f8b1e22de02a347e1"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "README.md": {
+      "bytes": 3684,
+      "sha256": "098eed5890a46486914793b22b08d3c1a2ca01a5a34b67372fe23fbc3143c0b9"
+    },
+    "src/lib.rs": {
+      "bytes": 5005,
+      "sha256": "0ed7090fbce02c497489b9669b1ffe6998b7c8a46e06dbf0c5a7fb49983d4180"
+    },
+    "src/tests.rs": {
+      "bytes": 7119,
+      "sha256": "11d57eb41e0176d49fada1718d5f84321bda3e2da54bf98e28e174cebbe17563"
+    }
+  },
+  "registry_packages": 37,
+  "registry_tuple_and_checksum_subset_of_root_lock": true,
+  "root_lock": {
+    "bytes": 25648,
+    "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5"
+  },
+  "commands": [
+    {
+      "command": "cargo fmt --manifest-path research/storage-matrix/Cargo.toml -- --check",
+      "exit_code": 0
+    },
+    {
+      "command": "cargo clippy --manifest-path research/storage-matrix/Cargo.toml --all-targets --locked --offline --jobs 1 -- -D warnings",
+      "exit_code": 0
+    },
+    {
+      "command": "cargo test --manifest-path research/storage-matrix/Cargo.toml --locked --offline --jobs 1 -- --test-threads=1",
+      "exit_code": 0,
+      "passed": 7,
+      "failed": 0,
+      "ignored": 0,
+      "unix_specific_tests": "Not executed on this Windows host"
+    }
+  ]
+}

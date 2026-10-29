@@ -80,6 +80,8 @@ The [native signature laboratory](research/signature-native/README.md) constrain
 
 The [complete bounded native relation](research/signature-complete-native/README.md) adds all 56 matrix streams, eight reconstructed rows, normalized inverse transforms, actual hints, private packed bytes and the full final challenge equality. It binds the same key and note owner to authorization derived from the typed transaction. Native evaluation receives private data directly. A hiding proof backend, private ledger composition and their security and resource analysis remain separate gates before payment acceptance.
 
+The [checked storage matrix](research/storage-matrix/README.md) supplies owned synthetic rows through the retained matrix interface, with canonical field decoding, checked windows and explicit storage failures. It is a storage integration component. Complete commitment, quotient and FRI integration remains separate from these accessor tests.
+
 The [proof feasibility record](docs/proof-feasibility.md) distinguishes implemented experiments from open hiding, knowledge soundness, quantum model, resource and composition obligations. Standardized primitives and full digests do not establish the composed protocol's security level.
 
 ## Native accounting and consensus targets

@@ -92,6 +92,15 @@ jobs:
       - name: Check complete native signature lints
         if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-complete-native/Cargo.toml --release --all-targets --locked --offline --target-dir target/signature-complete-native -- -D warnings
+      - name: Check storage matrix formatting
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/storage-matrix/Cargo.toml -- --check
+      - name: Test checked storage matrix
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo test --manifest-path research/storage-matrix/Cargo.toml --locked --offline --jobs 1 --target-dir target/storage-matrix -- --test-threads=1
+      - name: Check storage matrix lints
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/storage-matrix/Cargo.toml --all-targets --locked --offline --target-dir target/storage-matrix -- -D warnings
       - name: Check lints
         if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings

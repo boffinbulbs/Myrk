@@ -27,7 +27,7 @@ The later [Aegis state architecture](aegis.md) adds verification and synchroniza
 
 Service integration is an engineering target. An exchange independently decides whether and when to support an asset. Protocol software cannot guarantee admission, liquidity or a listing date.
 
-A service needs a documented network identifier, canonical address codec, stable transaction and node APIs, reproducible node builds, supported upgrade behavior and a private wallet integration. The main address namespace target remains `thm`, with versioned types and checksums still subject to the [address specification](wallet.md#address-namespace).
+A service needs a documented network identifier, canonical address codec, stable transaction and node APIs, reproducible node builds, supported upgrade behavior and a private wallet integration. The main address namespace target remains `kova`, with versioned types and checksums still subject to the [address specification](wallet.md#address-namespace).
 
 | Interface | Required behavior |
 |---|---|

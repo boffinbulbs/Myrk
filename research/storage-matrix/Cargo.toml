@@ -1,0 +1,21 @@
+[package]
+name = "kova-storage-matrix"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.94.1"
+publish = false
+license = "MIT"
+repository = "https://github.com/th0rigin/Kova"
+
+[dependencies]
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+
+[profile.test]
+overflow-checks = true
