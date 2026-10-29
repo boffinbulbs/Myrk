@@ -1,0 +1,9 @@
+# Source provenance
+
+The backend directory contains an adaptation of p3-fri 0.8.0 from Plonky3 revision a21e3ed42905040ad49c519e402f018381c12d0c, path fri. Original copyright is retained in backend/LICENSE-MIT. The backend is available under its original MIT OR Apache-2.0 terms. The test harness, storage policy, independent reference and new documentation use the repository MIT license.
+
+Original source identities are recorded in backend/upstream-source-sha256.json. Original package metadata, README and changelog are retained with the upstream prefix. The exact adaptation is recorded in backend/source-changes.patch. Four original Rust files change and storage.rs is added. Six original files, including proof, verifier and both transcript modules, remain byte identical.
+
+The library adds a generic committed matrix storage policy, checked physical row prefixes and domain views. FRI input helpers accept the actual committed matrix type. Hiding metadata, randomization, quotient coupling, single use state and transcript ordering retain their original algorithms. The finite harness uses the separately retained registry p3-fri as its verifier and dense reference implementation.
+
+The test hash framing follows the existing laboratory framing with fresh kova.storage-pcs domains. The independent trace reference uses integer modular exponentiation. Exact dependency versions and checksums are retained in Cargo.lock and checked against the repository dependency inventory. No registry source or original attribution is replaced.

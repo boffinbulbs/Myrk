@@ -1,0 +1,555 @@
+--- upstream/src/hiding_pcs.rs
++++ adapted/src/hiding_pcs.rs
+@@ -2,6 +2,7 @@
+ use alloc::vec::Vec;
+ use core::sync::atomic::{AtomicBool, Ordering};
+ 
++use crate::storage::{DenseStore, MatrixStore};
+ use itertools::Itertools;
+ use p3_challenger::{CanObserve, FieldChallenger, GrindingChallenger};
+ use p3_commit::{
+@@ -11,10 +12,9 @@
+ use p3_field::coset::TwoAdicMultiplicativeCoset;
+ use p3_field::{ExtensionField, PrimeField64, TwoAdicField, batch_multiplicative_inverse};
+ use p3_matrix::Matrix;
+-use p3_matrix::bitrev::{BitReversalPerm, BitReversibleMatrix};
+-use p3_matrix::dense::{DenseMatrix, RowMajorMatrix, RowMajorMatrixCow};
++use p3_matrix::bitrev::BitReversibleMatrix;
++use p3_matrix::dense::{DenseMatrix, RowMajorMatrix};
+ use p3_matrix::horizontally_truncated::HorizontallyTruncated;
+-use p3_matrix::row_index_mapped::RowIndexMappedView;
+ use p3_util::log2_strict_usize;
+ use rand::distr::{Distribution, StandardUniform};
+ use rand::{CryptoRng, RngExt, SeedableRng};
+@@ -78,8 +78,8 @@
+ /// These checks do not replace the hiding-MMCS and unpredictable-seeding requirements above,
+ /// or the STARK protocol's randomization polynomial and out-of-domain challenge sampling.
+ #[derive(Debug)]
+-pub struct HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R> {
+-    inner: TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs>,
++pub struct HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R, Store = DenseStore> {
++    inner: TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store>,
+     num_random_codewords: usize,
+     rng: Mutex<R>,
+ }
+@@ -109,7 +109,8 @@
+ 
+ /// Cloning forks the RNG stream by drawing a fresh seed from the source RNG,
+ /// so the clone and the original never produce the same sequence of masks.
+-impl<Val, Dft, InputMmcs, FriMmcs, R> Clone for HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R>
++impl<Val, Dft, InputMmcs, FriMmcs, R, Store: Clone> Clone
++    for HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R, Store>
+ where
+     Val: Clone,
+     Dft: Clone,
+@@ -141,6 +142,17 @@
+             rng: Mutex::new(rng),
+         }
+     }
++}
++
++impl<Val, Dft, InputMmcs, FriMmcs, R, Store> HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R, Store> {
++    /// Move the PCS into a storage policy without cloning either RNG.
++    pub fn with_storage<S>(self, storage: S) -> HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R, S> {
++        HidingFriPcs {
++            inner: self.inner.with_storage(storage),
++            num_random_codewords: self.num_random_codewords,
++            rng: self.rng,
++        }
++    }
+ 
+     fn hiding_budget(&self, extension_degree: usize, num_points: usize) -> Option<usize> {
+         extension_degree
+@@ -194,9 +206,10 @@
+     }
+ }
+ 
+-impl<Val, Dft, InputMmcs, FriMmcs, Challenge, Challenger, R> Pcs<Challenge, Challenger>
+-    for HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R>
++impl<Val, Dft, InputMmcs, FriMmcs, Challenge, Challenger, R, Store> Pcs<Challenge, Challenger>
++    for HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R, Store>
+ where
++    Store: MatrixStore<Val>,
+     Val: TwoAdicField + PrimeField64,
+     StandardUniform: Distribution<Val>,
+     Dft: TwoAdicSubgroupDft<Val>,
+@@ -209,7 +222,7 @@
+ {
+     type Domain = TwoAdicMultiplicativeCoset<Val>;
+     type Commitment = InputMmcs::Commitment;
+-    type ProverData = HidingFriPcsProverData<InputMmcs::ProverData<RowMajorMatrix<Val>>>;
++    type ProverData = HidingFriPcsProverData<InputMmcs::ProverData<Store::Stored>>;
+ 
+     /// The first item contains the openings of the random polynomials added by this wrapper.
+     /// The second item is the usual FRI proof.
+@@ -222,7 +235,7 @@
+     type ProverError = HidingFriProverError;
+ 
+     fn natural_domain_for_degree(&self, degree: usize) -> Self::Domain {
+-        <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> as Pcs<Challenge, Challenger>>::natural_domain_for_degree(
++        <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store> as Pcs<Challenge, Challenger>>::natural_domain_for_degree(
+             &self.inner, degree)
+     }
+ 
+@@ -287,9 +300,11 @@
+     }
+ }
+ 
+-impl<Val, Dft, InputMmcs, FriMmcs, Challenge, Challenger, R>
+-    UnivariateStarkPcs<Challenge, Challenger> for HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R>
++impl<Val, Dft, InputMmcs, FriMmcs, Challenge, Challenger, R, Store>
++    UnivariateStarkPcs<Challenge, Challenger>
++    for HidingFriPcs<Val, Dft, InputMmcs, FriMmcs, R, Store>
+ where
++    Store: MatrixStore<Val>,
+     Val: TwoAdicField + PrimeField64,
+     StandardUniform: Distribution<Val>,
+     Dft: TwoAdicSubgroupDft<Val>,
+@@ -300,8 +315,13 @@
+         FieldChallenger<Val> + CanObserve<FriMmcs::Commitment> + GrindingChallenger<Witness = Val>,
+     R: CryptoRng + Send + Sync,
+ {
+-    type EvaluationsOnDomain<'a> =
+-        HorizontallyTruncated<Val, RowIndexMappedView<BitReversalPerm, RowMajorMatrixCow<'a, Val>>>;
++    type EvaluationsOnDomain<'a> = HorizontallyTruncated<
++        Val,
++        <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store> as UnivariateStarkPcs<
++            Challenge,
++            Challenger,
++        >>::EvaluationsOnDomain<'a>,
++    >;
+ 
+     const ZK: bool = true;
+ 
+@@ -415,14 +435,18 @@
+     }
+ 
+     fn log_max_trace_height(&self) -> usize {
+-        <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> as UnivariateStarkPcs<Challenge, Challenger>>::log_max_trace_height(
+-            &self.inner)
++        <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store> as UnivariateStarkPcs<
++            Challenge,
++            Challenger,
++        >>::log_max_trace_height(&self.inner)
+     }
+ 
+     fn log_min_trace_height(&self) -> usize {
+         // Hiding only adds randomness rows, so the bound is the wrapped scheme's.
+-        <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> as UnivariateStarkPcs<Challenge, Challenger>>::log_min_trace_height(
+-            &self.inner)
++        <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store> as UnivariateStarkPcs<
++            Challenge,
++            Challenger,
++        >>::log_min_trace_height(&self.inner)
+     }
+ 
+     fn commit_preprocessing(
+@@ -600,7 +624,7 @@
+     ) -> Self::EvaluationsOnDomain<'a> {
+         self.assert_prover_data_config(prover_data);
+         let inner_evals =
+-            <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> as UnivariateStarkPcs<
++            <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store> as UnivariateStarkPcs<
+                 Challenge,
+                 Challenger,
+             >>::get_evaluations_on_domain(&self.inner, &prover_data.inner, idx, domain);
+@@ -618,7 +642,7 @@
+     ) -> Self::EvaluationsOnDomain<'a> {
+         self.assert_prover_data_config(prover_data);
+         let inner_evals =
+-            <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> as UnivariateStarkPcs<
++            <TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store> as UnivariateStarkPcs<
+                 Challenge,
+                 Challenger,
+             >>::get_evaluations_on_domain(&self.inner, &prover_data.inner, idx, domain);
+--- upstream/src/lib.rs
++++ adapted/src/lib.rs
+@@ -13,6 +13,7 @@
+ mod periodic;
+ mod proof;
+ pub mod prover;
++pub mod storage;
+ mod transcript;
+ mod two_adic_pcs;
+ pub mod verifier;
+--- upstream/src/prover.rs
++++ adapted/src/prover.rs
+@@ -1,5 +1,6 @@
+ use alloc::vec;
+ use alloc::vec::Vec;
++use p3_matrix::Matrix;
+ 
+ use itertools::{Itertools, izip};
+ use p3_challenger::{CanObserve, FieldChallenger, GrindingChallenger};
+@@ -51,7 +52,7 @@
+ // the transcript, the instance height, the committed data, its MMCS, and the caller's batch witness.
+ // Grouping any of them into a struct would only move the same fields behind another name.
+ #[allow(clippy::too_many_arguments)]
+-pub fn prove_fri<Folding, Val, Challenge, InputMmcs, FriMmcs, Challenger>(
++pub fn prove_fri<Folding, Val, Challenge, InputMmcs, FriMmcs, Challenger, InputMatrix>(
+     folding: &Folding,
+     params: &FriParameters<FriMmcs>,
+     inputs: Vec<Vec<Challenge>>,
+@@ -60,12 +61,13 @@
+     prover_data_with_opening_points: &[ProverDataWithOpeningPoints<
+         '_,
+         Challenge,
+-        InputMmcs::ProverData<RowMajorMatrix<Val>>,
++        InputMmcs::ProverData<InputMatrix>,
+     >],
+     input_mmcs: &InputMmcs,
+     batch_pow_witness: Val,
+ ) -> Result<FriProof<Challenge, FriMmcs, Val, Folding::InputProof>, FriProverError>
+ where
++    InputMatrix: Matrix<Val>,
+     Val: TwoAdicField + PrimeField64,
+     Challenge: ExtensionField<Val>,
+     InputMmcs: Mmcs<Val>,
+@@ -95,7 +97,15 @@
+ /// A test passes `Some` to forge a schedule the verifier will not derive.
+ /// Every commitment, opening and transcript value then agrees with the forgery.
+ #[allow(clippy::too_many_arguments)]
+-pub(crate) fn prove_fri_with_schedule<Folding, Val, Challenge, InputMmcs, FriMmcs, Challenger>(
++pub(crate) fn prove_fri_with_schedule<
++    Folding,
++    Val,
++    Challenge,
++    InputMmcs,
++    FriMmcs,
++    Challenger,
++    InputMatrix,
++>(
+     folding: &Folding,
+     params: &FriParameters<FriMmcs>,
+     inputs: Vec<Vec<Challenge>>,
+@@ -104,13 +114,14 @@
+     prover_data_with_opening_points: &[ProverDataWithOpeningPoints<
+         '_,
+         Challenge,
+-        InputMmcs::ProverData<RowMajorMatrix<Val>>,
++        InputMmcs::ProverData<InputMatrix>,
+     >],
+     input_mmcs: &InputMmcs,
+     batch_pow_witness: Challenger::Witness,
+     schedule: Option<Vec<usize>>,
+ ) -> Result<FriProof<Challenge, FriMmcs, Val, Folding::InputProof>, FriProverError>
+ where
++    InputMatrix: Matrix<Val>,
+     Val: TwoAdicField + PrimeField64,
+     Challenge: ExtensionField<Val>,
+     InputMmcs: Mmcs<Val>,
+@@ -436,17 +447,18 @@
+ ///   of matrices and a list of points to open those matrices at.
+ /// - `mmcs`: The mixed matrix commitment scheme used to produce the batch commitments.
+ #[inline]
+-fn open_inputs<Val, Challenge, InputMmcs>(
++fn open_inputs<Val, Challenge, InputMmcs, InputMatrix>(
+     log_global_max_height: usize,
+     indices: &[usize],
+     prover_data_with_opening_points: &[ProverDataWithOpeningPoints<
+         '_,
+         Challenge,
+-        InputMmcs::ProverData<RowMajorMatrix<Val>>,
++        InputMmcs::ProverData<InputMatrix>,
+     >],
+     mmcs: &InputMmcs,
+ ) -> Vec<BatchMultiOpening<Val, InputMmcs>>
+ where
++    InputMatrix: Matrix<Val>,
+     Val: TwoAdicField,
+     Challenge: ExtensionField<Val>,
+     InputMmcs: Mmcs<Val>,
+--- /dev/null
++++ adapted/src/storage.rs
+@@ -0,0 +1,105 @@
++//! Input matrix representation without changes to proof or verifier fields.
++
++use alloc::vec::Vec;
++use p3_matrix::Matrix;
++use p3_matrix::dense::RowMajorMatrix;
++
++/// A policy consumes the exact dense LDE produced by the retained algorithm.
++/// It does not randomize, reorder or regenerate the matrix.
++pub trait MatrixStore<F: Clone + Send + Sync>: Clone + Send + Sync {
++    type Stored: Matrix<F> + 'static;
++    fn store(&self, matrix: RowMajorMatrix<F>) -> Self::Stored;
++}
++
++#[derive(Clone, Copy, Debug, Default)]
++pub struct DenseStore;
++
++impl<F: Clone + Send + Sync + 'static> MatrixStore<F> for DenseStore {
++    type Stored = RowMajorMatrix<F>;
++
++    fn store(&self, matrix: RowMajorMatrix<F>) -> Self::Stored {
++        matrix
++    }
++}
++
++/// A physical row prefix. No bit reversal or column truncation occurs here.
++pub struct RowPrefix<'a, M> {
++    matrix: &'a M,
++    height: usize,
++}
++
++impl<'a, M> RowPrefix<'a, M> {
++    pub fn new<F: Clone + Send + Sync>(matrix: &'a M, height: usize) -> Self
++    where
++        M: Matrix<F>,
++    {
++        assert!(height > 0 && height <= matrix.height());
++        Self { matrix, height }
++    }
++}
++
++impl<F: Clone + Send + Sync, M: Matrix<F>> Matrix<F> for RowPrefix<'_, M> {
++    fn width(&self) -> usize {
++        self.matrix.width()
++    }
++
++    fn height(&self) -> usize {
++        self.height
++    }
++
++    // The trait declaration is unsafe. The body checks its own row boundary
++    // and delegates to the checked public row interface without unsafe calls.
++    unsafe fn row_unchecked(
++        &self,
++        row: usize,
++    ) -> impl IntoIterator<Item = F, IntoIter = impl Iterator<Item = F> + Send + Sync> {
++        assert!(row < self.height);
++        self.matrix
++            .row(row)
++            .expect("checked prefix row")
++            .into_iter()
++            .collect::<Vec<_>>()
++    }
++}
++
++/// A borrowed prefix or the retained owned alternate-domain calculation.
++pub enum DomainMatrix<'a, F, M> {
++    Prefix(RowPrefix<'a, M>),
++    Owned(RowMajorMatrix<F>),
++}
++
++impl<F: Clone + Send + Sync, M: Matrix<F>> Matrix<F> for DomainMatrix<'_, F, M> {
++    fn width(&self) -> usize {
++        match self {
++            Self::Prefix(m) => m.width(),
++            Self::Owned(m) => m.width(),
++        }
++    }
++
++    fn height(&self) -> usize {
++        match self {
++            Self::Prefix(m) => m.height(),
++            Self::Owned(m) => m.height(),
++        }
++    }
++
++    // Every returned row is owned. No row borrows a released storage guard.
++    unsafe fn row_unchecked(
++        &self,
++        row: usize,
++    ) -> impl IntoIterator<Item = F, IntoIter = impl Iterator<Item = F> + Send + Sync> {
++        assert!(row < self.height());
++        match self {
++            Self::Prefix(m) => m
++                .row(row)
++                .expect("checked domain row")
++                .into_iter()
++                .collect::<Vec<_>>(),
++            Self::Owned(m) => m
++                .row(row)
++                .expect("checked domain row")
++                .into_iter()
++                .collect::<Vec<_>>(),
++        }
++    }
++}
+--- upstream/src/two_adic_pcs.rs
++++ adapted/src/two_adic_pcs.rs
+@@ -13,11 +13,11 @@
+ //!
+ //! If we changed our domain construction (e.g., using multiple cosets), we would need to carefully reconsider these assumptions.
+ 
+-use alloc::borrow::Cow;
+ use alloc::vec::Vec;
+ use core::fmt::Debug;
+ use core::marker::PhantomData;
+ 
++use crate::storage::{DenseStore, DomainMatrix, MatrixStore, RowPrefix};
+ use itertools::{Itertools, izip};
+ use p3_challenger::{CanObserve, FieldChallenger, GrindingChallenger};
+ use p3_commit::{
+@@ -31,8 +31,8 @@
+     TwoAdicField, batch_multiplicative_inverse, dot_product,
+ };
+ use p3_matrix::Matrix;
+-use p3_matrix::bitrev::{BitReversedMatrixView, BitReversibleMatrix};
+-use p3_matrix::dense::{RowMajorMatrix, RowMajorMatrixCow};
++use p3_matrix::bitrev::{BitReversalPerm, BitReversedMatrixView, BitReversibleMatrix};
++use p3_matrix::dense::RowMajorMatrix;
+ use p3_matrix::interpolation::{Interpolate, compute_adjusted_weights};
+ use p3_maybe_rayon::prelude::*;
+ use p3_util::linear_map::LinearMap;
+@@ -53,7 +53,8 @@
+ /// proof to show that the evaluations of `(f(x) - f(z))/(x - z)` over
+ /// `gH` are low degree.
+ #[derive(Clone, Debug)]
+-pub struct TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> {
++pub struct TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store = DenseStore> {
++    storage: Store,
+     pub(crate) dft: Dft,
+     pub(crate) mmcs: InputMmcs,
+     pub(crate) fri: FriParameters<FriMmcs>,
+@@ -70,12 +71,29 @@
+ impl<Val, Dft, InputMmcs, FriMmcs> TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs> {
+     pub const fn new(dft: Dft, mmcs: InputMmcs, fri: FriParameters<FriMmcs>) -> Self {
+         Self {
++            storage: DenseStore,
+             dft,
+             mmcs,
+             fri,
+             #[cfg(test)]
+             forged_fold_schedule: None,
+             _phantom: PhantomData,
++        }
++    }
++}
++
++impl<Val, Dft, InputMmcs, FriMmcs, Store> TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store> {
++    /// Change only the representation of future committed input matrices.
++    /// This move does not clone or consume a mask or salt generator.
++    pub fn with_storage<S>(self, storage: S) -> TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, S> {
++        TwoAdicFriPcs {
++            storage,
++            dft: self.dft,
++            mmcs: self.mmcs,
++            fri: self.fri,
++            #[cfg(test)]
++            forged_fold_schedule: self.forged_fold_schedule,
++            _phantom: self._phantom,
+         }
+     }
+ }
+@@ -397,9 +415,10 @@
+     result * l_z
+ }
+ 
+-impl<Val, Dft, InputMmcs, FriMmcs, Challenge, Challenger> Pcs<Challenge, Challenger>
+-    for TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs>
++impl<Val, Dft, InputMmcs, FriMmcs, Challenge, Challenger, Store> Pcs<Challenge, Challenger>
++    for TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store>
+ where
++    Store: MatrixStore<Val>,
+     Val: TwoAdicField + PrimeField64,
+     Dft: TwoAdicSubgroupDft<Val>,
+     InputMmcs: Mmcs<Val, MultiProof: Sync, Error: Sync>,
+@@ -410,7 +429,7 @@
+ {
+     type Domain = TwoAdicMultiplicativeCoset<Val>;
+     type Commitment = InputMmcs::Commitment;
+-    type ProverData = InputMmcs::ProverData<RowMajorMatrix<Val>>;
++    type ProverData = InputMmcs::ProverData<Store::Stored>;
+     type Proof = FriProof<Challenge, FriMmcs, Val, Vec<BatchMultiOpening<Val, InputMmcs>>>;
+     type Error = FriError<FriMmcs::Error, InputMmcs::Error>;
+     type ProverError = FriProverError;
+@@ -455,7 +474,8 @@
+ 
+         Ok(
+             // Commit to the bit-reversed LDEs.
+-            self.mmcs.commit(ldes),
++            self.mmcs
++                .commit(ldes.into_iter().map(|m| self.storage.store(m)).collect()),
+         )
+     }
+ 
+@@ -525,7 +545,7 @@
+                         .mmcs
+                         .get_matrices(data)
+                         .into_iter()
+-                        .map(|m| m.as_view())
++                        .map(|m| RowPrefix::new(m, m.height()))
+                         .collect_vec();
+                     debug_assert_eq!(
+                         mats.len(),
+@@ -602,7 +622,7 @@
+                         let h = mat.height() >> self.fri.log_blowup;
+ 
+                         // `subgroup` and `mat` are both in bit-reversed order, so we can truncate.
+-                        let (low_coset, _) = mat.split_rows(h);
++                        let low_coset = RowPrefix::new(mat, h);
+ 
+                         points_for_mat
+                             .iter()
+@@ -891,9 +911,10 @@
+     }
+ }
+ 
+-impl<Val, Dft, InputMmcs, FriMmcs, Challenge, Challenger> UnivariateStarkPcs<Challenge, Challenger>
+-    for TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs>
++impl<Val, Dft, InputMmcs, FriMmcs, Challenge, Challenger, Store>
++    UnivariateStarkPcs<Challenge, Challenger> for TwoAdicFriPcs<Val, Dft, InputMmcs, FriMmcs, Store>
+ where
++    Store: MatrixStore<Val>,
+     Val: TwoAdicField + PrimeField64,
+     Dft: TwoAdicSubgroupDft<Val>,
+     InputMmcs: Mmcs<Val, MultiProof: Sync, Error: Sync>,
+@@ -902,7 +923,7 @@
+     Challenger:
+         FieldChallenger<Val> + CanObserve<FriMmcs::Commitment> + GrindingChallenger<Witness = Val>,
+ {
+-    type EvaluationsOnDomain<'a> = BitReversedMatrixView<RowMajorMatrixCow<'a, Val>>;
++    type EvaluationsOnDomain<'a> = BitReversedMatrixView<DomainMatrix<'a, Val, Store::Stored>>;
+ 
+     const ZK: bool = false;
+ 
+@@ -954,7 +975,9 @@
+                 lde.height()
+             );
+         }
+-        Ok(self.mmcs.commit(ldes))
++        Ok(self
++            .mmcs
++            .commit(ldes.into_iter().map(|m| self.storage.store(m)).collect()))
+     }
+ 
+     /// Given the evaluations on a domain `gH`, return the evaluations on a different domain `g'K`.
+@@ -976,7 +999,10 @@
+     ) -> Self::EvaluationsOnDomain<'a> {
+         let lde = self.mmcs.get_matrices(prover_data)[idx];
+         if domain.shift() == Val::GENERATOR && lde.height() >= domain.size() {
+-            return lde.split_rows(domain.size()).0.as_cow().bit_reverse_rows();
++            return BitReversalPerm::new_view(DomainMatrix::Prefix(RowPrefix::new(
++                lde,
++                domain.size(),
++            )));
+         }
+ 
+         // The committed LDE contains bit-reversed evaluations over `gH`. Its first
+@@ -987,11 +1013,8 @@
+         // and taking a `poly_height`-sized coset iDFT therefore recovers the polynomial's
+         // coefficients directly, without touching the rest of the LDE.
+         let poly_height = lde.height() >> self.fri.log_blowup;
+-        let lde_mat = lde
+-            .split_rows(poly_height)
+-            .0
+-            .bit_reverse_rows()
+-            .to_row_major_matrix();
++        let lde_mat =
++            BitReversalPerm::new_view(RowPrefix::new(lde, poly_height)).to_row_major_matrix();
+         let mut coeffs = self.dft.coset_idft_batch(lde_mat, Val::GENERATOR);
+         let width = coeffs.width();
+         coeffs.values.resize(domain.size() * width, Val::ZERO);
+@@ -1000,9 +1023,7 @@
+             .coset_dft_batch(coeffs, domain.shift())
+             .bit_reverse_rows()
+             .to_row_major_matrix();
+-        let result_width = result.width();
+-
+-        RowMajorMatrixCow::new(Cow::Owned(result.values), result_width).bit_reverse_rows()
++        BitReversalPerm::new_view(DomainMatrix::Owned(result))
+     }
+ 
+     fn build_periodic_lde_table(

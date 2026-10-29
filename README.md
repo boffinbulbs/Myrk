@@ -82,7 +82,9 @@ The [complete bounded native relation](research/signature-complete-native/README
 
 The [checked storage matrix](research/storage-matrix/README.md) supplies owned synthetic rows through the retained matrix interface, with canonical field decoding, checked windows and explicit storage failures. It is a storage integration component. Complete commitment, quotient and FRI integration remains separate from these accessor tests.
 
-The [storage commitment experiment](research/storage-commitments/README.md) connects those rows to the actual retained salted MMCS. Independent integer and SHA3 references cover four roots, including a mixed height batch. Memory and storage paths are compared through ordinary openings and pruned multiproofs. Complete PCS, quotient and FRI integration remains a separate gate.
+The [storage commitment experiment](research/storage-commitments/README.md) connects those rows to the actual retained salted MMCS. Independent integer and SHA3 references cover four roots, including a mixed height batch. Memory and storage paths are compared through ordinary openings and pruned multiproofs.
+
+The [stored polynomial proof laboratory](research/storage-pcs/README.md) carries checked storage through a complete small quartic STARK, including actual quotient masks, the randomization polynomial and FRI openings. Its proof bytes match the retained dense prover and its ordinary verifier rejects a raw false trace. The finite synthetic experiment precedes streaming construction, larger proofs and private payment integration.
 
 The [proof feasibility record](docs/proof-feasibility.md) distinguishes implemented experiments from open hiding, knowledge soundness, quantum model, resource and composition obligations. Standardized primitives and full digests do not establish the composed protocol's security level.
 

@@ -1,0 +1,12 @@
+{
+  "src/config.rs": "78f50dc6f0b9233e28399a33a0b402d9c1c53f218b5cb8c73df000075c55f4fe",
+  "src/hiding_pcs.rs": "9ef6e6ea5b0ac8a84b8b7388a3b709fab930b27701abcb1517a5612d988352c4",
+  "src/lib.rs": "d04d4f610c9a2f8ab32edc0f5c4e2ad54db08e66f4e3efcef3fdd4d268d4be72",
+  "src/pcs_transcript.rs": "8c05386bd5b59c1a1dc0de7f537b1ca6ba8e7db04bd534d86a5db2fafb9bd4bd",
+  "src/periodic.rs": "bf24cc859c62ee886bae4e5c3ffbd007e07716af390d75fc38dc0dd464b1f3a9",
+  "src/proof.rs": "9c6efe2f05ec8f89f43ea1f2e706bf0fd826d9191d20d12b24ea2da10ad494a6",
+  "src/prover.rs": "26c595b377a25947fbabe132653947cf2f56b0a2fe78f6c7187fe697fde0878a",
+  "src/transcript.rs": "a9ee1af03b02514bffffa6519c1f0544c91457c3e2327024cdfcfd84273ab6e9",
+  "src/two_adic_pcs.rs": "926b6ecfe0c3c2ae3956d77f78795c3d5d4b7b171c16ec1ae251852c2d2a24cb",
+  "src/verifier.rs": "975392a464c823c93c9ec50ce4e73d17a8b0fbdf22f047f887fb749dcf7280a3"
+}

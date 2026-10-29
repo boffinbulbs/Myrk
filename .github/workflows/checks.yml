@@ -286,3 +286,32 @@ jobs:
         run: python3 research/presentation/render_figures.py --check
       - name: Check private Safe design figure
         run: python3 research/safe-design/generate_figures.py --check
+
+  stored_proof:
+    name: Stored proof (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install toolchain
+        run: rustup toolchain install 1.94.1 --profile minimal --component rustfmt --component clippy
+      - name: Check stored proof formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/storage-pcs/Cargo.toml --all -- --check
+      - name: Fetch stored proof dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/storage-pcs/Cargo.toml --locked
+      - name: Check independent quartic reference
+        run: python research/storage-pcs/reference.py --check
+      - name: Check domain views and actual constraint degree
+        run: rustup run 1.94.1 cargo test --manifest-path research/storage-pcs/Cargo.toml --locked --offline --release --test integration -- --test-threads=1
+      - name: Check complete proof compatibility and false trace rejection
+        run: rustup run 1.94.1 cargo test --manifest-path research/storage-pcs/Cargo.toml --locked --offline --release --test integration -- --ignored --test-threads=1
+      - name: Check adapted backend lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/storage-pcs/Cargo.toml --locked --offline -p kova-storage-fri --lib -- -D warnings -A clippy::nonminimal_bool
+      - name: Check stored proof harness lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/storage-pcs/Cargo.toml --locked --offline -p kova-storage-pcs-experiment --test integration -- -D warnings -A clippy::nonminimal_bool
