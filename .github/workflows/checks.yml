@@ -351,6 +351,10 @@ jobs:
         run: python research/storage-pcs/quotient_reference.py --check
       - name: Check independent main preparation reference
         run: python research/storage-pcs/preparation_reference.py --check
+      - name: Check private verifier resource accounting
+        run: python research/storage-pcs/resources/model.py --check
+      - name: Compare resource accounting with measured proof layouts
+        run: python -m unittest discover -s research/storage-pcs/resources -p test_model.py -v
       - name: Check domain views and actual constraint degree
         run: rustup run 1.94.1 cargo test --manifest-path research/storage-pcs/Cargo.toml --locked --offline --release --test integration -- --test-threads=1
       - name: Check complete proof compatibility and false trace rejection

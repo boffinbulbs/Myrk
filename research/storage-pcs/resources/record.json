@@ -1,0 +1,203 @@
+{
+  "format": "kova.storage-pcs.resource-model.v1",
+  "scope": "Static shape arithmetic with the retained synthetic profile. No native proof execution or resource admission.",
+  "source_files": {
+    "research/signature-complete-native/execution_record.json": {
+      "bytes": 12592,
+      "sha256": "508a938a2dc23703b6fa8ea3ca5a528712626419a519b888490b8ad5de7baa08"
+    },
+    "research/storage-pcs/validation.json": {
+      "bytes": 14804,
+      "sha256": "bfe7a7e6193265c06e8755f88e61b161e33128927f9eba8948af322e894db758"
+    },
+    "research/signature-complete-native/src/layout.rs": {
+      "bytes": 3241,
+      "sha256": "1a1814846ab193268f8a09e8bf503e6cfc3a482f50be20c29f610c55e94241cc"
+    },
+    "research/signature-complete-native/src/air.rs": {
+      "bytes": 1919,
+      "sha256": "e2ffd9525f1cc2066ebe38a4961b536d34b0f711355fe7c635eae7c9d5d35e36"
+    },
+    "research/signature-complete-native/src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "b65978cbd121daf82cf48bbd895c1605640518b7c9b82835ed21736dd9564852"
+    },
+    "research/storage-pcs/Cargo.lock": {
+      "bytes": 16331,
+      "sha256": "d76ea04f0aa079bd13dc223a95ce88050956aa1def7ca6df3e3e2e77566e11d7"
+    },
+    "research/storage-pcs/tests/common/mod.rs": {
+      "bytes": 2880,
+      "sha256": "b91f76d65845f72b4d16dc2a929242a8dfa9e2c139167b4bdebd49a5c1418c4b"
+    },
+    "research/storage-pcs/tests/common/air.rs": {
+      "bytes": 1328,
+      "sha256": "7f04cd362c0e32374ffcebeb049696fc7e8373c8df2a4850a138397a33df466b"
+    },
+    "research/storage-pcs/tests/common/store.rs": {
+      "bytes": 17246,
+      "sha256": "76a23ab637ff2389fecab648479b524eb15913a93bfef8469155cb5e28c7f6f2"
+    },
+    "research/storage-pcs/backend/src/hiding_pcs.rs": {
+      "bytes": 69656,
+      "sha256": "8c12cca5d256e28f0a87f0cf95020e33b62b27070d430776e24599d6a18d6eed"
+    },
+    "research/storage-pcs/backend/src/two_adic_pcs.rs": {
+      "bytes": 70795,
+      "sha256": "00f22516333cdabc984418c6ed56518d13a680e5c24ca96df521bf9866a920c8"
+    },
+    "research/storage-matrix/src/lib.rs": {
+      "bytes": 5005,
+      "sha256": "0ed7090fbce02c497489b9669b1ffe6998b7c8a46e06dbf0c5a7fb49983d4180"
+    }
+  },
+  "measured_small_shape": {
+    "raw_trace_bytes": 2048,
+    "prepared_source_shape": [
+      512,
+      6
+    ],
+    "prepared_source_bytes": 12288,
+    "main_mask_field_draws": 2560,
+    "committed_field_file_shapes": [
+      [
+        4096,
+        6
+      ],
+      [
+        4096,
+        8
+      ],
+      [
+        4096,
+        8
+      ],
+      [
+        4096,
+        8
+      ],
+      [
+        4096,
+        8
+      ],
+      [
+        4096,
+        8
+      ],
+      [
+        4096,
+        8
+      ],
+      [
+        4096,
+        8
+      ],
+      [
+        4096,
+        8
+      ],
+      [
+        4096,
+        8
+      ]
+    ],
+    "committed_field_file_bytes": 1277952,
+    "all_field_file_bytes": 1290240,
+    "main_preparation_scalar_window_reads": 3072,
+    "commitment_scalar_field_writes": 319488,
+    "forward_column_dfts": 78,
+    "quotient_inverse_column_dfts": 64,
+    "largest_explicit_column_bytes": 16384,
+    "quotient_domain_rows": 2048,
+    "constraint_row_positions": 8192,
+    "separate_randomization_input_bytes": 16384,
+    "prepared_quotient_fields_bytes": 65536,
+    "coupled_quotient_masks_bytes": 65536,
+    "base_commitment_salt_payload_bytes": 2621440,
+    "base_commitment_digest_payload_bytes": 1572672,
+    "main_query_field_payload_at_64_distinct_queries_bytes": 1536,
+    "main_two_point_claim_extension_payload_bytes": 192,
+    "current_field_store_shape_accepts": true,
+    "current_field_store_byte_budget_accepts": true
+  },
+  "conditional_native_shape": {
+    "raw_trace_bytes": 1803845632,
+    "prepared_source_shape": [
+      16384,
+      55053
+    ],
+    "prepared_source_bytes": 3607953408,
+    "main_mask_field_draws": 451026944,
+    "committed_field_file_shapes": [
+      [
+        131072,
+        55053
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ]
+    ],
+    "committed_field_file_bytes": 28901376000,
+    "all_field_file_bytes": 32509329408,
+    "main_preparation_scalar_window_reads": 901988352,
+    "commitment_scalar_field_writes": 7225344000,
+    "forward_column_dfts": 55125,
+    "quotient_inverse_column_dfts": 64,
+    "largest_explicit_column_bytes": 524288,
+    "quotient_domain_rows": 65536,
+    "constraint_row_positions": 13448052736,
+    "separate_randomization_input_bytes": 524288,
+    "prepared_quotient_fields_bytes": 2097152,
+    "coupled_quotient_masks_bytes": 2097152,
+    "base_commitment_salt_payload_bytes": 83886080,
+    "base_commitment_digest_payload_bytes": 50331456,
+    "main_query_field_payload_at_64_distinct_queries_bytes": 14093568,
+    "main_two_point_claim_extension_payload_bytes": 1761696,
+    "current_field_store_shape_accepts": false,
+    "current_field_store_byte_budget_accepts": false
+  },
+  "native_backend_proofs_in_reference_record": 0,
+  "unmodeled": [
+    "Allocator overhead and peak buffer overlap",
+    "DFT implementation scratch and twiddle tables",
+    "Native AIR expression storage and constraint evaluation scratch",
+    "FRI salts, trees, reductions, folds and query structures",
+    "Opening reductions, point weights and serialization",
+    "Operating system file cache, physical disk use and runtime",
+    "Production entropy and secret storage protection",
+    "Complete payment relation and cryptographic security parameters"
+  ]
+}
