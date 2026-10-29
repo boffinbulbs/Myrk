@@ -1,0 +1,252 @@
+{
+  "format": "thorum.signature-complete-native.execution.v1",
+  "scope": "Complete bounded native signature and owner constraints. No proof backend or private payment authority.",
+  "provenance_sha256": "82169e05c73e4ab7e93e74e02854d79117e85a1ca0fc3ae96339497e6da0494c",
+  "platform": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "architecture": "AMD64",
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "rust": "1.94.1",
+    "python": "3.14.5"
+  },
+  "dependencies": {
+    "registry_packages": 80,
+    "local_packages": 4,
+    "retained_tuples_and_features": true,
+    "rayon_or_p3_parallel": false
+  },
+  "height": 8192,
+  "width": 55049,
+  "public_values": 196,
+  "constraints_per_row": 205201,
+  "degree": 4,
+  "main_field_payload_bytes": 1803845632,
+  "backend_proofs": 0,
+  "maximum_simultaneous_wide_traces": 1,
+  "reference_tuples": {
+    "accepted": 5,
+    "rejected": 5
+  },
+  "hostile_assertions": {
+    "mutation_cases": 77,
+    "full_air_negative": 15,
+    "localized_negative": 64,
+    "localized_positive": 128,
+    "full_air_positive": 4,
+    "diagnostic_positive": 4,
+    "full_trace_seed_crosschecks": 2
+  },
+  "test_inventory": {
+    "total": 6,
+    "ignored": 6
+  },
+  "selected_tests": [
+    {
+      "test": "full_tests::declared_shape_schedule_and_full_state_routes",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        5
+      ],
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9552166912,
+      "peak_job_commit_bytes": 2097152,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "terminated": false,
+      "guard_record_sha256": "7398225144eef63d104879b6626fed1061c3268c2e61b03f41062b69c746717c",
+      "stdout": "\nrunning 1 test\ntest full_tests::declared_shape_schedule_and_full_state_routes ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s\n\n",
+      "stderr": ""
+    },
+    {
+      "test": "full_tests::bounded_typed_reference_reader_without_json_value_tree",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        5
+      ],
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9551355904,
+      "peak_job_commit_bytes": 3342336,
+      "timeout_seconds": 180,
+      "timed_out": false,
+      "terminated": false,
+      "guard_record_sha256": "ef6923b84dbbfb69439c3898ea4b156c6edd28c63ff2be71c78cda77bbc13b5a",
+      "stdout": "\nrunning 1 test\nTyped reader retained six selected signature records and two key matrix sets. Peak remains externally measured.\ntest full_tests::bounded_typed_reference_reader_without_json_value_tree ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.02s\n\n",
+      "stderr": ""
+    },
+    {
+      "test": "full_tests::actual_symbolic_full_shape_count_and_degree",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        5
+      ],
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9557344256,
+      "peak_job_commit_bytes": 245538816,
+      "timeout_seconds": 300,
+      "timed_out": false,
+      "terminated": false,
+      "guard_record_sha256": "abd713dbbe0ce0db8a4091bf5072cdddbce5a50cf44105be6bb6fd1bf45a95e2",
+      "stdout": "\nrunning 1 test\nActual full constraints_per_row 205201, degree 4. No backend profile.\ntest full_tests::actual_symbolic_full_shape_count_and_degree ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.30s\n\n",
+      "stderr": ""
+    },
+    {
+      "test": "full_tests::single_a0_construction_without_air_evaluation",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        5
+      ],
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9540308992,
+      "peak_job_commit_bytes": 1811324928,
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "terminated": false,
+      "guard_record_sha256": "dde9bb1b214834eab61a6b85966a9c978d1b8ad0ad6aa819ed60f493ffc8cea6",
+      "stdout": "\nrunning 1 test\nFULL_RELATION_CONSTRUCTION_ONLY_NO_AIR_EVALUATION\ntest full_tests::single_a0_construction_without_air_evaluation ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.88s\n\n",
+      "stderr": ""
+    },
+    {
+      "test": "full_tests::ten_bounded_same_witness_relations_against_independent_integer_reference",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        5
+      ],
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9540898816,
+      "peak_job_commit_bytes": 1811415040,
+      "timeout_seconds": 1200,
+      "timed_out": false,
+      "terminated": false,
+      "guard_record_sha256": "027989768710d35ccc5cf2561073037ad1af816786077f8a8e7703ac9f20d643",
+      "stdout": "\nrunning 1 test\ntest full_tests::ten_bounded_same_witness_relations_against_independent_integer_reference has been running for over 60 seconds\ntest full_tests::ten_bounded_same_witness_relations_against_independent_integer_reference ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 310.00s\n\n",
+      "stderr": ""
+    },
+    {
+      "test": "full_tests::locally_exact_detached_suffixes_and_source_boundary_mutations_reject",
+      "accepted": true,
+      "harness": [
+        1,
+        0,
+        0,
+        0,
+        5
+      ],
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "installed_flags": 8960,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 9605529600,
+      "peak_job_commit_bytes": 1811365888,
+      "timeout_seconds": 1800,
+      "timed_out": false,
+      "terminated": false,
+      "guard_record_sha256": "e8b06af6c5e4f2a06385849681c9b1a5ad3d4219bdb0d561588fb11252d38281",
+      "stdout": "\nrunning 1 test\ntest full_tests::locally_exact_detached_suffixes_and_source_boundary_mutations_reject has been running for over 60 seconds\ntest full_tests::locally_exact_detached_suffixes_and_source_boundary_mutations_reject ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 420.55s\n\n",
+      "stderr": ""
+    }
+  ],
+  "measured_module_body_sha256": {
+    "src/air.rs": "bf1b1fc1cf8c6eb8efb6a49e46502223635a8c628067e59d69e14ab430171045",
+    "src/authorization.rs": "05e36ffd27aca70b2d444d9c41207ff76aca6e8f1e3c8145fb4952067c270644",
+    "src/build/decode.rs": "7e4c00267797d9d516e700e421fa51c41a8c559b5b37da4a454c8a71cb8af99d",
+    "src/build/sample.rs": "816c6c9c16fa5ccc09983df057be8b65a0e98400192c6538e201e0c77e0e3b17",
+    "src/build.rs": "c3e86f475e4f1f4eee41ea4846bb2e42da27c7e156bbb3ab7f22a339f01cb52b",
+    "src/decoding.rs": "716b9946fda11ca080ff4c2257b24dd1b726507a40c0da980ae8fe1ac17abeb7",
+    "src/full_program.rs": "81791e196a71214fd3e3170c90efab5a626fcc30e84ede81db3b4625963341f4",
+    "src/full_tests.rs": "b46372a0b49db35c40405836b7727094f4041662f351d2c1a7886656a5f16d36",
+    "src/hint_rows.rs": "566a5676e628b35917fbc20de1c2a173102dcafbcc31a1c85568dd79baa9ce62",
+    "src/hints.rs": "6d1e7b8d78c9f55199b4d88992c139e6c7d8489295c5db61251306b5da0e4a6f",
+    "src/keccak.rs": "b833947cb98f72604e7c3408c1facb92b9611d70f959536878b61c26f8d3e808",
+    "src/layout.rs": "e878c71bdbd43db21cc7558b492ca8c642f0bd01b09e89a7c5a99e1a3c9f158f",
+    "src/lib.rs": "260015263577e16920f5533192e0c260e12582873aa6b1f5b6517f5abae6531a",
+    "src/matrix.rs": "3c5afa2b04ea15ae7d4bca984ce9f8e37c1740e1a8fc397bc4b868090d6da7d0",
+    "src/mul.rs": "b2f95c24fd42827e4483f3897ce80a3da456ad363e0f9e8ab336966c49b1eb5a",
+    "src/ntt.rs": "fed17cacd5a4ba7ecc3778911a1e5a94a399ae6b204ed582cc64e5f12e6e6a72",
+    "src/packing.rs": "e76f19aa6a9162cb00a5659973ae458141d64816e80d24346d8d24edde517284",
+    "src/program.rs": "7576c2e7a2d770cd796bb60161998a86d5dbf2657d884a69ce9f788507eb07d9",
+    "src/sampler.rs": "3866734467fee306158fd8e0d66c8b29fa8ff2ecfffed1b166ece5218a2e898c",
+    "src/sources.rs": "60ca3c71a7d31865ef1b59a89bddcdda34264fa33fab4cdab8d65c18a4a3d91b",
+    "src/sponge.rs": "a2fd64787c9484fc6222b1064ada2cc9c6bd061bc55e64374a2db0b549ffcfa4"
+  },
+  "measured_source_file_sha256": {
+    "src/air.rs": "bf1b1fc1cf8c6eb8efb6a49e46502223635a8c628067e59d69e14ab430171045",
+    "src/authorization.rs": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b",
+    "src/build/decode.rs": "529723c997f70825d918310f3f7ab49bc2465531328a9177467ef2f922ecbc29",
+    "src/build/sample.rs": "e2a1881c852ec427953ddd153fde8caccedc1e042576f8d5da6efd0feef754d5",
+    "src/build.rs": "65d140163cd2953e44f5ee518a0a7fe9bdb60a6c6d6929884852ab49dd1e8317",
+    "src/decoding.rs": "0308df4f1519a27c9bbe9aca31f79030d7838c53d1074bafc86b4ea431df9c43",
+    "src/full_program.rs": "b65978cbd121daf82cf48bbd895c1605640518b7c9b82835ed21736dd9564852",
+    "src/full_tests.rs": "7e63bff53b2ce03543eb661d26684fd83c6a29ac93c21910e4fb790bab2c4373",
+    "src/hint_rows.rs": "de3f9425acfc6be9a7e93101c30fd7655df1f5ec540ca1fc5edf951b8d9ee04f",
+    "src/hints.rs": "9038be9076454fc27ab8c65d8e827c01731270c6877b291a1e5702d60065b401",
+    "src/keccak.rs": "d619093afdd30b630ddc7c88817644c7257c1bdbd2d24f38ca29cd8b4d5db76c",
+    "src/layout.rs": "1a1814846ab193268f8a09e8bf503e6cfc3a482f50be20c29f610c55e94241cc",
+    "src/lib.rs": "3bf262c680b1d2b7b0afcc794ab98b652ae1bb90eea06b2ba0dbfb2345fad23e",
+    "src/matrix.rs": "d90090415445fcd7555d46dc7e02690a42ca6defd7ab70a2689898676957202d",
+    "src/mul.rs": "fdf7c8dcb834539b566dab21baf2762de25bc56f907e393f01e8d9b05b09a7e1",
+    "src/ntt.rs": "b80cc2b736e959cbc93d1372d0edd075e78208ec309e4efe5f49679080058f67",
+    "src/packing.rs": "bd4a1ed77192af82a32f15a6104eab8f68677ac1aa6beb50dbf630ac1bb8d9ce",
+    "src/program.rs": "2ed33297cb5557e977096e313ca2dfe4e9c7bac8d9d2549f00d883c7c4375ca1",
+    "src/sampler.rs": "19f4be28bb5d21e0b23479bbfd014a990790f8e5c58dcef71e908ea6c954b22d",
+    "src/sources.rs": "60ca3c71a7d31865ef1b59a89bddcdda34264fa33fab4cdab8d65c18a4a3d91b",
+    "src/sponge.rs": "3e092a2789ad1ddc2eebd65b95361e32111a0ea1fc7497d8bba70abeebe95e25"
+  },
+  "documentation_only_changes": {
+    "src/air.rs": {
+      "before_line_hex": "2f2f2f20436f6d706c6574652070726f706f73656420626f756e646564207369676e61747572652f6f776e6572206571756174696f6e732e204e6f20657865637574656420726573756c74206f72207061796d656e742072656c6174696f6e2e0a",
+      "after_line": "/// Complete bounded native signature and note owner equations.\n",
+      "measured_file_sha256": "bf1b1fc1cf8c6eb8efb6a49e46502223635a8c628067e59d69e14ab430171045",
+      "current_file_sha256": "e2ffd9525f1cc2066ebe38a4961b536d34b0f711355fe7c635eae7c9d5d35e36"
+    },
+    "src/build.rs": {
+      "before_line_hex": "2f2f2120536f7572636520636f6e737472756374696f6e20666f72207468652070726f706f73656420636f6d706c65746520626f756e646564207369676e61747572652f6f776e6572204149522e0a",
+      "after_line": "//! Source construction for the complete bounded signature and note owner AIR.\n",
+      "measured_file_sha256": "65d140163cd2953e44f5ee518a0a7fe9bdb60a6c6d6929884852ab49dd1e8317",
+      "current_file_sha256": "d31dcfb7a1f61f9f9d3778aead11937962d59388b222aa88bd86024b92d06594"
+    }
+  },
+  "source_identity_scope": "Exact measured full file hashes. Two declared Rustdoc line replacements are reversed before measurement identity checks.",
+  "prior_incomplete_attempt": {
+    "outcome": "deadline",
+    "deadline_seconds": 1800,
+    "guard_record_sha256": "a195cbc33befbaaa1111dbc0fea8c1136d833a7c4b8c45a945c627faf01fe3d3",
+    "repair": "All 77 mutation cases retained. Single cell routes use both affected frames, positive restoration controls and endpoint full trace crosschecks."
+  },
+  "timing_scope": "Raw elapsed values describe these finite diagnostic runs. No throughput or wallet latency benchmark.",
+  "limits": "No isolated equality, hiding, quantum knowledge, ledger composition or production payment result."
+}

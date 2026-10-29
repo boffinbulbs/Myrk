@@ -11,6 +11,7 @@ The protocol separates private transition proofs, deterministic ledger validatio
 | [Implementation record](docs/development.md) | Executable scope and supporting component evidence |
 | [Signature and ownership references](research/signature-ownership/README.md) | Exact transaction signatures, complete integer verification and canonical note owner comparisons |
 | [Private signature sources and transforms](research/signature-native/README.md) | Native source and ownership constraints with sixteen connected private forward transforms |
+| [Private signature and ownership constraints](research/signature-complete-native/README.md) | Complete bounded native signature arithmetic and note owner binding under one private witness |
 | [Delivery roadmap](docs/delivery-roadmap.md) | Initial chain gates and separate later application milestones |
 | [Private Safe design](docs/private-safe.md) | Protected receiving, user selected delays, independent authorities and local key protection |
 
@@ -73,7 +74,9 @@ The hash crate additionally contains [matrix sampling](docs/matrix-sampling.md),
 
 The [transaction signature and note ownership reference](research/signature-ownership/README.md) adds six existing signatures over exact typed transactions, two native verification paths and complete independent integer calculations through all eight signature rows and final challenge equality. Canonical v2 notes supply explicit owner match and mismatch cases. This is reference evidence for the missing complete private authorization relation, without a native AIR, backend proof or payment authority claim.
 
-The [native signature laboratory](research/signature-native/README.md) constrains the same private key, signature and canonical note sources together with sixteen forward transforms. The note owner field is bound to the private key hash and transaction authorization supplies the public 196 byte input. The transform outputs and input note commitment remain private witness columns. Matrix reconstruction, inverse transforms, final challenge equality and payment composition remain separate implementation gates.
+The [native signature laboratory](research/signature-native/README.md) constrains the same private key, signature and canonical note sources together with sixteen forward transforms. The note owner field is bound to the private key hash and transaction authorization supplies the public 196 byte input. The transform outputs and input note commitment remain private witness columns. This retained snapshot ends before matrix reconstruction and final signature verification.
+
+The [complete bounded native relation](research/signature-complete-native/README.md) adds all 56 matrix streams, eight reconstructed rows, normalized inverse transforms, actual hints, private packed bytes and the full final challenge equality. It binds the same key and note owner to authorization derived from the typed transaction. Native evaluation receives private data directly. A hiding proof backend, private ledger composition and their security and resource analysis remain separate gates before payment acceptance.
 
 The [proof feasibility record](docs/proof-feasibility.md) distinguishes implemented experiments from open hiding, knowledge soundness, quantum model, resource and composition obligations. Standardized primitives and full digests do not establish the composed protocol's security level.
 
