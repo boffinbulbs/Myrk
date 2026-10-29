@@ -100,7 +100,7 @@ dependencies = [
 
 [[package]]
 name = "kova-storage-fri"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "itertools",
  "p3-challenger",
@@ -129,7 +129,7 @@ dependencies = [
 
 [[package]]
 name = "kova-storage-pcs-experiment"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "kova-storage-fri",
  "kova-storage-matrix",

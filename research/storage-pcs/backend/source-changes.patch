@@ -153,7 +153,43 @@
              &self.inner, degree)
      }
  
-@@ -287,9 +362,11 @@
+@@ -234,29 +309,21 @@
+         for (_, mat) in &evaluations {
+             self.check_hiding_budget(mat.height(), Challenge::DIMENSION, 1)?;
+         }
+-        let randomized_evaluations: Vec<(Self::Domain, RowMajorMatrix<Val>)> =
++        let randomized_evaluations: Vec<(Self::Domain, Store::Stored)> =
+             info_span!("randomize polys").in_scope(|| {
+                 evaluations
+                     .into_iter()
+                     .map(|(domain, mat)| {
+-                        let mat_width = mat.width();
+-                        // Let `w` and `h` be the width and height of the original matrix. The randomized matrix should have height `2h` and width `w + num_random_codewords`.
+-                        // To generate it, we add `w + 2 * num_random_codewords` columns to the original matrix, then reshape it by setting the width to `w + num_random_codewords`.
+-                        // All columns are added on the right hand side so, after reshaping, this has the net effect of adding `num_random_codewords` random columns on the right and interleaving the original trace with random rows.
+-
+-                        let mut random_evaluation = mat.with_random_cols(
+-                            mat_width + 2 * self.num_random_codewords,
++                        let randomized = self.inner.storage.randomize(
++                            mat,
++                            self.num_random_codewords,
+                             &mut *self.rng.lock(),
+                         );
+-                        random_evaluation.width = mat_width + self.num_random_codewords;
+-
+-                        (domain, random_evaluation)
++                        (domain, randomized)
+                     })
+                     .collect()
+             });
+-
+-        let (commitment, data) =
+-            Pcs::<Challenge, Challenger>::commit(&self.inner, randomized_evaluations)?;
++        let (commitment, data) = self.inner.commit_prepared(randomized_evaluations);
+         Ok((
+             commitment,
+             HidingFriPcsProverData::new(
+@@ -287,9 +354,11 @@
      }
  }
  
@@ -167,7 +203,7 @@
      Val: TwoAdicField + PrimeField64,
      StandardUniform: Distribution<Val>,
      Dft: TwoAdicSubgroupDft<Val>,
-@@ -300,8 +377,13 @@
+@@ -300,8 +369,13 @@
          FieldChallenger<Val> + CanObserve<FriMmcs::Commitment> + GrindingChallenger<Witness = Val>,
      R: CryptoRng + Send + Sync,
  {
@@ -183,7 +219,7 @@
  
      const ZK: bool = true;
  
-@@ -415,14 +497,18 @@
+@@ -415,14 +489,18 @@
      }
  
      fn log_max_trace_height(&self) -> usize {
@@ -206,7 +242,7 @@
      }
  
      fn commit_preprocessing(
-@@ -478,96 +564,51 @@
+@@ -478,96 +556,51 @@
          evaluations: impl IntoIterator<Item = (Self::Domain, RowMajorMatrix<Val>)>,
          num_chunks: usize,
      ) -> Result<Vec<RowMajorMatrix<Val>>, Self::ProverError> {
@@ -348,7 +384,7 @@
      }
  
      /// The LDEs must contain fresh masks, as produced by [`Self::get_quotient_ldes`].
-@@ -600,7 +641,7 @@
+@@ -600,7 +633,7 @@
      ) -> Self::EvaluationsOnDomain<'a> {
          self.assert_prover_data_config(prover_data);
          let inner_evals =
@@ -357,7 +393,7 @@
                  Challenge,
                  Challenger,
              >>::get_evaluations_on_domain(&self.inner, &prover_data.inner, idx, domain);
-@@ -618,7 +659,7 @@
+@@ -618,7 +651,7 @@
      ) -> Self::EvaluationsOnDomain<'a> {
          self.assert_prover_data_config(prover_data);
          let inner_evals =
@@ -465,7 +501,7 @@
      InputMmcs: Mmcs<Val>,
 --- /dev/null
 +++ adapted/src/storage.rs
-@@ -0,0 +1,180 @@
+@@ -0,0 +1,218 @@
 +//! Input matrix representation without changes to proof or verifier fields.
 +
 +use alloc::vec::Vec;
@@ -474,12 +510,50 @@
 +use p3_matrix::Matrix;
 +use p3_matrix::bitrev::BitReversibleMatrix;
 +use p3_matrix::dense::RowMajorMatrix;
++use rand::{
++    Rng,
++    distr::{Distribution, StandardUniform},
++};
 +
-+/// A policy constructs and retains exact physically ordered LDE values.
-+/// It does not sample masks or change the commitment protocol.
++/// A policy prepares inputs and retains exact physically ordered LDE values.
++/// Main preparation consumes only the caller's continuing mask generator.
 +pub trait MatrixStore<F: Clone + Send + Sync>: Clone + Send + Sync {
 +    type Stored: Matrix<F> + 'static;
 +    fn store(&self, matrix: RowMajorMatrix<F>) -> Self::Stored;
++
++    /// Prepare the exact retained main masking layout from the continuing RNG.
++    fn randomize<R>(
++        &self,
++        matrix: RowMajorMatrix<F>,
++        random_columns: usize,
++        rng: &mut R,
++    ) -> Self::Stored
++    where
++        F: p3_field::Field,
++        R: Rng + Send + Sync,
++        StandardUniform: Distribution<F>,
++    {
++        let width = matrix.width();
++        let mut randomized = matrix.with_random_cols(width + 2 * random_columns, rng);
++        randomized.width = width + random_columns;
++        self.store(randomized)
++    }
++
++    /// Dense compatibility remains explicit for policies without a source view.
++    fn extend_prepared<Dft, M>(
++        &self,
++        dft: &Dft,
++        evaluations: M,
++        log_blowup: usize,
++        shift: F,
++    ) -> Self::Stored
++    where
++        F: TwoAdicField,
++        Dft: TwoAdicSubgroupDft<F>,
++        M: Matrix<F>,
++    {
++        self.extend(dft, evaluations.to_row_major_matrix(), log_blowup, shift)
++    }
 +
 +    /// The default construction is the retained dense DFT and bit reversal.
 +    /// A storage policy may construct the same values without a full LDE buffer.
@@ -690,7 +764,7 @@
              dft,
              mmcs,
              fri,
-@@ -77,6 +79,43 @@
+@@ -77,6 +79,62 @@
              forged_fold_schedule: None,
              _phantom: PhantomData,
          }
@@ -719,6 +793,25 @@
 +    InputMmcs: Mmcs<Val>,
 +    Store: MatrixStore<Val>,
 +{
++    pub(crate) fn commit_prepared<M: Matrix<Val>>(
++        &self,
++        evaluations: impl IntoIterator<Item = (TwoAdicMultiplicativeCoset<Val>, M)>,
++    ) -> (InputMmcs::Commitment, InputMmcs::ProverData<Store::Stored>)
++    where
++        Dft: TwoAdicSubgroupDft<Val>,
++    {
++        let ldes = evaluations
++            .into_iter()
++            .map(|(domain, evals)| {
++                assert_eq!(domain.size(), evals.height());
++                let shift = Val::GENERATOR / domain.shift();
++                self.storage
++                    .extend_prepared(&self.dft, evals, self.fri.log_blowup, shift)
++            })
++            .collect();
++        self.mmcs.commit(ldes)
++    }
++
 +    pub(crate) fn commit_stored_ldes(
 +        &self,
 +        ldes: Vec<Store::Stored>,
@@ -734,7 +827,7 @@
      }
  }
  
-@@ -397,9 +436,10 @@
+@@ -397,9 +455,10 @@
      result * l_z
  }
  
@@ -747,7 +840,7 @@
      Val: TwoAdicField + PrimeField64,
      Dft: TwoAdicSubgroupDft<Val>,
      InputMmcs: Mmcs<Val, MultiProof: Sync, Error: Sync>,
-@@ -410,7 +450,7 @@
+@@ -410,7 +469,7 @@
  {
      type Domain = TwoAdicMultiplicativeCoset<Val>;
      type Commitment = InputMmcs::Commitment;
@@ -756,7 +849,7 @@
      type Proof = FriProof<Challenge, FriMmcs, Val, Vec<BatchMultiOpening<Val, InputMmcs>>>;
      type Error = FriError<FriMmcs::Error, InputMmcs::Error>;
      type ProverError = FriProverError;
-@@ -446,10 +486,8 @@
+@@ -446,10 +505,8 @@
                  let shift = Val::GENERATOR / domain.shift();
                  // Compute the LDE with blowup factor fri.log_blowup.
                  // We bit reverse as this is required by our implementation of the FRI protocol.
@@ -769,7 +862,7 @@
              })
              .collect();
  
-@@ -525,7 +563,7 @@
+@@ -525,7 +582,7 @@
                          .mmcs
                          .get_matrices(data)
                          .into_iter()
@@ -778,7 +871,7 @@
                          .collect_vec();
                      debug_assert_eq!(
                          mats.len(),
-@@ -602,7 +640,7 @@
+@@ -602,7 +659,7 @@
                          let h = mat.height() >> self.fri.log_blowup;
  
                          // `subgroup` and `mat` are both in bit-reversed order, so we can truncate.
@@ -787,7 +880,7 @@
  
                          points_for_mat
                              .iter()
-@@ -891,9 +929,10 @@
+@@ -891,9 +948,10 @@
      }
  }
  
@@ -800,7 +893,7 @@
      Val: TwoAdicField + PrimeField64,
      Dft: TwoAdicSubgroupDft<Val>,
      InputMmcs: Mmcs<Val, MultiProof: Sync, Error: Sync>,
-@@ -902,7 +941,7 @@
+@@ -902,7 +960,7 @@
      Challenger:
          FieldChallenger<Val> + CanObserve<FriMmcs::Commitment> + GrindingChallenger<Witness = Val>,
  {
@@ -809,7 +902,7 @@
  
      const ZK: bool = false;
  
-@@ -954,7 +993,9 @@
+@@ -954,7 +1012,9 @@
                  lde.height()
              );
          }
@@ -820,7 +913,7 @@
      }
  
      /// Given the evaluations on a domain `gH`, return the evaluations on a different domain `g'K`.
-@@ -976,7 +1017,10 @@
+@@ -976,7 +1036,10 @@
      ) -> Self::EvaluationsOnDomain<'a> {
          let lde = self.mmcs.get_matrices(prover_data)[idx];
          if domain.shift() == Val::GENERATOR && lde.height() >= domain.size() {
@@ -832,7 +925,7 @@
          }
  
          // The committed LDE contains bit-reversed evaluations over `gH`. Its first
-@@ -987,11 +1031,8 @@
+@@ -987,11 +1050,8 @@
          // and taking a `poly_height`-sized coset iDFT therefore recovers the polynomial's
          // coefficients directly, without touching the rest of the LDE.
          let poly_height = lde.height() >> self.fri.log_blowup;
@@ -846,7 +939,7 @@
          let mut coeffs = self.dft.coset_idft_batch(lde_mat, Val::GENERATOR);
          let width = coeffs.width();
          coeffs.values.resize(domain.size() * width, Val::ZERO);
-@@ -1000,9 +1041,7 @@
+@@ -1000,9 +1060,7 @@
              .coset_dft_batch(coeffs, domain.shift())
              .bit_reverse_rows()
              .to_row_major_matrix();

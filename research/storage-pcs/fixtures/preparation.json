@@ -1,0 +1,362 @@
+[
+  {
+    "height": 2,
+    "width": 2,
+    "columns": 4,
+    "draws": 20,
+    "cells": [
+      [
+        {
+          "random": false,
+          "index": 0
+        },
+        {
+          "random": false,
+          "index": 1
+        },
+        {
+          "random": true,
+          "index": 0
+        },
+        {
+          "random": true,
+          "index": 1
+        },
+        {
+          "random": true,
+          "index": 2
+        },
+        {
+          "random": true,
+          "index": 3
+        }
+      ],
+      [
+        {
+          "random": true,
+          "index": 4
+        },
+        {
+          "random": true,
+          "index": 5
+        },
+        {
+          "random": true,
+          "index": 6
+        },
+        {
+          "random": true,
+          "index": 7
+        },
+        {
+          "random": true,
+          "index": 8
+        },
+        {
+          "random": true,
+          "index": 9
+        }
+      ],
+      [
+        {
+          "random": false,
+          "index": 2
+        },
+        {
+          "random": false,
+          "index": 3
+        },
+        {
+          "random": true,
+          "index": 10
+        },
+        {
+          "random": true,
+          "index": 11
+        },
+        {
+          "random": true,
+          "index": 12
+        },
+        {
+          "random": true,
+          "index": 13
+        }
+      ],
+      [
+        {
+          "random": true,
+          "index": 14
+        },
+        {
+          "random": true,
+          "index": 15
+        },
+        {
+          "random": true,
+          "index": 16
+        },
+        {
+          "random": true,
+          "index": 17
+        },
+        {
+          "random": true,
+          "index": 18
+        },
+        {
+          "random": true,
+          "index": 19
+        }
+      ]
+    ]
+  },
+  {
+    "height": 4,
+    "width": 3,
+    "columns": 4,
+    "draws": 44,
+    "cells": [
+      [
+        {
+          "random": false,
+          "index": 0
+        },
+        {
+          "random": false,
+          "index": 1
+        },
+        {
+          "random": false,
+          "index": 2
+        },
+        {
+          "random": true,
+          "index": 0
+        },
+        {
+          "random": true,
+          "index": 1
+        },
+        {
+          "random": true,
+          "index": 2
+        },
+        {
+          "random": true,
+          "index": 3
+        }
+      ],
+      [
+        {
+          "random": true,
+          "index": 4
+        },
+        {
+          "random": true,
+          "index": 5
+        },
+        {
+          "random": true,
+          "index": 6
+        },
+        {
+          "random": true,
+          "index": 7
+        },
+        {
+          "random": true,
+          "index": 8
+        },
+        {
+          "random": true,
+          "index": 9
+        },
+        {
+          "random": true,
+          "index": 10
+        }
+      ],
+      [
+        {
+          "random": false,
+          "index": 3
+        },
+        {
+          "random": false,
+          "index": 4
+        },
+        {
+          "random": false,
+          "index": 5
+        },
+        {
+          "random": true,
+          "index": 11
+        },
+        {
+          "random": true,
+          "index": 12
+        },
+        {
+          "random": true,
+          "index": 13
+        },
+        {
+          "random": true,
+          "index": 14
+        }
+      ],
+      [
+        {
+          "random": true,
+          "index": 15
+        },
+        {
+          "random": true,
+          "index": 16
+        },
+        {
+          "random": true,
+          "index": 17
+        },
+        {
+          "random": true,
+          "index": 18
+        },
+        {
+          "random": true,
+          "index": 19
+        },
+        {
+          "random": true,
+          "index": 20
+        },
+        {
+          "random": true,
+          "index": 21
+        }
+      ],
+      [
+        {
+          "random": false,
+          "index": 6
+        },
+        {
+          "random": false,
+          "index": 7
+        },
+        {
+          "random": false,
+          "index": 8
+        },
+        {
+          "random": true,
+          "index": 22
+        },
+        {
+          "random": true,
+          "index": 23
+        },
+        {
+          "random": true,
+          "index": 24
+        },
+        {
+          "random": true,
+          "index": 25
+        }
+      ],
+      [
+        {
+          "random": true,
+          "index": 26
+        },
+        {
+          "random": true,
+          "index": 27
+        },
+        {
+          "random": true,
+          "index": 28
+        },
+        {
+          "random": true,
+          "index": 29
+        },
+        {
+          "random": true,
+          "index": 30
+        },
+        {
+          "random": true,
+          "index": 31
+        },
+        {
+          "random": true,
+          "index": 32
+        }
+      ],
+      [
+        {
+          "random": false,
+          "index": 9
+        },
+        {
+          "random": false,
+          "index": 10
+        },
+        {
+          "random": false,
+          "index": 11
+        },
+        {
+          "random": true,
+          "index": 33
+        },
+        {
+          "random": true,
+          "index": 34
+        },
+        {
+          "random": true,
+          "index": 35
+        },
+        {
+          "random": true,
+          "index": 36
+        }
+      ],
+      [
+        {
+          "random": true,
+          "index": 37
+        },
+        {
+          "random": true,
+          "index": 38
+        },
+        {
+          "random": true,
+          "index": 39
+        },
+        {
+          "random": true,
+          "index": 40
+        },
+        {
+          "random": true,
+          "index": 41
+        },
+        {
+          "random": true,
+          "index": 42
+        },
+        {
+          "random": true,
+          "index": 43
+        }
+      ]
+    ]
+  }
+]

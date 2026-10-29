@@ -309,29 +309,21 @@ where
         for (_, mat) in &evaluations {
             self.check_hiding_budget(mat.height(), Challenge::DIMENSION, 1)?;
         }
-        let randomized_evaluations: Vec<(Self::Domain, RowMajorMatrix<Val>)> =
+        let randomized_evaluations: Vec<(Self::Domain, Store::Stored)> =
             info_span!("randomize polys").in_scope(|| {
                 evaluations
                     .into_iter()
                     .map(|(domain, mat)| {
-                        let mat_width = mat.width();
-                        // Let `w` and `h` be the width and height of the original matrix. The randomized matrix should have height `2h` and width `w + num_random_codewords`.
-                        // To generate it, we add `w + 2 * num_random_codewords` columns to the original matrix, then reshape it by setting the width to `w + num_random_codewords`.
-                        // All columns are added on the right hand side so, after reshaping, this has the net effect of adding `num_random_codewords` random columns on the right and interleaving the original trace with random rows.
-
-                        let mut random_evaluation = mat.with_random_cols(
-                            mat_width + 2 * self.num_random_codewords,
+                        let randomized = self.inner.storage.randomize(
+                            mat,
+                            self.num_random_codewords,
                             &mut *self.rng.lock(),
                         );
-                        random_evaluation.width = mat_width + self.num_random_codewords;
-
-                        (domain, random_evaluation)
+                        (domain, randomized)
                     })
                     .collect()
             });
-
-        let (commitment, data) =
-            Pcs::<Challenge, Challenger>::commit(&self.inner, randomized_evaluations)?;
+        let (commitment, data) = self.inner.commit_prepared(randomized_evaluations);
         Ok((
             commitment,
             HidingFriPcsProverData::new(

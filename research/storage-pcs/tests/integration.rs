@@ -1,4 +1,6 @@
 mod common;
+#[path = "common/preparation_tests.rs"]
+mod preparation_tests;
 #[path = "common/quotient_tests.rs"]
 mod quotient_tests;
 #[path = "common/stream_tests.rs"]
@@ -121,6 +123,17 @@ fn complete_stored_proof_matches_retained_dense_verifier() {
     let mut expected_shapes = vec![[4096, 6]];
     expected_shapes.extend(vec![[4096, 8]; 9]);
     assert_eq!(files.shapes(), expected_shapes);
+    let preparations = files.preparations();
+    assert_eq!(preparations.len(), 1);
+    assert_eq!(preparations[0].raw, [256, 2]);
+    assert_eq!(preparations[0].prepared, [512, 6]);
+    assert_eq!(preparations[0].random_field_draws, 2560);
+    assert_eq!(files.file_count(), 11);
+    assert_eq!(files.field_bytes(), 1290240);
+    println!(
+        "prepared_source_bytes=12288 prepared_field_draws=2560 total_field_bytes={}",
+        files.field_bytes()
+    );
     let events = files.streamed();
     assert_eq!(events.len(), 10);
     assert_eq!(events[0].input, [512, 6]);
@@ -214,5 +227,11 @@ fn raw_false_trace_reaches_backend_and_retained_verifier_rejects() {
         "false_proof_bytes={} stored_shapes={:?}",
         encoded.len(),
         files.shapes()
+    );
+    assert_eq!(files.preparations()[0].random_field_draws, 2560);
+    assert_eq!(files.field_bytes(), 1290240);
+    println!(
+        "prepared_source_bytes=12288 prepared_field_draws=2560 total_field_bytes={}",
+        files.field_bytes()
     );
 }

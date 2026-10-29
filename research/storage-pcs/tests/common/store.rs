@@ -11,6 +11,7 @@ use p3_dft::TwoAdicSubgroupDft;
 use p3_field::{Field, PrimeCharacteristicRing, PrimeField32};
 use p3_matrix::bitrev::BitReversibleMatrix;
 use p3_matrix::{Matrix, dense::RowMajorMatrix};
+use rand::{Rng, RngExt};
 
 static NEXT: AtomicUsize = AtomicUsize::new(0);
 
@@ -45,6 +46,15 @@ pub struct StreamEvent {
 struct State {
     shapes: Vec<[usize; 2]>,
     streamed: Vec<StreamEvent>,
+    files: Vec<([usize; 2], bool)>,
+    preparations: Vec<PreparationEvent>,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct PreparationEvent {
+    pub raw: [usize; 2],
+    pub prepared: [usize; 2],
+    pub random_field_draws: usize,
 }
 struct Directory {
     path: PathBuf,
@@ -101,10 +111,37 @@ impl FileStore {
         fs::read_dir(&self.0.path).unwrap().count()
     }
 
+    pub fn preparations(&self) -> Vec<PreparationEvent> {
+        self.0.state.lock().unwrap().preparations.clone()
+    }
+    pub fn file_order(&self) -> Vec<([usize; 2], bool)> {
+        self.0.state.lock().unwrap().files.clone()
+    }
+    pub fn field_bytes(&self) -> usize {
+        self.0
+            .state
+            .lock()
+            .unwrap()
+            .files
+            .iter()
+            .map(|([h, w], _)| h * w * 4)
+            .sum()
+    }
+
     fn create(
         &self,
         height: usize,
         width: usize,
+        write: impl FnOnce(&mut File) -> Result<Option<StreamEvent>, ConstructionError>,
+    ) -> Result<StoredMatrix, ConstructionError> {
+        self.create_as(height, width, false, write)
+    }
+
+    fn create_as(
+        &self,
+        height: usize,
+        width: usize,
+        prepared_input: bool,
         write: impl FnOnce(&mut File) -> Result<Option<StreamEvent>, ConstructionError>,
     ) -> Result<StoredMatrix, ConstructionError> {
         if !(1..=4096).contains(&height) || !height.is_power_of_two() || !(1..=12).contains(&width)
@@ -116,11 +153,11 @@ impl FileStore {
             .state
             .lock()
             .map_err(|_| ConstructionError::Poisoned)?;
-        let total: usize = state.shapes.iter().map(|[h, w]| h * w * 4).sum();
-        if state.shapes.len() >= 16 || total + height * width * 4 > 2 * 1024 * 1024 {
+        let total: usize = state.files.iter().map(|([h, w], _)| h * w * 4).sum();
+        if state.files.len() >= 16 || total + height * width * 4 > 2 * 1024 * 1024 {
             return Err(ConstructionError::Limit);
         }
-        let path = self.0.path.join(format!("{}.bin", state.shapes.len()));
+        let path = self.0.path.join(format!("{}.bin", state.files.len()));
         let file = OpenOptions::new()
             .write(true)
             .create_new(true)
@@ -135,7 +172,10 @@ impl FileStore {
         drop(pending.file.take());
         let matrix = CheckedFileMatrix::open(&pending.path, height, width)
             .map_err(ConstructionError::Access)?;
-        state.shapes.push([height, width]);
+        state.files.push(([height, width], prepared_input));
+        if !prepared_input {
+            state.shapes.push([height, width]);
+        }
         if let Some(event) = event {
             state.streamed.push(event);
         }
@@ -147,10 +187,10 @@ impl FileStore {
     }
 
     /// The optional field count injects an explicit write failure for testing.
-    pub fn try_extend<Dft: TwoAdicSubgroupDft<BabyBear>>(
+    pub fn try_extend<Dft: TwoAdicSubgroupDft<BabyBear>, M: Matrix<BabyBear>>(
         &self,
         dft: &Dft,
-        evaluations: RowMajorMatrix<BabyBear>,
+        evaluations: M,
         log_blowup: usize,
         shift: BabyBear,
         fail_after_fields: Option<usize>,
@@ -171,8 +211,12 @@ impl FileStore {
             let mut written = 0;
             for column in 0..width {
                 let values = (0..input_height)
-                    .map(|r| evaluations.values[r * width + column])
-                    .collect();
+                    .map(|r| {
+                        evaluations
+                            .get(r, column)
+                            .ok_or(ConstructionError::Incomplete)
+                    })
+                    .collect::<Result<Vec<_>, _>>()?;
                 let output = dft
                     .coset_lde_batch(RowMajorMatrix::new(values, 1), log_blowup, shift)
                     .bit_reverse_rows();
@@ -243,6 +287,27 @@ impl MatrixStore<BabyBear> for FileStore {
             .unwrap_or_else(|error| std::panic::panic_any(error))
     }
 
+    fn randomize<R: Rng + Send + Sync>(
+        &self,
+        matrix: RowMajorMatrix<BabyBear>,
+        random_columns: usize,
+        rng: &mut R,
+    ) -> Self::Stored {
+        self.try_randomize(matrix, random_columns, rng, None)
+            .unwrap_or_else(|error| std::panic::panic_any(error))
+    }
+
+    fn extend_prepared<D: TwoAdicSubgroupDft<BabyBear>, M: Matrix<BabyBear>>(
+        &self,
+        dft: &D,
+        evaluations: M,
+        log_blowup: usize,
+        shift: BabyBear,
+    ) -> Self::Stored {
+        self.try_extend(dft, evaluations, log_blowup, shift, None)
+            .unwrap_or_else(|error| std::panic::panic_any(error))
+    }
+
     fn extend_quotient<Dft: TwoAdicSubgroupDft<BabyBear>>(
         &self,
         dft: &Dft,
@@ -257,6 +322,59 @@ impl MatrixStore<BabyBear> for FileStore {
 }
 
 impl FileStore {
+    pub fn try_randomize<R: Rng + Send + Sync>(
+        &self,
+        matrix: RowMajorMatrix<BabyBear>,
+        random_columns: usize,
+        rng: &mut R,
+        fail_after_fields: Option<usize>,
+    ) -> Result<StoredMatrix, ConstructionError> {
+        let width = matrix.width();
+        if !(1..=8).contains(&width) || !(1..=4).contains(&random_columns) {
+            return Err(ConstructionError::Shape);
+        }
+        let height = matrix.height();
+        if !height.is_power_of_two() {
+            return Err(ConstructionError::Shape);
+        }
+        let prepared_height = height.checked_mul(2).ok_or(ConstructionError::Limit)?;
+        let prepared_width = width + random_columns;
+        let prepared = self.create_as(prepared_height, prepared_width, true, |file| {
+            let mut written = 0;
+            let mut write_field = |value: BabyBear| -> Result<(), ConstructionError> {
+                if fail_after_fields == Some(written) {
+                    return Err(ConstructionError::Io(std::io::ErrorKind::WriteZero));
+                }
+                file.write_all(&value.as_canonical_u32().to_le_bytes())?;
+                written += 1;
+                Ok(())
+            };
+            for row in 0..height {
+                for column in 0..width {
+                    write_field(matrix.values[row * width + column])?;
+                }
+                for _ in 0..width + 2 * random_columns {
+                    write_field(rng.random())?;
+                }
+            }
+            if written != prepared_height * prepared_width {
+                return Err(ConstructionError::Incomplete);
+            }
+            Ok(None)
+        })?;
+        self.0
+            .state
+            .lock()
+            .map_err(|_| ConstructionError::Poisoned)?
+            .preparations
+            .push(PreparationEvent {
+                raw: [height, width],
+                prepared: [prepared_height, prepared_width],
+                random_field_draws: height * (width + 2 * random_columns),
+            });
+        Ok(prepared)
+    }
+
     /// Masks are actual prepared coefficients. This method draws no randomness.
     pub fn try_extend_quotient<Dft: TwoAdicSubgroupDft<BabyBear>>(
         &self,
@@ -347,6 +465,19 @@ impl Matrix<BabyBear> for StoredMatrix {
     }
     fn height(&self) -> usize {
         self.matrix.height()
+    }
+    // A checked scalar window avoids reading a full stored row per column.
+    unsafe fn get_unchecked(&self, row: usize, column: usize) -> BabyBear {
+        let end = column.checked_add(1).unwrap_or_else(|| {
+            std::panic::panic_any(kova_storage_matrix::StorageAccessFailure(
+                StorageError::Bounds,
+            ))
+        });
+        self.matrix
+            .try_window(row, column, end)
+            .unwrap_or_else(|error| {
+                std::panic::panic_any(kova_storage_matrix::StorageAccessFailure(error))
+            })[0]
     }
     // The declaration implements the retained trait. No unsafe operation occurs.
     unsafe fn row_unchecked(

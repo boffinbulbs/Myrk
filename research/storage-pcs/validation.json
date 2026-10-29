@@ -1,11 +1,11 @@
 {
-  "format": "kova.storage-pcs.validation.v3",
-  "scope": "Finite streamed coupled quotient commitments and complete quartic proof compatibility",
-  "package_version": "0.3.0",
-  "predecessor_revision": "85a42294119f46c55113ee43727b915d173b5d75",
+  "format": "kova.storage-pcs.validation.v4",
+  "scope": "Finite main input preparation and complete quartic proof compatibility",
+  "package_version": "0.4.0",
+  "predecessor_revision": "ae5d9cf1a2a5ece9ee5136bde74cf01bd2d78e82",
   "predecessor_record": {
-    "bytes": 11042,
-    "sha256": "22875efeaf454fb2918d2e16bcb0dbbc5bdb3cb24dc66750917ed5188cade173"
+    "bytes": 13639,
+    "sha256": "2424a76deb507e785963abf6f5e899fb671781a246e9446521977d56e2ba9cbe"
   },
   "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
   "platform": "Windows x86_64, build 26300",
@@ -30,7 +30,7 @@
     },
     "backend/Cargo.toml": {
       "bytes": 1175,
-      "sha256": "6b0df6e38d972b8e00a4a6cc2a84a2b6bfc94b94e75c87a5d1d0005c5a84df86"
+      "sha256": "0b76d486edd6a37b27c9598438c5d0f0668d6667f7c0f8af232100fa3fc8c96c"
     },
     "backend/LICENSE-APACHE": {
       "bytes": 10848,
@@ -41,20 +41,20 @@
       "sha256": "d6543a1b0a0a51d10b5f8c389324c7dfeba556b7f39815efd292927bde808700"
     },
     "backend/README.md": {
-      "bytes": 1543,
-      "sha256": "5be854fbba5f44927dbca6c6dbf0d7f0df8751c275a84d65a5e0acdf7b32b44a"
+      "bytes": 1622,
+      "sha256": "d24951ef4378473c945e3f16a237032447b12ac063caaf34a4d5f45f9827de50"
     },
     "backend/source-changes.patch": {
-      "bytes": 33016,
-      "sha256": "f2cc670f330c95cdc34daec75bfb752a7c42a6561db62d64de7c31eaf6dbdd9d"
+      "bytes": 36874,
+      "sha256": "bc29b7bc9ed27e141f5a5d0e1eadb90083500a045b5e6291aacf78e46b52d054"
     },
     "backend/src/config.rs": {
       "bytes": 20398,
       "sha256": "78f50dc6f0b9233e28399a33a0b402d9c1c53f218b5cb8c73df000075c55f4fe"
     },
     "backend/src/hiding_pcs.rs": {
-      "bytes": 70424,
-      "sha256": "55166018d3d3a5248d048d5f2f0b07b9ed5256adb390a9c41f6f4c9c6b3e5414"
+      "bytes": 69656,
+      "sha256": "8c12cca5d256e28f0a87f0cf95020e33b62b27070d430776e24599d6a18d6eed"
     },
     "backend/src/lib.rs": {
       "bytes": 679,
@@ -77,16 +77,16 @@
       "sha256": "37c1aa19313ac2e2c3327ba03e7185dd0045e351b294428e4b74742dcb1d1e3f"
     },
     "backend/src/storage.rs": {
-      "bytes": 5253,
-      "sha256": "369d643ead0d8613ff2672f0801da90ac2132dfb6cec6a3806bfdf14e258039f"
+      "bytes": 6313,
+      "sha256": "ad4a2a1e207021dd97f7ec9ec1d96bbc273db84f67678754634379f5fcb5b999"
     },
     "backend/src/transcript.rs": {
       "bytes": 39974,
       "sha256": "a9ee1af03b02514bffffa6519c1f0544c91457c3e2327024cdfcfd84273ab6e9"
     },
     "backend/src/two_adic_pcs.rs": {
-      "bytes": 70117,
-      "sha256": "2836255b1a8beb2bbb56f3485dda6560ec726d2cad778b0ac63d8cbcfe8b6331"
+      "bytes": 70795,
+      "sha256": "00f22516333cdabc984418c6ed56518d13a680e5c24ca96df521bf9866a920c8"
     },
     "backend/src/verifier.rs": {
       "bytes": 125366,
@@ -114,11 +114,15 @@
     },
     "Cargo.lock": {
       "bytes": 16331,
-      "sha256": "e57a117e599f992659dbf445198deabce48ddadf0aec8cb01b66feb907164472"
+      "sha256": "d76ea04f0aa079bd13dc223a95ce88050956aa1def7ca6df3e3e2e77566e11d7"
     },
     "Cargo.toml": {
       "bytes": 1442,
-      "sha256": "510e9a402317003890026b13e02ca42aa6f3e962571121fd6fff3bb1f246571e"
+      "sha256": "9602a6996ffdbdae470f71e82cf6ee5ec1f3eeae904865e24ad91f7731445d4d"
+    },
+    "fixtures/preparation.json": {
+      "bytes": 5891,
+      "sha256": "c4794f307353a7ff53b5c828aa97d67e1a8272a3ee7510e2e27abc14d8837863"
     },
     "fixtures/quotient.json": {
       "bytes": 8482,
@@ -137,20 +141,24 @@
       "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
     },
     "NOTICE.md": {
-      "bytes": 1854,
-      "sha256": "0a3176ecc5738aaca615e835f962a5eb1405a47d01f8588dee551168dcfe5b0f"
+      "bytes": 1953,
+      "sha256": "bd3e01ab3d034ecefa2eed3bbbeaf014a2f68987cc84ece8f69ceaa56a303112"
+    },
+    "preparation_reference.py": {
+      "bytes": 1213,
+      "sha256": "2c0b1d9ae69611d9dd77589a4ce8c43faf029d55f5928035027ac7a7fd845d0e"
     },
     "quotient_reference.py": {
       "bytes": 2822,
       "sha256": "8aa759ad6961c36accb56ba0062562757f1b734f1324b9cfcfdb9abb3d3d3032"
     },
     "README.md": {
-      "bytes": 9620,
-      "sha256": "125fb072bc0ede2082c00fef8f6ed83ade445b7d1d33b0ad306b2c9663d04c23"
+      "bytes": 11585,
+      "sha256": "36f9ad085241a952610d794585e60ca935171d8a609d28d19de732168fb69abb"
     },
     "records/README.md": {
-      "bytes": 1389,
-      "sha256": "2db1879ae0d6b7785c2240873d3fa7700da0d2dcdff5de283eb71c43a7dfa3f1"
+      "bytes": 1744,
+      "sha256": "259059f281f67272c8e24ad33b2b5cd5e0f9bd3c92a2878486f9c5721d39d3bf"
     },
     "records/validation-v1.json": {
       "bytes": 9460,
@@ -159,6 +167,10 @@
     "records/validation-v2.json": {
       "bytes": 11042,
       "sha256": "22875efeaf454fb2918d2e16bcb0dbbc5bdb3cb24dc66750917ed5188cade173"
+    },
+    "records/validation-v3.json": {
+      "bytes": 13639,
+      "sha256": "2424a76deb507e785963abf6f5e899fb671781a246e9446521977d56e2ba9cbe"
     },
     "reference.py": {
       "bytes": 844,
@@ -188,26 +200,30 @@
       "bytes": 2880,
       "sha256": "b91f76d65845f72b4d16dc2a929242a8dfa9e2c139167b4bdebd49a5c1418c4b"
     },
+    "tests/common/preparation_tests.rs": {
+      "bytes": 6138,
+      "sha256": "339b3e1aa70bf29e35f3ab5f1c2854ecfa819c8d2ee9bcc85dc448e879c734af"
+    },
     "tests/common/quotient_tests.rs": {
-      "bytes": 8586,
-      "sha256": "ccb60d89d9b9d5df9e1d0ab44410ab469bf13d1c3945a7aa78d6a545a5ff0b04"
+      "bytes": 9377,
+      "sha256": "2bd0b5882df458a1e575bdf4e35bdbbb6abccbd1568f318bf50853dc3510421a"
     },
     "tests/common/store.rs": {
-      "bytes": 12666,
-      "sha256": "390f740d0691e1b25e1708ffaf30b273a6177705ea33e2d9b14b9931d2fc7061"
+      "bytes": 17246,
+      "sha256": "76a23ab637ff2389fecab648479b524eb15913a93bfef8469155cb5e28c7f6f2"
     },
     "tests/common/stream_tests.rs": {
       "bytes": 3855,
       "sha256": "3238dee25479a310cbdc669b86c3749c12859ca39e716e02e3f65e5f9e286f52"
     },
     "tests/integration.rs": {
-      "bytes": 7600,
-      "sha256": "3bec8dd2411411ee4522eee88a2e91503560f81fc3adebafba61635994cf0da7"
+      "bytes": 8372,
+      "sha256": "641efcc0bf0c25615cc53a042cf9b54385e600708b1efb2ef3082bdc78a2e382"
     }
   },
   "executed_test_binary": {
-    "bytes": 2159616,
-    "sha256": "7e5f5f00a8449674526574afd44f8b58f27e35f52c95ae16421c335b5da6694f"
+    "bytes": 2231808,
+    "sha256": "cd6626af58c9feeaf8e41a516b9abc47f582a0ab2fb10c60524ab133f2a95eda"
   },
   "unchanged_upstream_sources": [
     "src/config.rs",
@@ -221,12 +237,12 @@
   "unchanged_proof_transcript_fri_and_verifier": true,
   "registry_package_count": 63,
   "registry_tuples_and_checksums_subset_of_root_lock": true,
-  "registry_feature_closure_identical_to_v2": true,
+  "registry_feature_closure_identical_to_v3": true,
   "root_lock": {
     "bytes": 25648,
     "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5"
   },
-  "ordinary_tests_passed": 8,
+  "ordinary_tests_passed": 12,
   "independent_polynomial_domains": 3,
   "independent_quotient_domains": 2,
   "independent_normalized_coupling_constants": 4,
@@ -235,7 +251,20 @@
   "inverse_column_dft_calls": 64,
   "largest_explicit_output_column_fields": 4096,
   "largest_explicit_output_column_bytes": 16384,
-  "retained_full_input_and_coupled_mask_arrays": true,
+  "retained_raw_trace_separate_random_input_and_quotient_masks": true,
+  "main_input_preparation_streamed": true,
+  "prepared_source_shape": [
+    512,
+    6
+  ],
+  "prepared_source_bytes": 12288,
+  "prepared_field_draws": 2560,
+  "total_field_files": 11,
+  "total_field_bytes": 1290240,
+  "generic_prepared_source_nonmaterialization_test": true,
+  "independent_preparation_layouts": 2,
+  "batch_preflight_order_and_generator_continuation_passed": true,
+  "input_write_failure_does_not_rewind_entropy": true,
   "dense_quotient_ldes_in_complete_file_path": false,
   "legacy_dense_quotient_api_remains": true,
   "aggregate_field_file_bytes": 1277952,
@@ -251,7 +280,7 @@
       "test": "complete_stored_proof_matches_retained_dense_verifier",
       "encoded_proof_bytes": 596650,
       "passed": 1,
-      "field_file_shapes": [
+      "committed_field_file_shapes": [
         [
           4096,
           6
@@ -293,12 +322,19 @@
           8
         ]
       ],
-      "aggregate_field_bytes": 1277952,
-      "process_peak_commit_bytes": 10883072,
-      "job_peak_commit_bytes": 12165120,
-      "peak_working_bytes": 15122432,
+      "committed_field_bytes": 1277952,
+      "prepared_source_shape": [
+        512,
+        6
+      ],
+      "prepared_source_bytes": 12288,
+      "prepared_field_draws": 2560,
+      "total_field_bytes": 1290240,
+      "process_peak_commit_bytes": 10858496,
+      "job_peak_commit_bytes": 12144640,
+      "peak_working_bytes": 15155200,
       "installed_process_and_job_commit_limit_bytes": 268435456,
-      "available_before_bytes": 9462374400,
+      "available_before_bytes": 8780353536,
       "minimum_available_physical_bytes": 1073741824,
       "timeout_seconds": 60,
       "hard_limit_readback": true
@@ -307,7 +343,7 @@
       "test": "raw_false_trace_reaches_backend_and_retained_verifier_rejects",
       "encoded_proof_bytes": 593862,
       "passed": 1,
-      "field_file_shapes": [
+      "committed_field_file_shapes": [
         [
           4096,
           6
@@ -349,12 +385,19 @@
           8
         ]
       ],
-      "aggregate_field_bytes": 1277952,
-      "process_peak_commit_bytes": 7122944,
-      "job_peak_commit_bytes": 8404992,
-      "peak_working_bytes": 11554816,
+      "committed_field_bytes": 1277952,
+      "prepared_source_shape": [
+        512,
+        6
+      ],
+      "prepared_source_bytes": 12288,
+      "prepared_field_draws": 2560,
+      "total_field_bytes": 1290240,
+      "process_peak_commit_bytes": 6873088,
+      "job_peak_commit_bytes": 8163328,
+      "peak_working_bytes": 11505664,
       "installed_process_and_job_commit_limit_bytes": 268435456,
-      "available_before_bytes": 9488695296,
+      "available_before_bytes": 8764944384,
       "minimum_available_physical_bytes": 1073741824,
       "timeout_seconds": 60,
       "hard_limit_readback": true
@@ -363,7 +406,7 @@
       "test": "quotient_tests::incorrect_final_mask_rejected_by_retained_verifier",
       "encoded_proof_bytes": 608120,
       "passed": 1,
-      "field_file_shapes": [
+      "committed_field_file_shapes": [
         [
           4096,
           6
@@ -405,12 +448,19 @@
           8
         ]
       ],
-      "aggregate_field_bytes": 1277952,
-      "process_peak_commit_bytes": 7000064,
-      "job_peak_commit_bytes": 8273920,
+      "committed_field_bytes": 1277952,
+      "prepared_source_shape": [
+        512,
+        6
+      ],
+      "prepared_source_bytes": 12288,
+      "prepared_field_draws": 2560,
+      "total_field_bytes": 1290240,
+      "process_peak_commit_bytes": 6868992,
+      "job_peak_commit_bytes": 8138752,
       "peak_working_bytes": 11526144,
       "installed_process_and_job_commit_limit_bytes": 268435456,
-      "available_before_bytes": 9329250304,
+      "available_before_bytes": 8794079232,
       "minimum_available_physical_bytes": 1073741824,
       "timeout_seconds": 60,
       "hard_limit_readback": true
@@ -447,6 +497,10 @@
       "exit_code": 0
     },
     {
+      "name": "preparation_reference",
+      "exit_code": 0
+    },
+    {
       "name": "build",
       "exit_code": 0
     },
@@ -455,30 +509,16 @@
       "exit_code": 0
     },
     {
-      "name": "quotient-honest-v3",
+      "name": "prepared-honest-v4",
       "exit_code": 0
     },
     {
-      "name": "quotient-false-v3",
+      "name": "prepared-false-v4",
       "exit_code": 0
     },
     {
-      "name": "quotient-mask-v3",
+      "name": "prepared-mask-v4",
       "exit_code": 0
     }
-  ],
-  "documentation_scope_clarification": {
-    "path": "backend/README.md",
-    "prior_identity": {
-      "bytes": 1432,
-      "sha256": "82e9185e9c50a78685f053fd35e0340d0823c9bae31d32eeecf72eb4074923cc"
-    },
-    "current_identity": {
-      "bytes": 1543,
-      "sha256": "5be854fbba5f44927dbca6c6dbf0d7f0df8751c275a84d65a5e0acdf7b32b44a"
-    },
-    "proof_and_reference_implementation_sources_unchanged": true,
-    "format_and_backend_lints_rechecked": true,
-    "additional_stark_calls": 0
-  }
+  ]
 }

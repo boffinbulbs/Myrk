@@ -6,12 +6,50 @@ use p3_field::TwoAdicField;
 use p3_matrix::Matrix;
 use p3_matrix::bitrev::BitReversibleMatrix;
 use p3_matrix::dense::RowMajorMatrix;
+use rand::{
+    Rng,
+    distr::{Distribution, StandardUniform},
+};
 
-/// A policy constructs and retains exact physically ordered LDE values.
-/// It does not sample masks or change the commitment protocol.
+/// A policy prepares inputs and retains exact physically ordered LDE values.
+/// Main preparation consumes only the caller's continuing mask generator.
 pub trait MatrixStore<F: Clone + Send + Sync>: Clone + Send + Sync {
     type Stored: Matrix<F> + 'static;
     fn store(&self, matrix: RowMajorMatrix<F>) -> Self::Stored;
+
+    /// Prepare the exact retained main masking layout from the continuing RNG.
+    fn randomize<R>(
+        &self,
+        matrix: RowMajorMatrix<F>,
+        random_columns: usize,
+        rng: &mut R,
+    ) -> Self::Stored
+    where
+        F: p3_field::Field,
+        R: Rng + Send + Sync,
+        StandardUniform: Distribution<F>,
+    {
+        let width = matrix.width();
+        let mut randomized = matrix.with_random_cols(width + 2 * random_columns, rng);
+        randomized.width = width + random_columns;
+        self.store(randomized)
+    }
+
+    /// Dense compatibility remains explicit for policies without a source view.
+    fn extend_prepared<Dft, M>(
+        &self,
+        dft: &Dft,
+        evaluations: M,
+        log_blowup: usize,
+        shift: F,
+    ) -> Self::Stored
+    where
+        F: TwoAdicField,
+        Dft: TwoAdicSubgroupDft<F>,
+        M: Matrix<F>,
+    {
+        self.extend(dft, evaluations.to_row_major_matrix(), log_blowup, shift)
+    }
 
     /// The default construction is the retained dense DFT and bit reversal.
     /// A storage policy may construct the same values without a full LDE buffer.

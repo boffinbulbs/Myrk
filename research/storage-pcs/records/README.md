@@ -6,4 +6,6 @@ That earlier execution corrected a one MiB field file allowance after an attempt
 
 [validation-v2.json](validation-v2.json) is retained byte identical from revision [85a42294119f46c55113ee43727b915d173b5d75](https://github.com/th0rigin/Kova/commit/85a42294119f46c55113ee43727b915d173b5d75). It describes version 0.2.0 with column construction for ordinary main and separate randomization commitments. Its SHA256 is 22875efeaf454fb2918d2e16bcb0dbbc5bdb3cb24dc66750917ed5188cade173.
 
-The current [validation.json](../validation.json) describes version 0.3.0, which also constructs the coupled quotient commitments by column. All versions retain the same finite quartic relation and proof profile. Historical source hashes do not describe later source revisions.
+[validation-v3.json](validation-v3.json) is retained byte identical from revision [ae5d9cf1a2a5ece9ee5136bde74cf01bd2d78e82](https://github.com/th0rigin/Kova/commit/ae5d9cf1a2a5ece9ee5136bde74cf01bd2d78e82). It describes version 0.3.0 with coupled quotient column construction. Its SHA256 is 2424a76deb507e785963abf6f5e899fb671781a246e9446521977d56e2ba9cbe.
+
+The current [validation.json](../validation.json) describes version 0.4.0, which also prepares main randomized rows directly in storage. All versions retain the same finite quartic relation and proof profile. Historical source hashes do not describe later source revisions.

@@ -209,6 +209,24 @@ struct BrokenLastMask {
 }
 impl MatrixStore<BabyBear> for BrokenLastMask {
     type Stored = StoredMatrix;
+    fn randomize<R: rand::Rng + Send + Sync>(
+        &self,
+        matrix: RowMajorMatrix<BabyBear>,
+        random_columns: usize,
+        rng: &mut R,
+    ) -> Self::Stored {
+        self.files.randomize(matrix, random_columns, rng)
+    }
+    fn extend_prepared<D: TwoAdicSubgroupDft<BabyBear>, M: Matrix<BabyBear>>(
+        &self,
+        dft: &D,
+        evaluations: M,
+        log_blowup: usize,
+        shift: BabyBear,
+    ) -> Self::Stored {
+        self.files
+            .extend_prepared(dft, evaluations, log_blowup, shift)
+    }
     fn store(&self, matrix: RowMajorMatrix<BabyBear>) -> Self::Stored {
         self.files.store(matrix)
     }
@@ -273,5 +291,11 @@ fn incorrect_final_mask_rejected_by_retained_verifier() {
         "bad_mask_proof_bytes={} stored_shapes={:?}",
         encoded.len(),
         files.shapes()
+    );
+    assert_eq!(files.preparations()[0].random_field_draws, 2560);
+    assert_eq!(files.field_bytes(), 1290240);
+    println!(
+        "prepared_source_bytes=12288 prepared_field_draws=2560 total_field_bytes={}",
+        files.field_bytes()
     );
 }

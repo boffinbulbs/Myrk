@@ -104,6 +104,25 @@ where
     InputMmcs: Mmcs<Val>,
     Store: MatrixStore<Val>,
 {
+    pub(crate) fn commit_prepared<M: Matrix<Val>>(
+        &self,
+        evaluations: impl IntoIterator<Item = (TwoAdicMultiplicativeCoset<Val>, M)>,
+    ) -> (InputMmcs::Commitment, InputMmcs::ProverData<Store::Stored>)
+    where
+        Dft: TwoAdicSubgroupDft<Val>,
+    {
+        let ldes = evaluations
+            .into_iter()
+            .map(|(domain, evals)| {
+                assert_eq!(domain.size(), evals.height());
+                let shift = Val::GENERATOR / domain.shift();
+                self.storage
+                    .extend_prepared(&self.dft, evals, self.fri.log_blowup, shift)
+            })
+            .collect();
+        self.mmcs.commit(ldes)
+    }
+
     pub(crate) fn commit_stored_ldes(
         &self,
         ldes: Vec<Store::Stored>,
