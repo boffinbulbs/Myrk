@@ -90,7 +90,7 @@ fn full_schedule_selector_and_source_dimensions() {
     use layout::*;
     assert_eq!(
         (HEIGHT, WIDTH, PUBLIC_VALUES, KEY - CLOCK),
-        (8192, 47049, 196, 192)
+        (8192, 47058, 196, 192)
     );
     let mut row = vec![BabyBear::ZERO; WIDTH];
     for position in 0..HEIGHT {
@@ -135,7 +135,7 @@ fn actual_complete_symbolic_relation_shape() {
             shape.preprocessed_width,
             shape.num_periodic_columns
         ),
-        (47049, 196, 0, 0)
+        (47058, 196, 0, 0)
     );
     let constraints = get_symbolic_constraints::<BabyBear, _>(&air, shape);
     let count = constraints.len();
@@ -145,6 +145,6 @@ fn actual_complete_symbolic_relation_shape() {
         .max()
         .unwrap();
     assert!((140000..220000).contains(&count));
-    assert!((4..=8).contains(&degree));
-    println!("native_width=47049 constraints_per_row={count} degree={degree} native_trace_allocations=0 backend_proofs=0");
+    assert_eq!(degree, 4);
+    println!("native_width=47058 constraints_per_row={count} degree={degree} native_trace_allocations=0 backend_proofs=0");
 }

@@ -236,6 +236,14 @@ pub(crate) fn trace(w: &Witness, s: &Statement) -> Result<RowMajorMatrix<BabyBea
     for (at, row) in values.chunks_exact_mut(WIDTH).enumerate() {
         row[CLOCK + at % CLOCK_LOW] = BabyBear::ONE;
         row[CLOCK + CLOCK_LOW + at / CLOCK_LOW] = BabyBear::ONE;
+        row[ACTIVE_CHALLENGE] =
+            BabyBear::from_bool((program::SAMPLE_START..program::SAMPLE_END).contains(&at))
+                * (BabyBear::ONE - row[COUNT + 60]);
+        let matrix_phase = crate::full_program::matrix(at).is_some_and(|(_, _, local)| local >= 6);
+        for index in 0..8 {
+            row[ACTIVE_MATRIX + index] = BabyBear::from_bool(matrix_phase)
+                * (BabyBear::ONE - row[MATRIX_COUNT + 257 * index + 256]);
+        }
         for (offset, bytes) in [
             (KEY, w.key.as_slice()),
             (SIGNATURE, w.signature.as_slice()),

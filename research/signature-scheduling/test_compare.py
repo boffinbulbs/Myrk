@@ -14,6 +14,12 @@ class CostTests(unittest.TestCase):
         self.assertEqual(current['field_file_count'], 19)
         self.assertFalse(current['current_sixteen_file_limit_accepts'])
         self.assertFalse(current['current_shape_limit_accepts'])
+        bound = compare.costs(8192,47058,4,181221)
+        self.assertEqual(bound['quotient_chunks'],previous['quotient_chunks'])
+        self.assertEqual(bound['field_file_count'],11)
+        self.assertTrue(bound['current_sixteen_file_limit_accepts'])
+        self.assertLess(bound['constraint_row_positions'],previous['constraint_row_positions'])
+        self.assertFalse(bound['current_shape_limit_accepts'])
 
     def test_degree_boundary_changes_quotient_domain(self):
         for degree, chunks in [(2, 4), (3, 8), (4, 8), (5, 16), (6, 16), (8, 16), (9, 32)]:

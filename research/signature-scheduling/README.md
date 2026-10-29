@@ -1,8 +1,8 @@
 # Factorized private verifier scheduling
 
-The factorized schedule removes 8000 columns from the complete bounded signature relation. Actual symbolic inspection also raises its maximum constraint degree from four to six. Under the retained conditional proof settings, quotient evaluation doubles in height and covers more constraint positions. The experiment remains separate from the selected verifier and has no proof or payment acceptance API.
+The factorized schedule with bound activity removes 7991 columns from the complete bounded signature relation while retaining degree four. Actual symbolic inspection measures 181221 constraints per row. Nine explicitly constrained intermediate fields avoid the higher degree of the first factorized variant. The experiment remains separate from the selected verifier and has no proof or payment acceptance API.
 
-The [reference relation](../signature-complete-native/README.md) remains unchanged. Component equation modules are compiled directly from that source. The [source delta](source-delta.patch) identifies copied layout, clock, selector and construction changes with zero context hunks. Original licenses and [source identities](provenance.json) are retained.
+The [reference relation](../signature-complete-native/README.md) remains unchanged. Most component modules are compiled directly from that source. Adapted sampler and matrix modules replace expanded activity expressions with producer bound fields. The [source delta](source-delta.patch) identifies copied changes with zero context hunks. Original licenses and [source identities](provenance.json) are retained.
 
 ## Clock relation
 
@@ -29,11 +29,23 @@ These selectors feed the retained source, hash, sampling, transform and hint equ
 
 ![Two constrained indicator banks select the fixed private verifier source routes](schedule.svg)
 
+## Activity binding
+
+The first factorized relation has two degree six constraints in the challenge sampler and eight degree five constraints in the matrix sampler. Each uses an activity expression with a phase selector $\phi$ and a completed count indicator $d$. The current relation introduces one challenge activity field and eight matrix activity fields. Each satisfies
+
+$$
+a(a-1)=0,\qquad a=\phi(1-d).
+$$
+
+The count indicator is the same private state consumed by the sampler. It retains its original Boolean, initialization and transition constraints. The activity equality is asserted inside the same AIR before the source consumer uses $a$. A caller cannot choose activity independently or disable a required source read.
+
+Here $\phi$ has degree two, so its activity binding has degree three. If a source expression $X$ has degree three, the consumer $a(X-x)=0$ has degree four. Expanding $\phi(1-d)(X-x)$ directly has degree six. The source statement is preserved through an explicit intermediate relation rather than a host validity check.
+
 ## Measured symbolic scope
 
-The [validation record](validation.json) reports four ordinary tests and one separately guarded symbolic test. The ordinary tests check all selectors and intervals for a 32 row integer reference, 8192 native selector positions, source dimensions, carry and boundary failures, fractional or multiple indicators and repeated schedule refusal. Restoration provides positive controls for the eight local mutations.
+The [validation record](validation.json) reports seven ordinary tests and one separately guarded symbolic test. The tests check all selectors and intervals for a 32 row integer reference, 8192 native selector positions, source dimensions, carry and boundary failures, fractional or multiple indicators and repeated schedule refusal. Restoration provides positive controls for eight local clock mutations. Activity tests cover all eight Boolean phase/completion combinations, cache corruption and a deliberately detached negative control that would hide a false source read without the producer equality.
 
-The complete equation set contains 181203 constraints per row and has degree six at width 47049. The symbolic process used a verified 512 MiB process and aggregate limit, a 120 second deadline and at least 2 GiB free memory admission. Its peak process commit was 308318208 bytes and peak aggregate commit 309600256 bytes on Windows with Rust 1.94.1. It built expression trees, not a native field trace.
+The complete equation set contains 181221 constraints per row and has degree four at width 47058. The symbolic process used a verified 512 MiB process and aggregate limit, a 120 second deadline and at least 2 GiB free memory admission. Its peak process commit was 308523008 bytes and peak aggregate commit 309809152 bytes on Windows with Rust 1.94.1. It built expression trees, not a native field trace.
 
 No native signature tuple, complete native trace or hiding proof was executed for this variant. Source reuse and symbolic inspection do not substitute for those validation gates. The exported research constructor is unmeasured in this variant and is not used by the ordinary or symbolic tests.
 
@@ -48,19 +60,19 @@ $$
 
 where $C$ is the actual number of constraints per row. Each quotient chunk needs its own commitment field file in the current storage experiment.
 
-| Quantity | Original relation | Factorized relation |
-| :--- | ---: | ---: |
-| Witness columns | 55049 | 47049 |
-| Constraints per row | 205201 | 181203 |
-| Maximum symbolic degree | 4 | 6 |
-| Quotient chunks | 8 | 16 |
-| Quotient domain rows | 65536 | 131072 |
-| Constraint row positions | 13448052736 | 23750639616 |
-| Raw field contents in bytes | 1803845632 | 1541701632 |
-| Prepared and commitment field files in bytes | 32509329408 | 27824291840 |
-| Field files | 11 | 19 |
+| Quantity | Original | Factorized v1 | Bound activity v2 |
+| :--- | ---: | ---: | ---: |
+| Witness columns | 55049 | 47049 | 47058 |
+| Constraints per row | 205201 | 181203 | 181221 |
+| Maximum symbolic degree | 4 | 6 | 4 |
+| Quotient chunks | 8 | 16 | 8 |
+| Quotient domain rows | 65536 | 131072 | 65536 |
+| Constraint row positions | 13448052736 | 23750639616 | 11876499456 |
+| Raw field contents in bytes | 1803845632 | 1541701632 | 1541996544 |
+| Prepared and commitment field files in bytes | 32509329408 | 27824291840 | 27796045824 |
+| Field files | 11 | 19 | 11 |
 
-The factorized relation has fewer field bytes and more quotient work. Nineteen files also exceed the current sixteen file limit. Both native shapes exceed current height, width and aggregate field byte limits. No allowance was expanded and no native proving speedup is claimed. Field positions are an arithmetic count, not an instruction or runtime measurement.
+Version two retains the original quotient size and eleven field files while reducing conditional field contents and constraint positions. All native shapes still exceed current height, width and aggregate field byte limits. No allowance was expanded and no native proving speedup is claimed. Field positions are an arithmetic count, not an instruction or runtime measurement. [Versioned records](records/README.md) preserve the first experiment and its higher degree result byte identical.
 
 ## Schedule alternatives
 
@@ -68,7 +80,7 @@ The factorized relation has fewer field bytes and more quotient work. Nineteen f
 2. A structured controller can retain explicit indicators for expensive events. Its producer, reset and hold rules must bind every consumer before register reuse is valid.
 3. The retained AIR interface supports verifier defined periodic columns and authenticated preprocessed columns. Their public values, transcript binding, queried widths and evaluation tables have costs. Moving a wide schedule into public preprocessing does not make that cost disappear.
 
-Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is a controller with lower complete cost while preserving bounded degree and every source route.
+Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is native reference tuple and adversarial source validation for the changed schedule before any full proof integration.
 
 ## Reproduction
 

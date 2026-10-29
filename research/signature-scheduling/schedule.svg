@@ -25,8 +25,8 @@
   <text class="note" x="387" y="119" text-anchor="middle">Exact row selector</text>
   <path class="arrow" d="M495 103 H551"/>
   <rect class="node" x="554" y="72" width="266" height="62" rx="3"/>
-  <text class="route" x="687" y="99" text-anchor="middle">Fixed source and arithmetic routes</text>
-  <text class="note" x="687" y="119" text-anchor="middle">Private witness joins remain constrained</text>
-  <text class="note" x="554" y="172">Complete symbolic degree: 6</text>
-  <text class="note" x="554" y="192">Quotient chunks at the retained profile: 16</text>
+  <text class="route" x="687" y="99" text-anchor="middle">Fixed routes and bound activity</text>
+  <text class="note" x="687" y="119" text-anchor="middle">9 Boolean fields with producer equalities</text>
+  <text class="note" x="554" y="172">Complete symbolic degree: 4</text>
+  <text class="note" x="554" y="192">Quotient chunks at the retained profile: 8</text>
 </svg>

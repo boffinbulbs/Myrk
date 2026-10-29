@@ -2,6 +2,7 @@
 //! Native laboratory without a proof backend or payment acceptance API.
 #![forbid(unsafe_code)]
 
+mod activity;
 mod air;
 #[path = "../../signature-complete-native/src/authorization.rs"]
 pub mod authorization;
@@ -17,7 +18,6 @@ mod hints;
 #[path = "../../signature-complete-native/src/keccak.rs"]
 mod keccak;
 pub mod layout;
-#[path = "../../signature-complete-native/src/matrix.rs"]
 mod matrix;
 #[path = "../../signature-complete-native/src/mul.rs"]
 mod mul;
@@ -26,7 +26,6 @@ pub mod ntt;
 #[path = "../../signature-complete-native/src/packing.rs"]
 mod packing;
 pub mod program;
-#[path = "../../signature-complete-native/src/sampler.rs"]
 mod sampler;
 #[path = "../../signature-complete-native/src/sources.rs"]
 mod sources;

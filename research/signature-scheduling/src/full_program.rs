@@ -11,7 +11,7 @@ pub const INVERSE_START: usize = 3522;
 pub const INVERSE_END: usize = INVERSE_START + 8 * 224;
 pub const FINAL_START: usize = 5316;
 pub const FINAL_END: usize = FINAL_START + 9 * 6;
-const _: [(); 47049] = [(); WIDTH];
+const _: [(); 47058] = [(); WIDTH];
 const _: [(); 1] = [(); (FINAL_END < HEIGHT && FINAL_START >= INVERSE_END) as usize];
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
