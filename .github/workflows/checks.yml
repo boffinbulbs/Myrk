@@ -101,6 +101,15 @@ jobs:
       - name: Check storage matrix lints
         if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo clippy --manifest-path research/storage-matrix/Cargo.toml --all-targets --locked --offline --target-dir target/storage-matrix -- -D warnings
+      - name: Check storage commitment formatting
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/storage-commitments/Cargo.toml -- --check
+      - name: Test storage commitments
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo test --manifest-path research/storage-commitments/Cargo.toml --locked --offline --jobs 1 --target-dir target/storage-commitments -- --test-threads=1
+      - name: Check storage commitment lints
+        if: matrix.suite == 'development'
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/storage-commitments/Cargo.toml --all-targets --locked --offline --target-dir target/storage-commitments -- -D warnings
       - name: Check lints
         if: matrix.suite == 'development'
         run: rustup run 1.94.1 cargo clippy --workspace --all-targets --locked --offline -- -D warnings
@@ -201,6 +210,10 @@ jobs:
           persist-credentials: false
       - name: Run reference tests
         run: python3 -m unittest discover -s research/emission -p 'test_*.py' -v
+      - name: Check storage commitment references
+        run: python3 research/storage-commitments/reference.py --check
+      - name: Reject malformed storage reference inputs
+        run: python3 -m unittest discover -s research/storage-commitments -p test_reference.py -v
       - name: Check cryptographic measurement summary
         run: python3 research/crypto/plot_results.py --summary-only --check
       - name: Check relation encoding vectors

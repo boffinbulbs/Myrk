@@ -1,0 +1,107 @@
+{
+  "format": "kova.storage-commitments.validation.v1",
+  "scope": "Synthetic salted MMCS integration only",
+  "host": "Windows x86_64",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "backend_stark_proofs": 0,
+  "full_prover_memory_measurement": false,
+  "runtime_memory_guard": false,
+  "source_files": {
+    "Cargo.lock": {
+      "bytes": 13465,
+      "sha256": "380e6f00ebec7030e44a193e62cd9b26167aa6900bd6f1a7a76399e6c7259921"
+    },
+    "Cargo.toml": {
+      "bytes": 1032,
+      "sha256": "6985fb355c88eceae6710b7f9c022af61e6e58efbbf2172efb7bad7945e1a15e"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "README.md": {
+      "bytes": 5600,
+      "sha256": "2549d3a194ea980d4d03bfb012d185e5a5af4229225cf512a185be882b2a5bdd"
+    },
+    "reference.py": {
+      "bytes": 4527,
+      "sha256": "0b44a93e9b5f3014074695fa31d90a5ffa827870926c183c613eb8ba60cec684"
+    },
+    "test_reference.py": {
+      "bytes": 2495,
+      "sha256": "4cd9187e62816b5b54cb0609b58359ff8358878ec9c14c1eabd70f2b4e11ceed"
+    },
+    "fixtures/reference.json": {
+      "bytes": 2593,
+      "sha256": "bc45664ab4522b298427e1f607b8d3da57e522a27ee50c7e4dca13e6346a8e0d"
+    },
+    "fixtures/salts.json": {
+      "bytes": 242714,
+      "sha256": "20ba508962bc17ca43b91956b9037eae6c520f2302500568097623c579a04f40"
+    },
+    "src/hash.rs": {
+      "bytes": 1427,
+      "sha256": "914116eb0264618fae0c8584d45eccf930f595fad5aade559b8c9779ec25f449"
+    },
+    "src/lib.rs": {
+      "bytes": 215,
+      "sha256": "60ad90ad1ac712bf7b54546b79f0ad83d6b1202454b4dcd3adb079d5534da42b"
+    },
+    "src/tests.rs": {
+      "bytes": 14231,
+      "sha256": "c26f3c5880a0ca3f237b0cc7bc705be9252f39ff0956019baf4dcdf8260ab9e5"
+    }
+  },
+  "retained_adapter_record": {
+    "bytes": 1983,
+    "sha256": "c785868033880996cd13ab4c0a79a8b0ce5519fb1e60b0c464f05cf2561f8fd9"
+  },
+  "root_lock": {
+    "bytes": 25648,
+    "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5"
+  },
+  "registry_packages": 54,
+  "registry_tuple_and_checksum_subset_of_root_lock": true,
+  "cases": 4,
+  "salt_rows_reproduced": 664,
+  "largest_field_file_bytes": 8192,
+  "largest_batch_field_bytes": 9472,
+  "current_fixture_export_byte_identical": true,
+  "checks": [
+    {
+      "check": "format",
+      "exit_code": 0
+    },
+    {
+      "check": "lint",
+      "exit_code": 0
+    },
+    {
+      "check": "rust_tests",
+      "exit_code": 0,
+      "harness": [
+        5,
+        0,
+        1
+      ]
+    },
+    {
+      "check": "fixture_export",
+      "exit_code": 0,
+      "harness": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "check": "independent_reference",
+      "exit_code": 0
+    },
+    {
+      "check": "reference_tests",
+      "exit_code": 0,
+      "passed": 9
+    }
+  ]
+}
