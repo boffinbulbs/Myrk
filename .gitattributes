@@ -18,3 +18,5 @@ research/signature-hint-source/hint-extraction.patch whitespace=-blank-at-eol
 research/signature-hint-source/reference-adaptation.patch whitespace=-blank-at-eol
 research/signature-final-source/final-extraction.patch whitespace=-blank-at-eol
 research/signature-final-source/reference-adaptation.patch whitespace=-blank-at-eol
+research/signature-port-source/port-extraction.patch whitespace=-blank-at-eol
+research/signature-port-source/reference-adaptation.patch whitespace=-blank-at-eol
