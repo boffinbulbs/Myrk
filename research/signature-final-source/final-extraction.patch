@@ -1,0 +1,170 @@
+--- retained/final-sponge-helpers-and-fill
++++ src/final_state.rs
+@@ -1,54 +1,118 @@
+-fn row_message(hash: Hash, row: &[BabyBear]) -> [u8; 168] {
+-    core::array::from_fn(|byte| match fp::message(hash, byte) {
+-        Byte::Fixed(v) => v,
+-        Byte::Rho(i) => row[RHO + i].as_canonical_u32() as u8,
+-        Byte::Mu(i) => row[MU + i].as_canonical_u32() as u8,
+-        Byte::W1(i) => row[W1 + i].as_canonical_u32() as u8,
+-        Byte::Initial(_) => {
+-            unreachable!("Only matrix and final intervals are written by this pass")
+-        }
+-    })
++//! Private final sponge overlay over actual current MU and W1 bytes.
++use super::{absorb, bits, copy_rounds, permutation, state_after};
++use crate::{
++    full_program::{self as fp, Byte, Hash},
++    layout::*,
++};
++use core::borrow::Borrow;
++use p3_baby_bear::BabyBear;
++use p3_field::{PrimeCharacteristicRing, PrimeField32};
++use p3_keccak_air::KeccakCols;
++use p3_matrix::{dense::RowMajorMatrix, Matrix};
++
++#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
++pub(crate) struct FinalGeneration {
++    pub attempted: usize,
++    pub completed: usize,
++    pub maximum_live: usize,
+ }
+-fn fill_permutation(values: &mut [BabyBear], start: usize, hash: Hash, state: &mut [u64; 25]) {
+-    let message = row_message(hash, &values[start * WIDTH..(start + 1) * WIDTH]);
+-    let rate = fp::rate(hash);
+-    if fp::fresh(hash) {
+-        *state = [0; 25];
+-    }
+-    for lane in 0..rate / 8 {
+-        state[lane] ^= u64::from_le_bytes(message[8 * lane..8 * (lane + 1)].try_into().unwrap());
+-    }
+-    let logical = build::permutation(*state);
+-    for local in 0..6 {
+-        let row = &mut values[(start + local) * WIDTH..(start + local + 1) * WIDTH];
+-        build::copy_rounds(row, &logical, 4 * local);
+-        for (byte, v) in message.iter().enumerate() {
+-            build::bits(row, MESSAGE + 8 * byte, u32::from(*v), 8);
+-        }
+-        let round = logical.row_slice(4 * local + 3).unwrap();
+-        let k: &KeccakCols<BabyBear> = (*round).borrow();
+-        for limb in 0..84 {
+-            let v = if limb < rate / 2 {
+-                k.a_prime_prime_prime(limb / 20, (limb / 4) % 5, limb % 4)
+-                    .as_canonical_u32()
+-            } else {
+-                0
+-            };
+-            build::bits(row, OUTPUT + 16 * limb, v, 16);
++#[derive(Debug)]
++pub(crate) enum FinalError {
++    RowShape,
++    Exhausted,
++    Incomplete,
++}
++pub(crate) struct FinalState {
++    next_row: usize,
++    state: [u64; 25],
++    input: [u8; 168],
++    logical: Option<RowMajorMatrix<BabyBear>>,
++    generation: FinalGeneration,
++}
++impl FinalState {
++    pub(crate) fn new() -> Self {
++        Self {
++            next_row: 0,
++            state: [0; 25],
++            input: [0; 168],
++            logical: None,
++            generation: FinalGeneration::default(),
+         }
+     }
+-    *state = build::state_after(&logical);
+-    drop(logical);
+-}
+-
+-pub(crate) fn fill_final(values: &mut [BabyBear]) {
+-    let mut state = [0u64; 25];
+-    for block in 0..9 {
+-        fill_permutation(
+-            values,
+-            fp::FINAL_START + 6 * block,
+-            Hash::Final(block),
+-            &mut state,
+-        );
++    pub(crate) fn owns(at: usize, column: usize) -> bool {
++        (fp::FINAL_START..fp::FINAL_END).contains(&at)
++            && (column < CLOCK || (MESSAGE..RHO).contains(&column))
++    }
++    pub(crate) fn generation(&self) -> FinalGeneration {
++        self.generation
++    }
++    pub(crate) fn emit_next(&mut self, row: &mut [BabyBear]) -> Result<usize, FinalError> {
++        if row.len() != WIDTH {
++            return Err(FinalError::RowShape);
++        }
++        if self.next_row == HEIGHT {
++            return Err(FinalError::Exhausted);
++        }
++        let at = self.next_row;
++        if (fp::FINAL_START..fp::FINAL_END).contains(&at) {
++            let local = (at - fp::FINAL_START) % 6;
++            let hash = Hash::Final((at - fp::FINAL_START) / 6);
++            let rate = fp::rate(hash);
++            if local == 0 {
++                assert!(self.logical.is_none());
++                if fp::fresh(hash) {
++                    self.state = [0; 25];
++                }
++                self.input = core::array::from_fn(|byte| match fp::message(hash, byte) {
++                    Byte::Fixed(v) => v,
++                    Byte::Mu(i) => row[MU + i]
++                        .as_canonical_u32()
++                        .try_into()
++                        .expect("current MU byte"),
++                    Byte::W1(i) => row[W1 + i]
++                        .as_canonical_u32()
++                        .try_into()
++                        .expect("current W1 byte"),
++                    _ => unreachable!("Final scope accepts fixed, current MU and W1 sources only"),
++                });
++                absorb(&mut self.state, &self.input, rate);
++                self.generation.attempted += 1;
++                self.logical = Some(permutation(self.state));
++                self.generation.completed += 1;
++                self.generation.maximum_live = 1;
++            }
++            let logical = self.logical.as_ref().unwrap();
++            row[..CLOCK].fill(BabyBear::ZERO);
++            row[MESSAGE..RHO].fill(BabyBear::ZERO);
++            copy_rounds(row, logical, 4 * local);
++            for (byte, &value) in self.input.iter().enumerate() {
++                bits(row, MESSAGE + 8 * byte, u32::from(value), 8);
++            }
++            {
++                let round = logical.row_slice(4 * local + 3).unwrap();
++                let k: &KeccakCols<BabyBear> = (*round).borrow();
++                for limb in 0..84 {
++                    let value = if limb < rate / 2 {
++                        k.a_prime_prime_prime(limb / 20, (limb / 4) % 5, limb % 4)
++                            .as_canonical_u32()
++                    } else {
++                        0
++                    };
++                    bits(row, OUTPUT + 16 * limb, value, 16);
++                }
++            }
++            if local == 5 {
++                self.state = state_after(logical);
++                drop(self.logical.take());
++            }
++        }
++        self.next_row += 1;
++        Ok(at)
++    }
++    pub(crate) fn finish(&self) -> Result<(), FinalError> {
++        if self.next_row != HEIGHT || self.logical.is_some() || self.generation.completed != 9 {
++            return Err(FinalError::Incomplete);
++        }
++        Ok(())
+     }
+ }

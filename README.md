@@ -144,7 +144,9 @@ The [accumulator source](research/signature-accumulator-source/README.md) consum
 
 The [inverse source](research/signature-inverse-source/README.md) reads actual accumulator tiles and held forward scratch within the same owner. Eleven saved state checkpoints per transform supplement the bounded reference across partial initialization, normalization and the held terminal state. Hint reconstruction is covered by the following source stage. Final challenge equality, complete rows, hiding proofs and private ledger integration remain unfinished.
 
-The [hint source](research/signature-hint-source/README.md) reads actual inverse outputs and decoded hints, preserving canonical dormant gadgets and delayed private W1 byte updates. Saved step fields and comparisons of every packed byte on every row supplement the bounded reference. Final hashing and challenge equality, complete rows, hiding proofs and private ledger integration remain unfinished.
+The [hint source](research/signature-hint-source/README.md) reads actual inverse outputs and decoded hints, preserving canonical dormant gadgets and delayed private W1 byte updates. Saved step fields and comparisons of every packed byte on every row supplement the bounded reference. Final sponge construction is covered by the following source stage. Challenge equality through actual packed ports, complete rows, hiding proofs and private ledger integration remain unfinished.
+
+The [final sponge source](research/signature-final-source/README.md) consumes actual MU and completed W1 with full state carry across nine blocks. A bounded six row reference and saved terminal bytes check construction and dummy restoration. Raw signature comparison remains diagnostic. Complete clock and ports, actual AIR signature equality, hiding proofs and private ledger integration remain unfinished.
 
 ## Native accounting and consensus targets
 

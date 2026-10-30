@@ -1,0 +1,66 @@
+{
+  "format": "kova.signature-final-source.adaptation.v1",
+  "base_revision": "eb2044b3494e724bd4c7a1e62c4ce168e9ddf248",
+  "owner_origin": "research/signature-hint-source/src/lib.rs",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "owner_delta": "Final sponge documentation, diagnostic feature and module identity",
+  "old_opaque_conversion": false,
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "private_children_added": 17,
+  "final_origin": "research/signature-packed/src/sponge.rs::row_message/fill_permutation/fill_final",
+  "candidate_diff": "final-extraction.patch",
+  "reference_diff": "reference-adaptation.patch",
+  "reference_unchanged_full_writer": false,
+  "reference_window_rows": 6,
+  "owned_ranges": [
+    [
+      0,
+      10532
+    ],
+    [
+      16271,
+      18959
+    ]
+  ],
+  "owned_row_range": [
+    5316,
+    5370
+  ],
+  "candidate_inputs": "Actual same owner held MU64 and completed W1 bank, fixed final padding mapping only",
+  "reference_inputs": "Saved MU64 and pinned saved W1, only first local row current-phase source fields populated",
+  "full_sponge_state_bytes": 200,
+  "rate_bytes": 136,
+  "final_blocks": 9,
+  "final_message_bytes": 1088,
+  "dummy_capture_rows": [
+    414,
+    415
+  ],
+  "dummy_restoration_rows": [
+    5370,
+    8191
+  ],
+  "capacity_failure_timing": "Typed upstream failure poisons composite; internal byte/generator panics are not typed rollback-safe outcomes",
+  "initial_generator_calls": 70,
+  "matrix_generator_calls": 336,
+  "candidate_final_generator_calls": 9,
+  "reference_final_generator_calls": 9,
+  "source_inferred_candidate_forward_bodies": 16,
+  "source_inferred_candidate_inverse_bodies": 8,
+  "source_inferred_candidate_hint_encodings": 65536,
+  "candidate_logical_caches_during_final": 2,
+  "maximum_logical_caches_with_reference_during_final": 3,
+  "capacity_preflight_executed": false,
+  "native_execution_enabled": false,
+  "complete_row_source_implemented": false,
+  "final_sponge_source_construction_implemented": true,
+  "terminal_raw_comparison_is_diagnostic": true,
+  "packed_port_equality_implemented": false,
+  "final_intermediate_goldens_available": false
+}

@@ -739,3 +739,15 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-hint-source/Cargo.toml --release --lib --locked --offline -- -D warnings
       - name: Check hint control lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-hint-source/Cargo.toml --release --features hint-controls --lib --test hint --locked --offline -- -D warnings
+      - name: Check final source formatting
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-final-source/src/lib.rs research/signature-final-source/src/build.rs research/signature-final-source/src/final_state.rs research/signature-final-source/src/final_source.rs research/signature-final-source/src/final_reference.rs research/signature-final-source/src/final_controls.rs research/signature-final-source/tests/final.rs
+      - name: Fetch final source dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-final-source/Cargo.toml --locked
+      - name: Check final source records
+        run: python -I -S research/signature-final-source/static_check.py
+      - name: Compile final source controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-final-source/Cargo.toml --release --features final-controls --test final --locked --offline --no-run --jobs 1
+      - name: Check final default lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-final-source/Cargo.toml --release --lib --locked --offline -- -D warnings
+      - name: Check final control lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-final-source/Cargo.toml --release --features final-controls --lib --test final --locked --offline -- -D warnings
