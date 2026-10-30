@@ -1,0 +1,25 @@
+[package]
+name = "kova-signature-packed-shape"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.94.1"
+publish = false
+autotests = false
+autobins = false
+license = "MIT"
+
+[dev-dependencies]
+kova-signature-packed = { path = "../signature-packed", default-features = false }
+p3-air = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+serde_json = { version = "=1.0.145", default-features = false, features = ["std"] }
+
+[[test]]
+name = "shape"
+path = "tests/shape.rs"
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+lto = "thin"

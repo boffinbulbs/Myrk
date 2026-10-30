@@ -1,0 +1,61 @@
+{
+  "format": "kova.signature-packed-shape.validation.v1",
+  "provenance": {
+    "bytes": 27281,
+    "sha256": "de988554b3347260ad8f5518789b20ab7dd2516d91e32ecbca6c864817de72bd"
+  },
+  "symbolic_collections": 1,
+  "native_traces": 0,
+  "backend_proofs": 0,
+  "columns": 43176,
+  "public_values": 196,
+  "constraints_per_row": 69242,
+  "degree": 4,
+  "executable": {
+    "bytes": 1368576,
+    "sha256": "a480e63a537dacbfc6ca81b9aefbaefbb3e3d519e779d562e56cec31ada0be36"
+  },
+  "original_private_receipt_sha256": "b1435a4b50c78862cff426adb804db640ae06dd41aac7ccd4756bb036c1b5917",
+  "native_execution_feature_enabled": false,
+  "full_payment_implemented": false,
+  "production_security_claim": false,
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows 11",
+    "rust": "1.94.1",
+    "profile": "release",
+    "test_threads": 1
+  },
+  "elapsed_test_seconds": 0.51,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 1,
+    "actual_passed": 1,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "test_counts_verified": true,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 7434698752,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 393953280,
+    "peak_private_commit_bytes": 404402176,
+    "sampled_peak_private_bytes": 396189696,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 405688320,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "limitations": [
+    "Emitted complete symbolic count and cached degree only",
+    "No satisfying signature witness, native evaluation or backend proof in this test",
+    "Resource measurements describe this symbolic source and host only",
+    "No full payment privacy or post quantum security established"
+  ]
+}

@@ -589,3 +589,17 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed/Cargo.toml --release --lib --test routes --locked --offline -- -D warnings
       - name: Check guarded constructor body lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed/Cargo.toml --release --lib --features native-execution --locked --offline -- -D warnings
+      - name: Check complete symbolic shape formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-packed-shape/Cargo.toml --all -- --check
+      - name: Fetch complete symbolic shape dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-packed-shape/Cargo.toml --locked
+      - name: Check complete symbolic shape identities
+        run: python research/signature-packed-shape/static_check.py
+      - name: Measure complete packed symbolic shape
+        env:
+          KOVA_PACKED_SYMBOLIC_GATE: reviewed-external-resource-admission
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-packed-shape/Cargo.toml --release --locked --offline --test shape --jobs 1 -- --ignored --exact complete_packed_symbolic_shape --test-threads=1
+      - name: Compare fresh complete symbolic shape
+        run: python research/signature-packed-shape/static_check.py --check-results
+      - name: Check complete symbolic shape lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed-shape/Cargo.toml --release --test shape --locked --offline -- -D warnings

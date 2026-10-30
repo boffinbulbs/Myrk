@@ -120,6 +120,8 @@ The [full source inventory](research/source-certificate/README.md) compares inde
 
 The [complete packed signature source](research/signature-packed/README.md) connects that inventory to a compiled replacement layout with 2,547 held words and 125 Boolean read ports. Its actual fixed route test matches every row and source byte offset against the frozen inventory. Complete symbolic analysis, native equivalence controls and full signature proof integration remain separate gates. The full constructor is disabled by default.
 
+The subsequent [complete symbolic shape record](research/signature-packed-shape/README.md) evaluates the actual candidate AIR once and records 69,242 assertions with maximum degree four. Its guarded execution fits the retained memory limit without constructing a native trace. Valid witness acceptance, hostile witness rejection and complete private signature proofs remain separate checks.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.
