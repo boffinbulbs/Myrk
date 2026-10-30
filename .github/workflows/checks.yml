@@ -613,3 +613,13 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/signature-packed-native/Cargo.toml --release --locked --offline --test native --no-run --jobs 1
       - name: Check complete native witness lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed-native/Cargo.toml --release --test native --locked --offline -- -D warnings
+      - name: Check packed native corpus formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-packed-corpus/Cargo.toml --all -- --check
+      - name: Fetch packed native corpus dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-packed-corpus/Cargo.toml --locked
+      - name: Check packed native corpus records
+        run: python research/signature-packed-corpus/static_check.py
+      - name: Compile packed native corpus
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-packed-corpus/Cargo.toml --release --locked --offline --test corpus --no-run --jobs 1
+      - name: Check packed native corpus lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed-corpus/Cargo.toml --release --test corpus --locked --offline -- -D warnings

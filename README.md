@@ -122,7 +122,9 @@ The [complete packed signature source](research/signature-packed/README.md) conn
 
 The subsequent [complete symbolic shape record](research/signature-packed-shape/README.md) evaluates the actual candidate AIR once and records 69,242 assertions with maximum degree four. Its guarded execution fits the retained memory limit without constructing a native trace.
 
-The [first complete packed native witness](research/signature-packed-native/README.md) accepts the independent A0 fixture across every row. Six causal source corruptions fail at their exact expected constraints, and all restorations pass. The bounded run constructs one trace and distinguishes its full scan from borrowed global frame checks. The broader tuple corpus, consistent changed source controls and complete hiding signature proofs remain separate work.
+The [first complete packed native witness](research/signature-packed-native/README.md) accepts the independent A0 fixture across every row. Six causal source corruptions fail at their exact expected constraints, and all restorations pass. The bounded run constructs one trace and distinguishes its full scan from borrowed global frame checks.
+
+The [remaining packed native corpus](research/signature-packed-corpus/README.md) evaluates nine additional reference tuples serially. Four valid witnesses pass and five wrong owner, context, key or expected transaction cases fail at their intended constraints. The legitimate same owner alternate note passes with consistently rebuilt sources. These records cover the ten selected bounded fixtures across separate gates. Causal virtual padding controls, full equivalence and complete hiding signature proofs remain separate work.
 
 ## Native accounting and consensus targets
 

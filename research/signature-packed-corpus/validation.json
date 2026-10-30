@@ -1,0 +1,64 @@
+{
+  "format": "kova.signature-packed-corpus.validation.v1",
+  "provenance": {
+    "bytes": 32345,
+    "sha256": "a01863bb4ed06c00a2783d7ceeb1b77caafd8170396b5727c2ec3bef7df91f16"
+  },
+  "native_traces": 9,
+  "maximum_live_traces": 1,
+  "accepted": 4,
+  "rejected": 5,
+  "borrowed_frame_checks": 0,
+  "symbolic_collections": 0,
+  "backend_proofs": 0,
+  "independent_byte_comparisons": 43,
+  "independent_bytes": 2464,
+  "rows_inferred_from_checker": 54483,
+  "full_payment_implemented": false,
+  "production_security_claim": false,
+  "executable": {
+    "bytes": 1266176,
+    "sha256": "db56404cbc0bf74c207de6a44695141ad6dacffd9879e4cff8d5db0cb926762e"
+  },
+  "original_private_receipt_sha256": "328a9bee819e4d3ee65bb98a4534842042f8246a318aa1d14217560c1aa2e2b6",
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows 11",
+    "rust": "1.94.1",
+    "profile": "release",
+    "test_threads": 1
+  },
+  "elapsed_test_seconds": 303.35,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 1,
+    "actual_passed": 1,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "test_counts_verified": true,
+    "timeout_seconds": 1200,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 7132704768,
+    "minimum_available_bytes": 5368709120,
+    "hard_process_commit_limit_bytes": 2147483648,
+    "peak_working_bytes": 1422348288,
+    "peak_private_commit_bytes": 1419747328,
+    "sampled_peak_private_bytes": 1419739136,
+    "installed_process_commit_limit_bytes": 2147483648,
+    "installed_job_commit_limit_bytes": 2147483648,
+    "peak_job_commit_bytes": 1421107200,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "limitations": [
+    "Nine fixed bounded native tuples, not exhaustive signature equivalence",
+    "Negative scans stop at first failure-bearing row, reported height is not scan length",
+    "Two cross-key/transaction cases have no direct independent final challenge golden",
+    "Native constraint evaluation is not a hiding proof, payment acceptance or quantum security proof",
+    "Resource observations describe this source and host only"
+  ]
+}
