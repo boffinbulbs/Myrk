@@ -472,3 +472,15 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/source-preparation/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
       - name: Check source preparation lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/source-preparation/Cargo.toml --release --lib --tests --locked --offline -- -D warnings
+      - name: Check source extension formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/source-extension/Cargo.toml --all -- --check
+      - name: Fetch source extension dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-extension/Cargo.toml --locked
+      - name: Check source extension identities
+        run: python research/source-extension/static_check.py
+      - name: Check independent source interpolation
+        run: python research/source-extension/reference.py
+      - name: Test streamed commitment inputs
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-extension/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
+      - name: Check source extension lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-extension/Cargo.toml --release --lib --tests --locked --offline -- -D warnings

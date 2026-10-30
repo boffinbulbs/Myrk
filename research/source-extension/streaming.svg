@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="340" viewBox="0 0 1000 340" role="img" aria-labelledby="title desc">
+  <title id="title">Owned preparation and streamed main LDE</title>
+  <desc id="desc">A raw source uses the retained masking kernel, then full and partial column tiles build a checked LDE file. Unified reservations precede sampling. Failures close the attempt.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10" fill="none" stroke="#526951"/></marker></defs>
+  <style>text{font-family:Georgia,serif;fill:#182219;text-anchor:middle}rect,path,line{stroke:#526951;stroke-width:1.4;fill:none}.small{font-size:14px}.label{font-size:17px}@media(prefers-color-scheme:dark){text{fill:#dfe8da}rect,path,line{stroke:#9db49a}}</style>
+  <rect x="24" y="54" width="200" height="76"/>
+  <text class="label" x="124" y="84">Owned raw source</text><text class="small" x="124" y="109">256 rows, 2 columns</text>
+  <path d="M224 92H274" marker-end="url(#arrow)"/>
+  <rect x="280" y="54" width="220" height="76"/>
+  <text class="label" x="390" y="84">Retained preparation</text><text class="small" x="390" y="109">512 rows, 6 columns</text>
+  <path d="M500 92H529V54H551" marker-end="url(#arrow)"/>
+  <path d="M529 92V130H551" marker-end="url(#arrow)"/>
+  <rect x="557" y="28" width="180" height="52"/><text class="label" x="647" y="60">4 column tile</text>
+  <rect x="557" y="104" width="180" height="52"/><text class="label" x="647" y="136">2 column tile</text>
+  <path d="M737 54H765V130H737"/>
+  <path d="M765 92H790" marker-end="url(#arrow)"/>
+  <rect x="796" y="54" width="180" height="76"/>
+  <text class="label" x="886" y="84">Checked main LDE</text><text class="small" x="886" y="109">4096 rows, 6 columns</text>
+  <path d="M124 130V211H886V130"/>
+  <text class="label" x="500" y="245">One attempt, one unified reservation ledger</text>
+  <text class="small" x="500" y="274">Raw, prepared and LDE files: 112640 bytes. Failures remain closed.</text>
+  <text class="small" x="500" y="305">LdeReady is a construction state. Commitment and proof entry remain separate.</text>
+</svg>

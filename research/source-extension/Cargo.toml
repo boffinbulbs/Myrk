@@ -1,0 +1,31 @@
+[package]
+name = "kova-source-extension"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+publish = false
+license = "MIT"
+
+[dependencies]
+kova-proof-preflight = { path = "../proof-preflight" }
+kova-source-preparation = { path = "../source-preparation" }
+kova-storage-matrix = { path = "../storage-matrix" }
+p3-air = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-commit = { version = "=0.8.0", default-features = false }
+p3-dft = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+rand = { version = "=0.10.3", default-features = false, features = ["std_rng"] }
+
+[dev-dependencies]
+p3-merkle-tree = { version = "=0.8.0", default-features = false }
+p3-symmetric = { version = "=0.8.0", default-features = false }
+sha3 = { version = "=0.12.0", default-features = false }
+serde_json = "=1.0.145"
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+incremental = false

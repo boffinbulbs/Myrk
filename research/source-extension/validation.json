@@ -1,0 +1,67 @@
+{
+  "format": "kova.source-extension.validation.v1",
+  "scope": "Owned preparation and main streamed LDE construction, not a commitment or proof entry.",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "test_groups_passed": 8,
+  "test_groups_failed": 0,
+  "test_groups_ignored": 0,
+  "elapsed_seconds": 0.6,
+  "backend_proofs": 0,
+  "commitment_calls": 0,
+  "opening_calls": 0,
+  "native_traces": 0,
+  "wide_symbolic_evaluations": 0,
+  "pcs_entry_implemented": false,
+  "matrix_store_dispatch_implemented": false,
+  "production_secret_storage": false,
+  "durable_cleanup": false,
+  "production_security_claim": false,
+  "physical_fields_compared_per_route": 24576,
+  "independent_cells": 16,
+  "owned_field_files": 3,
+  "owned_reserved_bytes": 112640,
+  "dense_field_files": 2,
+  "dense_reserved_bytes": 110592,
+  "largest_input_tile_fields": 2048,
+  "largest_output_tile_fields": 16384,
+  "full_and_partial_tiles": 2,
+  "continuing_rng_equal": true,
+  "actual_first_draw_reservation_observed": true,
+  "planned_reservation_controls": true,
+  "whole_matrix_fallback": false,
+  "actual_faults": [
+    "prepared noncanonical file",
+    "prepared truncated file",
+    "outer mutex poison"
+  ],
+  "injected_faults": [
+    "partial write",
+    "cleanup refusal",
+    "writer unwind",
+    "missing window",
+    "short window",
+    "reader poison"
+  ],
+  "original_sources_unchanged": true,
+  "provenance": {
+    "bytes": 8617,
+    "sha256": "9f4f09dbe0ab12541527dcdc54bd6117d5fce8919eba4592d00cf8b09db05aa8"
+  },
+  "executable": {
+    "bytes": 1069568,
+    "sha256": "a2852756dad3d2d40ab22c913840f2d384547590c4c0a806a9c949ac782aa2ae"
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 5541052416,
+    "peak_process_commit_bytes": 1286144,
+    "peak_job_commit_bytes": 2478080,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "test_counts_verified": true
+  }
+}

@@ -100,9 +100,11 @@ The [stored polynomial proof laboratory](research/storage-pcs/README.md) carries
 
 The [proof feasibility record](docs/proof-feasibility.md) distinguishes implemented experiments from open hiding, knowledge soundness, quantum model, resource and composition obligations. Standardized primitives and full digests do not establish the composed protocol's security level.
 
-## Native accounting and consensus targets
-
 The [owned source preparation laboratory](research/source-preparation/README.md) uses one field preparation kernel for ordinary dense inputs and owned checked files. Eight bounded test groups compare the retained layout and continuing randomness, then exercise corrupt input, partial writes and failed ownership cleanup. This preparation layer creates no commitment or proof. Its next integration boundary is an owned source PCS entry with an unchanged verifier.
+
+The [streamed commitment input laboratory](research/source-extension/README.md) reuses that preparation kernel and constructs the main LDE through bounded full and partial column tiles. All fields match the retained dense calculation, with sixteen independently interpolated physical output cells. Unified reservations and failure controls cover raw, prepared and LDE files. This policy ends at file construction and does not yet create a commitment root or opening proof.
+
+## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.
 
