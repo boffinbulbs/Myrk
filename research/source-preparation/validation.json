@@ -1,0 +1,58 @@
+{
+  "format": "kova.source-preparation.validation.v1",
+  "scope": "Shared dense and owned field preparation, ownership and failure controls. No commitment or proof entry.",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "test_groups_passed": 8,
+  "test_groups_failed": 0,
+  "test_groups_ignored": 0,
+  "elapsed_seconds": 0.16,
+  "backend_proofs": 0,
+  "commitment_calls": 0,
+  "native_traces": 0,
+  "wide_symbolic_evaluations": 0,
+  "pcs_entry_implemented": false,
+  "production_secret_storage": false,
+  "durable_cleanup": false,
+  "external_namespace_authenticated": false,
+  "production_security_claim": false,
+  "shared_preparation_kernel": true,
+  "retained_dense_fields_and_continuing_rng_equal": true,
+  "owned_branch_whole_matrix_conversion": false,
+  "cleanup_retains_failed_reservations": true,
+  "unsupported_commitment_hooks_refuse": true,
+  "actual_controls": [
+    "noncanonical file",
+    "truncated file",
+    "owner mutex poison",
+    "writer unwind",
+    "replacement preservation"
+  ],
+  "injected_controls": [
+    "missing window",
+    "short window",
+    "reader poison",
+    "partial write",
+    "cleanup refusal"
+  ],
+  "provenance": {
+    "bytes": 7647,
+    "sha256": "ad67e4e7779972bfdd6cff95a3cc83d3a64cf37111231cfa48153dc9ddf923e7"
+  },
+  "executable": {
+    "bytes": 868352,
+    "sha256": "d096c558a92332008edb2b39fc44d5d010b9401c85200fc0a47dd9f201dd6281"
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 8986279936,
+    "peak_process_commit_bytes": 1294336,
+    "peak_job_commit_bytes": 2260992,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "test_counts_verified": true
+  }
+}

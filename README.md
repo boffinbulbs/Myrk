@@ -102,6 +102,8 @@ The [proof feasibility record](docs/proof-feasibility.md) distinguishes implemen
 
 ## Native accounting and consensus targets
 
+The [owned source preparation laboratory](research/source-preparation/README.md) uses one field preparation kernel for ordinary dense inputs and owned checked files. Eight bounded test groups compare the retained layout and continuing randomness, then exercise corrupt input, partial writes and failed ownership cleanup. This preparation layer creates no commitment or proof. Its next integration boundary is an owned source PCS entry with an unchanged verifier.
+
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.
 
 | Subsidy destination | Nominal budget |

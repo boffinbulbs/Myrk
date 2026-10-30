@@ -460,3 +460,15 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/proof-preflight/Cargo.toml --release --locked --offline --test preflight --jobs 1 -- --test-threads=1
       - name: Check selected preflight lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/proof-preflight/Cargo.toml --release --lib --test preflight --locked --offline -- -D warnings
+      - name: Check source preparation formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/source-preparation/Cargo.toml --all -- --check
+      - name: Fetch source preparation dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-preparation/Cargo.toml --locked
+      - name: Check source preparation identities
+        run: python research/source-preparation/static_check.py
+      - name: Check independent preparation accounting
+        run: python research/source-preparation/reference.py
+      - name: Test owned source preparation
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-preparation/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
+      - name: Check source preparation lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-preparation/Cargo.toml --release --lib --tests --locked --offline -- -D warnings
