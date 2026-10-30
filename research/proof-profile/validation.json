@@ -1,0 +1,46 @@
+{
+  "format": "kova.proof-profile.validation.v1",
+  "scope": "Four conditional classical model calculations, not a protocol security certificate.",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "scenarios": 4,
+  "invalid_profile_controls": 6,
+  "ordinary_rust_tests_passed": 1,
+  "python_reference_tests_passed": 4,
+  "signature_trace_allocations": 0,
+  "symbolic_air_evaluations": 0,
+  "backend_proofs": 0,
+  "parameter_selection": false,
+  "quantum_security_established": false,
+  "knowledge_soundness_established": false,
+  "retained_model": "p3-security0.8.0 classical RBR composite",
+  "provenance": {
+    "bytes": 7512,
+    "sha256": "83093581a2ce0d59128295cc862a68d2ddb284b231078cf4bb2a6b7e14db6a97"
+  },
+  "executable": {
+    "bytes": 859648,
+    "sha256": "9436bae7a4b8147f95b12366b1349648984fa3479f945511a620455bd38f5130"
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 15596539904,
+    "peak_process_commit_bytes": 1302528,
+    "peak_job_commit_bytes": 2334720,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "test_counts_verified": true
+  },
+  "independent_checks": [
+    "field cardinality floors",
+    "mask budget",
+    "batched widths",
+    "field and query bytes",
+    "unique ALI/DEEP arithmetic",
+    "report aggregation"
+  ],
+  "whole_fri_model_independently_verified": false
+}

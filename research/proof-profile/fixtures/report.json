@@ -1,0 +1,322 @@
+{
+  "backend_proofs": 0,
+  "base_modulus": 2013265921,
+  "format": "kova.conditional-proof-profile.v1",
+  "grinding_bits": 0,
+  "hash_collision_assumption_classical_bits": 256,
+  "height": 8192,
+  "invalid_profile_controls": 6,
+  "knowledge_soundness_established": false,
+  "parameter_selection": false,
+  "quantum_security_established": false,
+  "reports": [
+    {
+      "batched_opening_functions": 94196,
+      "binding_term": "batch-combination",
+      "challenge_field_bits_floor": 123,
+      "constraints": 181221,
+      "costs": {
+        "all_field_bytes": 27796045824,
+        "commitment_field_bytes": 24711790592,
+        "current_shape_limit_accepts": false,
+        "current_two_mib_limit_accepts": false,
+        "extension_degree": 4,
+        "main_query_field_bytes_at_distinct_indices": 12047872,
+        "minimum_mask_height": 144,
+        "prepared_field_bytes": 3084255232,
+        "queries": 64,
+        "random_codewords": 4
+      },
+      "library_classical_rbr_bits": 79.6394468155585,
+      "name": "before_routing",
+      "report": {
+        "ldr": {
+          "regime": {
+            "ListDecoding": {
+              "m": 3
+            }
+          },
+          "terms": [
+            {
+              "bits": 102.22525445805303,
+              "label": "air-composition"
+            },
+            {
+              "bits": 102.52271029263134,
+              "label": "deep-ali"
+            },
+            {
+              "bits": 81.76688503446732,
+              "label": "low-degree-test"
+            },
+            {
+              "bits": 79.6394468155585,
+              "label": "batch-combination"
+            },
+            {
+              "bits": 256.0,
+              "label": "commitment-collision"
+            }
+          ]
+        },
+        "udr": {
+          "regime": "UniqueDecoding",
+          "terms": [
+            {
+              "bits": 105.53260938011063,
+              "label": "air-composition"
+            },
+            {
+              "bits": 105.83006521468894,
+              "label": "deep-ali"
+            },
+            {
+              "bits": 53.12354757673969,
+              "label": "low-degree-test"
+            },
+            {
+              "bits": 89.47663713881474,
+              "label": "batch-combination"
+            },
+            {
+              "bits": 256.0,
+              "label": "commitment-collision"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "batched_opening_functions": 94196,
+      "binding_term": "batch-combination",
+      "challenge_field_bits_floor": 123,
+      "constraints": 74725,
+      "costs": {
+        "all_field_bytes": 27796045824,
+        "commitment_field_bytes": 24711790592,
+        "current_shape_limit_accepts": false,
+        "current_two_mib_limit_accepts": false,
+        "extension_degree": 4,
+        "main_query_field_bytes_at_distinct_indices": 12047872,
+        "minimum_mask_height": 144,
+        "prepared_field_bytes": 3084255232,
+        "queries": 64,
+        "random_codewords": 4
+      },
+      "library_classical_rbr_bits": 79.6394468155585,
+      "name": "current_comparison",
+      "report": {
+        "ldr": {
+          "regime": {
+            "ListDecoding": {
+              "m": 3
+            }
+          },
+          "terms": [
+            {
+              "bits": 103.50334170648958,
+              "label": "air-composition"
+            },
+            {
+              "bits": 102.52271029263134,
+              "label": "deep-ali"
+            },
+            {
+              "bits": 81.76688503446732,
+              "label": "low-degree-test"
+            },
+            {
+              "bits": 79.6394468155585,
+              "label": "batch-combination"
+            },
+            {
+              "bits": 256.0,
+              "label": "commitment-collision"
+            }
+          ]
+        },
+        "udr": {
+          "regime": "UniqueDecoding",
+          "terms": [
+            {
+              "bits": 106.81069662854718,
+              "label": "air-composition"
+            },
+            {
+              "bits": 105.83006521468894,
+              "label": "deep-ali"
+            },
+            {
+              "bits": 53.12354757673969,
+              "label": "low-degree-test"
+            },
+            {
+              "bits": 89.47663713881474,
+              "label": "batch-combination"
+            },
+            {
+              "bits": 256.0,
+              "label": "commitment-collision"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "batched_opening_functions": 94196,
+      "binding_term": "batch-combination",
+      "challenge_field_bits_floor": 123,
+      "constraints": 74725,
+      "costs": {
+        "all_field_bytes": 27796045824,
+        "commitment_field_bytes": 24711790592,
+        "current_shape_limit_accepts": false,
+        "current_two_mib_limit_accepts": false,
+        "extension_degree": 4,
+        "main_query_field_bytes_at_distinct_indices": 24095744,
+        "minimum_mask_height": 272,
+        "prepared_field_bytes": 3084255232,
+        "queries": 128,
+        "random_codewords": 4
+      },
+      "library_classical_rbr_bits": 89.47663713881474,
+      "name": "more_queries",
+      "report": {
+        "ldr": {
+          "regime": {
+            "ListDecoding": {
+              "m": 3
+            }
+          },
+          "terms": [
+            {
+              "bits": 103.50334170648958,
+              "label": "air-composition"
+            },
+            {
+              "bits": 102.52271029263134,
+              "label": "deep-ali"
+            },
+            {
+              "bits": 96.16280967674376,
+              "label": "low-degree-test"
+            },
+            {
+              "bits": 79.6394468155585,
+              "label": "batch-combination"
+            },
+            {
+              "bits": 256.0,
+              "label": "commitment-collision"
+            }
+          ]
+        },
+        "udr": {
+          "regime": "UniqueDecoding",
+          "terms": [
+            {
+              "bits": 106.81069662854718,
+              "label": "air-composition"
+            },
+            {
+              "bits": 105.83006521468894,
+              "label": "deep-ali"
+            },
+            {
+              "bits": 105.99998899315233,
+              "label": "low-degree-test"
+            },
+            {
+              "bits": 89.47663713881474,
+              "label": "batch-combination"
+            },
+            {
+              "bits": 256.0,
+              "label": "commitment-collision"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "batched_opening_functions": 94276,
+      "binding_term": "low-degree-test",
+      "challenge_field_bits_floor": 247,
+      "constraints": 74725,
+      "costs": {
+        "all_field_bytes": 27836153856,
+        "commitment_field_bytes": 24751636480,
+        "current_shape_limit_accepts": false,
+        "current_two_mib_limit_accepts": false,
+        "extension_degree": 8,
+        "main_query_field_bytes_at_distinct_indices": 24097792,
+        "minimum_mask_height": 288,
+        "prepared_field_bytes": 3084517376,
+        "queries": 128,
+        "random_codewords": 8
+      },
+      "library_classical_rbr_bits": 190.66667315899667,
+      "name": "larger_extension_candidate",
+      "report": {
+        "ldr": {
+          "regime": {
+            "ListDecoding": {
+              "m": 69
+            }
+          },
+          "terms": [
+            {
+              "bits": 223.19175555582368,
+              "label": "air-composition"
+            },
+            {
+              "bits": 222.21112414196543,
+              "label": "deep-ali"
+            },
+            {
+              "bits": 190.66667315899667,
+              "label": "low-degree-test"
+            },
+            {
+              "bits": 190.70346359982966,
+              "label": "batch-combination"
+            },
+            {
+              "bits": 256.0,
+              "label": "commitment-collision"
+            }
+          ]
+        },
+        "udr": {
+          "regime": "UniqueDecoding",
+          "terms": [
+            {
+              "bits": 230.8106966285472,
+              "label": "air-composition"
+            },
+            {
+              "bits": 229.83006521468894,
+              "label": "deep-ali"
+            },
+            {
+              "bits": 106.24709515347938,
+              "label": "low-degree-test"
+            },
+            {
+              "bits": 213.4754123750836,
+              "label": "batch-combination"
+            },
+            {
+              "bits": 256.0,
+              "label": "commitment-collision"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "scope": "Retained library classical RBR model only, no selected protocol security level",
+  "signature_trace_allocations": 0,
+  "stored_degree_bits": 14,
+  "width": 47058
+}

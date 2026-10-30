@@ -408,3 +408,17 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/constraint-folding/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
       - name: Check retained folding lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/constraint-folding/Cargo.toml --release --all-targets --locked --offline -- -D warnings
+      - name: Check conditional profile formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/proof-profile/Cargo.toml --all -- --check
+      - name: Fetch conditional profile dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/proof-profile/Cargo.toml --locked
+      - name: Check conditional profile source boundary
+        run: python research/proof-profile/static_check.py
+      - name: Check independent profile arithmetic
+        run: python research/proof-profile/reference.py
+      - name: Test profile arithmetic boundaries
+        run: python -m unittest discover -s research/proof-profile -p test_reference.py -v
+      - name: Test conditional model regression
+        run: rustup run 1.94.1 cargo test --manifest-path research/proof-profile/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
+      - name: Check conditional profile lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/proof-profile/Cargo.toml --release --all-targets --locked --offline -- -D warnings

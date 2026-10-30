@@ -84,6 +84,8 @@ The [private verifier scheduling experiment](research/signature-scheduling/READM
 
 The [retained constraint folding experiment](research/constraint-folding/README.md) evaluates that actual AIR on finite synthetic row groups through the backend constraint folder. Captured residuals match a separate scalar fold and independent integer arithmetic. This isolates evaluation and folding from the outstanding polynomial commitment, complete proof and security composition requirements.
 
+The [conditional proof profile analysis](research/proof-profile/README.md) includes all batched columns, masking budgets and field storage in the retained classical model. Its scenarios separate numerical model output from the remaining protocol, knowledge and quantum security obligations.
+
 The [checked storage matrix](research/storage-matrix/README.md) supplies owned synthetic rows through the retained matrix interface, with canonical field decoding, checked windows and explicit storage failures. It is a storage integration component. Complete commitment, quotient and FRI integration remains separate from these accessor tests.
 
 The [storage commitment experiment](research/storage-commitments/README.md) connects those rows to the actual retained salted MMCS. Independent integer and SHA3 references cover four roots, including a mixed height batch. Memory and storage paths are compared through ordinary openings and pruned multiproofs.
