@@ -1,0 +1,67 @@
+{
+  "format": "kova.source-stark-false.validation.v1",
+  "provenance": {
+    "bytes": 20615,
+    "sha256": "b9296d3de408c4de9ffdbdb242fd50e79cd3c1ad06ed097c729c1f92a85665f6"
+  },
+  "test_groups_passed": 1,
+  "whole_stark_proofs": 1,
+  "retained_verifier_rejects": 1,
+  "retained_positive_fixture_accepts": 1,
+  "input_mmcs_commits": 3,
+  "fri_mmcs_commits": 9,
+  "input_multi_open_calls": 3,
+  "fri_multi_open_calls": 9,
+  "scalar_open_calls": 0,
+  "false_air_proofs": 1,
+  "fresh_positive_proofs": 0,
+  "verifier_error": "OodEvaluationMismatch",
+  "verifier_error_index": null,
+  "changed_flat_index": 255,
+  "original_value": 303595776,
+  "changed_value": 303595777,
+  "native_signature_traces": 0,
+  "wide_symbolic_evaluations": 0,
+  "degree_bits": 9,
+  "encoded_proof_bytes": 600978,
+  "leaf_digest_bytes": 1048064,
+  "independent_merkle_roots": 12,
+  "reserved_files_per_owner": 12,
+  "reserved_bytes_per_owner": 1292288,
+  "complete_proof_returned_before_rejection": true,
+  "whole_prover_entry_implemented": true,
+  "full_signature_proof_implemented": false,
+  "full_payment_implemented": false,
+  "other_file_fault_branches_executed": false,
+  "production_security_claim": false,
+  "executed_test_executable": {
+    "bytes": 2603520,
+    "sha256": "830ee78d73b6e6707835803846a4236068447b709559de885e6dc9d381a55654"
+  },
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows-11-10.0.26300-SP0",
+    "toolchain": "Rust 1.94.1",
+    "profile": "release serial",
+    "selected_test_seconds": 0.57
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 10286788608,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "test_counts_verified": true,
+    "peak_process_commit_bytes": 22405120,
+    "peak_job_commit_bytes": 23691264
+  },
+  "limitations": [
+    "One fixed invalid witness only, not general soundness certification",
+    "Other dense temporary matrices are not streamed",
+    "Partial other-file/orphan/DFT/poison/concurrency fault branches were not executed",
+    "Leaf digests reconstruct nodes and roots, not salted leaf preimages",
+    "Small fixed quartic relation only, not full signature or private payment",
+    "No quantum, knowledge or production security claim"
+  ]
+}

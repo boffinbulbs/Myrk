@@ -541,3 +541,17 @@ jobs:
         run: python research/source-stark/reference.py --check-results
       - name: Check owned computation lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/source-stark/Cargo.toml --release --lib --test complete --locked --offline -- -D warnings
+      - name: Check invalid witness formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/source-stark-false/Cargo.toml --all -- --check
+      - name: Fetch invalid witness dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-stark-false/Cargo.toml --locked
+      - name: Check invalid witness identities
+        run: python research/source-stark-false/static_check.py
+      - name: Check independent invalid witness records
+        run: python research/source-stark-false/reference.py
+      - name: Test complete invalid witness rejection
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-stark-false/Cargo.toml --release --locked --offline --test false_witness --jobs 1 -- --test-threads=1
+      - name: Compare fresh invalid witness artifacts
+        run: python research/source-stark-false/reference.py --check-results
+      - name: Check invalid witness lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-stark-false/Cargo.toml --release --lib --test false_witness --locked --offline -- -D warnings

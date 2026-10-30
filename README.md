@@ -110,7 +110,9 @@ The [source opening laboratory](research/source-opening/README.md) completes tha
 
 The [composite storage laboratory](research/source-composition/README.md) places main, eight quotient and auxiliary matrices under one owned file policy and one associated prover data family. Six actual input commitments compare the new and retained dense paths, including roots, fields and continuing entropy. Whole attempt reservations remain fixed after failure. This construction comparison does not derive an AIR quotient or construct a complete computation proof.
 
-The [owned computation laboratory](research/source-stark/README.md) connects that storage to the real quotient evaluator and one original batched opening for a complete fixed quartic proof. Owned and freshly constructed retained proofs have identical complete bytes and pass the retained full verifier. Independent checks reconstruct twelve roots from actual leaf digests. Canonical false witness rejection and the full private signature and payment relations remain separate gates.
+The [owned computation laboratory](research/source-stark/README.md) connects that storage to the real quotient evaluator and one original batched opening for a complete fixed quartic proof. Owned and freshly constructed retained proofs have identical complete bytes and pass the retained full verifier. Independent checks reconstruct twelve roots from actual leaf digests. The full private signature and payment relations remain separate gates.
+
+The [invalid witness laboratory](research/source-stark-false/README.md) changes one canonical field while retaining the public endpoints. The frozen prover returns a complete proof whose openings pass the retained verifier before its constraint identity rejects the invalid witness. The existing honest fixture still verifies. This single control covers the fixed synthetic relation.
 
 ## Native accounting and consensus targets
 
