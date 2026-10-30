@@ -394,3 +394,17 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/signature-scheduling/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
       - name: Check schedule lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-scheduling/Cargo.toml --release --all-targets --locked --offline -- -D warnings
+      - name: Check retained folding formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/constraint-folding/Cargo.toml --all -- --check
+      - name: Fetch retained folding dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/constraint-folding/Cargo.toml --locked
+      - name: Check retained folding source boundary
+        run: python research/constraint-folding/static_check.py
+      - name: Check independent folding reference
+        run: python research/constraint-folding/reference.py --check
+      - name: Test folding reference boundaries
+        run: python -m unittest discover -s research/constraint-folding -p test_reference.py -v
+      - name: Test independent extension field vectors
+        run: rustup run 1.94.1 cargo test --manifest-path research/constraint-folding/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
+      - name: Check retained folding lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/constraint-folding/Cargo.toml --release --all-targets --locked --offline -- -D warnings

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" role="img" aria-labelledby="title desc">
+  <title id="title">Retained and independent constraint folding</title>
+  <desc id="desc">The actual signature AIR emits synthetic residuals. The retained alpha decomposition and finalizer agree with scalar Horner and an independent integer reference.</desc>
+  <style>
+    svg { color: #24392b; font-family: Georgia, serif; }
+    .box { fill: none; stroke: currentColor; stroke-width: 1.3; }
+    .arrow { fill: none; stroke: currentColor; stroke-width: 1.3; marker-end: url(#tip); }
+    .heading { font-size: 16px; }
+    .detail { font-size: 13px; }
+    @media (prefers-color-scheme: dark) { svg { color: #dce8dd; } }
+  </style>
+  <defs><marker id="tip" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="currentColor"/></marker></defs>
+  <g text-anchor="middle" fill="currentColor">
+    <rect class="box" x="15" y="76" width="200" height="70" rx="3"/>
+    <text class="heading" x="115" y="104">Actual signature AIR</text>
+    <text class="detail" x="115" y="127">Two synthetic row groups</text>
+    <rect class="box" x="290" y="76" width="210" height="70" rx="3"/>
+    <text class="heading" x="395" y="104">74725 residuals</text>
+    <text class="detail" x="395" y="127">Canonical field words</text>
+    <rect class="box" x="590" y="18" width="305" height="70" rx="3"/>
+    <text class="heading" x="742" y="46">Retained finalizer</text>
+    <text class="detail" x="742" y="69">Decomposed alpha powers</text>
+    <rect class="box" x="590" y="134" width="305" height="70" rx="3"/>
+    <text class="heading" x="742" y="162">Independent comparison</text>
+    <text class="detail" x="742" y="185">Scalar Horner and integer reference</text>
+  </g>
+  <path class="arrow" d="M215 111 H284"/>
+  <path class="arrow" d="M500 100 H545 V53 H584"/>
+  <path class="arrow" d="M500 122 H545 V169 H584"/>
+</svg>

@@ -1,0 +1,44 @@
+{
+  "format": "kova.constraint-folding.validation.v1",
+  "scope": "Two synthetic row groups through the actual retained constraint folder. No complete proof or security profile selection.",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "actual_air_row_groups": 2,
+  "main_width": 47058,
+  "public_values": 196,
+  "constraints_per_group": 74725,
+  "packed_lanes": 1,
+  "signature_trace_allocations": 0,
+  "backend_proofs": 0,
+  "pcs_initialized": false,
+  "full_quotient_evaluated": false,
+  "fold_integrity_mismatches": 2,
+  "ordinary_rust_tests_passed": 1,
+  "python_reference_tests_passed": 4,
+  "independent_extension_vectors": 8,
+  "independent_residuals": 74725,
+  "independent_inverse_vanishing_checks": 2,
+  "provenance": {
+    "bytes": 20123,
+    "sha256": "bd4ea9434f144f18c9375e6c7e0d4ecad55da270b3ca695e3d4e8cc3ee76f469"
+  },
+  "executable": {
+    "bytes": 1016320,
+    "sha256": "f9ffeb4771fb1dd5c13b206b2979d86c817a1eb5792452f8a98ad4494ac59d1f"
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 7235641344,
+    "peak_process_commit_bytes": 4763648,
+    "peak_job_commit_bytes": 6041600,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "test_counts_verified": true
+  },
+  "raw_synthetic_residual_bytes": 298900,
+  "raw_input_bytes": 376464,
+  "raw_constraint_bytes": 298900
+}

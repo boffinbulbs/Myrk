@@ -1,0 +1,59 @@
+{
+  "alpha": [
+    3,
+    5,
+    7,
+    11
+  ],
+  "backend_proofs": 0,
+  "base_modulus": 2013265921,
+  "constraint_bytes": 298900,
+  "constraints": 74725,
+  "extension_nonresidue": 11,
+  "fold_integrity_mismatches": 2,
+  "format": "kova.fold-probe.v1",
+  "groups": [
+    {
+      "eval_ns": 5898200,
+      "fold_ns": 137600,
+      "folded": [
+        [
+          580612703,
+          105198669,
+          1606236423,
+          999481283
+        ]
+      ],
+      "group": 0,
+      "inverse_vanishing": [
+        381559427
+      ],
+      "points": [
+        31
+      ]
+    },
+    {
+      "eval_ns": 6118000,
+      "fold_ns": 121000,
+      "folded": [
+        [
+          1219781206,
+          903687397,
+          1064181402,
+          1119560253
+        ]
+      ],
+      "group": 1,
+      "inverse_vanishing": [
+        1307539426
+      ],
+      "points": [
+        1858639877
+      ]
+    }
+  ],
+  "main_bytes": 376464,
+  "packed_lanes": 1,
+  "signature_trace_allocations": 0,
+  "width": 47058
+}
