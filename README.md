@@ -134,6 +134,8 @@ The [owned signature source](research/signature-owned-source/README.md) places w
 
 The [initial hash source](research/signature-hash-source/README.md) advances genuine hash state and decoding in the same row from one owned witness and canonical transaction. Its bounded block reference, independent source bank checkpoints and challenge XOF reference cover the initial pass and private source timing. The dummy tail is provisional until matrix and final hashing are integrated. This is constructor evidence, with complete private payment proving still unfinished.
 
+The [owned sampling source](research/signature-sample-source/README.md) extends that composition with private challenge state driven by the actual current row XOF. A bounded original loop oracle and independent retained terminal coefficients check register timing, source consumption and completion. This remains component construction evidence within the complete private payment proof work.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

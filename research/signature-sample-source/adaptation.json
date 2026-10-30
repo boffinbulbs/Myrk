@@ -1,0 +1,32 @@
+{
+  "format": "kova.signature-sample-source.adaptation.v1",
+  "base_revision": "e39e50a56a43dbb191a12a78b0b2b89a9153f8fa",
+  "owner_origin": "research/signature-hash-source/src/lib.rs",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "owner_delta": "Module identity and sampling diagnostics only",
+  "old_opaque_conversion": false,
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "private_children_added": 5,
+  "sampler_origin": "research/signature-complete-native/src/build/sample.rs",
+  "sampler_diff": "sample-adaptation.patch",
+  "sampler_delta": "Private cursor, assigned band clearing, checked destinations, explicit completion and error timing",
+  "sampler_owned_range": [
+    26611,
+    27796
+  ],
+  "activity_owned_column": 43167,
+  "candidate_xof_origin": "Actual same owner SourceHashState current row after DecodeState",
+  "original_reference_fill_calls": 1,
+  "original_reference_rows": 277,
+  "reference_hash_generations": 0,
+  "reference_xof_origin": "Already saved independent hash source fixture, reference only",
+  "reference_prefix_released_on_reference_access_row": 277,
+  "complete_row_source_implemented": false,
+  "tail_is_provisional": true
+}

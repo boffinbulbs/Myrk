@@ -667,3 +667,15 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-hash-source/Cargo.toml --release --lib --locked --offline -- -D warnings
       - name: Check initial hash control lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-hash-source/Cargo.toml --release --features hash-controls --lib --test hash --locked --offline -- -D warnings
+      - name: Check owned sampling source formatting
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-sample-source/src/lib.rs research/signature-sample-source/src/build.rs research/signature-sample-source/src/initial_source.rs research/signature-sample-source/src/sample_state.rs research/signature-sample-source/src/sample_reference.rs research/signature-sample-source/src/sample_controls.rs research/signature-sample-source/tests/sample.rs
+      - name: Fetch owned sampling source dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-sample-source/Cargo.toml --locked
+      - name: Check owned sampling source records
+        run: python -I -S research/signature-sample-source/static_check.py
+      - name: Compile owned sampling source controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-sample-source/Cargo.toml --release --features sample-controls --test sample --locked --offline --no-run --jobs 1
+      - name: Check owned sampling default lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-sample-source/Cargo.toml --release --lib --locked --offline -- -D warnings
+      - name: Check owned sampling control lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-sample-source/Cargo.toml --release --features sample-controls --lib --test sample --locked --offline -- -D warnings
