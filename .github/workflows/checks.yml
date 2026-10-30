@@ -436,3 +436,15 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/output-lifetimes/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
       - name: Check output lifetime lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/output-lifetimes/Cargo.toml --release --all-targets --locked --offline -- -D warnings
+      - name: Check signature storage formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-storage/Cargo.toml --all -- --check
+      - name: Fetch signature storage dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-storage/Cargo.toml --locked
+      - name: Check signature storage source identities
+        run: python research/signature-storage/static_check.py
+      - name: Check signature storage conditional costs
+        run: python research/signature-storage/reference.py
+      - name: Test signature storage ordinary constraints
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-storage/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
+      - name: Check signature storage lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-storage/Cargo.toml --release --all-targets --locked --offline -- -D warnings

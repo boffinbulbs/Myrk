@@ -88,6 +88,8 @@ The [conditional proof profile analysis](research/proof-profile/README.md) inclu
 
 The [output lifetime laboratory](research/output-lifetimes/README.md) constrains nine shared banks against dedicated storage under the retained schedule. Independent full-coordinate intervals and actual synthetic native rejection controls test temporal reuse before any complete signature layout change.
 
+The [private signature storage laboratory](research/signature-storage/README.md) connects that mapping to actual canonical transform writes and matrix consumers. Its separate native records retain complete signature and note ownership constraints while reducing the physical output layout. The original scheduling source remains the reference.
+
 The [checked storage matrix](research/storage-matrix/README.md) supplies owned synthetic rows through the retained matrix interface, with canonical field decoding, checked windows and explicit storage failures. It is a storage integration component. Complete commitment, quotient and FRI integration remains separate from these accessor tests.
 
 The [storage commitment experiment](research/storage-commitments/README.md) connects those rows to the actual retained salted MMCS. Independent integer and SHA3 references cover four roots, including a mixed height batch. Memory and storage paths are compared through ordinary openings and pruned multiproofs.

@@ -1,0 +1,172 @@
+{
+  "format": "kova.signature-storage.costs.v1",
+  "profile": "Conditional retained extension4 random4 blowup8 eight quotient chunks comparison",
+  "measured_native_shape": {
+    "height": 8192,
+    "width": 45266,
+    "public_values": 196,
+    "constraints": 71141,
+    "degree": 4
+  },
+  "prior": {
+    "raw_trace_bytes": 1541996544,
+    "prepared_source_shape": [
+      16384,
+      47062
+    ],
+    "prepared_source_bytes": 3084255232,
+    "main_mask_field_draws": 385564672,
+    "committed_field_file_shapes": [
+      [
+        131072,
+        47062
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ]
+    ],
+    "committed_field_file_bytes": 24711790592,
+    "all_field_file_bytes": 27796045824,
+    "prior_scalar_main_window_reads": 771063808,
+    "main_preparation_window_reads": 192774144,
+    "all_source_window_reads": 192937984,
+    "all_source_fields_read": 771719168,
+    "commitment_scalar_field_writes": 6177947648,
+    "commitment_row_span_writes": 1544552448,
+    "tile_columns": 4,
+    "forward_dft_batches": 11784,
+    "quotient_inverse_dft_batches": 16,
+    "largest_explicit_input_tile_bytes": 262144,
+    "largest_explicit_output_tile_bytes": 2097152,
+    "forward_column_dfts": 47134,
+    "quotient_inverse_column_dfts": 64,
+    "largest_explicit_column_bytes": 524288,
+    "quotient_domain_rows": 65536,
+    "constraint_row_positions": 4897177600,
+    "separate_randomization_input_bytes": 524288,
+    "prepared_quotient_fields_bytes": 2097152,
+    "coupled_quotient_masks_bytes": 2097152,
+    "base_commitment_salt_payload_bytes": 83886080,
+    "base_commitment_digest_payload_bytes": 50331456,
+    "main_query_field_payload_at_64_distinct_queries_bytes": 12047872,
+    "main_two_point_claim_extension_payload_bytes": 1505984,
+    "current_field_store_shape_accepts": false,
+    "current_field_store_byte_budget_accepts": false
+  },
+  "current": {
+    "raw_trace_bytes": 1483276288,
+    "prepared_source_shape": [
+      16384,
+      45270
+    ],
+    "prepared_source_bytes": 2966814720,
+    "main_mask_field_draws": 370884608,
+    "committed_field_file_shapes": [
+      [
+        131072,
+        45270
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ],
+      [
+        131072,
+        8
+      ]
+    ],
+    "committed_field_file_bytes": 23772266496,
+    "all_field_file_bytes": 26739081216,
+    "prior_scalar_main_window_reads": 741703680,
+    "main_preparation_window_reads": 185434112,
+    "all_source_window_reads": 185597952,
+    "all_source_fields_read": 742359040,
+    "commitment_scalar_field_writes": 5943066624,
+    "commitment_row_span_writes": 1485832192,
+    "tile_columns": 4,
+    "forward_dft_batches": 11336,
+    "quotient_inverse_dft_batches": 16,
+    "largest_explicit_input_tile_bytes": 262144,
+    "largest_explicit_output_tile_bytes": 2097152,
+    "forward_column_dfts": 45342,
+    "quotient_inverse_column_dfts": 64,
+    "largest_explicit_column_bytes": 524288,
+    "quotient_domain_rows": 65536,
+    "constraint_row_positions": 4662296576,
+    "separate_randomization_input_bytes": 524288,
+    "prepared_quotient_fields_bytes": 2097152,
+    "coupled_quotient_masks_bytes": 2097152,
+    "base_commitment_salt_payload_bytes": 83886080,
+    "base_commitment_digest_payload_bytes": 50331456,
+    "main_query_field_payload_at_64_distinct_queries_bytes": 11589120,
+    "main_two_point_claim_extension_payload_bytes": 1448640,
+    "current_field_store_shape_accepts": false,
+    "current_field_store_byte_budget_accepts": false
+  },
+  "columns_removed": 1792,
+  "assertions_removed": 3584,
+  "raw_bytes_removed": 58720256,
+  "field_payload_bytes_removed": 1056964608,
+  "backend_proofs": 0
+}

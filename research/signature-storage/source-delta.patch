@@ -1,0 +1,162 @@
+diff --git a/signature-scheduling/src/layout.rs b/signature-storage/src/layout.rs
+index f3c4bd3..632f9d9 100644
+--- a/signature-scheduling/src/layout.rs
++++ b/signature-storage/src/layout.rs
+@@ -54 +54 @@ pub const NTT_OUTPUT: usize = INITIAL_WIDTH;
+-pub const NTT_SCRATCH: usize = NTT_OUTPUT + 16 * 256;
++pub const NTT_SCRATCH: usize = NTT_OUTPUT + 9 * 256;
+@@ -75,0 +76,7 @@ pub const PUBLIC_VALUES: usize = 196;
++
++/// Fixed conservative lifetimes. Bank6 retires Z6 before receiving T1_7.
++pub const OUTPUT_BANKS: [usize; 16] = [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 8, 6];
++pub const fn output_column(logical: usize, coefficient: usize) -> usize {
++    assert!(logical < 16 && coefficient < 256);
++    NTT_OUTPUT + 256 * OUTPUT_BANKS[logical] + coefficient
++}
+diff --git a/signature-scheduling/src/ntt.rs b/signature-storage/src/ntt.rs
+index cf2aacc..cfa7a3b 100644
+--- a/signature-scheduling/src/ntt.rs
++++ b/signature-storage/src/ntt.rs
+@@ -190,3 +190,3 @@ pub(crate) fn eval<AB: AirBuilder<F = BabyBear>>(builder: &mut AB) {
+-    // The private output has one producer per cell and then exact holds.
+-    for t in 0..TRANSFORMS {
+-        let start = START + t * ROWS_PER_TRANSFORM;
++    // A physical output has one update equation across its fixed owners.
++    // Each selected value still comes from the actual canonical NTT write.
++    for bank in 0..9 {
+@@ -194 +194 @@ pub(crate) fn eval<AB: AirBuilder<F = BabyBear>>(builder: &mut AB) {
+-            let column = NTT_OUTPUT + 256 * t + index;
++            let column = NTT_OUTPUT + 256 * bank + index;
+@@ -196,5 +196,11 @@ pub(crate) fn eval<AB: AirBuilder<F = BabyBear>>(builder: &mut AB) {
+-            let selected = program::at::<AB>(local, start + 160 + index / 8);
+-            builder.when_transition().assert_eq(
+-                next[column],
+-                local[column].into() + selected * (writes[index % 8].clone() - local[column]),
+-            );
++            let mut change = AB::Expr::ZERO;
++            for (t, physical) in OUTPUT_BANKS.iter().enumerate() {
++                if *physical == bank {
++                    let start = START + t * ROWS_PER_TRANSFORM;
++                    let selected = program::at::<AB>(local, start + 160 + index / 8);
++                    change += selected * (writes[index % 8].clone() - local[column]);
++                }
++            }
++            builder
++                .when_transition()
++                .assert_eq(next[column], local[column].into() + change);
+@@ -354 +360 @@ pub(crate) fn fill(values: &mut [BabyBear]) {
+-    let mut outputs = [0u32; 4096];
++    let mut outputs = [0u32; 9 * 256];
+@@ -377 +383 @@ pub(crate) fn fill(values: &mut [BabyBear]) {
+-                        outputs[256 * t + group * 8 + slot] = writes[slot];
++                        outputs[256 * OUTPUT_BANKS[t] + group * 8 + slot] = writes[slot];
+diff --git a/signature-scheduling/src/matrix.rs b/signature-storage/src/matrix.rs
+index ae5860a..1391bd4 100644
+--- a/signature-scheduling/src/matrix.rs
++++ b/signature-storage/src/matrix.rs
+@@ -159 +159 @@ pub(crate) fn eval<AB: AirBuilder<F = BabyBear>>(b: &mut AB) {
+-                .map(|k| row[MATRIX_COUNT + s * 257 + k] * row[NTT_OUTPUT + 256 * j + k])
++                .map(|k| row[MATRIX_COUNT + s * 257 + k] * row[output_column(j, k)])
+@@ -171,2 +171,2 @@ pub(crate) fn eval<AB: AirBuilder<F = BabyBear>>(b: &mut AB) {
+-                x += p.clone() * row[NTT_OUTPUT + 7 * 256 + k];
+-                y += p.clone() * row[NTT_OUTPUT + (8 + i) * 256 + k];
++                x += p.clone() * row[output_column(7, k)];
++                y += p.clone() * row[output_column(8 + i, k)];
+@@ -297 +297 @@ pub(crate) fn fill(values: &mut [BabyBear]) {
+-                        y = row[NTT_OUTPUT + 256 * j + k].as_canonical_u32();
++                        y = row[output_column(j, k)].as_canonical_u32();
+@@ -322,2 +322,2 @@ pub(crate) fn fill(values: &mut [BabyBear]) {
+-                    row[NTT_OUTPUT + 7 * 256 + k].as_canonical_u32(),
+-                    row[NTT_OUTPUT + (8 + i) * 256 + k].as_canonical_u32(),
++                    row[output_column(7, k)].as_canonical_u32(),
++                    row[output_column(8 + i, k)].as_canonical_u32(),
+diff --git a/signature-scheduling/src/full_program.rs b/signature-storage/src/full_program.rs
+index 1f11952..e327ba1 100644
+--- a/signature-scheduling/src/full_program.rs
++++ b/signature-storage/src/full_program.rs
+@@ -14 +14 @@ pub const FINAL_END: usize = FINAL_START + 9 * 6;
+-const _: [(); 47058] = [(); WIDTH];
++const _: [(); 45266] = [(); WIDTH];
+diff --git a/signature-scheduling/src/native_tests.rs b/signature-storage/src/native_tests.rs
+index ee51c6d..d2ed250 100644
+--- a/signature-scheduling/src/native_tests.rs
++++ b/signature-storage/src/native_tests.rs
+@@ -322 +322,14 @@ fn compare_stages(trace: &RowMajorMatrix<BabyBear>, r: &Reference, t: &Tuple) {
+-        assert_poly(&last, NTT_OUTPUT + 256 * j, &stage.zhat[j]);
++        for position in [642 + 192 * j, 1025 + 384 * j] {
++            assert_poly(
++                &trace.row_slice(position).unwrap(),
++                output_column(j, 0),
++                &stage.zhat[j],
++            );
++        }
++    }
++    for position in [642 + 192 * 7, 3585] {
++        assert_poly(
++            &trace.row_slice(position).unwrap(),
++            output_column(7, 0),
++            &stage.chat,
++        );
+@@ -324 +336,0 @@ fn compare_stages(trace: &RowMajorMatrix<BabyBear>, r: &Reference, t: &Tuple) {
+-    assert_poly(&last, NTT_OUTPUT + 7 * 256, &stage.chat);
+@@ -328 +340,7 @@ fn compare_stages(trace: &RowMajorMatrix<BabyBear>, r: &Reference, t: &Tuple) {
+-        assert_poly(&last, NTT_OUTPUT + 256 * (8 + i), &row.t1hat);
++        for position in [642 + 192 * (8 + i), 3361 + 32 * i] {
++            assert_poly(
++                &trace.row_slice(position).unwrap(),
++                output_column(8 + i, 0),
++                &row.t1hat,
++            );
++        }
+@@ -403 +421 @@ fn a0_native_baseline_and_activity_mutations() {
+-        (8192, 47058, 1541996544)
++        (8192, 45266, 1483276288)
+@@ -419,0 +438,23 @@ fn a0_native_baseline_and_activity_mutations() {
++    let handoffs = [
++        (610, output_column(0, 0)),
++        (611, output_column(0, 0)),
++        (642, output_column(0, 255)),
++        (1025, output_column(0, 0)),
++        (2146, output_column(8, 0)),
++        (2147, output_column(8, 0)),
++        (3299, output_column(6, 0)),
++        (3299, output_column(14, 0)),
++        (3329, output_column(6, 255)),
++        (3491, output_column(15, 0)),
++        (3522, output_column(15, 255)),
++        (3553, output_column(14, 255)),
++    ];
++    for (row, column) in handoffs {
++        let index = row * WIDTH + column;
++        let original = trace.values[index];
++        assert!(single_cell_affected_frames_valid(&trace, &public, row));
++        trace.values[index] += BabyBear::ONE;
++        assert!(!single_cell_affected_frames_valid(&trace, &public, row));
++        trace.values[index] = original;
++        assert!(single_cell_affected_frames_valid(&trace, &public, row));
++    }
+@@ -428 +469 @@ fn a0_native_baseline_and_activity_mutations() {
+-    println!("native_A0_accept=1 independent_stages=pass activity_local_rejections=9 full_negative=1 native_traces=1 raw_field_bytes=1541996544 backend_proofs=0");
++    println!("native_A0_accept=1 independent_stages=pass activity_local_rejections=9 output_handoff_local_rejections=12 full_negative=1 native_traces=1 raw_field_bytes=1483276288 backend_proofs=0");
+@@ -454 +495 @@ fn remaining_native_reference_tuples() {
+-        assert_eq!((trace.height(), trace.width()), (8192, 47058));
++        assert_eq!((trace.height(), trace.width()), (8192, 45266));
+@@ -725 +766 @@ fn bound_reconstructed_suffixes_and_source_routes_reject() {
+-        (HEIGHT - 1, NTT_OUTPUT + 4095),
++        (HEIGHT - 1, output_column(15, 255)),
+diff --git a/signature-scheduling/src/tests.rs b/signature-storage/src/tests.rs
+index f46b565..af8342b 100644
+--- a/signature-scheduling/src/tests.rs
++++ b/signature-storage/src/tests.rs
+@@ -93 +93 @@ fn full_schedule_selector_and_source_dimensions() {
+-        (8192, 47058, 196, 192)
++        (8192, 45266, 196, 192)
+@@ -138 +138 @@ fn actual_complete_symbolic_relation_shape() {
+-        (47058, 196, 0, 0)
++        (45266, 196, 0, 0)
+@@ -147 +147 @@ fn actual_complete_symbolic_relation_shape() {
+-    assert_eq!(count, 74725);
++    assert_eq!(count, 71141);
+@@ -149 +149 @@ fn actual_complete_symbolic_relation_shape() {
+-    println!("native_width=47058 constraints_per_row={count} degree={degree} native_trace_allocations=0 backend_proofs=0");
++    println!("native_width=45266 constraints_per_row={count} degree={degree} native_trace_allocations=0 backend_proofs=0");

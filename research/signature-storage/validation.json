@@ -1,0 +1,85 @@
+{
+  "format": "kova.signature-storage.validation.v1",
+  "scope": "Complete bounded native signature and note ownership relation with nine actual output banks.",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "height": 8192,
+  "width": 45266,
+  "public_values": 196,
+  "raw_field_bytes": 1483276288,
+  "assertions_per_row": 71141,
+  "degree": 4,
+  "native_tuple_cases": 10,
+  "accepted": 5,
+  "rejected": 5,
+  "activity_local_rejections": 9,
+  "output_handoff_local_rejections": 12,
+  "full_activity_negative": 1,
+  "hostile_routes_rejected": 77,
+  "full_hostile_negatives": 15,
+  "hostile_full_positive_controls": 4,
+  "constructed_traces": 11,
+  "maximum_live_traces": 1,
+  "backend_proofs": 0,
+  "ordinary_rust_tests_passed": 8,
+  "original_sources_unchanged": true,
+  "provenance": {
+    "bytes": 19171,
+    "sha256": "66a55f9cc845dbc851a3e2a5d740a74a46a805e972e3e97a175383d04230a2de"
+  },
+  "executable": {
+    "bytes": 1902592,
+    "sha256": "d6367306f843f073970480860ea14a880b38b211ea5c36a3e097009dc6749195"
+  },
+  "guards": {
+    "symbolic": {
+      "process_limit_bytes": 536870912,
+      "aggregate_limit_bytes": 536870912,
+      "minimum_available_bytes": 2147483648,
+      "available_before_bytes": 12373639168,
+      "peak_process_commit_bytes": 295235584,
+      "peak_job_commit_bytes": 296529920,
+      "timeout_seconds": 120,
+      "elapsed_test_seconds": 0.41,
+      "readback_verified": true,
+      "test_counts_verified": true
+    },
+    "a0": {
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 11892629504,
+      "peak_process_commit_bytes": 1488945152,
+      "peak_job_commit_bytes": 1490247680,
+      "timeout_seconds": 300,
+      "elapsed_test_seconds": 71.99,
+      "readback_verified": true,
+      "test_counts_verified": true
+    },
+    "corpus": {
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 11857817600,
+      "peak_process_commit_bytes": 1489145856,
+      "peak_job_commit_bytes": 1490407424,
+      "timeout_seconds": 1200,
+      "elapsed_test_seconds": 516.63,
+      "readback_verified": true,
+      "test_counts_verified": true
+    },
+    "hostile": {
+      "process_limit_bytes": 2147483648,
+      "aggregate_limit_bytes": 2147483648,
+      "minimum_available_bytes": 5368709120,
+      "available_before_bytes": 10971488256,
+      "peak_process_commit_bytes": 1488949248,
+      "peak_job_commit_bytes": 1490239488,
+      "timeout_seconds": 1800,
+      "elapsed_test_seconds": 854.89,
+      "readback_verified": true,
+      "test_counts_verified": true
+    }
+  }
+}
