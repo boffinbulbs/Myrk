@@ -132,6 +132,8 @@ The [fixed signature proof boundary](research/signature-proof-contract/README.md
 
 The [owned signature source](research/signature-owned-source/README.md) places witness ownership and retained constraint modules in one cohesive source version. Its private decoding state emits only its assigned row columns, preserving current state before each update. Two complete decoding walks match the retained prefix oracle and independent terminal values, with malformed source and cursor controls. Other construction stages, masked random access and complete proof integration remain unfinished.
 
+The [initial hash source](research/signature-hash-source/README.md) advances genuine hash state and decoding in the same row from one owned witness and canonical transaction. Its bounded block reference, independent source bank checkpoints and challenge XOF reference cover the initial pass and private source timing. The dummy tail is provisional until matrix and final hashing are integrated. This is constructor evidence, with complete private payment proving still unfinished.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

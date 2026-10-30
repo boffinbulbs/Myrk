@@ -1,0 +1,33 @@
+{
+  "format": "kova.signature-hash-source.adaptation.v1",
+  "base_revision": "5b301fefe7e2661a7c57a7e90b406ddd5a687571",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "owner_origin": "research/signature-owned-source/src/lib.rs",
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "build_delta": "Three feature gated private children",
+  "decoder_origin": "research/signature-owned-source/src/producer.rs",
+  "decoder_delta": "Unused reference prefix helper omitted",
+  "reference_origin": "research/signature-packed/src/build.rs::stream_hashes",
+  "reference_delta": "Independent concrete six row block destination, explicit global positions and counters",
+  "reference_diff": "reference-adaptation.patch",
+  "unchanged_full_writer_executed": false,
+  "old_opaque_conversion": false,
+  "owned_ranges": [
+    [
+      0,
+      10532
+    ],
+    [
+      16271,
+      19519
+    ]
+  ],
+  "complete_row_source_implemented": false,
+  "tail_is_provisional": true
+}

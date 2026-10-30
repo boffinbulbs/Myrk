@@ -655,3 +655,15 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-owned-source/Cargo.toml --release --lib --locked --offline -- -D warnings
       - name: Check owned decoding control lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-owned-source/Cargo.toml --release --features decode-controls --lib --test decode --locked --offline -- -D warnings
+      - name: Check initial hash source formatting
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-hash-source/src/lib.rs research/signature-hash-source/src/build.rs research/signature-hash-source/src/decoder_state.rs research/signature-hash-source/src/hash_source.rs research/signature-hash-source/src/hash_reference.rs research/signature-hash-source/src/hash_controls.rs research/signature-hash-source/tests/hash.rs
+      - name: Fetch initial hash source dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-hash-source/Cargo.toml --locked
+      - name: Check initial hash source records
+        run: python research/signature-hash-source/static_check.py
+      - name: Compile initial hash source controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-hash-source/Cargo.toml --release --features hash-controls --test hash --locked --offline --no-run --jobs 1
+      - name: Check initial hash default lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-hash-source/Cargo.toml --release --lib --locked --offline -- -D warnings
+      - name: Check initial hash control lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-hash-source/Cargo.toml --release --features hash-controls --lib --test hash --locked --offline -- -D warnings
