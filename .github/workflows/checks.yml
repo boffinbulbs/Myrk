@@ -623,3 +623,13 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/signature-packed-corpus/Cargo.toml --release --locked --offline --test corpus --no-run --jobs 1
       - name: Check packed native corpus lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed-corpus/Cargo.toml --release --test corpus --locked --offline -- -D warnings
+      - name: Check consistent padding formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-packed-padding/Cargo.toml --all -- --check
+      - name: Fetch consistent padding dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-packed-padding/Cargo.toml --locked
+      - name: Check consistent padding records
+        run: python research/signature-packed-padding/static_check.py
+      - name: Compile consistent padding controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-packed-padding/Cargo.toml --release --locked --offline --test padding --no-run --jobs 1
+      - name: Check consistent padding lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed-padding/Cargo.toml --release --test padding --locked --offline -- -D warnings

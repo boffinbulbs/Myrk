@@ -1,0 +1,1 @@
+{"actual_tail_ports_compared":16384,"backend_proofs":0,"constructed_traces":1,"controls":4,"fixture":"B0","independent_byte_comparisons":5,"independent_bytes":288,"maximum_live_traces":1,"negative_all_frame_passes":4,"negative_frame_evaluations":32768,"positive_full_scans":5,"rank_projection_passes":1,"symbolic_collections":0,"total_frame_evaluations":73728}

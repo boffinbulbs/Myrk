@@ -124,7 +124,9 @@ The subsequent [complete symbolic shape record](research/signature-packed-shape/
 
 The [first complete packed native witness](research/signature-packed-native/README.md) accepts the independent A0 fixture across every row. Six causal source corruptions fail at their exact expected constraints, and all restorations pass. The bounded run constructs one trace and distinguishes its full scan from borrowed global frame checks.
 
-The [remaining packed native corpus](research/signature-packed-corpus/README.md) evaluates nine additional reference tuples serially. Four valid witnesses pass and five wrong owner, context, key or expected transaction cases fail at their intended constraints. The legitimate same owner alternate note passes with consistently rebuilt sources. These records cover the ten selected bounded fixtures across separate gates. Causal virtual padding controls, full equivalence and complete hiding signature proofs remain separate work.
+The [remaining packed native corpus](research/signature-packed-corpus/README.md) evaluates nine additional reference tuples serially. Four valid witnesses pass and five wrong owner, context, key or expected transaction cases fail at their intended constraints. The legitimate same owner alternate note passes with consistently rebuilt sources. These records cover the ten selected bounded fixtures across separate gates.
+
+The [consistent virtual padding controls](research/signature-packed-padding/README.md) alter the held signature and note tails together with every matching read port. Each of four controls fails only its intended padding rule on all 8,192 global frames, and all restored witnesses pass. The run records 73,728 frame evaluations on one complete trace. Full equivalence, hiding signature proofs and private payment integration remain separate work.
 
 ## Native accounting and consensus targets
 

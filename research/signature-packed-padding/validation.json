@@ -1,0 +1,66 @@
+{
+  "format": "kova.signature-packed-padding.validation.v1",
+  "provenance": {
+    "bytes": 34820,
+    "sha256": "4cfbcd3f54b86d13375ba61c65040785125a59f7626963991b26720eb4294038"
+  },
+  "native_traces": 1,
+  "maximum_live_traces": 1,
+  "positive_full_scans": 5,
+  "negative_all_frame_passes": 4,
+  "negative_frame_evaluations": 32768,
+  "total_frame_evaluations": 73728,
+  "independent_byte_comparisons": 5,
+  "independent_bytes": 288,
+  "rank_projection_passes": 1,
+  "actual_tail_ports_compared": 16384,
+  "symbolic_collections": 0,
+  "backend_proofs": 0,
+  "full_payment_implemented": false,
+  "production_security_claim": false,
+  "executable": {
+    "bytes": 1411584,
+    "sha256": "28f6a64f8ad57652bbc302b3a198258e90702ad08ab44ccd1d5b9816452530b9"
+  },
+  "original_private_receipt_sha256": "8150799d2619b5e0358866b93eaaa5678f70aa089d96798c2ba4c083abbcdc94",
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows 11",
+    "rust": "1.94.1",
+    "profile": "release",
+    "test_threads": 1
+  },
+  "elapsed_test_seconds": 486.94,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 1,
+    "actual_passed": 1,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "test_counts_verified": true,
+    "timeout_seconds": 1200,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 8808697856,
+    "minimum_available_bytes": 5368709120,
+    "hard_process_commit_limit_bytes": 2147483648,
+    "peak_working_bytes": 1421713408,
+    "peak_private_commit_bytes": 1419476992,
+    "sampled_peak_private_bytes": 1419227136,
+    "installed_process_commit_limit_bytes": 2147483648,
+    "installed_job_commit_limit_bytes": 2147483648,
+    "peak_job_commit_bytes": 1420767232,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "limitations": [
+    "Four fixed consistent tail-padding controls on one bounded native fixture",
+    "Negative passes evaluate actual FullAIR global frames, not backend proof rejections",
+    "Frozen symbolic count is distinct from per-frame eval call counts",
+    "Native constraint checks are not a hiding proof, complete equivalence or payment acceptance",
+    "Resource observations describe this source and host only"
+  ]
+}
