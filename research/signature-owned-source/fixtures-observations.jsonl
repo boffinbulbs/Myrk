@@ -1,0 +1,15 @@
+{"case":"baseline","kind":"exhaustion","result":"Err(Exhausted)","unchanged":true}
+{"case":"baseline","corruption_controls":2,"exhausted_without_writes":true,"independent_terminal_values":5888,"kind":"decode_equivalence","owned_cells":58097664,"preserved_cells":295600128,"public_values":196,"reference_rows":449,"restored_controls":2,"rows":8192}
+{"case":"z_endpoints","kind":"exhaustion","result":"Err(Exhausted)","unchanged":true}
+{"case":"z_endpoints","corruption_controls":2,"exhausted_without_writes":true,"independent_terminal_values":5888,"kind":"decode_equivalence","owned_cells":58097664,"preserved_cells":295600128,"public_values":196,"reference_rows":449,"restored_controls":2,"rows":8192}
+{"actual_next":0,"error":"Err(RowShape)","expected_next":0,"kind":"shape_refusal","unchanged":true}
+{"actual_next":1,"error":"Err(RowShape)","expected_next":1,"kind":"shape_refusal","unchanged":true}
+{"count":2,"kind":"shape_guards"}
+{"case":"fixed_note","error":"Encoding(InvalidEncoding)","kind":"encoding_refusal"}
+{"case":"z_below_range","error":"Encoding(InvalidEncoding)","kind":"encoding_refusal"}
+{"case":"z_above_range","error":"Encoding(InvalidEncoding)","kind":"encoding_refusal"}
+{"case":"descending_cuts","error":"Encoding(InvalidEncoding)","kind":"encoding_refusal"}
+{"case":"cut_above_limit","error":"Encoding(InvalidEncoding)","kind":"encoding_refusal"}
+{"case":"duplicate_hint","error":"Encoding(InvalidEncoding)","kind":"encoding_refusal"}
+{"case":"hint_padding","error":"Encoding(InvalidEncoding)","kind":"encoding_refusal"}
+{"count":7,"kind":"encoding_refusals"}

@@ -130,6 +130,8 @@ The [consistent virtual padding controls](research/signature-packed-padding/READ
 
 The [fixed signature proof boundary](research/signature-proof-contract/README.md) owns the actual private witness and immutable canonical transaction, deriving public authorization values through the retained mapper. Three nonproving test groups cover exact public reference vectors, canonical limit errors and the actual packed relation resource refusal without observed RNG or storage effects. A complete streamed producer, hiding proof and same witness ledger joins remain unfinished.
 
+The [owned signature source](research/signature-owned-source/README.md) places witness ownership and retained constraint modules in one cohesive source version. Its private decoding state emits only its assigned row columns, preserving current state before each update. Two complete decoding walks match the retained prefix oracle and independent terminal values, with malformed source and cursor controls. Other construction stages, masked random access and complete proof integration remain unfinished.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

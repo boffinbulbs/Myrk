@@ -1,0 +1,24 @@
+{
+  "format": "kova.signature-owned-source.adaptation.v1",
+  "base_revision": "63569b783f48ae3e0c2d8da2103d160d28825605",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "old_opaque_conversion": false,
+  "owner_origin": "research/signature-packed/src/lib.rs",
+  "binding_origin": "research/signature-proof-contract/src/lib.rs",
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "build_delta": "Feature gated private producer child only",
+  "decoder_origin": "research/signature-complete-native/src/build/decode.rs",
+  "decoder_loop_preserved_after_state_field_qualification_and_formatting": true,
+  "new_owned_zero_band": [
+    "T1",
+    "SIGN_BITS"
+  ],
+  "subset_writer_only": true,
+  "full_streamed_source_implemented": false
+}

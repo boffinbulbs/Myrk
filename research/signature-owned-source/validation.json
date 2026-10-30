@@ -1,0 +1,40 @@
+{
+  "format": "kova.signature-owned-source.validation.v1",
+  "integration_tests_passed": 3,
+  "observation_records": 15,
+  "main_decode_emissions": 16384,
+  "shape_control_emissions": 2,
+  "reference_prefix_rows": 898,
+  "maximum_live_reference_buffers": 1,
+  "owned_field_comparisons": 116195328,
+  "outside_field_comparisons": 591200256,
+  "terminal_values_checked": 11776,
+  "encoding_refusals": 7,
+  "shape_refusals": 2,
+  "exhaustion_refusals": 2,
+  "comparator_corruptions_detected": 4,
+  "comparator_restorations": 4,
+  "complete_signature_traces": 0,
+  "air_evaluations": 0,
+  "backend_proofs": 0,
+  "pcs_calls": 0,
+  "scope": "Partial decoder source equivalence and encoding controls. Comparator corruption is not proof rejection.",
+  "full_streamed_source_implemented": false,
+  "private_payment_verified": false,
+  "full_security_profile_validated": false,
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 11107094528,
+    "timeout_seconds": 120,
+    "readback_flags": 8960,
+    "peak_job_commit_bytes": 80711680,
+    "peak_process_private_commit_bytes": 79425536,
+    "test_counts_verified": true
+  },
+  "provenance": {
+    "bytes": 51951,
+    "sha256": "e05bc6ee23415ae8bb68517a7aa720b93bfc3237166645f20dbafbd25843732d"
+  }
+}
