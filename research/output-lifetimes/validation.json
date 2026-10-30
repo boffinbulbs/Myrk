@@ -1,0 +1,60 @@
+{
+  "format": "kova.output-lifetimes.validation.v1",
+  "scope": "Synthetic temporal storage model and independent conservative interval certificate.",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "height": 8192,
+  "width": 274,
+  "raw_field_bytes": 8978432,
+  "assertions_per_row": 776,
+  "degree": 3,
+  "synthetic_traces": 1,
+  "full_positive_checks": 1,
+  "representative_reads": 5728,
+  "restored_cell_rejections": 12,
+  "unsafe_alias_local_frames": 1,
+  "unsafe_consumer_failure_index": 663,
+  "complete_unsafe_traces": 0,
+  "integer_full_coordinate_conflicts": 0,
+  "integer_unsafe_conflicts": 12160,
+  "signature_traces": 0,
+  "backend_proofs": 0,
+  "ordinary_rust_tests_passed": 1,
+  "python_reference_tests_passed": 4,
+  "initial_symbolic_degree_expectation": 4,
+  "corrected_symbolic_degree_expectation": 3,
+  "equations_changed_for_correction": false,
+  "provenance": {
+    "bytes": 3988,
+    "sha256": "1a894075185bd68bba6cfd61f316461170dd3c95b541458ce5da1a9377c04fa4"
+  },
+  "executable": {
+    "bytes": 863232,
+    "sha256": "6789dba95d30a02c376b374eca635c4714f647a531fa6514384826db8cfd1ac4"
+  },
+  "guards": {
+    "symbolic": {
+      "process_limit_bytes": 536870912,
+      "aggregate_limit_bytes": 536870912,
+      "minimum_available_bytes": 2147483648,
+      "available_before_bytes": 12286410752,
+      "peak_process_commit_bytes": 2220032,
+      "peak_job_commit_bytes": 3497984,
+      "timeout_seconds": 120,
+      "readback_verified": true,
+      "test_counts_verified": true
+    },
+    "native": {
+      "process_limit_bytes": 536870912,
+      "aggregate_limit_bytes": 536870912,
+      "minimum_available_bytes": 2147483648,
+      "available_before_bytes": 12281188352,
+      "peak_process_commit_bytes": 9940992,
+      "peak_job_commit_bytes": 11227136,
+      "timeout_seconds": 120,
+      "readback_verified": true,
+      "test_counts_verified": true
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "format": "kova.output-lifetimes.provenance.v1",
+  "base_revision": "92ea19951f319a51da7423dfff1954d5a2b20879",
+  "repository_files": {
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "research/signature-scheduling/src/clock.rs": {
+      "bytes": 3696,
+      "sha256": "800c4a123d818507b1ee3fb6b77f3ce59657aa50d8dcdd7adc6e7114e6734e37"
+    },
+    "research/signature-scheduling/src/ntt.rs": {
+      "bytes": 20080,
+      "sha256": "3656fd2c191e383ec5d75f78daffdad35982b7d74498d727248bc8519d2aa8f1"
+    },
+    "research/signature-scheduling/src/matrix.rs": {
+      "bytes": 15430,
+      "sha256": "e1cd98932ee0729db7269d070c505a3827a424f219339754cc8d5b68e4f13db3"
+    },
+    "research/signature-scheduling/src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "81e2bdca69e3f8a5ef39758ef5f6e23648397f0489a6dddc6be0c195a5bf885b"
+    },
+    "research/signature-scheduling/src/layout.rs": {
+      "bytes": 3435,
+      "sha256": "1fd11b93f39bfb8a36facf374555d82f363f62b6bbf1a38f917be2c99791c76f"
+    },
+    "research/signature-scheduling/src/program.rs": {
+      "bytes": 1692,
+      "sha256": "9a21160312cc652ca953bb617bf14bd430e917b2c1381cfac96dfc0cfcfa0a6a"
+    },
+    "research/signature-complete-native/src/hint_rows.rs": {
+      "bytes": 4448,
+      "sha256": "de3f9425acfc6be9a7e93101c30fd7655df1f5ec540ca1fc5edf951b8d9ee04f"
+    }
+  },
+  "registry_files": {
+    "p3-air/0.8.0/src/air.rs": {
+      "bytes": 11415,
+      "sha256": "2c8fa857c9979741d3549763e6cf56f1f260ae99eca470d37456f97fe662871e"
+    },
+    "p3-air/0.8.0/src/check_constraints.rs": {
+      "bytes": 52989,
+      "sha256": "2fc10045e5591d24ce30b26cdb2f870eee05d5a814eb15cd51adb2d92fea9968"
+    },
+    "p3-air/0.8.0/src/symbolic/expression.rs": {
+      "bytes": 41695,
+      "sha256": "a168a38b2dbd7f5053c003e4bc4838514df7e0df4a7ef050a9d18a0c73fed2f4"
+    },
+    "p3-air/0.8.0/src/symbolic/builder.rs": {
+      "bytes": 44473,
+      "sha256": "db31d468a62d7b3d27fe039d0eb9217ae2dd9d21cd5dfaa0c6279bff6483ebf0"
+    }
+  },
+  "experiment_files": {
+    ".gitignore": {
+      "bytes": 33,
+      "sha256": "664ee2b7312f008c0f4ca001850264f1652afa707bdfce7eb186c29f9dc664be"
+    },
+    "Cargo.lock": {
+      "bytes": 10415,
+      "sha256": "c7d1eaecb3b0dc0c27f492582218f08bf48fd25f32929c5f78d12c12e246c2aa"
+    },
+    "Cargo.toml": {
+      "bytes": 466,
+      "sha256": "74856e52acc06f9214c955df5ea34fbe8ada7d9b9cbe3f6ff7b2db8905e53e4b"
+    },
+    "fixtures/certificate.json": {
+      "bytes": 1202,
+      "sha256": "3eb622fc78177d7370f9a5f3c8d7bfd2c0fb52cec3a99918b0a5612f5e576524"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "lifetimes.svg": {
+      "bytes": 2210,
+      "sha256": "8789ab8fb2493fb11e19db3a5d068f0c79fe742ea2cc92a582ab07131a8e1cca"
+    },
+    "README.md": {
+      "bytes": 5303,
+      "sha256": "2f83de8f19d4ae408f03d78d98720fed35013134356a407a912a2b8d3d7722be"
+    },
+    "reference.py": {
+      "bytes": 3109,
+      "sha256": "899c7bb14aaa8a09fdc9efb20a47110d96a47ecacfbc8cfc7a6e32bf22173d69"
+    },
+    "run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    },
+    "src/lib.rs": {
+      "bytes": 4323,
+      "sha256": "6523029d3eda72326bc107048d5d8fab0038a458ab4a9281c70901e1b687e96c"
+    },
+    "src/tests.rs": {
+      "bytes": 7562,
+      "sha256": "61b879e8e0525764aec537606281bd5c347176555885e5549b26ab2529b2a02a"
+    },
+    "static_check.py": {
+      "bytes": 3281,
+      "sha256": "48d49b638a423767231f7717a7631be1b5bd2a74b607ff9181e72a4596ca06cb"
+    },
+    "test_reference.py": {
+      "bytes": 1191,
+      "sha256": "f0d3352d161b5c95f1deaece6850a9a715304e8083bcf13e8f45cd7f22abbd3a"
+    }
+  }
+}

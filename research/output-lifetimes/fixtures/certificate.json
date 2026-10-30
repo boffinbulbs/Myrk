@@ -1,0 +1,103 @@
+{
+  "format": "kova.output-lifetime.v1",
+  "height": 8192,
+  "width": 274,
+  "raw_field_bytes": 8978432,
+  "map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    6
+  ],
+  "representative_coefficients": [
+    0,
+    255
+  ],
+  "sources": [
+    [
+      10000,
+      10001
+    ],
+    [
+      10037,
+      10038
+    ],
+    [
+      10074,
+      10075
+    ],
+    [
+      10111,
+      10112
+    ],
+    [
+      10148,
+      10149
+    ],
+    [
+      10185,
+      10186
+    ],
+    [
+      10222,
+      10223
+    ],
+    [
+      10259,
+      10260
+    ],
+    [
+      10296,
+      10297
+    ],
+    [
+      10333,
+      10334
+    ],
+    [
+      10370,
+      10371
+    ],
+    [
+      10407,
+      10408
+    ],
+    [
+      10444,
+      10445
+    ],
+    [
+      10481,
+      10482
+    ],
+    [
+      10518,
+      10519
+    ],
+    [
+      10555,
+      10556
+    ]
+  ],
+  "read_checks": 5728,
+  "read_checksum": 941355349,
+  "full_coordinate_conflicts": 0,
+  "unsafe_conflicts": 12160,
+  "unsafe_first_row": 3299,
+  "unsafe_last_row": 3553,
+  "unsafe_z6_conflicts": 3968,
+  "omitted_producer_values": "arbitrary held field elements",
+  "backend_proofs": 0
+}

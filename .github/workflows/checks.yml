@@ -422,3 +422,17 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/proof-profile/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
       - name: Check conditional profile lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/proof-profile/Cargo.toml --release --all-targets --locked --offline -- -D warnings
+      - name: Check output lifetime formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/output-lifetimes/Cargo.toml --all -- --check
+      - name: Fetch output lifetime dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/output-lifetimes/Cargo.toml --locked
+      - name: Check output lifetime identities
+        run: python research/output-lifetimes/static_check.py
+      - name: Check independent lifetime certificate
+        run: python research/output-lifetimes/reference.py
+      - name: Test lifetime certificate boundaries
+        run: python -m unittest discover -s research/output-lifetimes -p test_reference.py -v
+      - name: Test fixed output schedule record
+        run: rustup run 1.94.1 cargo test --manifest-path research/output-lifetimes/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
+      - name: Check output lifetime lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/output-lifetimes/Cargo.toml --release --all-targets --locked --offline -- -D warnings

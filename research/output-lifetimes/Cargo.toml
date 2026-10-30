@@ -1,0 +1,19 @@
+[package]
+name = "kova-output-lifetimes"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT"
+
+[dependencies]
+p3-air = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+serde_json = "=1.0.145"
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+incremental = false

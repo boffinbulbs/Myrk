@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">Output bank lifetimes at an overlapping boundary</title>
+  <desc id="desc">Z6 uses bank6 through row3329. T1_6 writes during that interval and needs bank8. T1_7 later reuses bank6. A write affects the following row. Intervals shown are half open.</desc>
+  <style>
+    svg { color: #24392b; font-family: Georgia, serif; }
+    .axis { stroke: currentColor; stroke-width: 1; opacity: .5; }
+    .read { fill: currentColor; opacity: .2; stroke: currentColor; }
+    .write { fill: none; stroke: currentColor; stroke-width: 2; }
+    .text { fill: currentColor; font-size: 14px; }
+    .small { fill: currentColor; font-size: 12px; }
+    @media (prefers-color-scheme: dark) { svg { color: #dce8dd; } }
+  </style>
+  <g class="text">
+    <text x="20" y="28">Physical storage handoff under the fixed schedule</text>
+    <text x="20" y="100">Z₆ · bank6</text>
+    <text x="20" y="154">T1₆ · bank8</text>
+    <text x="20" y="208">T1₇ · bank6</text>
+  </g>
+  <!-- x = 170 + 2 * (row - 3270). Left edge starts after Z6 production. -->
+  <path class="axis" d="M170 65V225M890 65V225M170 225H890"/>
+  <rect class="read" x="206" y="82" width="84" height="26"/>
+  <rect class="write" x="226" y="136" width="64" height="26"/>
+  <rect class="read" x="674" y="136" width="64" height="26"/>
+  <rect class="write" x="610" y="190" width="64" height="26"/>
+  <rect class="read" x="738" y="190" width="64" height="26"/>
+  <g class="small" text-anchor="middle">
+    <text x="248" y="76">[3288,3330)</text>
+    <text x="258" y="130">[3298,3330)</text>
+    <text x="706" y="130">[3522,3554)</text>
+    <text x="642" y="184">[3490,3522)</text>
+    <text x="770" y="184">[3554,3586)</text>
+    <text x="170" y="244">3270</text>
+    <text x="890" y="244">3630</text>
+  </g>
+  <g class="small">
+    <rect class="write" x="20" y="270" width="24" height="12"/>
+    <text x="53" y="281">Producer writes</text>
+    <rect class="read" x="190" y="270" width="24" height="12"/>
+    <text x="223" y="281">Consumer reads</text>
+    <text x="448" y="281">A write at row r changes storage at row r + 1.</text>
+  </g>
+</svg>
