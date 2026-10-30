@@ -763,3 +763,15 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-port-source/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
       - name: Check clock and packed control lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-port-source/Cargo.toml --release --no-default-features --features port-controls --lib --test port --locked --offline -- -D warnings
+      - name: Check genuine constraint frame formatting
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-frame-native/src/lib.rs research/signature-frame-native/src/build.rs research/signature-frame-native/src/frame_controls.rs research/signature-frame-native/tests/frame.rs
+      - name: Fetch genuine constraint frame dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-frame-native/Cargo.toml --locked
+      - name: Check genuine constraint frame records
+        run: python -I -S research/signature-frame-native/static_check.py
+      - name: Compile genuine constraint frame controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-frame-native/Cargo.toml --release --no-default-features --features frame-controls --test frame --locked --offline --no-run --jobs 1
+      - name: Check genuine frame default lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-frame-native/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
+      - name: Check genuine frame control lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-frame-native/Cargo.toml --release --no-default-features --features frame-controls --lib --test frame --locked --offline -- -D warnings

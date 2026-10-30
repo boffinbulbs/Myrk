@@ -1,0 +1,21 @@
+--- retained/port-source-root
++++ src/lib.rs
+@@ -1,5 +1,5 @@
+-//! Cohesive source ownership and private clock and packed source construction for the packed relation.
+-//! Full streamed construction and private payment proving remain unfinished.
++//! Genuine streamed frames for retained clock and packed source constraints.
++//! A fixed source walk is complete. Full hiding proofs and ledger integration remain unfinished.
+ #![forbid(unsafe_code)]
+ 
+ #[path = "../../signature-storage/src/activity.rs"]
+@@ -100,8 +100,8 @@
+ use p3_uni_stark::{num_batched_openings, OpeningShape};
+ use rand::CryptoRng;
+ 
+-#[cfg(feature = "port-controls")]
+-pub mod port_controls;
++#[cfg(feature = "frame-controls")]
++pub mod frame_controls;
+ 
+ type RetainedChallenge = BinomialExtensionField<BabyBear, 4>;
+ 
