@@ -104,6 +104,8 @@ The [owned source preparation laboratory](research/source-preparation/README.md)
 
 The [streamed commitment input laboratory](research/source-extension/README.md) reuses that preparation kernel and constructs the main LDE through bounded full and partial column tiles. All fields match the retained dense calculation, with sixteen independently interpolated physical output cells. Unified reservations and failure controls cover raw, prepared and LDE files. This policy ends at file construction and does not yet create a commitment root or opening proof.
 
+The [owned source commitment laboratory](research/source-commitment/README.md) connects that construction to the actual hiding Merkle MMCS and original private prover data. Owned and dense convenience roots match retained ordinary dense dispatch. An independent SHA3 calculation reproduces the full root from 4,096 synthetic salted leaves. Failure after an actual commitment closes the outer attempt while retaining the inner construction leases. Opening compatibility remains a separate gate.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

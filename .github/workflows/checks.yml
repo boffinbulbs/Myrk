@@ -484,3 +484,15 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/source-extension/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
       - name: Check source extension lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/source-extension/Cargo.toml --release --lib --tests --locked --offline -- -D warnings
+      - name: Check source commitment formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/source-commitment/Cargo.toml --all -- --check
+      - name: Fetch source commitment dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-commitment/Cargo.toml --locked
+      - name: Check source commitment identities
+        run: python research/source-commitment/static_check.py
+      - name: Check independent Merkle reconstruction
+        run: python research/source-commitment/reference.py
+      - name: Test actual owned source commitments
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-commitment/Cargo.toml --release --locked --offline --test roots --jobs 1 -- --test-threads=1
+      - name: Check source commitment lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-commitment/Cargo.toml --release --lib --test roots --locked --offline -- -D warnings

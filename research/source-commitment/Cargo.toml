@@ -1,0 +1,53 @@
+[package]
+name = "kova-source-commitment"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+publish = false
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/th0rigin/Kova"
+
+[lib]
+test = false
+doctest = false
+
+[dependencies]
+p3-challenger = { version = "=0.8.0", default-features = false }
+p3-commit = { version = "=0.8.0", default-features = false }
+p3-dft = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+p3-maybe-rayon = { version = "=0.8.0", default-features = false }
+p3-security = { version = "=0.8.0", default-features = false }
+p3-util = { version = "=0.8.0", default-features = false }
+spin = { version = "=0.12.3" }
+itertools = { version = "=0.15.0", default-features = false, features = ["use_alloc"] }
+rand = { version = "=0.10.3", default-features = false, features = ["std_rng"] }
+serde = { version = "=1.0.229", default-features = false, features = ["derive", "alloc"] }
+thiserror = { version = "=2.0.21", default-features = false }
+tracing = { version = "=0.1.44", default-features = false, features = ["attributes"] }
+
+
+p3-air = { version = "=0.8.0", default-features = false }
+p3-uni-stark = { version = "=0.8.0", default-features = false }
+
+kova-proof-preflight = { path = "../proof-preflight" }
+kova-source-extension = { path = "../source-extension" }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+
+[dev-dependencies]
+p3-merkle-tree = { version = "=0.8.0", default-features = false }
+p3-symmetric = { version = "=0.8.0", default-features = false }
+p3-fri = { version = "=0.8.0", default-features = false }
+sha3 = { version = "=0.12.0", default-features = false }
+serde_json = "=1.0.145"
+
+[[test]]
+name = "roots"
+path = "tests/roots.rs"
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+incremental = false
