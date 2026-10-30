@@ -116,7 +116,9 @@ The [invalid witness laboratory](research/source-stark-false/README.md) changes 
 
 The [packed source laboratory](research/source-packing/README.md) constrains selected private words and repeated byte reads under one fixed clock. Its actual symbolic shape and eighteen adversarial native rejections cover alignment, source holds, padding, stale reads and range aliases, with restored positive controls. This is a small source mechanism. Full signature routing, ownership and payment integration remain separate work.
 
-The [full source inventory](research/source-certificate/README.md) compares independently organized scalar accounts of every physical row in the retained signature schedule. It records complete source coverage, framing, last use, alignment and simultaneous word demand. Its literal peak is 125 source words. This accounting precedes selection and implementation of a complete packed layout.
+The [full source inventory](research/source-certificate/README.md) compares independently organized scalar accounts of every physical row in the retained signature schedule. It records complete source coverage, framing, last use, alignment and simultaneous word demand. Its literal peak is 125 source words.
+
+The [complete packed signature source](research/signature-packed/README.md) connects that inventory to a compiled replacement layout with 2,547 held words and 125 Boolean read ports. Its actual fixed route test matches every row and source byte offset against the frozen inventory. Complete symbolic analysis, native equivalence controls and full signature proof integration remain separate gates. The full constructor is disabled by default.
 
 ## Native accounting and consensus targets
 

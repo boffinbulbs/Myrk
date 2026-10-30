@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="350" viewBox="0 0 1000 350" role="img" aria-labelledby="title desc">
+  <title id="title">Complete private source routing</title>
+  <desc id="desc">Private bytes pack into held words. The retained factor clock selects Boolean read ports, which feed the original signature and ownership consumers. Only the fixed address route test has executed.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#526458"/></marker></defs>
+  <g font-family="Arial, sans-serif" fill="#344d3c" font-size="16">
+    <text x="30" y="30" font-size="22">Held sources. Fixed routes. Original consumers.</text>
+    <g stroke="#718576" stroke-width="1.5" fill="none">
+      <rect x="30" y="80" width="200" height="112" rx="5"/>
+      <rect x="300" y="80" width="200" height="112" rx="5"/>
+      <rect x="570" y="80" width="190" height="112" rx="5"/>
+      <rect x="825" y="80" width="145" height="112" rx="5"/>
+      <path d="M230 137H292" marker-end="url(#arrow)"/>
+      <path d="M500 137H562" marker-end="url(#arrow)"/>
+      <path d="M760 137H817" marker-end="url(#arrow)"/>
+      <path d="M665 237V201" marker-end="url(#arrow)"/>
+    </g>
+    <text x="48" y="108">Private byte arrays</text><text x="48" y="140">Key · Signature · Note</text><text x="48" y="172">7,637 bytes</text>
+    <text x="318" y="108">2,547 held words</text><text x="318" y="140">Three bytes per word</text><text x="318" y="172">Equality across rows</text>
+    <text x="588" y="108">125 read ports</text><text x="588" y="140">24 Boolean bits each</text><text x="588" y="172">Selected word equality</text>
+    <text x="842" y="108">Signature</text><text x="842" y="140">Authorization</text><text x="842" y="172">Ownership</text>
+    <text x="525" y="260">Retained 64 × 128 factor clock</text>
+    <path d="M30 290H970" stroke="#a3ada4"/>
+    <text x="30" y="320" font-size="14">Executed: every fixed address route. Pending: complete symbolic and native equivalence checks.</text>
+  </g>
+</svg>

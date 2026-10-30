@@ -1,0 +1,67 @@
+{
+  "format": "kova.signature-packed.validation.v1",
+  "provenance": {
+    "bytes": 13325,
+    "sha256": "1a9b1d91eeb1d83148669938f17e49ba292f27bfb51e922a93d5c553726c0a80"
+  },
+  "columns": 43176,
+  "public_values": 196,
+  "raw_trace_bytes_arithmetic": 1414791168,
+  "constraint_count": null,
+  "constraint_degree": null,
+  "actual_fixed_route_tests": 1,
+  "actual_rust_cache_initializations": 1,
+  "frozen_inventory_walks": 1,
+  "air_evaluations": 0,
+  "symbolic_collections": 0,
+  "native_traces": 0,
+  "backend_proofs": 0,
+  "default_execution_denied": true,
+  "native_execution_run": false,
+  "full_payment_implemented": false,
+  "production_security_claim": false,
+  "executable": {
+    "bytes": 934400,
+    "sha256": "4e14296afa8da919d1b73d7e5ed45a6579999f88a1830668d5d3c6a97d6b2549"
+  },
+  "original_private_receipt_sha256": "bdd883cd2e60f75da933aeaef7d832de6b2b9a9270a2963025a437671d2f246b",
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows 11",
+    "rust": "1.94.1",
+    "profile": "release",
+    "test_threads": 1
+  },
+  "guard": {
+    "accepted": true,
+    "expected_tests": 1,
+    "actual_passed": 1,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "test_counts_verified": true,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 8069046272,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 7323648,
+    "peak_private_commit_bytes": 2523136,
+    "sampled_peak_private_bytes": 2473984,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 3801088,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "limitations": [
+    "Fixed routing metadata compared to an independently organized frozen scalar inventory",
+    "Invalid address refusals are metadata checks, not AIR or proof rejection",
+    "Complete symbolic degree and constraint count not collected",
+    "Selector arithmetic, row filling and complete native equivalence corpus not executed",
+    "Raw trace arithmetic is not measured proof memory"
+  ]
+}

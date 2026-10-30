@@ -1,0 +1,360 @@
+{
+  "format": "kova.signature-packed.provenance.v1",
+  "base_revision": "64c3b0db18b5ac2ff5955edb8f676c11dc8d3fd0",
+  "source_normalization": "LF",
+  "repository_files": {
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "research/signature-storage/src/lib.rs": {
+      "bytes": 2224,
+      "sha256": "418f1e443f073764169e92d0073601de38c4a1a8de48a06d42c980fa162a891e"
+    },
+    "research/signature-storage/src/layout.rs": {
+      "bytes": 3780,
+      "sha256": "4e09098d6355ccdc039868dc3d4f4a4f31962e45aa9d32ad146ebc1ccebd9e7d"
+    },
+    "research/signature-storage/src/air.rs": {
+      "bytes": 1214,
+      "sha256": "2f60ca6f5b719acf1078e2e5183891cd7c32d23b81521c91dc78021652f6ee1b"
+    },
+    "research/signature-storage/src/clock.rs": {
+      "bytes": 3696,
+      "sha256": "800c4a123d818507b1ee3fb6b77f3ce59657aa50d8dcdd7adc6e7114e6734e37"
+    },
+    "research/signature-storage/src/program.rs": {
+      "bytes": 1692,
+      "sha256": "9a21160312cc652ca953bb617bf14bd430e917b2c1381cfac96dfc0cfcfa0a6a"
+    },
+    "research/signature-storage/src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "72d9280279c7486ee367b0607a86b422f0fd943101b5bcb51aa1590f73206f44"
+    },
+    "research/signature-storage/src/build.rs": {
+      "bytes": 9386,
+      "sha256": "1d8e1426e690cc0ec838380a5785db8eca3383da95689b01b173596e140d469c"
+    },
+    "research/signature-storage/src/activity.rs": {
+      "bytes": 3215,
+      "sha256": "6f1ba210b94e8c511e0b4751a0132d0d6c8ee713c7a6162c0601b64768a40315"
+    },
+    "research/signature-storage/src/matrix.rs": {
+      "bytes": 15396,
+      "sha256": "0460487297976483bac254e916ec2ef138284e3dc5b33072f145fed147832027"
+    },
+    "research/signature-storage/src/ntt.rs": {
+      "bytes": 20398,
+      "sha256": "db12c67a3ea5a8d7c5182e2d2f020905a7f91cb0b949dc4d178f3992dc29a913"
+    },
+    "research/signature-storage/src/sampler.rs": {
+      "bytes": 6195,
+      "sha256": "9375cc249ed6621df3cfd828a75f646eae6b8dc832603d045dfa54a69f92894c"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "research/signature-complete-native/src/sources.rs": {
+      "bytes": 6088,
+      "sha256": "60ca3c71a7d31865ef1b59a89bddcdda34264fa33fab4cdab8d65c18a4a3d91b"
+    },
+    "research/signature-complete-native/src/decoding.rs": {
+      "bytes": 7325,
+      "sha256": "0308df4f1519a27c9bbe9aca31f79030d7838c53d1074bafc86b4ea431df9c43"
+    },
+    "research/signature-complete-native/src/sponge.rs": {
+      "bytes": 8351,
+      "sha256": "3e092a2789ad1ddc2eebd65b95361e32111a0ea1fc7497d8bba70abeebe95e25"
+    },
+    "research/signature-complete-native/src/packing.rs": {
+      "bytes": 2138,
+      "sha256": "bd4a1ed77192af82a32f15a6104eab8f68677ac1aa6beb50dbf630ac1bb8d9ce"
+    },
+    "research/signature-complete-native/src/keccak.rs": {
+      "bytes": 2561,
+      "sha256": "d619093afdd30b630ddc7c88817644c7257c1bdbd2d24f38ca29cd8b4d5db76c"
+    },
+    "research/signature-complete-native/src/mul.rs": {
+      "bytes": 2518,
+      "sha256": "fdf7c8dcb834539b566dab21baf2762de25bc56f907e393f01e8d9b05b09a7e1"
+    },
+    "research/signature-complete-native/src/hints.rs": {
+      "bytes": 4015,
+      "sha256": "9038be9076454fc27ab8c65d8e827c01731270c6877b291a1e5702d60065b401"
+    },
+    "research/signature-complete-native/src/hint_rows.rs": {
+      "bytes": 4448,
+      "sha256": "de3f9425acfc6be9a7e93101c30fd7655df1f5ec540ca1fc5edf951b8d9ee04f"
+    },
+    "research/signature-complete-native/src/build/decode.rs": {
+      "bytes": 6229,
+      "sha256": "529723c997f70825d918310f3f7ab49bc2465531328a9177467ef2f922ecbc29"
+    },
+    "research/signature-complete-native/src/build/sample.rs": {
+      "bytes": 2439,
+      "sha256": "e2a1881c852ec427953ddd153fde8caccedc1e042576f8d5da6efd0feef754d5"
+    },
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5"
+    },
+    "research/source-certificate/fixtures-certificate.json": {
+      "bytes": 97665,
+      "sha256": "9ee63b3d1cc1c6e25c659ed375163d6dcc4a13b857c58cc499711e17e0c15ef8"
+    },
+    "research/source-certificate/provenance.json": {
+      "bytes": 6042,
+      "sha256": "48831b31d4add5a5958aa8e4036de721d78f96072fbe33b4e4c9b2e8fc742273"
+    },
+    "research/source-certificate/validation.json": {
+      "bytes": 1847,
+      "sha256": "62574b95986b584c9f274e2e8bb0908fe82a8c375e3af4a745c9d139526165a6"
+    },
+    "crates/thorum-core/Cargo.toml": {
+      "bytes": 310,
+      "sha256": "41156d64feb2af242f96711d71f52006c5d014766a6621aa85e394f4ac1e2b7d"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "bytes": 3989,
+      "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b"
+    },
+    "crates/thorum-core/src/emission.rs": {
+      "bytes": 3344,
+      "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7"
+    },
+    "crates/thorum-core/src/lib.rs": {
+      "bytes": 1817,
+      "sha256": "b5339e14659c208b321a767ea4164bb629f7db2c638d031391df5bd3c0aadd67"
+    },
+    "crates/thorum-core/src/table.rs": {
+      "bytes": 4423,
+      "sha256": "ae8e7e9f2333a0948a9c606a77dd03f161db0a931fe532def4e2efb7942c0148"
+    },
+    "crates/thorum-crypto-lab/Cargo.toml": {
+      "bytes": 819,
+      "sha256": "fb4bcf1015dda241af00f3621bd332d01b17d18c493fe173c07772ed3080eb9d"
+    },
+    "crates/thorum-crypto-lab/src/envelope.rs": {
+      "bytes": 3154,
+      "sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5"
+    },
+    "crates/thorum-crypto-lab/src/lib.rs": {
+      "bytes": 16754,
+      "sha256": "c1671d70b61ffdaa0824512e6598b64b4d31a3ff35040186cd13f89d18c6e601"
+    },
+    "crates/thorum-relation-lab/Cargo.toml": {
+      "bytes": 567,
+      "sha256": "bd0c5172915695c61dbc46aa2308f16b3ba38a8e747507abdf019f07d4cd1782"
+    },
+    "crates/thorum-relation-lab/src/capability.rs": {
+      "bytes": 4048,
+      "sha256": "5ccba5406267c5cabb4ec3268a5b2103c85bfcdada307dd2910d16d9abc5285f"
+    },
+    "crates/thorum-relation-lab/src/codec.rs": {
+      "bytes": 1278,
+      "sha256": "d034294a3c7045a9d3c99fd64c60ee6959973215770b8470cc66f16ac1d66d98"
+    },
+    "crates/thorum-relation-lab/src/error.rs": {
+      "bytes": 4273,
+      "sha256": "b00bde429ce19a798c6181396af5df27877de1023bb966775922ed501d410fed"
+    },
+    "crates/thorum-relation-lab/src/lib.rs": {
+      "bytes": 2787,
+      "sha256": "4680bfc8b0577d760723fef74f47433c32adfbd8be3569bb2a7107704e237782"
+    },
+    "crates/thorum-relation-lab/src/merkle.rs": {
+      "bytes": 1280,
+      "sha256": "08e9e813916d0e4c9585591cdd9ac68cb511d327a54b2f463f4a302797b2b92d"
+    },
+    "crates/thorum-relation-lab/src/note.rs": {
+      "bytes": 15074,
+      "sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176"
+    },
+    "crates/thorum-relation-lab/src/stake.rs": {
+      "bytes": 8007,
+      "sha256": "a03f77e22f82096a68951104932cb7cd960f18af9726c237899d707500ec5876"
+    }
+  },
+  "experiment_files": {
+    ".gitignore": {
+      "bytes": 33,
+      "sha256": "664ee2b7312f008c0f4ca001850264f1652afa707bdfce7eb186c29f9dc664be"
+    },
+    "adaptation.patch": {
+      "bytes": 12831,
+      "sha256": "236add3368e4e9b42e30d2d79802daa334124e683212cba97891724c383f5841"
+    },
+    "Cargo.lock": {
+      "bytes": 19746,
+      "sha256": "8d42c9a923b19ed4ddb4dba53e79785c114fdd04f04bbe9cb8820aa7019b8e89"
+    },
+    "Cargo.toml": {
+      "bytes": 1123,
+      "sha256": "fe87edf87ded44fcd6658023dedce6c6b1a7ab909f34e6d1eba600f7127edd12"
+    },
+    "fixtures-features.json": {
+      "bytes": 3238,
+      "sha256": "e553bfa47dae5748b323995f34c4086291cc7980b1d4fa2caa77f5dca6d9d610"
+    },
+    "fixtures-routes.json": {
+      "bytes": 255,
+      "sha256": "7f3bcc10fb3b452cf053e5b472bd3209c9e25acd716ef7e3a6b3e6b8f8fe16e2"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "NOTICE.md": {
+      "bytes": 1143,
+      "sha256": "c7eb45e25375c3934935dc4b566bfff64ee61855bfc39615da20f155f25c880a"
+    },
+    "origins.json": {
+      "bytes": 592,
+      "sha256": "87b0452cd16ac801960d6828e5ee7d25164d8449d4a6228353e9db29bb83daee"
+    },
+    "README.md": {
+      "bytes": 5890,
+      "sha256": "4c87b36e48f2498147b75b18739c912d0d1d2abaac467e62f0c63c61725475a5"
+    },
+    "run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    },
+    "source-routing.svg": {
+      "bytes": 2118,
+      "sha256": "ebbb5c76269cf98ed8f3f156eef1a22fec79b9257e5eed84055cb34a1da77ef5"
+    },
+    "src/air.rs": {
+      "bytes": 1093,
+      "sha256": "19de19ab525083ada93da323de9014d7bb3d841dd371dd4ca135b09956e8dd6c"
+    },
+    "src/build.rs": {
+      "bytes": 9328,
+      "sha256": "7a25ada6296b491fe92f363419354a4d1275fbdc0769977a9f98660176eef15b"
+    },
+    "src/decoding.rs": {
+      "bytes": 7769,
+      "sha256": "072d5a18bcb819c4f2038a8bbea249c0f3a3b5de896e5e5e835acd4bb6efb250"
+    },
+    "src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "eabccbce5c232da1a9e838699a01203d7d7b32456e5d95001608d56cafabdc18"
+    },
+    "src/layout.rs": {
+      "bytes": 3836,
+      "sha256": "40c3c0c728fba345c91687060fc983feb923d4ec1aad685747a569e3ca081ec2"
+    },
+    "src/lib.rs": {
+      "bytes": 2301,
+      "sha256": "9a2800a72d3b83315a487d7b908ea37392f6a3371f75ab1352286272dd529098"
+    },
+    "src/packed.rs": {
+      "bytes": 14006,
+      "sha256": "bc78d17a7c94a7eaab2b49e931771cf67f8854412f92be2a15473b3313283b41"
+    },
+    "src/sources.rs": {
+      "bytes": 6657,
+      "sha256": "8d791f7526874ab48eeb164b9a6b353c57d53ce34028ecf0f9c953fa90f50ffc"
+    },
+    "src/sponge.rs": {
+      "bytes": 9251,
+      "sha256": "63ccb3990325d8898a6c6888a64426bb93d004a61a6a7a698047a2f757bb2b74"
+    },
+    "static_check.py": {
+      "bytes": 4192,
+      "sha256": "63869d8b233c0eb885544e6f34ecec02ed5a03c1577f28140662d5e22a5f514d"
+    },
+    "tests/routes.rs": {
+      "bytes": 6259,
+      "sha256": "f51355473bb54c0f9026aba470a8d08446b9accb49d55230595bb739c4a16caa"
+    }
+  },
+  "execution_source_files": {
+    "Cargo.toml": {
+      "bytes": 1123,
+      "sha256": "fe87edf87ded44fcd6658023dedce6c6b1a7ab909f34e6d1eba600f7127edd12"
+    },
+    "Cargo.lock": {
+      "bytes": 19746,
+      "sha256": "8d42c9a923b19ed4ddb4dba53e79785c114fdd04f04bbe9cb8820aa7019b8e89"
+    },
+    "tests/routes.rs": {
+      "bytes": 6259,
+      "sha256": "f51355473bb54c0f9026aba470a8d08446b9accb49d55230595bb739c4a16caa"
+    },
+    "run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    },
+    "src/air.rs": {
+      "bytes": 1093,
+      "sha256": "19de19ab525083ada93da323de9014d7bb3d841dd371dd4ca135b09956e8dd6c"
+    },
+    "src/build.rs": {
+      "bytes": 9328,
+      "sha256": "7a25ada6296b491fe92f363419354a4d1275fbdc0769977a9f98660176eef15b"
+    },
+    "src/decoding.rs": {
+      "bytes": 7769,
+      "sha256": "072d5a18bcb819c4f2038a8bbea249c0f3a3b5de896e5e5e835acd4bb6efb250"
+    },
+    "src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "eabccbce5c232da1a9e838699a01203d7d7b32456e5d95001608d56cafabdc18"
+    },
+    "src/layout.rs": {
+      "bytes": 3836,
+      "sha256": "40c3c0c728fba345c91687060fc983feb923d4ec1aad685747a569e3ca081ec2"
+    },
+    "src/lib.rs": {
+      "bytes": 2301,
+      "sha256": "9a2800a72d3b83315a487d7b908ea37392f6a3371f75ab1352286272dd529098"
+    },
+    "src/packed.rs": {
+      "bytes": 14006,
+      "sha256": "bc78d17a7c94a7eaab2b49e931771cf67f8854412f92be2a15473b3313283b41"
+    },
+    "src/sources.rs": {
+      "bytes": 6657,
+      "sha256": "8d791f7526874ab48eeb164b9a6b353c57d53ce34028ecf0f9c953fa90f50ffc"
+    },
+    "src/sponge.rs": {
+      "bytes": 9251,
+      "sha256": "63ccb3990325d8898a6c6888a64426bb93d004a61a6a7a698047a2f757bb2b74"
+    }
+  },
+  "local_dependency_files_verified_at_base": [
+    "crates/thorum-core/Cargo.toml",
+    "crates/thorum-core/src/accounting.rs",
+    "crates/thorum-core/src/amount.rs",
+    "crates/thorum-core/src/emission.rs",
+    "crates/thorum-core/src/lib.rs",
+    "crates/thorum-core/src/table.rs",
+    "crates/thorum-crypto-lab/Cargo.toml",
+    "crates/thorum-crypto-lab/src/envelope.rs",
+    "crates/thorum-crypto-lab/src/lib.rs",
+    "crates/thorum-relation-lab/Cargo.toml",
+    "crates/thorum-relation-lab/src/capability.rs",
+    "crates/thorum-relation-lab/src/codec.rs",
+    "crates/thorum-relation-lab/src/error.rs",
+    "crates/thorum-relation-lab/src/lib.rs",
+    "crates/thorum-relation-lab/src/merkle.rs",
+    "crates/thorum-relation-lab/src/note.rs",
+    "crates/thorum-relation-lab/src/payment.rs",
+    "crates/thorum-relation-lab/src/stake.rs"
+  ],
+  "registry_packages": 80,
+  "local_packages": 4,
+  "metadata_nodes": 84,
+  "root_lock_subset": true,
+  "features_retained_equal": true
+}

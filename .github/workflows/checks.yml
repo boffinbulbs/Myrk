@@ -575,3 +575,17 @@ jobs:
         run: python research/source-certificate/static_check.py
       - name: Compare complete scalar source inventories
         run: python -I -S research/source-certificate/experiment.py
+      - name: Check complete packed signature formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-packed/Cargo.toml --all -- --check
+      - name: Fetch complete packed signature dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-packed/Cargo.toml --locked
+      - name: Check complete packed signature identities
+        run: python research/signature-packed/static_check.py
+      - name: Test complete fixed source routes
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-packed/Cargo.toml --release --locked --offline --test routes --jobs 1 -- --exact complete_fixed_routes_match_frozen_inventory --test-threads=1
+      - name: Compare fresh complete route record
+        run: python research/signature-packed/static_check.py --check-results
+      - name: Check complete packed signature lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed/Cargo.toml --release --lib --test routes --locked --offline -- -D warnings
+      - name: Check guarded constructor body lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed/Cargo.toml --release --lib --features native-execution --locked --offline -- -D warnings

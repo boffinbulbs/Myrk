@@ -1,0 +1,11 @@
+{
+  "Cargo.toml": "research/signature-storage/Cargo.toml",
+  "src/lib.rs": "research/signature-storage/src/lib.rs",
+  "src/layout.rs": "research/signature-storage/src/layout.rs",
+  "src/air.rs": "research/signature-storage/src/air.rs",
+  "src/full_program.rs": "research/signature-storage/src/full_program.rs",
+  "src/build.rs": "research/signature-storage/src/build.rs",
+  "src/sources.rs": "research/signature-complete-native/src/sources.rs",
+  "src/decoding.rs": "research/signature-complete-native/src/decoding.rs",
+  "src/sponge.rs": "research/signature-complete-native/src/sponge.rs"
+}

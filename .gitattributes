@@ -4,3 +4,4 @@
 research/crypto/licenses/*.txt -text -whitespace
 research/crypto/vectors/UPSTREAM-NOTICE.txt -text -whitespace
 research/signature-ownership/UPSTREAM-NOTICE.txt -text -whitespace
+research/signature-packed/adaptation.patch whitespace=-blank-at-eol

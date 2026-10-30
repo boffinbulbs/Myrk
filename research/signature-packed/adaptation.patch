@@ -1,0 +1,352 @@
+--- research/signature-storage/Cargo.toml
++++ research/signature-packed/Cargo.toml
+@@ -1,9 +1,10 @@
+ [package]
+-name = "kova-signature-storage"
++name = "kova-signature-packed"
+ version = "0.1.0"
+ edition = "2021"
+ rust-version = "1.94.1"
+ publish = false
++autotests = false
+ license = "MIT"
+ 
+ [dependencies]
+@@ -20,6 +21,18 @@
+ serde_json = { version = "=1.0.145", default-features = false, features = ["std"] }
+ thorum-core = { path = "../../crates/thorum-core" }
+ 
++[features]
++default = []
++native-execution = []
++
++[lib]
++test = false
++doctest = false
++
++[[test]]
++name = "routes"
++path = "tests/routes.rs"
++
+ [workspace]
+ 
+ [profile.test]
+--- research/signature-storage/src/lib.rs
++++ research/signature-packed/src/lib.rs
+@@ -1,14 +1,15 @@
+-//! Factorized schedule experiment for the bounded private signature relation.
++//! Complete packed source candidate for the private signature relation.
+ //! Native laboratory without a proof backend or payment acceptance API.
+ #![forbid(unsafe_code)]
+ 
++#[path = "../../signature-storage/src/activity.rs"]
+ mod activity;
+ mod air;
+ #[path = "../../signature-complete-native/src/authorization.rs"]
+ pub mod authorization;
+ mod build;
++#[path = "../../signature-storage/src/clock.rs"]
+ pub mod clock;
+-#[path = "../../signature-complete-native/src/decoding.rs"]
+ mod decoding;
+ mod full_program;
+ #[path = "../../signature-complete-native/src/hint_rows.rs"]
+@@ -18,20 +19,23 @@
+ #[path = "../../signature-complete-native/src/keccak.rs"]
+ mod keccak;
+ pub mod layout;
++#[path = "../../signature-storage/src/matrix.rs"]
+ mod matrix;
+ #[path = "../../signature-complete-native/src/mul.rs"]
+ mod mul;
++#[path = "../../signature-storage/src/ntt.rs"]
+ pub mod ntt;
++pub mod packed;
+ #[path = "../../signature-complete-native/src/packing.rs"]
+ mod packing;
++#[path = "../../signature-storage/src/program.rs"]
+ pub mod program;
++#[path = "../../signature-storage/src/sampler.rs"]
+ mod sampler;
+-#[path = "../../signature-complete-native/src/sources.rs"]
+ mod sources;
+-#[path = "../../signature-complete-native/src/sponge.rs"]
+ mod sponge;
+ 
+-pub use air::FactorSignatureOwnerAir;
++pub use air::PackedSignatureOwnerAir;
+ pub use build::{build_full_private_signature_owner_sources, BuildError};
+ use p3_baby_bear::BabyBear;
+ use p3_field::PrimeCharacteristicRing;
+@@ -46,8 +50,6 @@
+     note: [u8; 418],
+ }
+ 
+-#[cfg(test)]
+-mod tests;
+ impl Witness {
+     pub fn from_sources(key: [u8; 2592], signature: [u8; 4627], note: [u8; 418]) -> Self {
+         Self {
+@@ -76,6 +78,3 @@
+             .collect()
+     }
+ }
+-
+-#[cfg(test)]
+-mod native_tests;
+--- research/signature-storage/src/layout.rs
++++ research/signature-packed/src/layout.rs
+@@ -6,9 +6,10 @@
+ pub const CLOCK_LOW: usize = 64;
+ pub const CLOCK_HIGH: usize = 128;
+ pub const KEY: usize = CLOCK + CLOCK_LOW + CLOCK_HIGH;
+-pub const SIGNATURE: usize = KEY + 2592;
+-pub const NOTE: usize = SIGNATURE + 4627;
+-pub const MESSAGE: usize = NOTE + 418;
++pub const SIGNATURE: usize = KEY + 864;
++pub const NOTE: usize = SIGNATURE + 1543;
++pub const SOURCE_PORTS: usize = NOTE + 140;
++pub const MESSAGE: usize = SOURCE_PORTS + 125 * 24;
+ pub const OUTPUT: usize = MESSAGE + 168 * 8;
+ pub const RHO: usize = OUTPUT + 168 * 8;
+ pub const OWNER: usize = RHO + 32;
+--- research/signature-storage/src/air.rs
++++ research/signature-packed/src/air.rs
+@@ -3,8 +3,8 @@
+ use p3_baby_bear::BabyBear;
+ 
+ /// Complete bounded native signature and note owner equations.
+-pub struct FactorSignatureOwnerAir;
+-impl<F> BaseAir<F> for FactorSignatureOwnerAir {
++pub struct PackedSignatureOwnerAir;
++impl<F> BaseAir<F> for PackedSignatureOwnerAir {
+     fn width(&self) -> usize {
+         WIDTH
+     }
+@@ -12,17 +12,13 @@
+         PUBLIC_VALUES
+     }
+ }
+-impl<AB: AirBuilder<F = BabyBear>> Air<AB> for FactorSignatureOwnerAir {
++impl<AB: AirBuilder<F = BabyBear>> Air<AB> for PackedSignatureOwnerAir {
+     fn eval(&self, builder: &mut AB) {
+         let main = builder.main();
+         let local = main.current_slice();
+         let next = main.next_slice();
+         crate::clock::eval(builder, local, next, CLOCK, CLOCK_LOW, CLOCK_HIGH);
+-        for column in KEY..MESSAGE {
+-            builder
+-                .when_transition()
+-                .assert_eq(next[column], local[column]);
+-        }
++        crate::packed::eval(builder);
+         // Every Keccak slot and internal join executes on every physical row.
+         keccak::eval(builder);
+         sources::eval(builder);
+--- research/signature-storage/src/full_program.rs
++++ research/signature-packed/src/full_program.rs
+@@ -11,7 +11,7 @@
+ pub const INVERSE_END: usize = INVERSE_START + 8 * 224;
+ pub const FINAL_START: usize = 5316;
+ pub const FINAL_END: usize = FINAL_START + 9 * 6;
+-const _: [(); 45266] = [(); WIDTH];
++const _: [(); 43176] = [(); WIDTH];
+ const _: [(); 1] = [(); (FINAL_END < HEIGHT && FINAL_START >= INVERSE_END) as usize];
+ 
+ #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+--- research/signature-storage/src/build.rs
++++ research/signature-packed/src/build.rs
+@@ -22,6 +22,7 @@
+ #[derive(Debug)]
+ pub enum BuildError {
+     InvalidEncoding,
++    ExecutionNotAdmitted,
+     UnsupportedChallengeClass,
+     UnsupportedMatrixClass,
+     InvalidPublicStatement(RelationError),
+@@ -31,6 +32,10 @@
+     witness: &Witness,
+     transaction: &PaymentStatement,
+ ) -> Result<RowMajorMatrix<BabyBear>, BuildError> {
++    // The complete constructor remains dormant without a separate native gate.
++    if !cfg!(feature = "native-execution") {
++        return Err(BuildError::ExecutionNotAdmitted);
++    }
+     let statement =
+         Statement::from_transaction(transaction).map_err(BuildError::InvalidPublicStatement)?;
+     trace(witness, &statement)
+@@ -244,15 +249,7 @@
+             row[ACTIVE_MATRIX + index] = BabyBear::from_bool(matrix_phase)
+                 * (BabyBear::ONE - row[MATRIX_COUNT + 257 * index + 256]);
+         }
+-        for (offset, bytes) in [
+-            (KEY, w.key.as_slice()),
+-            (SIGNATURE, w.signature.as_slice()),
+-            (NOTE, w.note.as_slice()),
+-        ] {
+-            for (i, byte) in bytes.iter().enumerate() {
+-                row[offset + i] = BabyBear::from_u8(*byte);
+-            }
+-        }
++        crate::packed::fill(row, at, w);
+     }
+     Ok(RowMajorMatrix::new(values, WIDTH))
+ }
+--- research/signature-complete-native/src/sources.rs
++++ research/signature-packed/src/sources.rs
+@@ -140,23 +140,40 @@
+         builder.when_transition().assert_eq(
+             next[RHO + byte],
+             local[RHO + byte].into()
+-                + program::at::<AB>(local, 0) * (local[KEY + byte] - local[RHO + byte]),
+-        );
+-        builder.assert_eq(local[NOTE + 49 + byte], public[52 + byte]);
++                + program::at::<AB>(local, 0)
++                    * (crate::packed::byte_at::<AB>(local, 0, crate::packed::Bank::Key, byte)
++                        - local[RHO + byte]),
++        );
++        builder.assert_eq(
++            crate::packed::byte_all::<AB>(local, crate::packed::Bank::Note, 49 + byte),
++            public[52 + byte],
++        );
+     }
+     for byte in 0..64 {
+-        builder
+-            .when(program::at::<AB>(local, 234))
+-            .assert_eq(local[NOTE + 141 + byte], local[OWNER + byte]);
++        builder.when(program::at::<AB>(local, 234)).assert_eq(
++            crate::packed::byte_at::<AB>(local, 234, crate::packed::Bank::Note, 141 + byte),
++            local[OWNER + byte],
++        );
+     }
+     for index in 0..418 {
+         if let Some(v) = note_fixed(index) {
+-            builder.assert_eq(local[NOTE + index], BabyBear::from_u8(v));
++            builder.assert_eq(
++                crate::packed::byte_all::<AB>(local, crate::packed::Bank::Note, index),
++                BabyBear::from_u8(v),
++            );
+         }
+     }
+     for byte in 0..10 {
+         let expected: AB::Expr = (0..256)
+-            .map(|r| program::at::<AB>(local, r) * local[KEY + 32 + 10 * r + byte])
++            .map(|r| {
++                program::at::<AB>(local, r)
++                    * crate::packed::byte_at::<AB>(
++                        local,
++                        r,
++                        crate::packed::Bank::Key,
++                        32 + 10 * r + byte,
++                    )
++            })
+             .sum();
+         builder.assert_eq(
+             packing::packed::<AB>(&local[T1_MESSAGE + byte * 8..T1_MESSAGE + (byte + 1) * 8]),
+--- research/signature-complete-native/src/decoding.rs
++++ research/signature-packed/src/decoding.rs
+@@ -17,7 +17,13 @@
+         }
+         let expected: AB::Expr = (0..448)
+             .map(|position| {
+-                program::at::<AB>(local, position) * local[(SIGNATURE + 64) + 10 * position + byte]
++                program::at::<AB>(local, position)
++                    * crate::packed::byte_at::<AB>(
++                        local,
++                        position,
++                        crate::packed::Bank::Signature,
++                        64 + 10 * position + byte,
++                    )
+             })
+             .sum();
+         builder.assert_eq(packing::packed::<AB>(bits), expected);
+@@ -57,7 +63,13 @@
+     }
+     let hint_byte: AB::Expr = (0..75)
+         .map(|position| {
+-            program::at::<AB>(local, position) * local[(SIGNATURE + 64) + 4480 + position]
++            program::at::<AB>(local, position)
++                * crate::packed::byte_at::<AB>(
++                    local,
++                    position,
++                    crate::packed::Bank::Signature,
++                    4544 + position,
++                )
+         })
+         .sum();
+     builder.assert_eq(
+@@ -70,7 +82,10 @@
+         let complement =
+             packing::packed::<AB>(&local[CUT_COMPLEMENTS + i * 7..CUT_COMPLEMENTS + (i + 1) * 7]);
+         builder.assert_eq(cuts[i].clone() + complement, BabyBear::from_u8(75));
+-        builder.assert_eq(cuts[i].clone(), local[(SIGNATURE + 64) + 4555 + i]);
++        builder.assert_eq(
++            cuts[i].clone(),
++            crate::packed::byte_all::<AB>(local, crate::packed::Bank::Signature, 4619 + i),
++        );
+         if i > 0 {
+             let difference = packing::packed::<AB>(
+                 &local[CUT_DIFFERENCES + (i - 1) * 7..CUT_DIFFERENCES + i * 7],
+--- research/signature-complete-native/src/sponge.rs
++++ research/signature-packed/src/sponge.rs
+@@ -14,6 +14,7 @@
+ use p3_matrix::Matrix;
+ fn source_expr<AB: AirBuilder<F = BabyBear>>(
+     src: Byte,
++    pc: usize,
+     row: &[AB::Var],
+     public: &[AB::PublicVar],
+ ) -> AB::Expr {
+@@ -24,9 +25,11 @@
+         Byte::W1(i) => row[W1 + i].into(),
+         Byte::Initial(s) => match s {
+             Source::Fixed(v) => BabyBear::from_u8(v).into(),
+-            Source::Key(i) => row[KEY + i].into(),
+-            Source::Signature(i) => row[SIGNATURE + i].into(),
+-            Source::Note(i) => row[NOTE + i].into(),
++            Source::Key(i) => crate::packed::byte_at::<AB>(row, pc, crate::packed::Bank::Key, i),
++            Source::Signature(i) => {
++                crate::packed::byte_at::<AB>(row, pc, crate::packed::Bank::Signature, i)
++            }
++            Source::Note(i) => crate::packed::byte_at::<AB>(row, pc, crate::packed::Bank::Note, i),
+             Source::Tr(i) => row[TR + i].into(),
+             Source::Public(i) => public[i].into(),
+         },
+@@ -48,8 +51,21 @@
+             .step_by(6)
+             .filter(|r| fp::hash(*r) != Hash::Dummy)
+             .map(|r| {
+-                program::hash_selector::<AB>(row, r / 6)
+-                    * source_expr::<AB>(fp::message(fp::hash(r), byte), row, &public)
++                let source = fp::message(fp::hash(r), byte);
++                if matches!(
++                    source,
++                    Byte::Initial(Source::Key(_) | Source::Signature(_) | Source::Note(_))
++                ) {
++                    // Read-port ranks can change inside the six physical rows.
++                    (r..r + 6)
++                        .map(|pc| {
++                            program::at::<AB>(row, pc) * source_expr::<AB>(source, pc, row, &public)
++                        })
++                        .sum()
++                } else {
++                    program::hash_selector::<AB>(row, r / 6)
++                        * source_expr::<AB>(source, r, row, &public)
++                }
+             })
+             .sum();
+         b.assert_eq(
+@@ -112,7 +128,12 @@
+     for byte in 0..64 {
+         b.when(program::at::<AB>(row, fp::FINAL_END - 1)).assert_eq(
+             packing::packed::<AB>(&row[OUTPUT + 8 * byte..OUTPUT + 8 * (byte + 1)]),
+-            row[SIGNATURE + byte],
++            crate::packed::byte_at::<AB>(
++                row,
++                fp::FINAL_END - 1,
++                crate::packed::Bank::Signature,
++                byte,
++            ),
+         );
+     }
+ }
