@@ -1,0 +1,62 @@
+{
+  "format": "kova.signature-packed-native.validation.v1",
+  "provenance": {
+    "bytes": 30144,
+    "sha256": "ff50597bf5c32700a7a38b17d5b87e349c89ccfdf10b2ddde8321bd00e49a0ea"
+  },
+  "native_traces": 1,
+  "maximum_live_traces": 1,
+  "full_positive_scans": 1,
+  "negative_borrowed_checks": 6,
+  "restored_positive_borrowed_checks": 6,
+  "borrowed_frame_evaluations": 24,
+  "symbolic_collections": 0,
+  "backend_proofs": 0,
+  "full_payment_implemented": false,
+  "production_security_claim": false,
+  "executable": {
+    "bytes": 1292288,
+    "sha256": "9907822ede22cb2bd9b00a28099a256240e8c5b1879bc583f9e15ae215b159fb"
+  },
+  "original_private_receipt_sha256": "531fb5fa3fb31da6976546e276141e144b691b469b56907d178252c0a328dc44",
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows 11",
+    "rust": "1.94.1",
+    "profile": "release",
+    "test_threads": 1
+  },
+  "elapsed_test_seconds": 89.62,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 1,
+    "actual_passed": 1,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "test_counts_verified": true,
+    "timeout_seconds": 300,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 8146190336,
+    "minimum_available_bytes": 5368709120,
+    "hard_process_commit_limit_bytes": 2147483648,
+    "peak_working_bytes": 1421303808,
+    "peak_private_commit_bytes": 1419198464,
+    "sampled_peak_private_bytes": 1419177984,
+    "installed_process_commit_limit_bytes": 2147483648,
+    "installed_job_commit_limit_bytes": 2147483648,
+    "peak_job_commit_bytes": 1420480512,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "limitations": [
+    "One bounded native fixture, not the full tuple corpus",
+    "Four bit controls test port and consumer together, not isolated ownership or signature validity",
+    "Borrowed global frame checks are distinguished from full trace scans",
+    "Native constraint evaluation is not a hiding proof or payment acceptance",
+    "Resource observations describe this source and host only"
+  ]
+}

@@ -118,9 +118,11 @@ The [packed source laboratory](research/source-packing/README.md) constrains sel
 
 The [full source inventory](research/source-certificate/README.md) compares independently organized scalar accounts of every physical row in the retained signature schedule. It records complete source coverage, framing, last use, alignment and simultaneous word demand. Its literal peak is 125 source words.
 
-The [complete packed signature source](research/signature-packed/README.md) connects that inventory to a compiled replacement layout with 2,547 held words and 125 Boolean read ports. Its actual fixed route test matches every row and source byte offset against the frozen inventory. Complete symbolic analysis, native equivalence controls and full signature proof integration remain separate gates. The full constructor is disabled by default.
+The [complete packed signature source](research/signature-packed/README.md) connects that inventory to a compiled replacement layout with 2,547 held words and 125 Boolean read ports. Its actual fixed route test matches every row and source byte offset against the frozen inventory. Symbolic analysis, native controls and proof integration are recorded separately. The full constructor is disabled by default.
 
-The subsequent [complete symbolic shape record](research/signature-packed-shape/README.md) evaluates the actual candidate AIR once and records 69,242 assertions with maximum degree four. Its guarded execution fits the retained memory limit without constructing a native trace. Valid witness acceptance, hostile witness rejection and complete private signature proofs remain separate checks.
+The subsequent [complete symbolic shape record](research/signature-packed-shape/README.md) evaluates the actual candidate AIR once and records 69,242 assertions with maximum degree four. Its guarded execution fits the retained memory limit without constructing a native trace.
+
+The [first complete packed native witness](research/signature-packed-native/README.md) accepts the independent A0 fixture across every row. Six causal source corruptions fail at their exact expected constraints, and all restorations pass. The bounded run constructs one trace and distinguishes its full scan from borrowed global frame checks. The broader tuple corpus, consistent changed source controls and complete hiding signature proofs remain separate work.
 
 ## Native accounting and consensus targets
 

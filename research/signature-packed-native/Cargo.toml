@@ -1,0 +1,31 @@
+[package]
+name = "kova-signature-packed-native"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.94.1"
+publish = false
+autotests = false
+autobins = false
+license = "MIT"
+
+[dev-dependencies]
+kova-signature-packed = { path = "../signature-packed", default-features = false, features = ["native-execution"] }
+p3-air = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+serde = { version = "=1.0.229", default-features = false, features = ["derive"] }
+serde_json = { version = "=1.0.145", default-features = false, features = ["std"] }
+thorum-core = { path = "../../crates/thorum-core" }
+thorum-crypto-lab = { path = "../../crates/thorum-crypto-lab" }
+thorum-relation-lab = { path = "../../crates/thorum-relation-lab" }
+
+[[test]]
+name = "native"
+path = "tests/native.rs"
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+lto = "thin"
