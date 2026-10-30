@@ -1,0 +1,54 @@
+{
+  "format": "kova.source-certificate.validation.v1",
+  "provenance": {
+    "bytes": 6042,
+    "sha256": "48831b31d4add5a5958aa8e4036de721d78f96072fbe33b4e4c9b2e8fc742273"
+  },
+  "generator_passes": 1,
+  "reference_passes": 1,
+  "rows_per_pass": 8192,
+  "tampered_reports_rejected": 8,
+  "restoration_accepts": 8,
+  "positive_validations": 9,
+  "validation_calls": 17,
+  "symbolic_collections": 0,
+  "native_traces": 0,
+  "backend_proofs": 0,
+  "certificate_bytes": 97665,
+  "artifact_cap_bytes": 524288,
+  "peak_literal_words": 125,
+  "peak_literal_row": 234,
+  "generic_process_receipt": true,
+  "native_test_summary": false,
+  "integrated_signature": false,
+  "full_payment_implemented": false,
+  "production_security_claim": false,
+  "net_layout_savings_measured": false,
+  "interpreter": {
+    "bytes": 106208,
+    "sha256": "3adbbf2af609e206e3ca18cd55fc7c4b52f5c8bb8218dd99fd5a9e50d7a193cd"
+  },
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows-11-10.0.26300-SP0",
+    "interpreter": "Python 3.14.5",
+    "arguments": "-I -S",
+    "dependencies": "Trusted host standard library only"
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 8071016448,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "peak_process_commit_bytes": 14368768,
+    "peak_job_commit_bytes": 15667200
+  },
+  "limitations": [
+    "Source accounting over a reviewed pinned family catalogue, not a semantic compiler proof",
+    "Range and scratch narratives are reviewed shared inputs, not independently derived theorems",
+    "Literal word demand does not select an integrated read-port strategy or net width",
+    "No AIR evaluation, native signature trace or backend proof was executed"
+  ]
+}

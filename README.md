@@ -116,6 +116,8 @@ The [invalid witness laboratory](research/source-stark-false/README.md) changes 
 
 The [packed source laboratory](research/source-packing/README.md) constrains selected private words and repeated byte reads under one fixed clock. Its actual symbolic shape and eighteen adversarial native rejections cover alignment, source holds, padding, stale reads and range aliases, with restored positive controls. This is a small source mechanism. Full signature routing, ownership and payment integration remain separate work.
 
+The [full source inventory](research/source-certificate/README.md) compares independently organized scalar accounts of every physical row in the retained signature schedule. It records complete source coverage, framing, last use, alignment and simultaneous word demand. Its literal peak is 125 source words. This accounting precedes selection and implementation of a complete packed layout.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

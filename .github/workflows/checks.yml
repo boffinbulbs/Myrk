@@ -571,3 +571,7 @@ jobs:
         run: python research/source-packing/reference.py --check-results
       - name: Check packed source lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/source-packing/Cargo.toml --release --lib --test mechanism --locked --offline -- -D warnings
+      - name: Check full source inventory identities
+        run: python research/source-certificate/static_check.py
+      - name: Compare complete scalar source inventories
+        run: python -I -S research/source-certificate/experiment.py
