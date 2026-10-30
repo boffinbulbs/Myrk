@@ -14,3 +14,5 @@ research/signature-accumulator-source/accumulator-extraction.patch whitespace=-b
 research/signature-accumulator-source/reference-adaptation.patch whitespace=-blank-at-eol
 research/signature-inverse-source/inverse-extraction.patch whitespace=-blank-at-eol
 research/signature-inverse-source/reference-adaptation.patch whitespace=-blank-at-eol
+research/signature-hint-source/hint-extraction.patch whitespace=-blank-at-eol
+research/signature-hint-source/reference-adaptation.patch whitespace=-blank-at-eol

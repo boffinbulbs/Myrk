@@ -142,7 +142,9 @@ The [matrix hash source](research/signature-matrix-source/README.md) extends the
 
 The [accumulator source](research/signature-accumulator-source/README.md) consumes actual current matrix bytes and physical forward banks for rejection sampling, accumulation and point correction. Independent retained arithmetic vectors supplement a bounded reference, and typed capacity failure is terminal. Inverse construction is covered by the following source stage. Final phases, complete rows, hiding proofs and private ledger integration remain unfinished.
 
-The [inverse source](research/signature-inverse-source/README.md) reads actual accumulator tiles and held forward scratch within the same owner. Eleven saved state checkpoints per transform supplement the bounded reference across partial initialization, normalization and the held terminal state. Hint reconstruction, final challenge equality, complete rows, hiding proofs and private ledger integration remain unfinished.
+The [inverse source](research/signature-inverse-source/README.md) reads actual accumulator tiles and held forward scratch within the same owner. Eleven saved state checkpoints per transform supplement the bounded reference across partial initialization, normalization and the held terminal state. Hint reconstruction is covered by the following source stage. Final challenge equality, complete rows, hiding proofs and private ledger integration remain unfinished.
+
+The [hint source](research/signature-hint-source/README.md) reads actual inverse outputs and decoded hints, preserving canonical dormant gadgets and delayed private W1 byte updates. Saved step fields and comparisons of every packed byte on every row supplement the bounded reference. Final hashing and challenge equality, complete rows, hiding proofs and private ledger integration remain unfinished.
 
 ## Native accounting and consensus targets
 

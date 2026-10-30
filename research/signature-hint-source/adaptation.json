@@ -1,0 +1,50 @@
+{
+  "format": "kova.signature-hint-source.adaptation.v1",
+  "base_revision": "cf94528a9115424453c9cd6bca195e1f0a5b76b2",
+  "owner_origin": "research/signature-inverse-source/src/lib.rs",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "owner_delta": "Hint source documentation, diagnostic feature and module identity",
+  "old_opaque_conversion": false,
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "private_children_added": 15,
+  "hint_origin": "research/signature-complete-native/src/hint_rows.rs::encode/fill",
+  "candidate_diff": "hint-extraction.patch",
+  "reference_diff": "reference-adaptation.patch",
+  "reference_unchanged_full_writer": false,
+  "reference_window_rows": 1,
+  "owned_ranges": [
+    [
+      41143,
+      43167
+    ]
+  ],
+  "owned_all_rows": true,
+  "candidate_inputs": "Actual same owner current normalized inverse scratch and decoded hint flags at Output tiles only",
+  "reference_inputs": "Saved v34 inverse states10 and current-phase saved hint tiles only",
+  "packed_prestate": true,
+  "first_packed_visible_row": 3715,
+  "full_packed_visible_row": 5314,
+  "active_gadgets_per_side": 2048,
+  "dormant_gadgets_per_side": 63488,
+  "source_inferred_hint_encodings_per_side": 65536,
+  "capacity_failure_timing": "Typed upstream failure propagates to terminal composite without rollback; source inspected without repeating the closed fault diagnostic",
+  "initial_generator_calls": 70,
+  "matrix_generator_calls": 336,
+  "reference_generator_calls": 0,
+  "source_inferred_candidate_forward_bodies": 16,
+  "source_inferred_candidate_inverse_bodies": 8,
+  "reference_transform_bodies": 0,
+  "standalone_transform_oracle_calls": 0,
+  "candidate_caches_during_matrix": 2,
+  "capacity_preflight_executed": false,
+  "native_execution_enabled": false,
+  "complete_row_source_implemented": false,
+  "hint_source_construction_implemented": true,
+  "final_hash_implemented": false
+}

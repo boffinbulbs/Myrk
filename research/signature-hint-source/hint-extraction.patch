@@ -1,0 +1,78 @@
+--- retained/hint-encode-and-fill
++++ src/hint_state.rs
+@@ -1,3 +1,7 @@
++//! Private hint reconstruction from actual current inverse and decoded flags.
++use crate::{build, hints, layout::*, ntt};
++use p3_baby_bear::BabyBear;
++use p3_field::{PrimeCharacteristicRing, PrimeField32};
+ // Retained integer Decompose/UseHint witness encoding from the public row builder.
+ fn encode(row: &mut [BabyBear], s: usize, input: u32, hint: u8) -> u8 {
+     let r = i64::from(input);
+@@ -42,10 +46,39 @@
+     }
+     output as u8
+ }
+-pub(crate) fn fill(values: &mut [BabyBear]) {
+-    let mut packed = [0u8; 1024];
+-    for (at, row) in values.chunks_exact_mut(WIDTH).enumerate() {
+-        for (i, v) in packed.iter().enumerate() {
++#[derive(Debug)]
++pub(crate) enum HintError {
++    RowShape,
++    Exhausted,
++    Incomplete,
++}
++pub(crate) struct HintState {
++    packed: [u8; 1024],
++    next_row: usize,
++    completed: usize,
++}
++impl HintState {
++    pub(crate) fn new() -> Self {
++        Self {
++            packed: [0; 1024],
++            next_row: 0,
++            completed: 0,
++        }
++    }
++    pub(crate) fn owns(column: usize) -> bool {
++        (USE_HINT..ACTIVE_CHALLENGE).contains(&column)
++    }
++    #[allow(clippy::needless_range_loop)]
++    pub(crate) fn emit_next(&mut self, row: &mut [BabyBear]) -> Result<usize, HintError> {
++        if row.len() != WIDTH {
++            return Err(HintError::RowShape);
++        }
++        if self.next_row == HEIGHT {
++            return Err(HintError::Exhausted);
++        }
++        let at = self.next_row;
++        row[USE_HINT..ACTIVE_CHALLENGE].fill(BabyBear::ZERO);
++        for (i, v) in self.packed.iter().enumerate() {
+             row[W1 + i] = BabyBear::from_u8(*v);
+         }
+         let output = ntt::inverse_operation(at).and_then(|(i, op)| match op {
+@@ -66,8 +99,22 @@
+         }
+         if let Some((i, g)) = output {
+             for p in 0..4 {
+-                packed[128 * i + 4 * g + p] = used[2 * p] + 16 * used[2 * p + 1];
++                self.packed[128 * i + 4 * g + p] = used[2 * p] + 16 * used[2 * p + 1];
+             }
+         }
++        if matches!(
++            ntt::inverse_operation(at),
++            Some((_, ntt::InverseOp::Output(31)))
++        ) {
++            self.completed += 1;
++        }
++        self.next_row += 1;
++        Ok(at)
++    }
++    pub(crate) fn finish(&self) -> Result<(), HintError> {
++        if self.next_row != HEIGHT || self.completed != 8 {
++            return Err(HintError::Incomplete);
++        }
++        Ok(())
+     }
+ }

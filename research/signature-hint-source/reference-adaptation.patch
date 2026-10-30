@@ -1,0 +1,87 @@
+--- retained/hint-encode-and-fill
++++ src/hint_reference.rs
+@@ -1,3 +1,7 @@
++//! Explicit original-body reference with independent current-phase literals.
++use crate::{build, hints, layout::*, ntt};
++use p3_baby_bear::BabyBear;
++use p3_field::{PrimeCharacteristicRing, PrimeField32};
+ // Retained integer Decompose/UseHint witness encoding from the public row builder.
+ fn encode(row: &mut [BabyBear], s: usize, input: u32, hint: u8) -> u8 {
+     let r = i64::from(input);
+@@ -42,10 +46,56 @@
+     }
+     output as u8
+ }
+-pub(crate) fn fill(values: &mut [BabyBear]) {
+-    let mut packed = [0u8; 1024];
+-    for (at, row) in values.chunks_exact_mut(WIDTH).enumerate() {
+-        for (i, v) in packed.iter().enumerate() {
++#[derive(Debug)]
++pub(crate) enum ReferenceError {
++    Sequence,
++    Exhausted,
++}
++pub(crate) struct Inputs {
++    pub r: [[u32; 256]; 8],
++    pub h: [[u8; 256]; 8],
++}
++pub(crate) struct HintReference {
++    packed: [u8; 1024],
++    inputs: Inputs,
++    next_row: usize,
++    row: Vec<BabyBear>,
++}
++impl HintReference {
++    pub(crate) fn new(inputs: Inputs) -> Self {
++        Self {
++            packed: [0; 1024],
++            inputs,
++            next_row: 0,
++            row: vec![BabyBear::ZERO; WIDTH],
++        }
++    }
++    pub(crate) fn prepared(&self) -> usize {
++        self.next_row
++    }
++    pub(crate) fn pristine(&self) -> bool {
++        self.next_row == 0
++            && self.packed == [0; 1024]
++            && self.row.iter().all(|v| *v == BabyBear::ZERO)
++    }
++    #[allow(clippy::needless_range_loop)]
++    pub(crate) fn prepare(&mut self, at: usize) -> Result<(), ReferenceError> {
++        if self.next_row == HEIGHT {
++            return Err(ReferenceError::Exhausted);
++        }
++        if at != self.next_row {
++            return Err(ReferenceError::Sequence);
++        }
++        self.row.fill(BabyBear::ZERO);
++        let row = &mut self.row;
++        if let Some((i, ntt::InverseOp::Output(g))) = ntt::inverse_operation(at) {
++            for slot in 0..8 {
++                let k = 8 * g + slot;
++                row[NTT_SCRATCH + k] = BabyBear::from_u32(self.inputs.r[i][k]);
++                row[HINTS + 256 * i + k] = BabyBear::from_u8(self.inputs.h[i][k]);
++            }
++        }
++        for (i, v) in self.packed.iter().enumerate() {
+             row[W1 + i] = BabyBear::from_u8(*v);
+         }
+         let output = ntt::inverse_operation(at).and_then(|(i, op)| match op {
+@@ -66,8 +116,14 @@
+         }
+         if let Some((i, g)) = output {
+             for p in 0..4 {
+-                packed[128 * i + 4 * g + p] = used[2 * p] + 16 * used[2 * p + 1];
++                self.packed[128 * i + 4 * g + p] = used[2 * p] + 16 * used[2 * p + 1];
+             }
+         }
++        self.next_row += 1;
++        Ok(())
++    }
++    pub(crate) fn row(&self, at: usize) -> &[BabyBear] {
++        assert_eq!(at + 1, self.next_row);
++        &self.row
+     }
+ }

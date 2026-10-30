@@ -1,0 +1,94 @@
+{
+  "format": "kova.signature-hint-source.validation.v1",
+  "integration_tests_passed": 1,
+  "observation_records": 46,
+  "summary": {
+    "active_branches": {
+      "borrow": 1,
+      "edge": 73,
+      "hint_one": 46,
+      "hint_zero": 2002,
+      "nonpositive": 1026,
+      "overflow": 0,
+      "positive": 1022,
+      "ties": 0
+    },
+    "active_gadgets": 2048,
+    "active_saved_fields": 20480,
+    "comparator_controls": 7,
+    "dormant_gadgets": 63488,
+    "hint_row_completions": 8,
+    "initial_generation": [
+      70,
+      70,
+      1
+    ],
+    "kind": "hint_summary",
+    "matrix_generation": [
+      336,
+      336,
+      1
+    ],
+    "owned_comparisons": 16580608,
+    "packed_byte_comparisons": 8388608,
+    "packed_visible_rows": 8,
+    "prefix_preserved": [
+      341107472,
+      293511168,
+      318788736,
+      227713024,
+      217997312
+    ],
+    "preserved_comparisons": 337117184,
+    "reference_hash_generations": 0,
+    "reference_rows": 8192,
+    "restored_controls": 7,
+    "rows": 8192,
+    "standalone_transform_oracle_calls": 0,
+    "terminal_packed_bytes": 1024,
+    "trace_generator_calls": 406
+  },
+  "trace_generator_calls": 406,
+  "source_inferred_internal_round_traces": 812,
+  "source_inferred_forward_bodies": 16,
+  "source_inferred_inverse_bodies": {
+    "candidate": 8,
+    "reference": 0
+  },
+  "source_inferred_hint_encodings_per_side": 65536,
+  "source_inferred_candidate_caches_during_matrix": 2,
+  "new_independent_references": 0,
+  "capacity_preflight_calls": 0,
+  "standalone_transform_oracle_calls": 0,
+  "complete_signature_traces": 0,
+  "air_evaluations": 0,
+  "backend_proofs": 0,
+  "pcs_calls": 0,
+  "complete_row_source_implemented": false,
+  "hint_source_construction_implemented": true,
+  "final_hash_implemented": false,
+  "private_payment_verified": false,
+  "full_security_profile_validated": false,
+  "upstream_capacity_fault_reexecuted": false,
+  "scope": "One actual same-source hint and W1 construction walk, an explicit adapted original-body reference and saved independent field/packed-byte literals. Active branch counts exclude dormant zeros. Comparator faults are equality calibration. Upstream typed capacity propagation is source inspected without repeating the closed fault execution. Public transaction preprocessing executes outside generator counts.",
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 11044487168,
+    "timeout_seconds": 120,
+    "readback_flags": 8960,
+    "peak_job_commit_bytes": 5689344,
+    "peak_process_private_commit_bytes": 4399104,
+    "test_counts_verified": true,
+    "exit_code": 0,
+    "hard_limit_installed": true,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "working_guard_terminated": false
+  },
+  "provenance": {
+    "bytes": 62289,
+    "sha256": "dc3a3af92cc7923d29a1631c9ed3526a7183f871e046606ded70fb0bc92eef26"
+  }
+}

@@ -727,3 +727,15 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-inverse-source/Cargo.toml --release --lib --locked --offline -- -D warnings
       - name: Check inverse control lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-inverse-source/Cargo.toml --release --features inverse-controls --lib --test inverse --locked --offline -- -D warnings
+      - name: Check hint source formatting
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-hint-source/src/lib.rs research/signature-hint-source/src/build.rs research/signature-hint-source/src/hint_state.rs research/signature-hint-source/src/hint_source.rs research/signature-hint-source/src/hint_reference.rs research/signature-hint-source/src/hint_controls.rs research/signature-hint-source/tests/hint.rs
+      - name: Fetch hint source dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-hint-source/Cargo.toml --locked
+      - name: Check hint source records
+        run: python -I -S research/signature-hint-source/static_check.py
+      - name: Compile hint source controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-hint-source/Cargo.toml --release --features hint-controls --test hint --locked --offline --no-run --jobs 1
+      - name: Check hint default lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-hint-source/Cargo.toml --release --lib --locked --offline -- -D warnings
+      - name: Check hint control lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-hint-source/Cargo.toml --release --features hint-controls --lib --test hint --locked --offline -- -D warnings
