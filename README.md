@@ -108,6 +108,8 @@ The [owned source commitment laboratory](research/source-commitment/README.md) c
 
 The [source opening laboratory](research/source-opening/README.md) completes that finite PCS gate with three identical actual opening proofs accepted by the retained verifier. It rejects changed roots, claims and authentication digests and refuses a consumed private prover data clone. Independent arithmetic reconstructs ten Merkle roots and four extension opening values. This establishes small source opening compatibility. Complete AIR validity and private payment integration remain separate requirements.
 
+The [composite storage laboratory](research/source-composition/README.md) places main, eight quotient and auxiliary matrices under one owned file policy and one associated prover data family. Six actual input commitments compare the new and retained dense paths, including roots, fields and continuing entropy. Whole attempt reservations remain fixed after failure. This construction comparison does not derive an AIR quotient or construct a complete computation proof.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

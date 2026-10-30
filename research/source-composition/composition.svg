@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-labelledby="title desc">
+<title id="title">Composite commitment ownership</title>
+<desc id="desc">One reserved owner holds main, quotient and auxiliary files. All three roles reach one associated stored type and the actual hiding commitment implementation. Failure closes subsequent valid reads.</desc>
+<defs><style>text{font-family:Georgia,serif;fill:#55705c} .label{font-family:Arial,sans-serif;font-size:15px} .small{font-family:Arial,sans-serif;font-size:13px} .box{fill:none;stroke:#7c8d80;stroke-width:1.3} .line{fill:none;stroke:#7c8d80;stroke-width:1.3}</style><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#7c8d80"/></marker></defs>
+<rect class="box" x="20" y="26" width="920" height="266" rx="8"/>
+<text class="label" x="44" y="55">C / Common owner</text><text class="small" x="916" y="55" text-anchor="end">12 reservations · 1292288 field bytes</text>
+<rect class="box" x="48" y="87" width="222" height="50" rx="4"/><text class="label" x="159" y="117" text-anchor="middle">Main / streamed LDE</text>
+<rect class="box" x="48" y="154" width="222" height="50" rx="4"/><text class="label" x="159" y="184" text-anchor="middle">Quotient / eight LDEs</text>
+<rect class="box" x="48" y="221" width="222" height="50" rx="4"/><text class="label" x="159" y="251" text-anchor="middle">Auxiliary / one LDE</text>
+<path class="line" d="M270 112H322V246H270M270 179H322"/>
+<path class="line" d="M322 179H366" marker-end="url(#a)"/>
+<rect class="box" x="374" y="142" width="205" height="74" rx="4"/><text class="label" x="476" y="170" text-anchor="middle">Z / One stored type</text><text class="small" x="476" y="194" text-anchor="middle">Private data and owner leases</text>
+<path class="line" d="M579 179H650" marker-end="url(#a)"/>
+<rect class="box" x="658" y="142" width="250" height="74" rx="4"/><text class="label" x="783" y="170" text-anchor="middle">Y / Actual hiding commitment</text><text class="small" x="783" y="194" text-anchor="middle">Original private prover data</text>
+<text class="small" x="480" y="318" text-anchor="middle">Failure retains reservations and closes valid reads across clones.</text>
+</svg>

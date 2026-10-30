@@ -1,0 +1,56 @@
+{
+  "format": "kova.source-composition.validation.v1",
+  "provenance": {
+    "bytes": 13413,
+    "sha256": "a88adc8a1980d146630ebb4e25585e590e8c3d36980faa837744cc76347288f0"
+  },
+  "test_groups_passed": 2,
+  "input_mmcs_commits": 6,
+  "new_composite_input_commits": 3,
+  "retained_input_commits": 3,
+  "pcs_openings": 0,
+  "fri_mmcs_commits": 0,
+  "stark_proofs": 0,
+  "native_signature_traces": 0,
+  "wide_symbolic_evaluations": 0,
+  "reserved_files_per_owner": 12,
+  "reserved_bytes_per_owner": 1292288,
+  "captured_final_matrices": 10,
+  "captured_bytes": 1277952,
+  "after_guard_drop_view_refusals": 3,
+  "raw_iterator_unwind_controls": 1,
+  "foreign_owner_controls": 1,
+  "whole_prover_entry_implemented": false,
+  "other_file_fault_branches_executed": false,
+  "full_payment_implemented": false,
+  "production_security_claim": false,
+  "executed_test_executable": {
+    "bytes": 1302528,
+    "sha256": "5086f245e1f4be2adffe1d4279e6c298626f08f22fbf05df2b0d97b4c224ce90"
+  },
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows-11-10.0.26300-SP0",
+    "toolchain": "Rust 1.94.1",
+    "profile": "release serial",
+    "selected_test_seconds": 0.6
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 10876076032,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "test_counts_verified": true,
+    "peak_process_commit_bytes": 35979264,
+    "peak_job_commit_bytes": 37261312
+  },
+  "limitations": [
+    "Synthetic quotient inputs do not establish AIR validity",
+    "Other dense temporary matrices are not streamed",
+    "Partial other-file/orphan/DFT/poison/concurrency fault branches were not executed",
+    "No complete prover entry, proof or payment network",
+    "Captured fields compare retained construction and I/O, not an independent DFT theorem"
+  ]
+}

@@ -510,3 +510,17 @@ jobs:
         run: python research/source-opening/reference.py --check-results
       - name: Check source opening lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/source-opening/Cargo.toml --release --lib --test opening --locked --offline -- -D warnings
+      - name: Check composite storage formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/source-composition/Cargo.toml --all -- --check
+      - name: Fetch composite storage dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-composition/Cargo.toml --locked
+      - name: Check composite storage identities
+        run: python research/source-composition/static_check.py
+      - name: Check independent reservation and field records
+        run: python research/source-composition/reference.py
+      - name: Test composite commitment construction
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-composition/Cargo.toml --release --locked --offline --test construction --jobs 1 -- --test-threads=1
+      - name: Compare fresh composite artifacts
+        run: python research/source-composition/reference.py --check-results
+      - name: Check composite storage lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-composition/Cargo.toml --release --lib --test construction --locked --offline -- -D warnings
