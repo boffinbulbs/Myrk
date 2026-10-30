@@ -703,3 +703,15 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-matrix-source/Cargo.toml --release --lib --locked --offline -- -D warnings
       - name: Check matrix hash control lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-matrix-source/Cargo.toml --release --features matrix-controls --lib --test matrix --locked --offline -- -D warnings
+      - name: Check accumulator source formatting
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-accumulator-source/src/lib.rs research/signature-accumulator-source/src/build.rs research/signature-accumulator-source/src/accumulator_state.rs research/signature-accumulator-source/src/accumulator_source.rs research/signature-accumulator-source/src/accumulator_reference.rs research/signature-accumulator-source/src/accumulator_controls.rs research/signature-accumulator-source/tests/accumulator.rs
+      - name: Fetch accumulator source dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-accumulator-source/Cargo.toml --locked
+      - name: Check accumulator source records
+        run: python -I -S research/signature-accumulator-source/static_check.py
+      - name: Compile accumulator source controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-accumulator-source/Cargo.toml --release --features accumulator-controls --test accumulator --locked --offline --no-run --jobs 1
+      - name: Check accumulator default lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-accumulator-source/Cargo.toml --release --lib --locked --offline -- -D warnings
+      - name: Check accumulator control lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-accumulator-source/Cargo.toml --release --features accumulator-controls --lib --test accumulator --locked --offline -- -D warnings

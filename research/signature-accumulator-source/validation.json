@@ -1,0 +1,117 @@
+{
+  "format": "kova.signature-accumulator-source.validation.v1",
+  "integration_tests_passed": 1,
+  "observation_records": 157,
+  "summary": {
+    "fault": {
+      "class_accepted": 0,
+      "class_cursor": 1008,
+      "failure_row": 689,
+      "initial_generation": [
+        70,
+        70,
+        1
+      ],
+      "kind": "fault_summary",
+      "matrix_generation": [
+        6,
+        6,
+        1
+      ],
+      "position": [
+        689,
+        690,
+        true
+      ],
+      "successful_rows": 689,
+      "upstream_rows": 690
+    },
+    "kind": "combined_summary",
+    "main": {
+      "accepted": 14336,
+      "column_checkpoints": 56,
+      "comparator_controls": 8,
+      "completion_slots": 56,
+      "first_borrow": [
+        3330,
+        0
+      ],
+      "first_rejection": [
+        967,
+        7
+      ],
+      "initial_generation": [
+        70,
+        70,
+        1
+      ],
+      "kind": "accumulator_summary",
+      "matrix_carries": 6190,
+      "matrix_generation": [
+        336,
+        336,
+        1
+      ],
+      "owned_comparisons": 60186624,
+      "point_borrows": 1007,
+      "point_checkpoints": 8,
+      "point_values": 2048,
+      "prefix_preserved": [
+        318788736,
+        227713024,
+        217997312
+      ],
+      "preserved_comparisons": 293511168,
+      "reference_hash_generations": 0,
+      "reference_rows": 8192,
+      "rejected": 7,
+      "restored_controls": 8,
+      "rows": 8192,
+      "stream_completions": 56,
+      "terminal_coefficients": 2048
+    },
+    "trace_generator_calls": 482
+  },
+  "trace_generator_calls": 482,
+  "source_inferred_internal_round_traces": 964,
+  "source_inferred_forward_work": {
+    "main_complete": 16,
+    "fault_complete": 1,
+    "fault_partial": 1,
+    "reference": 0
+  },
+  "source_inferred_candidate_caches_during_matrix": 2,
+  "new_independent_references": 0,
+  "capacity_preflight_calls": 0,
+  "complete_signature_traces": 0,
+  "air_evaluations": 0,
+  "backend_proofs": 0,
+  "pcs_calls": 0,
+  "complete_row_source_implemented": false,
+  "matrix_sampler_implemented": true,
+  "inverse_implemented": false,
+  "private_payment_verified": false,
+  "full_security_profile_validated": false,
+  "genuine_shortage_seed_tested": false,
+  "scope": "Main same-source matrix and point construction plus fixed source-row shortage injection. The partial fault row is not hash-valid or an emitted AIR row. Sticky construction failure is not AIR or proof rejection. Public transaction preprocessing executes normally outside generator counts.",
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 11209523200,
+    "timeout_seconds": 120,
+    "readback_flags": 8960,
+    "peak_job_commit_bytes": 5865472,
+    "peak_process_private_commit_bytes": 4579328,
+    "test_counts_verified": true,
+    "exit_code": 0,
+    "hard_limit_installed": true,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "working_guard_terminated": false
+  },
+  "provenance": {
+    "bytes": 59608,
+    "sha256": "8dcb4513687e09f184d17215201ce8a7a8ab444839cfecfc9b2b5d3997827e55"
+  }
+}

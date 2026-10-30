@@ -138,7 +138,9 @@ The [owned sampling source](research/signature-sample-source/README.md) extends 
 
 The [owned forward source](research/signature-forward-source/README.md) reads decoded and sampled operands from that same row and preserves transform register timing and physical bank lifetimes. A bounded adapted reference and retained independent stage values cover the forward pass. Matrix and inverse overlap, complete rows and private payment proof integration remain unfinished.
 
-The [matrix hash source](research/signature-matrix-source/README.md) extends the same owner with genuine matrix expansion and current squeeze bank timing. Sparse overlays preserve source and forward fields. Saved streams and a bounded original body adaptation check terminal chunks and intermediate construction. Matrix sampling, inverse and final phases, complete rows and private payment proofs remain unfinished.
+The [matrix hash source](research/signature-matrix-source/README.md) extends the same owner with genuine matrix expansion and current squeeze bank timing. Sparse overlays preserve source and forward fields. Saved streams and a bounded original body adaptation check terminal chunks and intermediate construction. Coefficient sampling and accumulation are covered by the following source stage.
+
+The [accumulator source](research/signature-accumulator-source/README.md) consumes actual current matrix bytes and physical forward banks for rejection sampling, accumulation and point correction. Independent retained arithmetic vectors supplement a bounded reference, and typed capacity failure is terminal. Inverse and final phases, complete rows, hiding proofs and private ledger integration remain unfinished.
 
 ## Native accounting and consensus targets
 

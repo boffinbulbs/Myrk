@@ -10,3 +10,5 @@ research/signature-forward-source/forward-extraction.patch whitespace=-blank-at-
 research/signature-forward-source/reference-adaptation.patch whitespace=-blank-at-eol
 research/signature-matrix-source/matrix-extraction.patch whitespace=-blank-at-eol
 research/signature-matrix-source/reference-adaptation.patch whitespace=-blank-at-eol
+research/signature-accumulator-source/accumulator-extraction.patch whitespace=-blank-at-eol
+research/signature-accumulator-source/reference-adaptation.patch whitespace=-blank-at-eol

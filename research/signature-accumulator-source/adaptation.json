@@ -1,0 +1,49 @@
+{
+  "format": "kova.signature-accumulator-source.adaptation.v1",
+  "base_revision": "3b69f6448f330c1b65e99b58c8c41045d7580821",
+  "owner_origin": "research/signature-matrix-source/src/lib.rs",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "owner_delta": "Accumulation documentation, diagnostic feature and module identity",
+  "old_opaque_conversion": false,
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "private_children_added": 11,
+  "accumulator_origin": "research/signature-storage/src/matrix.rs::fill",
+  "activity_origin": "research/signature-packed/src/build.rs::trace",
+  "candidate_diff": "accumulator-extraction.patch",
+  "reference_diff": "reference-adaptation.patch",
+  "reference_unchanged_full_writer": false,
+  "reference_window_rows": 1,
+  "owned_ranges": [
+    [
+      33804,
+      41143
+    ],
+    [
+      43168,
+      43176
+    ]
+  ],
+  "candidate_inputs": "Actual same owner current XOF and physical forward output banks",
+  "reference_inputs": "Saved stream/current-phase Zhat or chat and T1hat only; no simultaneous aliased logical-bank population",
+  "nonfinal_count_resets": 55,
+  "final_count_held": true,
+  "capacity_failure_timing": "After current row arithmetic, terminal poisoned source with no rollback",
+  "fault_scope": "Fixed private source-row first-stream XOF255 injection after actual prefix. Not a genuine seed/hash, AIR or proof rejection control.",
+  "main_initial_generator_calls": 70,
+  "main_matrix_generator_calls": 336,
+  "fault_initial_generator_calls": 70,
+  "fault_matrix_generator_calls": 6,
+  "reference_generator_calls": 0,
+  "candidate_caches_during_matrix": 2,
+  "capacity_preflight_executed": false,
+  "native_execution_enabled": false,
+  "complete_row_source_implemented": false,
+  "inverse_implemented": false,
+  "final_hash_implemented": false
+}
