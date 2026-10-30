@@ -106,6 +106,8 @@ The [streamed commitment input laboratory](research/source-extension/README.md) 
 
 The [owned source commitment laboratory](research/source-commitment/README.md) connects that construction to the actual hiding Merkle MMCS and original private prover data. Owned and dense convenience roots match retained ordinary dense dispatch. An independent SHA3 calculation reproduces the full root from 4,096 synthetic salted leaves. Failure after an actual commitment closes the outer attempt while retaining the inner construction leases. Opening compatibility remains a separate gate.
 
+The [source opening laboratory](research/source-opening/README.md) completes that finite PCS gate with three identical actual opening proofs accepted by the retained verifier. It rejects changed roots, claims and authentication digests and refuses a consumed private prover data clone. Independent arithmetic reconstructs ten Merkle roots and four extension opening values. This establishes small source opening compatibility. Complete AIR validity and private payment integration remain separate requirements.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

@@ -1,0 +1,41 @@
+[package]
+name = "kova-source-opening"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+publish = false
+autotests = false
+license = "MIT"
+
+[lib]
+test = false
+doctest = false
+
+[dependencies]
+p3-air = { version = "=0.8.0", default-features = false }
+kova-source-commitment = { path = "../source-commitment" }
+kova-source-extension = { path = "../source-extension" }
+kova-proof-preflight = { path = "../proof-preflight" }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-challenger = { version = "=0.8.0", default-features = false }
+p3-commit = { version = "=0.8.0", default-features = false }
+p3-dft = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+p3-merkle-tree = { version = "=0.8.0", default-features = false }
+p3-symmetric = { version = "=0.8.0", default-features = false }
+p3-fri = { version = "=0.8.0", default-features = false }
+rand = { version = "=0.10.3", default-features = false, features = ["std_rng"] }
+serde = { version = "=1.0.229", default-features = false, features = ["derive", "alloc"] }
+serde_json = "=1.0.145"
+sha3 = { version = "=0.12.0", default-features = false }
+
+[[test]]
+name = "opening"
+path = "tests/opening.rs"
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+incremental = false

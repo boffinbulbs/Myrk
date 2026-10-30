@@ -496,3 +496,17 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/source-commitment/Cargo.toml --release --locked --offline --test roots --jobs 1 -- --test-threads=1
       - name: Check source commitment lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/source-commitment/Cargo.toml --release --lib --test roots --locked --offline -- -D warnings
+      - name: Check source opening formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/source-opening/Cargo.toml --all -- --check
+      - name: Fetch source opening dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-opening/Cargo.toml --locked
+      - name: Check source opening identities
+        run: python research/source-opening/static_check.py
+      - name: Check independent opening references
+        run: python research/source-opening/reference.py
+      - name: Test actual source opening compatibility
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-opening/Cargo.toml --release --locked --offline --test opening --jobs 1 -- --test-threads=1
+      - name: Compare fresh opening artifacts
+        run: python research/source-opening/reference.py --check-results
+      - name: Check source opening lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-opening/Cargo.toml --release --lib --test opening --locked --offline -- -D warnings
