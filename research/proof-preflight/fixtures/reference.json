@@ -1,0 +1,27 @@
+{
+  "format": "kova.proof-preflight.reference.v1",
+  "height": 256,
+  "width": 2,
+  "extension": 4,
+  "random_columns": 4,
+  "queries": 64,
+  "main_points": 2,
+  "auxiliary_points": 1,
+  "quotient_chunks": 8,
+  "batched_functions": 84,
+  "prepared_shape": [
+    512,
+    6
+  ],
+  "field_files": 11,
+  "field_bytes": 1290240,
+  "mask_minimum_heights": [
+    144,
+    136,
+    136
+  ],
+  "main_query_field_bytes": 1536,
+  "resource_plan_reserves_storage": false,
+  "serialized_transport_bound_established": false,
+  "backend_proofs": 0
+}

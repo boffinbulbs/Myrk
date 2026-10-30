@@ -448,3 +448,15 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/signature-storage/Cargo.toml --release --locked --offline --lib --jobs 1 -- --test-threads=1
       - name: Check signature storage lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-storage/Cargo.toml --release --all-targets --locked --offline -- -D warnings
+      - name: Check proof preflight formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/proof-preflight/Cargo.toml --all -- --check
+      - name: Fetch proof preflight dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/proof-preflight/Cargo.toml --locked
+      - name: Check proof preflight source identities
+        run: python research/proof-preflight/static_check.py
+      - name: Check independent preflight resource record
+        run: python research/proof-preflight/reference.py
+      - name: Test proof resource preflight
+        run: rustup run 1.94.1 cargo test --manifest-path research/proof-preflight/Cargo.toml --release --locked --offline --test preflight --jobs 1 -- --test-threads=1
+      - name: Check selected preflight lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/proof-preflight/Cargo.toml --release --lib --test preflight --locked --offline -- -D warnings

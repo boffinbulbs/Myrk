@@ -1,0 +1,47 @@
+{
+  "format": "kova.proof-preflight.validation.v1",
+  "scope": "Pure retained masking arithmetic and prospective small resource accounting, not a proof profile security certificate.",
+  "compiler": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "integration_tests_passed": 4,
+  "backend_proofs": 0,
+  "commitment_calls": 0,
+  "native_traces": 0,
+  "wide_symbolic_evaluations": 0,
+  "preflight_rng_draws_observed": 0,
+  "field_files_created": 0,
+  "serialized_compatibility_tested": false,
+  "storage_reserved": false,
+  "transcript_profile_bound": false,
+  "complete_transport_bound": false,
+  "production_security_claim": false,
+  "trusted_reviewed_air_required": true,
+  "relation_type_name_informational": true,
+  "original_backend_unchanged": true,
+  "inherited_library_tests_selected": false,
+  "original_unsafe_matrix_trait_signatures_retained": true,
+  "new_preflight_code_forbids_unsafe": true,
+  "retained_license_whitespace_exception": "LICENSE-APACHE terminal blank line retained byte identical",
+  "lint_scope": "cargo clippy --release --lib --test preflight -- -D warnings",
+  "inherited_lint_exception": "clippy::nonminimal_bool on source pinned hiding module",
+  "provenance": {
+    "bytes": 6721,
+    "sha256": "d53d3d4a865fae1ddd5747b67561ba212293476bcd2df3f6e181ebcbd8309793"
+  },
+  "executable": {
+    "bytes": 857600,
+    "sha256": "37da47b5a148c981a4053b9092563ff4b75c496e5c3bab6a0c541b574d28d53e"
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 10506207232,
+    "peak_process_commit_bytes": 1294336,
+    "peak_job_commit_bytes": 2248704,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "test_counts_verified": true
+  }
+}
