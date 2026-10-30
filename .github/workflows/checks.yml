@@ -691,3 +691,15 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-forward-source/Cargo.toml --release --lib --locked --offline -- -D warnings
       - name: Check owned forward control lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-forward-source/Cargo.toml --release --features forward-controls --lib --test forward --locked --offline -- -D warnings
+      - name: Check matrix hash source formatting
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-matrix-source/src/lib.rs research/signature-matrix-source/src/build.rs research/signature-matrix-source/src/matrix_overlay.rs research/signature-matrix-source/src/matrix_source.rs research/signature-matrix-source/src/matrix_reference.rs research/signature-matrix-source/src/matrix_controls.rs research/signature-matrix-source/tests/matrix.rs
+      - name: Fetch matrix hash source dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-matrix-source/Cargo.toml --locked
+      - name: Check matrix hash source records
+        run: python -I -S research/signature-matrix-source/static_check.py
+      - name: Compile matrix hash source controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-matrix-source/Cargo.toml --release --features matrix-controls --test matrix --locked --offline --no-run --jobs 1
+      - name: Check matrix hash default lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-matrix-source/Cargo.toml --release --lib --locked --offline -- -D warnings
+      - name: Check matrix hash control lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-matrix-source/Cargo.toml --release --features matrix-controls --lib --test matrix --locked --offline -- -D warnings

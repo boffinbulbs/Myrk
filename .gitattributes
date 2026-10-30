@@ -8,3 +8,5 @@ research/signature-packed/adaptation.patch whitespace=-blank-at-eol
 research/signature-sample-source/sample-adaptation.patch whitespace=-blank-at-eol
 research/signature-forward-source/forward-extraction.patch whitespace=-blank-at-eol
 research/signature-forward-source/reference-adaptation.patch whitespace=-blank-at-eol
+research/signature-matrix-source/matrix-extraction.patch whitespace=-blank-at-eol
+research/signature-matrix-source/reference-adaptation.patch whitespace=-blank-at-eol

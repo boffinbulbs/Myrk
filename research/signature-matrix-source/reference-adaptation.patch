@@ -1,0 +1,211 @@
+--- retained/sponge-matrix-hash-and-fill_xof
++++ src/matrix_reference.rs
+@@ -1,80 +1,145 @@
+-fn row_message(hash: Hash, row: &[BabyBear]) -> [u8; 168] {
+-    core::array::from_fn(|byte| match fp::message(hash, byte) {
+-        Byte::Fixed(v) => v,
+-        Byte::Rho(i) => row[RHO + i].as_canonical_u32() as u8,
+-        Byte::Mu(i) => row[MU + i].as_canonical_u32() as u8,
+-        Byte::W1(i) => row[W1 + i].as_canonical_u32() as u8,
+-        Byte::Initial(_) => {
+-            unreachable!("Only matrix and final intervals are written by this pass")
+-        }
+-    })
++//! Explicit six row adaptation of matrix permutation and squeeze passes.
++use super::{bits, copy_rounds, matrix_overlay::MatrixGeneration, permutation, state_after};
++use crate::{
++    full_program::{self as fp, Byte, Hash},
++    layout::*,
++};
++use core::borrow::Borrow;
++use p3_baby_bear::BabyBear;
++use p3_field::{PrimeCharacteristicRing, PrimeField32};
++use p3_keccak_air::KeccakCols;
++use p3_matrix::Matrix;
++#[derive(Debug)]
++pub(crate) enum ReferenceError {
++    Sequence,
++    Exhausted,
+ }
+-fn fill_permutation(values: &mut [BabyBear], start: usize, hash: Hash, state: &mut [u64; 25]) {
+-    let message = row_message(hash, &values[start * WIDTH..(start + 1) * WIDTH]);
+-    let rate = fp::rate(hash);
+-    if fp::fresh(hash) {
+-        *state = [0; 25];
+-    }
+-    for lane in 0..rate / 8 {
+-        state[lane] ^= u64::from_le_bytes(message[8 * lane..8 * (lane + 1)].try_into().unwrap());
+-    }
+-    let logical = build::permutation(*state);
+-    for local in 0..6 {
+-        let row = &mut values[(start + local) * WIDTH..(start + local + 1) * WIDTH];
+-        build::copy_rounds(row, &logical, 4 * local);
+-        for (byte, v) in message.iter().enumerate() {
+-            build::bits(row, MESSAGE + 8 * byte, u32::from(*v), 8);
+-        }
+-        let round = logical.row_slice(4 * local + 3).unwrap();
+-        let k: &KeccakCols<BabyBear> = (*round).borrow();
+-        for limb in 0..84 {
+-            let v = if limb < rate / 2 {
+-                k.a_prime_prime_prime(limb / 20, (limb / 4) % 5, limb % 4)
+-                    .as_canonical_u32()
+-            } else {
+-                0
+-            };
+-            build::bits(row, OUTPUT + 16 * limb, v, 16);
++pub(crate) struct MatrixReference {
++    rho: [u8; 32],
++    state: [u64; 25],
++    bank: [u8; 1008],
++    values: Vec<BabyBear>,
++    next_global: usize,
++    start: Option<usize>,
++    count: usize,
++    generation: MatrixGeneration,
++}
++impl MatrixReference {
++    pub(crate) fn new(rho: [u8; 32]) -> Self {
++        Self {
++            rho,
++            state: [0; 25],
++            bank: [0; 1008],
++            values: vec![BabyBear::ZERO; 6 * WIDTH],
++            next_global: 0,
++            start: None,
++            count: 0,
++            generation: MatrixGeneration::default(),
+         }
+     }
+-    *state = build::state_after(&logical);
+-    drop(logical);
+-}
+-pub(crate) fn fill_matrix(values: &mut [BabyBear]) {
+-    let mut state = [0u64; 25];
+-    for j in 0..7 {
+-        for i in 0..8 {
+-            for block in 0..6 {
+-                fill_permutation(
+-                    values,
+-                    fp::matrix_start(i, j) + 6 * block,
+-                    Hash::Matrix {
+-                        row: i,
+-                        column: j,
+-                        block,
+-                    },
+-                    &mut state,
+-                );
+-            }
+-        }
++    pub(crate) fn generation(&self) -> MatrixGeneration {
++        self.generation
+     }
+-}
+-
+-pub(crate) fn fill_xof(values: &mut [BabyBear]) {
+-    let mut bank = [0u8; 1008];
+-    for (at, row) in values.chunks_exact_mut(WIDTH).enumerate() {
++    pub(crate) fn prepared(&self) -> usize {
++        self.next_global
++    }
++    pub(crate) fn pristine(&self) -> bool {
++        self.next_global == 0
++            && self.start.is_none()
++            && self.count == 0
++            && self.state == [0; 25]
++            && self.bank == [0; 1008]
++            && self.values.iter().all(|x| *x == BabyBear::ZERO)
++            && self.generation == MatrixGeneration::default()
++    }
++    fn bank_row(bank: &mut [u8; 1008], at: usize, row: &mut [BabyBear]) {
+         for (i, v) in bank.iter().enumerate() {
+             row[MATRIX_XOF + i] = BabyBear::from_u8(*v);
+         }
+         if let Some((_, _, local)) = fp::matrix(at) {
+             if local < 36 && local % 6 == 5 {
+                 for byte in 0..168 {
+-                    bank[(local / 6) * 168 + byte] = read_bits(row, OUTPUT + 8 * byte, 8) as u8;
++                    let value: u32 = (0..8)
++                        .map(|b| row[OUTPUT + 8 * byte + b].as_canonical_u32() << b)
++                        .sum();
++                    bank[(local / 6) * 168 + byte] = value as u8;
+                 }
+             }
+             if local == 47 {
+-                bank = [0; 1008];
++                *bank = [0; 1008];
+             }
+         }
+     }
++    pub(crate) fn prepare(&mut self, start: usize) -> Result<(), ReferenceError> {
++        if self.next_global == HEIGHT {
++            return Err(ReferenceError::Exhausted);
++        }
++        if start != self.next_global || !start.is_multiple_of(6) {
++            return Err(ReferenceError::Sequence);
++        }
++        self.values.fill(BabyBear::ZERO);
++        let count = (HEIGHT - start).min(6);
++        if let Some((i, j, local)) = fp::matrix(start).filter(|(_, _, local)| *local < 36) {
++            assert_eq!(count, 6);
++            let hash = Hash::Matrix {
++                row: i,
++                column: j,
++                block: local / 6,
++            };
++            let message: [u8; 168] = core::array::from_fn(|byte| match fp::message(hash, byte) {
++                Byte::Fixed(v) => v,
++                Byte::Rho(k) => self.rho[k],
++                _ => unreachable!("matrix reference scope"),
++            });
++            let rate = fp::rate(hash);
++            if fp::fresh(hash) {
++                self.state = [0; 25];
++            }
++            for lane in 0..rate / 8 {
++                self.state[lane] ^=
++                    u64::from_le_bytes(message[8 * lane..8 * (lane + 1)].try_into().unwrap());
++            }
++            self.generation.attempted += 1;
++            let logical = permutation(self.state);
++            self.generation.completed += 1;
++            self.generation.maximum_live = 1;
++            for local in 0..6 {
++                let row = &mut self.values[local * WIDTH..(local + 1) * WIDTH];
++                copy_rounds(row, &logical, 4 * local);
++                for (byte, v) in message.iter().enumerate() {
++                    bits(row, MESSAGE + 8 * byte, u32::from(*v), 8);
++                }
++                {
++                    let round = logical.row_slice(4 * local + 3).unwrap();
++                    let k: &KeccakCols<BabyBear> = (*round).borrow();
++                    for limb in 0..84 {
++                        let v = if limb < rate / 2 {
++                            k.a_prime_prime_prime(limb / 20, (limb / 4) % 5, limb % 4)
++                                .as_canonical_u32()
++                        } else {
++                            0
++                        };
++                        bits(row, OUTPUT + 16 * limb, v, 16);
++                    }
++                }
++                Self::bank_row(&mut self.bank, start + local, row);
++            }
++            self.state = state_after(&logical);
++            drop(logical);
++        } else {
++            for local in 0..count {
++                let row = &mut self.values[local * WIDTH..(local + 1) * WIDTH];
++                Self::bank_row(&mut self.bank, start + local, row);
++            }
++        }
++        self.start = Some(start);
++        self.count = count;
++        self.next_global += count;
++        Ok(())
++    }
++    pub(crate) fn row(&self, at: usize) -> &[BabyBear] {
++        let start = self.start.unwrap();
++        assert!((start..start + self.count).contains(&at));
++        &self.values[(at - start) * WIDTH..(at - start + 1) * WIDTH]
++    }
+ }

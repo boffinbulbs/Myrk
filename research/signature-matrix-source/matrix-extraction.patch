@@ -1,0 +1,201 @@
+--- retained/sponge-matrix-hash-and-fill_xof
++++ src/matrix_overlay.rs
+@@ -1,80 +1,130 @@
+-fn row_message(hash: Hash, row: &[BabyBear]) -> [u8; 168] {
+-    core::array::from_fn(|byte| match fp::message(hash, byte) {
+-        Byte::Fixed(v) => v,
+-        Byte::Rho(i) => row[RHO + i].as_canonical_u32() as u8,
+-        Byte::Mu(i) => row[MU + i].as_canonical_u32() as u8,
+-        Byte::W1(i) => row[W1 + i].as_canonical_u32() as u8,
+-        Byte::Initial(_) => {
+-            unreachable!("Only matrix and final intervals are written by this pass")
+-        }
+-    })
++//! Private matrix hash and squeeze overlay over the same current source row.
++use super::{absorb, bits, copy_rounds, permutation, state_after};
++use crate::{
++    full_program::{self as fp, Byte, Hash},
++    layout::*,
++};
++use core::borrow::Borrow;
++use p3_baby_bear::BabyBear;
++use p3_field::{PrimeCharacteristicRing, PrimeField32};
++use p3_keccak_air::KeccakCols;
++use p3_matrix::{dense::RowMajorMatrix, Matrix};
++
++#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
++pub(crate) struct MatrixGeneration {
++    pub attempted: usize,
++    pub completed: usize,
++    pub maximum_live: usize,
+ }
+-fn fill_permutation(values: &mut [BabyBear], start: usize, hash: Hash, state: &mut [u64; 25]) {
+-    let message = row_message(hash, &values[start * WIDTH..(start + 1) * WIDTH]);
+-    let rate = fp::rate(hash);
+-    if fp::fresh(hash) {
+-        *state = [0; 25];
+-    }
+-    for lane in 0..rate / 8 {
+-        state[lane] ^= u64::from_le_bytes(message[8 * lane..8 * (lane + 1)].try_into().unwrap());
+-    }
+-    let logical = build::permutation(*state);
+-    for local in 0..6 {
+-        let row = &mut values[(start + local) * WIDTH..(start + local + 1) * WIDTH];
+-        build::copy_rounds(row, &logical, 4 * local);
+-        for (byte, v) in message.iter().enumerate() {
+-            build::bits(row, MESSAGE + 8 * byte, u32::from(*v), 8);
+-        }
+-        let round = logical.row_slice(4 * local + 3).unwrap();
+-        let k: &KeccakCols<BabyBear> = (*round).borrow();
+-        for limb in 0..84 {
+-            let v = if limb < rate / 2 {
+-                k.a_prime_prime_prime(limb / 20, (limb / 4) % 5, limb % 4)
+-                    .as_canonical_u32()
+-            } else {
+-                0
+-            };
+-            build::bits(row, OUTPUT + 16 * limb, v, 16);
++#[derive(Debug)]
++pub(crate) enum MatrixError {
++    RowShape,
++    Exhausted,
++    Incomplete,
++}
++pub(crate) struct MatrixOverlay {
++    next_row: usize,
++    state: [u64; 25],
++    input: [u8; 168],
++    bank: [u8; 1008],
++    logical: Option<RowMajorMatrix<BabyBear>>,
++    generation: MatrixGeneration,
++}
++impl MatrixOverlay {
++    pub(crate) fn new() -> Self {
++        Self {
++            next_row: 0,
++            state: [0; 25],
++            input: [0; 168],
++            bank: [0; 1008],
++            logical: None,
++            generation: MatrixGeneration::default(),
+         }
+     }
+-    *state = build::state_after(&logical);
+-    drop(logical);
+-}
+-pub(crate) fn fill_matrix(values: &mut [BabyBear]) {
+-    let mut state = [0u64; 25];
+-    for j in 0..7 {
+-        for i in 0..8 {
+-            for block in 0..6 {
+-                fill_permutation(
+-                    values,
+-                    fp::matrix_start(i, j) + 6 * block,
+-                    Hash::Matrix {
++    pub(crate) fn generation(&self) -> MatrixGeneration {
++        self.generation
++    }
++    pub(crate) fn emit_next(&mut self, row: &mut [BabyBear]) -> Result<usize, MatrixError> {
++        if row.len() != WIDTH {
++            return Err(MatrixError::RowShape);
++        }
++        if self.next_row == HEIGHT {
++            return Err(MatrixError::Exhausted);
++        }
++        let at = self.next_row;
++        // Current bank is visible before a terminal output is latched.
++        for (i, &byte) in self.bank.iter().enumerate() {
++            row[MATRIX_XOF + i] = BabyBear::from_u8(byte);
++        }
++        if let Some((i, j, local)) = fp::matrix(at) {
++            if local < 36 {
++                if local.is_multiple_of(6) {
++                    assert!(self.logical.is_none());
++                    let hash = Hash::Matrix {
+                         row: i,
+                         column: j,
+-                        block,
+-                    },
+-                    &mut state,
+-                );
+-            }
+-        }
+-    }
+-}
+-
+-pub(crate) fn fill_xof(values: &mut [BabyBear]) {
+-    let mut bank = [0u8; 1008];
+-    for (at, row) in values.chunks_exact_mut(WIDTH).enumerate() {
+-        for (i, v) in bank.iter().enumerate() {
+-            row[MATRIX_XOF + i] = BabyBear::from_u8(*v);
+-        }
+-        if let Some((_, _, local)) = fp::matrix(at) {
+-            if local < 36 && local % 6 == 5 {
+-                for byte in 0..168 {
+-                    bank[(local / 6) * 168 + byte] = read_bits(row, OUTPUT + 8 * byte, 8) as u8;
++                        block: local / 6,
++                    };
++                    if fp::fresh(hash) {
++                        self.state = [0; 25];
++                    }
++                    self.input = core::array::from_fn(|byte| match fp::message(hash, byte) {
++                        Byte::Fixed(v) => v,
++                        Byte::Rho(k) => row[RHO + k]
++                            .as_canonical_u32()
++                            .try_into()
++                            .expect("current RHO byte"),
++                        _ => {
++                            unreachable!("Matrix scope accepts fixed and current RHO sources only")
++                        }
++                    });
++                    absorb(&mut self.state, &self.input, fp::rate(hash));
++                    self.generation.attempted += 1;
++                    self.logical = Some(permutation(self.state));
++                    self.generation.completed += 1;
++                    self.generation.maximum_live = 1;
++                }
++                let logical = self.logical.as_ref().unwrap();
++                // Replace only matrix hash columns, preserving all source banks.
++                row[..CLOCK].fill(BabyBear::ZERO);
++                row[MESSAGE..RHO].fill(BabyBear::ZERO);
++                copy_rounds(row, logical, 4 * (local % 6));
++                for (byte, &value) in self.input.iter().enumerate() {
++                    bits(row, MESSAGE + 8 * byte, u32::from(value), 8);
++                }
++                {
++                    let round = logical.row_slice(4 * (local % 6) + 3).unwrap();
++                    let k: &KeccakCols<BabyBear> = (*round).borrow();
++                    for limb in 0..84 {
++                        let word = k
++                            .a_prime_prime_prime(limb / 20, (limb / 4) % 5, limb % 4)
++                            .as_canonical_u32();
++                        bits(row, OUTPUT + 16 * limb, word, 16);
++                    }
++                }
++                if local % 6 == 5 {
++                    self.state = state_after(logical);
++                    drop(self.logical.take());
++                    for byte in 0..168 {
++                        let value: u32 = (0..8)
++                            .map(|b| row[OUTPUT + 8 * byte + b].as_canonical_u32() << b)
++                            .sum();
++                        self.bank[(local / 6) * 168 + byte] =
++                            value.try_into().expect("current OUTPUT byte");
++                    }
+                 }
+             }
+             if local == 47 {
+-                bank = [0; 1008];
++                self.bank = [0; 1008];
+             }
+         }
++        self.next_row += 1;
++        Ok(at)
++    }
++    pub(crate) fn finish(&self) -> Result<(), MatrixError> {
++        if self.next_row != HEIGHT || self.logical.is_some() || self.generation.completed != 336 {
++            return Err(MatrixError::Incomplete);
++        }
++        Ok(())
+     }
+ }

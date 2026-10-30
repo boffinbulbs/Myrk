@@ -1,0 +1,53 @@
+{
+  "format": "kova.signature-matrix-source.adaptation.v1",
+  "base_revision": "f7b357a78865d1c7257afc213106eeabf0151e56",
+  "owner_origin": "research/signature-forward-source/src/lib.rs",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "owner_delta": "Matrix source documentation, diagnostic feature and module identity",
+  "old_opaque_conversion": false,
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "private_children_added": 9,
+  "hash_origin": "research/signature-packed/src/sponge.rs::row_message/fill_permutation/fill_matrix",
+  "bank_origin": "research/signature-storage/src/matrix.rs::fill_xof",
+  "candidate_diff": "matrix-extraction.patch",
+  "reference_diff": "reference-adaptation.patch",
+  "candidate_delta": "Private row cursor/cache; actual current RHO; matrix-only dispatch; exact sparse overlay mask; pre-update bank; checked byte conversions",
+  "reference_delta": "Explicit six row destination/global cursor and independently held rho/state/bank; original matrix equations; final partial window",
+  "reference_unchanged_full_writer": false,
+  "reference_window_rows": 6,
+  "hash_owned_ranges": [
+    [
+      0,
+      10532
+    ],
+    [
+      16271,
+      18959
+    ]
+  ],
+  "bank_owned_range": [
+    32796,
+    33804
+  ],
+  "hash_rows_per_stream": 36,
+  "stream_rows": 48,
+  "streams": 56,
+  "blocks_per_stream": 6,
+  "candidate_initial_generator_calls": 70,
+  "candidate_matrix_generator_calls": 336,
+  "reference_matrix_generator_calls": 336,
+  "candidate_caches_during_matrix": 2,
+  "candidate_unified_hash_cache": false,
+  "reference_cache_dropped_before_return": true,
+  "capacity_preflight_executed": false,
+  "native_execution_enabled": false,
+  "complete_row_source_implemented": false,
+  "matrix_sampler_implemented": false,
+  "final_hash_implemented": false
+}
