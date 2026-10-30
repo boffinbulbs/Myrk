@@ -128,6 +128,8 @@ The [remaining packed native corpus](research/signature-packed-corpus/README.md)
 
 The [consistent virtual padding controls](research/signature-packed-padding/README.md) alter the held signature and note tails together with every matching read port. Each of four controls fails only its intended padding rule on all 8,192 global frames, and all restored witnesses pass. The run records 73,728 frame evaluations on one complete trace. Full equivalence, hiding signature proofs and private payment integration remain separate work.
 
+The [fixed signature proof boundary](research/signature-proof-contract/README.md) owns the actual private witness and immutable canonical transaction, deriving public authorization values through the retained mapper. Three nonproving test groups cover exact public reference vectors, canonical limit errors and the actual packed relation resource refusal without observed RNG or storage effects. A complete streamed producer, hiding proof and same witness ledger joins remain unfinished.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

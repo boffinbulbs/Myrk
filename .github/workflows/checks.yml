@@ -633,3 +633,13 @@ jobs:
         run: rustup run 1.94.1 cargo test --manifest-path research/signature-packed-padding/Cargo.toml --release --locked --offline --test padding --no-run --jobs 1
       - name: Check consistent padding lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-packed-padding/Cargo.toml --release --test padding --locked --offline -- -D warnings
+      - name: Check fixed signature boundary formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-proof-contract/Cargo.toml --all -- --check
+      - name: Fetch fixed signature boundary dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-proof-contract/Cargo.toml --locked
+      - name: Check fixed signature boundary records
+        run: python research/signature-proof-contract/static_check.py
+      - name: Compile fixed signature boundary controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-proof-contract/Cargo.toml --release --locked --offline --test contract --no-run --jobs 1
+      - name: Check fixed signature boundary lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-proof-contract/Cargo.toml --release --lib --test contract --locked --offline -- -D warnings

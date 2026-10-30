@@ -1,0 +1,34 @@
+{
+  "format": "kova.signature-proof-contract.validation.v1",
+  "integration_tests_passed": 3,
+  "observation_records": 6,
+  "canonical_public_records_compared": 2,
+  "canonical_limit_errors": 2,
+  "actual_fixed_air_resource_refusals": 2,
+  "observed_continuing_rng_calls": 0,
+  "observed_storage_hooks": 0,
+  "observed_store_clones": 0,
+  "backend_proofs": 0,
+  "native_traces": 0,
+  "symbolic_air_evaluations": 0,
+  "zero_operation_scope": "RNG, storage hooks and store clones are observed. Other excluded operations follow from the reviewed real planner call reach.",
+  "complete_profile_validated": false,
+  "private_payment_verified": false,
+  "private_encoding_validated": false,
+  "streamed_packed_producer_implemented": false,
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 11134541824,
+    "timeout_seconds": 120,
+    "readback_flags": 8960,
+    "peak_job_commit_bytes": 2265088,
+    "peak_process_private_commit_bytes": 1302528,
+    "test_counts_verified": true
+  },
+  "provenance": {
+    "bytes": 50667,
+    "sha256": "5c28b10cf2e13a41aa660410448ae33f13fb40e529a6074318ccf60a0b3f5a32"
+  }
+}

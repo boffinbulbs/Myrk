@@ -1,0 +1,6 @@
+{"after":[0,0,0],"before":[0,0,0],"kind":"resource_refusal","queries":64,"result":"Err(Resource(RawWidth))"}
+{"after":[0,0,0],"before":[0,0,0],"kind":"resource_refusal","queries":1,"result":"Err(Resource(RawWidth))"}
+{"canonical_bytes":3774,"canonical_equal":true,"kind":"public_binding","public_equal":true,"public_values":196,"transaction":"T0","unchanged_after_external_mutation":true}
+{"canonical_bytes":3774,"canonical_equal":true,"kind":"public_binding","public_equal":true,"public_values":196,"transaction":"T1","unchanged_after_external_mutation":true}
+{"case":"empty_inputs","error":"Some(LimitExceeded)","kind":"canonical_refusal"}
+{"case":"empty_outputs","error":"Some(LimitExceeded)","kind":"canonical_refusal"}
