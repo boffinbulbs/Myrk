@@ -524,3 +524,17 @@ jobs:
         run: python research/source-composition/reference.py --check-results
       - name: Check composite storage lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/source-composition/Cargo.toml --release --lib --test construction --locked --offline -- -D warnings
+      - name: Check owned computation formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/source-stark/Cargo.toml --all -- --check
+      - name: Fetch owned computation dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-stark/Cargo.toml --locked
+      - name: Check owned computation identities
+        run: python research/source-stark/static_check.py
+      - name: Check independent whole proof records
+        run: python research/source-stark/reference.py
+      - name: Test complete owned computation proofs
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-stark/Cargo.toml --release --locked --offline --test complete --jobs 1 -- --test-threads=1
+      - name: Compare fresh whole proof artifacts
+        run: python research/source-stark/reference.py --check-results
+      - name: Check owned computation lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-stark/Cargo.toml --release --lib --test complete --locked --offline -- -D warnings

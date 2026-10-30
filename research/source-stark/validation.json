@@ -1,0 +1,60 @@
+{
+  "format": "kova.source-stark.validation.v1",
+  "provenance": {
+    "bytes": 17120,
+    "sha256": "88fc9c49043c6a5eb8da15681cdf3452218fd3a9500a3b413d9af1f0f226e491"
+  },
+  "test_groups_passed": 2,
+  "whole_stark_proofs": 2,
+  "retained_verifier_accepts": 2,
+  "input_mmcs_commits": 6,
+  "fri_mmcs_commits": 18,
+  "input_multi_open_calls": 6,
+  "fri_multi_open_calls": 18,
+  "scalar_open_calls": 0,
+  "false_air_proofs": 0,
+  "native_signature_traces": 0,
+  "wide_symbolic_evaluations": 0,
+  "degree_bits": 9,
+  "encoded_proof_bytes": 596650,
+  "leaf_digest_bytes": 1048064,
+  "independent_merkle_roots": 12,
+  "reserved_files_per_owner": 12,
+  "reserved_bytes_per_owner": 1292288,
+  "same_complete_proof_bytes": true,
+  "whole_prover_entry_implemented": true,
+  "full_signature_proof_implemented": false,
+  "full_payment_implemented": false,
+  "other_file_fault_branches_executed": false,
+  "production_security_claim": false,
+  "executed_test_executable": {
+    "bytes": 2203136,
+    "sha256": "e3d0544b4b5bf913122de38e763244d202c53f51a6f16f98c0a1c2ac406f9fe3"
+  },
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows-11-10.0.26300-SP0",
+    "toolchain": "Rust 1.94.1",
+    "profile": "release serial",
+    "selected_test_seconds": 0.63
+  },
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 10834489344,
+    "timeout_seconds": 120,
+    "readback_verified": true,
+    "test_counts_verified": true,
+    "peak_process_commit_bytes": 31506432,
+    "peak_job_commit_bytes": 32796672
+  },
+  "limitations": [
+    "False AIR proof production and rejection not executed",
+    "Other dense temporary matrices are not streamed",
+    "Partial other-file/orphan/DFT/poison/concurrency fault branches were not executed",
+    "Leaf digests reconstruct nodes and roots, not salted leaf preimages",
+    "Small fixed quartic relation only, not full signature or private payment",
+    "No quantum, knowledge or production security claim"
+  ]
+}

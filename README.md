@@ -110,6 +110,8 @@ The [source opening laboratory](research/source-opening/README.md) completes tha
 
 The [composite storage laboratory](research/source-composition/README.md) places main, eight quotient and auxiliary matrices under one owned file policy and one associated prover data family. Six actual input commitments compare the new and retained dense paths, including roots, fields and continuing entropy. Whole attempt reservations remain fixed after failure. This construction comparison does not derive an AIR quotient or construct a complete computation proof.
 
+The [owned computation laboratory](research/source-stark/README.md) connects that storage to the real quotient evaluator and one original batched opening for a complete fixed quartic proof. Owned and freshly constructed retained proofs have identical complete bytes and pass the retained full verifier. Independent checks reconstruct twelve roots from actual leaf digests. Canonical false witness rejection and the full private signature and payment relations remain separate gates.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

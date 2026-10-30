@@ -1,0 +1,140 @@
+{
+  "autocfg/1.5.1": [],
+  "cfg-if/1.0.5": [],
+  "chacha20/0.10.2": [
+    "rng"
+  ],
+  "cpufeatures/0.3.1": [],
+  "crunchy/0.2.4": [
+    "default",
+    "limit_128"
+  ],
+  "crypto-common/0.2.2": [],
+  "digest/0.11.3": [],
+  "either/1.19.0": [],
+  "hybrid-array/0.4.15": [],
+  "itertools/0.15.0": [
+    "use_alloc"
+  ],
+  "itoa/1.0.18": [],
+  "keccak/0.2.2": [],
+  "libc/0.2.191": [],
+  "libm/0.2.16": [
+    "arch",
+    "default"
+  ],
+  "lock_api/0.4.14": [
+    "atomic_usize",
+    "default"
+  ],
+  "memchr/2.8.3": [
+    "alloc",
+    "std"
+  ],
+  "num-bigint/0.5.1": [],
+  "num-integer/0.1.47": [
+    "i128"
+  ],
+  "num-traits/0.2.19": [
+    "i128"
+  ],
+  "p3-air/0.8.0": [],
+  "p3-baby-bear/0.8.0": [],
+  "p3-challenger/0.8.0": [],
+  "p3-commit/0.8.0": [
+    "default"
+  ],
+  "p3-dft/0.8.0": [],
+  "p3-field/0.8.0": [],
+  "p3-fri/0.8.0": [],
+  "p3-keccak/0.8.0": [],
+  "p3-matrix/0.8.0": [],
+  "p3-maybe-rayon/0.8.0": [],
+  "p3-mds/0.8.0": [],
+  "p3-merkle-tree/0.8.0": [],
+  "p3-monty-31/0.8.0": [],
+  "p3-poseidon1/0.8.0": [],
+  "p3-poseidon2/0.8.0": [],
+  "p3-security/0.8.0": [],
+  "p3-symmetric/0.8.0": [],
+  "p3-uni-stark/0.8.0": [],
+  "p3-util/0.8.0": [],
+  "paste/1.0.15": [],
+  "pin-project-lite/0.2.17": [],
+  "proc-macro2/1.0.107": [
+    "default",
+    "proc-macro"
+  ],
+  "quote/1.0.47": [
+    "default",
+    "proc-macro"
+  ],
+  "rand/0.10.3": [
+    "std_rng"
+  ],
+  "rand_core/0.10.1": [],
+  "ryu/1.0.23": [],
+  "scopeguard/1.2.0": [],
+  "serde/1.0.229": [
+    "alloc",
+    "derive",
+    "serde_derive"
+  ],
+  "serde_core/1.0.229": [
+    "alloc",
+    "result",
+    "std"
+  ],
+  "serde_derive/1.0.229": [
+    "default"
+  ],
+  "serde_json/1.0.145": [
+    "default",
+    "std"
+  ],
+  "sha3/0.12.0": [],
+  "spin/0.12.3": [
+    "barrier",
+    "default",
+    "lazylock",
+    "lock_api",
+    "mutex",
+    "once",
+    "rwlock",
+    "spin_mutex"
+  ],
+  "sponge-cursor/0.1.0": [],
+  "syn/2.0.119": [
+    "clone-impls",
+    "extra-traits",
+    "full",
+    "parsing",
+    "printing",
+    "proc-macro",
+    "visit-mut"
+  ],
+  "syn/3.0.9": [
+    "clone-impls",
+    "default",
+    "derive",
+    "parsing",
+    "printing",
+    "proc-macro"
+  ],
+  "thiserror-impl/2.0.21": [],
+  "thiserror/2.0.21": [],
+  "tiny-keccak/2.0.2": [
+    "default",
+    "keccak"
+  ],
+  "tracing-attributes/0.1.31": [],
+  "tracing-core/0.1.36": [],
+  "tracing/0.1.44": [
+    "attributes",
+    "tracing-attributes"
+  ],
+  "typenum/1.20.1": [
+    "const-generics"
+  ],
+  "unicode-ident/1.0.27": []
+}
