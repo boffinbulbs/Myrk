@@ -1,0 +1,50 @@
+{
+  "format": "kova.signature-inverse-source.adaptation.v1",
+  "base_revision": "9d027ce7267455f1f31ba4ae3681d08106d692a0",
+  "owner_origin": "research/signature-accumulator-source/src/lib.rs",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "owner_delta": "Inverse source documentation, diagnostic feature and module identity",
+  "old_opaque_conversion": false,
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "private_children_added": 13,
+  "inverse_origin": "research/signature-storage/src/ntt.rs::fill_inverse",
+  "candidate_diff": "inverse-extraction.patch",
+  "reference_diff": "reference-adaptation.patch",
+  "reference_unchanged_full_writer": false,
+  "reference_window_rows": 1,
+  "owned_ranges": [
+    [
+      30100,
+      32796
+    ]
+  ],
+  "owned_from_row": 3522,
+  "candidate_inputs": "Actual same owner held forward scratch seeded at3522 before clearing, then current accumulator initializer tiles",
+  "reference_inputs": "Independent saved T1_7 seed and current-phase inverse input tile only",
+  "seed_events": 1,
+  "inverse_transforms": 8,
+  "partial_initializer_preserved": true,
+  "forward_output_banks_preserved": 9,
+  "held_tail_start": 5314,
+  "capacity_failure_timing": "Typed upstream failure propagates to terminal composite without rollback; source inspected without repeating the closed fault diagnostic",
+  "initial_generator_calls": 70,
+  "matrix_generator_calls": 336,
+  "reference_generator_calls": 0,
+  "source_inferred_candidate_forward_bodies": 16,
+  "source_inferred_candidate_inverse_bodies": 8,
+  "source_inferred_adapted_reference_inverse_bodies": 8,
+  "standalone_transform_oracle_calls": 0,
+  "candidate_caches_during_matrix": 2,
+  "capacity_preflight_executed": false,
+  "native_execution_enabled": false,
+  "complete_row_source_implemented": false,
+  "inverse_source_construction_implemented": true,
+  "hints_implemented": false,
+  "final_hash_implemented": false
+}

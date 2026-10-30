@@ -140,7 +140,9 @@ The [owned forward source](research/signature-forward-source/README.md) reads de
 
 The [matrix hash source](research/signature-matrix-source/README.md) extends the same owner with genuine matrix expansion and current squeeze bank timing. Sparse overlays preserve source and forward fields. Saved streams and a bounded original body adaptation check terminal chunks and intermediate construction. Coefficient sampling and accumulation are covered by the following source stage.
 
-The [accumulator source](research/signature-accumulator-source/README.md) consumes actual current matrix bytes and physical forward banks for rejection sampling, accumulation and point correction. Independent retained arithmetic vectors supplement a bounded reference, and typed capacity failure is terminal. Inverse and final phases, complete rows, hiding proofs and private ledger integration remain unfinished.
+The [accumulator source](research/signature-accumulator-source/README.md) consumes actual current matrix bytes and physical forward banks for rejection sampling, accumulation and point correction. Independent retained arithmetic vectors supplement a bounded reference, and typed capacity failure is terminal. Inverse construction is covered by the following source stage. Final phases, complete rows, hiding proofs and private ledger integration remain unfinished.
+
+The [inverse source](research/signature-inverse-source/README.md) reads actual accumulator tiles and held forward scratch within the same owner. Eleven saved state checkpoints per transform supplement the bounded reference across partial initialization, normalization and the held terminal state. Hint reconstruction, final challenge equality, complete rows, hiding proofs and private ledger integration remain unfinished.
 
 ## Native accounting and consensus targets
 

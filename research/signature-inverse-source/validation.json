@@ -1,0 +1,88 @@
+{
+  "format": "kova.signature-inverse-source.validation.v1",
+  "integration_tests_passed": 1,
+  "observation_records": 123,
+  "summary": {
+    "borrows": 4094,
+    "carries": 4060,
+    "comparator_controls": 6,
+    "held_tail_coefficients": 512,
+    "initial_generation": [
+      70,
+      70,
+      1
+    ],
+    "initializer_values": 2048,
+    "inverse_completions": 8,
+    "kind": "inverse_summary",
+    "matrix_generation": [
+      336,
+      336,
+      1
+    ],
+    "normalized_values": 2048,
+    "output_values": 2048,
+    "owned_comparisons": 12590320,
+    "partial_initializer_coefficients": 65536,
+    "point_overlap_rows": 64,
+    "prefix_preserved": [
+      293511168,
+      318788736,
+      227713024,
+      217997312
+    ],
+    "preserved_comparisons": 341107472,
+    "reference_hash_generations": 0,
+    "reference_rows": 8192,
+    "restored_controls": 6,
+    "rows": 8192,
+    "seed_events": 1,
+    "standalone_transform_oracle_calls": 0,
+    "state_checkpoints": 88,
+    "state_coefficients": 22528,
+    "trace_generator_calls": 406
+  },
+  "trace_generator_calls": 406,
+  "source_inferred_internal_round_traces": 812,
+  "source_inferred_forward_bodies": 16,
+  "source_inferred_inverse_bodies": {
+    "candidate": 8,
+    "adapted_reference": 8
+  },
+  "source_inferred_candidate_caches_during_matrix": 2,
+  "new_independent_references": 0,
+  "capacity_preflight_calls": 0,
+  "standalone_transform_oracle_calls": 0,
+  "complete_signature_traces": 0,
+  "air_evaluations": 0,
+  "backend_proofs": 0,
+  "pcs_calls": 0,
+  "complete_row_source_implemented": false,
+  "inverse_source_construction_implemented": true,
+  "hints_implemented": false,
+  "final_hash_implemented": false,
+  "private_payment_verified": false,
+  "full_security_profile_validated": false,
+  "upstream_capacity_fault_reexecuted": false,
+  "scope": "One actual same-source inverse construction walk, an explicit adapted inverse-body reference and saved independent states. Comparator faults are equality calibration. Upstream typed capacity propagation is source inspected, without repeating the closed fault execution. Public transaction preprocessing executes outside generator counts.",
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 11147468800,
+    "timeout_seconds": 120,
+    "readback_flags": 8960,
+    "peak_job_commit_bytes": 6057984,
+    "peak_process_private_commit_bytes": 4771840,
+    "test_counts_verified": true,
+    "exit_code": 0,
+    "hard_limit_installed": true,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "working_guard_terminated": false
+  },
+  "provenance": {
+    "bytes": 60966,
+    "sha256": "9284127b4c6d91543dac55507aeadbd714c7381f1d2102e1864d8a7ea8f31a11"
+  }
+}

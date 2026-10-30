@@ -715,3 +715,15 @@ jobs:
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-accumulator-source/Cargo.toml --release --lib --locked --offline -- -D warnings
       - name: Check accumulator control lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-accumulator-source/Cargo.toml --release --features accumulator-controls --lib --test accumulator --locked --offline -- -D warnings
+      - name: Check inverse source formatting
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-inverse-source/src/lib.rs research/signature-inverse-source/src/build.rs research/signature-inverse-source/src/inverse_state.rs research/signature-inverse-source/src/inverse_source.rs research/signature-inverse-source/src/inverse_reference.rs research/signature-inverse-source/src/inverse_controls.rs research/signature-inverse-source/tests/inverse.rs
+      - name: Fetch inverse source dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-inverse-source/Cargo.toml --locked
+      - name: Check inverse source records
+        run: python -I -S research/signature-inverse-source/static_check.py
+      - name: Compile inverse source controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-inverse-source/Cargo.toml --release --features inverse-controls --test inverse --locked --offline --no-run --jobs 1
+      - name: Check inverse default lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-inverse-source/Cargo.toml --release --lib --locked --offline -- -D warnings
+      - name: Check inverse control lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-inverse-source/Cargo.toml --release --features inverse-controls --lib --test inverse --locked --offline -- -D warnings
