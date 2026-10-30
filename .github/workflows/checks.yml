@@ -555,3 +555,19 @@ jobs:
         run: python research/source-stark-false/reference.py --check-results
       - name: Check invalid witness lints
         run: rustup run 1.94.1 cargo clippy --manifest-path research/source-stark-false/Cargo.toml --release --lib --test false_witness --locked --offline -- -D warnings
+      - name: Check packed source formatting
+        run: rustup run 1.94.1 cargo fmt --manifest-path research/source-packing/Cargo.toml --all -- --check
+      - name: Fetch packed source dependencies
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-packing/Cargo.toml --locked
+      - name: Check packed source identities
+        run: python research/source-packing/static_check.py
+      - name: Check independent packed source vectors
+        run: python research/source-packing/reference.py
+      - name: Test packed source symbolic shape
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-packing/Cargo.toml --release --locked --offline --test mechanism --jobs 1 -- --exact a_symbolic_shape_without_trace --test-threads=1
+      - name: Test packed source native controls
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-packing/Cargo.toml --release --locked --offline --test mechanism --jobs 1 -- --exact b_native_reads_and_eighteen_rejections --test-threads=1
+      - name: Compare fresh packed source records
+        run: python research/source-packing/reference.py --check-results
+      - name: Check packed source lints
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-packing/Cargo.toml --release --lib --test mechanism --locked --offline -- -D warnings

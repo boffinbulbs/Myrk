@@ -1,0 +1,83 @@
+{
+  "format": "kova.source-packing.validation.v1",
+  "provenance": {
+    "bytes": 20130,
+    "sha256": "4ef78aa1a15e71c2da376cf6dac5f5c23b887b8790a546f5f86bc71b8def3e7e"
+  },
+  "test_groups_passed": 2,
+  "symbolic_collections": 1,
+  "constraints": 1451,
+  "degree": 2,
+  "native_traces": 1,
+  "max_live_traces": 1,
+  "actual_native_constraint_checks": 39,
+  "positive_checks": 21,
+  "restoration_checks": 18,
+  "rejections": 18,
+  "backend_proofs": 0,
+  "wide_signature_traces": 0,
+  "rows": 16,
+  "width": 1364,
+  "raw_bytes": 87296,
+  "held_words": 60,
+  "read_ports": 48,
+  "consumer_columns": 136,
+  "failure_threshold": 1,
+  "row_granular_threshold": true,
+  "failure_bound_per_row": 1451,
+  "full_signature_integration": false,
+  "full_payment_implemented": false,
+  "production_security_claim": false,
+  "net_full_layout_savings_measured": false,
+  "executed_test_executable": {
+    "bytes": 952320,
+    "sha256": "4167294a2f327665297f3ff497454ac6ce4ed432c99d5333bacd1f49075be5dc"
+  },
+  "hardware": {
+    "processor": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "os": "Windows-11-10.0.26300-SP0",
+    "toolchain": "Rust 1.94.1",
+    "profile": "release serial",
+    "selected_test_seconds": 0.02,
+    "serial_group_seconds": [
+      0.0,
+      0.02
+    ]
+  },
+  "guard": {
+    "invocations": 2,
+    "groups_per_invocation": 1,
+    "symbolic_admitted_before_native": true,
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 10096619520,
+    "available_before_each_bytes": [
+      10096619520,
+      10103455744
+    ],
+    "timeout_seconds": 120,
+    "per_invocation_timeout_seconds": 60,
+    "readback_verified": true,
+    "test_counts_verified": true,
+    "peak_process_commit_bytes": 2338816,
+    "peak_job_commit_bytes": 3629056,
+    "serial_group_peaks": [
+      {
+        "process": 2338816,
+        "aggregate": 3629056
+      },
+      {
+        "process": 1290240,
+        "aggregate": 2433024
+      }
+    ]
+  },
+  "limitations": [
+    "Selected source byte read ports only, not larger hash, decoder or owner/context equations",
+    "Not the full signature schedule or complete source route certificate",
+    "Native constraints and symbolic shape only, no cryptographic proof",
+    "No full-layout net width, memory or proof savings measurement",
+    "No payment, hiding, quantum, knowledge or production security result"
+  ]
+}
