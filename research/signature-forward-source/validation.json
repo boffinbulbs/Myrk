@@ -1,0 +1,70 @@
+{
+  "format": "kova.signature-forward-source.validation.v1",
+  "integration_tests_passed": 1,
+  "observation_records": 175,
+  "summary": {
+    "candidate_generation": [
+      70,
+      70,
+      1
+    ],
+    "comparator_controls": 6,
+    "exhaustion_refusals": 1,
+    "forward_comparisons": 40960000,
+    "incomplete_refusals": 1,
+    "initial_protected_comparisons": 217997312,
+    "kind": "forward_summary",
+    "output_checkpoints": 16,
+    "output_coefficients": 4096,
+    "outside_comparisons": 132038656,
+    "protected_source_comparisons": 227713024,
+    "reference_exhaustion_refusals": 1,
+    "reference_hash_generations": 0,
+    "reference_rows": 8192,
+    "reference_windows": 256,
+    "restored_controls": 6,
+    "rows": 8192,
+    "sequence_refusals": 2,
+    "shape_refusals": 2,
+    "source_values": 4096,
+    "stage_checkpoints": 144,
+    "stage_coefficients": 36864
+  },
+  "trace_generator_calls": 70,
+  "source_inferred_internal_round_traces": 140,
+  "source_inferred_forward_computations": {
+    "candidate": 16,
+    "adapted_reference": 16,
+    "total": 32
+  },
+  "new_independent_reference_transforms": 0,
+  "new_scalar_hash_computations": 0,
+  "complete_signature_traces": 0,
+  "air_evaluations": 0,
+  "backend_proofs": 0,
+  "pcs_calls": 0,
+  "complete_row_source_implemented": false,
+  "private_payment_verified": false,
+  "full_security_profile_validated": false,
+  "scope": "Initial source and forward state over one owned witness.32forward computations are source inferred across candidate and adapted reference. Held forward tail is before inverse overlays. Comparator sensitivity is not AIR or proof rejection.",
+  "guard": {
+    "process_limit_bytes": 536870912,
+    "aggregate_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "available_before_bytes": 11476844544,
+    "timeout_seconds": 120,
+    "readback_flags": 8960,
+    "peak_job_commit_bytes": 10801152,
+    "peak_process_private_commit_bytes": 9510912,
+    "test_counts_verified": true,
+    "exit_code": 0,
+    "hard_limit_installed": true,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "working_guard_terminated": false
+  },
+  "provenance": {
+    "bytes": 56865,
+    "sha256": "08382e3de307392d8abab5ac0e071582f59aa9692566ea8e399e33959eb77787"
+  }
+}

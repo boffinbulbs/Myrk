@@ -6,3 +6,5 @@ research/crypto/vectors/UPSTREAM-NOTICE.txt -text -whitespace
 research/signature-ownership/UPSTREAM-NOTICE.txt -text -whitespace
 research/signature-packed/adaptation.patch whitespace=-blank-at-eol
 research/signature-sample-source/sample-adaptation.patch whitespace=-blank-at-eol
+research/signature-forward-source/forward-extraction.patch whitespace=-blank-at-eol
+research/signature-forward-source/reference-adaptation.patch whitespace=-blank-at-eol

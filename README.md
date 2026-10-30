@@ -136,6 +136,8 @@ The [initial hash source](research/signature-hash-source/README.md) advances gen
 
 The [owned sampling source](research/signature-sample-source/README.md) extends that composition with private challenge state driven by the actual current row XOF. A bounded original loop oracle and independent retained terminal coefficients check register timing, source consumption and completion. This remains component construction evidence within the complete private payment proof work.
 
+The [owned forward source](research/signature-forward-source/README.md) reads decoded and sampled operands from that same row and preserves transform register timing and physical bank lifetimes. A bounded adapted reference and retained independent stage values cover the forward pass. Matrix and inverse overlap, complete rows and private payment proof integration remain unfinished.
+
 ## Native accounting and consensus targets
 
 The retained development accounting reference uses eight decimal places and a cumulative actual issuance ceiling of 63,000,000 THM. Production emission parameters remain open before genesis and require a versioned specification with independent vectors. Burns reduce outstanding value without reopening the current reference ceiling.

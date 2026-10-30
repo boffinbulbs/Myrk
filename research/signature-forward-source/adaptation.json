@@ -1,0 +1,49 @@
+{
+  "format": "kova.signature-forward-source.adaptation.v1",
+  "base_revision": "d965aa33d6ca1be4ceb472a62feb02c9cd3a363b",
+  "owner_origin": "research/signature-sample-source/src/lib.rs",
+  "new_nominal_types": [
+    "Witness",
+    "Statement",
+    "BoundInputs",
+    "PackedSignatureOwnerAir"
+  ],
+  "owner_delta": "Forward source documentation, diagnostic feature and module identity",
+  "old_opaque_conversion": false,
+  "build_origin": "research/signature-packed/src/build.rs",
+  "build_prefix_unchanged": true,
+  "private_children_added": 7,
+  "forward_origin": "research/signature-storage/src/ntt.rs::fill",
+  "forward_diff": "forward-extraction.patch",
+  "reference_diff": "reference-adaptation.patch",
+  "reference_unchanged_full_writer": false,
+  "reference_delta": "Replace full height destination with32row windows; preserve separate bank/output/global pc across windows; populate reference inputs from saved literals",
+  "reference_window_rows": 32,
+  "reference_source_inputs": "Saved canonical Z/challenge input and unscaled T1, reference only",
+  "candidate_source_inputs": "Actual same owner InitialSource current row, original source factor retained",
+  "forward_owned_range": [
+    27796,
+    32796
+  ],
+  "output_banks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    6
+  ],
+  "native_execution_enabled": false,
+  "complete_row_source_implemented": false,
+  "tail_before_inverse_overlay": true
+}
