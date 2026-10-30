@@ -40,11 +40,13 @@ def record():
     original = json.loads((HERE.parent / 'signature-complete-native/execution_record.json').read_text(encoding='utf8'))
     measured = json.loads((HERE / 'validation.json').read_text(encoding='utf8'))
     prior = json.loads((HERE / 'records/validation-v1.json').read_text(encoding='utf8'))
-    return dict(format='kova.signature-scheduling.costs.v2',
+    bound = json.loads((HERE / 'records/validation-v5.json').read_text(encoding='utf8'))
+    return dict(format='kova.signature-scheduling.costs.v3',
         scope='Conditional shape accounting at retained B8, extension4, random4, salt16 and query64. No proof or parameter selection.',
         original=costs(original['height'], original['width'], original['degree'], original['constraints_per_row']),
         factorized=costs(prior['height'], prior['width'], prior['degree'], prior['constraints_per_row']),
-        bound_factorized=costs(measured['height'], measured['width'], measured['degree'], measured['constraints_per_row']))
+        bound_factorized=costs(bound['height'], bound['width'], bound['degree'], bound['constraints_per_row']),
+        aggregate_routing=costs(measured['height'], measured['width'], measured['degree'], measured['constraints_per_row']))
 
 def main():
     expected = json.dumps(record(), indent=2) + '\n'

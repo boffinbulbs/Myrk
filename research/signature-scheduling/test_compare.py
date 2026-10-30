@@ -2,6 +2,16 @@ import unittest
 import compare
 
 class CostTests(unittest.TestCase):
+    def test_fewer_assertions_preserve_field_storage_limits(self):
+        before = compare.costs(8192, 47058, 4, 181221)
+        after = compare.costs(8192, 47058, 4, 74725)
+        self.assertEqual(after['constraint_row_positions'], 4897177600)
+        self.assertLess(after['constraint_row_positions'], before['constraint_row_positions'])
+        for name in ['all_field_file_bytes', 'field_file_count', 'main_query_payload_at_64_distinct_indices_bytes']:
+            self.assertEqual(after[name], before[name])
+        self.assertFalse(after['current_shape_limit_accepts'])
+        self.assertFalse(after['current_two_mib_field_limit_accepts'])
+
     def test_reference_profile_and_factorized_file_gate(self):
         previous = compare.costs(8192, 55049, 4, 205201)
         current = compare.costs(8192, 47049, 6, 181203)

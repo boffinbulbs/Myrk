@@ -144,7 +144,7 @@ fn actual_complete_symbolic_relation_shape() {
         .map(|value| value.degree_multiple())
         .max()
         .unwrap();
-    assert!((140000..220000).contains(&count));
+    assert_eq!(count, 74725);
     assert_eq!(degree, 4);
     println!("native_width=47058 constraints_per_row={count} degree={degree} native_trace_allocations=0 backend_proofs=0");
 }

@@ -1,8 +1,8 @@
 # Factorized private verifier scheduling
 
-The factorized schedule with bound activity removes 7991 columns from the complete bounded signature relation while retaining degree four. Actual symbolic inspection measures 181221 constraints per row. Nine explicitly constrained intermediate fields avoid the higher degree of the first factorized variant. The experiment remains separate from the selected verifier and has no proof or payment acceptance API.
+The factorized schedule with bound activity removes 7991 columns from the complete bounded signature relation while retaining degree four. The earlier bound activity variant measures 181221 constraints per row. Aggregate transform write routing reduces that count to 74725 while retaining the same columns and degree. Nine explicitly constrained intermediate fields avoid the higher degree of the first factorized variant. This is a native constraint laboratory with no proof or payment acceptance API.
 
-The [reference relation](../signature-complete-native/README.md) remains unchanged. Most component modules are compiled directly from that source. Adapted sampler and matrix modules replace expanded activity expressions with producer bound fields. The [source delta](source-delta.patch) identifies copied changes with zero context hunks. Original licenses and [source identities](provenance.json) are retained.
+The [reference relation](../signature-complete-native/README.md) remains unchanged. Most component modules are compiled directly from that source. Adapted sampler and matrix modules replace expanded activity expressions with producer bound fields. The transform module binds mutually exclusive writes through aggregate source expressions. The [source delta](source-delta.patch) identifies copied changes with zero context hunks. Original licenses and [source identities](provenance.json) are retained.
 
 ## Clock relation
 
@@ -41,13 +41,13 @@ The count indicator is the same private state consumed by the sampler. It retain
 
 Here $\phi$ has degree two, so its activity binding has degree three. If a source expression $X$ has degree three, the consumer $a(X-x)=0$ has degree four. Expanding $\phi(1-d)(X-x)$ directly has degree six. The source statement is preserved through an explicit intermediate relation rather than a host validity check.
 
-## Measured symbolic scope
+## Earlier symbolic scope
 
-The [validation record](validation.json) reports eight ordinary tests and one separately guarded symbolic test. The tests check all selectors and intervals for a 32 row integer reference, 8192 native selector positions, source dimensions, carry and boundary failures, fractional or multiple indicators and repeated schedule refusal. Restoration provides positive controls for eight local clock mutations. Activity tests cover all eight Boolean phase/completion combinations, cache corruption and a deliberately detached negative control that would hide a false source read without the producer equality.
+The [version two record](records/validation-v2.json) reports seven ordinary tests and one separately guarded symbolic test. The tests check all selectors and intervals for a 32 row integer reference, 8192 native selector positions, source dimensions, carry and boundary failures, fractional or multiple indicators and repeated schedule refusal. Restoration provides positive controls for eight local clock mutations. Activity tests cover all eight Boolean phase/completion combinations, cache corruption and a deliberately detached negative control that would hide a false source read without the producer equality.
 
-The complete equation set contains 181221 constraints per row and has degree four at width 47058. The symbolic process used a verified 512 MiB process and aggregate limit, a 120 second deadline and at least 2 GiB free memory admission. Its peak process commit was 308523008 bytes and peak aggregate commit 309809152 bytes on Windows with Rust 1.94.1. It built expression trees, not a native field trace.
+The version two equation set contains 181221 constraints per row and has degree four at width 47058. The symbolic process used a verified 512 MiB process and aggregate limit, a 120 second deadline and at least 2 GiB free memory admission. Its peak process commit was 308523008 bytes and peak aggregate commit 309809152 bytes on Windows with Rust 1.94.1. It built expression trees, not a native field trace.
 
-## Native baseline
+## Earlier native baseline
 
 The separately gated native test constructs one actual synthetic A0 trace, checks the supported matrix and signature stages against the retained independent integer reference and evaluates the complete signature and owner equations. That case passes. Nine activity cell mutations reject through the two affected full AIR frames, with their original global row selectors and exact restoration. One corrupted activity field also rejects in complete AIR evaluation. Several equations may detect a mutation. These cases do not isolate a single producer assertion.
 
@@ -55,7 +55,7 @@ The complete valid baseline and the AIR's current and next row access justify th
 
 The [native guard](run_native_guarded_windows.ps1) and exact ignored test are public. The signature and note values are existing public synthetic fixtures. No signing or fixture regeneration occurs. The original degree four symbolic result is retained from [version two](records/validation-v2.json), with exact equality of the nine equation source files checked before this native record.
 
-## Native reference corpus
+## Earlier native reference corpus
 
 A second guarded execution checks the other nine supported reference tuples sequentially. Each trace is compared with its independent matrix and signature intermediates, evaluated through the complete native AIR and dropped before the next trace is constructed. Four cases accept and five reject. Together with the earlier A0 baseline, all ten supported tuple verdicts match: five accepting and five rejecting cases.
 
@@ -65,7 +65,7 @@ The recorded corpus execution constructs nine traces, never more than one at a t
 
 These are finite native reference cases. A complete hiding proof remains a separate gate. Native checks directly receive the private witness and do not establish network privacy or proof security.
 
-## Reconstructed source rejection
+## Earlier reconstructed source rejection
 
 A third guarded execution checks 77 hostile mutation routes against one complete A0 trace. It retains the two earlier tuple records without repeating their corpus executions. The nine equation and constructor source files remain byte identical to the degree four relation.
 
@@ -84,6 +84,25 @@ The test performs four complete positive baseline or restoration checks and fift
 
 The exact selected process retains one native trace without cloning. Peak process commit is 1547710464 bytes and aggregate commit is 1548984320 bytes. The guard installed and read back both 2 GiB limits before resume, required 5 GiB free physical memory and enforced an 1800 second deadline. A small ordinary test separately exercises clock bank decoding, the matrix boundary and changed completion producers. No backend proof, signing or fixture generation occurs.
 
+## Transform write routing
+
+The transform schedule selects one complete operation row. Source package version 0.3.0 aggregates its mutually exclusive write equations while retaining the same actual operands, integer products, private scratch and output state. Let $s_r$ be the constrained selector for operation row $r$, $w_j$ a write slot and $e_{r,j}$ its exact source expression. The expanded equations and aggregate form are
+
+$$
+s_r(w_j-e_{r,j})=0,\qquad
+w_j=\sum_r s_r e_{r,j}.
+$$
+
+Their equivalence depends on the same AIR enforcing exactly one schedule position. Missing write slots and dormant rows contribute zero. The original Boolean carry flags retain their zero condition outside butterflies. No caller supplies a free operation selector, operand or acceptance result. Forward transforms run from row 450 through 3521, followed by inverse transforms through 5313. Matrix sampling overlaps forward transforms, so their registers remain separate.
+
+![Constrained schedule and actual private producers determine transform writes and state](routing.svg)
+
+The forward row specific equations contribute 65536 assertions and the inverse equations 40960. Aggregating those equations and their dormant rules removes 106496 assertions. The complete symbolic relation measures 74725 constraints per row at degree four, with the same 47058 columns, 8192 rows and 196 public values. Expression terms and field widths remain relevant costs. Assertion count alone is not a proving time measurement.
+
+The exact public source is tested afresh because its transform equations changed. Eight ordinary tests pass. Separate serial native executions check A0 and its nine activity mutations, the other nine reference tuples, and the 77 hostile source routes described above. All ten tuple verdicts match, five accepting and five rejecting. The source reconstruction tests still check actual activity producers before suffix rejection. Each process keeps at most one trace. No proof backend runs.
+
+The new complete symbolic process has peak aggregate commit 297562112 bytes under 512 MiB readback limits. The native process limits remain 2 GiB each, with 5 GiB free memory admission. Their measured aggregate peaks are 1548984320 bytes for A0, 1549180928 bytes for the remaining tuples and 1549152256 bytes for hostile routes. Deadlines remain 300, 1200 and 1800 seconds respectively. These measurements validate the finite native scope and do not establish a hiding signature proof or private network capability.
+
 ## Conditional complete cost
 
 The [cost calculation](costs.json) retains blowup eight, extension degree four, four random columns, sixteen salt columns and 64 queries only for comparison. It does not select a chain proof profile. For degree $d$ in the retained two adic hiding construction,
@@ -95,17 +114,17 @@ $$
 
 where $C$ is the actual number of constraints per row. Each quotient chunk needs its own commitment field file in the current storage experiment.
 
-| Quantity | Original | Factorized v1 | Bound activity v2 |
-| :--- | ---: | ---: | ---: |
-| Witness columns | 55049 | 47049 | 47058 |
-| Constraints per row | 205201 | 181203 | 181221 |
-| Maximum symbolic degree | 4 | 6 | 4 |
-| Quotient chunks | 8 | 16 | 8 |
-| Quotient domain rows | 65536 | 131072 | 65536 |
-| Constraint row positions | 13448052736 | 23750639616 | 11876499456 |
-| Raw field contents in bytes | 1803845632 | 1541701632 | 1541996544 |
-| Prepared and commitment field files in bytes | 32509329408 | 27824291840 | 27796045824 |
-| Field files | 11 | 19 | 11 |
+| Quantity | Original | Factorized v1 | Bound activity v2 | Aggregate routing |
+| :--- | ---: | ---: | ---: | ---: |
+| Witness columns | 55049 | 47049 | 47058 | 47058 |
+| Constraints per row | 205201 | 181203 | 181221 | 74725 |
+| Maximum symbolic degree | 4 | 6 | 4 | 4 |
+| Quotient chunks | 8 | 16 | 8 | 8 |
+| Quotient domain rows | 65536 | 131072 | 65536 | 65536 |
+| Constraint row positions | 13448052736 | 23750639616 | 11876499456 | 4897177600 |
+| Raw field contents in bytes | 1803845632 | 1541701632 | 1541996544 | 1541996544 |
+| Prepared and commitment field files in bytes | 32509329408 | 27824291840 | 27796045824 | 27796045824 |
+| Field files | 11 | 19 | 11 | 11 |
 
 Version two retains the original quotient size and eleven field files while reducing conditional field contents and constraint positions. All native shapes still exceed current height, width and aggregate field byte limits. No allowance was expanded and no native proving speedup is claimed. Field positions are an arithmetic count, not an instruction or runtime measurement. [Versioned records](records/README.md) preserve the first experiment and its higher degree result byte identical.
 
@@ -115,7 +134,7 @@ Version two retains the original quotient size and eleven field files while redu
 2. A structured controller can retain explicit indicators for expensive events. Its producer, reset and hold rules must bind every consumer before register reuse is valid.
 3. The retained AIR interface supports verifier defined periodic columns and authenticated preprocessed columns. Their public values, transcript binding, queried widths and evaluation tables have costs. Moving a wide schedule into public preprocessing does not make that cost disappear.
 
-Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. The next gate is complete proof resource and security composition analysis before full proof integration.
+Public schedule inputs must be fixed by the verifier. Host supplied row selectors, assumed lookups and independently accepted component joins cannot replace the complete relation. Complete proof resource and security composition analysis remains the next integration gate. The [current record](validation.json) identifies the exact symbolic and native executions for aggregate routing.
 
 ## Reproduction
 

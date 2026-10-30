@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 210" role="img" aria-labelledby="title desc">
+  <title id="title">Source connected transform routing</title>
+  <desc id="desc">The constrained factor clock and actual private producers feed aggregate write equations. The same AIR binds writes to scratch and output state.</desc>
+  <style>
+    svg { color: #24392b; font-family: Georgia, serif; }
+    .box { fill: none; stroke: currentColor; stroke-width: 1.3; }
+    .arrow { fill: none; stroke: currentColor; stroke-width: 1.3; marker-end: url(#tip); }
+    .heading { font-size: 16px; }
+    .detail { font-size: 13px; }
+    @media (prefers-color-scheme: dark) { svg { color: #dce8dd; } }
+  </style>
+  <defs><marker id="tip" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="currentColor"/></marker></defs>
+  <g text-anchor="middle" fill="currentColor">
+    <rect class="box" x="20" y="18" width="230" height="66" rx="3"/>
+    <text class="heading" x="135" y="44">Constrained schedule</text>
+    <text class="detail" x="135" y="66">One actual row selector</text>
+    <rect class="box" x="20" y="126" width="230" height="66" rx="3"/>
+    <text class="heading" x="135" y="152">Private producers</text>
+    <text class="detail" x="135" y="174">Scratch, products and carries</text>
+    <rect class="box" x="350" y="66" width="250" height="78" rx="3"/>
+    <text class="heading" x="475" y="96">Bound write slots</text>
+    <text class="detail" x="475" y="120">w[j] = sum(s[r] e[r,j])</text>
+    <rect class="box" x="710" y="66" width="200" height="78" rx="3"/>
+    <text class="heading" x="810" y="96">Private state</text>
+    <text class="detail" x="810" y="120">Exact updates and holds</text>
+  </g>
+  <path class="arrow" d="M250 51 H294 V88 H344"/>
+  <path class="arrow" d="M250 159 H294 V122 H344"/>
+  <path class="arrow" d="M600 105 H704"/>
+</svg>

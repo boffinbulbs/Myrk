@@ -1,5 +1,5 @@
 {
-  "format": "kova.signature-scheduling.costs.v2",
+  "format": "kova.signature-scheduling.costs.v3",
   "scope": "Conditional shape accounting at retained B8, extension4, random4, salt16 and query64. No proof or parameter selection.",
   "original": {
     "raw_trace_bytes": 1803845632,
@@ -46,6 +46,25 @@
     "minimum_two_adic_blowup": 4,
     "retained_blowup_eight_covers_domain": true,
     "constraint_row_positions": 11876499456,
+    "main_prepared_source_bytes": 3084255232,
+    "commitment_field_bytes": 24711790592,
+    "all_field_file_bytes": 27796045824,
+    "field_file_count": 11,
+    "current_sixteen_file_limit_accepts": true,
+    "current_shape_limit_accepts": false,
+    "current_two_mib_field_limit_accepts": false,
+    "base_salt_field_payload_bytes": 83886080,
+    "base_digest_payload_bytes": 50331456,
+    "coupled_mask_field_bytes": 2097152,
+    "main_query_payload_at_64_distinct_indices_bytes": 12047872
+  },
+  "aggregate_routing": {
+    "raw_trace_bytes": 1541996544,
+    "quotient_chunks": 8,
+    "quotient_domain_rows": 65536,
+    "minimum_two_adic_blowup": 4,
+    "retained_blowup_eight_covers_domain": true,
+    "constraint_row_positions": 4897177600,
     "main_prepared_source_bytes": 3084255232,
     "commitment_field_bytes": 24711790592,
     "all_field_file_bytes": 27796045824,

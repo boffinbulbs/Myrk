@@ -21,7 +21,6 @@ pub mod layout;
 mod matrix;
 #[path = "../../signature-complete-native/src/mul.rs"]
 mod mul;
-#[path = "../../signature-complete-native/src/ntt.rs"]
 pub mod ntt;
 #[path = "../../signature-complete-native/src/packing.rs"]
 mod packing;

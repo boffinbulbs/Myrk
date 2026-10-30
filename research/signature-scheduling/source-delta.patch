@@ -18,21 +18,19 @@
 +#[path = "../../signature-complete-native/src/keccak.rs"]
 @@ -14,0 +22 @@
 +#[path = "../../signature-complete-native/src/mul.rs"]
-@@ -15,0 +24 @@
-+#[path = "../../signature-complete-native/src/ntt.rs"]
-@@ -16,0 +26 @@
+@@ -16,0 +25 @@
 +#[path = "../../signature-complete-native/src/packing.rs"]
-@@ -19,0 +30 @@
+@@ -19,0 +29 @@
 +#[path = "../../signature-complete-native/src/sources.rs"]
-@@ -20,0 +32 @@
+@@ -20,0 +31 @@
 +#[path = "../../signature-complete-native/src/sponge.rs"]
-@@ -23 +35 @@
+@@ -23 +34 @@
 -pub use air::FullPrivateSignatureOwnerAir;
 +pub use air::FactorSignatureOwnerAir;
-@@ -39 +51 @@
+@@ -39 +50 @@
 -mod full_tests;
 +mod tests;
-@@ -67,0 +80,3 @@
+@@ -67,0 +79,3 @@
 +
 +#[cfg(test)]
 +mod native_tests;
@@ -137,3 +135,124 @@
 -        let active = matrix.clone() * (AB::Expr::ONE - row[count + 256]);
 +        let active =
 +            crate::activity::bind(b, row[ACTIVE_MATRIX + s], matrix.clone(), row[count + 256]);
+--- reference/src/ntt.rs
++++ experiment/src/ntt.rs
+@@ -241,0 +242,6 @@
++    // The complete factor clock selects at most one actual operation row.
++    // Every write is its selected producer, with zero for an absent slot or
++    // dormant row. Actual operands, modular gadgets and state holds above
++    // remain in this same relation.
++    let mut expected: [AB::Expr; 16] = core::array::from_fn(|_| AB::Expr::ZERO);
++    let mut butterfly_phase = AB::Expr::ZERO;
+@@ -247 +253 @@
+-                for (slot, write) in writes.iter().take(8).enumerate() {
++                for (slot, value) in expected.iter_mut().take(8).enumerate() {
+@@ -249,3 +255 @@
+-                    builder
+-                        .when(selected.clone())
+-                        .assert_eq(write.clone(), local[column] * BabyBear::from_u32(factor));
++                    *value += selected.clone() * local[column] * BabyBear::from_u32(factor);
+@@ -255,4 +259,2 @@
+-                for slot in 0..8 {
+-                    builder
+-                        .when(selected.clone())
+-                        .assert_eq(writes[slot].clone(), local[NTT_SCRATCH + group * 8 + slot]);
++                for (slot, value) in expected.iter_mut().take(8).enumerate() {
++                    *value += selected.clone() * local[NTT_SCRATCH + group * 8 + slot];
+@@ -261,0 +264 @@
++                butterfly_phase += selected.clone();
+@@ -265,19 +268,7 @@
+-                    builder.when(selected.clone()).assert_eq(
+-                        writes[2 * slot].clone(),
+-                        a.clone() + products[slot][3].clone()
+-                            - local[NTT_FLAGS + 2 * slot] * BabyBear::from_u32(mul::MODULUS),
+-                    );
+-                    builder.when(selected.clone()).assert_eq(
+-                        writes[2 * slot + 1].clone(),
+-                        a - products[slot][3].clone()
+-                            + local[NTT_FLAGS + 2 * slot + 1] * BabyBear::from_u32(mul::MODULUS),
+-                    );
+-                }
+-            }
+-        }
+-        if !matches!(op, Op::Butterfly { .. }) {
+-            for value in &writes[8..] {
+-                builder.when(selected.clone()).assert_zero(value.clone());
+-            }
+-            for flag in &local[NTT_FLAGS..FORWARD_WIDTH] {
+-                builder.when(selected.clone()).assert_zero(*flag);
++                    expected[2 * slot] += selected.clone()
++                        * (a.clone() + products[slot][3].clone()
++                            - local[NTT_FLAGS + 2 * slot] * BabyBear::from_u32(mul::MODULUS));
++                    expected[2 * slot + 1] += selected.clone()
++                        * (a - products[slot][3].clone()
++                            + local[NTT_FLAGS + 2 * slot + 1] * BabyBear::from_u32(mul::MODULUS));
++                }
+@@ -291,13 +282,8 @@
+-            InverseOp::Initialize(g) => {
+-                for slot in 0..8 {
+-                    builder.when(selected.clone()).assert_eq(
+-                        writes[slot].clone(),
+-                        local[ACCUMULATOR + 256 * i + 8 * g + slot],
+-                    );
+-                }
+-            }
+-            InverseOp::Output(g) => {
+-                for slot in 0..8 {
+-                    builder
+-                        .when(selected.clone())
+-                        .assert_eq(writes[slot].clone(), local[NTT_SCRATCH + 8 * g + slot]);
++            InverseOp::Initialize(group) => {
++                for (slot, value) in expected.iter_mut().take(8).enumerate() {
++                    *value += selected.clone() * local[ACCUMULATOR + 256 * i + 8 * group + slot];
++                }
++            }
++            InverseOp::Output(group) => {
++                for (slot, value) in expected.iter_mut().take(8).enumerate() {
++                    *value += selected.clone() * local[NTT_SCRATCH + 8 * group + slot];
+@@ -307,4 +293,2 @@
+-                for slot in 0..8 {
+-                    builder
+-                        .when(selected.clone())
+-                        .assert_eq(writes[slot].clone(), products[slot][3].clone());
++                for (slot, value) in expected.iter_mut().take(8).enumerate() {
++                    *value += selected.clone() * products[slot][3].clone();
+@@ -313,0 +298 @@
++                butterfly_phase += selected.clone();
+@@ -316,23 +301,10 @@
+-                    builder.when(selected.clone()).assert_eq(
+-                        writes[2 * slot].clone(),
+-                        local[NTT_SCRATCH + left] + local[NTT_SCRATCH + right]
+-                            - local[NTT_FLAGS + 2 * slot] * BabyBear::from_u32(mul::MODULUS),
+-                    );
+-                    builder
+-                        .when(selected.clone())
+-                        .assert_eq(writes[2 * slot + 1].clone(), products[slot][3].clone());
+-                }
+-            }
+-        }
+-        if !matches!(op, InverseOp::Butterfly { .. }) {
+-            for value in &writes[8..] {
+-                builder.when(selected.clone()).assert_zero(value.clone());
+-            }
+-            for flag in &local[NTT_FLAGS..FORWARD_WIDTH] {
+-                builder.when(selected.clone()).assert_zero(*flag);
+-            }
+-        }
+-    }
+-    let dormant = AB::Expr::ONE - program::range::<AB>(local, START, fp::INVERSE_END);
+-    for value in &writes {
+-        builder.when(dormant.clone()).assert_zero(value.clone());
++                    expected[2 * slot] += selected.clone()
++                        * (local[NTT_SCRATCH + left] + local[NTT_SCRATCH + right]
++                            - local[NTT_FLAGS + 2 * slot] * BabyBear::from_u32(mul::MODULUS));
++                    expected[2 * slot + 1] += selected.clone() * products[slot][3].clone();
++                }
++            }
++        }
++    }
++    for (write, value) in writes.into_iter().zip(expected) {
++        builder.assert_eq(write, value);
+@@ -341 +313 @@
+-        builder.when(dormant.clone()).assert_zero(*flag);
++        builder.assert_zero((AB::Expr::ONE - butterfly_phase.clone()) * *flag);
