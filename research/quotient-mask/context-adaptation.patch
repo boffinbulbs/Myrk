@@ -1,0 +1,4 @@
+--- quotient-source/src/context.rs
++++ src/context.rs
+@@ -91,0 +92 @@
++include!("commitment.rs");

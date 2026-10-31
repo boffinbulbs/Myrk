@@ -1,0 +1,82 @@
+--- quotient-source/src/diagnostics_setup.rs
++++ src/diagnostics_setup.rs
+@@ -19,0 +20 @@
++use sha3::{Digest, Sha3_256};
+@@ -47,0 +49 @@
++    digest: std::sync::Mutex<Sha3_256>,
+@@ -49,0 +52,6 @@
++    fn observe(&self, bytes: &[u8]) {
++        self.digest.lock().unwrap().update(bytes);
++    }
++    fn fingerprint(&self) -> [u8; 32] {
++        self.digest.lock().unwrap().clone().finalize().into()
++    }
+@@ -89,0 +98 @@
++        self.journal.observe(&value.to_le_bytes());
+@@ -95,0 +105 @@
++        self.journal.observe(&value.to_le_bytes());
+@@ -101,0 +112 @@
++        self.journal.observe(destination);
+@@ -156,0 +168,3 @@
++    pub(super) fn delivered_fingerprints(&self) -> [[u8; 32]; 2] {
++        [self.mask.fingerprint(), self.salt.fingerprint()]
++    }
+@@ -205,27 +218,0 @@
+-    /// Diagnostic inventory only, not a constraint or proof verdict. Counts
+-    /// include boundary entries; an entry which later panics is not a success.
+-    pub(super) fn assert_main_only(&self) {
+-        let counts = self.detailed_counts();
+-        assert_eq!(counts.input_commits, 1);
+-        assert_eq!(counts.extension_commits, 0);
+-        assert_eq!(counts.scalar_opens, 0);
+-        assert_eq!(counts.input_openings, 0);
+-        assert_eq!(counts.extension_openings, 0);
+-        assert_eq!(counts.input_multi_opens, 0);
+-        assert_eq!(counts.extension_multi_opens, 0);
+-        assert_eq!(counts.verify_calls, 0);
+-        assert_eq!(counts.mmcs_clones, 1);
+-        assert_eq!(
+-            counts.dft,
+-            DftCounts {
+-                dft_batch: 0,
+-                coset_dft_batch: 0,
+-                idft_batch: 0,
+-                coset_idft_batch: 0,
+-                lde_batch: 0,
+-                coset_lde_batch: 2,
+-                coset_lde_batch_with_transform: 0,
+-                coset_lde_batch_with_blocks: 0,
+-            }
+-        );
+-    }
+@@ -242,0 +230,18 @@
++}
++pub(super) fn counting_dft(audit: &Arc<Audit>) -> CountingDft {
++    CountingDft {
++        inner: Radix2DitParallel::default(),
++        audit: audit.clone(),
++    }
++}
++pub(super) fn zero_dft_counts() -> DftCounts {
++    DftCounts {
++        dft_batch: 0,
++        coset_dft_batch: 0,
++        idft_batch: 0,
++        coset_idft_batch: 0,
++        lde_batch: 0,
++        coset_lde_batch: 0,
++        coset_lde_batch_with_transform: 0,
++        coset_lde_batch_with_blocks: 0,
++    }
+@@ -355 +360,7 @@
+-            assert_eq!(previous, 0, "only the main input commit is selected");
++            assert!(
++                previous < 2,
++                "only main and quotient batch commits are selected"
++            );
++            let expected = if previous == 0 { [4096, 6] } else { [4096, 8] };
++            assert_eq!(inputs.len(), if previous == 0 { 1 } else { 8 });
++            assert!(inputs.iter().all(|m| [m.height(), m.width()] == expected));
+@@ -358,2 +368,0 @@
+-        assert_eq!(inputs.len(), 1);
+-        assert_eq!([inputs[0].height(), inputs[0].width()], [4096, 6]);

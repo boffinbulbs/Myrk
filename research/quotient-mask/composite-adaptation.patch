@@ -1,0 +1,83 @@
+--- quotient-source/src/composite.rs
++++ src/composite.rs
+@@ -2 +2 @@
+-//! Private V40 derivative of research/source-stark/src/composite.rs (MIT).
++//! Source derivative of research/source-stark/src/composite.rs (MIT).
+@@ -1124,0 +1125,51 @@
++        self.extend_quotient_owned(dft, evaluations, masks, log_blowup, shift)
++            .unwrap_or_else(|error| std::panic::panic_any(error))
++    }
++}
++
++// Place in the fresh composite module with the existing private owner types.
++impl CompositeStore {
++    pub(crate) fn begin_quotient_source(
++        &self,
++        input: &QuotientInput,
++        shifts: [BabyBear; 8],
++    ) -> Result<(), Error> {
++        self.check_quotient_input(input)?;
++        let mut state = self.checked_state()?;
++        if state.phase == Phase::Failed {
++            return Err(Error::Failed);
++        }
++        if state.writing || state.cleaning {
++            return Err(Error::Busy);
++        }
++        if state.phase != Phase::QuotientReady || state.quotient_shifts.is_some() {
++            return Err(Error::Phase);
++        }
++        // The fixed hiding adapter derived these shifts from its checked domain.
++        // No caller-controlled filename, role or field-file reservation is added.
++        for i in 0..8 {
++            let entry = &state.entries[3 + i];
++            if entry.role != Role::Quotient(i)
++                || entry.state != FileState::Planned
++                || entry.owned
++                || entry.shape != [4096, 8]
++                || entry.bytes != 131_072
++            {
++                return Err(Error::Phase);
++            }
++        }
++        state.quotient_shifts = Some(shifts);
++        state.phase = Phase::QuotientBuilding;
++        Ok(())
++    }
++
++    /// Fallible owner bridge to the actual retained masked LDE kernel.
++    /// Infallible MatrixStore callers may separately convert this error to panic.
++    pub(crate) fn extend_quotient_owned<D: TwoAdicSubgroupDft<BabyBear>>(
++        &self,
++        dft: &D,
++        evaluations: RowMajorMatrix<BabyBear>,
++        masks: &[BabyBear],
++        log_blowup: usize,
++        shift: BabyBear,
++    ) -> Result<Stored, Error> {
+@@ -1126 +1177 @@
+-        let run = || -> Result<Stored, Error> {
++        let result = (|| {
+@@ -1139,11 +1190,6 @@
+-        };
+-        match run() {
+-            Ok(stored) => {
+-                step.done = true;
+-                stored
+-            }
+-            Err(e) => {
+-                step.fail(e.clone());
+-                std::panic::panic_any(e)
+-            }
+-        }
++        })();
++        match &result {
++            Ok(_) => step.done = true,
++            Err(error) => step.fail(error.clone()),
++        }
++        result
+@@ -1153,2 +1199,2 @@
+-#[path = "owner_controls.rs"]
+-pub(crate) mod owner_controls;
++#[path = "mask_controls.rs"]
++pub(crate) mod mask_controls;

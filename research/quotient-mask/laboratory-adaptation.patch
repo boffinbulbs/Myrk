@@ -1,0 +1,7 @@
+--- quotient-source/src/laboratory.rs
++++ src/laboratory.rs
+@@ -3,0 +4 @@
++#[path = "../../quotient-source/src/quotient_kernel.rs"]
+@@ -41 +42 @@
+-pub use context::fixed_construction;
++pub use context::fixed_masking;

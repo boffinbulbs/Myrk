@@ -1,0 +1,234 @@
+{
+  "candidate": {
+    "dft": {
+      "coset_dft_batch": 0,
+      "coset_idft_batch": 8,
+      "coset_lde_batch": 2,
+      "coset_lde_batch_with_blocks": 0,
+      "coset_lde_batch_with_transform": 0,
+      "dft_batch": 8,
+      "idft_batch": 0,
+      "lde_batch": 0
+    },
+    "extension_commits": 0,
+    "extension_multi_opens": 0,
+    "extension_openings": 0,
+    "get_matrices": 3,
+    "initial_salt_bytes": 32,
+    "input_commits": 2,
+    "input_multi_opens": 0,
+    "input_openings": 0,
+    "mask": {
+      "bytes": 107188,
+      "fill_bytes": 0,
+      "next_u32": 26797,
+      "next_u64": 0
+    },
+    "mmcs_clones": 1,
+    "salt": {
+      "bytes": 2517396,
+      "fill_bytes": 1,
+      "next_u32": 629341,
+      "next_u64": 0
+    },
+    "scalar_opens": 0,
+    "verify_calls": 0
+  },
+  "candidate_compact_counts": [
+    2,
+    0,
+    0,
+    0,
+    2,
+    8,
+    107220,
+    2517396
+  ],
+  "candidate_input_commits": 2,
+  "chunk_fields_compared": 262144,
+  "continuing_mask_marker_equal": true,
+  "controls": {
+    "actual_main_commitments": 0,
+    "actual_quotient_commits": 0,
+    "completed": [
+      "foreign_owner",
+      "reserved_chunk_shape",
+      "wrong_phase",
+      "duplicate_claim",
+      "wrong_shift_before_dft",
+      "chunk_shape_before_dft",
+      "domain_before_entropy",
+      "noncanonical_source",
+      "short_source",
+      "late_chunk_collision_preserves_sentinel"
+    ],
+    "empty_foreign_owners": 1,
+    "late_file_failure": {
+      "completed_chunks": 7,
+      "counts": {
+        "dft": {
+          "coset_dft_batch": 0,
+          "coset_idft_batch": 8,
+          "coset_lde_batch": 0,
+          "coset_lde_batch_with_blocks": 0,
+          "coset_lde_batch_with_transform": 0,
+          "dft_batch": 8,
+          "idft_batch": 0,
+          "lde_batch": 0
+        },
+        "extension_commits": 0,
+        "extension_multi_opens": 0,
+        "extension_openings": 0,
+        "get_matrices": 0,
+        "initial_salt_bytes": 32,
+        "input_commits": 0,
+        "input_multi_opens": 0,
+        "input_openings": 0,
+        "mask": {
+          "bytes": 96252,
+          "fill_bytes": 0,
+          "next_u32": 24063,
+          "next_u64": 0
+        },
+        "mmcs_clones": 1,
+        "salt": {
+          "bytes": 32,
+          "fill_bytes": 1,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "scalar_opens": 0,
+        "verify_calls": 0
+      },
+      "uncreated_chunks": 1
+    },
+    "scope": "whitebox storage and source-entry controls, not committed provenance",
+    "sealed_constant_fixtures": 6,
+    "source_failures": [
+      {
+        "counts": {
+          "dft": {
+            "coset_dft_batch": 0,
+            "coset_idft_batch": 0,
+            "coset_lde_batch": 0,
+            "coset_lde_batch_with_blocks": 0,
+            "coset_lde_batch_with_transform": 0,
+            "dft_batch": 0,
+            "idft_batch": 0,
+            "lde_batch": 0
+          },
+          "extension_commits": 0,
+          "extension_multi_opens": 0,
+          "extension_openings": 0,
+          "get_matrices": 0,
+          "initial_salt_bytes": 32,
+          "input_commits": 0,
+          "input_multi_opens": 0,
+          "input_openings": 0,
+          "mask": {
+            "bytes": 96252,
+            "fill_bytes": 0,
+            "next_u32": 24063,
+            "next_u64": 0
+          },
+          "mmcs_clones": 1,
+          "salt": {
+            "bytes": 32,
+            "fill_bytes": 1,
+            "next_u32": 0,
+            "next_u64": 0
+          },
+          "scalar_opens": 0,
+          "verify_calls": 0
+        },
+        "name": "noncanonical_source"
+      },
+      {
+        "counts": {
+          "dft": {
+            "coset_dft_batch": 0,
+            "coset_idft_batch": 0,
+            "coset_lde_batch": 0,
+            "coset_lde_batch_with_blocks": 0,
+            "coset_lde_batch_with_transform": 0,
+            "dft_batch": 0,
+            "idft_batch": 0,
+            "lde_batch": 0
+          },
+          "extension_commits": 0,
+          "extension_multi_opens": 0,
+          "extension_openings": 0,
+          "get_matrices": 0,
+          "initial_salt_bytes": 32,
+          "input_commits": 0,
+          "input_multi_opens": 0,
+          "input_openings": 0,
+          "mask": {
+            "bytes": 96252,
+            "fill_bytes": 0,
+            "next_u32": 24063,
+            "next_u64": 0
+          },
+          "mmcs_clones": 1,
+          "salt": {
+            "bytes": 32,
+            "fill_bytes": 1,
+            "next_u32": 0,
+            "next_u64": 0
+          },
+          "scalar_opens": 0,
+          "verify_calls": 0
+        },
+        "name": "short_source"
+      }
+    ]
+  },
+  "delivered_rng_fingerprints_equal": true,
+  "initial_salt_bytes": 32,
+  "main_fields_compared": 24576,
+  "main_roots_equal": true,
+  "marker_bytes_per_side": 32,
+  "marker_draws_per_side": 8,
+  "post_attempt_closed_leases": 2,
+  "proofs": 0,
+  "quotient_roots_equal": true,
+  "reference_input_commits": 2,
+  "reserved_field_bytes": 1325056,
+  "reserved_files": 13,
+  "retained_dense": {
+    "dft": {
+      "coset_dft_batch": 0,
+      "coset_idft_batch": 8,
+      "coset_lde_batch": 1,
+      "coset_lde_batch_with_blocks": 0,
+      "coset_lde_batch_with_transform": 0,
+      "dft_batch": 8,
+      "idft_batch": 0,
+      "lde_batch": 0
+    },
+    "extension_commits": 0,
+    "extension_multi_opens": 0,
+    "extension_openings": 0,
+    "get_matrices": 2,
+    "initial_salt_bytes": 32,
+    "input_commits": 2,
+    "input_multi_opens": 0,
+    "input_openings": 0,
+    "mask": {
+      "bytes": 107188,
+      "fill_bytes": 0,
+      "next_u32": 26797,
+      "next_u64": 0
+    },
+    "mmcs_clones": 1,
+    "salt": {
+      "bytes": 2517396,
+      "fill_bytes": 1,
+      "next_u32": 629341,
+      "next_u64": 0
+    },
+    "scalar_opens": 0,
+    "verify_calls": 0
+  },
+  "scope": "fixed synthetic coupled commitment equivalence, no opening or proof"
+}

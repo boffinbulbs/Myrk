@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 192" role="img" aria-labelledby="title desc">
+  <title id="title">Owned quotient commitment construction</title>
+  <desc id="desc">An actual main commitment determines a constraint challenge. Sealed quotient rows enter coupled masking, eight stored chunks and one actual batch commitment under the same owner and attempt.</desc>
+  <style>
+    text { font-family: Georgia, serif; fill: #20332a; font-size: 17px; text-anchor: middle; }
+    .small { font-family: ui-monospace, monospace; font-size: 12px; fill: #53685b; }
+    rect, path { fill: none; stroke: #607864; stroke-width: 1.4; }
+    .arrow { fill: #607864; stroke: none; }
+    @media (prefers-color-scheme: dark) {
+      text { fill: #e3eae2; }
+      .small { fill: #b4c6b2; }
+      rect, path { stroke: #a0b79d; }
+      .arrow { fill: #a0b79d; }
+    }
+  </style>
+  <text x="540" y="24" class="small">ONE OWNER AND ONE ATTEMPT</text>
+  <path d="M16 48 V38 H1064 V48"/>
+  <g>
+    <rect x="16" y="66" width="152" height="64" rx="3"/>
+    <text x="92" y="94">Main root</text><text x="92" y="114" class="small">actual MMCS</text>
+    <rect x="195" y="66" width="152" height="64" rx="3"/>
+    <text x="271" y="94">Challenge α</text><text x="271" y="114" class="small">constraint transcript</text>
+    <rect x="374" y="66" width="152" height="64" rx="3"/>
+    <text x="450" y="94">Sealed Q</text><text x="450" y="114" class="small">checked source rows</text>
+    <rect x="553" y="66" width="152" height="64" rx="3"/>
+    <text x="629" y="94">Coupled masks</text><text x="629" y="114" class="small">continuing RNG</text>
+    <rect x="732" y="66" width="152" height="64" rx="3"/>
+    <text x="808" y="94">Eight chunks</text><text x="808" y="114" class="small">canonical stored LDEs</text>
+    <rect x="911" y="66" width="152" height="64" rx="3"/>
+    <text x="987" y="94">Batch root</text><text x="987" y="114" class="small">actual MMCS</text>
+  </g>
+  <g>
+    <path d="M168 98 H187 M347 98 H366 M526 98 H545 M705 98 H724 M884 98 H903"/>
+    <path class="arrow" d="M193 98l-8-4v8z M372 98l-8-4v8z M551 98l-8-4v8z M730 98l-8-4v8z M909 98l-8-4v8z"/>
+  </g>
+  <text x="540" y="169" class="small">QuotientCommitted</text>
+</svg>

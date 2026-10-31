@@ -1,0 +1,61 @@
+--- quotient-source/src/construction.rs
++++ src/construction.rs
+@@ -55,6 +54,0 @@
+-    main_capture: Vec<[u32; 2]>,
+-    after_commit_effects: [usize; 8],
+-    after_quotient_effects: [usize; 8],
+-    alpha: Challenge,
+-    public: [BabyBear; 2],
+-    trace_domain: TwoAdicMultiplicativeCoset<BabyBear>,
+@@ -62 +55,0 @@
+-    _challenger: C,
+@@ -63,0 +57 @@
++    store: &'ctx CompositeStore,
+@@ -85 +78,0 @@
+-        audit: &crate::diagnostics_setup::Audit,
+@@ -141,3 +133,0 @@
+-            let after_commit_effects = audit.counts();
+-            let main_capture = capture_main::<D, I, F, R, C>(pcs, &main_data, quotient_domain)?;
+-            assert_eq!(audit.counts(), after_commit_effects);
+@@ -206,14 +196 @@
+-            let after_quotient_effects = audit.counts();
+-            Ok((
+-                quotient,
+-                main_data,
+-                main_commitment,
+-                main_capture,
+-                after_commit_effects,
+-                after_quotient_effects,
+-                alpha,
+-                public,
+-                trace_domain,
+-                quotient_domain,
+-                challenger,
+-            ))
++            Ok((quotient, main_data, main_commitment, quotient_domain))
+@@ -224,13 +201 @@
+-            Ok((
+-                quotient,
+-                main_data,
+-                main_commitment,
+-                main_capture,
+-                after_commit_effects,
+-                after_quotient_effects,
+-                alpha,
+-                public,
+-                trace_domain,
+-                quotient_domain,
+-                challenger,
+-            )) => {
++            Ok((quotient, main_data, main_commitment, quotient_domain)) => {
+@@ -242,6 +206,0 @@
+-                    main_capture,
+-                    after_commit_effects,
+-                    after_quotient_effects,
+-                    alpha,
+-                    public,
+-                    trace_domain,
+@@ -249 +207,0 @@
+-                    _challenger: challenger,
+@@ -250,0 +209 @@
++                    store: &self.store,

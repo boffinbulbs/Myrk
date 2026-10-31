@@ -1,0 +1,47 @@
+{
+  "artifacts": {
+    "results/measurement.json": {
+      "bytes": 5907,
+      "sha256": "db9ad0864466ebf938eeb731f80cb3da019f226f95709b19740294071550ba68"
+    }
+  },
+  "date": "2026-10-31",
+  "format": "kova.quotient-mask.validation.v1",
+  "guard": {
+    "accepted": true,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "actual_passed": 1,
+    "available_before_bytes": 4882595840,
+    "exit_code": 0,
+    "expected_tests": 1,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 10420224,
+    "peak_private_commit_bytes": 9129984,
+    "peak_working_bytes": 14393344,
+    "test_counts_verified": true,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "Shared quotient and retained DFT/MMCS algorithms",
+    "Aborted diagnostic transcript prefix, not full proof continuation",
+    "Whitebox constant source fault fixtures have no committed-data provenance",
+    "No real panic, lock poison or OS sync fault injection",
+    "No independently implemented integer mask reference in this increment",
+    "No full signature, private payment, ledger or network security claim"
+  ],
+  "native_diagnostic_seconds": 0.98,
+  "native_executable_sha256": "4349362ed62cb8c90ae35a90d66479b6d6de0b6c0e85c3b6aa3d99f4f5a704da",
+  "platform": "Windows x86_64",
+  "rust": "1.94.1",
+  "scope": "One fixed coupled commitment comparison and ten source-entry controls, zero proofs",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "d674e6c2a768da27e6b94d38817cb1eea887d76b0ddea0df18fe779b34e154fa"
+}

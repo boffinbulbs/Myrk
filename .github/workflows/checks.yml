@@ -214,6 +214,24 @@ jobs:
       - name: Quotient source default checks
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/quotient-source/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
+      - name: Coupled quotient formatting
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 rustfmt --edition 2024 --config skip_children=true --check research/quotient-mask/src/lib.rs research/quotient-mask/src/laboratory.rs research/quotient-mask/src/composite.rs research/quotient-mask/src/context.rs research/quotient-mask/src/construction.rs research/quotient-mask/src/commitment.rs research/quotient-mask/src/hiding_pcs.rs research/quotient-mask/src/diagnostics_setup.rs research/quotient-mask/src/diagnostics.rs research/quotient-mask/src/mask_controls.rs research/quotient-mask/tests/masking.rs
+      - name: Coupled quotient dependencies
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/quotient-mask/Cargo.toml --locked
+      - name: Coupled quotient recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/quotient-mask/static_check.py --check-results
+      - name: Coupled quotient diagnostic compilation
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo test --manifest-path research/quotient-mask/Cargo.toml --release --features diagnostics --test masking --locked --offline --no-run --jobs 1
+      - name: Coupled quotient strict checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/quotient-mask/Cargo.toml --release --features diagnostics --lib --test masking --locked --offline -- -D warnings
+      - name: Coupled quotient default checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/quotient-mask/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
 
   row:
     needs: scope
