@@ -112,3 +112,6 @@ The [eight domain normalization reference](../research/mask-normalization/README
 ## Complete source proof integration
 
 The [uninterrupted source prover](../research/source-prover/README.md) connects the committed main view and canonical quotient source to actual coupled and auxiliary commitments, original OOD evaluation and a single original opening. Its [source relation and lifecycle](../research/source-prover/transcript.svg), [saved observations](../research/source-prover/results/measurement.json) and [validation record](../research/source-prover/validation.json) distinguish a complete small proof from full private signature and payment integration. One original verifier acceptance and ten actual verifier rejections are recorded. CI checks saved evidence and compilation without replaying the native proof.
+
+
+The [live source failure laboratory](../research/source-failure/README.md) adds real quotient source length and auxiliary exclusive output collision cases under the same proving lifecycle. Its [measurement](../research/source-failure/results/measurement.json) and [validation](../research/source-failure/validation.json) record first cause preservation, actual committed descriptor closure and diagnostic sentinel preservation. These are storage failure controls, with no opening, verifier or completed proof selected.

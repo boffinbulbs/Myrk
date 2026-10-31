@@ -1,0 +1,46 @@
+{
+  "artifacts": {
+    "results/measurement.json": {
+      "bytes": 2982,
+      "sha256": "95f4b843daf6e2b5be967aec6e71b112712bd4c790b0cc211afa8039c5bbd8af"
+    }
+  },
+  "date": "2026-10-31",
+  "format": "kova.source-failure.validation.v1",
+  "guard": {
+    "accepted": true,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "actual_passed": 1,
+    "available_before_bytes": 6511951872,
+    "exit_code": 0,
+    "expected_tests": 1,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 5992448,
+    "peak_private_commit_bytes": 4698112,
+    "peak_working_bytes": 9666560,
+    "test_counts_verified": true,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "Fixed small synthetic relation and two isolated file faults",
+    "No actual opening, verifier call or completed proof selected",
+    "Orphan removal failure branch inspected but not executed",
+    "Sentinel path checks do not establish adversarial concurrent filesystem integrity",
+    "Direct RNG journals exclude separately journaled seeded forks",
+    "No complete private signature, payment or quantum security result"
+  ],
+  "native_executable_sha256": "3b8cd4dc326e2cef0ea4ab19c63a8af1563a729e9f30e7d508b9bd11f3f128f5",
+  "platform": "Windows x86_64",
+  "rust": "1.94.1",
+  "scope": "two real live source failures and committed descriptor closure, zero proofs",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "2ad664922f51420f793a3fc90878f6929f1bf9e48b9ef0467aece900724598aa"
+}

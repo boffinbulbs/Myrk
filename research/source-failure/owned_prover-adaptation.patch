@@ -1,0 +1,31 @@
+--- source-prover/src/owned_prover.rs
++++ src/owned_prover.rs
+@@ -40,0 +41,15 @@
++    prove_selected(config, store, trace, None)
++}
++
++pub(crate) fn prove_selected<SC>(
++    config: &SC,
++    store: &CompositeStore,
++    trace: RawInput,
++    fault: Option<&crate::composite::faults::Run>,
++) -> Result<Proof<SC>, OwnedError>
++where
++    SC: StarkGenericConfig<Challenge = Challenge>,
++    SC::Challenger: GrindingChallenger<Witness = BabyBear>,
++    SC::Pcs: OwnedPcs<SC::Challenger>,
++    QuarticAir: QuotientAir<SC>,
++{
+@@ -229,0 +245,3 @@
++            if let Some(fault) = fault {
++                fault.retain_main(trace_view.diagnostic_lease());
++            }
+@@ -279,0 +298,3 @@
++            if let Some(fault) = fault {
++                fault.after_source(store, &quotient_source)?;
++            }
+@@ -304,0 +326,4 @@
++
++            if let Some(fault) = fault {
++                fault.after_quotient(store)?;
++            }

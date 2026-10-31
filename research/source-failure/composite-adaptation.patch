@@ -1,0 +1,10 @@
+--- source-prover/src/composite.rs
++++ src/composite.rs
+@@ -714,0 +715,3 @@
++        // The failed owner's writer has closed its descriptor. Releasing this
++        // claim does not reopen the failed owner or restore unlink authority.
++        state.writing = false;
+@@ -1213,0 +1217,3 @@
++
++#[path = "faults.rs"]
++pub(crate) mod faults;

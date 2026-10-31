@@ -1,0 +1,8 @@
+--- source-prover/src/hiding_pcs.rs
++++ src/hiding_pcs.rs
+@@ -104,0 +105,5 @@
++    // A diagnostic keeps a clone of the actual committed lease, so closure
++    // checks concern the same owner rather than an unrelated storage fixture.
++    pub(crate) fn diagnostic_lease(&self) -> Stored {
++        self.matrix.clone()
++    }

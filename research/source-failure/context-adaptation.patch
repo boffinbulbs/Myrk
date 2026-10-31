@@ -1,0 +1,20 @@
+--- source-prover/src/context.rs
++++ src/context.rs
+@@ -116,0 +117,17 @@
++    /// The only diagnostic selector is private and cannot replace an AIR verdict.
++    #[cfg(not(debug_assertions))]
++    pub(crate) fn prove_fault(
++        &self,
++        values: impl IntoIterator<Item = BabyBear>,
++        fault: &crate::composite::faults::Run,
++    ) -> ProvingResult<D, I, F, R, C> {
++        self.config.pcs().composite_profile()?;
++        if self.config.ood_proof_of_work_bits() != 0
++            || self.config.lookup_proof_of_work_bits() != 0
++            || self.config.is_zk() != 1
++        {
++            return Err(OwnedError::Context);
++        }
++        let raw = self.store.write_raw(values)?;
++        crate::owned_prover::prove_selected(&self.config, &self.store, raw, Some(fault))
++    }
