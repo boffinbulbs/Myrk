@@ -30,3 +30,4 @@ research/quotient-source/diagnostics_setup-adaptation.patch whitespace=-blank-at
 research/quotient-source/quotient-extraction.patch whitespace=-blank-at-eol,-blank-at-eof
 research/quotient-source/LICENSE-APACHE whitespace=-blank-at-eof
 research/quotient-mask/LICENSE-APACHE whitespace=-blank-at-eof
+research/mask-normalization/LICENSE-APACHE whitespace=-blank-at-eof

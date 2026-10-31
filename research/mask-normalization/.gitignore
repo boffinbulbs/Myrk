@@ -1,0 +1,4 @@
+/target/
+/results/*
+!/results/measurement.json
+!/results/reference-report.json

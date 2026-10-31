@@ -164,7 +164,7 @@ The active stage is cryptographic feasibility and connected private authorizatio
 | Monetary accounting | Atomic amounts, bounded issuance, earned stake allocation and burns | Owned payout notes, persistent ledger and consensus context |
 | Primitive and proof components | Exact reference vectors, bounded relations and adversarial proof rejection tests | Complete private payment composition and security analysis |
 | Signature and ownership | Complete bounded native reference relations and a full streamed AIR scan | Hiding authorization proofs and same witness ledger composition |
-| Committed quotient construction | Actual main data, canonical output, independent evaluation reference and source consuming coupled commitment | Mask arithmetic, live transcript composition and complete hiding proofs |
+| Committed quotient construction | Actual main data, canonical output, independent arithmetic references and source consuming coupled commitment | Live transcript composition and complete hiding proofs |
 | Source pipeline | Complete fixed class construction and full native signature constraint scan | Prover resources, hiding and authenticated ledger joins |
 | Mining, stake and networking | Architecture, interfaces and integration requirements | Runtime implementation and independent network agreement |
 | Wallet, contracts, Safe and Aegis | Authority, state and recovery architecture | Separate executable applications and consensus milestones |
@@ -185,6 +185,8 @@ The active stage is cryptographic feasibility and connected private authorizatio
 The [committed quotient construction](research/quotient-source/README.md) connects actual main commitment data to checked quotient evaluation in the fixed research relation.
 
 The [coupled quotient commitment](research/quotient-mask/README.md) consumes that sealed source and commits eight masked chunks. Its fixed diagnostic compares every stored field, both commitment roots and continuing randomness with the retained dense route. Source and storage failures close the shared owner. Construction stops before opening or proof generation.
+
+The [eight domain normalization reference](research/mask-normalization/README.md) independently checks the actual domain ordering, normalized vanishing constants and every final coupled mask coordinate. Six arithmetic mutations separate under the fixed public test bank. This evidence precedes integration with the uninterrupted proof transcript.
 
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 

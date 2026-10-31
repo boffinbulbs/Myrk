@@ -1,0 +1,5 @@
+--- quotient-mask/src/laboratory.rs
++++ src/laboratory.rs
+@@ -42 +42 @@
+-pub use context::fixed_masking;
++pub use hiding_pcs::fixed_normalization;

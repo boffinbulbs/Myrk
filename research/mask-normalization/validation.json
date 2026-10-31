@@ -1,0 +1,79 @@
+{
+  "artifacts": {
+    "results/measurement.json": {
+      "bytes": 467,
+      "sha256": "258c9eff4a082b15de18fdc673d7594024e62b7c4d534e1246942462f9cda88f"
+    },
+    "results/reference-report.json": {
+      "bytes": 776,
+      "sha256": "d7e24742a5ecb71581d5f0cf3f66ae98128e2aecd1d85893d7ee5648c5b8e2cf"
+    }
+  },
+  "capture_identity": {
+    "bytes": 22778,
+    "sha256": "7ad84d73e620b17daed5afd321331241a848df6414344e243bcb9f93a5395228"
+  },
+  "capture_receipt_sha256": "4dd35172df574e27cb06f52672cdccf0dfb898dc233ff5cd6b49a327d39c02ca",
+  "date": "2026-10-31",
+  "format": "kova.mask-normalization.validation.v1",
+  "guards": {
+    "native": {
+      "accepted": true,
+      "actual_failed": 0,
+      "actual_ignored": 0,
+      "actual_passed": 1,
+      "available_before_bytes": 7020924928,
+      "exit_code": 0,
+      "expected_tests": 1,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960,
+      "installed_process_commit_limit_bytes": 536870912,
+      "minimum_available_bytes": 2147483648,
+      "output_limit_exceeded": false,
+      "peak_job_commit_bytes": 2383872,
+      "peak_private_commit_bytes": 1306624,
+      "peak_working_bytes": 5775360,
+      "test_counts_verified": true,
+      "timed_out": false,
+      "timeout_seconds": 120,
+      "working_guard_terminated": false
+    },
+    "reference": {
+      "accepted": true,
+      "actual_failed": null,
+      "actual_ignored": null,
+      "actual_passed": null,
+      "available_before_bytes": 6740873216,
+      "exit_code": 0,
+      "expected_tests": 0,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960,
+      "installed_process_commit_limit_bytes": 536870912,
+      "minimum_available_bytes": 2147483648,
+      "output_limit_exceeded": false,
+      "peak_job_commit_bytes": 14622720,
+      "peak_private_commit_bytes": 13328384,
+      "peak_working_bytes": 20750336,
+      "test_counts_verified": false,
+      "timed_out": false,
+      "timeout_seconds": 120,
+      "working_guard_terminated": false
+    }
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "Public deterministic mask bank, not a production entropy test",
+    "Shared literal subgroup root and input specification",
+    "No commitment, opening, verifier or proof constructor selected",
+    "No complete commitment equivalence for this new binary",
+    "No complete private signature, payment or network security claim"
+  ],
+  "native_executable_sha256": "674ab394791dbbad2fcd0ee7b26fe3cb6a25a17d1a65c731ab7c5ccbefa1c959",
+  "platform": "Windows x86_64",
+  "python": "3.14.5",
+  "python_executable_sha256": "3adbbf2af609e206e3ca18cd55fc7c4b52f5c8bb8218dd99fd5a9e50d7a193cd",
+  "rust": "1.94.1",
+  "scope": "Fixed actual normalization helper and independent integer mask comparison, zero proofs",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "06611e08e38a7bbb8c387b8d364ab6dde04b463776311b9766ec54c846dad74a"
+}

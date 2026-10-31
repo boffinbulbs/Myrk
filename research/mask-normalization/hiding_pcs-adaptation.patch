@@ -1,0 +1,34 @@
+--- quotient-mask/src/hiding_pcs.rs
++++ src/hiding_pcs.rs
+@@ -285,8 +285 @@
+-                // Preserve the original j/k order and final coupled block.
+-                // Every column, including added random columns, is masked.
+-                for j in 0..7 {
+-                    for k in 0..256 * 8 {
+-                        let term = masks[j * 256 * 8 + k] * multipliers[j];
+-                        masks[7 * 256 * 8 + k] -= term;
+-                    }
+-                }
++                couple_mask_banks(&multipliers, &mut masks)?;
+@@ -343,0 +337,21 @@
++
++// Exact fixed-shape extraction of the original coupled update loop. The actual
++// source-consuming adapter and the normalization diagnostic use this function.
++// It samples no randomness and accepts no expected values or verdict callback.
++fn couple_mask_banks(
++    multipliers: &[BabyBear],
++    masks: &mut [BabyBear],
++) -> Result<(), CompositeError> {
++    if multipliers.len() != 7 || masks.len() != 8 * 256 * 8 {
++        return Err(CompositeError::Shape);
++    }
++    for j in 0..7 {
++        for k in 0..256 * 8 {
++            let term = masks[j * 256 * 8 + k] * multipliers[j];
++            masks[7 * 256 * 8 + k] -= term;
++        }
++    }
++    Ok(())
++}
++
++include!("normalization.rs");
