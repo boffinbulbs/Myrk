@@ -190,6 +190,8 @@ The [eight domain normalization reference](research/mask-normalization/README.md
 
 The [uninterrupted source prover](research/source-prover/README.md) connects actual committed main data, canonical quotient construction, coupled commitment, auxiliary sampling and the original single opening. One complete small relation proof is accepted by the retained verifier and ten public, commitment, opened value and transcript mutations reject. The owner records completion only after actual proof construction. This is a bounded backend integration result. Complete private signature proofs, hiding security composition and the same witness payment ledger remain separate gates. The [live source failure controls](research/source-failure/README.md) exercise actual quotient truncation and auxiliary output collision through that lifecycle. First causes survive cleanup, committed lease aliases close and the failed writer releases its busy claim without reopening the owner.
 
+The [private opening authority controls](research/source-consumption/README.md) distinguish budget refusal before consumption from repeated requests sharing the original private flag. Both actual refused calls close their owner and retained committed leases. These controls select no inner opening or new complete proof.
+
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
 ## Build and reproduce

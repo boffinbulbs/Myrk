@@ -1,0 +1,128 @@
+--- source-prover/src/hiding_pcs.rs
++++ src/hiding_pcs.rs
+@@ -376,0 +377,125 @@
++
++#[derive(Clone, Copy, PartialEq, Eq)]
++pub(crate) enum OpeningCase {
++    ExcessPoints,
++    SharedPrivateRequests,
++}
++pub(crate) struct OpeningObservation {
++    pub cause: CompositeError,
++    pub lease: Stored,
++    pub original_opened: bool,
++    pub clone_opened: bool,
++}
++
++impl<D, I, F, R> HidingFriPcs<BabyBear, D, I, F, R, CompositeStore>
++where
++    D: TwoAdicSubgroupDft<BabyBear>,
++    I: Mmcs<BabyBear, MultiProof: Sync, Error: Sync>,
++    I::ProverData<Stored>: Clone,
++    F: Mmcs<E4>,
++    R: CryptoRng + Send + Sync,
++{
++    pub(crate) fn private_opening_control<C>(
++        &self,
++        data: &HidingFriPcsProverData<I::ProverData<Stored>>,
++        challenger: &mut C,
++        selected: OpeningCase,
++    ) -> OpeningObservation
++    where
++        C: FieldChallenger<BabyBear>
++            + GrindingChallenger<Witness = BabyBear>
++            + CanObserve<I::Commitment>
++            + CanObserve<F::Commitment>
++            + p3_challenger::CanSample<E4>
++            + Clone,
++    {
++        self.composite_profile().unwrap();
++        self.inner
++            .storage
++            .check_phase(Phase::MainCommitted)
++            .unwrap();
++        assert!(!data.preprocessed && !data.opened.load(Ordering::Acquire));
++        let matrices = self.inner.mmcs.get_matrices(&data.inner);
++        assert_eq!(matrices.len(), 1);
++        self.inner
++            .storage
++            .check_committed_main(matrices[0])
++            .unwrap();
++        let lease = matrices[0].clone();
++        let alias = data.clone();
++        assert!(Arc::ptr_eq(&data.opened, &alias.opened));
++        let before: E4 = challenger.clone().sample_algebra_element();
++        let point = E4::from_u32(7);
++        let cause = match selected {
++            OpeningCase::ExcessPoints => {
++                let result = <Self as Pcs<E4, C>>::open(
++                    self,
++                    vec![OpeningRequest {
++                        prover_data: &alias,
++                        points: vec![vec![point; 17]],
++                    }],
++                    challenger,
++                );
++                let error = match result {
++                    Err(error) => error,
++                    Ok(_) => panic!("excess actual opening points must fail preflight"),
++                };
++                assert_eq!(
++                    error,
++                    HidingFriProverError::HidingBudgetExceeded {
++                        mask_height: 256,
++                        num_queries: 64,
++                        num_opening_points: 17,
++                        extension_degree: 4,
++                    }
++                );
++                assert!(!data.opened.load(Ordering::Acquire));
++                assert!(!alias.opened.load(Ordering::Acquire));
++                CompositeError::Mask(error)
++            }
++            OpeningCase::SharedPrivateRequests => {
++                let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
++                    <Self as Pcs<E4, C>>::open(
++                        self,
++                        vec![
++                            OpeningRequest {
++                                prover_data: data,
++                                points: vec![vec![point]],
++                            },
++                            OpeningRequest {
++                                prover_data: &alias,
++                                points: vec![vec![point]],
++                            },
++                        ],
++                        challenger,
++                    )
++                }));
++                let payload = match result {
++                    Err(payload) => payload,
++                    Ok(_) => {
++                        panic!("shared private requests must hit the original consumption guard")
++                    }
++                };
++                let message = payload
++                    .downcast_ref::<String>()
++                    .map(String::as_str)
++                    .or_else(|| payload.downcast_ref::<&str>().copied());
++                assert_eq!(
++                    message,
++                    Some("private hiding commitment was already opened; recommit with fresh masks")
++                );
++                assert!(data.opened.load(Ordering::Acquire));
++                assert!(alias.opened.load(Ordering::Acquire));
++                CompositeError::Unwind
++            }
++        };
++        let after: E4 = challenger.clone().sample_algebra_element();
++        assert_eq!(before, after);
++        OpeningObservation {
++            cause,
++            lease,
++            original_opened: data.opened.load(Ordering::Acquire),
++            clone_opened: alias.opened.load(Ordering::Acquire),
++        }
++    }
++}

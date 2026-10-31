@@ -1,0 +1,5 @@
+--- source-prover/src/laboratory.rs
++++ src/laboratory.rs
+@@ -47 +47 @@
+-pub use diagnostics::fixed_complete_proof;
++pub use diagnostics::fixed_private_opening_controls;

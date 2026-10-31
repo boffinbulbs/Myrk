@@ -115,3 +115,5 @@ The [uninterrupted source prover](../research/source-prover/README.md) connects 
 
 
 The [live source failure laboratory](../research/source-failure/README.md) adds real quotient source length and auxiliary exclusive output collision cases under the same proving lifecycle. Its [measurement](../research/source-failure/results/measurement.json) and [validation](../research/source-failure/validation.json) record first cause preservation, actual committed descriptor closure and diagnostic sentinel preservation. These are storage failure controls, with no opening, verifier or completed proof selected.
+
+The [private opening authority laboratory](../research/source-consumption/README.md) exercises actual point budget refusal and the original shared private flag guard. Its [measurement](../research/source-consumption/results/measurement.json) and [validation](../research/source-consumption/validation.json) distinguish preflight from consumption and record caller closure across actual committed lease aliases. No inner opening, verifier or complete proof is selected.

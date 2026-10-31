@@ -1,0 +1,46 @@
+{
+  "artifacts": {
+    "results/measurement.json": {
+      "bytes": 2930,
+      "sha256": "b41d3484d2fe46caef7043c2e012c085d5edf88a6225c9ef11983b7acebf20cf"
+    }
+  },
+  "date": "2026-11-01",
+  "format": "kova.source-consumption.validation.v1",
+  "guard": {
+    "accepted": true,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "actual_passed": 1,
+    "available_before_bytes": 6784229376,
+    "exit_code": 0,
+    "expected_tests": 1,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 3944448,
+    "peak_private_commit_bytes": 2654208,
+    "peak_working_bytes": 7540736,
+    "test_counts_verified": true,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "Fixed small synthetic relation and two actual refused opening calls",
+    "No inner MMCS opening, verifier call or completed proof selected",
+    "Public challenger comparison is a next sample observation on clones",
+    "Private data clones copy salts and digest vectors while sharing opening authority",
+    "Direct RNG journals exclude separately journaled seeded forks",
+    "No complete private signature, payment or quantum security result"
+  ],
+  "native_executable_sha256": "ae79855105aa97b781268b6d93ccbd3c12faea5c1914fed9f04a2a938160576d",
+  "platform": "Windows x86_64",
+  "rust": "1.94.1",
+  "scope": "actual private opening preflight and shared consumption, zero inner openings or proofs",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "f91896526e1c76e3d84542cfd01319f3f12135e40907cb92b0c7f36938dc49e3"
+}

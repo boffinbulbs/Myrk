@@ -1,0 +1,52 @@
+--- source-prover/src/context.rs
++++ src/context.rs
+@@ -116,0 +117,49 @@
++    /// Main-only diagnostic prefix. Its actual failure closes the original
++    /// attempt and is never returned as a proof or resumable transcript.
++    pub(crate) fn opening_prefix(
++        &self,
++        values: impl IntoIterator<Item = BabyBear>,
++        selected: crate::hiding_pcs::OpeningCase,
++    ) -> Result<crate::hiding_pcs::OpeningObservation, OwnedError>
++    where
++        I::ProverData<crate::composite::Stored>: Clone,
++    {
++        use crate::composite::Step;
++        use p3_commit::Pcs;
++        if cfg!(debug_assertions) {
++            return Err(OwnedError::ReleaseRequired);
++        }
++        self.config.pcs().composite_profile()?;
++        if self.config.ood_proof_of_work_bits() != 0
++            || self.config.lookup_proof_of_work_bits() != 0
++            || self.config.is_zk() != 1
++        {
++            return Err(OwnedError::Context);
++        }
++        let raw = self.store.write_raw(values)?;
++        let attempt = self.store.begin_attempt(&raw)?;
++        let mut step = Step::new(&self.store);
++        let result: Result<_, OwnedError> = (|| {
++            let pcs = self.config.pcs();
++            let domain = <HidingFriPcs<BabyBear, D, I, F, R, CompositeStore> as Pcs<
++                Challenge,
++                C,
++            >>::natural_domain_for_degree(pcs, 512);
++            let (_, data) = pcs.commit_composite_main(domain, raw)?;
++            let mut challenger = self.config.initialise_challenger();
++            Ok(pcs.private_opening_control(&data, &mut challenger, selected))
++        })();
++        match &result {
++            Ok(observation) => step.fail(observation.cause.clone()),
++            Err(error) => {
++                let cause = match error {
++                    OwnedError::Storage { source, .. } => source.clone(),
++                    OwnedError::Backend(ProvingError::Pcs { source, .. }) => Error::Mask(*source),
++                    _ => Error::Incomplete,
++                };
++                step.fail(cause);
++            }
++        }
++        drop(attempt);
++        result
++    }

@@ -1,0 +1,10 @@
+--- source-prover/src/diagnostics_setup.rs
++++ src/diagnostics_setup.rs
+@@ -539,7 +538,0 @@
+-pub(super) fn different_challenger() -> Challenger {
+-    Challenger::new(HashChallenger::new(
+-        b"kova.storage-pcs.quartic.altered-context".to_vec(),
+-        hash::TranscriptHash,
+-    ))
+-}
+-

@@ -157,6 +157,8 @@ The [uninterrupted source prover](../research/source-prover/README.md) retains o
 
 The [live source failure controls](../research/source-failure/README.md) retain the actual committed lease through a real sealed source truncation and an auxiliary file collision. The first returns a typed descriptor length error through transcript abort. The second records AlreadyExists before the original infallible storage interface unwinds. Both close actual aliases and refuse reentry. The successor releases a failed writer's busy claim after descriptor closure, with the failed phase and first cause retained. No completed proof, verifier or actual opening is selected by these controls.
 
+The [private opening authority controls](../research/source-consumption/README.md) call the original hiding preflight against actual committed main data. A seventeen point budget refusal preserves the unused flag, while two valid requests sharing cloned private authority consume it and reach the original repeated opening guard. Both actual failures preserve their cause, close committed leases and refuse reentry without further protocol effects. No inner opening or complete proof is selected. Complete proof resource and security composition remains the next integration boundary.
+
 The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
 
 ```text
