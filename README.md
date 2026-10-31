@@ -186,7 +186,9 @@ The [committed quotient construction](research/quotient-source/README.md) connec
 
 The [coupled quotient commitment](research/quotient-mask/README.md) consumes that sealed source and commits eight masked chunks. Its fixed diagnostic compares every stored field, both commitment roots and continuing randomness with the retained dense route. Source and storage failures close the shared owner. Construction stops before opening or proof generation.
 
-The [eight domain normalization reference](research/mask-normalization/README.md) independently checks the actual domain ordering, normalized vanishing constants and every final coupled mask coordinate. Six arithmetic mutations separate under the fixed public test bank. This evidence precedes integration with the uninterrupted proof transcript.
+The [eight domain normalization reference](research/mask-normalization/README.md) independently checks the actual domain ordering, normalized vanishing constants and every final coupled mask coordinate. Six arithmetic mutations separate under the fixed public test bank. The following experiment integrates the uninterrupted proof transcript.
+
+The [uninterrupted source prover](research/source-prover/README.md) connects actual committed main data, canonical quotient construction, coupled commitment, auxiliary sampling and the original single opening. One complete small relation proof is accepted by the retained verifier and ten public, commitment, opened value and transcript mutations reject. The owner records completion only after actual proof construction. This is a bounded backend integration result. Complete private signature proofs, hiding security composition and the same witness payment ledger remain separate gates.
 
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 

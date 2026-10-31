@@ -1,0 +1,75 @@
+--- mask-normalization/src/hiding_pcs.rs
++++ src/hiding_pcs.rs
+@@ -198,25 +197,0 @@
+-
+-// Diagnostic access stays inside the nominal module owning private prover data.
+-// It observes the retained matrices and never supplies roots or verdicts.
+-impl<D, I, F, R, S> HidingFriPcs<BabyBear, D, I, F, R, S>
+-where
+-    I: Mmcs<BabyBear>,
+-    S: MatrixStore<BabyBear>,
+-    R: CryptoRng + Send + Sync,
+-{
+-    pub(crate) fn diagnostic_matrices<'a>(
+-        &self,
+-        data: &'a HidingFriPcsProverData<I::ProverData<S::Stored>>,
+-    ) -> Vec<&'a S::Stored> {
+-        assert!(!data.preprocessed);
+-        assert_eq!(data.num_random_codewords, 4);
+-        assert_eq!(data.log_blowup, 3);
+-        assert!(!data.opened.load(Ordering::Acquire));
+-        self.inner.mmcs.get_matrices(&data.inner)
+-    }
+-
+-    pub(crate) fn diagnostic_mask_marker(&self) -> [u32; 8] {
+-        let mut rng = self.rng.lock();
+-        core::array::from_fn(|_| rng.random::<u32>())
+-    }
+-}
+@@ -357 +332,45 @@
+-include!("normalization.rs");
++// Exact original auxiliary entry body for a future fresh hiding module.
++// The corresponding original MIT and Apache notices accompany this fragment.
++impl<D, I, F, R> HidingFriPcs<BabyBear, D, I, F, R, CompositeStore>
++where
++    D: TwoAdicSubgroupDft<BabyBear>,
++    I: Mmcs<BabyBear, MultiProof: Sync, Error: Sync>,
++    F: Mmcs<E4>,
++    R: CryptoRng + Send + Sync,
++{
++    /// The actual auxiliary sampler runs once. It has no extra main masking.
++    pub fn commit_composite_auxiliary<C>(
++        &self,
++        domain: TwoAdicMultiplicativeCoset<BabyBear>,
++    ) -> Result<CompositeCommitment<I>, CompositeError>
++    where
++        C: FieldChallenger<BabyBear>
++            + GrindingChallenger<Witness = BabyBear>
++            + CanObserve<I::Commitment>
++            + CanObserve<F::Commitment>,
++    {
++        self.composite_profile()?;
++        if domain.size() != 512 || domain.shift() != BabyBear::ONE {
++            return Err(CompositeError::Domain);
++        }
++        let store = &self.inner.storage;
++        store.transition(Phase::QuotientCommitted, Phase::AuxiliaryBuilding)?;
++        let mut step = Step::new(store);
++        let result: Result<_, CompositeError> = (|| {
++            let result =
++                <Self as UnivariateStarkPcs<E4, C>>::get_opt_randomization_poly_commitment(
++                    self,
++                    [domain],
++                )
++                .map_err(CompositeError::Mask)?
++                .ok_or(CompositeError::Incomplete)?;
++            store.transition(Phase::AuxiliaryCommitting, Phase::AuxiliaryCommitted)?;
++            Ok(result)
++        })();
++        match &result {
++            Ok(_) => step.done = true,
++            Err(e) => step.fail(e.clone()),
++        }
++        result
++    }
++}

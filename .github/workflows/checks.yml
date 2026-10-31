@@ -250,6 +250,24 @@ jobs:
       - name: Mask normalization default checks
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/mask-normalization/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
+      - name: Source prover formatting
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 rustfmt --edition 2024 --config skip_children=true --check research/source-prover/src/lib.rs research/source-prover/src/laboratory.rs research/source-prover/src/composite.rs research/source-prover/src/context.rs research/source-prover/src/hiding_pcs.rs research/source-prover/src/owned_pcs.rs research/source-prover/src/owned_prover.rs research/source-prover/src/diagnostics_setup.rs research/source-prover/src/diagnostics.rs research/source-prover/tests/complete.rs
+      - name: Source prover dependencies
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/source-prover/Cargo.toml --locked
+      - name: Source prover recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/source-prover/static_check.py --check-results
+      - name: Source prover diagnostic compilation
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo test --manifest-path research/source-prover/Cargo.toml --release --features diagnostics --test complete --locked --offline --no-run --jobs 1
+      - name: Source prover strict checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-prover/Cargo.toml --release --features diagnostics --lib --test complete --locked --offline -- -D warnings
+      - name: Source prover default checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/source-prover/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
 
   row:
     needs: scope

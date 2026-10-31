@@ -153,6 +153,8 @@ python research/owner-bindings/reference_vectors.py --check
 python research/owner-bindings/profile_check.py
 ```
 
+The [uninterrupted source prover](../research/source-prover/README.md) retains one original transcript through actual main commitment, sealed quotient source, coupled commitment, auxiliary sampling and the single original opening. The small synthetic proof is accepted by the independently compiled retained backend verifier. Ten separate public input, commitment, opened value, degree and transcript controls reject without additional proving. The actual proof is constructed before ProofProduced closes the owner. Full signature proof resources, live transcript failure controls, hiding composition and private ledger integration retain separate gates.
+
 The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
 
 ```text

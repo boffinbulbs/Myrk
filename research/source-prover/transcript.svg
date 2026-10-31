@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 384" role="img" aria-labelledby="title desc">
+  <title id="title">Uninterrupted source proof construction</title>
+  <desc id="desc">One owner retains thirteen field roles. A main commitment and original transcript challenge feed a canonical quotient source and coupled commitment. Actual auxiliary commitment and the original opening precede Proof construction and owner completion.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#496952"/></marker>
+  </defs>
+  <g font-family="Georgia,serif" fill="#496952">
+    <text x="32" y="35" font-size="22">One owner. One original transcript.</text>
+    <text x="32" y="61" font-family="Arial,sans-serif" font-size="13">Fixed synthetic relation   N = 256   extension degree = 4   queries = 64</text>
+    <g fill="none" stroke="#496952" stroke-width="1.5">
+      <rect x="32" y="94" width="896" height="238" rx="8" stroke-dasharray="4 5"/>
+      <rect x="54" y="126" width="182" height="70" rx="4"/>
+      <rect x="278" y="126" width="182" height="70" rx="4"/>
+      <rect x="502" y="126" width="182" height="70" rx="4"/>
+      <rect x="726" y="126" width="182" height="70" rx="4"/>
+      <path d="M236 161H278" marker-end="url(#arrow)"/>
+      <path d="M460 161H502" marker-end="url(#arrow)"/>
+      <path d="M684 161H726" marker-end="url(#arrow)"/>
+      <path d="M817 196V232H594" marker-end="url(#arrow)"/>
+      <rect x="390" y="232" width="204" height="68" rx="4"/>
+      <rect x="98" y="232" width="224" height="68" rx="4"/>
+      <path d="M390 266H322" marker-end="url(#arrow)"/>
+    </g>
+    <g text-anchor="middle" font-family="Arial,sans-serif" font-size="14">
+      <text x="145" y="150">Actual main commitment</text><text x="145" y="174" font-size="12">Borrowed stored evaluations</text>
+      <text x="369" y="150">Canonical quotient source</text><text x="369" y="174" font-size="12">2,048 rows × 4 coefficients</text>
+      <text x="593" y="150">Coupled commitment</text><text x="593" y="174" font-size="12">8 normalized masked chunks</text>
+      <text x="817" y="150">Actual auxiliary data</text><text x="817" y="174" font-size="12">Original random sampler</text>
+      <text x="492" y="258">Original OOD and opening</text><text x="492" y="281" font-size="12">One uninterrupted transcript</text>
+      <text x="210" y="258">Proof construction</text><text x="210" y="281" font-size="12">Then owner ProofProduced</text>
+    </g>
+    <text x="54" y="115" font-family="Arial,sans-serif" font-size="12">Same owner and attempt throughout</text>
+    <text x="32" y="364" font-family="Arial,sans-serif" font-size="13">13 reserved field roles · 1,325,056 bytes · retained verifier in a separate nominal backend</text>
+  </g>
+</svg>

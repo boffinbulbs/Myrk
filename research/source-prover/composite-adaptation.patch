@@ -1,0 +1,20 @@
+--- mask-normalization/src/composite.rs
++++ src/composite.rs
+@@ -1199,2 +1199,15 @@
+-#[path = "mask_controls.rs"]
+-pub(crate) mod mask_controls;
++// Original source-stark attempt transitions for the future fresh owner module.
++// These are absent from the published commitment-only nominal owner.
++impl ProvingAttempt {
++    pub(crate) fn begin_opening(&self) -> Result<(), Error> {
++        self.store
++            .transition(Phase::AuxiliaryCommitted, Phase::Opening)
++    }
++
++    pub(crate) fn finish_produced(&mut self) -> Result<(), Error> {
++        self.store
++            .transition(Phase::Opening, Phase::ProofProduced)?;
++        self.done = true;
++        Ok(())
++    }
++}

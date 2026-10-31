@@ -1,0 +1,217 @@
+--- mask-normalization/src/diagnostics_setup.rs
++++ src/diagnostics_setup.rs
+@@ -1,5 +1,4 @@
+-//! Fixed synthetic setup adapted from source-stark/tests/common.rs (MIT).
+-//! Origin SHA256 f94a19ba97b81f0170400ddc25ca64d2ef35f6ef776d47aebe44521acc5b8df4.
+-//! Only setup/observations: no old Context, proof runner, AIR trace generator,
+-//! leaf capture, private-row export or verdict callback is imported here.
+-
++//! Full small proof observer using retained hash, DFT and MMCS operations.
++//! Counter and RNG framing derive from mask-normalization diagnostics_setup.
++//! MMCS phase/shape observations derive from source-stark/tests/common.rs.
++//! No leaf preimages, expected roots or acceptance callbacks are supplied.
+@@ -72 +71 @@
+-/// independently forbidden below, and MMCS clone entries are counted.
++/// counted separately, and MMCS clone entries retain their original fork.
+@@ -165,0 +165,2 @@
++    owner: std::sync::Mutex<Option<std::sync::Weak<OwnedContext>>>,
++    roots: std::sync::Mutex<Vec<serde_json::Value>>,
+@@ -167,0 +169,23 @@
++    pub(super) fn bind_owner(&self, owner: &Arc<OwnedContext>) {
++        *self.owner.lock().unwrap() = Some(Arc::downgrade(owner));
++    }
++    pub(super) fn roots(&self) -> Vec<serde_json::Value> {
++        self.roots.lock().unwrap().clone()
++    }
++    fn phase(&self, expected: crate::Phase) {
++        if let Some(owner) = self
++            .owner
++            .lock()
++            .unwrap()
++            .as_ref()
++            .and_then(std::sync::Weak::upgrade)
++        {
++            let state = owner.snapshot().unwrap();
++            assert_eq!(state.phase, expected);
++            assert_eq!(
++                (state.reserved_files, state.reserved_bytes),
++                (13, 1_325_056)
++            );
++            assert!(state.failure.is_none());
++        }
++    }
+@@ -201,18 +224,0 @@
+-    /// Exact compact order used by the fixed construction diagnostic. Matrix
+-    /// inspections are intentionally not entropy or protocol-effect counters.
+-    pub(super) fn counts(&self) -> [usize; 8] {
+-        let c = self.detailed_counts();
+-        [
+-            c.input_commits,
+-            c.extension_commits,
+-            c.input_openings,
+-            c.extension_openings,
+-            c.dft.coset_lde_batch,
+-            c.dft.dft_batch,
+-            c.mask.bytes,
+-            c.salt.bytes,
+-        ]
+-    }
+-    pub(super) fn initial_salt(&self) -> usize {
+-        self.initial_salt_bytes.load(Ordering::SeqCst)
+-    }
+@@ -230,18 +235,0 @@
+-}
+-pub(super) fn counting_dft(audit: &Arc<Audit>) -> CountingDft {
+-    CountingDft {
+-        inner: Radix2DitParallel::default(),
+-        audit: audit.clone(),
+-    }
+-}
+-pub(super) fn zero_dft_counts() -> DftCounts {
+-    DftCounts {
+-        dft_batch: 0,
+-        coset_dft_batch: 0,
+-        idft_batch: 0,
+-        coset_idft_batch: 0,
+-        lde_batch: 0,
+-        coset_lde_batch: 0,
+-        coset_lde_batch_with_transform: 0,
+-        coset_lde_batch_with_blocks: 0,
+-    }
+@@ -351,0 +340 @@
++
+@@ -356,2 +345,4 @@
+-        if self.extension {
+-            self.audit.extension_commits.fetch_add(1, Ordering::SeqCst);
++        let (shape, phase) = if self.extension {
++            let round = self.audit.extension_commits.fetch_add(1, Ordering::SeqCst);
++            assert!(round < 9, "finite FRI commitment count");
++            ([1, 2048 >> round, 8], crate::Phase::Opening)
+@@ -359,12 +350,27 @@
+-            let previous = self.audit.input_commits.fetch_add(1, Ordering::SeqCst);
+-            assert!(
+-                previous < 2,
+-                "only main and quotient batch commits are selected"
+-            );
+-            let expected = if previous == 0 { [4096, 6] } else { [4096, 8] };
+-            assert_eq!(inputs.len(), if previous == 0 { 1 } else { 8 });
+-            assert!(inputs.iter().all(|m| [m.height(), m.width()] == expected));
+-        }
+-        assert!(!self.extension, "extension commitments are not selected");
+-        self.inner.commit(inputs)
+-    }
++            let round = self.audit.input_commits.fetch_add(1, Ordering::SeqCst);
++            assert!(round < 3, "finite input commitment count");
++            (
++                [[1, 4096, 6], [8, 4096, 8], [1, 4096, 8]][round],
++                [
++                    crate::Phase::MainCommitting,
++                    crate::Phase::QuotientCommitting,
++                    crate::Phase::AuxiliaryCommitting,
++                ][round],
++            )
++        };
++        self.audit.phase(phase);
++        assert_eq!(inputs.len(), shape[0]);
++        assert!(
++            inputs
++                .iter()
++                .all(|m| [m.height(), m.width()] == [shape[1], shape[2]])
++        );
++        let result = self.inner.commit(inputs);
++        self.audit
++            .roots
++            .lock()
++            .unwrap()
++            .push(serde_json::to_value(&result.0).unwrap());
++        result
++    }
++
+@@ -374,0 +381 @@
++
+@@ -381 +388,10 @@
+-        if self.extension {
++        panic!("the fixed complete proof uses only batched openings")
++    }
++
++    fn open_multi_batch<M: Matrix<BabyBear>>(
++        &self,
++        indices: &[usize],
++        data: &Self::ProverData<M>,
++    ) -> (Vec<Vec<Vec<BabyBear>>>, Self::MultiProof) {
++        assert_eq!(indices.len(), 64);
++        let shape = if self.extension {
+@@ -382,0 +399,6 @@
++            let round = self
++                .audit
++                .extension_multi_opens
++                .fetch_add(1, Ordering::SeqCst);
++            assert!(round < 9, "finite FRI opening count");
++            [1, 2048 >> round, 8]
+@@ -385,19 +407,16 @@
+-        }
+-        panic!("scalar openings are not selected")
+-    }
+-    fn open_multi_batch<M: Matrix<BabyBear>>(
+-        &self,
+-        _: &[usize],
+-        _: &Self::ProverData<M>,
+-    ) -> (Vec<Vec<Vec<BabyBear>>>, Self::MultiProof) {
+-        if self.extension {
+-            self.audit.extension_openings.fetch_add(1, Ordering::SeqCst);
+-            self.audit
+-                .extension_multi_opens
+-                .fetch_add(1, Ordering::SeqCst);
+-        } else {
+-            self.audit.input_openings.fetch_add(1, Ordering::SeqCst);
+-            self.audit.input_multi_opens.fetch_add(1, Ordering::SeqCst);
+-        }
+-        panic!("multi-openings are not selected")
+-    }
++            let round = self.audit.input_multi_opens.fetch_add(1, Ordering::SeqCst);
++            assert!(round < 3, "finite input opening count");
++            [[1, 4096, 8], [1, 4096, 6], [8, 4096, 8]][round]
++        };
++        self.audit.phase(crate::Phase::Opening);
++        let matrices = self.inner.get_matrices(data);
++        assert_eq!(matrices.len(), shape[0]);
++        assert!(
++            matrices
++                .iter()
++                .all(|m| [m.height(), m.width()] == [shape[1], shape[2]])
++        );
++        assert!(indices.iter().all(|&index| index < shape[1]));
++        self.inner.open_multi_batch(indices, data)
++    }
++
+@@ -412,2 +431,3 @@
+-        panic!("opening verification is not selected")
+-    }
++        panic!("the retained verifier uses only batched verification")
++    }
++
+@@ -416,5 +436,5 @@
+-        _: &Self::Commitment,
+-        _: &[Dimensions],
+-        _: &[usize],
+-        _: &[Vec<T>],
+-        _: &Self::MultiProof,
++        commitment: &Self::Commitment,
++        dimensions: &[Dimensions],
++        indices: &[usize],
++        values: &[Vec<T>],
++        proof: &Self::MultiProof,
+@@ -423 +443,4 @@
+-        panic!("multi-opening verification is not selected")
++        assert!(dimensions.len() <= 8);
++        assert_eq!(indices.len(), 64);
++        self.inner
++            .verify_multi_batch(commitment, dimensions, indices, values, proof)
+@@ -515,0 +539,7 @@
++pub(super) fn different_challenger() -> Challenger {
++    Challenger::new(HashChallenger::new(
++        b"kova.storage-pcs.quartic.altered-context".to_vec(),
++        hash::TranscriptHash,
++    ))
++}
++

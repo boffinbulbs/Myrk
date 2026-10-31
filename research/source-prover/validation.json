@@ -1,0 +1,60 @@
+{
+  "artifacts": {
+    "results/measurement.json": {
+      "bytes": 5421,
+      "sha256": "4bc9422c1962d1a4dc025cacf8854470dda3fc440ad23ed547bd1140439e90fe"
+    }
+  },
+  "date": "2026-10-31",
+  "format": "kova.source-prover.validation.v1",
+  "guard": {
+    "accepted": true,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "actual_passed": 1,
+    "available_before_bytes": 6958759936,
+    "exit_code": 0,
+    "expected_tests": 1,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 9379840,
+    "peak_private_commit_bytes": 8085504,
+    "peak_working_bytes": 11722752,
+    "test_counts_verified": true,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "Public synthetic small relation, not a complete private signature or payment",
+    "Original verifier compatibility, not an independent security analysis",
+    "Finite mutations, not exhaustive soundness or hiding evidence",
+    "Wrapper DFT counters exclude the retained FRI final polynomial inverse",
+    "Observed RNG delivery streams exclude separately journaled seeded forks",
+    "No native error injection during the live transcript or opening"
+  ],
+  "native_executable_sha256": "5ef1a55ac1a807f7a6ab05ef7e156e5a8bc0d2af4e15a53b356ed901b5ed2b61",
+  "platform": "Windows x86_64",
+  "prior_attempt": {
+    "accepted": false,
+    "correction": "exact ordinary IDFT count 0 and exact coset IDFT count 8",
+    "executable_sha256": "f1de6f6f72d4e4dbf132e300b695e70cb8dc908e7ebe6b2a33c65fd7d284300d",
+    "exit_code": 101,
+    "failure": "diagnostic assigned inverse count to ordinary IDFT instead of coset IDFT",
+    "phase_reached": "ProofProduced",
+    "security_or_resource_change": false,
+    "verifier_calls_completed": 0
+  },
+  "proof_identity": {
+    "bytes": 596650,
+    "sha256": "788c36755d82e0c6d5787277d0aa5caa296b9c833d302caccffb49e20d6aba4f"
+  },
+  "rust": "1.94.1",
+  "scope": "one uninterrupted small Quartic proof and ten retained verifier rejections",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "a7c748270944cb50eb2484422b1c1ebc906d04350e0e27e6a27d5c72103bae4b"
+}

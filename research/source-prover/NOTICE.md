@@ -1,0 +1,11 @@
+# Source provenance
+
+The owned prover derives from p3-uni-stark 0.8.0 through the retained source-stark adaptation. Original authorship and dual MIT and Apache 2.0 notices are retained in LICENSE-MIT and LICENSE-APACHE. New context and storage adaptation code uses the repository MIT license in LICENSE. Mechanical differences identify the source paths for each adaptation.
+
+The context retains the original fixed relation and profile checks. The private PCS trait adds a borrowed view of actual committed main data and consumes the canonical quotient source. The prover replaces the original dense quotient evaluation and flattening with the retained serial source kernel and sealed writer. One original transcript continues through the original auxiliary sampler, out of domain phase and single batched opening. The actual original Proof type is constructed before the owner records ProofProduced.
+
+The composite owner and hiding adapter derive from mask-normalization. The normalized coupled mask helper and source commitment path remain unchanged. Original opening and proof completion transitions are restored. The old component capture entries are excluded. The source role remains reserved throughout the attempt. Retained backend, storage, transcript, AIR, quotient kernel and main preparation modules are compiled by unchanged paths. Original private opening flag consumption remains in that backend.
+
+The diagnostic observer derives its delivery counters, hash fingerprints and DFT delegation from mask-normalization, and its full commitment and opening shapes from source-stark/tests/common.rs. It delegates actual original hash, MMCS, DFT and opening operations. Deterministic seeds and the retained trace literal are public synthetic research inputs. No leaf preimages or entropy stream vectors are captured. Byte counters describe the directly observed streams. Seeded forks have separate journals and are not represented as a complete entropy transcript.
+
+Verification uses the original independently compiled proof-preflight backend and registry uni STARK verifier. This is implementation compatibility with retained code, not an independently designed cryptographic verifier or a new hiding security theorem. The small quartic relation remains separate from complete private signature and payment relations.

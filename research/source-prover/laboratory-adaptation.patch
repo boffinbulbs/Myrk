@@ -1,0 +1,15 @@
+--- mask-normalization/src/laboratory.rs
++++ src/laboratory.rs
+@@ -2,0 +3 @@
++mod diagnostics;
+@@ -3,0 +5,4 @@
++#[cfg(not(debug_assertions))]
++mod owned_pcs;
++#[cfg(not(debug_assertions))]
++mod owned_prover;
+@@ -7 +12 @@
+-pub use context::{Context, OwnedConfig, OwnedError};
++pub use context::{Context, OwnedConfig, OwnedError, OwnedProof, ProvingResult};
+@@ -42 +47 @@
+-pub use hiding_pcs::fixed_normalization;
++pub use diagnostics::fixed_complete_proof;
