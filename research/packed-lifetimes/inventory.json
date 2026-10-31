@@ -1,0 +1,965 @@
+{
+  "arithmetic_phase_counts": {
+    "both": 0,
+    "inverse_hints": 256,
+    "neither": 4608,
+    "ntt_and_matrix": 1700,
+    "ntt_products": 3328
+  },
+  "conditional_mode_overlay": {
+    "constraint_count": null,
+    "constraint_degree": null,
+    "execution_admitted": false,
+    "field_payload_bytes": 26300841984,
+    "height": 8192,
+    "main_query_fields_at_64_distinct_indices_bytes": 10798592,
+    "net_removed_columns": 998,
+    "public_values": 196,
+    "status": "source design only, no candidate constraint implementation",
+    "width": 42178
+  },
+  "conservative_output_lifetimes": [
+    [
+      610,
+      1026
+    ],
+    [
+      802,
+      1410
+    ],
+    [
+      994,
+      1794
+    ],
+    [
+      1186,
+      2178
+    ],
+    [
+      1378,
+      2562
+    ],
+    [
+      1570,
+      2946
+    ],
+    [
+      1762,
+      3330
+    ],
+    [
+      1954,
+      3586
+    ],
+    [
+      2146,
+      3362
+    ],
+    [
+      2338,
+      3394
+    ],
+    [
+      2530,
+      3426
+    ],
+    [
+      2722,
+      3458
+    ],
+    [
+      2914,
+      3490
+    ],
+    [
+      3106,
+      3522
+    ],
+    [
+      3298,
+      3554
+    ],
+    [
+      3490,
+      3586
+    ]
+  ],
+  "constant_expression_refusals": 4,
+  "eight_bank_remap_refusals": [
+    {
+      "bank": 0,
+      "conflicting_logical_outputs": [
+        [
+          8,
+          14
+        ]
+      ]
+    },
+    {
+      "bank": 1,
+      "conflicting_logical_outputs": [
+        [
+          9,
+          14
+        ]
+      ]
+    },
+    {
+      "bank": 2,
+      "conflicting_logical_outputs": [
+        [
+          10,
+          14
+        ]
+      ]
+    },
+    {
+      "bank": 3,
+      "conflicting_logical_outputs": [
+        [
+          11,
+          14
+        ]
+      ]
+    },
+    {
+      "bank": 4,
+      "conflicting_logical_outputs": [
+        [
+          12,
+          14
+        ]
+      ]
+    },
+    {
+      "bank": 5,
+      "conflicting_logical_outputs": [
+        [
+          13,
+          14
+        ]
+      ]
+    },
+    {
+      "bank": 6,
+      "conflicting_logical_outputs": [
+        [
+          6,
+          14
+        ],
+        [
+          14,
+          15
+        ]
+      ]
+    },
+    {
+      "bank": 7,
+      "conflicting_logical_outputs": [
+        [
+          7,
+          14
+        ]
+      ]
+    }
+  ],
+  "format": "kova.packed-lifetimes.inventory.v1",
+  "limitations": [
+    "Family lifetime descriptions are reviewed annotations, not automatic dataflow extraction",
+    "Whole-bank intervals overapproximate coefficient lifetimes and do not prove a general register lower bound",
+    "Disjoint active phases do not remove dormant equations or certify register aliasing",
+    "Current AIR, constructor, source limits and proof security settings remain unchanged"
+  ],
+  "output_banks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    6
+  ],
+  "physical_columns": 43176,
+  "physical_regions": [
+    {
+      "columns": [
+        0,
+        10532
+      ],
+      "family": "sponge",
+      "name": "KECCAK",
+      "reuse_certified": false,
+      "width": 10532
+    },
+    {
+      "columns": [
+        10532,
+        10724
+      ],
+      "family": "clock",
+      "name": "CLOCK",
+      "reuse_certified": false,
+      "width": 192
+    },
+    {
+      "columns": [
+        10724,
+        11588
+      ],
+      "family": "held_private_sources",
+      "name": "KEY",
+      "reuse_certified": false,
+      "width": 864
+    },
+    {
+      "columns": [
+        11588,
+        13131
+      ],
+      "family": "held_private_sources",
+      "name": "SIGNATURE",
+      "reuse_certified": false,
+      "width": 1543
+    },
+    {
+      "columns": [
+        13131,
+        13271
+      ],
+      "family": "held_private_sources",
+      "name": "NOTE",
+      "reuse_certified": false,
+      "width": 140
+    },
+    {
+      "columns": [
+        13271,
+        16271
+      ],
+      "family": "held_private_sources",
+      "name": "SOURCE_PORTS",
+      "reuse_certified": false,
+      "width": 3000
+    },
+    {
+      "columns": [
+        16271,
+        17615
+      ],
+      "family": "sponge",
+      "name": "MESSAGE",
+      "reuse_certified": false,
+      "width": 1344
+    },
+    {
+      "columns": [
+        17615,
+        18959
+      ],
+      "family": "sponge",
+      "name": "OUTPUT",
+      "reuse_certified": false,
+      "width": 1344
+    },
+    {
+      "columns": [
+        18959,
+        18991
+      ],
+      "family": "derived_hashes",
+      "name": "RHO",
+      "reuse_certified": false,
+      "width": 32
+    },
+    {
+      "columns": [
+        18991,
+        19055
+      ],
+      "family": "derived_hashes",
+      "name": "OWNER",
+      "reuse_certified": false,
+      "width": 64
+    },
+    {
+      "columns": [
+        19055,
+        19119
+      ],
+      "family": "derived_hashes",
+      "name": "TR",
+      "reuse_certified": false,
+      "width": 64
+    },
+    {
+      "columns": [
+        19119,
+        19183
+      ],
+      "family": "derived_hashes",
+      "name": "MU",
+      "reuse_certified": false,
+      "width": 64
+    },
+    {
+      "columns": [
+        19183,
+        19247
+      ],
+      "family": "derived_hashes",
+      "name": "NOTE_COMMITMENT",
+      "reuse_certified": false,
+      "width": 64
+    },
+    {
+      "columns": [
+        19247,
+        19519
+      ],
+      "family": "derived_hashes",
+      "name": "CHALLENGE_XOF",
+      "reuse_certified": false,
+      "width": 272
+    },
+    {
+      "columns": [
+        19519,
+        21567
+      ],
+      "family": "canonical_decoding",
+      "name": "T1",
+      "reuse_certified": false,
+      "width": 2048
+    },
+    {
+      "columns": [
+        21567,
+        21647
+      ],
+      "family": "canonical_decoding",
+      "name": "T1_MESSAGE",
+      "reuse_certified": false,
+      "width": 80
+    },
+    {
+      "columns": [
+        21647,
+        21727
+      ],
+      "family": "canonical_decoding",
+      "name": "Z_MESSAGE",
+      "reuse_certified": false,
+      "width": 80
+    },
+    {
+      "columns": [
+        21727,
+        22075
+      ],
+      "family": "canonical_decoding",
+      "name": "Z_AUX",
+      "reuse_certified": false,
+      "width": 348
+    },
+    {
+      "columns": [
+        22075,
+        23867
+      ],
+      "family": "canonical_decoding",
+      "name": "Z_VALUES",
+      "reuse_certified": false,
+      "width": 1792
+    },
+    {
+      "columns": [
+        23867,
+        23923
+      ],
+      "family": "hint_decoding",
+      "name": "CUTS",
+      "reuse_certified": false,
+      "width": 56
+    },
+    {
+      "columns": [
+        23923,
+        23979
+      ],
+      "family": "hint_decoding",
+      "name": "CUT_COMPLEMENTS",
+      "reuse_certified": false,
+      "width": 56
+    },
+    {
+      "columns": [
+        23979,
+        24028
+      ],
+      "family": "hint_decoding",
+      "name": "CUT_DIFFERENCES",
+      "reuse_certified": false,
+      "width": 49
+    },
+    {
+      "columns": [
+        24028,
+        24036
+      ],
+      "family": "hint_decoding",
+      "name": "HINT_MESSAGE",
+      "reuse_certified": false,
+      "width": 8
+    },
+    {
+      "columns": [
+        24036,
+        24037
+      ],
+      "family": "hint_decoding",
+      "name": "HINT_ACTIVE",
+      "reuse_certified": false,
+      "width": 1
+    },
+    {
+      "columns": [
+        24037,
+        24044
+      ],
+      "family": "hint_decoding",
+      "name": "ACTIVE_LOWER",
+      "reuse_certified": false,
+      "width": 7
+    },
+    {
+      "columns": [
+        24044,
+        24051
+      ],
+      "family": "hint_decoding",
+      "name": "ACTIVE_UPPER",
+      "reuse_certified": false,
+      "width": 7
+    },
+    {
+      "columns": [
+        24051,
+        24059
+      ],
+      "family": "hint_decoding",
+      "name": "GROUP",
+      "reuse_certified": false,
+      "width": 8
+    },
+    {
+      "columns": [
+        24059,
+        24115
+      ],
+      "family": "hint_decoding",
+      "name": "SEGMENT_LOWER",
+      "reuse_certified": false,
+      "width": 56
+    },
+    {
+      "columns": [
+        24115,
+        24171
+      ],
+      "family": "hint_decoding",
+      "name": "SEGMENT_UPPER",
+      "reuse_certified": false,
+      "width": 56
+    },
+    {
+      "columns": [
+        24171,
+        24427
+      ],
+      "family": "hint_decoding",
+      "name": "ONE_HOT",
+      "reuse_certified": false,
+      "width": 256
+    },
+    {
+      "columns": [
+        24427,
+        26475
+      ],
+      "family": "hint_decoding",
+      "name": "HINTS",
+      "reuse_certified": false,
+      "width": 2048
+    },
+    {
+      "columns": [
+        26475,
+        26539
+      ],
+      "family": "hint_decoding",
+      "name": "LAST",
+      "reuse_certified": false,
+      "width": 64
+    },
+    {
+      "columns": [
+        26539,
+        26547
+      ],
+      "family": "hint_decoding",
+      "name": "SEEN",
+      "reuse_certified": false,
+      "width": 8
+    },
+    {
+      "columns": [
+        26547,
+        26611
+      ],
+      "family": "hint_decoding",
+      "name": "ORDER",
+      "reuse_certified": false,
+      "width": 64
+    },
+    {
+      "columns": [
+        26611,
+        26675
+      ],
+      "family": "challenge_sampling",
+      "name": "SIGN_BITS",
+      "reuse_certified": false,
+      "width": 64
+    },
+    {
+      "columns": [
+        26675,
+        26931
+      ],
+      "family": "challenge_sampling",
+      "name": "PLUS",
+      "reuse_certified": false,
+      "width": 256
+    },
+    {
+      "columns": [
+        26931,
+        27187
+      ],
+      "family": "challenge_sampling",
+      "name": "MINUS",
+      "reuse_certified": false,
+      "width": 256
+    },
+    {
+      "columns": [
+        27187,
+        27248
+      ],
+      "family": "challenge_sampling",
+      "name": "COUNT",
+      "reuse_certified": false,
+      "width": 61
+    },
+    {
+      "columns": [
+        27248,
+        27256
+      ],
+      "family": "challenge_sampling",
+      "name": "CANDIDATE",
+      "reuse_certified": false,
+      "width": 8
+    },
+    {
+      "columns": [
+        27256,
+        27264
+      ],
+      "family": "challenge_sampling",
+      "name": "LOWER",
+      "reuse_certified": false,
+      "width": 8
+    },
+    {
+      "columns": [
+        27264,
+        27272
+      ],
+      "family": "challenge_sampling",
+      "name": "UPPER",
+      "reuse_certified": false,
+      "width": 8
+    },
+    {
+      "columns": [
+        27272,
+        27528
+      ],
+      "family": "challenge_sampling",
+      "name": "INDEX",
+      "reuse_certified": false,
+      "width": 256
+    },
+    {
+      "columns": [
+        27528,
+        27529
+      ],
+      "family": "challenge_sampling",
+      "name": "TAKE",
+      "reuse_certified": false,
+      "width": 1
+    },
+    {
+      "columns": [
+        27529,
+        27530
+      ],
+      "family": "challenge_sampling",
+      "name": "OLD_PLUS",
+      "reuse_certified": false,
+      "width": 1
+    },
+    {
+      "columns": [
+        27530,
+        27531
+      ],
+      "family": "challenge_sampling",
+      "name": "OLD_MINUS",
+      "reuse_certified": false,
+      "width": 1
+    },
+    {
+      "columns": [
+        27531,
+        27540
+      ],
+      "family": "challenge_sampling",
+      "name": "CURSOR",
+      "reuse_certified": false,
+      "width": 9
+    },
+    {
+      "columns": [
+        27540,
+        27796
+      ],
+      "family": "challenge_sampling",
+      "name": "CHALLENGE",
+      "reuse_certified": false,
+      "width": 256
+    },
+    {
+      "columns": [
+        27796,
+        30100
+      ],
+      "family": "ntt_outputs",
+      "name": "NTT_OUTPUT",
+      "reuse_certified": false,
+      "width": 2304
+    },
+    {
+      "columns": [
+        30100,
+        30356
+      ],
+      "family": "ntt_workspace",
+      "name": "NTT_SCRATCH",
+      "reuse_certified": false,
+      "width": 256
+    },
+    {
+      "columns": [
+        30356,
+        32044
+      ],
+      "family": "ntt_workspace",
+      "name": "NTT_PRODUCTS",
+      "reuse_certified": false,
+      "width": 1688
+    },
+    {
+      "columns": [
+        32044,
+        32780
+      ],
+      "family": "ntt_workspace",
+      "name": "NTT_WRITES",
+      "reuse_certified": false,
+      "width": 736
+    },
+    {
+      "columns": [
+        32780,
+        32796
+      ],
+      "family": "ntt_workspace",
+      "name": "NTT_FLAGS",
+      "reuse_certified": false,
+      "width": 16
+    },
+    {
+      "columns": [
+        32796,
+        33804
+      ],
+      "family": "matrix_sampling",
+      "name": "MATRIX_XOF",
+      "reuse_certified": false,
+      "width": 1008
+    },
+    {
+      "columns": [
+        33804,
+        36117
+      ],
+      "family": "matrix_sampling",
+      "name": "MATRIX_COUNT",
+      "reuse_certified": false,
+      "width": 2313
+    },
+    {
+      "columns": [
+        36117,
+        36207
+      ],
+      "family": "matrix_sampling",
+      "name": "MATRIX_CURSOR",
+      "reuse_certified": false,
+      "width": 90
+    },
+    {
+      "columns": [
+        36207,
+        36399
+      ],
+      "family": "matrix_sampling",
+      "name": "MATRIX_CANDIDATE",
+      "reuse_certified": false,
+      "width": 192
+    },
+    {
+      "columns": [
+        36399,
+        36583
+      ],
+      "family": "matrix_sampling",
+      "name": "MATRIX_SLACK",
+      "reuse_certified": false,
+      "width": 184
+    },
+    {
+      "columns": [
+        36583,
+        36591
+      ],
+      "family": "matrix_sampling",
+      "name": "MATRIX_TAKE",
+      "reuse_certified": false,
+      "width": 8
+    },
+    {
+      "columns": [
+        36591,
+        36655
+      ],
+      "family": "matrix_sampling",
+      "name": "MATRIX_ENABLE",
+      "reuse_certified": false,
+      "width": 64
+    },
+    {
+      "columns": [
+        36655,
+        38343
+      ],
+      "family": "matrix_products",
+      "name": "EXTRA_PRODUCTS",
+      "reuse_certified": false,
+      "width": 1688
+    },
+    {
+      "columns": [
+        38343,
+        39079
+      ],
+      "family": "matrix_products",
+      "name": "EXTRA_WRITES",
+      "reuse_certified": false,
+      "width": 736
+    },
+    {
+      "columns": [
+        39079,
+        39095
+      ],
+      "family": "matrix_products",
+      "name": "EXTRA_FLAGS",
+      "reuse_certified": false,
+      "width": 16
+    },
+    {
+      "columns": [
+        39095,
+        41143
+      ],
+      "family": "accumulation",
+      "name": "ACCUMULATOR",
+      "reuse_certified": false,
+      "width": 2048
+    },
+    {
+      "columns": [
+        41143,
+        42143
+      ],
+      "family": "inverse_hints",
+      "name": "USE_HINT",
+      "reuse_certified": false,
+      "width": 1000
+    },
+    {
+      "columns": [
+        42143,
+        43167
+      ],
+      "family": "inverse_hints",
+      "name": "W1",
+      "reuse_certified": false,
+      "width": 1024
+    },
+    {
+      "columns": [
+        43167,
+        43168
+      ],
+      "family": "bound_activity",
+      "name": "ACTIVE_CHALLENGE",
+      "reuse_certified": false,
+      "width": 1
+    },
+    {
+      "columns": [
+        43168,
+        43176
+      ],
+      "family": "bound_activity",
+      "name": "ACTIVE_MATRIX",
+      "reuse_certified": false,
+      "width": 8
+    }
+  ],
+  "public_values": 196,
+  "scope": "source constants and conservative phase metadata, no AIR or proof execution",
+  "source_files": {
+    "research/proof-composition/projection.json": {
+      "bytes": 4348,
+      "sha256": "90fceb2106bdae3ef88392026ce641ccc75bf923b7ef6f7bee5614930c9e95d5"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "research/signature-complete-native/src/build/decode.rs": {
+      "bytes": 6229,
+      "sha256": "529723c997f70825d918310f3f7ab49bc2465531328a9177467ef2f922ecbc29"
+    },
+    "research/signature-complete-native/src/build/sample.rs": {
+      "bytes": 2439,
+      "sha256": "e2a1881c852ec427953ddd153fde8caccedc1e042576f8d5da6efd0feef754d5"
+    },
+    "research/signature-complete-native/src/hint_rows.rs": {
+      "bytes": 4448,
+      "sha256": "de3f9425acfc6be9a7e93101c30fd7655df1f5ec540ca1fc5edf951b8d9ee04f"
+    },
+    "research/signature-complete-native/src/hints.rs": {
+      "bytes": 4015,
+      "sha256": "9038be9076454fc27ab8c65d8e827c01731270c6877b291a1e5702d60065b401"
+    },
+    "research/signature-complete-native/src/keccak.rs": {
+      "bytes": 2561,
+      "sha256": "d619093afdd30b630ddc7c88817644c7257c1bdbd2d24f38ca29cd8b4d5db76c"
+    },
+    "research/signature-complete-native/src/mul.rs": {
+      "bytes": 2518,
+      "sha256": "fdf7c8dcb834539b566dab21baf2762de25bc56f907e393f01e8d9b05b09a7e1"
+    },
+    "research/signature-complete-native/src/packing.rs": {
+      "bytes": 2138,
+      "sha256": "bd4a1ed77192af82a32f15a6104eab8f68677ac1aa6beb50dbf630ac1bb8d9ce"
+    },
+    "research/signature-packed/src/air.rs": {
+      "bytes": 1093,
+      "sha256": "19de19ab525083ada93da323de9014d7bb3d841dd371dd4ca135b09956e8dd6c"
+    },
+    "research/signature-packed/src/build.rs": {
+      "bytes": 9328,
+      "sha256": "7a25ada6296b491fe92f363419354a4d1275fbdc0769977a9f98660176eef15b"
+    },
+    "research/signature-packed/src/decoding.rs": {
+      "bytes": 7769,
+      "sha256": "072d5a18bcb819c4f2038a8bbea249c0f3a3b5de896e5e5e835acd4bb6efb250"
+    },
+    "research/signature-packed/src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "eabccbce5c232da1a9e838699a01203d7d7b32456e5d95001608d56cafabdc18"
+    },
+    "research/signature-packed/src/layout.rs": {
+      "bytes": 3836,
+      "sha256": "40c3c0c728fba345c91687060fc983feb923d4ec1aad685747a569e3ca081ec2"
+    },
+    "research/signature-packed/src/lib.rs": {
+      "bytes": 2301,
+      "sha256": "9a2800a72d3b83315a487d7b908ea37392f6a3371f75ab1352286272dd529098"
+    },
+    "research/signature-packed/src/packed.rs": {
+      "bytes": 14006,
+      "sha256": "bc78d17a7c94a7eaab2b49e931771cf67f8854412f92be2a15473b3313283b41"
+    },
+    "research/signature-packed/src/sources.rs": {
+      "bytes": 6657,
+      "sha256": "8d791f7526874ab48eeb164b9a6b353c57d53ce34028ecf0f9c953fa90f50ffc"
+    },
+    "research/signature-packed/src/sponge.rs": {
+      "bytes": 9251,
+      "sha256": "63ccb3990325d8898a6c6888a64426bb93d004a61a6a7a698047a2f757bb2b74"
+    },
+    "research/signature-storage/src/activity.rs": {
+      "bytes": 3215,
+      "sha256": "6f1ba210b94e8c511e0b4751a0132d0d6c8ee713c7a6162c0601b64768a40315"
+    },
+    "research/signature-storage/src/clock.rs": {
+      "bytes": 3696,
+      "sha256": "800c4a123d818507b1ee3fb6b77f3ce59657aa50d8dcdd7adc6e7114e6734e37"
+    },
+    "research/signature-storage/src/matrix.rs": {
+      "bytes": 15396,
+      "sha256": "0460487297976483bac254e916ec2ef138284e3dc5b33072f145fed147832027"
+    },
+    "research/signature-storage/src/ntt.rs": {
+      "bytes": 20398,
+      "sha256": "db12c67a3ea5a8d7c5182e2d2f020905a7f91cb0b949dc4d178f3992dc29a913"
+    },
+    "research/signature-storage/src/program.rs": {
+      "bytes": 1692,
+      "sha256": "9a21160312cc652ca953bb617bf14bd430e917b2c1381cfac96dfc0cfcfa0a6a"
+    },
+    "research/signature-storage/src/sampler.rs": {
+      "bytes": 6195,
+      "sha256": "9375cc249ed6621df3cfd828a75f646eae6b8dc832603d045dfa54a69f92894c"
+    }
+  },
+  "whole_bank_calendar_peak": 9
+}

@@ -161,6 +161,8 @@ The [private opening authority controls](../research/source-consumption/README.m
 
 The [complete proof composition analysis](../research/proof-composition/README.md) projects the current packed relation through all thirteen source roles and compares the small result against independently saved records. Salt, digest, query and opened value contents remain separate from peak memory and transport estimates. The packed relation remains outside current source, storage and public shape limits. Complete security composition and a verifier compatible bounded construction require further implementation and review.
 
+The [packed lifetime inventory](../research/packed-lifetimes/README.md) maps the complete physical layout, retained source consumers and conservative output bank conflicts. Active NTT product and inverse hint phases are disjoint, while NTT and matrix product work overlaps. An explicit mode bound arithmetic overlay is a source design candidate. Its original integer equations, dataflow, degree, constructor and adversarial mode controls require implementation before any width reduction is treated as executable.
+
 The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
 
 ```text

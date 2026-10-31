@@ -1,0 +1,81 @@
+{
+  "artifacts": {
+    "inventory.json": {
+      "bytes": 19232,
+      "sha256": "2745ad9ccfa3354fe715c225e8a29a5e405ebd257482a3e249d956424e3e7f97"
+    }
+  },
+  "date": "2026-11-01",
+  "execution_files": {
+    "inventory.py": {
+      "bytes": 11066,
+      "sha256": "8f12f4c39bfddda1aee23e6e44ee81166cb8647471bddd3b104c0a377d831680"
+    },
+    "run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    }
+  },
+  "format": "kova.packed-lifetimes.validation.v1",
+  "guard": {
+    "accepted": true,
+    "available_before_bytes": 6567706624,
+    "exit_code": 0,
+    "expected_tests": 0,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 12365824,
+    "peak_private_commit_bytes": 11071488,
+    "peak_working_bytes": 17977344,
+    "test_counts_verified": false,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "limitations": [
+    "Conservative whole-bank intervals and manual source family annotations, not formal dataflow extraction",
+    "Conflict controls reject metadata remaps, not actual signature proofs",
+    "The arithmetic mode overlay is unimplemented with unmeasured constraint count and degree",
+    "Figures were generated after the guarded inventory run and rendered for visual review",
+    "No complete private signature, payment or quantum security result",
+    "Interpreter identities are not a complete operating system or standard library audit"
+  ],
+  "platform": "Windows x86_64",
+  "python": "3.14.5",
+  "reviewed_figures": {
+    "schedule-dark.svg": {
+      "bytes": 7348,
+      "sha256": "a1d27367cbcb114de8abf3961e5eec1f623e443ff4ed988e46bba3587885740b"
+    },
+    "schedule.svg": {
+      "bytes": 7348,
+      "sha256": "f2a572784af441e784bab348c3185be0de0766e6b411a4a5a85fbbcb75d26ea9"
+    }
+  },
+  "runtime_identities": {
+    "python.exe": {
+      "bytes": 106208,
+      "sha256": "3adbbf2af609e206e3ca18cd55fc7c4b52f5c8bb8218dd99fd5a9e50d7a193cd"
+    },
+    "python3.dll": {
+      "bytes": 73952,
+      "sha256": "f3d0cd260a46a9617a8b1d4d5e8703278478c22a910165bffb4e4ddf6562d93f"
+    },
+    "python314.dll": {
+      "bytes": 6776544,
+      "sha256": "18310593c50ad109fc5c95db1fd5c92ecec9e1bfc66c976df9fc11dd62616d5a"
+    },
+    "vcruntime140.dll": {
+      "bytes": 120400,
+      "sha256": "052ad6a20d375957e82aa6a3c441ea548d89be0981516ca7eb306e063d5027f4"
+    },
+    "vcruntime140_1.dll": {
+      "bytes": 49776,
+      "sha256": "6a99bc0128e0c7d6cbbf615fcc26909565e17d4ca3451b97f8987f9c6acbc6c8"
+    }
+  },
+  "scope": "one bounded source constant and phase inventory run, zero AIR or proof execution"
+}

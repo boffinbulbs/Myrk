@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" role="img" aria-labelledby="title desc">
+<title id="title">Global schedule and arithmetic lifetime boundaries</title>
+<desc id="desc">The four Keccak slots execute across all 8192 rows. Forward transforms overlap matrix work. NTT product and inverse hint phases have disjoint active schedules, while dormant constraints remain obligations.</desc>
+<g fill="#c0d3b9" font-family="Georgia,serif"><text x="32" y="35" font-size="22">One clock. Explicit lifetime boundaries.</text></g>
+<g fill="#9eafa4" font-family="Arial,sans-serif" font-size="12"><text x="32" y="61">Source schedule metadata. Active arithmetic phases are subsets of the construction intervals.</text></g>
+<path d="M 230.00 82 V 414" fill="none" stroke="#293a34"/><text x="230.00" y="433" fill="#9eafa4" text-anchor="middle" font-family="Arial,sans-serif" font-size="11">0</text>
+<path d="M 415.00 82 V 414" fill="none" stroke="#293a34"/><text x="415.00" y="433" fill="#9eafa4" text-anchor="middle" font-family="Arial,sans-serif" font-size="11">2048</text>
+<path d="M 600.00 82 V 414" fill="none" stroke="#293a34"/><text x="600.00" y="433" fill="#9eafa4" text-anchor="middle" font-family="Arial,sans-serif" font-size="11">4096</text>
+<path d="M 785.00 82 V 414" fill="none" stroke="#293a34"/><text x="785.00" y="433" fill="#9eafa4" text-anchor="middle" font-family="Arial,sans-serif" font-size="11">6144</text>
+<path d="M 970.00 82 V 414" fill="none" stroke="#293a34"/><text x="970.00" y="433" fill="#9eafa4" text-anchor="middle" font-family="Arial,sans-serif" font-size="11">8192</text>
+<text x="32" y="100" fill="#c0d3b9" font-family="Arial,sans-serif" font-size="13">Keccak slots</text>
+<text x="32" y="115" fill="#9eafa4" font-family="Arial,sans-serif" font-size="10">All physical rows</text>
+<path d="M 230 100 H 970" fill="none" stroke="#293a34"/>
+<rect x="230.00" y="93" width="740.00" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<text x="32" y="138" fill="#c0d3b9" font-family="Arial,sans-serif" font-size="13">Forward transforms</text>
+<text x="32" y="153" fill="#9eafa4" font-family="Arial,sans-serif" font-size="10">[450, 3522)</text>
+<path d="M 230 138 H 970" fill="none" stroke="#293a34"/>
+<rect x="270.65" y="131" width="277.50" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<text x="32" y="176" fill="#c0d3b9" font-family="Arial,sans-serif" font-size="13">Matrix sampling</text>
+<text x="32" y="191" fill="#9eafa4" font-family="Arial,sans-serif" font-size="10">[642, 3330)</text>
+<path d="M 230 176 H 970" fill="none" stroke="#293a34"/>
+<rect x="287.99" y="169" width="242.81" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<text x="32" y="214" fill="#c0d3b9" font-family="Arial,sans-serif" font-size="13">Point work</text>
+<text x="32" y="229" fill="#9eafa4" font-family="Arial,sans-serif" font-size="10">[3330, 3586)</text>
+<path d="M 230 214 H 970" fill="none" stroke="#293a34"/>
+<rect x="530.81" y="207" width="23.12" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<text x="32" y="252" fill="#c0d3b9" font-family="Arial,sans-serif" font-size="13">Inverse transforms</text>
+<text x="32" y="267" fill="#9eafa4" font-family="Arial,sans-serif" font-size="10">[3522, 5314)</text>
+<path d="M 230 252 H 970" fill="none" stroke="#293a34"/>
+<rect x="548.15" y="245" width="161.88" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<text x="32" y="290" fill="#c0d3b9" font-family="Arial,sans-serif" font-size="13">Final hash</text>
+<text x="32" y="305" fill="#9eafa4" font-family="Arial,sans-serif" font-size="10">[5316, 5370)</text>
+<path d="M 230 290 H 970" fill="none" stroke="#293a34"/>
+<rect x="710.21" y="283" width="4.88" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<text x="32" y="328" fill="#c0d3b9" font-family="Arial,sans-serif" font-size="13">NTT products</text>
+<text x="32" y="343" fill="#9eafa4" font-family="Arial,sans-serif" font-size="10">3,328 active rows</text>
+<path d="M 230 328 H 970" fill="none" stroke="#293a34"/>
+<rect x="273.54" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="290.88" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="308.23" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="325.57" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="342.92" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="360.26" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="377.60" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="394.95" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="412.29" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="429.63" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="446.98" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="464.32" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="481.67" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="499.01" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="516.35" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="533.70" y="321" width="11.56" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="551.04" y="321" width="14.45" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="571.27" y="321" width="14.45" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="591.51" y="321" width="14.45" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="611.74" y="321" width="14.45" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="631.98" y="321" width="14.45" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="652.21" y="321" width="14.45" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="672.45" y="321" width="14.45" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="692.68" y="321" width="14.45" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<text x="32" y="366" fill="#c0d3b9" font-family="Arial,sans-serif" font-size="13">Inverse hint work</text>
+<text x="32" y="381" fill="#9eafa4" font-family="Arial,sans-serif" font-size="10">256 active rows</text>
+<path d="M 230 366 H 970" fill="none" stroke="#293a34"/>
+<rect x="565.49" y="359" width="2.89" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="585.73" y="359" width="2.89" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="605.96" y="359" width="2.89" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="626.20" y="359" width="2.89" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="646.43" y="359" width="2.89" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="666.67" y="359" width="2.89" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="686.90" y="359" width="2.89" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<rect x="707.13" y="359" width="2.89" height="14" rx="1" fill="#c0d3b9" opacity="0.78"/>
+<text x="32" y="460" fill="#9eafa4" font-family="Arial,sans-serif" font-size="11">Disjoint active phases do not certify register reuse. Existing equations and source ownership remain binding.</text></svg>

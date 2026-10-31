@@ -307,6 +307,9 @@ jobs:
       - name: Complete proof composition evidence
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: python -I -S research/proof-composition/static_check.py
+      - name: Packed lifetime inventory evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/packed-lifetimes/static_check.py
 
   row:
     needs: scope
