@@ -159,6 +159,8 @@ The [live source failure controls](../research/source-failure/README.md) retain 
 
 The [private opening authority controls](../research/source-consumption/README.md) call the original hiding preflight against actual committed main data. A seventeen point budget refusal preserves the unused flag, while two valid requests sharing cloned private authority consume it and reach the original repeated opening guard. Both actual failures preserve their cause, close committed leases and refuse reentry without further protocol effects. No inner opening or complete proof is selected. Complete proof resource and security composition remains the next integration boundary.
 
+The [complete proof composition analysis](../research/proof-composition/README.md) projects the current packed relation through all thirteen source roles and compares the small result against independently saved records. Salt, digest, query and opened value contents remain separate from peak memory and transport estimates. The packed relation remains outside current source, storage and public shape limits. Complete security composition and a verifier compatible bounded construction require further implementation and review.
+
 The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
 
 ```text

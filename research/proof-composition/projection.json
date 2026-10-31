@@ -1,0 +1,128 @@
+{
+  "achieved_security_bits": null,
+  "challenge_cardinality_binary_interval": [
+    123,
+    124
+  ],
+  "comparison_profile": {
+    "constraint_degree": 4,
+    "extension_degree": 4,
+    "fold_arity": 2,
+    "grinding_bits": 0,
+    "log_blowup": 3,
+    "queries": 64,
+    "random_codewords": 4,
+    "raw_height": 256,
+    "raw_width": 2,
+    "salt_columns": 16
+  },
+  "conditional_packed_relation": {
+    "base_digest_content_bytes": 50331456,
+    "base_salt_field_bytes": 83886080,
+    "constraint_row_positions": 4537843712,
+    "constraints_per_row": 69242,
+    "current_field_budget_accepts": false,
+    "current_public_value_shape_accepts": false,
+    "current_raw_width_accepts": false,
+    "current_stored_shape_accepts": false,
+    "execution_admitted": false,
+    "legacy_prepared_and_commitment_bytes": 25506349056,
+    "main_query_fields_at_64_distinct_indices_bytes": 11054080,
+    "main_two_point_extension_claim_bytes": 1381760,
+    "public_values": 196,
+    "raw_shape": [
+      8192,
+      43176
+    ],
+    "reserved_field_bytes": 26922188800,
+    "reserved_role_count": 13,
+    "role_field_bytes": {
+      "auxiliary_lde": 4194304,
+      "canonical_quotient_source": 1048576,
+      "main_lde": 22638755840,
+      "prepared": 2829844480,
+      "quotient_ldes": 33554432,
+      "raw": 1414791168
+    }
+  },
+  "extension_four_cardinality": 16428751811598850197311699254593454081,
+  "format": "kova.proof-composition.projection.v1",
+  "invalid_metadata_refusals": 4,
+  "same_witness_multi_input_payment_cost_established": false,
+  "scope": "fixed integer metadata projection, no field or prover execution",
+  "small_source_crosscheck": {
+    "base_digest_content_bytes": 1572672,
+    "base_salt_field_bytes": 2621440,
+    "constraint_row_positions": 8192,
+    "constraints_per_row": 4,
+    "current_field_budget_accepts": true,
+    "current_public_value_shape_accepts": true,
+    "current_raw_width_accepts": true,
+    "current_stored_shape_accepts": true,
+    "execution_admitted": false,
+    "legacy_prepared_and_commitment_bytes": 1290240,
+    "main_query_fields_at_64_distinct_indices_bytes": 1536,
+    "main_two_point_extension_claim_bytes": 192,
+    "public_values": 2,
+    "raw_shape": [
+      256,
+      2
+    ],
+    "reserved_field_bytes": 1325056,
+    "reserved_role_count": 13,
+    "role_field_bytes": {
+      "auxiliary_lde": 131072,
+      "canonical_quotient_source": 32768,
+      "main_lde": 98304,
+      "prepared": 12288,
+      "quotient_ldes": 1048576,
+      "raw": 2048
+    }
+  },
+  "source_files": {
+    "research/proof-preflight/src/preflight.rs": {
+      "bytes": 8131,
+      "sha256": "c08cb17ab5703e9ae0aa81fde2ebf07b622bc026bb2d8096172bd8a1ec803c8c"
+    },
+    "research/signature-packed-native/fixtures-native.json": {
+      "bytes": 489,
+      "sha256": "2b6f54b5d204eed03f9fb2fe5174df37a7d5585e70598d94900c83ddb1880d2a"
+    },
+    "research/signature-packed-shape/validation.json": {
+      "bytes": 2032,
+      "sha256": "4a4644f69f70abcea2c33e4002f18ce9f63fafc69e497d547890c7d1a4f15dec"
+    },
+    "research/source-consumption/src/composite.rs": {
+      "bytes": 41090,
+      "sha256": "b8454aa20484bb43979868d8fd5fa45151cde793110248825b3eae16c2f5891a"
+    },
+    "research/source-prover/results/measurement.json": {
+      "bytes": 5421,
+      "sha256": "4bc9422c1962d1a4dc025cacf8854470dda3fc440ad23ed547bd1140439e90fe"
+    },
+    "research/storage-pcs/backend/src/hiding_pcs.rs": {
+      "bytes": 69656,
+      "sha256": "8c12cca5d256e28f0a87f0cf95020e33b62b27070d430776e24599d6a18d6eed"
+    },
+    "research/storage-pcs/resources/record.json": {
+      "bytes": 6650,
+      "sha256": "90d5b28c40773387089b8ed7465fd8315b3501b0e083ad64a19c886fdff88b3a"
+    },
+    "research/storage-pcs/tests/common/mod.rs": {
+      "bytes": 2880,
+      "sha256": "b91f76d65845f72b4d16dc2a929242a8dfa9e2c139167b4bdebd49a5c1418c4b"
+    },
+    "research/storage-pcs/validation.json": {
+      "bytes": 15564,
+      "sha256": "5508ff1f5c92128ba3a3c4f9576cbf145b73baccc871b2d61f7b783d6260c962"
+    }
+  },
+  "unmodeled": [
+    "Allocator and DFT scratch overlap",
+    "AIR folding and reduction scratch",
+    "FRI trees, salts, folds and opening structures",
+    "Serialized transport and parser limits",
+    "Physical disk allocation, cache and runtime",
+    "Complete hiding, soundness, knowledge and quantum composition"
+  ]
+}

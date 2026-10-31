@@ -192,6 +192,8 @@ The [uninterrupted source prover](research/source-prover/README.md) connects act
 
 The [private opening authority controls](research/source-consumption/README.md) distinguish budget refusal before consumption from repeated requests sharing the original private flag. Both actual refused calls close their owner and retained committed leases. These controls select no inner opening or new complete proof.
 
+The [complete proof composition analysis](research/proof-composition/README.md) connects the packed relation to retained source, commitment and transport contents. Independent small records crosscheck the arithmetic. Full signature construction, security composition and same witness payment integration remain open.
+
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
 ## Build and reproduce
