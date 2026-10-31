@@ -1,0 +1,50 @@
+--- retained/source-stark/src/context.rs
++++ src/context.rs
+@@ -8,13 +8,11 @@
+ use p3_challenger::{CanObserve, CanSample, FieldChallenger, GrindingChallenger};
+ use p3_commit::Mmcs;
+ use p3_dft::TwoAdicSubgroupDft;
+-use p3_uni_stark::{Proof, ProvingError, StarkConfig, StarkGenericConfig};
++use p3_uni_stark::{ProvingError, StarkConfig, StarkGenericConfig};
+ use rand::{CryptoRng, SeedableRng};
+ 
+ pub type OwnedConfig<D, I, F, R, C> =
+     StarkConfig<HidingFriPcs<BabyBear, D, I, F, R, CompositeStore>, Challenge, C>;
+-pub type OwnedProof<D, I, F, R, C> = Proof<OwnedConfig<D, I, F, R, C>>;
+-pub type ProvingResult<D, I, F, R, C> = Result<OwnedProof<D, I, F, R, C>, OwnedError>;
+ 
+ #[derive(Debug)]
+ pub enum OwnedError {
+@@ -88,30 +86,6 @@
+     pub fn snapshot(&self) -> Result<Snapshot, Error> {
+         self.store.snapshot()
+     }
+-    /// Ownership and canonical shape checks do not precheck the AIR witness.
+-    pub fn prove(
+-        &self,
+-        values: impl IntoIterator<Item = BabyBear>,
+-    ) -> ProvingResult<D, I, F, R, C> {
+-        if cfg!(debug_assertions) {
+-            return Err(OwnedError::ReleaseRequired);
+-        }
+-        self.config.pcs().composite_profile()?;
+-        if self.config.ood_proof_of_work_bits() != 0
+-            || self.config.lookup_proof_of_work_bits() != 0
+-            || self.config.is_zk() != 1
+-        {
+-            return Err(OwnedError::Context);
+-        }
+-        #[cfg(not(debug_assertions))]
+-        {
+-            let raw = self.store.write_raw(values)?;
+-            crate::owned_prover::prove_owned(&self.config, &self.store, raw)
+-        }
+-        #[cfg(debug_assertions)]
+-        {
+-            let _ = values;
+-            Err(OwnedError::ReleaseRequired)
+-        }
+-    }
+ }
++
++include!("construction.rs");

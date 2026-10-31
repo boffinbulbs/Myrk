@@ -164,6 +164,7 @@ The active stage is cryptographic feasibility and connected private authorizatio
 | Monetary accounting | Atomic amounts, bounded issuance, earned stake allocation and burns | Owned payout notes, persistent ledger and consensus context |
 | Primitive and proof components | Exact reference vectors, bounded relations and adversarial proof rejection tests | Complete private payment composition and security analysis |
 | Signature and ownership | Complete bounded native reference relations and a full streamed AIR scan | Hiding authorization proofs and same witness ledger composition |
+| Committed quotient construction | Actual main data, canonical output and independent arithmetic comparison | Source driven quotient masking and complete hiding proofs |
 | Source pipeline | Complete fixed class construction and full native signature constraint scan | Prover resources, hiding and authenticated ledger joins |
 | Mining, stake and networking | Architecture, interfaces and integration requirements | Runtime implementation and independent network agreement |
 | Wallet, contracts, Safe and Aegis | Authority, state and recovery architecture | Separate executable applications and consensus milestones |
@@ -180,6 +181,8 @@ The active stage is cryptographic feasibility and connected private authorizatio
 | [Exact arithmetic](docs/arithmetic-proof-lab.md) | Canonical modular multiplication and coefficient constraints |
 | [Polynomial transforms](docs/ntt-proof-lab.md) | Complete forward and inverse transform components |
 | [Owner binding](docs/owner-binding-proof-lab.md) | Hidden key preimages bound to the same private note owners |
+
+The [committed quotient construction](research/quotient-source/README.md) connects actual main commitment data to checked quotient evaluation in the fixed research relation.
 
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 

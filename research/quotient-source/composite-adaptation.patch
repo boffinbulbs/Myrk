@@ -1,0 +1,498 @@
+--- retained/source-stark/src/composite.rs
++++ src/composite.rs
+@@ -1,4 +1,6 @@
+ //! One private matrix family and one reserved lifetime across all input roles.
++//! Private V40 derivative of research/source-stark/src/composite.rs (MIT).
++//! Adds an owned unmasked quotient source; it does not establish proof validity.
+ #![deny(unsafe_code)]
+ 
+ use crate::{
+@@ -26,8 +28,12 @@
+ };
+ 
+ pub type Challenge = source::Challenge;
+-pub const RESERVED_FILES: usize = 12;
+-pub const RESERVED_BYTES: usize = 1_292_288;
++pub const RESERVED_FILES: usize = 13;
++pub const RESERVED_BYTES: usize = 1_325_056;
++const QUOTIENT_SOURCE_INDEX: usize = 12;
++const QUOTIENT_SOURCE_HEIGHT: usize = 2048;
++const QUOTIENT_SOURCE_WIDTH: usize = 4;
++const QUOTIENT_SOURCE_BYTES: usize = 32_768;
+ static NEXT: AtomicUsize = AtomicUsize::new(0);
+ 
+ #[derive(Clone, Debug, PartialEq, Eq)]
+@@ -70,6 +76,8 @@
+     MainPreparing,
+     MainCommitting,
+     MainCommitted,
++    QuotientEvaluating,
++    QuotientReady,
+     QuotientBuilding,
+     QuotientCommitting,
+     QuotientCommitted,
+@@ -87,6 +95,7 @@
+     Main,
+     Quotient(usize),
+     Auxiliary,
++    QuotientEvaluations,
+ }
+ #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+ pub enum FileState {
+@@ -172,8 +181,12 @@
+             || plan.auxiliary_lde != [4096, 8]
+             || plan.quotient_chunks != 8
+             || plan.parameters.random_columns != 4
+-            || plan.field_files.checked_add(1) != Some(RESERVED_FILES)
+-            || plan.field_bytes.checked_add(2048) != Some(RESERVED_BYTES)
++            || plan.field_files.checked_add(2) != Some(RESERVED_FILES)
++            || plan
++                .field_bytes
++                .checked_add(2048)
++                .and_then(|bytes| bytes.checked_add(QUOTIENT_SOURCE_BYTES))
++                != Some(RESERVED_BYTES)
+             || RESERVED_FILES > 16
+             || RESERVED_BYTES > 2 * 1024 * 1024
+         {
+@@ -188,7 +201,10 @@
+         .into_iter()
+         .chain((0..8).map(|i| (Role::Quotient(i), [4096, 8])))
+         .chain([(Role::Auxiliary, [4096, 8])])
+-        {
++        .chain([(
++            Role::QuotientEvaluations,
++            [QUOTIENT_SOURCE_HEIGHT, QUOTIENT_SOURCE_WIDTH],
++        )]) {
+             let bytes = shape[0]
+                 .checked_mul(shape[1])
+                 .and_then(|n| n.checked_mul(4))
+@@ -209,7 +225,7 @@
+         let main = source::SourceStore::new(anchor)?;
+         let root = std::env::temp_dir().canonicalize()?;
+         let path = root.join(format!(
+-            "kova_composite_{}_{}",
++            "kova_quotient_composite_{}_{}",
+             std::process::id(),
+             NEXT.fetch_add(1, Ordering::Relaxed)
+         ));
+@@ -242,6 +258,17 @@
+             state.failure = Some(error);
+         }
+     }
++    // Recovery is only for recording shared closure, never for resuming work.
++    fn checked_state(&self) -> Result<std::sync::MutexGuard<'_, State>, Error> {
++        match self.0.state.lock() {
++            Ok(state) => Ok(state),
++            Err(poisoned) => {
++                drop(poisoned.into_inner());
++                self.fail(Error::Poisoned);
++                Err(Error::Poisoned)
++            }
++        }
++    }
+     pub(crate) fn check_phase(&self, expected: Phase) -> Result<(), Error> {
+         let state = self.0.state.lock().map_err(|_| Error::Poisoned)?;
+         if state.phase == Phase::Failed {
+@@ -264,7 +291,7 @@
+         Ok(())
+     }
+     fn readable(&self) -> Result<(), Error> {
+-        let state = self.0.state.lock().map_err(|_| Error::Poisoned)?;
++        let state = self.checked_state()?;
+         if state.phase == Phase::Failed {
+             return Err(Error::Failed);
+         }
+@@ -396,17 +423,83 @@
+             owner: self.clone(),
+         }
+     }
+-    pub(crate) fn quotient_start(&self, shifts: [BabyBear; 8]) -> Result<(), Error> {
+-        let mut s = self.0.state.lock().map_err(|_| Error::Poisoned)?;
+-        if s.phase == Phase::Failed {
++    /// Constructor check only: the hiding adapter must obtain this matrix
++    /// from its actual MMCS prover data, not a caller supplied descriptor.
++    pub(crate) fn check_committed_main(&self, matrix: &Stored) -> Result<(), Error> {
++        self.readable()?;
++        if !Arc::ptr_eq(&self.0, &matrix.owner.0) || !matches!(&matrix.data, Data::Main(_)) {
++            return Err(Error::Owner);
++        }
++        if matrix.height() != 4096 || matrix.width() != 6 {
++            return Err(Error::Shape);
++        }
++        let state = self.checked_state()?;
++        if state.phase == Phase::Failed {
+             return Err(Error::Failed);
+         }
+-        if s.phase != Phase::MainCommitted {
++        if state.phase != Phase::MainCommitted {
+             return Err(Error::Phase);
+         }
+-        s.quotient_shifts = Some(shifts);
+-        s.phase = Phase::QuotientBuilding;
+         Ok(())
++    }
++    /// Claim the one fixed sink before any file I/O. No protocol entropy is
++    /// sampled here, and an unsuccessful second claimant changes no state.
++    pub(crate) fn begin_quotient_evaluations(&self) -> Result<QuotientWriter, Error> {
++        self.readable()?;
++        {
++            let mut state = self.checked_state()?;
++            if state.phase == Phase::Failed {
++                return Err(Error::Failed);
++            }
++            if state.writing || state.cleaning {
++                return Err(Error::Busy);
++            }
++            if state.phase != Phase::MainCommitted
++                || state.entries[QUOTIENT_SOURCE_INDEX].role != Role::QuotientEvaluations
++                || state.entries[QUOTIENT_SOURCE_INDEX].state != FileState::Planned
++            {
++                return Err(Error::Phase);
++            }
++            state.phase = Phase::QuotientEvaluating;
++            state.writing = true;
++            state.entries[QUOTIENT_SOURCE_INDEX].state = FileState::Pending;
++        }
++        let mut writer = QuotientWriter {
++            file: None,
++            owner: self.clone(),
++            next_row: 0,
++            created: false,
++            done: false,
++        };
++        if let Err(error) = writer.create_file() {
++            writer.abort(error.clone());
++            return Err(error);
++        }
++        Ok(writer)
++    }
++    fn check_quotient_writer(&self) -> Result<(), Error> {
++        self.readable()?;
++        let state = self.checked_state()?;
++        let entry = &state.entries[QUOTIENT_SOURCE_INDEX];
++        if state.phase == Phase::Failed {
++            return Err(Error::Failed);
++        }
++        if state.phase != Phase::QuotientEvaluating
++            || !state.writing
++            || entry.role != Role::QuotientEvaluations
++            || entry.state != FileState::Pending
++            || entry.shape != [QUOTIENT_SOURCE_HEIGHT, QUOTIENT_SOURCE_WIDTH]
++            || entry.bytes != QUOTIENT_SOURCE_BYTES
++        {
++            return Err(Error::Phase);
++        }
++        Ok(())
++    }
++    pub(crate) fn check_quotient_input(&self, input: &QuotientInput) -> Result<(), Error> {
++        if !Arc::ptr_eq(&self.0, &input.owner.0) {
++            return Err(Error::Owner);
++        }
++        input.check_readable()
+     }
+     fn reserve_other(&self, auxiliary: bool, shift: BabyBear) -> Result<usize, Error> {
+         let mut state = self.0.state.lock().map_err(|_| Error::Poisoned)?;
+@@ -574,18 +667,6 @@
+ pub(crate) struct ProvingAttempt {
+     store: CompositeStore,
+     done: bool,
+-}
+-impl ProvingAttempt {
+-    pub(crate) fn begin_opening(&self) -> Result<(), Error> {
+-        self.store
+-            .transition(Phase::AuxiliaryCommitted, Phase::Opening)
+-    }
+-    pub(crate) fn finish_produced(&mut self) -> Result<(), Error> {
+-        self.store
+-            .transition(Phase::Opening, Phase::ProofProduced)?;
+-        self.done = true;
+-        Ok(())
+-    }
+ }
+ impl Drop for ProvingAttempt {
+     fn drop(&mut self) {
+@@ -660,6 +741,247 @@
+     }
+ }
+ 
++/// One exclusive, fixed-shape quotient evaluation sink. Neither this writer nor
++/// its completed input is Clone; their descriptors precede the owner lease.
++pub(crate) struct QuotientWriter {
++    file: Option<File>,
++    owner: CompositeStore,
++    next_row: usize,
++    created: bool,
++    done: bool,
++}
++impl QuotientWriter {
++    fn check_active(&self) -> Result<(), Error> {
++        if self.done {
++            return Err(Error::Closed);
++        }
++        self.owner.check_quotient_writer()
++    }
++    fn create_file(&mut self) -> Result<(), Error> {
++        self.check_active()?;
++        let file = OpenOptions::new()
++            .write(true)
++            .create_new(true)
++            .open(self.owner.path(QUOTIENT_SOURCE_INDEX))?;
++        // This flag does not depend on successfully locking the ledger later.
++        self.created = true;
++        self.file = Some(file);
++        let mut state = self.owner.checked_state()?;
++        if state.phase == Phase::Failed {
++            return Err(Error::Failed);
++        }
++        if state.phase != Phase::QuotientEvaluating
++            || !state.writing
++            || state.entries[QUOTIENT_SOURCE_INDEX].state != FileState::Pending
++        {
++            return Err(Error::Phase);
++        }
++        state.entries[QUOTIENT_SOURCE_INDEX].owned = true;
++        Ok(())
++    }
++    /// Fail the shared owner before the writer is dropped. The construction
++    /// driver must call this on kernel errors that did not originate here, so
++    /// the first cause is not replaced by the subsequent unwind/drop marker.
++    pub(crate) fn abort(&mut self, error: Error) {
++        if self.done {
++            return;
++        }
++        drop(self.file.take());
++        self.owner.fail(error);
++        // Only a successful create_new grants this attempt unlink authority.
++        let removal = if self.created {
++            fs::remove_file(self.owner.path(QUOTIENT_SOURCE_INDEX))
++        } else {
++            Ok(())
++        };
++        let mut state = self.owner.0.state.lock().unwrap_or_else(|p| p.into_inner());
++        state.entries[QUOTIENT_SOURCE_INDEX].owned |= self.created;
++        let (file_state, cleanup_failure) = if !self.created {
++            (FileState::Uncreated, None)
++        } else {
++            match removal {
++                Ok(()) => (FileState::Removed, None),
++                Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
++                    (FileState::Removed, None)
++                }
++                Err(error) => (FileState::Orphan, Some(error.kind())),
++            }
++        };
++        state.entries[QUOTIENT_SOURCE_INDEX].state = file_state;
++        state.writing = false;
++        if let Some(error) = cleanup_failure
++            && state.cleanup_failures.len() < 16
++        {
++            state.cleanup_failures.push(error);
++        }
++        self.done = true;
++    }
++    pub(crate) fn write_row(&mut self, row: usize, coefficients: &[BabyBear]) -> Result<(), Error> {
++        let result = (|| {
++            self.check_active()?;
++            if row != self.next_row
++                || row >= QUOTIENT_SOURCE_HEIGHT
++                || coefficients.len() != QUOTIENT_SOURCE_WIDTH
++            {
++                return Err(Error::Shape);
++            }
++            let mut bytes = [0u8; QUOTIENT_SOURCE_WIDTH * 4];
++            for (field, output) in coefficients.iter().zip(bytes.chunks_exact_mut(4)) {
++                output.copy_from_slice(&field.as_canonical_u32().to_le_bytes());
++            }
++            self.file
++                .as_mut()
++                .ok_or(Error::Incomplete)?
++                .write_all(&bytes)?;
++            // A concurrent failure cannot let this write report new progress.
++            self.check_active()?;
++            self.next_row += 1;
++            Ok(())
++        })();
++        if let Err(error) = &result {
++            self.abort(error.clone());
++        }
++        result
++    }
++    /// Data completion only. No constraint verdict or proof phase is inferred.
++    /// The completed descriptor is reopened before the ledger is sealed.
++    pub(crate) fn finish(mut self) -> Result<QuotientInput, Error> {
++        let result = (|| {
++            self.check_active()?;
++            if self.next_row != QUOTIENT_SOURCE_HEIGHT {
++                return Err(Error::Incomplete);
++            }
++            self.file.as_ref().ok_or(Error::Incomplete)?.sync_all()?;
++            drop(self.file.take());
++            let matrix = CheckedFileMatrix::open(
++                &self.owner.path(QUOTIENT_SOURCE_INDEX),
++                QUOTIENT_SOURCE_HEIGHT,
++                QUOTIENT_SOURCE_WIDTH,
++            )
++            .map_err(Error::Access)?;
++            {
++                let mut state = self.owner.checked_state()?;
++                let entry = &state.entries[QUOTIENT_SOURCE_INDEX];
++                if state.phase == Phase::Failed {
++                    return Err(Error::Failed);
++                }
++                if state.phase != Phase::QuotientEvaluating
++                    || !state.writing
++                    || entry.role != Role::QuotientEvaluations
++                    || entry.state != FileState::Pending
++                    || !entry.owned
++                    || entry.shape != [QUOTIENT_SOURCE_HEIGHT, QUOTIENT_SOURCE_WIDTH]
++                    || entry.bytes != QUOTIENT_SOURCE_BYTES
++                {
++                    return Err(Error::Phase);
++                }
++                state.entries[QUOTIENT_SOURCE_INDEX].state = FileState::Complete;
++                state.writing = false;
++                state.phase = Phase::QuotientReady;
++            }
++            Ok(QuotientInput {
++                matrix,
++                owner: self.owner.clone(),
++            })
++        })();
++        match result {
++            Ok(input) => {
++                self.done = true;
++                Ok(input)
++            }
++            Err(error) => {
++                self.abort(error.clone());
++                Err(error)
++            }
++        }
++    }
++}
++impl Drop for QuotientWriter {
++    fn drop(&mut self) {
++        if !self.done {
++            self.abort(Error::Unwind);
++        }
++    }
++}
++impl crate::quotient_kernel::QuotientWrite for QuotientWriter {
++    type Error = Error;
++    fn dimensions(&self) -> Result<[usize; 2], Error> {
++        if let Err(error) = self.check_active() {
++            // &self cannot close the descriptor; the live writer's Drop does.
++            self.owner.fail(error.clone());
++            return Err(error);
++        }
++        Ok([QUOTIENT_SOURCE_HEIGHT, QUOTIENT_SOURCE_WIDTH])
++    }
++    fn write_row(&mut self, row: usize, coefficients: &[BabyBear]) -> Result<(), Error> {
++        QuotientWriter::write_row(self, row, coefficients)
++    }
++}
++
++/// Sealed completed data, retained in this owner until its lifecycle closes.
++/// Deliberately no Matrix implementation, descriptor/path getter or Clone.
++pub(crate) struct QuotientInput {
++    matrix: CheckedFileMatrix,
++    owner: CompositeStore,
++}
++impl QuotientInput {
++    pub(crate) fn check_readable(&self) -> Result<(), Error> {
++        self.owner.readable()?;
++        let state = self.owner.checked_state()?;
++        if state.phase == Phase::Failed {
++            return Err(Error::Failed);
++        }
++        if state.phase == Phase::ProofProduced {
++            return Err(Error::Closed);
++        }
++        let entry = &state.entries[QUOTIENT_SOURCE_INDEX];
++        let complete = entry.role == Role::QuotientEvaluations
++            && entry.state == FileState::Complete
++            && entry.owned
++            && entry.shape == [QUOTIENT_SOURCE_HEIGHT, QUOTIENT_SOURCE_WIDTH]
++            && entry.bytes == QUOTIENT_SOURCE_BYTES;
++        let allowed = matches!(
++            state.phase,
++            Phase::QuotientReady
++                | Phase::QuotientBuilding
++                | Phase::QuotientCommitting
++                | Phase::QuotientCommitted
++                | Phase::AuxiliaryBuilding
++                | Phase::AuxiliaryCommitting
++                | Phase::AuxiliaryCommitted
++                | Phase::Opening
++        );
++        if !complete || !allowed {
++            drop(state);
++            self.owner.fail(Error::Phase);
++            return Err(Error::Phase);
++        }
++        Ok(())
++    }
++    pub(crate) fn dimensions(&self) -> Result<[usize; 2], Error> {
++        self.check_readable()?;
++        Ok([QUOTIENT_SOURCE_HEIGHT, QUOTIENT_SOURCE_WIDTH])
++    }
++    pub(crate) fn try_window(
++        &self,
++        row: usize,
++        start: usize,
++        end: usize,
++    ) -> Result<Vec<BabyBear>, Error> {
++        self.check_readable()?;
++        if row >= QUOTIENT_SOURCE_HEIGHT || start > end || end > QUOTIENT_SOURCE_WIDTH {
++            return Err(Error::Access(StorageError::Bounds));
++        }
++        let values = self.matrix.try_window(row, start, end).map_err(|error| {
++            let error = Error::Access(error);
++            self.owner.fail(error.clone());
++            error
++        })?;
++        self.check_readable()?;
++        Ok(values)
++    }
++}
++
+ #[derive(Clone)]
+ pub struct RawInput {
+     pub(crate) inner: source::RawInput,
+@@ -677,8 +999,12 @@
+     owner: CompositeStore,
+ }
+ impl Stored {
++    /// The hiding view may validate shared closure without performing I/O.
++    pub(crate) fn check_readable(&self) -> Result<(), Error> {
++        self.owner.readable()
++    }
+     pub fn try_window(&self, row: usize, start: usize, end: usize) -> Result<Vec<BabyBear>, Error> {
+-        self.owner.readable()?;
++        self.check_readable()?;
+         if row >= self.height() || start > end || end > self.width() {
+             return Err(Error::Access(StorageError::Bounds));
+         }
+@@ -686,10 +1012,11 @@
+             Data::Main(m) => m.try_window(row, start, end).map_err(Error::Main),
+             Data::Other(m) => m.try_window(row, start, end).map_err(Error::Access),
+         };
+-        if let Err(e) = &result {
+-            self.owner.fail(e.clone());
+-        }
+-        result
++        let values = result.inspect_err(|error| {
++            self.owner.fail(error.clone());
++        })?;
++        self.check_readable()?;
++        Ok(values)
+     }
+ }
+ #[allow(unsafe_code)]
+@@ -822,3 +1149,6 @@
+         }
+     }
+ }
++
++#[path = "owner_controls.rs"]
++pub(crate) mod owner_controls;

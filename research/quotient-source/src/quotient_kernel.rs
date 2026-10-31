@@ -1,0 +1,259 @@
+//! Serial fallible adaptation of p3-uni-stark 0.8.0 PlainEval and quotient driver.
+//! Original MIT and Apache 2.0 notices must accompany the derived package.
+//! This private kernel does not construct a committed capability or a proof.
+use alloc::{vec, vec::Vec};
+use p3_air::{
+    Air, BaseAir, RowWindow,
+    symbolic::{AirLayout, SymbolicAirBuilder},
+};
+use p3_baby_bear::BabyBear;
+use p3_commit::{PolynomialSpace, UnivariateStarkPcs};
+use p3_field::{
+    BasedVectorSpace, Field, PackedFieldExtension, PackedValue, PrimeCharacteristicRing,
+    coset::TwoAdicMultiplicativeCoset,
+};
+use p3_matrix::dense::RowMajorMatrixView;
+use p3_uni_stark::{
+    Domain, PackedChallenge, PackedVal, ProverConstraintFolder, StarkGenericConfig,
+    get_constraint_layout,
+};
+
+// Dimensions stay inside the existing small storage class ceilings.
+const MAX_ROWS: usize = 4096;
+const MAX_WIDTH: usize = 8;
+const MAX_PUBLIC: usize = 8;
+// This additional scratch restriction is not an inherited proof allowance.
+// It is checked after layout discovery, not a bound on an arbitrary AIR's DAG.
+// The concrete wrapper must remain restricted to its known monomorphic AIR.
+const MAX_CONSTRAINTS: usize = 256;
+
+/// The eventual implementation must read the same owner's actual MMCS data view.
+/// This is a data interface, not a caller supplied acceptance predicate.
+pub(super) trait CommittedRead {
+    type Error;
+    fn dimensions(&self) -> Result<[usize; 2], Self::Error>;
+    fn read_window(
+        &self,
+        row: usize,
+        start: usize,
+        end: usize,
+    ) -> Result<Vec<BabyBear>, Self::Error>;
+}
+
+/// The eventual owner-bound sink controls canonical writes, phase and poisoning.
+pub(super) trait QuotientWrite {
+    type Error;
+    fn dimensions(&self) -> Result<[usize; 2], Self::Error>;
+    fn write_row(&mut self, row: usize, coefficients: &[BabyBear]) -> Result<(), Self::Error>;
+}
+
+#[derive(Debug)]
+pub(super) enum ReadFailure<E> {
+    Access(E),
+    ShortWindow {
+        row: usize,
+        expected: usize,
+        actual: usize,
+    },
+}
+
+#[derive(Debug)]
+pub(super) enum KernelError<I, O> {
+    Unsupported,
+    Shape,
+    Domain,
+    Layout,
+    Input(ReadFailure<I>),
+    Output(O),
+}
+
+/// Only a concrete owner may derive these from its actual transcript and domains.
+/// Constructing this record alone must never grant a committed data capability.
+pub(super) struct Parameters<'a, SC: StarkGenericConfig> {
+    pub(super) public: &'a [BabyBear],
+    pub(super) trace_domain: Domain<SC>,
+    pub(super) quotient_domain: Domain<SC>,
+    pub(super) alpha: SC::Challenge,
+}
+
+fn packed_rows<P, R>(
+    destination: &mut [P],
+    source: &R,
+    first: usize,
+    height: usize,
+) -> Result<(), ReadFailure<R::Error>>
+where
+    P: PackedValue<Value = BabyBear> + PrimeCharacteristicRing + Copy,
+    R: CommittedRead,
+{
+    destination.fill(P::ZERO);
+    let width = destination.len();
+    // This is the retained Matrix::vertically_packed_row lane/wrap order.
+    // At most one scalar row is live in addition to the two packed rows.
+    for lane in 0..P::WIDTH {
+        let row = (first + lane) % height;
+        let values = source
+            .read_window(row, 0, width)
+            .map_err(ReadFailure::Access)?;
+        if values.len() != width {
+            return Err(ReadFailure::ShortWindow {
+                row,
+                expected: width,
+                actual: values.len(),
+            });
+        }
+        for (column, value) in values.into_iter().enumerate() {
+            destination[column].as_slice_mut()[lane] = value;
+        }
+    }
+    Ok(())
+}
+
+/// Generate checked quotient evaluations without a whole returned quotient Vec.
+/// The concrete wrapper must bind owner/domain/root/alpha, seal on success and
+/// close every clone on errors or unwind. This function does not provide that wrapper.
+pub(super) fn generate<SC, A, R, S>(
+    air: &A,
+    parameters: Parameters<'_, SC>,
+    source: &R,
+    sink: &mut S,
+) -> Result<usize, KernelError<R::Error, S::Error>>
+where
+    SC: StarkGenericConfig,
+    SC::Pcs: UnivariateStarkPcs<
+            SC::Challenge,
+            SC::Challenger,
+            Domain = TwoAdicMultiplicativeCoset<BabyBear>,
+        >,
+    A: Air<SymbolicAirBuilder<BabyBear>> + for<'a> Air<ProverConstraintFolder<'a, SC>>,
+    R: CommittedRead,
+    S: QuotientWrite,
+{
+    let width = <A as BaseAir<BabyBear>>::width(air);
+    let public_count = <A as BaseAir<BabyBear>>::num_public_values(air);
+    let dimension = <SC::Challenge as BasedVectorSpace<BabyBear>>::DIMENSION;
+    let trace_size = parameters.trace_domain.size();
+    let quotient_size = parameters.quotient_domain.size();
+    // Reject unsupported classes before selector, symbolic or source allocations.
+    if width == 0 || width > MAX_WIDTH || public_count > MAX_PUBLIC || dimension != 4 {
+        return Err(KernelError::Unsupported);
+    }
+    if parameters.public.len() != public_count
+        || trace_size < 2
+        || !trace_size.is_power_of_two()
+        || quotient_size < trace_size
+        || !quotient_size.is_power_of_two()
+        || quotient_size > MAX_ROWS
+    {
+        return Err(KernelError::Shape);
+    }
+    if parameters.trace_domain.shift() != BabyBear::ONE
+        || parameters.quotient_domain.shift() != BabyBear::GENERATOR
+        || parameters
+            .quotient_domain
+            .shift()
+            .exp_u64(quotient_size as u64)
+            == BabyBear::ONE
+    {
+        return Err(KernelError::Domain);
+    }
+    if <A as BaseAir<BabyBear>>::preprocessed_width(air) != 0
+        || <A as BaseAir<BabyBear>>::preprocessed_trace(air).is_some()
+        || <A as BaseAir<BabyBear>>::num_periodic_columns(air) != 0
+        || !<A as BaseAir<BabyBear>>::periodic_columns(air).is_empty()
+        || !<A as BaseAir<BabyBear>>::public_boundary_io(air).is_empty()
+    {
+        return Err(KernelError::Unsupported);
+    }
+    if source
+        .dimensions()
+        .map_err(|e| KernelError::Input(ReadFailure::Access(e)))?
+        != [quotient_size, width]
+        || sink.dimensions().map_err(KernelError::Output)? != [quotient_size, dimension]
+    {
+        return Err(KernelError::Shape);
+    }
+    let next_step = quotient_size / trace_size;
+    let pack_width = PackedVal::<SC>::WIDTH;
+    let mut selectors = parameters
+        .trace_domain
+        .selectors_on_coset(parameters.quotient_domain);
+    // Retain original whole-domain selector arrays and bound them honestly.
+    // Unused packed lanes get zero selectors; matrix reads still wrap.
+    for _ in quotient_size..pack_width {
+        selectors.is_first_row.push(BabyBear::ZERO);
+        selectors.is_last_row.push(BabyBear::ZERO);
+        selectors.is_transition.push(BabyBear::ZERO);
+        selectors.inv_vanishing.push(BabyBear::ZERO);
+    }
+    let layout = AirLayout {
+        main_width: width,
+        num_public_values: public_count,
+        ..Default::default()
+    };
+    // The outer source class admits only its known AIR, never a caller AIR.
+    let constraint_layout = get_constraint_layout::<BabyBear, BabyBear, A>(air, layout);
+    let constraint_count = constraint_layout.total_constraints();
+    if constraint_count == 0 || constraint_count > MAX_CONSTRAINTS {
+        return Err(KernelError::Layout);
+    }
+    let (base_alpha_powers, ext_alpha_powers) = constraint_layout.decompose_alpha(parameters.alpha);
+    let mut main = vec![PackedVal::<SC>::ZERO; 2 * width];
+    let mut base_constraints = Vec::with_capacity(constraint_layout.base_indices.len());
+    let mut ext_constraints: Vec<PackedChallenge<SC>> =
+        Vec::with_capacity(constraint_layout.ext_indices.len());
+    let mut written = 0;
+    for first in (0..quotient_size).step_by(pack_width) {
+        let range = first..first + pack_width;
+        let is_first_row = *PackedVal::<SC>::from_slice(&selectors.is_first_row[range.clone()]);
+        let is_last_row = *PackedVal::<SC>::from_slice(&selectors.is_last_row[range.clone()]);
+        let is_transition = *PackedVal::<SC>::from_slice(&selectors.is_transition[range.clone()]);
+        let inv_vanishing = *PackedVal::<SC>::from_slice(&selectors.inv_vanishing[range]);
+        packed_rows(&mut main[..width], source, first, quotient_size)
+            .map_err(KernelError::Input)?;
+        packed_rows(&mut main[width..], source, first + next_step, quotient_size)
+            .map_err(KernelError::Input)?;
+        let preprocessed = RowMajorMatrixView::new(&[], 0);
+        // Mechanical PlainEval adaptation. The actual upstream folder performs
+        // constraint emission, original alpha ordering and final field folding.
+        let mut folder = ProverConstraintFolder::<SC> {
+            main: RowMajorMatrixView::new(&main, width),
+            preprocessed,
+            preprocessed_window: RowWindow::from_view(&preprocessed),
+            periodic_values: &[],
+            public_values: parameters.public,
+            is_first_row,
+            is_last_row,
+            is_transition,
+            base_alpha_powers: &base_alpha_powers,
+            ext_alpha_powers: &ext_alpha_powers,
+            base_constraints: core::mem::take(&mut base_constraints),
+            ext_constraints: core::mem::take(&mut ext_constraints),
+            constraint_index: 0,
+            constraint_count,
+        };
+        air.eval(&mut folder);
+        if folder.constraint_index != constraint_count
+            || folder.base_constraints.len() != constraint_layout.base_indices.len()
+            || folder.ext_constraints.len() != constraint_layout.ext_indices.len()
+        {
+            return Err(KernelError::Layout);
+        }
+        let quotient = folder.finalize_constraints() * inv_vanishing;
+        base_constraints = folder.base_constraints;
+        base_constraints.clear();
+        ext_constraints = folder.ext_constraints;
+        ext_constraints.clear();
+        // Same lane extraction and basis order as the original quotient Vec
+        // followed by RowMajorMatrix::flatten_to_base. No output-sized Vec.
+        for lane in 0..pack_width.min(quotient_size - first) {
+            let scalar = quotient.extract(lane);
+            let coefficients =
+                <SC::Challenge as BasedVectorSpace<BabyBear>>::as_basis_coefficients_slice(&scalar);
+            sink.write_row(first + lane, coefficients)
+                .map_err(KernelError::Output)?;
+            written += 1;
+        }
+    }
+    Ok(written)
+}

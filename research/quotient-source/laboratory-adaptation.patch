@@ -1,0 +1,22 @@
+--- retained/source-stark/src/lib.rs
++++ src/laboratory.rs
+@@ -1,11 +1,7 @@
+-//! Fixed owned quartic computation prover. Research parameter class only.
+-#![deny(unsafe_code)]
+-extern crate alloc;
+ mod composite;
+ pub mod context;
+-mod owned_pcs;
+-#[cfg(not(debug_assertions))]
+-mod owned_prover;
++mod diagnostics_setup;
++mod quotient_kernel;
+ pub use composite::{Error as StorageError, Phase, Snapshot};
+ pub use context::{Context, OwnedConfig, OwnedError};
+ #[path = "../../storage-pcs/backend/src/config.rs"]
+@@ -41,3 +37,5 @@
+ pub use proof::*;
+ pub use transcript::{FriShape, ProverTranscript, TranscriptFailure, VerifierTranscript};
+ pub use two_adic_pcs::*;
++
++pub use context::fixed_construction;
