@@ -630,6 +630,24 @@ jobs:
         run: python research/source-certificate/static_check.py
       - name: Compare complete scalar source inventories
         run: python -I -S research/source-certificate/experiment.py
+
+  signature_construction:
+    name: Signature construction (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - name: Share serial build artifacts
+        shell: bash
+        run: echo "CARGO_TARGET_DIR=$RUNNER_TEMP/kova-signature-schedule-target" >> "$GITHUB_ENV"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install toolchain
+        run: rustup toolchain install 1.94.1 --profile minimal --component rustfmt --component clippy
       - name: Check complete packed signature formatting
         run: rustup run 1.94.1 cargo fmt --manifest-path research/signature-packed/Cargo.toml --all -- --check
       - name: Fetch complete packed signature dependencies
