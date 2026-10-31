@@ -163,8 +163,8 @@ The active stage is cryptographic feasibility and connected private authorizatio
 |---|---|---|
 | Monetary accounting | Atomic amounts, bounded issuance, earned stake allocation and burns | Owned payout notes, persistent ledger and consensus context |
 | Primitive and proof components | Exact reference vectors, bounded relations and adversarial proof rejection tests | Complete private payment composition and security analysis |
-| Signature and ownership | Complete bounded native reference relations and connected source construction | Streamed constraint verification and a complete hiding authorization proof |
-| Source pipeline | Complete fixed class streamed construction and selected actual clock and packed constraint checks | Full signature constraints, prover resources and authenticated ledger joins |
+| Signature and ownership | Complete bounded native reference relations and a full streamed AIR scan | Hiding authorization proofs and same witness ledger composition |
+| Source pipeline | Complete fixed class construction and full native signature constraint scan | Prover resources, hiding and authenticated ledger joins |
 | Mining, stake and networking | Architecture, interfaces and integration requirements | Runtime implementation and independent network agreement |
 | Wallet, contracts, Safe and Aegis | Authority, state and recovery architecture | Separate executable applications and consensus milestones |
 

@@ -1,0 +1,45 @@
+[package]
+name = "kova-signature-stream-native"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.94.1"
+publish = false
+autotests = false
+license = "MIT"
+repository = "https://github.com/th0rigin/Kova"
+
+[lib]
+test = false
+doctest = false
+
+[features]
+default = []
+native-execution = []
+stream-controls = ["dep:serde_json", "dep:thorum-core"]
+
+[[test]]
+name = "stream"
+path = "tests/stream.rs"
+required-features = ["stream-controls"]
+
+[dependencies]
+serde_json = { version = "=1.0.145", default-features = false, features = ["std"], optional = true }
+thorum-core = { path = "../../crates/thorum-core", optional = true }
+kova-proof-preflight = { path = "../proof-preflight" }
+p3-air = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-commit = { version = "=0.8.0", default-features = false }
+p3-dft = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-keccak-air = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+p3-uni-stark = { version = "=0.8.0", default-features = false }
+rand = { version = "=0.10.3", default-features = false, features = ["std_rng"] }
+thorum-crypto-lab = { path = "../../crates/thorum-crypto-lab" }
+thorum-relation-lab = { path = "../../crates/thorum-relation-lab" }
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+incremental = false

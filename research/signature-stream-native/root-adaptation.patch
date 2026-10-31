@@ -1,0 +1,19 @@
+--- retained/frame-native-root
++++ src/lib.rs
+@@ -1,4 +1,4 @@
+-//! Genuine streamed frames for retained clock and packed source constraints.
++//! Complete native signature constraints on privately owned streamed rows.
+ //! A fixed source walk is complete. Full hiding proofs and ledger integration remain unfinished.
+ #![forbid(unsafe_code)]
+ 
+@@ -100,8 +100,8 @@
+ use p3_uni_stark::{num_batched_openings, OpeningShape};
+ use rand::CryptoRng;
+ 
+-#[cfg(feature = "frame-controls")]
+-pub mod frame_controls;
++#[cfg(feature = "stream-controls")]
++pub mod stream_controls;
+ 
+ type RetainedChallenge = BinomialExtensionField<BabyBear, 4>;
+ 

@@ -21,3 +21,4 @@ research/signature-final-source/reference-adaptation.patch whitespace=-blank-at-
 research/signature-port-source/port-extraction.patch whitespace=-blank-at-eol
 research/signature-port-source/reference-adaptation.patch whitespace=-blank-at-eol
 research/signature-frame-native/root-adaptation.patch whitespace=-blank-at-eol,-blank-at-eof
+research/signature-stream-native/root-adaptation.patch whitespace=-blank-at-eol,-blank-at-eof
