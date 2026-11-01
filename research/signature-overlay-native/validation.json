@@ -1,0 +1,52 @@
+{
+  "artifacts": {
+    "results/measurement.json": {
+      "bytes": 4735,
+      "sha256": "0b1e78027a0a010fa2b8bd1a5ec8d7d233e1d22aed4cc9f9b327e58bacc4af71"
+    }
+  },
+  "date": "2026-11-01",
+  "elapsed_test_seconds": 56.86,
+  "executable": {
+    "bytes": 2171904,
+    "sha256": "f0fcecebdf58eccd8a7fa8f7faa49ab28ffb567795b2684cd8b31c39242db82d"
+  },
+  "format": "kova.signature-overlay-native.validation.v1",
+  "guard": {
+    "accepted": true,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "actual_passed": 1,
+    "available_before_bytes": 4576722944,
+    "exit_code": 0,
+    "expected_tests": 1,
+    "hard_limit_installed": true,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 9261056,
+    "peak_private_commit_bytes": 7974912,
+    "peak_working_bytes": 13991936,
+    "test_counts_verified": true,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "One fixed synthetic source and canonical transaction, not universal witness equivalence",
+    "Local borrowed frame mutations are not globally forged proofs",
+    "Private witness is available to this local native checker",
+    "No hiding backend proof or private payment verifier selected",
+    "Full signature remains outside existing proof admission and composed security remains open"
+  ],
+  "original_guard_receipt_sha256": "8b9179f9b23ed7fcbf303bdc2e93832e37edb92257a767a8334956916ecae8e0",
+  "platform": "Windows x86_64",
+  "profile": "release",
+  "rust": "1.94.1",
+  "scope": "one synthetic complete native witness source walk with full actual AIR controls",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "17bb670b1f43fd31679e735e671108da96e89814572204ebef8a903010dafd98"
+}

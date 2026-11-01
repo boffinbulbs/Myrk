@@ -346,6 +346,24 @@ jobs:
       - name: Complete overlay default checks
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-overlay/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
+      - name: Streamed overlay formatting
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-overlay-native/src/lib.rs research/signature-overlay-native/src/build.rs research/signature-overlay-native/src/forward_state.rs research/signature-overlay-native/src/forward_source.rs research/signature-overlay-native/src/inverse_state.rs research/signature-overlay-native/src/hint_state.rs research/signature-overlay-native/src/hint_source.rs research/signature-overlay-native/src/port_state.rs research/signature-overlay-native/src/stream_controls.rs research/signature-overlay-native/tests/stream.rs
+      - name: Streamed overlay dependencies
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-overlay-native/Cargo.toml --locked
+      - name: Streamed overlay recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/signature-overlay-native/static_check.py
+      - name: Streamed overlay diagnostic compilation
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-overlay-native/Cargo.toml --release --features diagnostics --test stream --locked --offline --no-run --jobs 1
+      - name: Streamed overlay strict checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-overlay-native/Cargo.toml --release --features diagnostics --lib --test stream --locked --offline -- -D warnings
+      - name: Streamed overlay default checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-overlay-native/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
 
   row:
     needs: scope

@@ -198,7 +198,7 @@ The [packed lifetime inventory](research/packed-lifetimes/README.md) maps all 67
 
 The [arithmetic workspace component](research/arithmetic-overlay/README.md) implements clock bound modes, original integer gadgets, held operand sources and result updates in one shared bank. A complete component trace passes and sixteen hostile controls reject.
 
-The [complete signature overlay](research/signature-overlay/README.md) integrates those modes with the actual private source operands, transform and hint consumers. Its 42,178 column relation has 71,623 symbolic assertions of degree four. Complete native source equivalence and hiding proofs remain separate validation stages.
+The [complete signature overlay](research/signature-overlay/README.md) integrates those modes with the actual private source operands, transform and hint consumers. Its 42,178 column relation has 71,623 symbolic assertions of degree four. The [streamed native validation](research/signature-overlay-native/README.md) checks all 8,192 genuine frames from one synthetic owner against that complete relation, matches 27,648 independent saved values and rejects twelve altered frames. Hiding proofs and private ledger integration remain separate stages.
 
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 

@@ -1,0 +1,261 @@
+{
+  "controls": [
+    {
+      "case": "idle_bank",
+      "expected_indices": [
+        585
+      ],
+      "expected_seen": true,
+      "failures": 1,
+      "first_indices": [
+        585
+      ],
+      "next": 1,
+      "restored_failures": 0,
+      "row": 0
+    },
+    {
+      "case": "same_note_owner",
+      "expected_indices": [
+        27433
+      ],
+      "expected_seen": true,
+      "failures": 1,
+      "first_indices": [
+        27433
+      ],
+      "next": 235,
+      "restored_failures": 0,
+      "row": 234
+    },
+    {
+      "case": "product_mode",
+      "expected_indices": [
+        582
+      ],
+      "expected_seen": true,
+      "failures": 816,
+      "first_indices": [
+        582,
+        586,
+        594,
+        595,
+        596,
+        597,
+        599,
+        601
+      ],
+      "next": 483,
+      "restored_failures": 0,
+      "row": 482
+    },
+    {
+      "case": "simultaneous_modes",
+      "expected_indices": [
+        583,
+        584
+      ],
+      "expected_seen": true,
+      "failures": 1228,
+      "first_indices": [
+        583,
+        584,
+        586,
+        594,
+        595,
+        596,
+        597,
+        599
+      ],
+      "next": 483,
+      "restored_failures": 0,
+      "row": 482
+    },
+    {
+      "case": "product_result_bit",
+      "expected_indices": [],
+      "expected_seen": true,
+      "failures": 4,
+      "first_indices": [
+        47076,
+        47077,
+        53758,
+        53759
+      ],
+      "next": 483,
+      "restored_failures": 0,
+      "row": 482
+    },
+    {
+      "case": "inverse_result_bit",
+      "expected_indices": [],
+      "expected_seen": true,
+      "failures": 3,
+      "first_indices": [
+        47076,
+        47077,
+        53759
+      ],
+      "next": 3555,
+      "restored_failures": 0,
+      "row": 3554
+    },
+    {
+      "case": "hint_mode",
+      "expected_indices": [
+        583
+      ],
+      "expected_seen": true,
+      "failures": 479,
+      "first_indices": [
+        583,
+        586,
+        594,
+        599,
+        600,
+        601,
+        602,
+        606
+      ],
+      "next": 3715,
+      "restored_failures": 0,
+      "row": 3714
+    },
+    {
+      "case": "hint_input_bit",
+      "expected_indices": [],
+      "expected_seen": true,
+      "failures": 3,
+      "first_indices": [
+        68612,
+        68615,
+        69559
+      ],
+      "next": 3715,
+      "restored_failures": 0,
+      "row": 3714
+    },
+    {
+      "case": "hint_suffix",
+      "expected_indices": [
+        2273
+      ],
+      "expected_seen": true,
+      "failures": 1,
+      "first_indices": [
+        2273
+      ],
+      "next": 3715,
+      "restored_failures": 0,
+      "row": 3714
+    },
+    {
+      "case": "final_signature",
+      "expected_indices": [
+        26217
+      ],
+      "expected_seen": true,
+      "failures": 1,
+      "first_indices": [
+        26217
+      ],
+      "next": 5370,
+      "restored_failures": 0,
+      "row": 5369
+    },
+    {
+      "case": "transaction_context",
+      "expected_indices": [
+        27339
+      ],
+      "expected_seen": true,
+      "failures": 1,
+      "first_indices": [
+        27339
+      ],
+      "next": 8191,
+      "restored_failures": 0,
+      "row": 8190
+    },
+    {
+      "case": "last_clock",
+      "expected_indices": [
+        579
+      ],
+      "expected_seen": true,
+      "failures": 132,
+      "first_indices": [
+        577,
+        579,
+        8508,
+        8509,
+        8510,
+        8511,
+        8515,
+        8516
+      ],
+      "next": 0,
+      "restored_failures": 0,
+      "row": 8191
+    }
+  ],
+  "format": "kova.signature-overlay-native.measurement.v1",
+  "journal_records": 42,
+  "original_journal": {
+    "bytes": 8021,
+    "sha256": "8520b1c94e567708cbad44ff57e0b4b87a5f057cce80892587d7859583e07c51"
+  },
+  "summary": {
+    "backend_proofs": 0,
+    "baseline_frames": 8192,
+    "complete_air_calls": 8216,
+    "final_generation": [
+      9,
+      9,
+      1
+    ],
+    "height": 8192,
+    "initial_generation": [
+      70,
+      70,
+      1
+    ],
+    "journal_records_before_summary": 41,
+    "kind": "summary",
+    "matrix_generation": [
+      336,
+      336,
+      1
+    ],
+    "mode_rows": [
+      3328,
+      256,
+      4608
+    ],
+    "negative_frames": 12,
+    "new_reference_generations": 0,
+    "prefix_preserved": [
+      344808296,
+      336701440,
+      332931856,
+      285335552,
+      310613120,
+      304562176,
+      217997312
+    ],
+    "preserved": 298491904,
+    "public_values": 196,
+    "reference_comparisons": [
+      4096,
+      2048,
+      20480,
+      1024
+    ],
+    "restored_frames": 12,
+    "source_walks": 1,
+    "symbolic_collections": 0,
+    "trace_generator_calls": 415,
+    "whole_trace_allocations": 0,
+    "width": 42178
+  }
+}

@@ -167,6 +167,8 @@ The [arithmetic overlay component](../research/arithmetic-overlay/README.md) imp
 
 The [complete signature overlay](../research/signature-overlay/README.md) integrates the shared bank with the original actual signature operands and consumers. The compiled layout retains 8,192 rows and 196 public values while reducing columns to 42,178. One complete symbolic collection measures 71,623 assertions of degree four. No native full signature witness, trace or proof is selected by that collection. Full construction equivalence, hostile source joins and private payment proof integration retain separate gates.
 
+The [streamed overlay validation](../research/signature-overlay-native/README.md) constructs a complete native source walk for one immutable synthetic owner and canonical transaction. Every genuine global frame satisfies the actual complete overlay AIR. Twelve frame mutations reject and twelve restorations pass. Independent saved literals match 27,648 observed values. Row specific writer ownership preserves the shared bank across product and hint interpretations. This native result constructs no hiding proof and does not admit the full signature to the retained proof resource class.
+
 The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
 
 ```text
