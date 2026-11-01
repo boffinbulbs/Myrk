@@ -22,6 +22,8 @@ The [child work policy](child-work-policy.md) selects a prospective exact intege
 
 The [bounded native arithmetic](../research/child-work-native/README.md) implements that prospective rule with safe fixed-size Rust integers and explicitly unverified contexts. Its saved release diagnostic checks the separate reference targets, full-width work division, overflow and numeric timestamp rules. It authenticates no history or private state and leaves the retained monetary profile unchanged.
 
+The [paired monetary profile](monetary-paired60.md) specifies an exact from-genesis research schedule at sixty seconds. Its [new integer reference](../research/monetary-paired60/README.md) preserves all four old allocation budgets across a pair, tests cap clipping and explicitly records partial-earning and timing differences. The existing 120 second core, data and figures remain unchanged. No economic activation or accepting ledger is supplied.
+
 The [finite proof reader](../research/frame-reader/README.md) connects header admission, payload reservation and one request authority to the original proof decoder. Actual file, truncation, error cause and repeated-use controls retain separate resource, encoding and cryptographic validity boundaries.
 
 The [bounded source proof decoder](../research/proof-transport/README.md) applies fixed byte and syntax budgets before owned decoding of the original proof type. Its diagnostic tests actual malformed inputs, shape checks and canonical comparison. A correctly encoded altered commitment still decodes without verification, preserving the boundary between transport and cryptographic validity.

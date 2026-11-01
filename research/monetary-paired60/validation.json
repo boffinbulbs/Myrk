@@ -1,0 +1,70 @@
+{
+  "format": "kova.monetary-paired60.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64/Python3.14.5 integer functional reference, not a benchmark",
+  "provenance": {
+    "bytes": 9111,
+    "sha256": "1f035658b3ba3c56ef051b1deedf69831dc7e7fcfc2d1cfb12889a7c53ca96cb"
+  },
+  "reference_attempts": 1,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 0,
+    "actual_passed": null,
+    "actual_failed": null,
+    "actual_ignored": null,
+    "test_counts_verified": false,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 4377092096,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 17698816,
+    "peak_private_commit_bytes": 10874880,
+    "sampled_peak_private_bytes": 9269248,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 12181504,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "post_reference_inputs": 1643,
+  "result": {
+    "bytes": 37444,
+    "sha256": "87a343c07ff0334c95a5d1095f6a964eaa92c9954b082c1a4896b173e8d7397b"
+  },
+  "counts": {
+    "period_pairs": 240,
+    "phase_boundaries": 960,
+    "previous_period_neighbors": 239,
+    "nominal_literals": 13,
+    "pair_literals": 7,
+    "allocation_literals": 6,
+    "fully_earned_cap_pairs": 200,
+    "uncapped_earned_burn_pairs": 180,
+    "wrong_alternatives": 8,
+    "restored_checks": 8,
+    "actual_numeric_refusals": 16,
+    "near_cap_counterexamples": 1,
+    "maximum_prefix_bits": 89
+  },
+  "saved_semantics": "240rows: period,oldS,first,second,A(first),A(second),A(oldS). Prefix height/large amount fields are decimal strings.",
+  "explicit_limits": [
+    "partially earned cap trajectories can differ",
+    "full-earning cap height is60nominalseconds earlier",
+    "no production profile/genesis/migration/registry",
+    "numeric totals authenticate no ledger"
+  ],
+  "not_executed": [
+    "old generator/model/tests",
+    "core/native/Rust compilation",
+    "proof/witness/owner/private opening flags",
+    "cryptographic work or authorization",
+    "RNG/key/signing",
+    "ledger/history/reorg/network/actual clock"
+  ]
+}

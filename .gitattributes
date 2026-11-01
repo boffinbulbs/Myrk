@@ -74,3 +74,5 @@ research/child-work-policy/result.json -text
 research/child-work-policy/licenses/* -text whitespace=-blank-at-eof
 research/child-work-native/licenses/* -text whitespace=-blank-at-eof
 research/child-work-native/results/native.txt -text -whitespace
+research/monetary-paired60/result.json -text
+research/monetary-paired60/licenses/* -text whitespace=-blank-at-eof
