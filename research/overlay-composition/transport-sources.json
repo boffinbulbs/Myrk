@@ -1,0 +1,101 @@
+{
+  "format": "kova.overlay.transport-sources.v1",
+  "date": "2026-11-01",
+  "baseline": "1c75f444884fab256ca5985c14c604191a827380",
+  "scope": "Source-only conditional canonical representation bound. No proof or model execution.",
+  "text_identity": "UTF-8 with CRLF normalized to LF",
+  "repository_files": {
+    "research/trace-domain/src/context.rs": {
+      "bytes": 7137,
+      "sha256": "1a1cec356b9e1d4aeeef82dd35baefa49df14ea987374874b355b1c97db81825"
+    },
+    "research/trace-domain/src/domain.rs": {
+      "bytes": 12665,
+      "sha256": "3f14472abbab216e2bd5a909c4f18addc447cc24bf82e29e1da1413635b84746"
+    },
+    "research/trace-domain/src/laboratory.rs": {
+      "bytes": 1985,
+      "sha256": "d0550352068646fbb17356a831395151fc2d5767c9578b29b5ec7284379f8b9b"
+    },
+    "research/trace-domain/src/owned_prover.rs": {
+      "bytes": 23824,
+      "sha256": "edc664ec6a5907874e9d0650adc5150b18fbcb2a9fe28fcfe0217dcf77511b1b"
+    },
+    "research/opening-domain/src/hiding_pcs.rs": {
+      "bytes": 14835,
+      "sha256": "26826760e2ca98140f0c6e8866af604c0cd0eee427948871eb266dbdfdc4e0a2"
+    },
+    "research/storage-pcs/backend/src/proof.rs": {
+      "bytes": 3183,
+      "sha256": "9c6efe2f05ec8f89f43ea1f2e706bf0fd826d9191d20d12b24ea2da10ad494a6"
+    },
+    "research/storage-pcs/backend/src/prover.rs": {
+      "bytes": 20819,
+      "sha256": "37c1aa19313ac2e2c3327ba03e7185dd0045e351b294428e4b74742dcb1d1e3f"
+    },
+    "research/storage-pcs/backend/src/hiding_pcs.rs": {
+      "bytes": 69656,
+      "sha256": "8c12cca5d256e28f0a87f0cf95020e33b62b27070d430776e24599d6a18d6eed"
+    },
+    "research/storage-pcs/backend/src/two_adic_pcs.rs": {
+      "bytes": 70809,
+      "sha256": "5ffa814e4f979b211d84f52d111e7e3d73499d572c88e63553a973e4066ae5b6"
+    },
+    "research/proof-preflight/src/preflight.rs": {
+      "bytes": 8131,
+      "sha256": "c08cb17ab5703e9ae0aa81fde2ebf07b622bc026bb2d8096172bd8a1ec803c8c"
+    },
+    "research/proof-transport/src/codec.rs": {
+      "bytes": 5379,
+      "sha256": "5425383bb81b5d8de3db6097c12152a51c45e2d3fb1bfebcce98c7a872008d6c"
+    },
+    "research/proof-transport/src/transport.rs": {
+      "bytes": 5572,
+      "sha256": "f7e8f851fac3ab4cbc55887b0e3d971bb8fa2d746fe6042114f32dec8fd306d7"
+    },
+    "research/frame-reader/src/lib.rs": {
+      "bytes": 661,
+      "sha256": "e71fc01cedaf65ae672723d8682c3bb2eb0dd783bdb5455e14935853c230a842"
+    },
+    "research/frame-reader/src/reader.rs": {
+      "bytes": 4748,
+      "sha256": "8186141caff114752d24a8b1bf08818a28e2cf6170b1944f993ba6cdf6b5e097"
+    },
+    "research/overlay-composition/inventory.json": {
+      "bytes": 10013,
+      "sha256": "141a76e498431e8357c4471b31f067df0ad6d13fa758abca5a844ad3c92b3886"
+    }
+  },
+  "registry_context": {
+    "p3-uni-stark-0.8.0/src/proof.rs": {
+      "bytes": 15158,
+      "sha256": "73aa8cd250bdd7ebc8045bbdbcea883d79a391dd44a22be46a733765e3932aec"
+    },
+    "p3-merkle-tree-0.8.0/src/mmcs/mod.rs": {
+      "bytes": 43549,
+      "sha256": "8164c4089590055bed06739a327b4561ce4793f3bc19b730fd1c24d77dec1e4c"
+    },
+    "p3-merkle-tree-0.8.0/src/mmcs/batch.rs": {
+      "bytes": 50887,
+      "sha256": "f893dbbb6818e386980d7cee66383725e5546832071a2975fc4b3cedb0cca1b4"
+    },
+    "p3-merkle-tree-0.8.0/src/hiding_mmcs.rs": {
+      "bytes": 21122,
+      "sha256": "f0e04424ea9141519cd76ce56995c6ed7eb8eb8c203cd51f4fa71378bda6dd57"
+    },
+    "p3-monty-31-0.8.0/src/monty_31.rs": {
+      "bytes": 30395,
+      "sha256": "130f4738eef4c4906b18c50dc055064fbc569fccca927cfde418c6b63f050c18"
+    },
+    "serde_json-1.0.145/src/ser.rs": {
+      "bytes": 63875,
+      "sha256": "94c189f4586b6eea1fd225c8c25adb6b986e8d3b1fb637fb9b5de249f9ab3e6e"
+    },
+    "serde_core-1.0.229/src/ser/mod.rs": {
+      "bytes": 65231,
+      "sha256": "ec097d92c8545356961e977a4c9650361cadd1d3a243d805ae7b0e0e589ae803"
+    }
+  },
+  "context_is_executed_code": false,
+  "attribution": "Plonky3 0.8.0, MIT OR Apache-2.0. Serde and serde_json retain their upstream notices. No upstream source copied."
+}

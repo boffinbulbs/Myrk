@@ -166,4 +166,6 @@ The [joint observation laboratory](../joint-observation/README.md) checks normal
 
 The subsequent [producer admission laboratory](../trace-domain/README.md) connects raw trace-domain refusal at the original challenge boundary. Its direct native controls check typed cause, private flag preservation and terminal ownership separately from natural OOD sampling. Earlier source snapshots retain their recorded boundaries.
 
+The [transport feasibility decision](transport-feasibility.md) derives a value independent lower bound for the retained full-width main query representation. It records a conditional incompatibility with the enforced small transport limits and keeps complete proof and ledger acceptance closed. This source review executes no wide construction or old test.
+
 The original review at the stated baseline changed documentation only. Source and local link checks and whitespace review supported that record. It executed no compiler, model, symbolic collector, witness walk, proof producer, healthy verifier or earlier reference run. Subsequent metadata measurements have their own linked validation scope. No cryptographic theorem is added by this review.
