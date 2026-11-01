@@ -15,7 +15,7 @@ This document specifies the mining boundary. The repository does not implement a
 
 The first parent profile targets Equihash (200,9) work under the parent formats specified by the primary references below. Matching an algorithm name alone is insufficient: parameters, personalization, header rules, activated formats and child commitments must match.
 
-The [bounded header work source selection](../research/work-authentication/README.md) identifies a concrete fixed-parameter verification component and pinned upstream references. It has not been implemented or executed. Full auxiliary child binding, history policy and bootstrap activation remain separate gates.
+The [bounded header work source selection](../research/work-authentication/README.md) identifies the fixed-parameter component and pinned upstream references. Its [implemented header diagnostic](../research/header-work/README.md) validates a saved parent genesis header against actual Equihash, SHA256d and an independent expected hash and target. Full auxiliary child binding, history policy and bootstrap activation remain separate gates.
 
 ## Verification boundary
 

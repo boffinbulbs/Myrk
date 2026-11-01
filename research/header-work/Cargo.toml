@@ -1,0 +1,33 @@
+[package]
+name = "kova-header-work-diagnostic"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+license = "MIT OR Apache-2.0"
+publish = false
+autobins = false
+autotests = false
+autobenches = false
+
+[workspace]
+
+[features]
+default = []
+diagnostics = ["dep:equihash", "dep:sha2"]
+
+[lib]
+doctest = false
+
+[dependencies]
+equihash = { version = "=0.3.0", default-features = false, optional = true }
+sha2 = { version = "=0.11.1", default-features = false, optional = true }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = "deny"
+
+[profile.release]
+overflow-checks = true
+incremental = false

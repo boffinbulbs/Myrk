@@ -1,6 +1,9 @@
 * text=auto eol=lf
 *.png binary
 *.pdf binary
+research/header-work/fixtures/*.bin binary
+research/header-work/licenses/* -text -whitespace
+research/header-work/results/* -text -whitespace
 research/crypto/licenses/*.txt -text -whitespace
 research/crypto/vectors/UPSTREAM-NOTICE.txt -text -whitespace
 research/signature-ownership/UPSTREAM-NOTICE.txt -text -whitespace

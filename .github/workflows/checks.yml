@@ -524,6 +524,25 @@ jobs:
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/state-journal/Cargo.toml --release --no-default-features --lib --locked --offline --jobs 1 -- -D warnings
 
+      - name: Header work locked dependencies
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/header-work/Cargo.toml --locked
+      - name: Header work recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/header-work/static_check.py
+      - name: Header work format
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 rustfmt --edition 2024 --check research/header-work/src/lib.rs research/header-work/src/header.rs
+      - name: Header work diagnostic compilation
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo test --manifest-path research/header-work/Cargo.toml --release --features diagnostics --lib --no-run --locked --offline --jobs 1
+      - name: Header work strict checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/header-work/Cargo.toml --release --features diagnostics --tests --locked --offline --jobs 1 -- -D warnings
+      - name: Header work default checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo check --manifest-path research/header-work/Cargo.toml --lib --locked --offline --jobs 1
+
   row:
     needs: scope
     if: ${{ !cancelled() }}

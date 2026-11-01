@@ -1,0 +1,330 @@
+{
+  "format": "kova.header-work.provenance.v1",
+  "date": "2026-11-01",
+  "baseline": "b10997e9f11466ac177997abc6638f3b0acf949c",
+  "source_identity": "CRLF-normalized UTF-8 text. Fixture, license and saved output identities preserve raw bytes.",
+  "source_files": {
+    "Cargo.lock": {
+      "raw": false,
+      "identity": {
+        "bytes": 3260,
+        "sha256": "e3e615b052a4b84bdc870b46e03e508537048d450dd7fa6da07882cbce72a939"
+      }
+    },
+    "Cargo.toml": {
+      "raw": false,
+      "identity": {
+        "bytes": 606,
+        "sha256": "368046c6dd018049194507d80df6e149675416c0ee00e51bc4b7f78437736f46"
+      }
+    },
+    "fixtures/mainnet-genesis.bin": {
+      "raw": true,
+      "identity": {
+        "bytes": 1692,
+        "sha256": "91d9f78dea1598d6c30486a55ee6af0f9255e97f525a37f7c113cb9c472bb382"
+      }
+    },
+    "licenses/Kova-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1065,
+        "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+      }
+    },
+    "licenses/Zcash-COPYING": {
+      "raw": true,
+      "identity": {
+        "bytes": 2168,
+        "sha256": "8e30cd61f12d42b612c094376e1cb169a6a235fe70a818d08ed4e527235f2881"
+      }
+    },
+    "licenses/Zebra-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10889,
+        "sha256": "8497628019793218784211721b59d0566075a9fbce865efda2b3da02cf96b2e7"
+      }
+    },
+    "licenses/Zebra-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1065,
+        "sha256": "a688813a3853401dd742104df9829c5d232c7c8d8f0b3adf9e421e514cd3399a"
+      }
+    },
+    "README.md": {
+      "raw": false,
+      "identity": {
+        "bytes": 7301,
+        "sha256": "83ed540df0b07b5586550855b7aa778c14414b92f3c6b0e19d46c664b7c7d073"
+      }
+    },
+    "results/native.txt": {
+      "raw": true,
+      "identity": {
+        "bytes": 290,
+        "sha256": "130f02be91ca554ed87bdc8cde0ac525513e3f741fa7abe4d4b01fb8d208f242"
+      }
+    },
+    "src/header.rs": {
+      "raw": false,
+      "identity": {
+        "bytes": 12245,
+        "sha256": "fe132de03d5909e63faf2d8443a6ca5814da85171569310351ec9ac2085de3bc"
+      }
+    },
+    "src/lib.rs": {
+      "raw": false,
+      "identity": {
+        "bytes": 94,
+        "sha256": "d139c8cd534acdb06a7dec41d63315f3fce462aba83ac2c7d5d26f4bea01edd4"
+      }
+    },
+    "static_check.py": {
+      "raw": false,
+      "identity": {
+        "bytes": 3317,
+        "sha256": "3ebe3524f80e2974b1ccbc4972895d168f5445479a8606ef57b52598d46676e7"
+      }
+    }
+  },
+  "registry_packages": [
+    {
+      "name": "arrayvec",
+      "version": "0.7.8",
+      "checksum": "d3fb67a6e08acf24fdeccbac2cb6ac4305825bd1f117462e0e6f2f193345ad56",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "blake2b_simd",
+      "version": "1.0.5",
+      "checksum": "3560a7b1951efe814fcd721938313adc56753ca39f4b23847d7e9a2402f5dbff",
+      "license": "MIT",
+      "windows_selected": true
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.12.1",
+      "checksum": "d2f6c7dbe95a6ed67ad9f18e57daf93a2f034c524b99fd2b76d18fdfeb6660aa",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "checksum": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "constant_time_eq",
+      "version": "0.4.2",
+      "checksum": "3d52eff69cd5e647efe296129160853a42795992097e8af39800e1060caeea9b",
+      "license": "CC0-1.0 OR MIT-0 OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "corez",
+      "version": "0.1.1",
+      "checksum": "4df6f98652d30167eaeea34d77b730e07c8caba6df17bd4551842b9b8da01deb",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.3.1",
+      "checksum": "5ca28b0ae3115b884660db4118d803791fd6756b6e88f39c0f3f7859060d7566",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.2.2",
+      "checksum": "ce6e4c961d6cd6c9a86db418387425e8bdeaf05b3c8bc1411e6dca4c252f1453",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "digest",
+      "version": "0.11.3",
+      "checksum": "f1dd6dbb5841937940781866fa1281a1ff7bd3bf827091440879f9994983d5c2",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "equihash",
+      "version": "0.3.0",
+      "checksum": "306286e8dcc39ab3dfceb74c792ce8baffdab90591321d3ffaae64829734c37f",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "hybrid-array",
+      "version": "0.4.15",
+      "checksum": "27f864f10dfb56725ce5ce5472bc52252c8f93a4ab86327122cebf62c5f59a17",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "libc",
+      "version": "0.2.191",
+      "checksum": "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": false
+    },
+    {
+      "name": "sha2",
+      "version": "0.11.1",
+      "checksum": "47d7069beb7d6ac7b9acd1039986e73443f24234f41074da099d6f994ac9ad19",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "checksum": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true
+    }
+  ],
+  "diagnostic_nodes": [
+    {
+      "name": "arrayvec",
+      "version": "0.7.8",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "blake2b_simd",
+      "version": "1.0.5",
+      "license": "MIT",
+      "features": []
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.12.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "constant_time_eq",
+      "version": "0.4.2",
+      "license": "CC0-1.0 OR MIT-0 OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "corez",
+      "version": "0.1.1",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "alloc"
+      ]
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.3.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.2.2",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "digest",
+      "version": "0.11.3",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "block-api",
+        "default"
+      ]
+    },
+    {
+      "name": "equihash",
+      "version": "0.3.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "hybrid-array",
+      "version": "0.4.15",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "kova-header-work-diagnostic",
+      "version": "0.1.0",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "default",
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "sha2",
+      "version": "0.11.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "const-generics"
+      ]
+    }
+  ],
+  "artifact_verification": {
+    "registry_archives": 14,
+    "total_archive_bytes": 1269082,
+    "all_archive_checksums_match_lock": true,
+    "all_regular_source_members_match_archives": true,
+    "no_source_patches": true
+  },
+  "independent_sources": [
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-test/src/vectors/block-main-0-000-000.txt",
+      "identity": {
+        "bytes": 3385,
+        "sha256": "1c7b4e1010e91e12342159691e73aafcb05665a9822febc1a15e3e80589b8a87"
+      },
+      "git_blob": "5706f214c6b1af672855e012e98bee1bd555a8ef",
+      "derivation": "Exact hexadecimal decoding. First1487 of1692 decoded bytes form the header."
+    },
+    {
+      "repository": "zcash/zcash",
+      "revision": "558f686599586f55def3db86955d74d3be44605e",
+      "path": "src/chainparams.cpp",
+      "identity": {
+        "bytes": 67303,
+        "sha256": "06392f1604c1fe643f7bb5ebd6b504a771cc78458b5945e16199d1167cbd26ba"
+      },
+      "git_blob": "2ccc5f397537c7b8424f3ae2d4b615663350e79d",
+      "lines": "333-339",
+      "expected_hash_display": "00040fe8ec8471911baa1db1266ea15dd06b4a8a5c453883c000b031973dce08",
+      "expected_bits": "1f07ffff"
+    }
+  ],
+  "excluded": [
+    "solver",
+    "C++",
+    "default std dependency features",
+    "upstream tests",
+    "parent node and network",
+    "private proof and ledger",
+    "bootstrap authority"
+  ]
+}

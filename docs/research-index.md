@@ -10,6 +10,8 @@ The [confidential stake contract](confidential-stake.md) defines required consum
 
 The [parent header work selection](../research/work-authentication/README.md) pins the solution verifier, independent header references and a raw fixture for a bounded next component. Its byte and target contract is a source design, with no compiled verifier or complete auxiliary-work acceptance path.
 
+The [fixed parent header diagnostic](../research/header-work/README.md) implements that byte boundary with actual published Equihash and SHA-256 dependencies. Its saved test validates the independently anchored genesis header and rejects metadata and real fixed-profile solution mutations. It supplies no complete auxiliary child binding, parent history or stake activation authority.
+
 The [finite proof reader](../research/frame-reader/README.md) connects header admission, payload reservation and one request authority to the original proof decoder. Actual file, truncation, error cause and repeated-use controls retain separate resource, encoding and cryptographic validity boundaries.
 
 The [bounded source proof decoder](../research/proof-transport/README.md) applies fixed byte and syntax budgets before owned decoding of the original proof type. Its diagnostic tests actual malformed inputs, shape checks and canonical comparison. A correctly encoded altered commitment still decodes without verification, preserving the boundary between transport and cryptographic validity.
