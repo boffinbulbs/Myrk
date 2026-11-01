@@ -1,0 +1,33 @@
+{
+  "origin": "bitcoin-cash-node/bitcoin-cash-node 631badbf64766fa8c2d38f099e937f8c6cb19014 src/test/pow_tests.cpp:735-772",
+  "notice": "Copyright (c) 2020 The Bitcoin developers. MIT license, see licenses/BCHN-COPYING.",
+  "parent_time_added": 600,
+  "spacing": 600,
+  "halflife": 172800,
+  "limit": "00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "constants": {
+    "SINGLE300": "00000000ffb1ffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "FUNNY": "000000008000000000000000000fffffffffffffffffffffffffffffffffffff"
+  },
+  "columns": ["reference_target", "time_extra", "height_difference", "expected_target"],
+  "cases": [
+    ["L", 0, 288, "L>>1"],
+    ["L", 0, 576, "L>>2"],
+    ["L>>1", 0, 288, "L>>2"],
+    ["L>>2", 0, 288, "L>>3"],
+    ["L>>3", 0, 288, "L>>4"],
+    ["L", 0, 63936, "3"],
+    ["L", 0, 64055, "3"],
+    ["L", 0, 64056, "2"],
+    ["L", 0, 64223, "2"],
+    ["L", 0, 64224, "1"],
+    ["L", 0, 64512, "1"],
+    ["1", 0, 64512, "1"],
+    ["L", 138240, 0, "L"],
+    ["1", 38707200, 0, "L"],
+    ["L", 300, 1, "SINGLE300"],
+    ["FUNNY", 5702400, 0, "L"],
+    ["1", 44236800, 0, "L"],
+    ["1", 38707199, 0, "FFFF8_SHIFT204"]
+  ]
+}

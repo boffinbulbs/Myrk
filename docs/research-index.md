@@ -18,6 +18,8 @@ The [canonical preseal job binding](preseal-job.md) specifies actual ordered eff
 
 The [restricted auxiliary construction](../research/auxiliary-construction/README.md) selects a historical carrier containing only transparent components and an exact schedule binding transaction, authorization and work to the same header. Its context, independent fixture and nominal assembly requirements remain blocked. Contents derived from source and hash incidence are not executed binding tests or a production profile.
 
+The [child work policy](child-work-policy.md) selects a prospective exact integer ASERT rule and explicit timestamp, anchor and work-score semantics. Its [finite reference](../research/child-work-policy/README.md) matches pinned raw target literals and tests arithmetic extremes without running a node or authenticating history. Production parameters and activation remain open.
+
 The [finite proof reader](../research/frame-reader/README.md) connects header admission, payload reservation and one request authority to the original proof decoder. Actual file, truncation, error cause and repeated-use controls retain separate resource, encoding and cryptographic validity boundaries.
 
 The [bounded source proof decoder](../research/proof-transport/README.md) applies fixed byte and syntax budgets before owned decoding of the original proof type. Its diagnostic tests actual malformed inputs, shape checks and canonical comparison. A correctly encoded altered commitment still decodes without verification, preserving the boundary between transport and cryptographic validity.

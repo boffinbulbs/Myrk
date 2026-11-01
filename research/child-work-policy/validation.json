@@ -1,0 +1,74 @@
+{
+  "format": "kova.child-work-policy.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64, Python 3.14, exact integer reference",
+  "provenance": {
+    "bytes": 14547,
+    "sha256": "6db49f87a6e34d0d09a0d282073f790a51faecf84cc187977c813545fdc21df2"
+  },
+  "reference_attempts": 1,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 0,
+    "actual_passed": null,
+    "actual_failed": null,
+    "actual_ignored": null,
+    "test_counts_verified": false,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 4698951680,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 14295040,
+    "peak_private_commit_bytes": 8667136,
+    "sampled_peak_private_bytes": 7864320,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 9973760,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "reference_executable": {
+    "bytes": 106208,
+    "sha256": "3adbbf2af609e206e3ca18cd55fc7c4b52f5c8bb8218dd99fd5a9e50d7a193cd"
+  },
+  "post_reference_files_verified": 964,
+  "result": {
+    "bytes": 19194,
+    "sha256": "952c9d677b2d81556e39af19942764e26f87f9db104f0f126a1d6a8deb68b5a9"
+  },
+  "counts": {
+    "primary_raw_cases": 18,
+    "literal60_cases": 12,
+    "grid_cases": 32,
+    "extreme_cases": 4,
+    "wrong_formulas": 8,
+    "restored_checks": 8,
+    "median_windows": 12,
+    "numeric_time_cases": 6,
+    "work_literals": 5,
+    "maximum_work_sum_bits": 319,
+    "saved_cases": 66
+  },
+  "source_and_kernel_bounds": {
+    "output_cap": 32768,
+    "literal_input_cap": 8192,
+    "direct_shift_cap": 512,
+    "bounded_product_bits": 273,
+    "maximum_cumulative_work_bits": 319
+  },
+  "not_executed": [
+    "original C++ test or generator",
+    "native target implementation",
+    "authenticated history or branch switch",
+    "actual clock service",
+    "hash or Equihash work verification",
+    "private proof or signer",
+    "ledger or network",
+    "old test or model"
+  ]
+}

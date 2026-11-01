@@ -1,0 +1,374 @@
+{
+  "format": "kova.child-work-policy.provenance.v1",
+  "date": "2026-11-01",
+  "baseline": "c7c8a8ff4edb669d4c899df53b42b873b8bddd1c",
+  "source_identity": "CRLF-normalized UTF-8 source. Reference result, original notices and captured upstreams preserve raw bytes.",
+  "source_files": {
+    "licenses/BCHN-COPYING": {
+      "raw": true,
+      "identity": {
+        "bytes": 1146,
+        "sha256": "8388570ab9119a16d2f27ffc7a619e34f713f0f4d3b9f5d54e3a3c0e299d137c"
+      }
+    },
+    "licenses/BCHN-POW-TEST-NOTICE": {
+      "raw": true,
+      "identity": {
+        "bytes": 382,
+        "sha256": "6faa11ee389e95ccafb4e165ca5c14eefc1df08e6b207545740e92078e68d122"
+      }
+    },
+    "licenses/Kova-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1065,
+        "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+      }
+    },
+    "primary-cases.json": {
+      "raw": false,
+      "identity": {
+        "bytes": 1181,
+        "sha256": "1ed006648da15f6a59592c9441e12b3805ea3a37e74ae081851799d68b475d3f"
+      }
+    },
+    "README.md": {
+      "raw": false,
+      "identity": {
+        "bytes": 5688,
+        "sha256": "a27e662d7eda9c7097bef16f3989af01db321dc1012fe40d76cf11f34f4797cf"
+      }
+    },
+    "reference.py": {
+      "raw": false,
+      "identity": {
+        "bytes": 8340,
+        "sha256": "80a12978a90c3e7051521f57661ddf574b31d1ca659c412029427669e5deddce"
+      }
+    },
+    "result.json": {
+      "raw": true,
+      "identity": {
+        "bytes": 19194,
+        "sha256": "952c9d677b2d81556e39af19942764e26f87f9db104f0f126a1d6a8deb68b5a9"
+      }
+    },
+    "static_check.py": {
+      "raw": false,
+      "identity": {
+        "bytes": 3142,
+        "sha256": "f282b8636ba816d1664771b3c61076c64350a5e4d71407e8ea191c922f43a513"
+      }
+    }
+  },
+  "upstream_files": [
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "COPYING",
+      "bytes": 1146,
+      "sha256": "8388570ab9119a16d2f27ffc7a619e34f713f0f4d3b9f5d54e3a3c0e299d137c",
+      "git_blob": "b06cb049e25624221d68086acc3578792a9094a8",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/COPYING"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/pow.cpp",
+      "bytes": 21415,
+      "sha256": "19983363115266cec784519a6a18c4bc2b7885215bc5965e7da6c9502350e713",
+      "git_blob": "52b37822da2d4c132b31113a1fc1e3d7b670e3a7",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/pow.cpp"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/pow.h",
+      "bytes": 2382,
+      "sha256": "678d45b6a85949e3cba3d4da7a1bb2e707b3bec072cbadc2b3f02175f8ff6289",
+      "git_blob": "7adb5c04000789044f6689f851af36651f4277b0",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/pow.h"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/chain.cpp",
+      "bytes": 6451,
+      "sha256": "2ba120fa21462533b7fb7ad5efa9777d4e1ac828d6784ca53a59ff909e7429a5",
+      "git_blob": "70cee51d1818e14b8009485f624a1976bf12da2f",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/chain.cpp"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/chain.h",
+      "bytes": 16642,
+      "sha256": "cc63c51b6a1f66c9b15a3033b00647141d28247d3df43da9caa07f07143a4652",
+      "git_blob": "cd554dcc279bd60f22273080bc0699d68e915116",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/chain.h"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/arith_uint256.cpp",
+      "bytes": 7759,
+      "sha256": "919eee7298f3081f25ccc782801d41830000f40ced5de587678e8fc51dee0cc4",
+      "git_blob": "5f89b04ec351bead88c07aa667a39701904bdd36",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/arith_uint256.cpp"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/arith_uint256.h",
+      "bytes": 9572,
+      "sha256": "b87abe4fcf720a4da5f336dfa63a6d9d2ba20bb45d0a22458e19eee364dcd938",
+      "git_blob": "cd41f0c3d5daa19c61435c03a9947b7b167b1d8a",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/arith_uint256.h"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/consensus/params.h",
+      "bytes": 4121,
+      "sha256": "f587448da16fefbb297f11c80ce8e47ad8c44885a6db8694afac16d2c2a1aa7d",
+      "git_blob": "61e16c285db458b156a9f9f2baf013844e581b00",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/consensus/params.h"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/test/pow_tests.cpp",
+      "bytes": 44375,
+      "sha256": "54f25cc8fdc1bae210a445e829c025f000e04516b8a891813d060cf0cfd51987",
+      "git_blob": "fd3ea96b9a663b28a7020393e5a71a413b2ed355",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/test/pow_tests.cpp"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "contrib/testgen/validate_nbits_aserti3_2d.py",
+      "bytes": 8237,
+      "sha256": "e8dff4581d1345148e3428c9aec6a7d0b9a1b97bd76ed27e2a76577a6093229d",
+      "git_blob": "5be35fdc22ac2ea1d1f83b5e0683a4a1a8d2d9f7",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/contrib/testgen/validate_nbits_aserti3_2d.py"
+    },
+    {
+      "repository": "bitcoin-cash-node/bitcoin-cash-node",
+      "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+      "path": "src/chainparams.cpp",
+      "bytes": 60796,
+      "sha256": "8906498d1dc6cdd54a83f5e1e889f29cada7a0ec5a8909939f42524f75abc195",
+      "git_blob": "678763c5aa3523d18dd0904477780bf2a1b23e9d",
+      "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/chainparams.cpp"
+    }
+  ],
+  "captured_files": 11,
+  "captured_raw_bytes": 182896,
+  "selected_path_queries": 12,
+  "failed_path": "doc/aserti3-2d.md at the pinned revision returned404. No unchanged retry or substitute source equivalence claim.",
+  "primary_web_spec": {
+    "url": "https://upgradespecs.bitcoincashnode.org/2020-11-15-asert/",
+    "version": "0.6",
+    "date": "2020-08-12",
+    "authors": [
+      "freetrader",
+      "Jonathan Toomim",
+      "Calin Culianu",
+      "Mark Lundeberg"
+    ],
+    "license": "CC0-1.0 OR GNU All-Permissive",
+    "raw_identity": null,
+    "scope": "Complete target/rounding/anchor/activation/testnet/license text inspected through web reader. Raw specification file not captured."
+  },
+  "repository_context": {
+    "crates/thorum-core/src/lib.rs": {
+      "identity": {
+        "bytes": 1817,
+        "sha256": "b5339e14659c208b321a767ea4164bb629f7db2c638d031391df5bd3c0aadd67"
+      },
+      "git_blob": "24a2b3d22cb8ff8c3ef31b16b22378a89fa1868c"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "identity": {
+        "bytes": 3989,
+        "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b"
+      },
+      "git_blob": "924d22657f0eb056d3e47c19830326392bc0dfe7"
+    },
+    "crates/thorum-core/src/emission.rs": {
+      "identity": {
+        "bytes": 3344,
+        "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7"
+      },
+      "git_blob": "da8721c6f8478bbb1918e0b72cdf0035325cca7f"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "identity": {
+        "bytes": 9462,
+        "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d"
+      },
+      "git_blob": "2aa845c5751b7975bb40b2415b55b92beff2a85b"
+    },
+    "research/header-work/src/header.rs": {
+      "identity": {
+        "bytes": 12245,
+        "sha256": "fe132de03d5909e63faf2d8443a6ca5814da85171569310351ec9ac2085de3bc"
+      },
+      "git_blob": "668d96f0a3fca0f83e45692a45d1f6b96131319b"
+    },
+    "research/header-work/Cargo.toml": {
+      "identity": {
+        "bytes": 606,
+        "sha256": "368046c6dd018049194507d80df6e149675416c0ee00e51bc4b7f78437736f46"
+      },
+      "git_blob": "3e9011e3f9c913145cdb3e3e476698809b429bce"
+    },
+    "research/header-work/Cargo.lock": {
+      "identity": {
+        "bytes": 3260,
+        "sha256": "e3e615b052a4b84bdc870b46e03e508537048d450dd7fa6da07882cbce72a939"
+      },
+      "git_blob": "a5d3c0d30425cbfbaed6010d040fc11aff565313"
+    },
+    "research/header-work/validation.json": {
+      "identity": {
+        "bytes": 8833,
+        "sha256": "72b012f362776133984b9c35c6a1acda03b15716b9cee8efd7a5295aba632db2"
+      },
+      "git_blob": "d4cbc4df8f0773825a8dcbec7a408509cb364b94"
+    },
+    "research/preseal-bytes/src/bytes.rs": {
+      "identity": {
+        "bytes": 11100,
+        "sha256": "b0ab4d053c8d085ecfca0dd5a35db386622f10884b07277944f09ee16734296e"
+      },
+      "git_blob": "ae8821eb31041550ade78d9cc4f0dcfb7018ba9a"
+    },
+    "research/preseal-bytes/src/lib.rs": {
+      "identity": {
+        "bytes": 127,
+        "sha256": "02de39f3af0699d546eff34b4da67e9b265294428bf07690c3c5e862dce85f47"
+      },
+      "git_blob": "6e3c60c14bd5cdc6b858df71fccea8e50f1552ef"
+    },
+    "research/preseal-bytes/src/tests.rs": {
+      "identity": {
+        "bytes": 9781,
+        "sha256": "51fb817ef66287656a04458c89d40cf0288151bb8ad21aa21e28d36bbbdaeea2"
+      },
+      "git_blob": "7442e344dd827f4a1639b17c162fe6dd458085c1"
+    },
+    "research/preseal-bytes/validation.json": {
+      "identity": {
+        "bytes": 7960,
+        "sha256": "3a51cbb519d310d63c584fba3c325b8fcb12fb556c309cc0e79d8a00720258f9"
+      },
+      "git_blob": "84b67cf88048d7cb0da5256dd8d1a4f0a312e922"
+    },
+    "research/preseal-bytes/provenance.json": {
+      "identity": {
+        "bytes": 12753,
+        "sha256": "f7507373a12c99276bbe4fbd779f0f6f873d072f519ea3540d726ea72f15272b"
+      },
+      "git_blob": "be129623485dcdef470d0efa39efe215f0820d53"
+    },
+    "research/preseal-bytes/Cargo.lock": {
+      "identity": {
+        "bytes": 2366,
+        "sha256": "4e8b4a330b0e9cff54ad826f9831b4f8b00ae3c4cc3f5acaf9a042c0423d6703"
+      },
+      "git_blob": "63ff309062ce527a118e628e4ddd66e68201ca40"
+    },
+    "research/auxiliary-construction/README.md": {
+      "identity": {
+        "bytes": 18689,
+        "sha256": "143b7a98ce75adc77f8b7c66dc15a12cba864153f6aeb18eb2e91d2d28cd6b3b"
+      },
+      "git_blob": "9704e44ae99a9bc801d0af31fb040986f32fefc2"
+    },
+    "research/auxiliary-construction/source-record.json": {
+      "identity": {
+        "bytes": 20340,
+        "sha256": "745840e1f807fe6da0c889c793bb3cabd04415b07abaed8fd40ec9ecd7091329"
+      },
+      "git_blob": "593e460e0226bbd6a589eb04ecd0ff9bc23e2222"
+    },
+    "docs/preseal-job.md": {
+      "identity": {
+        "bytes": 17600,
+        "sha256": "1a16ad59ab202efc655764a02e926e996ca09125aa678bd2b4a8e2eafd606bb4"
+      },
+      "git_blob": "1c6e3aebcd966def72381e285f767ca7df4b8a89"
+    },
+    "docs/architecture.md": {
+      "identity": {
+        "bytes": 9533,
+        "sha256": "d00407a4b71d2e222454ca72ae4df30c69bdad7e91360ddaefa31f7366ffe7e5"
+      },
+      "git_blob": "f194d88d13c1f77bf517dd034884ca77aac759fb"
+    },
+    "docs/checkpoints.md": {
+      "identity": {
+        "bytes": 5476,
+        "sha256": "0888287d33dc6c2a1fa8a265365220f0e6e94d7808b4ed6d7b11ce6e54efc1e1"
+      },
+      "git_blob": "07f5fc9450dc39f209ed8a9fafa10dbdca58cbec"
+    },
+    "docs/private-transition-state.md": {
+      "identity": {
+        "bytes": 20202,
+        "sha256": "f5d447290a69bb11ed9efda6d0a5024dbaac1f0e1bfafa079f01d5f1522e7fbf"
+      },
+      "git_blob": "852793fd3de546aa9074c562bbb0eb0be5708990"
+    },
+    "docs/confidential-stake.md": {
+      "identity": {
+        "bytes": 21669,
+        "sha256": "703c3d90f01999a7b250c3142cd615f1758928b495e037787e633563cbd2daa8"
+      },
+      "git_blob": "8d00cca2d27740a96d5f3a21d3af9fcc94ce40c3"
+    },
+    "docs/delivery-roadmap.md": {
+      "identity": {
+        "bytes": 9055,
+        "sha256": "526db01aa3557ab5fa655af2847a430de1c5b0b99af90deca4415a948fac337d"
+      },
+      "git_blob": "f665ba699c37596bb9027eaae49fc7ca43b670ae"
+    }
+  },
+  "historical_documents": [
+    {
+      "revision": "c7c8a8ff4edb669d4c899df53b42b873b8bddd1c",
+      "path": "docs/parameters.md",
+      "git_blob": "d896d7a914ecd4877173a5a2481690473c8021b0"
+    },
+    {
+      "revision": "c7c8a8ff4edb669d4c899df53b42b873b8bddd1c",
+      "path": "docs/mining.md",
+      "git_blob": "f484b0a5780a9634a19503dc692d4e820fc869d4"
+    },
+    {
+      "revision": "c7c8a8ff4edb669d4c899df53b42b873b8bddd1c",
+      "path": "docs/research-index.md",
+      "git_blob": "22350b735bed68f6139ec1df89efbdafd428b805"
+    }
+  ],
+  "runtime_scope": "Python 3.14 executable, DLLs, standard-library source and existing bytecode caches. Isolated invocation uses -I -S -B. No Rust or C++ compilation.",
+  "source_review": "Exact selected integer paths and independent raw literals. No full original node build, dependency audit or imported security theorem.",
+  "guard": {
+    "path": "research/state-journal/run_guarded_windows.ps1",
+    "identity": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    }
+  },
+  "excluded": [
+    "original source execution",
+    "foreign genesis and activation",
+    "testnet minimum-difficulty reset",
+    "native chain or history acceptance",
+    "private proving and ledger",
+    "mining solver",
+    "actual clock and network"
+  ]
+}

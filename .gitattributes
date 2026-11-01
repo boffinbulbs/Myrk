@@ -70,3 +70,5 @@ research/fallible-main/LICENSE-APACHE whitespace=-blank-at-eof
 research/preseal-bytes/results/native.txt -text -whitespace
 research/preseal-bytes/licenses/* -text whitespace=-blank-at-eof
 research/preseal-bytes/fixtures/*.bin -text
+research/child-work-policy/result.json -text
+research/child-work-policy/licenses/* -text whitespace=-blank-at-eof

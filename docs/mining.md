@@ -34,6 +34,8 @@ The [preseal job specification](preseal-job.md) fixes the candidate outer field 
 
 The [restricted auxiliary construction](../research/auxiliary-construction/README.md) specifies the complete proposed carrier, dual commitment and work schedule. It quantifies borrowed contents and hash incidence while retaining refusal for the missing authenticated target context, nominal assembly and complete independent work fixture. Child difficulty and timestamp derivation remain a separate launch requirement.
 
+The [prospective child work policy](child-work-policy.md) defines integer target derivation, anchor lifetime, timestamp median, local future quarantine and cumulative work for research. A guarded numeric reference checks its arithmetic. It does not supply authenticated ancestry, a live parent policy, an activated difficulty rule or a block acceptance path.
+
 A work result that satisfies the child target need not satisfy the external chain's harder target. A valid child witness also does not prove a winning external candidate was broadcast, accepted, remained canonical, or paid the treasury. Operators separately reconcile actual external receipts through their full nodes.
 
 ## Permissionless integration
