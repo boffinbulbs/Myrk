@@ -1,0 +1,265 @@
+{
+  "format": "kova.work-authentication.source-selection.v1",
+  "date": "2026-11-01",
+  "baseline": "d3eaf97545023bb5724f730c5a3f17f213a26ff6",
+  "scope": "Source selection only. No imported, compiled or executed header-work verifier.",
+  "upstream_identity": "Raw bytes with upstream Git blob independently reconstructed during capture",
+  "upstreams": {
+    "librustzcash": {
+      "repository": "zcash/librustzcash",
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "license": "MIT OR Apache-2.0",
+      "files": {
+        "components/equihash/Cargo.toml": {
+          "bytes": 952,
+          "sha256": "34a0876441a88a58f9fb7fb11b1b83aa10c2889f0c8c5abc0a0adeb16f5e6296",
+          "git_blob": "1c104b717e34f9c224740315bc7fef1e056300ed"
+        },
+        "components/equihash/src/lib.rs": {
+          "bytes": 1619,
+          "sha256": "4ec356326258ec10ed628cb4f481c2a8efbe79c374b8ec094ac0b6f98fcf8fe5",
+          "git_blob": "edbf3633fbbfb80b2f1097fd4529b734851e01a0"
+        },
+        "components/equihash/src/verify.rs": {
+          "bytes": 9595,
+          "sha256": "1d2398f57391481d9f10030aadcbbc7a3230e0b0cbaabfcfd9793faa71ce097d",
+          "git_blob": "fb0d02e126c4fd10b3ef58fe1a29847dcee35e7b"
+        },
+        "components/equihash/src/minimal.rs": {
+          "bytes": 9536,
+          "sha256": "74bec30cd45cb772422bd76e4144774a880792e7ef6d59bc4e12b86e40d846f9",
+          "git_blob": "91e1beedc604ced2171912f9f5ade36844d83812"
+        },
+        "components/equihash/src/params.rs": {
+          "bytes": 1302,
+          "sha256": "c77e235d106c1ad0b5a130ba3f9c54bed8b99d061f7dcaab4b1e9424ec03bed6",
+          "git_blob": "51f466da8a305b00c3770bc9208f22540f6bcf2c"
+        },
+        "components/equihash/src/test_vectors.rs": {
+          "bytes": 113,
+          "sha256": "a02d70eff4d65991d3bb73abc5a5d1240e93d0edadfec910ae95b880f2a4b286",
+          "git_blob": "99299fb26465f4263580f5c8c7c830d28555d470"
+        },
+        "components/equihash/build.rs": {
+          "bytes": 433,
+          "sha256": "2716a2cf3d85f116d8873b231b3fc19c3f9cc8aad95063592041767aab1a6752",
+          "git_blob": "74122e450ac5fddaad418e4328a1e79ec310909d"
+        },
+        "components/equihash/CHANGELOG.md": {
+          "bytes": 773,
+          "sha256": "538de8ae65fba875f74bd43eb03c69c3bd133d51bdbc83dacb93dddf94f0e72a",
+          "git_blob": "963f68356276aacb33bb85918ca7062ed4ae352c"
+        },
+        "Cargo.toml": {
+          "bytes": 8254,
+          "sha256": "1804dd5f2c0f6376ad27699c904456976ac1d9e28f4aa5ea919ed546113a4a16",
+          "git_blob": "975dc2f88d867fdb7d9020d8defd5ad4f7186dba"
+        },
+        "LICENSE-MIT": {
+          "bytes": 1097,
+          "sha256": "bf145b7a25b6cc65f07176f8b8a6e789ca1d1c762bfbd3c53450bf8031ef5291",
+          "git_blob": "17173028f53b589e82da869bc7a2d2cb59c33ae4"
+        },
+        "LICENSE-APACHE": {
+          "bytes": 10848,
+          "sha256": "3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026",
+          "git_blob": "1e5006dc141e22213c898c27abaded8d936c32f0"
+        },
+        "components/equihash/src/test_vectors/valid.rs": {
+          "bytes": 59908,
+          "sha256": "229a0c7bdc8cd037e09aa7406b67b13b6213fa4543037e162d89e8b8731cae18",
+          "git_blob": "4df20c642aede10bfba800a5ead28a856a26da41"
+        },
+        "components/equihash/src/test_vectors/invalid.rs": {
+          "bytes": 6699,
+          "sha256": "a36a6a61362e3bfccb949f7226a983df45446a1fd988438ced1556b39807db0c",
+          "git_blob": "5dbec5a33d12e0edd0bd375f56cb5d0fa04d659c"
+        }
+      }
+    },
+    "zebra": {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "license": "MIT OR Apache-2.0",
+      "files": {
+        "zebra-test/src/vectors/block-main-0-000-000.txt": {
+          "bytes": 3385,
+          "sha256": "1c7b4e1010e91e12342159691e73aafcb05665a9822febc1a15e3e80589b8a87",
+          "git_blob": "5706f214c6b1af672855e012e98bee1bd555a8ef"
+        },
+        "zebra-chain/src/block.rs": {
+          "bytes": 17661,
+          "sha256": "9bd39dc802c8dc796514c3a8e56868edd9b4542100ab6c6591abba776a2d2431",
+          "git_blob": "03b4ad8b44529c5a6606e660bcf0bb15f09de45f"
+        },
+        "zebra-chain/src/work/difficulty.rs": {
+          "bytes": 28204,
+          "sha256": "82adf21c7a8d95d50f5cd1b73cc70b32e5b956f54f284a1bbdf6d31c1d1f4a59",
+          "git_blob": "a7fce74deb8a837730f06044b15252288d2022d8"
+        },
+        "LICENSE-MIT": {
+          "bytes": 1065,
+          "sha256": "a688813a3853401dd742104df9829c5d232c7c8d8f0b3adf9e421e514cd3399a",
+          "git_blob": "7f46ce5537a56f1053636cf922487e714f99213e"
+        },
+        "LICENSE-APACHE": {
+          "bytes": 10889,
+          "sha256": "8497628019793218784211721b59d0566075a9fbce865efda2b3da02cf96b2e7",
+          "git_blob": "26d4cc05323965ffd0d8c59004834238925abbfa"
+        },
+        "zebra-chain/src/block/header.rs": {
+          "bytes": 7709,
+          "sha256": "f39aaff28500b78710c17b046dba65d696145ab1912d6f1f2aa901048a4abd24",
+          "git_blob": "ddd04297e45fe9bf91011c7fc48ff7411219c090"
+        },
+        "zebra-chain/src/block/hash.rs": {
+          "bytes": 3859,
+          "sha256": "ca00b4348b24744c4601a13d9e6957770718f3420b2fb245877fffff3f27b8a8",
+          "git_blob": "4131613fc80828a81515cc72faf8ae67f7af6e60"
+        },
+        "zebra-chain/src/block/genesis.rs": {
+          "bytes": 632,
+          "sha256": "4b9028a0c6e7d6a1572d9626d80f7ff968ed984ab2e8b6d34108bc3ac41dfa21",
+          "git_blob": "271d791420ac32add61149024351a580fa5915f9"
+        },
+        "zebra-chain/src/parameters/genesis.rs": {
+          "bytes": 330,
+          "sha256": "ac7ed04e2281411a4871bdc40c64b66055a3e348f492d86adf26e5ece0774e5f",
+          "git_blob": "04d1bad6ec288a73467d01e241235f9f4e782c0a"
+        },
+        "zebra-chain/src/parameters/constants.rs": {
+          "bytes": 5172,
+          "sha256": "cee7b0c58f32f01852f17aa8241a25c78bffd408844fd1c28e8d616af9f74634",
+          "git_blob": "66b765e651e44627c27c21ba9055d01fc65ca825"
+        },
+        "zebra-chain/src/work/equihash.rs": {
+          "bytes": 11789,
+          "sha256": "55f50d87fa325f94611b3b8b6f06e84f2c7ce475bc6334f86463353ff34639d5",
+          "git_blob": "0a97200b8cbbca53da050b7b050b0cd9e22b7527"
+        },
+        "zebra-chain/src/block/serialize.rs": {
+          "bytes": 8112,
+          "sha256": "029e7606cc75087e0a1db4b51c6d0735b4ce31953da2ca14072e6eac016331b6",
+          "git_blob": "1ca9adbd9cada5f293e23624e178d50724096d46"
+        }
+      }
+    }
+  },
+  "captured_source_files": 25,
+  "captured_raw_bytes": 209936,
+  "repository_context": {
+    "docs/confidential-stake.md": {
+      "bytes": 21669,
+      "sha256": "703c3d90f01999a7b250c3142cd615f1758928b495e037787e633563cbd2daa8"
+    },
+    "docs/parameters.md": {
+      "bytes": 5743,
+      "sha256": "4e21e1847a52fca37be761c3ac17d64047483aea64584929a0169150c4dbb7f9"
+    },
+    "docs/checkpoints.md": {
+      "bytes": 5476,
+      "sha256": "0888287d33dc6c2a1fa8a265365220f0e6e94d7808b4ed6d7b11ce6e54efc1e1"
+    },
+    "research/overlay-composition/transport-feasibility.md": {
+      "bytes": 6285,
+      "sha256": "0128eddd6143840936cf70fcfc270f13c00aead83037b8cc24affaf250c3445e"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d"
+    },
+    "research/signature-overlay/src/lib.rs": {
+      "bytes": 2414,
+      "sha256": "719aa5810b8d1158d7468a7c545ad7177f97f73aad9faa35af96f5279a22df37"
+    },
+    "research/trace-domain/src/owned_prover.rs": {
+      "bytes": 23824,
+      "sha256": "edc664ec6a5907874e9d0650adc5150b18fbcb2a9fe28fcfe0217dcf77511b1b"
+    },
+    "research/state-journal/src/journal.rs": {
+      "bytes": 13880,
+      "sha256": "9592f5381529b5ce613749310bb1dc4fd1cd21118f6ffad89ff3fc39da171d0b"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    }
+  },
+  "historical_documents": {
+    "docs/mining.md": {
+      "change": "Source selection link added",
+      "git_blob": "fdf4027cf9982b2ca383638b00a998065a1b9d64"
+    },
+    "docs/research-index.md": {
+      "change": "Source selection link added",
+      "git_blob": "2ba0e4c0dbc6c56dc96a677a7e3c293a69a60fe3"
+    }
+  },
+  "selected_predicate": {
+    "header_bytes": 1487,
+    "input_bytes": 108,
+    "nonce_bytes": 32,
+    "solution_prefix_hex": "fd4005",
+    "solution_bytes": 1344,
+    "equihash_n": 200,
+    "equihash_k": 9,
+    "expected_nbits": "Validator context, not self-selected wire policy",
+    "difficulty_hash": "Actual double SHA-256 of the complete canonical header",
+    "full_auxiliary_work": false,
+    "bootstrap_activation": false
+  },
+  "source_costs": {
+    "logical_indices": 512,
+    "expanded_cursor_bytes": 2048,
+    "requested_index_capacity_elements": 2048,
+    "requested_index_capacity_bytes": 8192,
+    "allocation_measured": false,
+    "logical_index_bytes": 2048
+  },
+  "primary_documents": [
+    {
+      "url": "https://zips.z.cash/protocol/protocol.pdf",
+      "edition": "v2026.7.0-399-gff594d [NU6.3]",
+      "date": "2026-10-30",
+      "review": "Text sections 5.4.1.11, 7.6, 7.7 including encoding and target definitions",
+      "raw_identity": null,
+      "visual_review": false
+    },
+    {
+      "url": "https://zips.z.cash/zip-0244",
+      "review": "Initial sections only. Complete auxiliary commitment construction unselected"
+    },
+    {
+      "url": "https://zips.z.cash/zip-0301",
+      "review": "Initial sections only. Stratum transport excluded from selected predicate"
+    }
+  ],
+  "fixture": {
+    "upstream_path": "zebra-test/src/vectors/block-main-0-000-000.txt",
+    "ascii_bytes": 3385,
+    "decoded_bytes": 1692,
+    "prospective_header_bytes": 1487,
+    "version_hex": "04000000",
+    "nbits_hex": "ffff071f",
+    "solution_prefix_hex": "fd4005",
+    "candidate_verified": false,
+    "independent_expected_header_hash": "Still required before a native matching-identity claim"
+  },
+  "execution": {
+    "compiler": 0,
+    "model": 0,
+    "candidate_verifier": 0,
+    "solver": 0,
+    "node": 0,
+    "parent_rpc": 0,
+    "proof": 0
+  },
+  "limitations": [
+    "Exact dependency artifacts, feature graph and complete license closure still require review before compilation",
+    "Captured source snapshot is not asserted identical to published crate artifacts",
+    "No raw protocol PDF identity or visual formula inspection",
+    "Direct PDF retrieval failed DNS before downloading any body",
+    "No complete auxiliary child commitment, history policy, stake eligibility or activation"
+  ],
+  "attribution": "Source review of Electric Coin Company and Zcash Foundation MIT OR Apache-2.0 implementations. No upstream implementation code copied into this package."
+}
