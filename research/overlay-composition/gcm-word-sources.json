@@ -1,0 +1,725 @@
+{
+  "format": "kova.gcm-word-relation.sources.v1",
+  "date": "2026-11-02",
+  "baseline": "e4028fb56620222c054a6bd48128c7d99c0c8b13",
+  "scope": "Whole finite Boolean word relation for selected literal64bit portableAES256GCM source. Both source correspondence directions conditional on fixedconfiguration/copies; no AIR/program/runtimeclass or hardware theorem.",
+  "mathematics": {
+    "field": "Prime characteristic greater than3; canonical byte/word Boolean bits, never one64bit field residue",
+    "gates": [
+      "XOR x+y-2xy",
+      "AND xy",
+      "OR x+y-xy",
+      "NOT1-x",
+      "fixedcopy/shift/rotation/mask",
+      "Boolean fulladder x+y+u=s+2c"
+    ],
+    "wrapping": "Low64bit partial-product/ripple additions reproduce actualWrapping operations, unlike monetary zero-overflow rule",
+    "key_expansion": {
+      "key_bytes": 32,
+      "word_bits": 64,
+      "key_words": 120,
+      "groups": 15,
+      "initial_groups": 2,
+      "first_expansions": 7,
+      "second_expansions": 6,
+      "not_planes": [
+        0,
+        1,
+        5,
+        6
+      ]
+    },
+    "coordinates": "W_p[16r+4c+b]=bit_p(X_b[4c+r]);512bit fixed permutation",
+    "batch_separation": "Source rotations/shifts preserve residue mod4, masks uniform per4bit group, bitwise substitution and replicatedkeys give separation plusblock-permutation equivariance",
+    "single_wrapper": "Requested block in position0, other3zero; not4copies",
+    "gcm": {
+      "nonce_bytes": 12,
+      "tag_bytes": 16,
+      "plaintext_bytes": 418,
+      "aad_bytes": 1789,
+      "aes_logical_requests": 29,
+      "ghash_blocks": 140,
+      "first_counter": 1,
+      "last_counter": 28
+    },
+    "ghash": "hprime=mulx(reverse(H)),Y0=0,Ynext=literalPortableMul(Y XORreverse(block),hprime),tag=reverse(Y140)XORmask;H may be0",
+    "proof": "Constructive execution-to-assignment and accepted-bitrelation-to-literalportableexecution by operation induction, withbatchseparation matchingactualCTRgrouping",
+    "limits": [
+      "No proof that arbitrarybuilder/list/hash enforcescopies",
+      "No currenthardwareAES/POLYVALR-F equivalence theorem or actualbackend execution",
+      "No combined H/W/PV/assertion/quotient/mask/query/tree/FRI/transport/peak class",
+      "No KEMfinite sampler/KDF/payment join supplied"
+    ]
+  },
+  "review": {
+    "complete_selected_portable_bodies": [
+      "AES256key expansion and encryption plus calledsub_bytes/sub_bytes_nots/mix/bitrouting/keyhelpers in64bitfixslice source",
+      "ActualsoftwareAESwrapper and CTR/cipher single-parallel-tail source paths",
+      "PortableGHASH/POLYVAL update/product/representedreduction path retained"
+    ],
+    "partial": [
+      "x86AESdispatch/NIencryption source onlyselectedsections",
+      "POLYVALR-F representedpowers/parallel source inspected, instruction/algebra correspondence notproved",
+      "Unifiedfeature/target/transitivebody/license/toolchain closure remains"
+    ],
+    "excluded": [
+      "AES128/192,decryption,VAES,ARM and unrelatedfeatures",
+      "Any compiler/configuration or CPUbackend selection"
+    ]
+  },
+  "independent_data": {
+    "source": "aes-gcm-0.11.1/tests/aes256gcm.rs",
+    "attribution": "RetainedRustCrypto copy attributesvectors toNISTCAVS/gcmEncryptExtIV256.rsp",
+    "raw_bytes": 179278,
+    "status": "Readselectedcomplete expectedvectors asdata only. No directNISTrawartifact identity, decodinghelper, oldtests or secondimplementation executed."
+  },
+  "repository_files": {
+    "Cargo.toml": {
+      "bytes": 735,
+      "sha256": "2dad10da5dedfdef787a3eac95ddedf59e6d97dd7b51f9f076b6775fa9af8b17",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "5eb927a78f13d1714b4c833ee28396f7d4257b48"
+    },
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "7d826f03ad620fb9bc926ff5d6109d1ba8863d06"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424",
+      "identity_mode": "raw bytes",
+      "git_blob": "17b48f16c64fd688b5929736899c73faca927d19"
+    },
+    "crates/thorum-crypto-lab/Cargo.toml": {
+      "bytes": 819,
+      "sha256": "fb4bcf1015dda241af00f3621bd332d01b17d18c493fe173c07772ed3080eb9d",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "316595d914469478f7cb67c5207666e2239a50ba"
+    },
+    "crates/thorum-crypto-lab/src/lib.rs": {
+      "bytes": 16754,
+      "sha256": "c1671d70b61ffdaa0824512e6598b64b4d31a3ff35040186cd13f89d18c6e601",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "f70e4dc4b222d6130103371b6bdf2364ddcae5e5"
+    },
+    "crates/thorum-crypto-lab/src/envelope.rs": {
+      "bytes": 3154,
+      "sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "eb7d472e9cd0cbd4e0b131889a57fe8fb036309a"
+    },
+    "crates/thorum-relation-lab/src/note.rs": {
+      "bytes": 15074,
+      "sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "10566a7ceab5b93dafd14be313d61600b91a36c7"
+    },
+    "crates/thorum-relation-lab/src/capability.rs": {
+      "bytes": 4048,
+      "sha256": "5ccba5406267c5cabb4ec3268a5b2103c85bfcdada307dd2910d16d9abc5285f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "513c1a0b583bd2871118be85b520afa4de4a92bf"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "c7005f1c76d3f8698f9942ec769ea0fdb5b35692"
+    },
+    "crates/thorum-relation-lab/src/codec.rs": {
+      "bytes": 1278,
+      "sha256": "d034294a3c7045a9d3c99fd64c60ee6959973215770b8470cc66f16ac1d66d98",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "2dc168613f6917e0d2c21154329eb9729393cf33"
+    },
+    "research/overlay-composition/private-witness-join.md": {
+      "bytes": 21092,
+      "sha256": "282542a81b0bf803d891c3edad22f6324f48b4fd12ff99d6a05dc61eb9ab1084",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "a15b53e9eff2212a26ba411566abca8a41b86856"
+    },
+    "research/overlay-composition/private-witness-sources.json": {
+      "bytes": 23230,
+      "sha256": "6e1d0fc1c5f84948303264c1aed59073f8f77fc037d3cec3a6c4fe9dfc31883c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "e1bec1e76ade96da788318526265ea7d4d86ea01"
+    },
+    "research/overlay-composition/two-phase-wire-binding.md": {
+      "bytes": 19085,
+      "sha256": "d2995acece35c040a02714daa4ff3e63460145eea7e0207e5c6bd0c59fe6ba3c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "7b6ce65dcd802bcc1e6fd933a95b710bc65ccc30"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 9055,
+      "sha256": "526db01aa3557ab5fa655af2847a430de1c5b0b99af90deca4415a948fac337d",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "f665ba699c37596bb9027eaae49fc7ca43b670ae"
+    },
+    "research/proof-preflight/src/preflight.rs": {
+      "bytes": 8131,
+      "sha256": "c08cb17ab5703e9ae0aa81fde2ebf07b622bc026bb2d8096172bd8a1ec803c8c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "75ccf57968c24d7345ea3916d63dd1f30e10e2f8"
+    },
+    "research/trace-domain/src/owned_prover.rs": {
+      "bytes": 23824,
+      "sha256": "edc664ec6a5907874e9d0650adc5150b18fbcb2a9fe28fcfe0217dcf77511b1b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "bd451c550ed14ffea15cd04604ce105b4e1bfe70"
+    },
+    "research/trace-domain/src/trace_admission.rs": {
+      "bytes": 581,
+      "sha256": "346bbc165b44be2a9bce353a9854b3a51d8e4dccc349cc2a4f9148a27b0f57b2",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "486fa43690990c37dde9e465be49e9fe820acfdc"
+    },
+    "research/quotient-source/src/quotient_kernel.rs": {
+      "bytes": 10400,
+      "sha256": "7df6a350620007f3c0117c48120f92148f6d0f752c008920b1746d8eb93e4a44",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "2fe7434d5e147714d4ff6ad7e43d4bddf02f6c29"
+    },
+    "research/overlay-composition/authorization-construction.md": {
+      "bytes": 13610,
+      "sha256": "3b629f3c34ebf6623181994330d3821a3dea4bafb003fd993d91b09d3326a401",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "1543a3ee272ecebe584afe7f45e91e9456ae271b"
+    },
+    "research/overlay-composition/encrypted-output-boundary.md": {
+      "bytes": 14102,
+      "sha256": "8f5df1b533692a98bf07d6bd4799f5678018342c705fe469926091fbd9d944f9",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "d09fcdd61ff636adfbd54bbfee4cafab80c3174e"
+    },
+    "research/overlay-composition/encrypted-output-sources.json": {
+      "bytes": 27784,
+      "sha256": "4676ac9d3b944c14ac4a811acf4fa0dbbe31881f0dc9213879af50013de2862b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "f965026055f34ced44ea2511073fedc0823318ea"
+    }
+  },
+  "registry_files": {
+    "ml-kem-0.3.3/Cargo.toml": {
+      "bytes": 4084,
+      "sha256": "822dc6e7b39d2bb6d1ba7daaf8f599b6bc5233e46f6b36272aec8bc74bce278c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ml-kem-0.3.3/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "d0fb27c23e807f1fc6f506d161984b294a1f05c9888ae31f056d1712685948ad",
+      "identity_mode": "raw bytes"
+    },
+    "ml-kem-0.3.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "module-lattice-0.2.3/Cargo.toml": {
+      "bytes": 3190,
+      "sha256": "eb3383630b860c8598b24b4e45b185d8aecc4b4a05c4de6b8b89f87f0ce7670d",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "module-lattice-0.2.3/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "d0fb27c23e807f1fc6f506d161984b294a1f05c9888ae31f056d1712685948ad",
+      "identity_mode": "raw bytes"
+    },
+    "module-lattice-0.2.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "aes-gcm-0.11.1/Cargo.toml": {
+      "bytes": 3330,
+      "sha256": "cd890dd38daf60de22ecc095b470af6a93dfa2962499aa1fefe0c030c7dcdccb",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-gcm-0.11.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0",
+      "identity_mode": "raw bytes"
+    },
+    "aes-gcm-0.11.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "aes-0.9.1/Cargo.toml": {
+      "bytes": 1966,
+      "sha256": "19cf09a6e0d410f379f99ec443d5562990eeedfd5b8d491a62d8971215fdd910",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-0.9.1/LICENSE-MIT": {
+      "bytes": 1115,
+      "sha256": "25f77efa393854f7c15eaf6a2589a2071db2d7337642742763adb12bdecf0445",
+      "identity_mode": "raw bytes"
+    },
+    "aes-0.9.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "aead-0.6.1/Cargo.toml": {
+      "bytes": 2790,
+      "sha256": "cda27d7960de6273a9969330ad54e6b87fbbf18e582da44d05ac2f2f972d0952",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aead-0.6.1/LICENSE-MIT": {
+      "bytes": 1117,
+      "sha256": "33b32a251d445c5c03a634e64c53314c55540fc367fabdd45d9b6c8f260c028c",
+      "identity_mode": "raw bytes"
+    },
+    "aead-0.6.1/LICENSE-APACHE": {
+      "bytes": 10850,
+      "sha256": "b1cf9a3333ca78152b859012cd4a804156e5243e9ca20ad1df7327ba5ea7405c",
+      "identity_mode": "raw bytes"
+    },
+    "ghash-0.6.0/Cargo.toml": {
+      "bytes": 1522,
+      "sha256": "075d4228787cf0d1b38ba0d4d9794714623d660bb8947da4e19ebc955e07f51f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ghash-0.6.0/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0",
+      "identity_mode": "raw bytes"
+    },
+    "ghash-0.6.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "polyval-0.7.3/Cargo.toml": {
+      "bytes": 3130,
+      "sha256": "e8dc04416390a2788d2a3846c0c4d33a579d2c651f07ecd982a90940c78de858",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0",
+      "identity_mode": "raw bytes"
+    },
+    "polyval-0.7.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "ctr-0.10.1/Cargo.toml": {
+      "bytes": 2701,
+      "sha256": "b778af44205c3650154c6373e02d71d8d5f9acaa4c4544dbfbf3211e3f755391",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ctr-0.10.1/LICENSE-MIT": {
+      "bytes": 1103,
+      "sha256": "63af4bea227c94d021e99427f6ca3a4b8efddadcca93ab6130f708cf6138cf68",
+      "identity_mode": "raw bytes"
+    },
+    "ctr-0.10.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "sha3-0.12.0/Cargo.toml": {
+      "bytes": 1726,
+      "sha256": "69a5a38684afb429397aa6a42f8633c8b4de6eb1cd4e365628f66b54d870adbe",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "sha3-0.12.0/LICENSE-MIT": {
+      "bytes": 1255,
+      "sha256": "6462612d92b861384dcd378168a7a0ef3ef28876d3d380d382cb5a3091e360b8",
+      "identity_mode": "raw bytes"
+    },
+    "sha3-0.12.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "shake-0.1.0/Cargo.toml": {
+      "bytes": 2703,
+      "sha256": "b639b7245b417b4fd3c137944e10552425352dbaec80b597eead2c9ba32f607c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "shake-0.1.0/LICENSE-MIT": {
+      "bytes": 1077,
+      "sha256": "083cb05a34eb9c78faf69aa49674ec30d1eadbdc2042473644992786e6c8249b",
+      "identity_mode": "raw bytes"
+    },
+    "shake-0.1.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "cipher-0.5.2/Cargo.toml": {
+      "bytes": 2856,
+      "sha256": "8685a3b996d8d12e00d51d882425a409101d344f7efac1a48cf37a7509847c7f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "cipher-0.5.2/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "950d712c518a02fcb7cff96950aee304a1cc5283361712c980ea21e8d6d669a5",
+      "identity_mode": "raw bytes"
+    },
+    "cipher-0.5.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "universal-hash-0.6.1/Cargo.toml": {
+      "bytes": 2296,
+      "sha256": "61fa1dc4e3e5ae5ff7463a2f4852f080510c15e19c51ead403528c0a1c94f12c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "universal-hash-0.6.1/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "efa52eb70a774b62c50cf50f5e57e2625c29d375d09b91132f4f020e47b9944e",
+      "identity_mode": "raw bytes"
+    },
+    "universal-hash-0.6.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "keccak-0.2.2/Cargo.toml": {
+      "bytes": 2645,
+      "sha256": "a059fa772f385e2e5929da96fea33916f1f4984e457beaf5919acf42019f076a",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "keccak-0.2.2/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b",
+      "identity_mode": "raw bytes"
+    },
+    "keccak-0.2.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "ml-kem-0.3.3/src/lib.rs": {
+      "bytes": 13687,
+      "sha256": "65c638bc6ca63e05dae60244b6f0b5c02a80736b76ecc645b19316b8dafbec61",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ml-kem-0.3.3/src/encapsulation_key.rs": {
+      "bytes": 3189,
+      "sha256": "ce8c44408cbb2647b3cec33701d11b6885d3135d6cd2bbee9ee86c384318f3d3",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ml-kem-0.3.3/src/pke.rs": {
+      "bytes": 9545,
+      "sha256": "245b44b0e40cf7ae8002095bd32023dd2a51315d2118f6b5e1cd5a469d1f494a",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ml-kem-0.3.3/src/crypto.rs": {
+      "bytes": 6387,
+      "sha256": "a13c10520df5144669caea4e210cb7409c2c2976b9f79a4d6bd664857ec62abd",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ml-kem-0.3.3/src/param.rs": {
+      "bytes": 7198,
+      "sha256": "26fd79b9bb4824c65e4089eb3fccd66038f4afd25d6a90cb4090f2dc4c965e3f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ml-kem-0.3.3/src/algebra.rs": {
+      "bytes": 21285,
+      "sha256": "6367725fc54e7bbbb59b733cd873c554a6175bf216f31200eab74b945cf285c2",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ml-kem-0.3.3/src/compress.rs": {
+      "bytes": 5962,
+      "sha256": "866c6ce13fcc9a553506df719e24146e310b432f4f730b393ed4612b10271d7b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "module-lattice-0.2.3/src/encoding.rs": {
+      "bytes": 6773,
+      "sha256": "566cecff30fb21167593d9bcb638faedbfacdcad1a87c8aa7628a69c30fd29b7",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-gcm-0.11.1/src/lib.rs": {
+      "bytes": 12965,
+      "sha256": "51ed299a17f4a140482cd98cc2b6a69066bef90fbdb1ae001763141eb5ddabcc",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aead-0.6.1/src/lib.rs": {
+      "bytes": 16964,
+      "sha256": "a0c317d7c4a3209885193c93a357f0d86fb353bdb2837cfb889ab0ffc4bd7cbd",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-0.9.1/src/lib.rs": {
+      "bytes": 5690,
+      "sha256": "ffff7ce65eea153084e707d629677e0495032bf007f368b490e6bd8cfc20f206",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ghash-0.6.0/src/lib.rs": {
+      "bytes": 3351,
+      "sha256": "91e9ee34ab0d6efde7d274d705216564ad4b225c840adc8c9c72ee7281ea8699",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ctr-0.10.1/src/flavors/ctr32.rs": {
+      "bytes": 4496,
+      "sha256": "8d648bdd7638b272e961ae10b0abcf28033fa5ece720d90aad11361fffe437c6",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "ctr-0.10.1/src/ctr_core.rs": {
+      "bytes": 5566,
+      "sha256": "af6d926a10da7abfd058bafad5d598458cfbaf811a047f9e36a7cfe963055443",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "shake-0.1.0/src/lib.rs": {
+      "bytes": 5400,
+      "sha256": "92239f3574d1a02bc7b64050662533cb6bdbb90173969ee7cb5cdd329f73ef90",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "module-lattice-0.2.3/src/algebra.rs": {
+      "bytes": 16762,
+      "sha256": "61f486ec36d712898b080cd13788d3909b6a6c48856a1b597668168e832e19e3",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "module-lattice-0.2.3/src/truncate.rs": {
+      "bytes": 1207,
+      "sha256": "b241a22335a9d2a0687ae992266e4872fbba6d9c89553b9ea71eda54e912bf09",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-0.9.1/src/soft.rs": {
+      "bytes": 8874,
+      "sha256": "fd83353ad38832a4224f501793d41bec85f1f439dc8872e0ba3dff5c74ab9095",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-0.9.1/src/autodetect.rs": {
+      "bytes": 12182,
+      "sha256": "9974bbecbe63a4169285a72d6700d134600f146972960cb1d5fc5d8fe09b98d4",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-0.9.1/src/soft/fixslice64.rs": {
+      "bytes": 44336,
+      "sha256": "cfb6f3fb36290bc2925624d206005eca7394beccb6a957dcfaee5e80935319f8",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/src/lib.rs": {
+      "bytes": 3583,
+      "sha256": "7b1e122e06172c12774865a99badb733910bddc8f658d123c5270063effeabeb",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/src/backend.rs": {
+      "bytes": 388,
+      "sha256": "235347bee78806af989f16fa364e9f1c920babf568cfea43ce162ef47a87afde",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/src/backend/soft.rs": {
+      "bytes": 1441,
+      "sha256": "397e03c9e0db6d13998c0870dee196fe81e23f1721eb1cdec446983ac0e5756f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/src/field_element.rs": {
+      "bytes": 6516,
+      "sha256": "1b23584a719ef054a8ab1594c2f2414af3a37c60f3679efab1ef01ebd979f91a",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/src/field_element/mulx.rs": {
+      "bytes": 8395,
+      "sha256": "8d62b5b00d1fcbc52cad912f70b7fdb05cccbfe9af4da03f998b91aa359c1725",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/src/field_element/mul64.rs": {
+      "bytes": 3297,
+      "sha256": "681010575041bb6f7ad1b4f0281e4e6317b16ee4de7d0103d87163c41f914cab",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "sha3-0.12.0/src/lib.rs": {
+      "bytes": 4961,
+      "sha256": "b5197ef5711ba506ba8f320a4ea9e20a9e266fa1a30efc213072157a21ee2583",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "sha3-0.12.0/src/utils.rs": {
+      "bytes": 1785,
+      "sha256": "3eabf975c550c470fb104d23b4715bdcf19ff70438c3e5c309055ba7d0cb5438",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "sponge-cursor-0.1.0/src/lib.rs": {
+      "bytes": 7075,
+      "sha256": "4f630991ac2e66a583840b8ef7dc18d921124e6b84f570e27175d2d6035adeb6",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "sponge-cursor-0.1.0/src/u64_le_utils.rs": {
+      "bytes": 4874,
+      "sha256": "9d297e92670803c9acd1a82bffc29a60b608b8ac590b957027300834533e8318",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "sponge-cursor-0.1.0/Cargo.toml": {
+      "bytes": 2306,
+      "sha256": "ad08b71a941a200c83237dd071cf32c0c2a411c2606c29f3d522680a411b4f23",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "sponge-cursor-0.1.0/LICENSE-MIT": {
+      "bytes": 1077,
+      "sha256": "083cb05a34eb9c78faf69aa49674ec30d1eadbdc2042473644992786e6c8249b",
+      "identity_mode": "raw bytes"
+    },
+    "sponge-cursor-0.1.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "identity_mode": "raw bytes"
+    },
+    "cipher-0.5.2/src/stream/core_api.rs": {
+      "bytes": 9574,
+      "sha256": "b79ca50449712d6aae8bc98447f80194217ff34572a225efd0d802cc475f4640",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "cipher-0.5.2/src/block.rs": {
+      "bytes": 14742,
+      "sha256": "5aa181063d77cd7cb45b02fc400cf05aa8f29766c4b9f32226bd79e8386a12d8",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "cipher-0.5.2/src/block/ctx.rs": {
+      "bytes": 3895,
+      "sha256": "c5e8e1599e0393b41ee601b9beedac2b1814d5d7800f046b991244c316ce7e93",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/src/backend/intrinsics.rs": {
+      "bytes": 3149,
+      "sha256": "784ef441255baa1282152359aa12c6aeaf72aca79da424c21e2e9f4b5b660bcb",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "polyval-0.7.3/src/backend/intrinsics/x86.rs": {
+      "bytes": 7018,
+      "sha256": "6b7c210c1744bc01d14b0177f1c89cd97221df2929ffbe96835417b3d62e2222",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-0.9.1/src/x86.rs": {
+      "bytes": 26367,
+      "sha256": "85a3c9199bdee63ddec240dd2b8940989ffbe2276696f100cdd6785006a3841b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-0.9.1/src/x86/ni/encdec.rs": {
+      "bytes": 4674,
+      "sha256": "4bdec869300107fc55b95c4a0e55e97f2342be80065b1ab7dda56b6514139b6b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "aes-gcm-0.11.1/tests/aes256gcm.rs": {
+      "bytes": 179278,
+      "sha256": "c474f9b86a6ee7d262e65df555bfe6009f0af675da9a06da365acebc07bbac0c",
+      "identity_mode": "raw bytes"
+    },
+    "aes-gcm-0.11.1/tests/common/mod.rs": {
+      "bytes": 3168,
+      "sha256": "553b00e2aff4aedc838bcc2c09dae69d1b6b2aaaee0d4cba7dd840154e94e26a",
+      "identity_mode": "raw bytes"
+    }
+  },
+  "archives": {
+    "ml-kem-0.3.3": {
+      "bytes": 46384,
+      "sha256": "a9ba01ebcf90f6aff8e9b9f55bb69b19e6250e4ade5787d0040eaa27dd226238",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "module-lattice-0.2.3": {
+      "bytes": 21697,
+      "sha256": "0c61b87c9683ab7cb1c6871d261ad5479b6b10ceb52c4352aaca3b5d35a8febe",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "aes-gcm-0.11.1": {
+      "bytes": 155976,
+      "sha256": "7f2b8006a0c83f52b62ba44a97b58bf76fe2f70a329e588f67f89691d93d498f",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "aes-0.9.1": {
+      "bytes": 134952,
+      "sha256": "f1fc76eaeac4c9164506c466d4ffdd8ec9d0c5bf57ee97177c4d8eceb3a0e138",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "aead-0.6.1": {
+      "bytes": 18672,
+      "sha256": "1973cfbc1a2daf9cf550e74e1f088c28e7f7d8c1e1418fb6c9dc5184b7e84c99",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "ghash-0.6.0": {
+      "bytes": 10780,
+      "sha256": "2eecf2d5dc9b66b732b97707a0210906b1d30523eb773193ab777c0c84b3e8d5",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "polyval-0.7.3": {
+      "bytes": 26284,
+      "sha256": "f0fa31d631f2b2cb2a544d0aa321ce847a94764d701ca2becc411138b93d49cd",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "ctr-0.10.1": {
+      "bytes": 20379,
+      "sha256": "baaca1c4b237092596f64d571e9db6ce4109c4ef9742e27590f1709594461f21",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "sha3-0.12.0": {
+      "bytes": 196953,
+      "sha256": "bc9bad02c26382724b2d2692c6f179285e4b54eeecd7968f52a50059c3c11759",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "shake-0.1.0": {
+      "bytes": 340673,
+      "sha256": "09057cb2149ad4cbd2da1e26b351f9a4c354219421229c69c3063e6f61947c4a",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "cipher-0.5.2": {
+      "bytes": 28177,
+      "sha256": "e8cf2a2c93cd704877c0858356ed03480ff301ee950b43f1cbe4573b088bfa6c",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "universal-hash-0.6.1": {
+      "bytes": 9478,
+      "sha256": "f4987bdc12753382e0bec4a65c50738ffaabc998b9cdd1f952fb5f39b0048a96",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    },
+    "keccak-0.2.2": {
+      "bytes": 16975,
+      "sha256": "d8f198d1db720e4940b5a493201d199d9f24f568f8f746bd13706243a2f71598",
+      "identity_mode": "raw bytes",
+      "lock_checksum_match": true
+    }
+  },
+  "historical_context_blobs": {
+    "research/overlay-composition/encrypted-output-boundary.md": {
+      "revision": "e4028fb56620222c054a6bd48128c7d99c0c8b13",
+      "git_blob": "d09fcdd61ff636adfbd54bbfee4cafab80c3174e"
+    }
+  },
+  "licenses": "OriginalprojectMIT and RustCryptoMIT/Apache licenses unchanged. FixsliceAlexandreAdomnicai, portableBearSSL/ThomasPornin and targetHPCrypt attribution retained. No newcaptured/copiedimplementation or audit.",
+  "closure": {
+    "archive_member_equivalence_checked": false,
+    "unified_feature_graph_resolved": false,
+    "full_hardware_correspondence": false,
+    "new_executable_closure": false
+  },
+  "execution": {
+    "stock_source_checks": true,
+    "capture_fetch": false,
+    "helper_evaluator": false,
+    "graph_generator": false,
+    "model": false,
+    "reference": false,
+    "cargo": false,
+    "compiler": false,
+    "native": false,
+    "protocol_hash": false,
+    "encryption": false,
+    "keygen_rng": false,
+    "witness": false,
+    "prover": false,
+    "verifier": false,
+    "network": false,
+    "old_test_replay": false,
+    "new_runtime_admission": false,
+    "workflow_change": false
+  }
+}

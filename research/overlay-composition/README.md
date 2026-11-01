@@ -81,6 +81,8 @@ The [common private witness contract](private-witness-join.md) binds the same no
 
 The [encrypted output construction boundary](encrypted-output-boundary.md) traces the actual KEM, sampler, KDF and GCM operations and fixes their same-opening association. It identifies the missing finite sampling and cipher correspondence required before a complete private encryption proof can be selected.
 
+The [whole GCM software word relation](gcm-word-relation.md) gives the exact portable key, payload and tag relation and both conditional source-correspondence directions. It retains the hardware, constrained-copy, combined proving-resource and complete payment gates.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
