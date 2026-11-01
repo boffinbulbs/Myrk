@@ -1,0 +1,22 @@
+{
+  "format": "kova.snapshot-journal.preparation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64, NTFS",
+  "scope": "Source formatting target refused before launch. No Rust compilation or native execution.",
+  "attempts": 1,
+  "accepted": false,
+  "launched": false,
+  "failure": "Fresh physical memory admission refused.",
+  "available_before_bytes": 1440595968,
+  "minimum_available_bytes": 2147483648,
+  "hard_limit_installed": false,
+  "installed_process_commit_limit_bytes": 0,
+  "installed_job_commit_limit_bytes": 0,
+  "installed_job_flags": 0,
+  "rust_compiler_processes": 0,
+  "journal_processes": 0,
+  "native_tests": 0,
+  "child_processes": 0,
+  "postverified_preparation_inputs": 93,
+  "preparation_wrapper_exit_is_target_success": false
+}

@@ -1,0 +1,82 @@
+{
+  "format": "kova.snapshot-journal.sources.v1",
+  "date": "2026-11-01",
+  "baseline": "ec87b51f5b94fb086558950996b6467e726b5838",
+  "scope": "Source design only. No journal implementation shipped or executed.",
+  "text_identity": "UTF-8 with CRLF normalized to LF",
+  "repository_files": {
+    "research/storage-matrix/src/lib.rs": {
+      "bytes": 5005,
+      "sha256": "0ed7090fbce02c497489b9669b1ffe6998b7c8a46e06dbf0c5a7fb49983d4180"
+    },
+    "research/fallible-input/src/lib.rs": {
+      "bytes": 19733,
+      "sha256": "2de5d619fe33449773c6e8a43939fdf5d5276d0667d7768d0571f7579a18372c"
+    },
+    "research/fallible-source/src/source.rs": {
+      "bytes": 10326,
+      "sha256": "d3829f1a1a2180f0a9e9cae5b1246da424263c9e19f041bf82143890a126274c"
+    },
+    "research/fallible-source/src/extension.rs": {
+      "bytes": 24815,
+      "sha256": "2514d694276257ed36aa144715e38be8b62f74d96f12659555f291176ea3312d"
+    },
+    "research/opening-domain/src/composite.rs": {
+      "bytes": 41541,
+      "sha256": "e149341f01b57415d972395aa7802c370c3ee6261ab89c7010044c0b6c48e6b7"
+    },
+    "research/trace-domain/src/laboratory.rs": {
+      "bytes": 1985,
+      "sha256": "d0550352068646fbb17356a831395151fc2d5767c9578b29b5ec7284379f8b9b"
+    },
+    "research/frame-reader/src/lib.rs": {
+      "bytes": 661,
+      "sha256": "e71fc01cedaf65ae672723d8682c3bb2eb0dd783bdb5455e14935853c230a842"
+    },
+    "research/frame-reader/src/reader.rs": {
+      "bytes": 4748,
+      "sha256": "8186141caff114752d24a8b1bf08818a28e2cf6170b1944f993ba6cdf6b5e097"
+    },
+    "research/storage-pcs/backend/src/storage.rs": {
+      "bytes": 6958,
+      "sha256": "e52cea4aac0a82c99b244c70fddc9d302212aec93f2e39692965140bf0fdc18d"
+    }
+  },
+  "historical_context": {
+    "docs/private-transition-state.md": {
+      "git_blob": "45d98c58e524e38e2cd885658c5d0494829eb41f",
+      "change": "Source review link added in this increment"
+    }
+  },
+  "installed_primary_documents": {
+    "src/std/fs.rs.html": {
+      "bytes": 322433,
+      "sha256": "64bbb34a82635dd5760ab504c39083efe092169e1f4d6748f6d389413d709061",
+      "identity": "raw HTML",
+      "edition": "1.94.1 (e408947bf 2026-03-25)"
+    },
+    "src/std/sys/fs/windows.rs.html": {
+      "bytes": 193117,
+      "sha256": "ca5a5335a113f912427edc615cbc876384b7a9570d25c055f3b7e2e4b19e2034",
+      "identity": "raw HTML",
+      "edition": "1.94.1 (e408947bf 2026-03-25)"
+    },
+    "src/std/process.rs.html": {
+      "bytes": 241327,
+      "sha256": "57f8dfd0cb46e71596dbf1c20b77e080144ee3837f973d31e5759b6a06e659ab",
+      "identity": "raw HTML",
+      "edition": "1.94.1 (e408947bf 2026-03-25)"
+    },
+    "src/std/sys/process/windows.rs.html": {
+      "bytes": 103147,
+      "sha256": "8b6812f0265231cbee6c2b5f3312ffd1a7692a1b040bfcceca2b9fcc9fa30a1f",
+      "identity": "raw HTML",
+      "edition": "1.94.1 (e408947bf 2026-03-25)"
+    }
+  },
+  "primary_urls": [
+    "https://github.com/rust-lang/rust/blob/1.94.1/library/std/src/sys/fs/windows.rs",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-createhardlinkw"
+  ],
+  "attribution": "Existing Kova MIT sources. Installed Rust 1.94.1 source documentation retains upstream MIT OR Apache-2.0 licensing. No upstream code copied."
+}

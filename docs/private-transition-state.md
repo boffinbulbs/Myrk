@@ -151,4 +151,6 @@ The exact canonical envelope, AIR and profile registry, root history window and 
 
 A first independent implementation task may develop bounded snapshot and journal mechanics with public synthetic state bytes. It must test actual storage failure and commit ownership without accepting a caller supplied proof verdict or claiming payment authorization. Complete private verification and stake construction must later be integrated through their real checked paths. Any such execution needs its own source and resource review.
 
+The [snapshot journal source review](snapshot-journal.md) develops a bounded publication candidate and identifies the remaining writable recovery ownership gap. Its proposed controls have not executed, and no journal implementation or accepting state transition is supplied by that review.
+
 This increment changes specifications and [source identities](../research/private-transition/source-record.json) only. It executes no cryptographic component, state machine model, compiler, native witness, proof producer, verifier or old test. Source review and documentation checks establish neither a working blockchain nor composed security. The [private transaction requirements](private-transactions.md) and all unresolved hiding, transcript, repeated observation, knowledge and quantum obligations remain applicable.
