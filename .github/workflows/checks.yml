@@ -493,6 +493,9 @@ jobs:
       - name: Joint hiding recorded evidence
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: python -I -S research/joint-hiding/static_check.py
+      - name: Joint observation recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/joint-observation/static_check.py
 
   row:
     needs: scope

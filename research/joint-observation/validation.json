@@ -1,0 +1,53 @@
+{
+  "format": "kova.joint-observation.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64",
+  "software": "Python 3.14.5",
+  "scope": "One finite independent coupled quotient and main observation reference",
+  "provenance": {
+    "bytes": 5794,
+    "sha256": "f9b1946e27ace9833773c7f030cc5d92393a7cca5460052b108707b428b8951b"
+  },
+  "result": {
+    "bytes": 389,
+    "sha256": "556dcbcc74a11eba048781288763290f671acfaf864a907a13315df83131c9b4"
+  },
+  "reference_attempts": 1,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 0,
+    "actual_passed": null,
+    "actual_failed": null,
+    "actual_ignored": null,
+    "test_counts_verified": false,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 3506683904,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 14622720,
+    "peak_private_commit_bytes": 9179136,
+    "sampled_peak_private_bytes": 9043968,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 10473472,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "freeze": {
+    "files": 4985,
+    "sha256": "ac2a3440cc5dbbda06544797c81dfa6bd454fb7ab3baf6dbc87c29445873a1bb",
+    "post_run_verified": true
+  },
+  "limitations": [
+    "Conditional ideal oracle fiber only",
+    "Synthetic fixture is not the actual Kova AIR witness",
+    "No actual Fiat Shamir or hash compilation",
+    "No full signature proof or payment capability",
+    "Producer raw trace-domain admission remains unresolved"
+  ]
+}

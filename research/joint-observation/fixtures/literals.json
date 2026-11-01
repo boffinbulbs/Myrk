@@ -1,0 +1,11 @@
+{
+  "format": "kova.joint-observation.literals.v1",
+  "trace_generator": 64,
+  "normalizer": 32,
+  "chunk_powers": [136, 223, 137, 30, 121, 34, 120, 227],
+  "quartic_literals": [52, 241, 10, 28],
+  "coordinate_claims": [[70, 39], [217, 155]],
+  "combined_claim": [21, 256],
+  "swapped_claim": [77, 225],
+  "main_ranks": [6, 6, 8]
+}

@@ -162,4 +162,6 @@ The subsequent [bounded metadata laboratory](../layout-metadata/README.md) execu
 
 The subsequent [auxiliary isolation laboratory](../joint-hiding/README.md) derives the conditional Galois observation kernel and tests the actual challenge-power basis in a tiny independent field. It identifies a proper-subfield rank exception and preserves the distinction between oracle algebra, joint quotient hiding and transcript compilation. It changes no cryptographic implementation or proof profile.
 
+The [joint observation laboratory](../joint-observation/README.md) checks normalized coupled-mask fibers at chunk anchors and other physical points, the translated main closure and separate quotient coordinate claims. Its conditional oracle argument also identifies the remaining producer raw trace-domain admission obligation. No full privacy or network acceptance claim follows.
+
 The original review at the stated baseline changed documentation only. Source and local link checks and whitespace review supported that record. It executed no compiler, model, symbolic collector, witness walk, proof producer, healthy verifier or earlier reference run. Subsequent metadata measurements have their own linked validation scope. No cryptographic theorem is added by this review.
