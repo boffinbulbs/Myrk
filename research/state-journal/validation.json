@@ -1,0 +1,281 @@
+{
+  "format": "kova.state-journal.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64, local NTFS, Rust 1.94.1",
+  "provenance": {
+    "bytes": 5168,
+    "sha256": "6d77d48b4cf6da9fe4a53c6bac13838f40bbc2094b99bc6b28bda1efb983a5c5"
+  },
+  "native_attempts": 3,
+  "native": [
+    {
+      "request": 1,
+      "guard": {
+        "accepted": false,
+        "expected_tests": 1,
+        "actual_passed": null,
+        "actual_failed": null,
+        "actual_ignored": null,
+        "test_counts_verified": false,
+        "timeout_seconds": 120,
+        "launched": true,
+        "hard_limit_installed": true,
+        "working_guard_terminated": false,
+        "timed_out": false,
+        "output_limit_exceeded": false,
+        "available_before_bytes": 4811657216,
+        "minimum_available_bytes": 2147483648,
+        "hard_process_commit_limit_bytes": 536870912,
+        "peak_working_bytes": 5709824,
+        "peak_private_commit_bytes": 1298432,
+        "sampled_peak_private_bytes": 405504,
+        "installed_process_commit_limit_bytes": 536870912,
+        "installed_job_commit_limit_bytes": 536870912,
+        "peak_job_commit_bytes": 2179072,
+        "installed_job_flags": 8960,
+        "exit_code": 101,
+        "failure": "Child exit code 101"
+      },
+      "source_counted_completed_primary_prefix": 0,
+      "child_processes": 0,
+      "boundary": "Hard-link publication OS5PermissionDenied",
+      "executables": [
+        {
+          "bytes": 835584,
+          "sha256": "bf928c5c64bac507bd950ded527528c11aab171c85c3a2b3560953952d98fc52"
+        },
+        {
+          "bytes": 195584,
+          "sha256": "ad33908c1e276378e4f3191f0db7b0499c658b06d987d34e91c18e50dd1f451f"
+        }
+      ]
+    },
+    {
+      "request": 2,
+      "guard": {
+        "accepted": false,
+        "expected_tests": 1,
+        "actual_passed": null,
+        "actual_failed": null,
+        "actual_ignored": null,
+        "test_counts_verified": false,
+        "timeout_seconds": 120,
+        "launched": true,
+        "hard_limit_installed": true,
+        "working_guard_terminated": false,
+        "timed_out": false,
+        "output_limit_exceeded": false,
+        "available_before_bytes": 5952491520,
+        "minimum_available_bytes": 2147483648,
+        "hard_process_commit_limit_bytes": 536870912,
+        "peak_working_bytes": 5308416,
+        "peak_private_commit_bytes": 1306624,
+        "sampled_peak_private_bytes": 847872,
+        "installed_process_commit_limit_bytes": 536870912,
+        "installed_job_commit_limit_bytes": 536870912,
+        "peak_job_commit_bytes": 2183168,
+        "installed_job_flags": 8960,
+        "exit_code": 101,
+        "failure": "Child exit code 101"
+      },
+      "source_counted_completed_primary_prefix": 16,
+      "child_processes": 0,
+      "boundary": "Locked-directory fixture rename OS5PermissionDenied",
+      "executables": [
+        {
+          "bytes": 834560,
+          "sha256": "2d32e25a5a711e244d325ed221926ebd8111fa32c3b020f1d50167e4fa9bc108"
+        },
+        {
+          "bytes": 198656,
+          "sha256": "658c6692eaa35b0df6659d43c28c01daaad90afb193217e6c1b8e1c0bc004ed8"
+        }
+      ]
+    },
+    {
+      "request": 3,
+      "guard": {
+        "accepted": true,
+        "expected_tests": 1,
+        "actual_passed": 1,
+        "actual_failed": 0,
+        "actual_ignored": 0,
+        "test_counts_verified": true,
+        "timeout_seconds": 120,
+        "launched": true,
+        "hard_limit_installed": true,
+        "working_guard_terminated": false,
+        "timed_out": false,
+        "output_limit_exceeded": false,
+        "available_before_bytes": 6046703616,
+        "minimum_available_bytes": 2147483648,
+        "hard_process_commit_limit_bytes": 536870912,
+        "peak_working_bytes": 6111232,
+        "peak_private_commit_bytes": 1306624,
+        "sampled_peak_private_bytes": 937984,
+        "installed_process_commit_limit_bytes": 536870912,
+        "installed_job_commit_limit_bytes": 536870912,
+        "peak_job_commit_bytes": 4374528,
+        "installed_job_flags": 8960,
+        "exit_code": 0
+      },
+      "source_counted_completed_primary_prefix": 0,
+      "child_processes": 22,
+      "boundary": "Remaining recovery controls passed",
+      "executables": [
+        {
+          "bytes": 834560,
+          "sha256": "3dfb51e393b5d0aa7c14cb8c37a1746ec5faaddbe67b45be886063b4a347c30c"
+        },
+        {
+          "bytes": 198656,
+          "sha256": "658c6692eaa35b0df6659d43c28c01daaad90afb193217e6c1b8e1c0bc004ed8"
+        }
+      ]
+    }
+  ],
+  "preparations": [
+    {
+      "name": "format-v69-1",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 5422174208,
+      "peak_private_commit_bytes": 4628480,
+      "peak_job_commit_bytes": 5931008,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "metadata-v69-1",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 5817495552,
+      "peak_private_commit_bytes": 3297280,
+      "peak_job_commit_bytes": 4583424,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "strict-v69-1",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 5394518016,
+      "peak_private_commit_bytes": 116011008,
+      "peak_job_commit_bytes": 126410752,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "default-v69-1",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 5200011264,
+      "peak_private_commit_bytes": 96890880,
+      "peak_job_commit_bytes": 107180032,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "build-v69-1",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 4902359040,
+      "peak_private_commit_bytes": 186343424,
+      "peak_job_commit_bytes": 242483200,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "format-v69-2",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 6004768768,
+      "peak_private_commit_bytes": 4513792,
+      "peak_job_commit_bytes": 5791744,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "strict-v69-2",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 5982945280,
+      "peak_private_commit_bytes": 116142080,
+      "peak_job_commit_bytes": 126480384,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "build-v69-2",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 6044033024,
+      "peak_private_commit_bytes": 201224192,
+      "peak_job_commit_bytes": 257282048,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "format-v69-3",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 5916340224,
+      "peak_private_commit_bytes": 4411392,
+      "peak_job_commit_bytes": 5697536,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "strict-v69-3",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 5989072896,
+      "peak_private_commit_bytes": 113643520,
+      "peak_job_commit_bytes": 123887616,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    },
+    {
+      "name": "build-v69-3",
+      "accepted": true,
+      "exit_code": 0,
+      "available_before_bytes": 6057172992,
+      "peak_private_commit_bytes": 191709184,
+      "peak_job_commit_bytes": 225083392,
+      "installed_process_commit_limit_bytes": 536870912,
+      "installed_job_commit_limit_bytes": 536870912,
+      "installed_job_flags": 8960
+    }
+  ],
+  "prefix_body_unchanged": true,
+  "prefix_body_identity": {
+    "bytes": 7413,
+    "sha256": "79b462da8e7c28da6bb769083c226b0a4a874d1d8386f27beeac0b1b8ffc5630"
+  },
+  "result": {
+    "bytes": 276,
+    "sha256": "a8f8137bc165083127103eb9d6b30355a6b02adb5e6e3427e9b0925895961d04"
+  },
+  "native_freeze": {
+    "files": 1139,
+    "sha256": "0d2e09b80728c5845ef33dabe81762b109a1460c5492da3184e1c3fc7d427ec4",
+    "post_run_verified": true
+  },
+  "limitations": [
+    "Sixteen groups are a completed assertion prefix of a failed earlier run, not a passing harness result",
+    "Only remaining_recovery_controls executed in the final test snapshot",
+    "Cooperative checked rename is not atomic no-replace",
+    "Process interruption between completed operations is not power failure",
+    "No authenticated history, private witness, proof or payment acceptance"
+  ]
+}

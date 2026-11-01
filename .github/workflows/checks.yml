@@ -508,6 +508,21 @@ jobs:
       - name: Trace domain default checks
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/trace-domain/Cargo.toml --release --no-default-features --lib --locked --offline --jobs 1 -- -D warnings
+      - name: Snapshot journal recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/state-journal/static_check.py
+      - name: Snapshot journal format
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 rustfmt --edition 2024 --check research/state-journal/src/lib.rs research/state-journal/src/journal.rs research/state-journal/src/worker.rs research/state-journal/tests/admission.rs
+      - name: Snapshot journal diagnostic compilation
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo test --manifest-path research/state-journal/Cargo.toml --release --features diagnostics --test admission --no-run --locked --offline --jobs 1
+      - name: Snapshot journal strict checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/state-journal/Cargo.toml --release --features diagnostics --all-targets --locked --offline --jobs 1 -- -D warnings
+      - name: Snapshot journal default checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/state-journal/Cargo.toml --release --no-default-features --lib --locked --offline --jobs 1 -- -D warnings
 
   row:
     needs: scope

@@ -1,0 +1,4 @@
+results/*.stdout.txt
+results/*.stderr.txt
+results/*-memory-result.json
+results/cases/

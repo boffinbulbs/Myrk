@@ -1,0 +1,66 @@
+{
+  "format": "kova.state-journal.publication-checks.v1",
+  "date": "2026-11-01",
+  "postverified_inputs": 1936,
+  "scope_tests": 4,
+  "native_replay": false,
+  "job_layout_changed": false,
+  "checks": [
+    {
+      "name": "publication-v69-1",
+      "guard": {
+        "accepted": true,
+        "expected_tests": 0,
+        "actual_passed": null,
+        "actual_failed": null,
+        "actual_ignored": null,
+        "test_counts_verified": false,
+        "timeout_seconds": 120,
+        "launched": true,
+        "hard_limit_installed": true,
+        "working_guard_terminated": false,
+        "timed_out": false,
+        "output_limit_exceeded": false,
+        "available_before_bytes": 5611859968,
+        "minimum_available_bytes": 2147483648,
+        "hard_process_commit_limit_bytes": 536870912,
+        "peak_working_bytes": 17215488,
+        "peak_private_commit_bytes": 9801728,
+        "sampled_peak_private_bytes": 9609216,
+        "installed_process_commit_limit_bytes": 536870912,
+        "installed_job_commit_limit_bytes": 536870912,
+        "peak_job_commit_bytes": 11100160,
+        "installed_job_flags": 8960,
+        "exit_code": 0
+      }
+    },
+    {
+      "name": "scope-v69-1",
+      "guard": {
+        "accepted": true,
+        "expected_tests": 0,
+        "actual_passed": null,
+        "actual_failed": null,
+        "actual_ignored": null,
+        "test_counts_verified": false,
+        "timeout_seconds": 120,
+        "launched": true,
+        "hard_limit_installed": true,
+        "working_guard_terminated": false,
+        "timed_out": false,
+        "output_limit_exceeded": false,
+        "available_before_bytes": 5716250624,
+        "minimum_available_bytes": 2147483648,
+        "hard_process_commit_limit_bytes": 536870912,
+        "peak_working_bytes": 21286912,
+        "peak_private_commit_bytes": 35815424,
+        "sampled_peak_private_bytes": 14991360,
+        "installed_process_commit_limit_bytes": 536870912,
+        "installed_job_commit_limit_bytes": 536870912,
+        "peak_job_commit_bytes": 89186304,
+        "installed_job_flags": 8960,
+        "exit_code": 0
+      }
+    }
+  ]
+}

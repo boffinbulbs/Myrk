@@ -153,4 +153,6 @@ A first independent implementation task may develop bounded snapshot and journal
 
 The [snapshot journal source review](snapshot-journal.md) develops a bounded publication candidate and identifies the remaining writable recovery ownership gap. Its proposed controls have not executed, and no journal implementation or accepting state transition is supplied by that review.
 
+The subsequent [writable recovery diagnostic](../research/state-journal/README.md) implements a bounded cooperative byte journal and tests fresh writes after controlled process termination. Its finite staging pool preserves unowned abandoned files. Its scope excludes hostile namespace mutation and power loss durability. It does not authenticate this specification's complete state tuple or implement an accepting state transition.
+
 This increment changes specifications and [source identities](../research/private-transition/source-record.json) only. It executes no cryptographic component, state machine model, compiler, native witness, proof producer, verifier or old test. Source review and documentation checks establish neither a working blockchain nor composed security. The [private transaction requirements](private-transactions.md) and all unresolved hiding, transcript, repeated observation, knowledge and quantum obligations remain applicable.

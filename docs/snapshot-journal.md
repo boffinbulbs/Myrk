@@ -1,6 +1,6 @@
 # Bounded snapshot publication and restart design
 
-This source review develops a small storage candidate for the [atomic state specification](private-transition-state.md). It ships no journal implementation and establishes no payment, consensus or restart capability. The candidate accepts public synthetic byte payloads rather than private witnesses or proof verdicts. Its uncompiled source requires further ownership review before execution.
+This historical source review develops a small storage candidate for the [atomic state specification](private-transition-state.md). That increment shipped no journal implementation. The later [writable recovery diagnostic](../research/state-journal/README.md) implements a bounded slot pool and a revised cooperative rename protocol, with its own actual test and failure record. The hard-link proposal and unexecuted controls below describe the earlier design, not the later implementation.
 
 ## Existing storage and platform boundaries
 

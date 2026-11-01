@@ -210,6 +210,8 @@ The [complete overlay resource inventory](research/overlay-composition/README.md
 
 The [bounded source proof decoder](research/proof-transport/README.md) and [finite proof reader](research/frame-reader/README.md) connect stack header admission, payload reservation and one request authority to actual typed decoding and canonical serialization. File, fragmented input, I/O failure and repeated-use controls retain separate resource and encoding boundaries. Cryptographic validity, production transport and blocking I/O deadlines remain separate requirements.
 
+The [bounded snapshot journal](research/state-journal/README.md) tests cooperative writer exclusion, finite staging ownership and new writes after controlled process interruption. Fresh processes recover complete synthetic records while preserving abandoned staging files. Authenticated ledger state, hostile filesystem mutation and power loss durability remain separate construction requirements.
+
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
 ## Build and reproduce
