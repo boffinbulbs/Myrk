@@ -55,6 +55,8 @@ The kernel separately rejects globally spent or duplicated nullifiers, invalid s
 
 Stable nullifier derivation does not establish global uniqueness of acceptance. The kernel must atomically check and consume nullifiers against persistent branch state, including concurrent submissions, repeated inputs within a block, restart and rollback. Changing a root or current network version cannot reset the identity of an existing note. Changing an immutable committed creation version instead creates a different note.
 
+The [unified transition and atomic state specification](private-transition-state.md) defines this required lifetime, including verifier owned context, exact authorization cache identity, commit rechecks, recovery data and consistent branch rollback. Its construction and failure cases are not implemented acceptance capabilities.
+
 ## Applications
 
 The first contract relations are timed escrow and confidential assets. Escrow must bind release/refund authorization and expiry to a single spendable state. Asset policy must distinguish ordinary transfers from authorized minting and destruction.

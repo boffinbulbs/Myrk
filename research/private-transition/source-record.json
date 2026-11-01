@@ -1,0 +1,149 @@
+{
+  "format": "kova.private-transition.sources.v1",
+  "date": "2026-11-01",
+  "baseline": "1cbe6f33743bed6d202252a81cb1e24c343f0542",
+  "scope": "Source and specification review. No accepting kernel, model or cryptographic execution.",
+  "text_identity": "UTF-8 with CRLF normalized to LF",
+  "repository_files": {
+    "Cargo.toml": {
+      "bytes": 735,
+      "sha256": "2dad10da5dedfdef787a3eac95ddedf59e6d97dd7b51f9f076b6775fa9af8b17"
+    },
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5"
+    },
+    "crates/thorum-core/Cargo.toml": {
+      "bytes": 310,
+      "sha256": "41156d64feb2af242f96711d71f52006c5d014766a6621aa85e394f4ac1e2b7d"
+    },
+    "crates/thorum-core/src/lib.rs": {
+      "bytes": 1817,
+      "sha256": "b5339e14659c208b321a767ea4164bb629f7db2c638d031391df5bd3c0aadd67"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "bytes": 3989,
+      "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d"
+    },
+    "crates/thorum-core/src/emission.rs": {
+      "bytes": 3344,
+      "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7"
+    },
+    "crates/thorum-core/src/table.rs": {
+      "bytes": 4423,
+      "sha256": "ae8e7e9f2333a0948a9c606a77dd03f161db0a931fe532def4e2efb7942c0148"
+    },
+    "crates/thorum-relation-lab/Cargo.toml": {
+      "bytes": 567,
+      "sha256": "bd0c5172915695c61dbc46aa2308f16b3ba38a8e747507abdf019f07d4cd1782"
+    },
+    "crates/thorum-relation-lab/src/lib.rs": {
+      "bytes": 2787,
+      "sha256": "4680bfc8b0577d760723fef74f47433c32adfbd8be3569bb2a7107704e237782"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176"
+    },
+    "crates/thorum-relation-lab/src/stake.rs": {
+      "bytes": 8007,
+      "sha256": "a03f77e22f82096a68951104932cb7cd960f18af9726c237899d707500ec5876"
+    },
+    "crates/thorum-relation-lab/src/note.rs": {
+      "bytes": 15074,
+      "sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035"
+    },
+    "crates/thorum-owner-binding-proof-lab/Cargo.toml": {
+      "bytes": 1530,
+      "sha256": "2e6e089387b6124eca3734a9b759eb5e94a66f339cba40092b94398b046c747d"
+    },
+    "crates/thorum-owner-binding-proof-lab/src/lib.rs": {
+      "bytes": 12413,
+      "sha256": "8354ba70f6fccf6f3a6501906afeb523601040c0343b31db55b5748450ad6869"
+    },
+    "crates/thorum-owner-binding-proof-lab/src/sponge.rs": {
+      "bytes": 34530,
+      "sha256": "d30d7bdbc59599ee266256a52881202cc57c7e226ef7b8632d2d3767d4d18d4c"
+    },
+    "crates/thorum-nullifier-proof-lab/Cargo.toml": {
+      "bytes": 1533,
+      "sha256": "7e6527d77c0b2cbe36d20dfcb077a8d5a3b9b3e79e897436c12d2498a06462a9"
+    },
+    "crates/thorum-nullifier-proof-lab/src/lib.rs": {
+      "bytes": 12269,
+      "sha256": "fcca3051d7e2ff845153570197f2aca32d0a4b11aa2d8dd5cad8377af8e1c9f6"
+    },
+    "crates/thorum-nullifier-proof-lab/src/sponge.rs": {
+      "bytes": 32584,
+      "sha256": "39b990c06702896651c59defb6b053b8b2de7ddceba537f8d462f52543da0a7e"
+    },
+    "crates/thorum-membership-proof-lab/src/lib.rs": {
+      "bytes": 11912,
+      "sha256": "f868567f3642a47ff9aa3e91582d95f6ae8bd4aac3e0c4f2ba9036f1cd914721"
+    },
+    "crates/thorum-membership-proof-lab/src/sponge.rs": {
+      "bytes": 26366,
+      "sha256": "b203830d16367f14650f25ad640c303b5c45cbe08ec8b0107788d42b14461f95"
+    },
+    "research/signature-overlay/Cargo.toml": {
+      "bytes": 1212,
+      "sha256": "4b930a775f0f09d91646ace590c05aee98b2599e04900af653d7f733ca6263a1"
+    },
+    "research/signature-overlay/src/lib.rs": {
+      "bytes": 2414,
+      "sha256": "719aa5810b8d1158d7468a7c545ad7177f97f73aad9faa35af96f5279a22df37"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "docs/rpc-and-data.md": {
+      "bytes": 9583,
+      "sha256": "68091137821c61bf5f08cea17a91080bda589ecfeea370511a0cbcfa2c6a0f87"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 8668,
+      "sha256": "1cdcf97bab5ac82b9f68709001305b4fc72baa8408a9535f690be1126cc1cec8"
+    },
+    "docs/parameters.md": {
+      "bytes": 5743,
+      "sha256": "4e21e1847a52fca37be761c3ac17d64047483aea64584929a0169150c4dbb7f9"
+    },
+    "docs/subsidy-allocation.md": {
+      "bytes": 7079,
+      "sha256": "69303fb1105341abf41232c409061e0da05b41120a8c9b0e69db147f0f4aaf24"
+    },
+    "docs/checkpoints.md": {
+      "bytes": 5101,
+      "sha256": "ddcec81a5485de4d726cac771caad77aba91fbb12c1e51623445b126046d3101"
+    },
+    "docs/protocol-extensions.md": {
+      "bytes": 14131,
+      "sha256": "76dda809f0d427ae5225f4012606ade3cd35b79492c965d12595fd92b8cc1ce5"
+    },
+    "docs/wallet.md": {
+      "bytes": 7754,
+      "sha256": "66127a407c56fb3a9cbab83ac1fdc481f9fa58258ff52c97282e1ed8c4e27639"
+    },
+    "research/overlay-composition/transport-feasibility.md": {
+      "bytes": 6285,
+      "sha256": "0128eddd6143840936cf70fcfc270f13c00aead83037b8cc24affaf250c3445e"
+    }
+  },
+  "historical_context": {
+    "docs/architecture.md": {
+      "git_blob": "b55ba0eaec3d3b63de555da95a8068c0a3aaf19c",
+      "change": "Local link to the new specification added in this increment"
+    },
+    "docs/private-transactions.md": {
+      "git_blob": "15b80643c246d15f983d5e035d5a0257dfb0b352",
+      "change": "Local link to the new specification added in this increment"
+    }
+  },
+  "context_is_executed_code": false,
+  "attribution": "Kova repository MIT sources and specifications. Retained component manifests identify Plonky3 0.8.0 and original dependency versions. No upstream source or license modified."
+}

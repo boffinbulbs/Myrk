@@ -29,6 +29,8 @@ The monetary module owns a narrow accounting transition. A future chain state ad
 
 State changes are atomic at the kernel boundary. Failed decoding, authorization, proofs, limits, or checkpoint checks must leave persisted state unchanged. Branch rollback restores monetary counters and private ledger roots from the same state version.
 
+The [private transition context and atomic acceptance specification](private-transition-state.md) defines the proposed snapshot, verifier context, current state recheck, durable publication and recovery boundary. Its state fields and failure cases remain specification work. It introduces no accepting kernel or network service.
+
 The [RPC and data boundary](rpc-and-data.md) separates public explorer/index data from private wallet views and local spending authority. Data availability and an authenticated state context are part of every supported service mode.
 
 ## Later Aegis state boundary
