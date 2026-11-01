@@ -1,0 +1,78 @@
+{
+  "format": "kova.trace-domain.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64",
+  "scope": "One direct same-owner raw trace-domain control, not natural OOD sampling",
+  "provenance": {
+    "bytes": 42541,
+    "sha256": "a3d9113a4d1e69533bb813c75171339fbead5007766aae090f744eef194f8dd6"
+  },
+  "native": {
+    "bytes": 859,
+    "sha256": "54a35df3037086f90b488021531f64c90a084435ec974710af8eeda521a2ae97"
+  },
+  "native_attempts": 1,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 1,
+    "actual_passed": 1,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "test_counts_verified": true,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 3422793728,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 6561792,
+    "peak_private_commit_bytes": 1675264,
+    "sampled_peak_private_bytes": 954368,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 2961408,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "compiler_preparations": [
+    {
+      "name": "diagnostics-strict-v1",
+      "accepted": true,
+      "exit_code": 0,
+      "peak_private_commit_bytes": 241770496,
+      "peak_job_commit_bytes": 264544256
+    },
+    {
+      "name": "default-strict-v1",
+      "accepted": true,
+      "exit_code": 0,
+      "peak_private_commit_bytes": 99876864,
+      "peak_job_commit_bytes": 122204160
+    },
+    {
+      "name": "test-build-v1",
+      "accepted": true,
+      "exit_code": 0,
+      "peak_private_commit_bytes": 360411136,
+      "peak_job_commit_bytes": 377774080
+    }
+  ],
+  "executable": {
+    "bytes": 1584128,
+    "sha256": "a6b3d088a18285ddde87af1483f0d51ac12629688e2da4afd119256d130c74bf"
+  },
+  "native_freeze": {
+    "files": 5010,
+    "sha256": "7babbc4b7f5cbbe51a9a5c79ac8636ce1ddd222419d4c7ebea2cf8f81b0a2fab",
+    "post_run_verified": true
+  },
+  "limitations": [
+    "Live original OOD and abort forwarding compiled but not executed",
+    "No complete proof or cryptographic verifier",
+    "Shared read closure is not an OS descriptor probe",
+    "Small diagnostic peaks do not admit wide proving"
+  ]
+}

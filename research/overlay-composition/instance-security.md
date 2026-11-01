@@ -164,4 +164,6 @@ The subsequent [auxiliary isolation laboratory](../joint-hiding/README.md) deriv
 
 The [joint observation laboratory](../joint-observation/README.md) checks normalized coupled-mask fibers at chunk anchors and other physical points, the translated main closure and separate quotient coordinate claims. Its conditional oracle argument also identifies the remaining producer raw trace-domain admission obligation. No full privacy or network acceptance claim follows.
 
+The subsequent [producer admission laboratory](../trace-domain/README.md) connects raw trace-domain refusal at the original challenge boundary. Its direct native controls check typed cause, private flag preservation and terminal ownership separately from natural OOD sampling. Earlier source snapshots retain their recorded boundaries.
+
 The original review at the stated baseline changed documentation only. Source and local link checks and whitespace review supported that record. It executed no compiler, model, symbolic collector, witness walk, proof producer, healthy verifier or earlier reference run. Subsequent metadata measurements have their own linked validation scope. No cryptographic theorem is added by this review.
