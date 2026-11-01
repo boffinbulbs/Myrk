@@ -1,0 +1,32 @@
+--- fallible-source/src/laboratory.rs
++++ fallible-main/src/laboratory.rs
+@@ -1,11 +1,15 @@
++#[path = "../../fallible-source/src/composite.rs"]
+ mod composite;
+ pub mod context;
+ mod diagnostics;
+ mod diagnostics_setup;
++#[path = "../../fallible-source/src/extension.rs"]
+ mod extension;
+ #[cfg(not(debug_assertions))]
++#[path = "../../fallible-source/src/owned_pcs.rs"]
+ mod owned_pcs;
+ #[cfg(not(debug_assertions))]
++#[path = "../../fallible-source/src/owned_prover.rs"]
+ mod owned_prover;
+ #[path = "../../quotient-source/src/quotient_kernel.rs"]
+ mod quotient_kernel;
+@@ -28,6 +32,7 @@
+ pub mod prover;
+ // The frozen module also contains the unused dense convenience entry types.
+ #[allow(dead_code)]
++#[path = "../../fallible-source/src/source.rs"]
+ mod source;
+ #[allow(unsafe_code)]
+ #[path = "../../storage-pcs/backend/src/storage.rs"]
+@@ -48,4 +53,4 @@
+ pub use transcript::{FriShape, ProverTranscript, TranscriptFailure, VerifierTranscript};
+ pub use two_adic_pcs::*;
+ 
+-pub use diagnostics::fixed_raw_source_failures;
++pub use diagnostics::fixed_main_commitment_observation;

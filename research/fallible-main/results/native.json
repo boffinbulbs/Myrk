@@ -1,0 +1,157 @@
+{
+  "actual_root": {
+    "_marker": null,
+    "cap": [
+      [
+        13922804344395620598,
+        7999053070927111122,
+        771298468731589616,
+        7117953854921656438,
+        17495419218954358771,
+        17733688965023089283,
+        4169358957530575533,
+        3443229643379019153
+      ]
+    ]
+  },
+  "anchor_unchanged": true,
+  "captured_leaf_bytes": 360448,
+  "cheap_lease_refusals": 4,
+  "closure_cause": "Unwind",
+  "committed_salt_preimage_fields": 65536,
+  "complete_proofs": 0,
+  "counts": {
+    "dft": {
+      "coset_dft_batch": 0,
+      "coset_idft_batch": 0,
+      "coset_lde_batch": 2,
+      "coset_lde_batch_with_blocks": 0,
+      "coset_lde_batch_with_transform": 0,
+      "dft_batch": 0,
+      "idft_batch": 0,
+      "lde_batch": 0
+    },
+    "extension_commits": 0,
+    "extension_multi_opens": 0,
+    "extension_openings": 0,
+    "get_matrices": 1,
+    "initial_salt_bytes": 32,
+    "input_commits": 1,
+    "input_multi_opens": 0,
+    "input_openings": 0,
+    "mask": {
+      "bytes": 10948,
+      "fill_bytes": 0,
+      "next_u32": 2737,
+      "next_u64": 0
+    },
+    "mmcs_clones": 1,
+    "salt": {
+      "bytes": 279800,
+      "fill_bytes": 1,
+      "next_u32": 69942,
+      "next_u64": 0
+    },
+    "scalar_opens": 0,
+    "verify_calls": 0
+  },
+  "delivered_rng_fingerprints": [
+    [
+      77,
+      80,
+      78,
+      95,
+      11,
+      90,
+      91,
+      227,
+      205,
+      35,
+      207,
+      3,
+      149,
+      7,
+      226,
+      131,
+      174,
+      29,
+      62,
+      185,
+      72,
+      234,
+      129,
+      129,
+      16,
+      33,
+      62,
+      238,
+      223,
+      199,
+      226,
+      149
+    ],
+    [
+      100,
+      50,
+      175,
+      56,
+      159,
+      4,
+      3,
+      238,
+      47,
+      7,
+      228,
+      174,
+      50,
+      114,
+      245,
+      174,
+      152,
+      63,
+      127,
+      41,
+      20,
+      105,
+      120,
+      0,
+      53,
+      7,
+      52,
+      131,
+      212,
+      107,
+      185,
+      0
+    ]
+  ],
+  "format": "kova.fallible-main.native.v1",
+  "full_signature_calls": 0,
+  "leaf_rows": 4096,
+  "leaf_width": 22,
+  "main_commits": 1,
+  "main_phase_before": "MainCommitted",
+  "old_proof_replays": 0,
+  "phase_after": "Failed",
+  "reentry_counters": [
+    0,
+    0
+  ],
+  "reserved_bytes": 1325056,
+  "reserved_files": 13,
+  "retained_main_field_bytes": 112640,
+  "returned_main_fields": 24576,
+  "source_bytes": 2048,
+  "source_counters": [
+    1,
+    513
+  ],
+  "source_shape": [
+    256,
+    2
+  ],
+  "unused_private_opening_before_after": [
+    true,
+    true
+  ]
+}

@@ -204,6 +204,8 @@ The [deferred source ingestion component](research/fallible-input/README.md) ini
 
 The [fallible proving entry](research/fallible-source/README.md) connects that writer to the actual preparation, source, composite and Context owners. Three real source failures and three refused reentries preserve the original nested cause and reservations without advancing protocol operations beyond construction. The successful proving path remains connected and compiled. Complete private proofs retain their separate verification gates.
 
+The [successful main construction](research/fallible-main/README.md) consumes the new fallible source through actual owned preparation, extension and the retained hiding MMCS. All 24,576 returned main fields, 360,448 committed leaf input bytes, the actual root and continuing RNG observations match saved references. The diagnostic closes after main commitment and produces no proof. Full relation resource construction and security composition remain open.
+
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
 ## Build and reproduce

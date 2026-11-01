@@ -1,0 +1,54 @@
+--- fallible-source/src/hiding_pcs.rs
++++ fallible-main/src/hiding_pcs.rs
+@@ -499,3 +499,51 @@
+         }
+     }
+ }
++
++impl<D, I, F, R> HidingFriPcs<BabyBear, D, I, F, R, CompositeStore>
++where
++    D: TwoAdicSubgroupDft<BabyBear>,
++    I: Mmcs<BabyBear, MultiProof: Sync, Error: Sync>,
++    F: Mmcs<E4>,
++    R: CryptoRng + Send + Sync,
++{
++    pub(crate) fn main_opening_unused(
++        &self,
++        data: &HidingFriPcsProverData<I::ProverData<Stored>>,
++    ) -> bool {
++        !data.preprocessed
++            && data.num_random_codewords == self.num_random_codewords
++            && data.log_blowup == self.inner.fri.log_blowup
++            && !data.opened.load(Ordering::Acquire)
++    }
++    /// Borrow real returned data and retain only an actual checked lease plus
++    /// bounded field observations. No expected values enter this method.
++    pub(crate) fn observe_main_data(
++        &self,
++        data: &HidingFriPcsProverData<I::ProverData<Stored>>,
++    ) -> Result<(Stored, Vec<BabyBear>), CompositeError> {
++        self.composite_profile()?;
++        if !self.main_opening_unused(data) {
++            return Err(CompositeError::Closed);
++        }
++        let matrices = self.inner.mmcs.get_matrices(&data.inner);
++        if matrices.len() != 1 {
++            return Err(CompositeError::Shape);
++        }
++        let matrix = matrices[0];
++        self.inner.storage.check_committed_main(matrix)?;
++        let mut fields = Vec::with_capacity(4096 * 6);
++        for row in 0..4096 {
++            let values = matrix.try_window(row, 0, 6)?;
++            if values.len() != 6 {
++                return Err(CompositeError::Shape);
++            }
++            fields.extend(values);
++        }
++        self.inner.storage.check_committed_main(matrix)?;
++        if fields.len() != 4096 * 6 || !self.main_opening_unused(data) {
++            return Err(CompositeError::Closed);
++        }
++        Ok(((*matrix).clone(), fields))
++    }
++}

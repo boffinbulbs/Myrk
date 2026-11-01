@@ -1,0 +1,72 @@
+--- fallible-source/src/diagnostics_setup.rs
++++ fallible-main/src/diagnostics_setup.rs
+@@ -14,7 +14,7 @@
+     dense::{RowMajorMatrix, RowMajorMatrixView, RowMajorMatrixViewMut},
+ };
+ use p3_merkle_tree::MerkleTreeHidingMmcs;
+-use p3_symmetric::CompressionFunctionFromHasher;
++use p3_symmetric::{CompressionFunctionFromHasher, CryptographicHasher};
+ use rand::{Rng, SeedableRng, TryCryptoRng, TryRng, rngs::StdRng};
+ use sha3::{Digest, Sha3_256};
+ use std::{
+@@ -164,8 +164,17 @@
+     initial_salt_bytes: AtomicUsize,
+     owner: std::sync::Mutex<Option<std::sync::Weak<OwnedContext>>>,
+     roots: std::sync::Mutex<Vec<serde_json::Value>>,
++    leaves: std::sync::Mutex<Option<Vec<u8>>>,
+ }
+ impl Audit {
++    pub(super) fn take_main_leaves(&self) -> Vec<u8> {
++        self.leaves
++            .lock()
++            .unwrap()
++            .take()
++            .expect("actual main leaf capture")
++    }
++
+     pub(super) fn bind_owner(&self, owner: &Arc<OwnedContext>) {
+         *self.owner.lock().unwrap() = Some(Arc::downgrade(owner));
+     }
+@@ -306,10 +315,32 @@
+     }
+ }
+ 
++// Observe real commit preimages while forwarding the identical iterator to
++// the retained hash. This supplies neither expected fields nor a root verdict.
++#[derive(Clone)]
++pub(super) struct CapturingLeaf(Arc<Audit>);
++impl CryptographicHasher<BabyBear, [u64; 8]> for CapturingLeaf {
++    fn hash_iter<T: IntoIterator<Item = BabyBear>>(&self, input: T) -> [u64; 8] {
++        let mut row = [0u8; 88];
++        let mut fields = 0usize;
++        let digest = hash::LeafHash.hash_iter(input.into_iter().inspect(|value| {
++            assert!(fields < 22, "fixed salted main width");
++            row[4 * fields..4 * fields + 4]
++                .copy_from_slice(&value.as_canonical_u32().to_le_bytes());
++            fields += 1;
++        }));
++        assert_eq!(fields, 22);
++        let mut capture = self.0.leaves.lock().unwrap();
++        let bytes = capture.get_or_insert_with(|| Vec::with_capacity(360448));
++        assert!(bytes.len() <= 360448 - 88, "fixed main leaf count");
++        bytes.extend_from_slice(&row);
++        digest
++    }
++}
+ type Inner = MerkleTreeHidingMmcs<
+     BabyBear,
+     u64,
+-    hash::LeafHash,
++    CapturingLeaf,
+     CompressionFunctionFromHasher<hash::NodeHash, 2, 8>,
+     Observed,
+     2,
+@@ -459,7 +490,7 @@
+     let audit = Arc::new(Audit::default());
+     let input = InputSpy {
+         inner: Inner::new(
+-            hash::LeafHash,
++            CapturingLeaf(audit.clone()),
+             CompressionFunctionFromHasher::new(hash::NodeHash),
+             0,
+             Observed::new(19, audit.salt.clone()),

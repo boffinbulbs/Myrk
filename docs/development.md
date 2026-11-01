@@ -173,6 +173,8 @@ The [deferred fallible input component](../research/fallible-input/README.md) pr
 
 The [fallible source context](../research/fallible-source/README.md) connects that preparation type through one actual extension, source and composite family. Three genuine checked source failures return through the actual `Context::try_prove` entry before proving effects. Three reentries preserve failed owner snapshots and reject before source initialization. Original protocol counters and delivered RNG fingerprints remain unchanged after construction, including the original salt fork baseline. The original successful owned prover is connected and compiled. Its execution, full signature resources and complete hiding payment integration remain separate gates.
 
+The [fallible main construction](../research/fallible-main/README.md) exercises the positive source path through actual preparation, tiled extension and the retained hiding MMCS. All returned main fields and committed leaf preimage bytes match the saved capture, and the actual root matches its separately reconstructed reference. Original RNG stream observations also match. A terminal attempt Drop closes the owner with unused opening authority, four checked lease refusals and an early refused reentry. No proof or resumable transcript is produced. This closes the finite source boundary and returns development to complete proof resource construction and security composition.
+
 The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
 
 ```text
