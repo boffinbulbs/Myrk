@@ -490,6 +490,9 @@ jobs:
       - name: Opening domain default checks
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/opening-domain/Cargo.toml --release --no-default-features --lib --locked --offline --jobs 1 -- -D warnings
+      - name: Joint hiding recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/joint-hiding/static_check.py
 
   row:
     needs: scope

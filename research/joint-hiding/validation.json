@@ -1,0 +1,53 @@
+{
+  "format": "kova.joint-hiding.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64",
+  "software": "3.14.5",
+  "scope": "One independent conditional auxiliary affine-space integer reference",
+  "provenance": {
+    "bytes": 5859,
+    "sha256": "f47f0d91e6cecbefabba8765750c0df0bf24742b16df723c5055215e4338ff95"
+  },
+  "result": {
+    "bytes": 443,
+    "sha256": "6814d4f898f718480c019494a940f22019232d1ddbe553a3cfc2f1e4f9526c1d"
+  },
+  "reference_attempts": 1,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 0,
+    "actual_passed": null,
+    "actual_failed": null,
+    "actual_ignored": null,
+    "test_counts_verified": false,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 4435775488,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 14295040,
+    "peak_private_commit_bytes": 8781824,
+    "sampled_peak_private_bytes": 8781824,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 10088448,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "freeze": {
+    "files": 4979,
+    "sha256": "5bc85043cc3551a6359bcba3a8444d2c7ea1aabb031b6da52b4c26df95d971c8",
+    "post_run_verified": true
+  },
+  "limitations": [
+    "No full proof or privacy simulator",
+    "No actual Fiat Shamir independence",
+    "No FRI transcript distinguisher",
+    "No selected production profile or wide source class",
+    "Raw primary PDF identity and typeset formulas unavailable"
+  ]
+}

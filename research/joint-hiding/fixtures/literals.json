@@ -1,0 +1,12 @@
+{
+  "format": "kova.joint-hiding.literals.v1",
+  "prime": 17,
+  "nonresidue": 3,
+  "degree_bound": 8,
+  "vanishing": [9, 14, 14, 1],
+  "witness_delta": [10, 8, 0, 0, 14, 1],
+  "kernel": [[0, 14], [14, 1], [1, 0]],
+  "current": [[0, 8], [8, 3], [3, 14], [14, 1], [1, 0]],
+  "following": [[0, 2], [9, 5], [14, 5], [14, 4], [1, 0]],
+  "base_alpha_shift": [[8, 0], [0, 3], [2, 0]]
+}

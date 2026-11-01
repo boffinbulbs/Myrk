@@ -160,4 +160,6 @@ The subsequent [bounded metadata laboratory](../layout-metadata/README.md) execu
 
 ## Review scope
 
+The subsequent [auxiliary isolation laboratory](../joint-hiding/README.md) derives the conditional Galois observation kernel and tests the actual challenge-power basis in a tiny independent field. It identifies a proper-subfield rank exception and preserves the distinction between oracle algebra, joint quotient hiding and transcript compilation. It changes no cryptographic implementation or proof profile.
+
 The original review at the stated baseline changed documentation only. Source and local link checks and whitespace review supported that record. It executed no compiler, model, symbolic collector, witness walk, proof producer, healthy verifier or earlier reference run. Subsequent metadata measurements have their own linked validation scope. No cryptographic theorem is added by this review.

@@ -1,0 +1,153 @@
+{
+  "format": "kova.joint-hiding.sources.v1",
+  "dependencies": "Python standard library only",
+  "source_files": {
+    ".gitignore": {
+      "bytes": 74,
+      "sha256": "648070717aa6e4a0af4a33abce540238050afe30526d2248b7ae8ba5a6bd8169"
+    },
+    "fixtures/literals.json": {
+      "bytes": 379,
+      "sha256": "fb9d6542cfacf37d5f241a6f57b07d0f8c83271c380c08d1c24f7a1c165997e7"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "NOTICE.md": {
+      "bytes": 686,
+      "sha256": "e94d230c8b8a60751157755c8f6e014ef776652d80cc85e977bb3de5e5fc40cf"
+    },
+    "README.md": {
+      "bytes": 9626,
+      "sha256": "49a89b10543095cf4506754c52b9a7b9ded108a4d3688ffcc6f6718508b4e7f0"
+    },
+    "reference.py": {
+      "bytes": 8285,
+      "sha256": "a783acb1c25ebdb99a04c86ff133665bd839ab338a769a1a2d00123e9e8d9ea2"
+    },
+    "run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    },
+    "static_check.py": {
+      "bytes": 2897,
+      "sha256": "b2d4b95e7f15c2b040cb19e5f2701d8247ae80567368d949abb6c7dfe5ef30fa"
+    }
+  },
+  "repository_files": {
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "research/fallible-input/src/lib.rs": {
+      "bytes": 19733,
+      "sha256": "2de5d619fe33449773c6e8a43939fdf5d5276d0667d7768d0571f7579a18372c"
+    },
+    "research/opening-domain/Cargo.toml": {
+      "bytes": 2004,
+      "sha256": "9c4c2f998781036f5a8e8086356b3fe038172ac2185cb79c89069ee0b04762c7"
+    },
+    "research/opening-domain/Cargo.lock": {
+      "bytes": 16266,
+      "sha256": "0053ad6a0c799d2ae1db88199175e967e5e1c605fb6a6bb1facbf170957db93b"
+    },
+    "research/opening-domain/src/laboratory.rs": {
+      "bytes": 1830,
+      "sha256": "18a43e292d4b51473e547fe019df03d993b6bc746195b1a785dbf85fbe2bc81e"
+    },
+    "research/opening-domain/src/context.rs": {
+      "bytes": 9249,
+      "sha256": "bf5b2c32e41f4397caff312354d49f7c1afb93aa3468173c3b190f08522666d0"
+    },
+    "research/opening-domain/src/composite.rs": {
+      "bytes": 41541,
+      "sha256": "e149341f01b57415d972395aa7802c370c3ee6261ab89c7010044c0b6c48e6b7"
+    },
+    "research/opening-domain/src/owned_pcs.rs": {
+      "bytes": 2862,
+      "sha256": "c8e9dd808f6ccba98813abbcc714c4501d676918ea1283f23c44a11335816987"
+    },
+    "research/opening-domain/src/owned_prover.rs": {
+      "bytes": 23553,
+      "sha256": "b2ee1c71b9f2151eecb20cfa1450f75f4e0f82044e0d9a905ecbda8d8bb3abb0"
+    },
+    "research/opening-domain/src/hiding_pcs.rs": {
+      "bytes": 14835,
+      "sha256": "26826760e2ca98140f0c6e8866af604c0cd0eee427948871eb266dbdfdc4e0a2"
+    },
+    "research/opening-domain/src/hiding_geometry.rs": {
+      "bytes": 2565,
+      "sha256": "7eb5f807b5a9fd61db64cb5ccbb7e389c207b492de95eceba2f13437978c910c"
+    },
+    "research/opening-domain/src/domain.rs": {
+      "bytes": 12609,
+      "sha256": "213a6eb752c8900640130dc96340c4c6e4820ac11600c6135fe7cb62f9ab232c"
+    },
+    "research/fallible-source/src/source.rs": {
+      "bytes": 10326,
+      "sha256": "d3829f1a1a2180f0a9e9cae5b1246da424263c9e19f041bf82143890a126274c"
+    },
+    "research/fallible-source/src/extension.rs": {
+      "bytes": 24815,
+      "sha256": "2514d694276257ed36aa144715e38be8b62f74d96f12659555f291176ea3312d"
+    },
+    "research/quotient-source/src/quotient_kernel.rs": {
+      "bytes": 10400,
+      "sha256": "7df6a350620007f3c0117c48120f92148f6d0f752c008920b1746d8eb93e4a44"
+    },
+    "research/storage-pcs/backend/src/hiding_pcs.rs": {
+      "bytes": 69656,
+      "sha256": "8c12cca5d256e28f0a87f0cf95020e33b62b27070d430776e24599d6a18d6eed"
+    },
+    "research/storage-pcs/backend/src/two_adic_pcs.rs": {
+      "bytes": 70809,
+      "sha256": "5ffa814e4f979b211d84f52d111e7e3d73499d572c88e63553a973e4066ae5b6"
+    },
+    "research/storage-pcs/backend/src/pcs_transcript.rs": {
+      "bytes": 34417,
+      "sha256": "8c05386bd5b59c1a1dc0de7f537b1ca6ba8e7db04bd534d86a5db2fafb9bd4bd"
+    },
+    "research/storage-pcs/backend/src/transcript.rs": {
+      "bytes": 39974,
+      "sha256": "a9ee1af03b02514bffffa6519c1f0544c91457c3e2327024cdfcfd84273ab6e9"
+    },
+    "research/storage-pcs/backend/src/prover.rs": {
+      "bytes": 20819,
+      "sha256": "37c1aa19313ac2e2c3327ba03e7185dd0045e351b294428e4b74742dcb1d1e3f"
+    },
+    "research/storage-pcs/backend/src/verifier.rs": {
+      "bytes": 125366,
+      "sha256": "975392a464c823c93c9ec50ce4e73d17a8b0fbdf22f047f887fb749dcf7280a3"
+    },
+    "research/storage-pcs/backend/src/config.rs": {
+      "bytes": 20398,
+      "sha256": "78f50dc6f0b9233e28399a33a0b402d9c1c53f218b5cb8c73df000075c55f4fe"
+    },
+    "research/storage-pcs/backend/src/storage.rs": {
+      "bytes": 6958,
+      "sha256": "e52cea4aac0a82c99b244c70fddc9d302212aec93f2e39692965140bf0fdc18d"
+    },
+    "research/storage-pcs/backend/src/proof.rs": {
+      "bytes": 3183,
+      "sha256": "9c6efe2f05ec8f89f43ea1f2e706bf0fd826d9191d20d12b24ea2da10ad494a6"
+    }
+  },
+  "context_scope": "Retained source correspondence, not executed Rust dependencies",
+  "primary_source": {
+    "title": "A note on adding zero-knowledge to STARK",
+    "authors": [
+      "Ulrich Habock",
+      "Al Kindi"
+    ],
+    "author_copy": "https://www.researchgate.net/profile/Ulrich-Haboeck/publication/381742262_A_note_on_adding_zero-knowledge_to_STARKs/links/6a2d569bd551e312d7201973/A-note-on-adding-zero-knowledge-to-STARKs.pdf",
+    "date": "2025-02-20",
+    "pages": 21,
+    "archive": "https://eprint.iacr.org/2024/1037",
+    "archive_last_revision": "2025-02-22",
+    "review": "Complete author text through public PDF reader",
+    "raw_pdf_identity": null,
+    "typeset_reviewed": false,
+    "whole_protocol_theorem_applied": false
+  }
+}
