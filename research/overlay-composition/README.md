@@ -75,6 +75,8 @@ Current preflight refuses raw width above eight before symbolic collection. Stor
 
 The [authorization construction boundary](authorization-construction.md) identifies why scheduling unchanged hash gadgets cannot fit the current class and specifies the private equalities needed to join signature ownership to membership, stable nullifiers and the complete payment relation. It selects no new prover or execution class.
 
+The [two phase wire binding contract](two-phase-wire-binding.md) gives prospective local producer/read placement and exact copy-product equations. It identifies the missing second commitment phase in the actual prover and verifier, and refuses the proposed placement under current limits. Its conditional algebra does not supply a complete private authorization proof.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
