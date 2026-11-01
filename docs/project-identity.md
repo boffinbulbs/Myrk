@@ -1,6 +1,6 @@
 # Project identity and protocol namespaces
 
-Kova is the project name. The canonical repository is https://github.com/th0rigin/Kova and the public research site is https://kova.cash/.
+Kova is the project name. The canonical repository is https://github.com/boffinbulbs/Kova and the public research site is https://kova.cash/.
 
 The project name, wallet address prefix, network identifier and cryptographic domains are separate values. Changing presentation does not change the bytes authenticated by a signature, commitment, nullifier or proof transcript.
 

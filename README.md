@@ -8,8 +8,6 @@ The protocol is being developed around local witness construction, post quantum 
 
 [Website](https://kova.cash/), [protocol specification](docs/research-target.md), [architecture](docs/architecture.md), [research index](docs/research-index.md), [implementation](docs/development.md), [build instructions](#build-and-reproduce).
 
-Research and development led by [th0rigin](https://github.com/th0rigin).
-
 ## Architecture
 
 Wallets retain spending secrets, construct private witnesses, execute application logic and encrypt recipient data locally. Validators check the public transition statement and its proof against authenticated state. Work, staking and ordinary node operation have distinct responsibilities.
@@ -219,7 +217,7 @@ The [research implementation index](docs/research-index.md) preserves the comple
 The repository currently builds research crates and executable tests. Node, mining and wallet launch interfaces follow their runtime milestones. The validated toolchain is Rust 1.94.1. Exact dependencies are recorded in the lock files.
 
 ```text
-git clone https://github.com/th0rigin/Kova.git
+git clone https://github.com/boffinbulbs/Kova.git
 cd Kova
 rustup toolchain install 1.94.1 --profile minimal --component rustfmt --component clippy
 rustup run 1.94.1 cargo fetch --locked
