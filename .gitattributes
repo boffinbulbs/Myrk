@@ -67,3 +67,6 @@ research/fallible-main/hiding_pcs-adaptation.patch whitespace=-blank-at-eol,-bla
 research/fallible-main/diagnostics_setup-adaptation.patch whitespace=-blank-at-eol,-blank-at-eof
 research/fallible-main/laboratory-adaptation.patch whitespace=-blank-at-eol,-blank-at-eof
 research/fallible-main/LICENSE-APACHE whitespace=-blank-at-eof
+research/preseal-bytes/results/native.txt -text -whitespace
+research/preseal-bytes/licenses/* -text whitespace=-blank-at-eof
+research/preseal-bytes/fixtures/*.bin -text

@@ -1,0 +1,32 @@
+[package]
+name = "kova-preseal-bytes-diagnostic"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+license = "MIT OR Apache-2.0"
+publish = false
+autobins = false
+autotests = false
+autobenches = false
+
+[workspace]
+
+[features]
+default = []
+diagnostics = ["dep:sha3"]
+
+[lib]
+doctest = false
+
+[dependencies]
+sha3 = { version = "=0.12.0", default-features = false, optional = true }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = "deny"
+
+[profile.release]
+overflow-checks = true
+incremental = false

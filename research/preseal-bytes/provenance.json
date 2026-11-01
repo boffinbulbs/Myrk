@@ -1,0 +1,433 @@
+{
+  "format": "kova.preseal-bytes.provenance.v1",
+  "date": "2026-11-01",
+  "baseline": "ad18808532e3cc9a4ac82b2190851c1c54f8cebb",
+  "source_identity": "CRLF-normalized UTF-8 text. Binary fixtures, original notices and native output preserve raw bytes.",
+  "source_files": {
+    "Cargo.lock": {
+      "raw": false,
+      "identity": {
+        "bytes": 2366,
+        "sha256": "4e8b4a330b0e9cff54ad826f9831b4f8b00ae3c4cc3f5acaf9a042c0423d6703"
+      }
+    },
+    "Cargo.toml": {
+      "raw": false,
+      "identity": {
+        "bytes": 515,
+        "sha256": "21ec13c0f365ee7e0461511519226efdfba9737aff301f7ad4bcdac4d55e04cf"
+      }
+    },
+    "fixtures/identities.json": {
+      "raw": false,
+      "identity": {
+        "bytes": 917,
+        "sha256": "47c3ff4a784b0b79fa42d280c77516e0619d6593f17dc047e7531552861b1234"
+      }
+    },
+    "fixtures/synthetic-job.bin": {
+      "raw": true,
+      "identity": {
+        "bytes": 927,
+        "sha256": "84a46ed95ac172b3b95ecb7cf87a5d324c900e048ad93160d5858b1c327d9d86"
+      }
+    },
+    "licenses/cfg-if-1.0.5-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10847,
+        "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+      }
+    },
+    "licenses/cfg-if-1.0.5-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1057,
+        "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+      }
+    },
+    "licenses/cpufeatures-0.3.1-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10849,
+        "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+      }
+    },
+    "licenses/cpufeatures-0.3.1-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1082,
+        "sha256": "73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa"
+      }
+    },
+    "licenses/crypto-common-0.2.2-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10849,
+        "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+      }
+    },
+    "licenses/crypto-common-0.2.2-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1070,
+        "sha256": "d2e7ec5355c96eeade56b09187ceb48a6a30299da3ce7531a66d3d11405ab963"
+      }
+    },
+    "licenses/digest-0.11.3-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10849,
+        "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+      }
+    },
+    "licenses/digest-0.11.3-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1103,
+        "sha256": "af59cea35d7f5e2777a713b8d155d65efa2c339eb43f3c14e868c6ac8506edad"
+      }
+    },
+    "licenses/hybrid-array-0.4.15-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10849,
+        "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+      }
+    },
+    "licenses/hybrid-array-0.4.15-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1082,
+        "sha256": "70c9d40f1f9545c3f133b8a67206e89da850f6468eed072281bb3701514114a9"
+      }
+    },
+    "licenses/keccak-0.2.2-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10849,
+        "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+      }
+    },
+    "licenses/keccak-0.2.2-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1082,
+        "sha256": "8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b"
+      }
+    },
+    "licenses/Kova-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1065,
+        "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+      }
+    },
+    "licenses/libc-0.2.191-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 9723,
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+      }
+    },
+    "licenses/libc-0.2.191-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1066,
+        "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e"
+      }
+    },
+    "licenses/sha3-0.12.0-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10849,
+        "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+      }
+    },
+    "licenses/sha3-0.12.0-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1255,
+        "sha256": "6462612d92b861384dcd378168a7a0ef3ef28876d3d380d382cb5a3091e360b8"
+      }
+    },
+    "licenses/sponge-cursor-0.1.0-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10849,
+        "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+      }
+    },
+    "licenses/sponge-cursor-0.1.0-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1077,
+        "sha256": "083cb05a34eb9c78faf69aa49674ec30d1eadbdc2042473644992786e6c8249b"
+      }
+    },
+    "licenses/typenum-1.20.1-LICENSE-APACHE": {
+      "raw": true,
+      "identity": {
+        "bytes": 10835,
+        "sha256": "516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406"
+      }
+    },
+    "licenses/typenum-1.20.1-LICENSE-MIT": {
+      "raw": true,
+      "identity": {
+        "bytes": 1083,
+        "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f"
+      }
+    },
+    "README.md": {
+      "raw": false,
+      "identity": {
+        "bytes": 7717,
+        "sha256": "306f003e8b5796e22e0afec5f30787d3af3cb3d0a258322e4f2b011cf0c69879"
+      }
+    },
+    "reference.py": {
+      "raw": false,
+      "identity": {
+        "bytes": 3196,
+        "sha256": "0ab0b9427dd385fd9979513b90865f92c388cd6d1f2391cf58e04d93c804b05b"
+      }
+    },
+    "results/native.txt": {
+      "raw": true,
+      "identity": {
+        "bytes": 391,
+        "sha256": "4b094edd4d4a084a8c69165dddf6c875fb69260486d2e167b650bc6177f6e7d8"
+      }
+    },
+    "src/bytes.rs": {
+      "raw": false,
+      "identity": {
+        "bytes": 11100,
+        "sha256": "b0ab4d053c8d085ecfca0dd5a35db386622f10884b07277944f09ee16734296e"
+      }
+    },
+    "src/lib.rs": {
+      "raw": false,
+      "identity": {
+        "bytes": 127,
+        "sha256": "02de39f3af0699d546eff34b4da67e9b265294428bf07690c3c5e862dce85f47"
+      }
+    },
+    "src/tests.rs": {
+      "raw": false,
+      "identity": {
+        "bytes": 9781,
+        "sha256": "51fb817ef66287656a04458c89d40cf0288151bb8ad21aa21e28d36bbbdaeea2"
+      }
+    },
+    "static_check.py": {
+      "raw": false,
+      "identity": {
+        "bytes": 3897,
+        "sha256": "ac6402585ee997958f98966a732f51c3e4306ff39a8c591668b50e1a9837ab1c"
+      }
+    }
+  },
+  "registry_packages": [
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "checksum": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true,
+      "manifest": {
+        "bytes": 1239,
+        "sha256": "d646663ec1bd4e8e795bd6a386cff9c374880d6237bbfa36bbac08b7f26ce65c"
+      }
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.3.1",
+      "checksum": "5ca28b0ae3115b884660db4118d803791fd6756b6e88f39c0f3f7859060d7566",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": false,
+      "manifest": {
+        "bytes": 2958,
+        "sha256": "2e82ee61a94e8ef99197ca59723e9794d0f08363f28bacab680292af6ccdde61"
+      }
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.2.2",
+      "checksum": "ce6e4c961d6cd6c9a86db418387425e8bdeaf05b3c8bc1411e6dca4c252f1453",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true,
+      "manifest": {
+        "bytes": 2481,
+        "sha256": "1b47561054dd2fe13246f2f6e19c29eac256269e02c96162fd6efed28247e78a"
+      }
+    },
+    {
+      "name": "digest",
+      "version": "0.11.3",
+      "checksum": "f1dd6dbb5841937940781866fa1281a1ff7bd3bf827091440879f9994983d5c2",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true,
+      "manifest": {
+        "bytes": 2957,
+        "sha256": "59c4f2cba7e34831c87e8f4844718d91d0f276af7bd192de76fda7d5a8978eb9"
+      }
+    },
+    {
+      "name": "hybrid-array",
+      "version": "0.4.15",
+      "checksum": "27f864f10dfb56725ce5ce5472bc52252c8f93a4ab86327122cebf62c5f59a17",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true,
+      "manifest": {
+        "bytes": 3146,
+        "sha256": "0f4ca21a2707a25425c1b7f8977a7534bd350c0c650cdea4c49497397a5a8aa8"
+      }
+    },
+    {
+      "name": "keccak",
+      "version": "0.2.2",
+      "checksum": "d8f198d1db720e4940b5a493201d199d9f24f568f8f746bd13706243a2f71598",
+      "license": "Apache-2.0 OR MIT",
+      "windows_selected": true,
+      "manifest": {
+        "bytes": 2645,
+        "sha256": "a059fa772f385e2e5929da96fea33916f1f4984e457beaf5919acf42019f076a"
+      }
+    },
+    {
+      "name": "libc",
+      "version": "0.2.191",
+      "checksum": "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": false,
+      "manifest": {
+        "bytes": 6292,
+        "sha256": "c8e45fe04427917e1bbadf4b628353571c9a0f2574971231814bb71dc6a86f1f"
+      }
+    },
+    {
+      "name": "sha3",
+      "version": "0.12.0",
+      "checksum": "bc9bad02c26382724b2d2692c6f179285e4b54eeecd7968f52a50059c3c11759",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true,
+      "manifest": {
+        "bytes": 1726,
+        "sha256": "69a5a38684afb429397aa6a42f8633c8b4de6eb1cd4e365628f66b54d870adbe"
+      }
+    },
+    {
+      "name": "sponge-cursor",
+      "version": "0.1.0",
+      "checksum": "3a0219bd7d979d58245a4f41f695e1ac9f8befdffadd7f61f1bae9e39abc6620",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true,
+      "manifest": {
+        "bytes": 2306,
+        "sha256": "ad08b71a941a200c83237dd071cf32c0c2a411c2606c29f3d522680a411b4f23"
+      }
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "checksum": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20",
+      "license": "MIT OR Apache-2.0",
+      "windows_selected": true,
+      "manifest": {
+        "bytes": 1697,
+        "sha256": "00785a81eae34b3298dfdde78a6bd96fe3ec000de46edd509bd13b7cab7a9870"
+      }
+    }
+  ],
+  "diagnostic_nodes": [
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "features": []
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.2.2",
+      "features": []
+    },
+    {
+      "name": "digest",
+      "version": "0.11.3",
+      "features": []
+    },
+    {
+      "name": "hybrid-array",
+      "version": "0.4.15",
+      "features": []
+    },
+    {
+      "name": "keccak",
+      "version": "0.2.2",
+      "features": []
+    },
+    {
+      "name": "kova-preseal-bytes-diagnostic",
+      "version": "0.1.0",
+      "features": [
+        "default",
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "sha3",
+      "version": "0.12.0",
+      "features": []
+    },
+    {
+      "name": "sponge-cursor",
+      "version": "0.1.0",
+      "features": []
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "features": [
+        "const-generics"
+      ]
+    }
+  ],
+  "archive_bytes": 1291385,
+  "artifact_checks": "Exact lock SHA256 and every regular archive member compared with installed package source before compilation.",
+  "source_review": "Selected SHA3 fixed digest, padding, sponge, software Keccak, configuration and array paths. No dependency audit or achieved security claim.",
+  "contexts": [
+    {
+      "revision": "ad18808532e3cc9a4ac82b2190851c1c54f8cebb",
+      "path": "docs/preseal-job.md",
+      "git_blob": "0d98375362c1bb58cec08b68fdee393230006e20"
+    },
+    {
+      "revision": "ad18808532e3cc9a4ac82b2190851c1c54f8cebb",
+      "path": "crates/thorum-relation-lab/src/lib.rs",
+      "git_blob": "df0eb92bfb9e2ca00e16d2b119b6c1482c740b3f"
+    },
+    {
+      "revision": "ad18808532e3cc9a4ac82b2190851c1c54f8cebb",
+      "path": "research/signature-complete-native/src/authorization.rs",
+      "git_blob": "a27a772b097071f9b8e7358ae160ed563755ba91"
+    }
+  ],
+  "guard": {
+    "path": "research/state-journal/run_guarded_windows.ps1",
+    "raw_identity": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    }
+  },
+  "fixture_origin": "New independent explicit public synthetic literals in reference.py with stock hashlib SHA3-512. No candidate or previous producer import.",
+  "excluded": [
+    "private witness",
+    "proof generation or verification",
+    "authenticated context",
+    "active class registry",
+    "ledger and signer",
+    "parent binding acceptance",
+    "RNG and network"
+  ]
+}

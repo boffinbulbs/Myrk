@@ -1,0 +1,7 @@
+
+running 1 test
+test tests::bounded_job_controls ... {"independent_ids":5,"fixture_bytes":927,"maximum_bytes":51130,"mutated_frames":22,"association_controls":4,"fixed_width_refusals":18,"variable_length_refusals":14,"truncated_prefixes":927,"requested_capacity":927,"observed_capacity":927}
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

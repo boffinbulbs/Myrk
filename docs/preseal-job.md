@@ -1,6 +1,6 @@
 # Canonical preseal job binding
 
-This document selects an exact candidate encoding for the public bytes committed by an auxiliary mining job. It completes the previously unselected outer job framing and commitment in the [auxiliary binding contract](auxiliary-work-binding.md). It implements no codec, private proof, authenticated context, block acceptance or live parent profile. Inner effect and proof classes, resource profiles, state and consensus constructions remain required before an executable candidate can be admitted.
+This document selects an exact candidate encoding for the public bytes committed by an auxiliary mining job. It completes the previously unselected outer job framing and commitment in the [auxiliary binding contract](auxiliary-work-binding.md). The separate [bounded byte diagnostic](../research/preseal-bytes/README.md) implements the outer format for unverified public synthetic data. It implements no private proof, authenticated context, block acceptance or live parent profile. Inner effect and proof classes, resource profiles, state and consensus constructions remain required before a production candidate can be admitted.
 
 The decision is to bind the **actual ordered public effect, authorization and recovery bytes**, without substituting caller-provided aggregate roots. The job commitment follows actual proof construction and precedes parent work. Local process generations and the eventual work seal are excluded from the job. A job hash is byte identity, not permission to spend or commit state.
 
@@ -125,7 +125,7 @@ bytes. The fixed job header, including all framing, treasury length and record c
 
 $$|J|=610+p+\sum_{i=0}^{n-1}(86+e_i+a_i+d_i).$$
 
-These are source specification counts. They are not an allocation measurement, encoded candidate fixture or serialized proof result. Empty lists can be represented by the grammar, but syntax alone does not authorize an empty block or omit the required issuance or consensus records.
+These are source specification counts. The separate byte diagnostic checks a 927 byte fixture and a 51130 byte maximum under its laboratory limits. Those are not a serialized private proof result or production capacity. Empty lists can be represented by the grammar, but syntax alone does not authorize an empty block or omit the required issuance or consensus records.
 
 Before allocation, a future decoder must bound the total job, record count, treasury policy and each class's effect, authorization and recovery bytes under its actual supported resource descriptor. It must check accumulated lengths with overflow-safe arithmetic, exact fixed widths, field order and complete consumption. Before hashing `F(J)`, the total `|J|` must also fit an unsigned 32 bit length. No generic limit follows merely from the representational maximum.
 
@@ -135,7 +135,7 @@ No production resource profile is selected by this encoding. No wide prover is a
 
 ## Required evidence and remaining gates
 
-The following are required future controls, not executed tests of a codec:
+The following are integration requirements. The byte diagnostic covers outer framing, byte identities and bounded source construction. It does not execute the private proof, authenticated state or parent binding requirements:
 
 1. Independent saved complete byte fixtures and job commitments, including empty and nonempty recovery data, exact width boundaries and multiple ordered records.
 2. Wrong magic or version, alternate fixed widths, overflow, oversized count or length, truncation, trailing data and noncanonical class encodings.
