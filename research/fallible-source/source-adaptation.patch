@@ -1,0 +1,40 @@
+--- source-commitment/src/source.rs
++++ fallible-source/src/source.rs
+@@ -1,8 +1,8 @@
+ //! Owned entry lifetime and nominal storage bridge. No validity callback.
+ #![deny(unsafe_code)]
+ 
++use crate::extension as ext;
+ use crate::storage::{MatrixStore, RowSource};
+-use kova_source_extension as ext;
+ use p3_baby_bear::BabyBear;
+ use p3_commit::Mmcs;
+ use p3_dft::TwoAdicSubgroupDft;
+@@ -113,6 +113,18 @@
+         Ok(())
+     }
+     pub fn write_raw(&self, values: impl IntoIterator<Item = BabyBear>) -> Result<RawInput, Error> {
++        self.write_raw_with(|| self.0.inner.write_raw(values))
++    }
++    pub fn try_write_raw(
++        &self,
++        values: impl IntoIterator<Item = Result<BabyBear, kova_fallible_input::Error>>,
++    ) -> Result<RawInput, Error> {
++        self.write_raw_with(|| self.0.inner.try_write_raw(values))
++    }
++    fn write_raw_with(
++        &self,
++        write: impl FnOnce() -> Result<ext::RawInput, ext::Error>,
++    ) -> Result<RawInput, Error> {
+         {
+             let mut s = self.0.state.lock().map_err(|_| Error::Poisoned)?;
+             if s.phase != Phase::Ready {
+@@ -127,7 +139,7 @@
+             store: self,
+             done: false,
+         };
+-        match self.0.inner.write_raw(values) {
++        match write() {
+             Ok(inner) => {
+                 self.0.state.lock().map_err(|_| Error::Poisoned)?.phase = Phase::Ready;
+                 guard.done = true;

@@ -1,0 +1,41 @@
+--- source-consumption/src/composite.rs
++++ fallible-source/src/composite.rs
+@@ -3,13 +3,13 @@
+ //! Adds an owned unmasked quotient source; it does not establish proof validity.
+ #![deny(unsafe_code)]
+ 
++use crate::extension as ext;
+ use crate::{
+     source,
+     storage::{DenseStore, MatrixStore, RowSource},
+ };
++use kova_fallible_input as prep;
+ use kova_proof_preflight::preflight::{Refusal, Request};
+-use kova_source_extension as ext;
+-use kova_source_preparation as prep;
+ use kova_storage_matrix::{CheckedFileMatrix, StorageError};
+ use p3_baby_bear::BabyBear;
+ use p3_commit::Mmcs;
+@@ -383,9 +383,21 @@
+         })
+     }
+     pub fn write_raw(&self, values: impl IntoIterator<Item = BabyBear>) -> Result<RawInput, Error> {
++        self.write_raw_with(|| self.0.main.write_raw(values))
++    }
++    pub fn try_write_raw(
++        &self,
++        values: impl IntoIterator<Item = Result<BabyBear, prep::Error>>,
++    ) -> Result<RawInput, Error> {
++        self.write_raw_with(|| self.0.main.try_write_raw(values))
++    }
++    fn write_raw_with(
++        &self,
++        write: impl FnOnce() -> Result<source::RawInput, source::Error>,
++    ) -> Result<RawInput, Error> {
+         self.transition(Phase::Ready, Phase::WritingRaw)?;
+         let mut step = Step::new(self);
+-        let inner = self.0.main.write_raw(values).map_err(|e| {
++        let inner = write().map_err(|e| {
+             let e = Error::from(e);
+             step.fail(e.clone());
+             e

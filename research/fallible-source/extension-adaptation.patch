@@ -1,0 +1,77 @@
+--- source-extension/src/lib.rs
++++ fallible-source/src/extension.rs
+@@ -1,12 +1,12 @@
+ //! Bounded owned preparation and streamed main LDE. No PCS entry or proof.
+ #![deny(unsafe_code)]
+ 
++use kova_fallible_input as prep;
+ use kova_proof_preflight::{
+     HidingFriPcs,
+     preflight::{Refusal, Request, ResourcePlan},
+     storage::MatrixStore,
+ };
+-use kova_source_preparation as prep;
+ use kova_storage_matrix::{CheckedFileMatrix, StorageError};
+ use p3_baby_bear::BabyBear;
+ use p3_commit::Mmcs;
+@@ -25,6 +25,10 @@
+ };
+ 
+ #[path = "../../storage-pcs/tests/common/air.rs"]
++#[allow(
++    dead_code,
++    reason = "Retained trace generators are outside raw input failure controls"
++)]
+ pub mod reference_air;
+ 
+ type E4 = BinomialExtensionField<BabyBear, 4>;
+@@ -307,6 +311,18 @@
+         }
+     }
+     pub fn write_raw(&self, values: impl IntoIterator<Item = BabyBear>) -> Result<RawInput, Error> {
++        self.write_raw_with(|| self.0.preparation.write_raw(256, 2, values))
++    }
++    pub fn try_write_raw(
++        &self,
++        values: impl IntoIterator<Item = Result<BabyBear, prep::Error>>,
++    ) -> Result<RawInput, Error> {
++        self.write_raw_with(|| self.0.preparation.try_write_raw(256, 2, values))
++    }
++    fn write_raw_with(
++        &self,
++        write: impl FnOnce() -> Result<prep::OwnedMatrix, prep::Error>,
++    ) -> Result<RawInput, Error> {
+         {
+             let mut s = self.0.state.lock().map_err(|_| Error::Poisoned)?;
+             if s.phase != Phase::Ready {
+@@ -321,11 +337,7 @@
+             store: self,
+             done: false,
+         };
+-        let result = self
+-            .0
+-            .preparation
+-            .write_raw(256, 2, values)
+-            .map_err(Error::from);
++        let result = write().map_err(Error::from);
+         match result {
+             Ok(matrix) => {
+                 self.0.state.lock().map_err(|_| Error::Poisoned)?.phase = Phase::Ready;
+@@ -521,6 +533,10 @@
+         }
+     }
+     /// Only new LDE paths are removed. Frozen successful preparation leases remain intact.
++    #[allow(
++        dead_code,
++        reason = "Retained LDE cleanup is outside raw input failure controls"
++    )]
+     pub fn cleanup_failed(&self) -> Result<Vec<std::io::ErrorKind>, Error> {
+         let mut s = match self.0.state.lock() {
+             Ok(s) => s,
+@@ -768,6 +784,3 @@
+     }
+     Ok(())
+ }
+-
+-#[cfg(test)]
+-mod tests;

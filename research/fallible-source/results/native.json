@@ -1,0 +1,285 @@
+{
+  "cases": [
+    {
+      "after": {
+        "dft": {
+          "coset_dft_batch": 0,
+          "coset_idft_batch": 0,
+          "coset_lde_batch": 0,
+          "coset_lde_batch_with_blocks": 0,
+          "coset_lde_batch_with_transform": 0,
+          "dft_batch": 0,
+          "idft_batch": 0,
+          "lde_batch": 0
+        },
+        "extension_commits": 0,
+        "extension_multi_opens": 0,
+        "extension_openings": 0,
+        "get_matrices": 0,
+        "initial_salt_bytes": 32,
+        "input_commits": 0,
+        "input_multi_opens": 0,
+        "input_openings": 0,
+        "mask": {
+          "bytes": 0,
+          "fill_bytes": 0,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "mmcs_clones": 1,
+        "salt": {
+          "bytes": 32,
+          "fill_bytes": 1,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "scalar_opens": 0,
+        "verify_calls": 0
+      },
+      "anchor_unchanged": true,
+      "before": {
+        "dft": {
+          "coset_dft_batch": 0,
+          "coset_idft_batch": 0,
+          "coset_lde_batch": 0,
+          "coset_lde_batch_with_blocks": 0,
+          "coset_lde_batch_with_transform": 0,
+          "dft_batch": 0,
+          "idft_batch": 0,
+          "lde_batch": 0
+        },
+        "extension_commits": 0,
+        "extension_multi_opens": 0,
+        "extension_openings": 0,
+        "get_matrices": 0,
+        "initial_salt_bytes": 32,
+        "input_commits": 0,
+        "input_multi_opens": 0,
+        "input_openings": 0,
+        "mask": {
+          "bytes": 0,
+          "fill_bytes": 0,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "mmcs_clones": 1,
+        "salt": {
+          "bytes": 32,
+          "fill_bytes": 1,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "scalar_opens": 0,
+        "verify_calls": 0
+      },
+      "counters": [
+        1,
+        1
+      ],
+      "error": "Length",
+      "extension_phase": "Failed",
+      "fingerprints_unchanged": true,
+      "outer_phase": "Failed",
+      "planned_entries": 12,
+      "raw_entry": "Removed",
+      "reentry": [
+        0,
+        0
+      ],
+      "reserved_bytes": 1325056,
+      "reserved_files": 13,
+      "source_phase": "Failed"
+    },
+    {
+      "after": {
+        "dft": {
+          "coset_dft_batch": 0,
+          "coset_idft_batch": 0,
+          "coset_lde_batch": 0,
+          "coset_lde_batch_with_blocks": 0,
+          "coset_lde_batch_with_transform": 0,
+          "dft_batch": 0,
+          "idft_batch": 0,
+          "lde_batch": 0
+        },
+        "extension_commits": 0,
+        "extension_multi_opens": 0,
+        "extension_openings": 0,
+        "get_matrices": 0,
+        "initial_salt_bytes": 32,
+        "input_commits": 0,
+        "input_multi_opens": 0,
+        "input_openings": 0,
+        "mask": {
+          "bytes": 0,
+          "fill_bytes": 0,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "mmcs_clones": 1,
+        "salt": {
+          "bytes": 32,
+          "fill_bytes": 1,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "scalar_opens": 0,
+        "verify_calls": 0
+      },
+      "anchor_unchanged": true,
+      "before": {
+        "dft": {
+          "coset_dft_batch": 0,
+          "coset_idft_batch": 0,
+          "coset_lde_batch": 0,
+          "coset_lde_batch_with_blocks": 0,
+          "coset_lde_batch_with_transform": 0,
+          "dft_batch": 0,
+          "idft_batch": 0,
+          "lde_batch": 0
+        },
+        "extension_commits": 0,
+        "extension_multi_opens": 0,
+        "extension_openings": 0,
+        "get_matrices": 0,
+        "initial_salt_bytes": 32,
+        "input_commits": 0,
+        "input_multi_opens": 0,
+        "input_openings": 0,
+        "mask": {
+          "bytes": 0,
+          "fill_bytes": 0,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "mmcs_clones": 1,
+        "salt": {
+          "bytes": 32,
+          "fill_bytes": 1,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "scalar_opens": 0,
+        "verify_calls": 0
+      },
+      "counters": [
+        1,
+        256
+      ],
+      "error": "NonCanonicalField",
+      "extension_phase": "Failed",
+      "fingerprints_unchanged": true,
+      "outer_phase": "Failed",
+      "planned_entries": 12,
+      "raw_entry": "Removed",
+      "reentry": [
+        0,
+        0
+      ],
+      "reserved_bytes": 1325056,
+      "reserved_files": 13,
+      "source_phase": "Failed"
+    },
+    {
+      "after": {
+        "dft": {
+          "coset_dft_batch": 0,
+          "coset_idft_batch": 0,
+          "coset_lde_batch": 0,
+          "coset_lde_batch_with_blocks": 0,
+          "coset_lde_batch_with_transform": 0,
+          "dft_batch": 0,
+          "idft_batch": 0,
+          "lde_batch": 0
+        },
+        "extension_commits": 0,
+        "extension_multi_opens": 0,
+        "extension_openings": 0,
+        "get_matrices": 0,
+        "initial_salt_bytes": 32,
+        "input_commits": 0,
+        "input_multi_opens": 0,
+        "input_openings": 0,
+        "mask": {
+          "bytes": 0,
+          "fill_bytes": 0,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "mmcs_clones": 1,
+        "salt": {
+          "bytes": 32,
+          "fill_bytes": 1,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "scalar_opens": 0,
+        "verify_calls": 0
+      },
+      "anchor_unchanged": true,
+      "before": {
+        "dft": {
+          "coset_dft_batch": 0,
+          "coset_idft_batch": 0,
+          "coset_lde_batch": 0,
+          "coset_lde_batch_with_blocks": 0,
+          "coset_lde_batch_with_transform": 0,
+          "dft_batch": 0,
+          "idft_batch": 0,
+          "lde_batch": 0
+        },
+        "extension_commits": 0,
+        "extension_multi_opens": 0,
+        "extension_openings": 0,
+        "get_matrices": 0,
+        "initial_salt_bytes": 32,
+        "input_commits": 0,
+        "input_multi_opens": 0,
+        "input_openings": 0,
+        "mask": {
+          "bytes": 0,
+          "fill_bytes": 0,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "mmcs_clones": 1,
+        "salt": {
+          "bytes": 32,
+          "fill_bytes": 1,
+          "next_u32": 0,
+          "next_u64": 0
+        },
+        "scalar_opens": 0,
+        "verify_calls": 0
+      },
+      "counters": [
+        1,
+        513
+      ],
+      "error": "Bounds",
+      "extension_phase": "Failed",
+      "fingerprints_unchanged": true,
+      "outer_phase": "Failed",
+      "planned_entries": 12,
+      "raw_entry": "Removed",
+      "reentry": [
+        0,
+        0
+      ],
+      "reserved_bytes": 1325056,
+      "reserved_files": 13,
+      "source_phase": "Failed"
+    }
+  ],
+  "complete_proofs": 0,
+  "failed_owner_reentries": 3,
+  "format": "kova.fallible-source.native.v1",
+  "full_signature_calls": 0,
+  "old_proof_replays": 0,
+  "source_bytes": 2048,
+  "source_cases": 3,
+  "source_shape": [
+    256,
+    2
+  ]
+}

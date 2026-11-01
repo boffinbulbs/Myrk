@@ -1,0 +1,53 @@
+{
+  "artifacts": {
+    "results/native.json": {
+      "bytes": 6981,
+      "sha256": "582563686a7e04338408494b391110bfbc5ba97f2b56003abc98a7027533cf0a"
+    }
+  },
+  "date": "2026-11-01",
+  "elapsed_test_seconds": 0.03,
+  "executable": {
+    "bytes": 1601024,
+    "sha256": "bbb45ce54bd1a8e957ef158e490774345ac225a928ac5cafc8078ade37d66c5f"
+  },
+  "format": "kova.fallible-source.validation.v1",
+  "guard": {
+    "accepted": true,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "actual_passed": 1,
+    "available_before_bytes": 6567522304,
+    "exit_code": 0,
+    "expected_tests": 1,
+    "hard_limit_installed": true,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 2326528,
+    "peak_private_commit_bytes": 1290240,
+    "peak_working_bytes": 6209536,
+    "test_counts_verified": true,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "Failure-only diagnostic, no successful proof from this nominal context",
+    "Three fixed 256 by 2 synthetic sources from independent saved literals",
+    "Original context construction includes small Quartic symbolic degree inference and salt forks",
+    "Unchanged protocol counters are measured after each construction baseline",
+    "Original successful proving code is connected and compiled but not executed by these cases",
+    "Full signature resource admission, hiding composition and same-witness private ledger integration remain open"
+  ],
+  "original_guard_receipt_sha256": "58f28d43d4ac8a8610baa9c239c163c6a09db6b5d1ba0367083df17536582a47",
+  "platform": "Windows x86_64",
+  "profile": "release",
+  "rust": "1.94.1",
+  "scope": "three actual Context fallible raw source failures and three same-owner refused reentries",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "597a454f04540690d534a590a36c584931428012cb67b04275cdf45c69059b13"
+}

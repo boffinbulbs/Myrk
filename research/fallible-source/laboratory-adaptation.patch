@@ -1,0 +1,35 @@
+--- source-consumption/src/laboratory.rs
++++ fallible-source/src/laboratory.rs
+@@ -2,6 +2,7 @@
+ pub mod context;
+ mod diagnostics;
+ mod diagnostics_setup;
++mod extension;
+ #[cfg(not(debug_assertions))]
+ mod owned_pcs;
+ #[cfg(not(debug_assertions))]
+@@ -12,6 +13,10 @@
+ pub use context::{Context, OwnedConfig, OwnedError, OwnedProof, ProvingResult};
+ #[path = "../../storage-pcs/backend/src/config.rs"]
+ mod config;
++#[allow(
++    dead_code,
++    reason = "Retained private opening controls are not selected here"
++)]
+ mod hiding_pcs;
+ #[path = "../../storage-pcs/backend/src/pcs_transcript.rs"]
+ mod pcs_transcript;
+@@ -23,7 +28,6 @@
+ pub mod prover;
+ // The frozen module also contains the unused dense convenience entry types.
+ #[allow(dead_code)]
+-#[path = "../../source-commitment/src/source.rs"]
+ mod source;
+ #[allow(unsafe_code)]
+ #[path = "../../storage-pcs/backend/src/storage.rs"]
+@@ -44,4 +48,4 @@
+ pub use transcript::{FriShape, ProverTranscript, TranscriptFailure, VerifierTranscript};
+ pub use two_adic_pcs::*;
+ 
+-pub use diagnostics::fixed_private_opening_controls;
++pub use diagnostics::fixed_raw_source_failures;

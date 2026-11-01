@@ -171,6 +171,8 @@ The [streamed overlay validation](../research/signature-overlay-native/README.md
 
 The [deferred fallible input component](../research/fallible-input/README.md) preserves the raw source iterator interface while moving its initialization after metadata, owner and exclusive output checks. Ordinary and fallible copies share one canonical writer. Actual source length, noncanonical field and terminal bounds errors preserve their typed cause through cleanup. Fifteen primary controls and five failed owner reentries pass under external limits. The new preparation type is not yet integrated into the complete source prover. No masking, commitment, opening or proof executes in this diagnostic.
 
+The [fallible source context](../research/fallible-source/README.md) connects that preparation type through one actual extension, source and composite family. Three genuine checked source failures return through the actual `Context::try_prove` entry before proving effects. Three reentries preserve failed owner snapshots and reject before source initialization. Original protocol counters and delivered RNG fingerprints remain unchanged after construction, including the original salt fork baseline. The original successful owned prover is connected and compiled. Its execution, full signature resources and complete hiding payment integration remain separate gates.
+
 The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
 
 ```text

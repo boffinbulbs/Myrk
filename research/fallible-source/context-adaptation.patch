@@ -1,0 +1,55 @@
+--- source-consumption/src/context.rs
++++ fallible-source/src/context.rs
+@@ -88,10 +88,28 @@
+     pub fn snapshot(&self) -> Result<Snapshot, Error> {
+         self.store.snapshot()
+     }
++    /// Read the same underlying source owner for the bounded diagnostic.
++    pub(crate) fn construction_snapshot(&self) -> Result<crate::source::Snapshot, Error> {
++        self.store.main().snapshot().map_err(Error::Main)
++    }
+     /// Ownership and canonical shape checks do not precheck the AIR witness.
+     pub fn prove(
+         &self,
+         values: impl IntoIterator<Item = BabyBear>,
++    ) -> ProvingResult<D, I, F, R, C> {
++        self.prove_with(|| self.store.write_raw(values))
++    }
++    /// Fallible raw data follows the actual owned proving lifecycle. Storage
++    /// failure returns before any main commitment or transcript initialization.
++    pub fn try_prove(
++        &self,
++        values: impl IntoIterator<Item = Result<BabyBear, kova_fallible_input::Error>>,
++    ) -> ProvingResult<D, I, F, R, C> {
++        self.prove_with(|| self.store.try_write_raw(values))
++    }
++    fn prove_with(
++        &self,
++        write: impl FnOnce() -> Result<crate::composite::RawInput, Error>,
+     ) -> ProvingResult<D, I, F, R, C> {
+         if cfg!(debug_assertions) {
+             return Err(OwnedError::ReleaseRequired);
+@@ -105,17 +123,21 @@
+         }
+         #[cfg(not(debug_assertions))]
+         {
+-            let raw = self.store.write_raw(values)?;
++            let raw = write()?;
+             crate::owned_prover::prove_owned(&self.config, &self.store, raw)
+         }
+         #[cfg(debug_assertions)]
+         {
+-            let _ = values;
++            let _ = write;
+             Err(OwnedError::ReleaseRequired)
+         }
+     }
+     /// Main-only diagnostic prefix. Its actual failure closes the original
+     /// attempt and is never returned as a proof or resumable transcript.
++    #[allow(
++        dead_code,
++        reason = "Retained opening controls are outside this raw failure diagnostic"
++    )]
+     pub(crate) fn opening_prefix(
+         &self,
+         values: impl IntoIterator<Item = BabyBear>,

@@ -202,6 +202,8 @@ The [complete signature overlay](research/signature-overlay/README.md) integrate
 
 The [deferred source ingestion component](research/fallible-input/README.md) initializes streamed input only after raw output admission and retains actual checked source errors through owner cleanup. Its bounded diagnostic covers canonical copies, malformed source files, shape refusals, output collisions and failed owner reentry. Integration with committed data and complete private proofs remains separate.
 
+The [fallible proving entry](research/fallible-source/README.md) connects that writer to the actual preparation, source, composite and Context owners. Three real source failures and three refused reentries preserve the original nested cause and reservations without advancing protocol operations beyond construction. The successful proving path remains connected and compiled. Complete private proofs retain their separate verification gates.
+
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
 ## Build and reproduce
