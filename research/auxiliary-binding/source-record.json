@@ -1,0 +1,304 @@
+{
+  "format": "kova.auxiliary-binding.source-specification.v1",
+  "date": "2026-11-01",
+  "baseline": "b3287e5b68803602d2592597d2e64f767efaca92",
+  "scope": "Source and specification only. No imported or executed auxiliary verifier, compiler, model, generator, cryptographic check or network service.",
+  "upstream_identity": "Exact raw UTF-8 source bytes checked against upstream Git blob and SHA256",
+  "captured_raw_bytes": 584944,
+  "captured_files": 24,
+  "upstreams": {
+    "zcash/librustzcash": {
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "license": "MIT OR Apache-2.0",
+      "files": {
+        "zcash_primitives/src/transaction/txid.rs": {
+          "bytes": 24832,
+          "sha256": "73b2a828d2fe728add42048d9060e0eadd2de510ed2573a4313d833c827972d1",
+          "git_blob": "0da2597fd59dab7b064cf67925c9b6f3e827ca2f"
+        },
+        "zcash_primitives/src/transaction/mod.rs": {
+          "bytes": 59910,
+          "sha256": "51692bed8b4d8bf5d9c5de4fee66798935f1a92d99f0a31326dd045e84628294",
+          "git_blob": "fc194bcadaeb3fd091dabb32696d086ee352cf9c"
+        },
+        "components/zcash_protocol/src/consensus.rs": {
+          "bytes": 47936,
+          "sha256": "a6a7ccc3cdcc32c5f45772273e419432c08615e085084e595f6c6150a232b6b5",
+          "git_blob": "d870c9f68bb48f287d5893b5919aba316b358261"
+        },
+        "zcash_transparent/src/bundle.rs": {
+          "bytes": 16351,
+          "sha256": "61a4bd9b83e0d3951d22acc8d4aac8e04c3f27b98fe3e6290eed4794a14d400d",
+          "git_blob": "133e54f048201b7cdbd4ddc0198875b871661e47"
+        },
+        "zcash_primitives/src/encoding.rs": {
+          "bytes": 2244,
+          "sha256": "ea5912560f2c21a11481392a95a361b2cb0f2160e319c5529034300a6d27c4df",
+          "git_blob": "6f6455b68d2e66d1ef7a9b1b3196a1cd32c94d7a"
+        },
+        "zcash_transparent/src/address.rs": {
+          "bytes": 7530,
+          "sha256": "6a5e646631eaeaa8e301505af6302c5faa36b99aaf5769d3979c8e69472873d7",
+          "git_blob": "41f7b8c95229097dcdb2af90c721de44608b9f62"
+        },
+        "components/zcash_encoding/src/lib.rs": {
+          "bytes": 19244,
+          "sha256": "79cd47d3d73370fff5745c3e2efaeebc0104c0ec96aaf20cb085670829459d31",
+          "git_blob": "37c55fd80e059f9483873f78ff42d4c381bd970c"
+        }
+      }
+    },
+    "zcash/zcash-test-vectors": {
+      "revision": "78321beacb0e0477e33cd002b56585a107c2708c",
+      "license": "MIT OR Apache-2.0",
+      "files": {
+        "test-vectors/json/zip_0244.json": {
+          "bytes": 56820,
+          "sha256": "3d20892f19cec18afba2ef2907bb8426192d0ea4eac2c0060c2f31ff78ad93a3",
+          "git_blob": "809dbf0e57aa1acdcc2004bb325f741a782bacc0"
+        },
+        "zcash_test_vectors/zip_0244.py": {
+          "bytes": 15252,
+          "sha256": "789b37325bc0f99fbf51326ec18421bee076805b68643608bda2032af755923e",
+          "git_blob": "8a7a3e96bac081e89147445bd0034680d57ee32a"
+        },
+        "COPYING.md": {
+          "bytes": 496,
+          "sha256": "1b0f8332e3f8b72835e1bf816a7471103c74e82b16c149e08f36136e175d9846",
+          "git_blob": "4f1b0b77b425af1006ab8e41f8db4d47f1103337"
+        },
+        "zcash_test_vectors/transaction.py": {
+          "bytes": 22467,
+          "sha256": "7b67e5522cb6c78b82f33b1f7cdf1bbb16e3cf969cf2ba4fce702c46f8aa5caf",
+          "git_blob": "bc4c261bb50566f9675d25747197ead2b89018cd"
+        }
+      }
+    },
+    "zcash/zips": {
+      "revision": "ff594de6e95bb9e9e7d2ace09510281531c30447",
+      "license": "MIT",
+      "files": {
+        "zips/zip-0244.rst": {
+          "bytes": 37575,
+          "sha256": "0bb48ee767bd475c83f4203d8c54f6aff87d55eafedb7350e1d3e221beb94266",
+          "git_blob": "a553f704596885f9d5c617a6cef3119f61b47d46"
+        },
+        "zips/zip-0221.rst": {
+          "bytes": 37326,
+          "sha256": "e931c09613143b44adfeeaa597bd4a47938dd9a5062411132243bad929a6b40d",
+          "git_blob": "4ee35accebb86b9af591ae2fec8cd7636739fc47"
+        },
+        "zips/zip-0225.rst": {
+          "bytes": 31850,
+          "sha256": "5e026434c445b0bb0a031d3271d7b8c0e4405f8107b03c16be583497b0eb333d",
+          "git_blob": "6e46bbf4d5abb17c6f784b5f1f28e0029108d231"
+        }
+      }
+    },
+    "ZcashFoundation/zebra": {
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "license": "MIT OR Apache-2.0",
+      "files": {
+        "zebra-chain/src/block/commitment.rs": {
+          "bytes": 14574,
+          "sha256": "39b46bb7447e89451c4f526ff658eaec8d40bcb52b28dbfa71fb615d0fd1d69c",
+          "git_blob": "7b1f4e6b23ad0909aed22667f5b6256c1fc05cbf"
+        },
+        "zebra-chain/src/block/merkle.rs": {
+          "bytes": 14822,
+          "sha256": "407c6eac0137b4b323f42dd2bcab9c2718b95f153ad302e298e8cc8c961d929e",
+          "git_blob": "b68bf2870ce1139d662aa2e142e57e0b515e135c"
+        },
+        "zebra-chain/src/transaction/hash.rs": {
+          "bytes": 9968,
+          "sha256": "c25708575e6843b699facbe77784cd7b2421cfe7ebdfa0fe95a050b4068fec20",
+          "git_blob": "87520409a2f31d1ea1ce02b4c20bceda2818cb5e"
+        },
+        "zebra-chain/src/transaction/auth_digest.rs": {
+          "bytes": 3496,
+          "sha256": "1e6ce46a66da8d4d35e18b9c220d9aaef74a34dbbdeb994bf971d813a1a8718f",
+          "git_blob": "444a5acd4d7d2af29db3cb5906272bc1eeb61345"
+        },
+        "zebra-chain/src/transaction/compat.rs": {
+          "bytes": 14448,
+          "sha256": "ddf86281e59c80e95b1ec3edd3af7ec65d8ff5cc5f7164c2febf5be8a10ae109",
+          "git_blob": "9a8d84ea9cdedc60f2915977e897781846819dd1"
+        },
+        "zebra-chain/src/transaction/serialize.rs": {
+          "bytes": 32372,
+          "sha256": "7fceb04ef65c4829fbcb3ce253280d34ea6fe64817e2e4a65f3b6e775ef0ab2c",
+          "git_blob": "5f12db7986c573ad87271e05399eda251119bb6f"
+        },
+        "zebra-chain/src/parameters/network_upgrade.rs": {
+          "bytes": 25183,
+          "sha256": "87c4eaa567f370c8abcee6c3ff1ce8ec273aa28f423df0245006c3fdd9ea294e",
+          "git_blob": "a1ba478c1b356b165c2e9930565478d1195a03ff"
+        },
+        "zebra-chain/src/transaction.rs": {
+          "bytes": 60832,
+          "sha256": "8c24c5c78507be94b192690c46e4847da30f24b922013a9de872b6b1befdeb06",
+          "git_blob": "4c552828950fecbf92589917ad97b03818a4eb7c"
+        },
+        "zebra-test/src/vectors/block-main-1-687-106.txt": {
+          "bytes": 18235,
+          "sha256": "0e0c7456caacfc7b48839bd603e3426c456d02f972a2f33dfc07d4d7bddc4776",
+          "git_blob": "c8c3f5443aa3c7924a4eeb0cff3ab198f5c2609c"
+        },
+        "zebra-chain/src/transparent/serialize.rs": {
+          "bytes": 11181,
+          "sha256": "04a4b80a25ad61446c6a0bb94d843bca2d984dd099a4301b0551aa9ed660c0f9",
+          "git_blob": "ba5b3575ab8a6fb759f6523bfef6a7349a592a1b"
+        }
+      }
+    }
+  },
+  "repository_contexts": {
+    "docs/architecture.md": {
+      "bytes": 9533,
+      "sha256": "d00407a4b71d2e222454ca72ae4df30c69bdad7e91360ddaefa31f7366ffe7e5"
+    },
+    "docs/private-transactions.md": {
+      "bytes": 8491,
+      "sha256": "6d9f859495d7b33e9b3def14c88c066d72ab3db75efb20fe07b79c372661869e"
+    },
+    "docs/private-transition-state.md": {
+      "bytes": 20202,
+      "sha256": "f5d447290a69bb11ed9efda6d0a5024dbaac1f0e1bfafa079f01d5f1522e7fbf"
+    },
+    "docs/confidential-stake.md": {
+      "bytes": 21669,
+      "sha256": "703c3d90f01999a7b250c3142cd615f1758928b495e037787e633563cbd2daa8"
+    },
+    "docs/parameters.md": {
+      "bytes": 5743,
+      "sha256": "4e21e1847a52fca37be761c3ac17d64047483aea64584929a0169150c4dbb7f9"
+    },
+    "docs/checkpoints.md": {
+      "bytes": 5476,
+      "sha256": "0888287d33dc6c2a1fa8a265365220f0e6e94d7808b4ed6d7b11ce6e54efc1e1"
+    },
+    "docs/subsidy-allocation.md": {
+      "bytes": 7079,
+      "sha256": "69303fb1105341abf41232c409061e0da05b41120a8c9b0e69db147f0f4aaf24"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 9055,
+      "sha256": "526db01aa3557ab5fa655af2847a430de1c5b0b99af90deca4415a948fac337d"
+    },
+    "docs/rpc-and-data.md": {
+      "bytes": 9583,
+      "sha256": "68091137821c61bf5f08cea17a91080bda589ecfeea370511a0cbcfa2c6a0f87"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176"
+    },
+    "crates/thorum-relation-lab/src/codec.rs": {
+      "bytes": 1278,
+      "sha256": "d034294a3c7045a9d3c99fd64c60ee6959973215770b8470cc66f16ac1d66d98"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "research/header-work/src/header.rs": {
+      "bytes": 12245,
+      "sha256": "fe132de03d5909e63faf2d8443a6ca5814da85171569310351ec9ac2085de3bc"
+    },
+    "research/header-work/src/lib.rs": {
+      "bytes": 94,
+      "sha256": "d139c8cd534acdb06a7dec41d63315f3fce462aba83ac2c7d5d26f4bea01edd4"
+    },
+    "research/header-work/Cargo.toml": {
+      "bytes": 606,
+      "sha256": "368046c6dd018049194507d80df6e149675416c0ee00e51bc4b7f78437736f46"
+    },
+    "research/header-work/Cargo.lock": {
+      "bytes": 3260,
+      "sha256": "e3e615b052a4b84bdc870b46e03e508537048d450dd7fa6da07882cbce72a939"
+    },
+    "research/header-work/provenance.json": {
+      "bytes": 9056,
+      "sha256": "5949ab9c7c4651f09c48a2a57bbe61e0a1252c8fcc0826d6d60321ec6703df9d"
+    },
+    "research/header-work/validation.json": {
+      "bytes": 8833,
+      "sha256": "72b012f362776133984b9c35c6a1acda03b15716b9cee8efd7a5295aba632db2"
+    }
+  },
+  "historical_contexts": {
+    "docs/mining.md": {
+      "revision": "b3287e5b68803602d2592597d2e64f767efaca92",
+      "git_blob": "b5090fb27ce0266343076cfa2bc416a464c2ef78"
+    },
+    "docs/research-index.md": {
+      "revision": "b3287e5b68803602d2592597d2e64f767efaca92",
+      "git_blob": "8840c1d9ecad5d35b5709ed68d703cec1d171028"
+    }
+  },
+  "decisions": {
+    "parent_comparison": "Historical Zcash mainnet NU5. Not a current production parent profile.",
+    "height_min": 1687104,
+    "height_max_exclusive": 2726400,
+    "branch_id": "c2d6d0b4",
+    "transaction_version": 5,
+    "version_group_id": "26a7270a",
+    "carrier": "Canonical height push || 0x45 || KOVA || 0x01 || actual child job commitment[64]",
+    "record_payload_bytes": 69,
+    "script_maximum_bytes": 76,
+    "position": 0,
+    "common_depth_maximum": 20,
+    "carrier_bytes_maximum": 32768,
+    "proposed_payload_contents_maximum": 35576,
+    "job_encoding_selected": false,
+    "job_hash_domain_and_algorithm_selected": false,
+    "complete_binding_fixture_available": false,
+    "verifier_implemented": false,
+    "activation_allowed": false
+  },
+  "primary_digest_evidence": {
+    "cases": 10,
+    "minimum_raw_transaction_bytes": 660,
+    "maximum_raw_transaction_bytes": 4294,
+    "branch_id": "c2d6d0b4",
+    "scope": "Saved digest vectors with synthetic proof bytes, not cryptographically valid mined transaction or complete binding evidence",
+    "generator_executed": false
+  },
+  "parent_block_byte_inspection": {
+    "decoded_block_bytes": 9117,
+    "header_version": "04000000",
+    "header_merkle_root": "260fb56800153f20113cdb8fc3becbe547712adaf5910e4a1199ea3f3216eb6c",
+    "header_commitment": "92d9dfc92a527212e5bbec9f472697beae80b084cf6077b21a913cb8a3e3341b",
+    "header_bits": "e4ae011c",
+    "header_solution_prefix": "fd4005",
+    "following_count_prefix": "050500",
+    "scope": "Byte inspection only. No solution, digest, transaction, tree or chain validation."
+  },
+  "required_future_scenarios": 16,
+  "unresolved": [
+    "canonical child preseal job and actual public authorization binding",
+    "complete nominal v5 decoder and conditional shielded serializer closure",
+    "independent same-header complete binding tuple",
+    "distinct parent-template and child-target forwarding",
+    "private proof and authenticated ledger feasibility",
+    "confidential stake and bootstrap trust"
+  ],
+  "executions": {
+    "compiler": 0,
+    "cargo": 0,
+    "model": 0,
+    "native_verifier": 0,
+    "proof": 0,
+    "source_generator": 0,
+    "old_test_replay": 0,
+    "live_node_rpc": 0
+  },
+  "inspection_scope": {
+    "specifications": "Complete ZIP244, ZIP225 and ZIP221 source text. No primary security theorem application.",
+    "effect_and_authentication": "Actual v5 digest entry, transparent fields, same-object serialization and authorization combination. v6/Ironwood differences identified but excluded.",
+    "carrier": "Actual null-prevout, complete script framing, canonical height and original 2..100 script bound. No new parser executed.",
+    "trees": "Complete original transaction/AuthDataRoot builders and outer block commitment construction. No tree evaluator executed.",
+    "fixture": "Primary ten-row raw digest data and generator inspected without import or execution. A historical block was hex-decoded only for fixed byte framing.",
+    "remaining": "Full selected nominal decoder, complete conditional shielded path dependency/license closure and current production profile remain before implementation."
+  }
+}

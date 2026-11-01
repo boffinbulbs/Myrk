@@ -28,6 +28,8 @@ An auxiliary witness must authenticate the intended child candidate, chain/domai
 
 The referenced parent transaction format requires careful treatment of both transaction and authorization commitments. The appropriate branches cannot be replaced by an unqualified check of the transaction ID alone. Parent format rules must be pinned to an evaluated version. [Transaction/authorization commitments](https://zips.z.cash/zip-0244), [miner/pool protocol](https://zips.z.cash/zip-0301)
 
+The [auxiliary child binding contract](auxiliary-work-binding.md) selects a coinbase-script carrier candidate and same-position transaction and authorization paths under an explicit historical v5 comparison profile. It separates child and parent work targets and records the missing child job encoding and independent complete fixture. Its proposed byte grammar and required controls remain specifications, with no accepting auxiliary verifier.
+
 A work result that satisfies the child target need not satisfy the external chain's harder target. A valid child witness also does not prove a winning external candidate was broadcast, accepted, remained canonical, or paid the treasury. Operators separately reconcile actual external receipts through their full nodes.
 
 ## Permissionless integration

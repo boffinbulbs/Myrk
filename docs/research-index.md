@@ -12,6 +12,8 @@ The [parent header work selection](../research/work-authentication/README.md) pi
 
 The [fixed parent header diagnostic](../research/header-work/README.md) implements that byte boundary with actual published Equihash and SHA-256 dependencies. Its saved test validates the independently anchored genesis header and rejects metadata and real fixed-profile solution mutations. It supplies no complete auxiliary child binding, parent history or stake activation authority.
 
+The [auxiliary child binding specification](auxiliary-work-binding.md) traces actual v5 effect and authorization commitments to one parent header. Its carrier, bounded witness proposal and target separation identify concrete remaining job, fixture and decoder gates. The [source record](../research/auxiliary-binding/source-record.json) pins the independent references without executing their generators or a new verifier.
+
 The [finite proof reader](../research/frame-reader/README.md) connects header admission, payload reservation and one request authority to the original proof decoder. Actual file, truncation, error cause and repeated-use controls retain separate resource, encoding and cryptographic validity boundaries.
 
 The [bounded source proof decoder](../research/proof-transport/README.md) applies fixed byte and syntax budgets before owned decoding of the original proof type. Its diagnostic tests actual malformed inputs, shape checks and canonical comparison. A correctly encoded altered commitment still decodes without verification, preserving the boundary between transport and cryptographic validity.
