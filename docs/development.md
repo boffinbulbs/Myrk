@@ -201,6 +201,8 @@ The Qt desktop wallet target includes a local validation node, local witness con
 
 ## Release gates
 
+The [bounded source proof decoding diagnostic](../research/proof-transport/README.md) adds actual typed input admission for the retained small source relation. Fourteen resource errors stop before owned decoding, fourteen encoding, shape and canonical errors reject, and restored canonical inputs pass. This is a decoder boundary, with no prover, verifier or network execution. Upstream header admission, aggregate request limits and complete private proof integration remain separate gates.
+
 The [complete overlay inventory](../research/overlay-composition/README.md) projects 26,300,841,984 retained field file bytes under the experimental comparison profile. It separately accounts for base and FRI salts and digests, query contents, claims and construction lifetimes. The full relation remains outside current admission limits. This is scalar resource evidence rather than a wide allocation or complete private proof. The declared proof cap still requires a general untrusted framing and parser implementation.
 
 Private PQ transaction and staking constructions must pass their feasibility and review gates before production interfaces that depend on them are frozen. The bootstrap, genesis, difficulty, finality, withdrawal and recovery rules need complete specifications. Source licenses and dependency notices must be inventoried. No release date or security audit completion is implied by a development milestone.

@@ -1,0 +1,24 @@
+{
+  "altered_commitment_decodes_without_verification": {
+    "admissions": 1,
+    "canonical_encodings": 1,
+    "decoded_shapes": 1,
+    "typed_decodes": 1
+  },
+  "canonical_original_decodes": {
+    "admissions": 4,
+    "canonical_encodings": 4,
+    "decoded_shapes": 4,
+    "typed_decodes": 4
+  },
+  "canonical_writer_controls": 4,
+  "encoding_shape_canonical_refusals": 14,
+  "fixture_bytes": 596650,
+  "format": "kova.proof-transport.native.v1",
+  "full_signature_calls": 0,
+  "network_reads": 0,
+  "pcs_instances": 0,
+  "proofs_produced": 0,
+  "resource_refusals_before_decode": 14,
+  "verifier_calls": 0
+}
