@@ -1,0 +1,41 @@
+[package]
+name = "kova-fallible-input"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+publish = false
+autotests = false
+autobins = false
+autobenches = false
+license = "MIT"
+
+[dependencies]
+kova-proof-preflight = { path = "../proof-preflight" }
+kova-storage-matrix = { path = "../storage-matrix" }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+p3-dft = { version = "=0.8.0", default-features = false }
+rand = { version = "=0.10.3", default-features = false, features = ["std_rng"] }
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+incremental = false
+
+[lib]
+test = false
+doctest = false
+
+[features]
+default = []
+diagnostics = []
+
+[dev-dependencies]
+serde_json = { version = "=1.0.145", default-features = false, features = ["std"] }
+
+[[test]]
+name = "input"
+path = "tests/input.rs"
+required-features = ["diagnostics"]

@@ -1,0 +1,194 @@
+{
+  "cases": [
+    {
+      "bytes": 48,
+      "counters": [
+        1,
+        13
+      ],
+      "fields": 12,
+      "kind": "success",
+      "legacy": false
+    },
+    {
+      "bytes": 48,
+      "counters": [
+        1,
+        13
+      ],
+      "fields": 12,
+      "kind": "success",
+      "legacy": true
+    },
+    {
+      "counters": [
+        1,
+        7
+      ],
+      "error": "Length",
+      "kind": "source_error",
+      "reentry": [
+        0,
+        0
+      ]
+    },
+    {
+      "counters": [
+        1,
+        6
+      ],
+      "error": "NonCanonicalField",
+      "kind": "source_error",
+      "reentry": [
+        0,
+        0
+      ]
+    },
+    {
+      "counters": [
+        1,
+        13
+      ],
+      "error": "Bounds",
+      "kind": "source_error",
+      "reentry": [
+        0,
+        0
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "metadata_refusal",
+      "legacy": false,
+      "shape": [
+        0,
+        3
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "metadata_refusal",
+      "legacy": false,
+      "shape": [
+        3,
+        3
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "metadata_refusal",
+      "legacy": false,
+      "shape": [
+        8192,
+        3
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "metadata_refusal",
+      "legacy": false,
+      "shape": [
+        8192,
+        42178
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "output_collision",
+      "legacy": false,
+      "reentry": [
+        0,
+        0
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "metadata_refusal",
+      "legacy": true,
+      "shape": [
+        0,
+        3
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "metadata_refusal",
+      "legacy": true,
+      "shape": [
+        3,
+        3
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "metadata_refusal",
+      "legacy": true,
+      "shape": [
+        8192,
+        3
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "metadata_refusal",
+      "legacy": true,
+      "shape": [
+        8192,
+        42178
+      ]
+    },
+    {
+      "counters": [
+        0,
+        0
+      ],
+      "kind": "output_collision",
+      "legacy": true,
+      "reentry": [
+        0,
+        0
+      ]
+    }
+  ],
+  "complete_proofs": 0,
+  "failed_owner_reentries": 5,
+  "format": "kova.fallible-input.native.v1",
+  "full_signature_calls": 0,
+  "maximum_store_files": 1,
+  "maximum_store_reservation": 48,
+  "primary_cases": 15,
+  "reference_byte_comparisons": 96,
+  "reference_field_comparisons": 24,
+  "source_bytes": 48,
+  "source_shape": [
+    4,
+    3
+  ]
+}

@@ -169,6 +169,8 @@ The [complete signature overlay](../research/signature-overlay/README.md) integr
 
 The [streamed overlay validation](../research/signature-overlay-native/README.md) constructs a complete native source walk for one immutable synthetic owner and canonical transaction. Every genuine global frame satisfies the actual complete overlay AIR. Twelve frame mutations reject and twelve restorations pass. Independent saved literals match 27,648 observed values. Row specific writer ownership preserves the shared bank across product and hint interpretations. This native result constructs no hiding proof and does not admit the full signature to the retained proof resource class.
 
+The [deferred fallible input component](../research/fallible-input/README.md) preserves the raw source iterator interface while moving its initialization after metadata, owner and exclusive output checks. Ordinary and fallible copies share one canonical writer. Actual source length, noncanonical field and terminal bounds errors preserve their typed cause through cleanup. Fifteen primary controls and five failed owner reentries pass under external limits. The new preparation type is not yet integrated into the complete source prover. No masking, commitment, opening or proof executes in this diagnostic.
+
 The standalone signature ownership producer uses the retained locked dependencies and a separate target directory. CI checks its formatting and strict release lints, verifies the existing raw signatures, and reproduces the independent reference. These commands create no signatures.
 
 ```text

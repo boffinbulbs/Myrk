@@ -200,6 +200,8 @@ The [arithmetic workspace component](research/arithmetic-overlay/README.md) impl
 
 The [complete signature overlay](research/signature-overlay/README.md) integrates those modes with the actual private source operands, transform and hint consumers. Its 42,178 column relation has 71,623 symbolic assertions of degree four. The [streamed native validation](research/signature-overlay-native/README.md) checks all 8,192 genuine frames from one synthetic owner against that complete relation, matches 27,648 independent saved values and rejects twelve altered frames. Hiding proofs and private ledger integration remain separate stages.
 
+The [deferred source ingestion component](research/fallible-input/README.md) initializes streamed input only after raw output admission and retains actual checked source errors through owner cleanup. Its bounded diagnostic covers canonical copies, malformed source files, shape refusals, output collisions and failed owner reentry. Integration with committed data and complete private proofs remains separate.
+
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
 ## Build and reproduce

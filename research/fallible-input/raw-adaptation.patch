@@ -1,0 +1,65 @@
+--- source-preparation/src/lib.rs
++++ fallible-input/src/lib.rs
+@@ -161,26 +161,49 @@
+             Phase::Failed => Err(Error::Failed),
+         }
+     }
++    /// Legacy infallible data uses the same deferred canonical writer.
+     pub fn write_raw(
+         &self,
+         height: usize,
+         width: usize,
+         values: impl IntoIterator<Item = BabyBear>,
+     ) -> Result<OwnedMatrix, Error> {
++        self.raw_with(height, width, move || values.into_iter().map(Ok))
++    }
++    /// Source initialization follows physical output admission. A source error
++    /// remains the typed first cause instead of becoming an incomplete input.
++    pub fn try_write_raw(
++        &self,
++        height: usize,
++        width: usize,
++        values: impl IntoIterator<Item = Result<BabyBear, Error>>,
++    ) -> Result<OwnedMatrix, Error> {
++        self.raw_with(height, width, move || values)
++    }
++    fn raw_with<I>(
++        &self,
++        height: usize,
++        width: usize,
++        source: impl FnOnce() -> I,
++    ) -> Result<OwnedMatrix, Error>
++    where
++        I: IntoIterator<Item = Result<BabyBear, Error>>,
++    {
+         if !(1..=8).contains(&width) {
+             return Err(Error::Shape);
+         }
+         let count = height.checked_mul(width).ok_or(Error::Limit)?;
+-        let mut values = values.into_iter();
+         self.create(height, width, Role::RawInput, |file| {
++            let mut values = source().into_iter();
+             for _ in 0..count {
+-                let value = values.next().ok_or(Error::Incomplete)?;
++                let value = values.next().ok_or(Error::Incomplete)??;
+                 file.write_all(&value.as_canonical_u32().to_le_bytes())?;
+             }
+-            if values.next().is_some() {
+-                return Err(Error::Incomplete);
+-            }
+-            Ok(())
++            match values.next() {
++                None => Ok(()),
++                Some(Err(error)) => Err(error),
++                Some(Ok(_)) => Err(Error::Incomplete),
++            }
+         })
+     }
+     pub fn prepare_owned<R: Rng + Send + Sync>(
+@@ -594,6 +617,3 @@
+         std::panic::panic_any(Error::Unsupported)
+     }
+ }
+-
+-#[cfg(test)]
+-mod tests;
