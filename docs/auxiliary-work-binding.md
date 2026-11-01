@@ -2,6 +2,8 @@
 
 This specification connects the [fixed header work component](../research/header-work/README.md) to the transaction and authorization commitments required by [mining](mining.md). It implements no auxiliary verifier, child block encoder, mining service or activation rule. The construction decision below selects a carrier location and a bounded witness proposal. The [preseal job specification](preseal-job.md) now fixes its outer framing and commitment candidate. Execution remains blocked by the missing actual class encodings and supported resource profile, independent complete binding fixture and remaining decoder source closure.
 
+The subsequent [restricted construction decision](../research/auxiliary-construction/README.md) selects a comparison carrier containing only transparent components, refusal at nonzero shielded counts before their payloads, exact digest and path schedule, and separate parent and child thresholds. It records the remaining context, fixture and nominal assembly blockers. It implements no accepting predicate.
+
 ## Versioned parent comparison
 
 The source comparison uses Zcash mainnet's historical NU5 interval, heights `1687104 <= h < 2726400`, branch ID `0xc2d6d0b4`, transaction version five and version group ID `0x26a7270a`. This is an explicit historical compatibility profile, not a selected current production parent profile. Its source and digest fixtures are pinned in the [source record](../research/auxiliary-binding/source-record.json).
@@ -94,7 +96,7 @@ The separately captured [mainnet block 1687106](https://github.com/ZcashFoundati
 The architectural decision is to retain the coinbase-script carrier and same-position dual-root construction as the candidate, and **refuse execution or activation until its remaining inputs are concrete**:
 
 1. The outer canonical child preseal framing, public authorization binding and domain are now specified. Actual supported effect, proof and recovery encoders and an authenticated context must still exist before deriving the expected 64 byte record from a real child candidate.
-2. The selected v5 carrier decoder, complete shielded conditional serialization paths, constants, dependencies and licenses require full nominal assembly review. Captured source does not itself admit a build.
+2. The restricted successor excludes nonempty shielded bundles before payload decoding. Its exact monetary range semantics, canonical serializer, constants, dependencies and licenses still require a cohesive nominal assembly before any compiler target. The general original decoder is not implicitly admitted.
 3. An independent full tuple of carrier bytes, both branches, history component, header and expected job statement is required. Digest vectors and unrelated header success cannot be joined into a fabricated positive. A newly mined tuple cannot be obtained by editing a saved header's transaction data without changing its work input.
 4. The two-target successor and the exact parent-template policy must be selected before an auxiliary-share implementation can forward actual work checks.
 5. Complete private authorization, confidential eligible stake, bootstrap trust, denominator and certificate construction, durable signer state, atomic ledger and network gates remain unresolved. This binding proposal cannot activate them.

@@ -32,6 +32,8 @@ The [auxiliary child binding contract](auxiliary-work-binding.md) selects a coin
 
 The [preseal job specification](preseal-job.md) fixes the candidate outer field order, exact byte commitment and separate effect and authorization identities. It commits complete ordered public bytes, excludes the work seal and local storage generation, and leaves unsupported proof classes and resource profiles refused. No child block codec or acceptance path is implemented by that specification.
 
+The [restricted auxiliary construction](../research/auxiliary-construction/README.md) specifies the complete proposed carrier, dual commitment and work schedule. It quantifies borrowed contents and hash incidence while retaining refusal for the missing authenticated target context, nominal assembly and complete independent work fixture. Child difficulty and timestamp derivation remain a separate launch requirement.
+
 A work result that satisfies the child target need not satisfy the external chain's harder target. A valid child witness also does not prove a winning external candidate was broadcast, accepted, remained canonical, or paid the treasury. Operators separately reconcile actual external receipts through their full nodes.
 
 ## Permissionless integration

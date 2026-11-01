@@ -1,0 +1,414 @@
+{
+  "format": "kova.auxiliary-construction.source-specification.v1",
+  "date": "2026-11-01",
+  "baseline": "1ec1e4525b6511deb461c7825e5778075662759a",
+  "scope": "Source and specification only. No program, compiler, parser, protocol hash calculation, model, work verification or network execution.",
+  "identity": "Repository context uses CRLF-normalized UTF-8 bytes. Captured upstream identities are exact raw bytes and Git blobs.",
+  "repository_context": {
+    "research/preseal-bytes/src/bytes.rs": {
+      "bytes": 11100,
+      "sha256": "b0ab4d053c8d085ecfca0dd5a35db386622f10884b07277944f09ee16734296e",
+      "git_blob": "ae8821eb31041550ade78d9cc4f0dcfb7018ba9a"
+    },
+    "research/preseal-bytes/src/lib.rs": {
+      "bytes": 127,
+      "sha256": "02de39f3af0699d546eff34b4da67e9b265294428bf07690c3c5e862dce85f47",
+      "git_blob": "6e3c60c14bd5cdc6b858df71fccea8e50f1552ef"
+    },
+    "research/preseal-bytes/src/tests.rs": {
+      "bytes": 9781,
+      "sha256": "51fb817ef66287656a04458c89d40cf0288151bb8ad21aa21e28d36bbbdaeea2",
+      "git_blob": "7442e344dd827f4a1639b17c162fe6dd458085c1"
+    },
+    "research/preseal-bytes/Cargo.toml": {
+      "bytes": 515,
+      "sha256": "21ec13c0f365ee7e0461511519226efdfba9737aff301f7ad4bcdac4d55e04cf",
+      "git_blob": "bb3b34373e328e73ad2e9faabeb8f3d1a1654bbb"
+    },
+    "research/preseal-bytes/Cargo.lock": {
+      "bytes": 2366,
+      "sha256": "4e8b4a330b0e9cff54ad826f9831b4f8b00ae3c4cc3f5acaf9a042c0423d6703",
+      "git_blob": "63ff309062ce527a118e628e4ddd66e68201ca40"
+    },
+    "research/preseal-bytes/provenance.json": {
+      "bytes": 12753,
+      "sha256": "f7507373a12c99276bbe4fbd779f0f6f873d072f519ea3540d726ea72f15272b",
+      "git_blob": "be129623485dcdef470d0efa39efe215f0820d53"
+    },
+    "research/preseal-bytes/validation.json": {
+      "bytes": 7960,
+      "sha256": "3a51cbb519d310d63c584fba3c325b8fcb12fb556c309cc0e79d8a00720258f9",
+      "git_blob": "84b67cf88048d7cb0da5256dd8d1a4f0a312e922"
+    },
+    "research/preseal-bytes/README.md": {
+      "bytes": 7717,
+      "sha256": "306f003e8b5796e22e0afec5f30787d3af3cb3d0a258322e4f2b011cf0c69879",
+      "git_blob": "be2c5f13b4250882895c7b3edb410744b736b043"
+    },
+    "research/header-work/src/header.rs": {
+      "bytes": 12245,
+      "sha256": "fe132de03d5909e63faf2d8443a6ca5814da85171569310351ec9ac2085de3bc",
+      "git_blob": "668d96f0a3fca0f83e45692a45d1f6b96131319b"
+    },
+    "research/header-work/Cargo.toml": {
+      "bytes": 606,
+      "sha256": "368046c6dd018049194507d80df6e149675416c0ee00e51bc4b7f78437736f46",
+      "git_blob": "3e9011e3f9c913145cdb3e3e476698809b429bce"
+    },
+    "research/header-work/Cargo.lock": {
+      "bytes": 3260,
+      "sha256": "e3e615b052a4b84bdc870b46e03e508537048d450dd7fa6da07882cbce72a939",
+      "git_blob": "a5d3c0d30425cbfbaed6010d040fc11aff565313"
+    },
+    "research/header-work/provenance.json": {
+      "bytes": 9056,
+      "sha256": "5949ab9c7c4651f09c48a2a57bbe61e0a1252c8fcc0826d6d60321ec6703df9d",
+      "git_blob": "0cef50fe42dd3c2fea174d60475572ccc335f2fb"
+    },
+    "research/header-work/README.md": {
+      "bytes": 7301,
+      "sha256": "83ed540df0b07b5586550855b7aa778c14414b92f3c6b0e19d46c664b7c7d073",
+      "git_blob": "61fc58e6fac1b99dd17736ea10c7d117773e19a9"
+    },
+    "docs/preseal-job.md": {
+      "bytes": 17600,
+      "sha256": "1a16ad59ab202efc655764a02e926e996ca09125aa678bd2b4a8e2eafd606bb4",
+      "git_blob": "1c6e3aebcd966def72381e285f767ca7df4b8a89"
+    },
+    "docs/private-transition-state.md": {
+      "bytes": 20202,
+      "sha256": "f5d447290a69bb11ed9efda6d0a5024dbaac1f0e1bfafa079f01d5f1522e7fbf",
+      "git_blob": "852793fd3de546aa9074c562bbb0eb0be5708990"
+    },
+    "docs/confidential-stake.md": {
+      "bytes": 21669,
+      "sha256": "703c3d90f01999a7b250c3142cd615f1758928b495e037787e633563cbd2daa8",
+      "git_blob": "8d00cca2d27740a96d5f3a21d3af9fcc94ce40c3"
+    },
+    "docs/parameters.md": {
+      "bytes": 5743,
+      "sha256": "4e21e1847a52fca37be761c3ac17d64047483aea64584929a0169150c4dbb7f9",
+      "git_blob": "d896d7a914ecd4877173a5a2481690473c8021b0"
+    },
+    "docs/checkpoints.md": {
+      "bytes": 5476,
+      "sha256": "0888287d33dc6c2a1fa8a265365220f0e6e94d7808b4ed6d7b11ce6e54efc1e1",
+      "git_blob": "07f5fc9450dc39f209ed8a9fafa10dbdca58cbec"
+    },
+    "docs/architecture.md": {
+      "bytes": 9533,
+      "sha256": "d00407a4b71d2e222454ca72ae4df30c69bdad7e91360ddaefa31f7366ffe7e5",
+      "git_blob": "f194d88d13c1f77bf517dd034884ca77aac759fb"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 9055,
+      "sha256": "526db01aa3557ab5fa655af2847a430de1c5b0b99af90deca4415a948fac337d",
+      "git_blob": "f665ba699c37596bb9027eaae49fc7ca43b670ae"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d",
+      "git_blob": "2aa845c5751b7975bb40b2415b55b92beff2a85b"
+    },
+    "crates/thorum-core/src/emission.rs": {
+      "bytes": 3344,
+      "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7",
+      "git_blob": "da8721c6f8478bbb1918e0b72cdf0035325cca7f"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "bytes": 3989,
+      "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b",
+      "git_blob": "924d22657f0eb056d3e47c19830326392bc0dfe7"
+    },
+    "crates/thorum-core/src/lib.rs": {
+      "bytes": 1817,
+      "sha256": "b5339e14659c208b321a767ea4164bb629f7db2c638d031391df5bd3c0aadd67",
+      "git_blob": "24a2b3d22cb8ff8c3ef31b16b22378a89fa1868c"
+    }
+  },
+  "historical_documents": [
+    {
+      "revision": "1ec1e4525b6511deb461c7825e5778075662759a",
+      "path": "docs/auxiliary-work-binding.md",
+      "git_blob": "f5f4cf36c7326a13728bb6d68c00b478282aae42"
+    },
+    {
+      "revision": "1ec1e4525b6511deb461c7825e5778075662759a",
+      "path": "docs/mining.md",
+      "git_blob": "613d4e0fddfc53727038dccacd222c6bce9cdd3c"
+    },
+    {
+      "revision": "1ec1e4525b6511deb461c7825e5778075662759a",
+      "path": "docs/research-index.md",
+      "git_blob": "0dbbb6781f34fd3a5889bc7770a169c98467d83f"
+    }
+  ],
+  "retained_upstreams": [
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/block/commitment.rs",
+      "bytes": 14574,
+      "sha256": "39b46bb7447e89451c4f526ff658eaec8d40bcb52b28dbfa71fb615d0fd1d69c",
+      "git_blob": "7b1f4e6b23ad0909aed22667f5b6256c1fc05cbf",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/block/commitment.rs"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/block/merkle.rs",
+      "bytes": 14822,
+      "sha256": "407c6eac0137b4b323f42dd2bcab9c2718b95f153ad302e298e8cc8c961d929e",
+      "git_blob": "b68bf2870ce1139d662aa2e142e57e0b515e135c",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/block/merkle.rs"
+    },
+    {
+      "repository": "zcash/zips",
+      "revision": "ff594de6e95bb9e9e7d2ace09510281531c30447",
+      "path": "zips/zip-0244.rst",
+      "bytes": 37575,
+      "sha256": "0bb48ee767bd475c83f4203d8c54f6aff87d55eafedb7350e1d3e221beb94266",
+      "git_blob": "a553f704596885f9d5c617a6cef3119f61b47d46",
+      "url": "https://github.com/zcash/zips/blob/ff594de6e95bb9e9e7d2ace09510281531c30447/zips/zip-0244.rst"
+    },
+    {
+      "repository": "zcash/zips",
+      "revision": "ff594de6e95bb9e9e7d2ace09510281531c30447",
+      "path": "zips/zip-0221.rst",
+      "bytes": 37326,
+      "sha256": "e931c09613143b44adfeeaa597bd4a47938dd9a5062411132243bad929a6b40d",
+      "git_blob": "4ee35accebb86b9af591ae2fec8cd7636739fc47",
+      "url": "https://github.com/zcash/zips/blob/ff594de6e95bb9e9e7d2ace09510281531c30447/zips/zip-0221.rst"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/transaction/hash.rs",
+      "bytes": 9968,
+      "sha256": "c25708575e6843b699facbe77784cd7b2421cfe7ebdfa0fe95a050b4068fec20",
+      "git_blob": "87520409a2f31d1ea1ce02b4c20bceda2818cb5e",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/transaction/hash.rs"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/transaction/auth_digest.rs",
+      "bytes": 3496,
+      "sha256": "1e6ce46a66da8d4d35e18b9c220d9aaef74a34dbbdeb994bf971d813a1a8718f",
+      "git_blob": "444a5acd4d7d2af29db3cb5906272bc1eeb61345",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/transaction/auth_digest.rs"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/transaction/compat.rs",
+      "bytes": 14448,
+      "sha256": "ddf86281e59c80e95b1ec3edd3af7ec65d8ff5cc5f7164c2febf5be8a10ae109",
+      "git_blob": "9a8d84ea9cdedc60f2915977e897781846819dd1",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/transaction/compat.rs"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/transaction/serialize.rs",
+      "bytes": 32372,
+      "sha256": "7fceb04ef65c4829fbcb3ce253280d34ea6fe64817e2e4a65f3b6e775ef0ab2c",
+      "git_blob": "5f12db7986c573ad87271e05399eda251119bb6f",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/transaction/serialize.rs"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/parameters/network_upgrade.rs",
+      "bytes": 25183,
+      "sha256": "87c4eaa567f370c8abcee6c3ff1ce8ec273aa28f423df0245006c3fdd9ea294e",
+      "git_blob": "a1ba478c1b356b165c2e9930565478d1195a03ff",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/parameters/network_upgrade.rs"
+    },
+    {
+      "repository": "zcash/librustzcash",
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "path": "zcash_primitives/src/transaction/txid.rs",
+      "bytes": 24832,
+      "sha256": "73b2a828d2fe728add42048d9060e0eadd2de510ed2573a4313d833c827972d1",
+      "git_blob": "0da2597fd59dab7b064cf67925c9b6f3e827ca2f",
+      "url": "https://github.com/zcash/librustzcash/blob/a551fac8a233f54799ca1920ef78ef098cfda929/zcash_primitives/src/transaction/txid.rs"
+    },
+    {
+      "repository": "zcash/librustzcash",
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "path": "zcash_primitives/src/transaction/mod.rs",
+      "bytes": 59910,
+      "sha256": "51692bed8b4d8bf5d9c5de4fee66798935f1a92d99f0a31326dd045e84628294",
+      "git_blob": "fc194bcadaeb3fd091dabb32696d086ee352cf9c",
+      "url": "https://github.com/zcash/librustzcash/blob/a551fac8a233f54799ca1920ef78ef098cfda929/zcash_primitives/src/transaction/mod.rs"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/transaction.rs",
+      "bytes": 60832,
+      "sha256": "8c24c5c78507be94b192690c46e4847da30f24b922013a9de872b6b1befdeb06",
+      "git_blob": "4c552828950fecbf92589917ad97b03818a4eb7c",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/transaction.rs"
+    },
+    {
+      "repository": "zcash/librustzcash",
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "path": "components/zcash_protocol/src/consensus.rs",
+      "bytes": 47936,
+      "sha256": "a6a7ccc3cdcc32c5f45772273e419432c08615e085084e595f6c6150a232b6b5",
+      "git_blob": "d870c9f68bb48f287d5893b5919aba316b358261",
+      "url": "https://github.com/zcash/librustzcash/blob/a551fac8a233f54799ca1920ef78ef098cfda929/components/zcash_protocol/src/consensus.rs"
+    },
+    {
+      "repository": "zcash/librustzcash",
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "path": "zcash_transparent/src/bundle.rs",
+      "bytes": 16351,
+      "sha256": "61a4bd9b83e0d3951d22acc8d4aac8e04c3f27b98fe3e6290eed4794a14d400d",
+      "git_blob": "133e54f048201b7cdbd4ddc0198875b871661e47",
+      "url": "https://github.com/zcash/librustzcash/blob/a551fac8a233f54799ca1920ef78ef098cfda929/zcash_transparent/src/bundle.rs"
+    },
+    {
+      "repository": "zcash/librustzcash",
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "path": "zcash_primitives/src/encoding.rs",
+      "bytes": 2244,
+      "sha256": "ea5912560f2c21a11481392a95a361b2cb0f2160e319c5529034300a6d27c4df",
+      "git_blob": "6f6455b68d2e66d1ef7a9b1b3196a1cd32c94d7a",
+      "url": "https://github.com/zcash/librustzcash/blob/a551fac8a233f54799ca1920ef78ef098cfda929/zcash_primitives/src/encoding.rs"
+    },
+    {
+      "repository": "zcash/zips",
+      "revision": "ff594de6e95bb9e9e7d2ace09510281531c30447",
+      "path": "zips/zip-0225.rst",
+      "bytes": 31850,
+      "sha256": "5e026434c445b0bb0a031d3271d7b8c0e4405f8107b03c16be583497b0eb333d",
+      "git_blob": "6e46bbf4d5abb17c6f784b5f1f28e0029108d231",
+      "url": "https://github.com/zcash/zips/blob/ff594de6e95bb9e9e7d2ace09510281531c30447/zips/zip-0225.rst"
+    },
+    {
+      "repository": "zcash/librustzcash",
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "path": "zcash_transparent/src/address.rs",
+      "bytes": 7530,
+      "sha256": "6a5e646631eaeaa8e301505af6302c5faa36b99aaf5769d3979c8e69472873d7",
+      "git_blob": "41f7b8c95229097dcdb2af90c721de44608b9f62",
+      "url": "https://github.com/zcash/librustzcash/blob/a551fac8a233f54799ca1920ef78ef098cfda929/zcash_transparent/src/address.rs"
+    },
+    {
+      "repository": "zcash/zcash-test-vectors",
+      "revision": "78321beacb0e0477e33cd002b56585a107c2708c",
+      "path": "test-vectors/json/zip_0244.json",
+      "bytes": 56820,
+      "sha256": "3d20892f19cec18afba2ef2907bb8426192d0ea4eac2c0060c2f31ff78ad93a3",
+      "git_blob": "809dbf0e57aa1acdcc2004bb325f741a782bacc0",
+      "url": "https://github.com/zcash/zcash-test-vectors/blob/78321beacb0e0477e33cd002b56585a107c2708c/test-vectors/json/zip_0244.json"
+    },
+    {
+      "repository": "zcash/zcash-test-vectors",
+      "revision": "78321beacb0e0477e33cd002b56585a107c2708c",
+      "path": "zcash_test_vectors/zip_0244.py",
+      "bytes": 15252,
+      "sha256": "789b37325bc0f99fbf51326ec18421bee076805b68643608bda2032af755923e",
+      "git_blob": "8a7a3e96bac081e89147445bd0034680d57ee32a",
+      "url": "https://github.com/zcash/zcash-test-vectors/blob/78321beacb0e0477e33cd002b56585a107c2708c/zcash_test_vectors/zip_0244.py"
+    },
+    {
+      "repository": "zcash/zcash-test-vectors",
+      "revision": "78321beacb0e0477e33cd002b56585a107c2708c",
+      "path": "COPYING.md",
+      "bytes": 496,
+      "sha256": "1b0f8332e3f8b72835e1bf816a7471103c74e82b16c149e08f36136e175d9846",
+      "git_blob": "4f1b0b77b425af1006ab8e41f8db4d47f1103337",
+      "url": "https://github.com/zcash/zcash-test-vectors/blob/78321beacb0e0477e33cd002b56585a107c2708c/COPYING.md"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-test/src/vectors/block-main-1-687-106.txt",
+      "bytes": 18235,
+      "sha256": "0e0c7456caacfc7b48839bd603e3426c456d02f972a2f33dfc07d4d7bddc4776",
+      "git_blob": "c8c3f5443aa3c7924a4eeb0cff3ab198f5c2609c",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-test/src/vectors/block-main-1-687-106.txt"
+    },
+    {
+      "repository": "zcash/librustzcash",
+      "revision": "a551fac8a233f54799ca1920ef78ef098cfda929",
+      "path": "components/zcash_encoding/src/lib.rs",
+      "bytes": 19244,
+      "sha256": "79cd47d3d73370fff5745c3e2efaeebc0104c0ec96aaf20cb085670829459d31",
+      "git_blob": "37c55fd80e059f9483873f78ff42d4c381bd970c",
+      "url": "https://github.com/zcash/librustzcash/blob/a551fac8a233f54799ca1920ef78ef098cfda929/components/zcash_encoding/src/lib.rs"
+    },
+    {
+      "repository": "ZcashFoundation/zebra",
+      "revision": "f72dc18766be63574f17510ee35e61ff2abfe2ae",
+      "path": "zebra-chain/src/transparent/serialize.rs",
+      "bytes": 11181,
+      "sha256": "04a4b80a25ad61446c6a0bb94d843bca2d984dd099a4301b0551aa9ed660c0f9",
+      "git_blob": "ba5b3575ab8a6fb759f6523bfef6a7349a592a1b",
+      "url": "https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-chain/src/transparent/serialize.rs"
+    },
+    {
+      "repository": "zcash/zcash-test-vectors",
+      "revision": "78321beacb0e0477e33cd002b56585a107c2708c",
+      "path": "zcash_test_vectors/transaction.py",
+      "bytes": 22467,
+      "sha256": "7b67e5522cb6c78b82f33b1f7cdf1bbb16e3cf969cf2ba4fce702c46f8aa5caf",
+      "git_blob": "bc4c261bb50566f9675d25747197ead2b89018cd",
+      "url": "https://github.com/zcash/zcash-test-vectors/blob/78321beacb0e0477e33cd002b56585a107c2708c/zcash_test_vectors/transaction.py"
+    }
+  ],
+  "captured_files": 24,
+  "captured_raw_bytes": 584944,
+  "new_capture_files": 0,
+  "new_cargo_root": null,
+  "program_admissions": 0,
+  "upstream_notices": {
+    "zcash/librustzcash": "MIT OR Apache-2.0, original retained source record",
+    "ZcashFoundation/zebra": "MIT OR Apache-2.0, original retained source record",
+    "zcash/zips": "MIT, original ZIP headers",
+    "zcash/zcash-test-vectors": "MIT OR Apache-2.0, retained COPYING.md"
+  },
+  "inspection": [
+    "Original v5 version dispatch, transparent-before-shielded read order and writer order",
+    "Original TxIdDigester and BlockTxCommitmentDigester with exact empty-bundle and script framing",
+    "Original CompactSize canonicality, vector collection, transparent input, output and script serialization",
+    "Original canonical coinbase height rules and null-prevout definition",
+    "Original same-position transaction and authorization trees and complete96byte outer commitment",
+    "Original header work expected-bits and numeric threshold coupling",
+    "Current unverified job byte ownership, parsed context and actual job identity source",
+    "Current private state, confidential stake and monetary policy boundaries"
+  ],
+  "unclosed_nominal_source": [
+    "No selected new root or union dependency/features/license graph",
+    "Zatoshis defining monetary range source remains required before implementation",
+    "Full original conditional Sapling and Orchard decoder imports are excluded from the restricted design and are not claimed reviewed as a nominal build closure"
+  ],
+  "decision": {
+    "carrier": "Historical NU5 comparison with only transparent components, one null-prevout input, no nonempty shielded bundle",
+    "script_bytes": 74,
+    "carrier_bytes_formula": "140+sum(8+CompactSizeWidth(k_i)+k_i)",
+    "max_carrier_contents": 32768,
+    "max_outputs": 64,
+    "max_output_script": 4096,
+    "max_depth": 20,
+    "max_auxiliary_contents": 35576,
+    "joint_synthetic_job_auxiliary_contents": 86706,
+    "blake2b256_incidence_outside_equihash": "13+d",
+    "sha256_incidence_outside_equihash": "2(d+1)",
+    "job_sha3_incidence": 1,
+    "status": "Complete binding execution refused pending actual authenticated context, independent solved tuple and nominal source closure",
+    "not_a_peak_measurement": true
+  },
+  "remaining": [
+    "Verifier-owned child target and timestamp derivation from authenticated preceding work state",
+    "Expected parent raw template policy compatible with ordinary validator role",
+    "Actual supported descriptors, inner public effects, authorization proof and recovery encoders",
+    "Complete independent matching job/carrier/dual-path/history/solved-header tuple",
+    "Whole nominal dependencies, limits, adversarial cases and fresh finite guard admission"
+  ],
+  "next": "Child work target and timestamp policy selection"
+}
