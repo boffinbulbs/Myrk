@@ -1,0 +1,105 @@
+{
+  "format": "kova.challenge-batching.source-review.v1",
+  "baseline": "367faefc0f13918045001b39a09544de8ac0f4ab",
+  "scope": "Documented call sites and source context, not a complete dependency or execution freeze",
+  "normalization": "UTF-8 text with CRLF normalized to LF",
+  "repository_files": {
+    "research/fallible-source/src/context.rs": {
+      "bytes": 7109,
+      "sha256": "c4fd197305b8ee714c6166b5aca7c7bcfa05943910381b4543cf997301e58adf"
+    },
+    "research/fallible-source/src/owned_prover.rs": {
+      "bytes": 23300,
+      "sha256": "fba479e858fca705a913b7421e04807fd55c890cbde015f9f7fef70e32834b94"
+    },
+    "research/fallible-source/src/hiding_pcs.rs": {
+      "bytes": 19434,
+      "sha256": "0078d961ae8dabfa2bdee56fcaad411bc3d99e36a8a8afe0617907f710254b38"
+    },
+    "research/fallible-source/Cargo.lock": {
+      "bytes": 16267,
+      "sha256": "bffed31bda33ecbce15d65c071cca806c6ba8dfac9f6bc794305e85c4a8b9b34"
+    },
+    "research/storage-pcs/backend/src/hiding_pcs.rs": {
+      "bytes": 69656,
+      "sha256": "8c12cca5d256e28f0a87f0cf95020e33b62b27070d430776e24599d6a18d6eed"
+    },
+    "research/storage-pcs/backend/src/two_adic_pcs.rs": {
+      "bytes": 70809,
+      "sha256": "5ffa814e4f979b211d84f52d111e7e3d73499d572c88e63553a973e4066ae5b6"
+    },
+    "research/storage-pcs/backend/src/pcs_transcript.rs": {
+      "bytes": 34417,
+      "sha256": "8c05386bd5b59c1a1dc0de7f537b1ca6ba8e7db04bd534d86a5db2fafb9bd4bd"
+    },
+    "research/storage-pcs/backend/src/verifier.rs": {
+      "bytes": 125366,
+      "sha256": "975392a464c823c93c9ec50ce4e73d17a8b0fbdf22f047f887fb749dcf7280a3"
+    },
+    "research/storage-pcs/backend/src/config.rs": {
+      "bytes": 20398,
+      "sha256": "78f50dc6f0b9233e28399a33a0b402d9c1c53f218b5cb8c73df000075c55f4fe"
+    }
+  },
+  "registry_source_context": {
+    "p3-uni-stark-0.8.0/src/verifier.rs": {
+      "bytes": 28497,
+      "sha256": "d55e7787358dca6ad70d28bad8ce8a25428322160fe0133fa680c1a5fe6ab077"
+    },
+    "p3-security-0.8.0/src/assumption.rs": {
+      "bytes": 40709,
+      "sha256": "3374bffe68cb4a4a43aa0964575b1ad27137ac5b0fdcaf84debba3621829287c"
+    },
+    "p3-security-0.8.0/src/proximity.rs": {
+      "bytes": 13372,
+      "sha256": "1135d5bf425bd5e70d5e849d2bbb58d9d3fc795d7eaba94bf3b6a98fa927c6c9"
+    },
+    "p3-security-0.8.0/src/fri.rs": {
+      "bytes": 22771,
+      "sha256": "a9af8751b1ccf76cccd1cac760e4e45338985e3d5444e8e11b55073cc0352b4b"
+    },
+    "p3-field-0.8.0/src/batch_inverse.rs": {
+      "bytes": 6584,
+      "sha256": "f50881c0cf5abee23432e7adc0c3a55abb145052ea512f7c9fcd4a51f6be830f"
+    }
+  },
+  "primary_source": {
+    "title": "Proximity Gaps for Reed-Solomon Codes",
+    "authors": [
+      "Eli Ben-Sasson",
+      "Dan Carmon",
+      "Yuval Ishai",
+      "Swastik Kopparty",
+      "Shubhangi Saraf"
+    ],
+    "url": "https://eccc.weizmann.ac.il/report/2020/083/revision/3/download/",
+    "date": "2021-07-03",
+    "revision": 3,
+    "pages": 61,
+    "bytes": 999415,
+    "sha256": "84264f52e16dc40108321c8d5b33ac3a03392fc0a9326fd49a229f7e30b804b1",
+    "binary_identity": "raw PDF bytes",
+    "visually_reviewed_physical_pages": [
+      14,
+      15,
+      16,
+      17,
+      29,
+      30,
+      31,
+      59,
+      60,
+      61
+    ],
+    "applied_result": "Theorem 6.1 as a conditional classical oracle statement",
+    "supporting_sections": [
+      "4",
+      "6.1",
+      "Appendix D"
+    ],
+    "independent_newer_johnson_proofs": "Not applied"
+  },
+  "kova_runtime_executions": 0,
+  "security_calculator_executions": 0,
+  "cryptographic_proofs_produced": 0
+}
