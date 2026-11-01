@@ -14,6 +14,8 @@ The [fixed parent header diagnostic](../research/header-work/README.md) implemen
 
 The [auxiliary child binding specification](auxiliary-work-binding.md) traces actual v5 effect and authorization commitments to one parent header. Its carrier, bounded witness proposal and target separation identify concrete remaining job, fixture and decoder gates. The [source record](../research/auxiliary-binding/source-record.json) pins the independent references without executing their generators or a new verifier.
 
+The [canonical preseal job binding](preseal-job.md) specifies actual ordered effect, public authorization and recovery bytes under one context. Its exact framing and hash domains separate byte identity from proof validity, global consumption and local publication generation. The [source record](../research/preseal-job/source-record.json) retains its source and historical scope, with no implemented codec or new proof admission.
+
 The [finite proof reader](../research/frame-reader/README.md) connects header admission, payload reservation and one request authority to the original proof decoder. Actual file, truncation, error cause and repeated-use controls retain separate resource, encoding and cryptographic validity boundaries.
 
 The [bounded source proof decoder](../research/proof-transport/README.md) applies fixed byte and syntax budgets before owned decoding of the original proof type. Its diagnostic tests actual malformed inputs, shape checks and canonical comparison. A correctly encoded altered commitment still decodes without verification, preserving the boundary between transport and cryptographic validity.

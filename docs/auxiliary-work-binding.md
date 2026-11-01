@@ -1,6 +1,6 @@
 # Auxiliary work and child candidate binding
 
-This specification connects the [fixed header work component](../research/header-work/README.md) to the transaction and authorization commitments required by [mining](mining.md). It implements no auxiliary verifier, child block encoder, mining service or activation rule. The construction decision below selects a carrier location and a bounded witness proposal. Execution remains blocked by the missing child job encoding, independent complete binding fixture and remaining decoder source closure.
+This specification connects the [fixed header work component](../research/header-work/README.md) to the transaction and authorization commitments required by [mining](mining.md). It implements no auxiliary verifier, child block encoder, mining service or activation rule. The construction decision below selects a carrier location and a bounded witness proposal. The [preseal job specification](preseal-job.md) now fixes its outer framing and commitment candidate. Execution remains blocked by the missing actual class encodings and supported resource profile, independent complete binding fixture and remaining decoder source closure.
 
 ## Versioned parent comparison
 
@@ -50,7 +50,7 @@ The required job construction has this acyclic order:
 1. Derive the exact child effects and expected private proof statements from the current authenticated Kova context.
 2. Construct and verify the actual bounded authorization data. Its statements bind effects and prior context, without referring to the bytes of their own proofs or the eventual work seal.
 3. Freeze one canonical preseal job containing the child network, active rules and resource identity, predecessor and ordering context, expected child target, effect binding, actual public authorization binding, recovery data binding and treasury policy binding.
-4. Compute the 64 byte job commitment from those actual canonical bytes under a selected versioned domain, then place it in the parent carrier. The commitment algorithm and exact job field encodings remain unselected. No shorter replacement authorization primitive is introduced.
+4. Compute the 64 byte job commitment from those actual canonical bytes under the [specified outer framing and domain](preseal-job.md), then place it in the parent carrier. The inner class encodings and supported actual proof mapping remain required. No shorter replacement authorization primitive is introduced.
 5. Construct the parent transaction and both header roots, then perform work over that actual header. The auxiliary witness and its work hash are excluded from the preseal job so the construction does not hash itself.
 6. A receiving validator recomputes the job commitment from its actual child data, checks the complete auxiliary binding and separately verifies every child proof, state, policy, availability and consensus condition. It never adopts a job commitment supplied by the auxiliary witness as the expected value.
 
@@ -93,7 +93,7 @@ The separately captured [mainnet block 1687106](https://github.com/ZcashFoundati
 
 The architectural decision is to retain the coinbase-script carrier and same-position dual-root construction as the candidate, and **refuse execution or activation until its remaining inputs are concrete**:
 
-1. One actual canonical child preseal job encoding, authorization binding and domain must exist. Its absence currently prevents deriving the expected 64 byte record from a real child candidate.
+1. The outer canonical child preseal framing, public authorization binding and domain are now specified. Actual supported effect, proof and recovery encoders and an authenticated context must still exist before deriving the expected 64 byte record from a real child candidate.
 2. The selected v5 carrier decoder, complete shielded conditional serialization paths, constants, dependencies and licenses require full nominal assembly review. Captured source does not itself admit a build.
 3. An independent full tuple of carrier bytes, both branches, history component, header and expected job statement is required. Digest vectors and unrelated header success cannot be joined into a fabricated positive. A newly mined tuple cannot be obtained by editing a saved header's transaction data without changing its work input.
 4. The two-target successor and the exact parent-template policy must be selected before an auxiliary-share implementation can forward actual work checks.

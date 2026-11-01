@@ -1,0 +1,200 @@
+{
+  "format": "kova.preseal-job.source-specification.v1",
+  "date": "2026-11-01",
+  "baseline": "5e620701908c42f9477d69ccfea8dd22ebf3ea9a",
+  "scope": "Source and specification only. No codec, compiler, hash evaluator, reference model, proof, verifier or old test execution.",
+  "repository_contexts": {
+    "docs/architecture.md": {
+      "bytes": 9533,
+      "sha256": "d00407a4b71d2e222454ca72ae4df30c69bdad7e91360ddaefa31f7366ffe7e5"
+    },
+    "docs/private-transactions.md": {
+      "bytes": 8491,
+      "sha256": "6d9f859495d7b33e9b3def14c88c066d72ab3db75efb20fe07b79c372661869e"
+    },
+    "docs/private-transition-state.md": {
+      "bytes": 20202,
+      "sha256": "f5d447290a69bb11ed9efda6d0a5024dbaac1f0e1bfafa079f01d5f1522e7fbf"
+    },
+    "docs/confidential-stake.md": {
+      "bytes": 21669,
+      "sha256": "703c3d90f01999a7b250c3142cd615f1758928b495e037787e633563cbd2daa8"
+    },
+    "docs/parameters.md": {
+      "bytes": 5743,
+      "sha256": "4e21e1847a52fca37be761c3ac17d64047483aea64584929a0169150c4dbb7f9"
+    },
+    "docs/checkpoints.md": {
+      "bytes": 5476,
+      "sha256": "0888287d33dc6c2a1fa8a265365220f0e6e94d7808b4ed6d7b11ce6e54efc1e1"
+    },
+    "docs/subsidy-allocation.md": {
+      "bytes": 7079,
+      "sha256": "69303fb1105341abf41232c409061e0da05b41120a8c9b0e69db147f0f4aaf24"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 9055,
+      "sha256": "526db01aa3557ab5fa655af2847a430de1c5b0b99af90deca4415a948fac337d"
+    },
+    "docs/protocol-extensions.md": {
+      "bytes": 14131,
+      "sha256": "76dda809f0d427ae5225f4012606ade3cd35b79492c965d12595fd92b8cc1ce5"
+    },
+    "crates/thorum-core/src/lib.rs": {
+      "bytes": 1817,
+      "sha256": "b5339e14659c208b321a767ea4164bb629f7db2c638d031391df5bd3c0aadd67"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "bytes": 3989,
+      "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d"
+    },
+    "crates/thorum-core/src/emission.rs": {
+      "bytes": 3344,
+      "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7"
+    },
+    "crates/thorum-relation-lab/src/lib.rs": {
+      "bytes": 2787,
+      "sha256": "4680bfc8b0577d760723fef74f47433c32adfbd8be3569bb2a7107704e237782"
+    },
+    "crates/thorum-relation-lab/src/codec.rs": {
+      "bytes": 1278,
+      "sha256": "d034294a3c7045a9d3c99fd64c60ee6959973215770b8470cc66f16ac1d66d98"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176"
+    },
+    "crates/thorum-crypto-lab/src/lib.rs": {
+      "bytes": 16754,
+      "sha256": "c1671d70b61ffdaa0824512e6598b64b4d31a3ff35040186cd13f89d18c6e601"
+    },
+    "crates/thorum-crypto-lab/src/envelope.rs": {
+      "bytes": 3154,
+      "sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "research/header-work/src/header.rs": {
+      "bytes": 12245,
+      "sha256": "fe132de03d5909e63faf2d8443a6ca5814da85171569310351ec9ac2085de3bc"
+    },
+    "research/header-work/provenance.json": {
+      "bytes": 9056,
+      "sha256": "5949ab9c7c4651f09c48a2a57bbe61e0a1252c8fcc0826d6d60321ec6703df9d"
+    },
+    "research/auxiliary-binding/source-record.json": {
+      "bytes": 13077,
+      "sha256": "5f58eb1d0cd480950cc5ec9d7aa7a89e777b1915839870636bdfbe4da75ef8da"
+    },
+    "Cargo.toml": {
+      "bytes": 735,
+      "sha256": "2dad10da5dedfdef787a3eac95ddedf59e6d97dd7b51f9f076b6775fa9af8b17"
+    },
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5"
+    }
+  },
+  "historical_contexts": {
+    "docs/auxiliary-work-binding.md": {
+      "revision": "5e620701908c42f9477d69ccfea8dd22ebf3ea9a",
+      "git_blob": "d0355fb46e887a9f579bf58878d5b74c04d3f49c"
+    },
+    "docs/mining.md": {
+      "revision": "5e620701908c42f9477d69ccfea8dd22ebf3ea9a",
+      "git_blob": "20df879bdbfe7e786f03954f927848e73445e6aa"
+    },
+    "docs/research-index.md": {
+      "revision": "5e620701908c42f9477d69ccfea8dd22ebf3ea9a",
+      "git_blob": "107f63c3b1ad30a0d161b24c3553406e33898574"
+    }
+  },
+  "registry_source_inspection": {
+    "sha3-0.12.0/Cargo.toml": {
+      "bytes": 1726,
+      "sha256": "69a5a38684afb429397aa6a42f8633c8b4de6eb1cd4e365628f66b54d870adbe"
+    },
+    "sha3-0.12.0/src/lib.rs": {
+      "bytes": 4961,
+      "sha256": "b5197ef5711ba506ba8f320a4ea9e20a9e266fa1a30efc213072157a21ee2583"
+    },
+    "sha3-0.12.0/src/utils.rs": {
+      "bytes": 1785,
+      "sha256": "3eabf975c550c470fb104d23b4715bdcf19ff70438c3e5c309055ba7d0cb5438"
+    },
+    "sha3-0.12.0/LICENSE-MIT": {
+      "bytes": 1255,
+      "sha256": "6462612d92b861384dcd378168a7a0ef3ef28876d3d380d382cb5a3091e360b8"
+    },
+    "sha3-0.12.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    }
+  },
+  "format_decision": {
+    "magic_hex": "4b4f56414a4f4200",
+    "version": 1,
+    "framing": "u32be(length) concatenated with actual bytes",
+    "job_domain": "kova.preseal-job.commitment.v1",
+    "effect_domain": "kova.effect-id.v1",
+    "authorization_domain": "kova.authorization-id.v1",
+    "hash": "SHA3-512",
+    "hash_output_bytes": 64,
+    "fixed_header_contents_and_framing_bytes": 610,
+    "fixed_record_contents_and_framing_bytes": 86,
+    "job_length_formula": "610 + policy_bytes + sum(86 + effect_bytes + authorization_bytes + recovery_bytes)",
+    "local_generation_serialized": false,
+    "work_seal_serialized": false,
+    "derived_effect_authorization_ids_serialized": false,
+    "production_resource_cap": null,
+    "active_classes": [],
+    "implemented_codec": false
+  },
+  "reserved_kinds": {
+    "private_payment": 1,
+    "reward_creation": 2,
+    "stake_lifecycle": 3,
+    "checkpoint_control": 4
+  },
+  "required_future_control_groups": 10,
+  "scope_limits": [
+    "No active inner class registry, effect/proof/recovery schema or production resource class",
+    "No authenticated predecessor, finality, treasury, epoch or child difficulty derivation",
+    "No sealed block identity, genesis, complete auxiliary tuple or activation",
+    "No reduced proof representation, private witness disclosure or replacement authorization primitive"
+  ],
+  "source_facts": [
+    "Actual PaymentStatement canonical bytes include complete encrypted envelope bytes",
+    "Actual ExpectedAuthorization derives196bytes from that PaymentStatement, not a supplied digest",
+    "Actual crypto Context::encode emits80framedbytes and does not authenticate its caller-owned fields",
+    "Actual statement_frame checks a64KiB laboratory accumulated bound",
+    "Actual hash_fields uses caller-bounded SHA3-512 framed domain and fields",
+    "Actual SupplyState issue_block accepts caller earned_staking and does not authenticate duties or destinations"
+  ],
+  "executions": {
+    "compiler": 0,
+    "cargo": 0,
+    "codec": 0,
+    "reference_model": 0,
+    "hash_evaluator": 0,
+    "witness": 0,
+    "prover": 0,
+    "verifier": 0,
+    "signer": 0,
+    "network": 0,
+    "old_test_replay": 0
+  },
+  "registry_artifact": {
+    "name": "sha3",
+    "version": "0.12.0",
+    "checksum": "bc9bad02c26382724b2d2692c6f179285e4b54eeecd7968f52a50059c3c11759",
+    "license": "MIT OR Apache-2.0",
+    "note": "Source inspection only. No new Cargo root, selected feature graph, artifact fetch, compilation or runtime admission."
+  }
+}
