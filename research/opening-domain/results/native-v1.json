@@ -1,0 +1,1 @@
+{"cryptographic_verifier_calls":0,"flag_after_refusal":false,"flag_after_shared_requests":true,"format":"kova.opening-domain.native.v1","get_matrices":6,"input_commits":1,"literal_controls":9,"mask_bytes":10948,"proofs_produced":0,"reserved_bytes":1325056,"reserved_files":13,"salt_bytes":279800,"typed_prover_refusals":1,"typed_verifier_refusals":4}

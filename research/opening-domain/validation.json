@@ -1,0 +1,93 @@
+{
+  "format": "kova.opening-domain.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64",
+  "scope": "One changed whole-domain opening admission diagnostic, no complete proof or healthy verifier replay",
+  "provenance": {
+    "bytes": 62795,
+    "sha256": "8c7be028a0ae9bd38b157e29757bb4fb85d83277eee1a541f80b38b31e1b64b0"
+  },
+  "native": {
+    "bytes": 350,
+    "sha256": "caf723eb5780546403593bb9329457171f03ba4963100282b651fb7e7972aa0b"
+  },
+  "native_attempts": 1,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 1,
+    "actual_passed": 1,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "test_counts_verified": true,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 5889835008,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 7278592,
+    "peak_private_commit_bytes": 1703936,
+    "sampled_peak_private_bytes": 962560,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 2998272,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "compiler_preparations": [
+    {
+      "name": "diagnostics-build-v1",
+      "accepted": false,
+      "exit_code": 101,
+      "peak_private_commit_bytes": 335626240,
+      "peak_job_commit_bytes": 397574144
+    },
+    {
+      "name": "diagnostics-build-v2",
+      "accepted": false,
+      "exit_code": 101,
+      "peak_private_commit_bytes": 242270208,
+      "peak_job_commit_bytes": 264663040
+    },
+    {
+      "name": "diagnostics-build-v3",
+      "accepted": true,
+      "exit_code": 0,
+      "peak_private_commit_bytes": 246538240,
+      "peak_job_commit_bytes": 269430784
+    },
+    {
+      "name": "default-build-v1",
+      "accepted": true,
+      "exit_code": 0,
+      "peak_private_commit_bytes": 99790848,
+      "peak_job_commit_bytes": 122400768
+    },
+    {
+      "name": "test-build-v1",
+      "accepted": true,
+      "exit_code": 0,
+      "peak_private_commit_bytes": 385777664,
+      "peak_job_commit_bytes": 404496384
+    }
+  ],
+  "executable": {
+    "bytes": 2296320,
+    "sha256": "1c695d4efc9c6a68d7fd69386824688fec9f35fff1c56cd9280df0ecc585f9d3"
+  },
+  "native_freeze": {
+    "files": 3082,
+    "sha256": "d4c4655d5413a394fb1d20867980526e77cbadc2b8ffd9f2f22bf20b5eb70c67",
+    "post_run_verified": true
+  },
+  "limitations": [
+    "Conditional source theorem correspondence is not complete protocol security",
+    "No full signature or payment proof",
+    "No cryptographic verifier call",
+    "Shared read closure is not an OS descriptor closure probe",
+    "Small peaks do not admit wide proving"
+  ]
+}

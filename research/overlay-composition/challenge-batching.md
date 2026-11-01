@@ -84,7 +84,7 @@ $$z\in D_h\quad\Longleftrightarrow\quad z^{n_h}=g^{n_h}.$$
 
 Here $n_h$ divides $|F|-1$, so $X^{n_h}-g^{n_h}$ already has exactly its $n_h$ distinct roots in $F$. Viewing the equation in $E$ introduces no additional roots. Domain membership must use the actual physical LDE height and common shift, not the raw trace height or a quotient reconstruction domain.
 
-The proposed admission must precede prover flag consumption, inverse denominator construction and claim transcript operations. The verifier must enforce the same geometric rule before replaying claims or drawing its batching challenge. It must return a genuine typed domain cause without fabricated query indices, reset randomness or supplied proof verdicts. It is not implemented or tested by this document.
+The admission must precede prover flag consumption, inverse denominator construction and claim transcript operations. The verifier must enforce the same geometric rule before replaying claims or drawing its batching challenge. It must return a genuine typed domain cause without fabricated query indices, reset randomness or supplied proof verdicts. The subsequent [nominal opening preflight](../opening-domain/README.md) implements and checks this boundary in the retained small source class. The historical source snapshots described above remain unchanged.
 
 Explicit refusal of a bad sampled point is different from resampling it. A future proof must account for the actual sampling and refusal policy. No profile or query budget is changed by this selection.
 

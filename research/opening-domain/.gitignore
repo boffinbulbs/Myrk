@@ -1,0 +1,4 @@
+/target/
+/results/*.stdout.txt
+/results/*.stderr.txt
+/results/*-memory-result.json
