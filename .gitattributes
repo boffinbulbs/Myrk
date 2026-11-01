@@ -72,3 +72,5 @@ research/preseal-bytes/licenses/* -text whitespace=-blank-at-eof
 research/preseal-bytes/fixtures/*.bin -text
 research/child-work-policy/result.json -text
 research/child-work-policy/licenses/* -text whitespace=-blank-at-eof
+research/child-work-native/licenses/* -text whitespace=-blank-at-eof
+research/child-work-native/results/native.txt -text -whitespace

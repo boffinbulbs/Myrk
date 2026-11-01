@@ -20,6 +20,8 @@ The [restricted auxiliary construction](../research/auxiliary-construction/READM
 
 The [child work policy](child-work-policy.md) selects a prospective exact integer ASERT rule and explicit timestamp, anchor and work-score semantics. Its [finite reference](../research/child-work-policy/README.md) matches pinned raw target literals and tests arithmetic extremes without running a node or authenticating history. Production parameters and activation remain open.
 
+The [bounded native arithmetic](../research/child-work-native/README.md) implements that prospective rule with safe fixed-size Rust integers and explicitly unverified contexts. Its saved release diagnostic checks the separate reference targets, full-width work division, overflow and numeric timestamp rules. It authenticates no history or private state and leaves the retained monetary profile unchanged.
+
 The [finite proof reader](../research/frame-reader/README.md) connects header admission, payload reservation and one request authority to the original proof decoder. Actual file, truncation, error cause and repeated-use controls retain separate resource, encoding and cryptographic validity boundaries.
 
 The [bounded source proof decoder](../research/proof-transport/README.md) applies fixed byte and syntax budgets before owned decoding of the original proof type. Its diagnostic tests actual malformed inputs, shape checks and canonical comparison. A correctly encoded altered commitment still decodes without verification, preserving the boundary between transport and cryptographic validity.

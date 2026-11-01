@@ -1,0 +1,288 @@
+{
+  "format": "kova.child-work-native.provenance.v1",
+  "date": "2026-11-01",
+  "baseline": "81bae83dc001531809dfad4480d38931a51e5434",
+  "source_identity": "CRLF-normalized UTF-8 text. Original notices and captured native stdout preserve raw bytes.",
+  "files": {
+    "Cargo.lock": {
+      "raw": false,
+      "bytes": 177,
+      "sha256": "4738ce6f2f5ce7b61eadc2a84befb0aa99798f6d0a2f413fbd0a296c6be847e2"
+    },
+    "Cargo.toml": {
+      "raw": false,
+      "bytes": 405,
+      "sha256": "a41282f253bae71852ddb37cc464057f0b6caebdc166cc89a01341efee162c2a"
+    },
+    "licenses/BCHN-COPYING": {
+      "raw": true,
+      "bytes": 1146,
+      "sha256": "8388570ab9119a16d2f27ffc7a619e34f713f0f4d3b9f5d54e3a3c0e299d137c"
+    },
+    "licenses/BCHN-POW-TEST-NOTICE": {
+      "raw": true,
+      "bytes": 382,
+      "sha256": "6faa11ee389e95ccafb4e165ca5c14eefc1df08e6b207545740e92078e68d122"
+    },
+    "licenses/Kova-MIT": {
+      "raw": true,
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "README.md": {
+      "raw": false,
+      "bytes": 6063,
+      "sha256": "8816eb46072c86f60e8825c2c9f7cea74abc4d341a54a9ff3a1bcfb0623a5cec"
+    },
+    "results/native.txt": {
+      "raw": true,
+      "bytes": 337,
+      "sha256": "934a9550f4b352783f3a0aaf551903a1e46f1bcb6a17a471c1aafcf06b3c12e3"
+    },
+    "src/arithmetic.rs": {
+      "raw": false,
+      "bytes": 11040,
+      "sha256": "8f6696003ec1c593909bbc3d1c68a60788660c370c9f597844f2c5f022033d6f"
+    },
+    "src/lib.rs": {
+      "raw": false,
+      "bytes": 152,
+      "sha256": "b8d63a69069b16ae533913d24d5e0e5234c85a7ed70f45d1c9b13076ed379f92"
+    },
+    "src/saved_cases.rs": {
+      "raw": false,
+      "bytes": 16219,
+      "sha256": "c6fd6b848de58eada8f65aaf6597b2e12108aa5b5e44fde43678376d01895854"
+    },
+    "src/tests.rs": {
+      "raw": false,
+      "bytes": 10443,
+      "sha256": "f3678222e3bfcee7de4e7c2d1171d6f426339f0d2939d12b98f7425d58484bae"
+    },
+    "static_check.ps1": {
+      "raw": false,
+      "bytes": 3128,
+      "sha256": "ae158425378923163ea005bca36ae7045afdbda0d4b7c210e294993637c11f04"
+    }
+  },
+  "compiler": {
+    "release": "1.94.1",
+    "revision": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "llvm": "21.1.8",
+    "target": "x86_64-pc-windows-msvc"
+  },
+  "installed_toolchain": {
+    "bin/rustc.exe": {
+      "raw": true,
+      "bytes": 111104,
+      "sha256": "21256c9767416cbc70120e7987449c6cc5a66e3e9f843d05392ee4fd5e617261"
+    },
+    "bin/cargo.exe": {
+      "raw": true,
+      "bytes": 30737408,
+      "sha256": "43226f7efc5ea12b88c9156da97f8954b9af582673baadb3fb1a3ebec5d97348"
+    },
+    "bin/rustfmt.exe": {
+      "raw": true,
+      "bytes": 4829696,
+      "sha256": "0491ddaa5d29cbbfc85c1a112358b8f2c7306a7d2a6d8acc81f8829025844a67"
+    },
+    "bin/clippy-driver.exe": {
+      "raw": true,
+      "bytes": 11922432,
+      "sha256": "cdf204b48299acd73d568608a58f92dfe59cc83d47314f13cd0181c34bc924e5"
+    },
+    "share/doc/rust/html/version_info.html": {
+      "raw": true,
+      "bytes": 375,
+      "sha256": "f35836e633bc4c2b92f77820036ac88c6fbe12658ef1fec837807a7e48f28e66"
+    },
+    "share/doc/rust/html/src/core/num/int_macros.rs.html": {
+      "raw": true,
+      "bytes": 493724,
+      "sha256": "df440618fd2c951582cb44e54d7465989ea183e28644c2311e8440b01814fc8c"
+    },
+    "share/doc/rust/html/src/core/num/uint_macros.rs.html": {
+      "raw": true,
+      "bytes": 484217,
+      "sha256": "be8e1b374fca23625ec496be720adcd1396cea7bee2da2e80b8de81382951259"
+    },
+    "share/doc/rust/html/src/core/array/mod.rs.html": {
+      "raw": true,
+      "bytes": 103838,
+      "sha256": "da66c1aff7b33c2bd60f906f5f4f4dcb160558569e035c33e238d907cf622151"
+    },
+    "share/doc/rust/html/src/core/slice/mod.rs.html": {
+      "raw": true,
+      "bytes": 542239,
+      "sha256": "e5b3a331fe041381b8dbfaaa19be786c307d55db852d2361a1290c3b9e1e9eb4"
+    },
+    "share/doc/rust/html/src/core/cmp.rs.html": {
+      "raw": true,
+      "bytes": 216801,
+      "sha256": "6ebb656eebd571e2c99df1526081089e559632077cd97564bd3f784c25a870e4"
+    },
+    "share/doc/rust/html/src/core/error.rs.html": {
+      "raw": true,
+      "bytes": 110661,
+      "sha256": "c8c0d405d25147be776f240808c3236875964c9eefd6e58ac0911129e980aed3"
+    },
+    "share/doc/rust/html/src/core/fmt/mod.rs.html": {
+      "raw": true,
+      "bytes": 324415,
+      "sha256": "b38751838a68ff348c15d6149901526204b68622e67e40625fce4da340aa73d2"
+    },
+    "share/doc/rust/html/src/core/iter/traits/iterator.rs.html": {
+      "raw": true,
+      "bytes": 373337,
+      "sha256": "db64018c5c61d53827ea1fd21688f3ee045473842447b0a9cbbaf895282d1e8f"
+    }
+  },
+  "cargo_nodes": 1,
+  "registry_dependencies": 0,
+  "default_features": [],
+  "diagnostics_features": [
+    "diagnostics"
+  ],
+  "local_unsafe": "forbidden",
+  "production_allocation": "fixed stack arrays, no explicit heap allocation or I/O",
+  "guard": {
+    "raw": true,
+    "bytes": 13335,
+    "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+  },
+  "upstream_algorithm": {
+    "authors": [
+      "Mark Lundeberg",
+      "Bitcoin Cash Node contributors"
+    ],
+    "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+    "files": [
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "COPYING",
+        "bytes": 1146,
+        "sha256": "8388570ab9119a16d2f27ffc7a619e34f713f0f4d3b9f5d54e3a3c0e299d137c",
+        "git_blob": "b06cb049e25624221d68086acc3578792a9094a8",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/COPYING"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/pow.cpp",
+        "bytes": 21415,
+        "sha256": "19983363115266cec784519a6a18c4bc2b7885215bc5965e7da6c9502350e713",
+        "git_blob": "52b37822da2d4c132b31113a1fc1e3d7b670e3a7",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/pow.cpp"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/pow.h",
+        "bytes": 2382,
+        "sha256": "678d45b6a85949e3cba3d4da7a1bb2e707b3bec072cbadc2b3f02175f8ff6289",
+        "git_blob": "7adb5c04000789044f6689f851af36651f4277b0",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/pow.h"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/chain.cpp",
+        "bytes": 6451,
+        "sha256": "2ba120fa21462533b7fb7ad5efa9777d4e1ac828d6784ca53a59ff909e7429a5",
+        "git_blob": "70cee51d1818e14b8009485f624a1976bf12da2f",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/chain.cpp"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/chain.h",
+        "bytes": 16642,
+        "sha256": "cc63c51b6a1f66c9b15a3033b00647141d28247d3df43da9caa07f07143a4652",
+        "git_blob": "cd554dcc279bd60f22273080bc0699d68e915116",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/chain.h"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/arith_uint256.cpp",
+        "bytes": 7759,
+        "sha256": "919eee7298f3081f25ccc782801d41830000f40ced5de587678e8fc51dee0cc4",
+        "git_blob": "5f89b04ec351bead88c07aa667a39701904bdd36",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/arith_uint256.cpp"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/arith_uint256.h",
+        "bytes": 9572,
+        "sha256": "b87abe4fcf720a4da5f336dfa63a6d9d2ba20bb45d0a22458e19eee364dcd938",
+        "git_blob": "cd41f0c3d5daa19c61435c03a9947b7b167b1d8a",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/arith_uint256.h"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/consensus/params.h",
+        "bytes": 4121,
+        "sha256": "f587448da16fefbb297f11c80ce8e47ad8c44885a6db8694afac16d2c2a1aa7d",
+        "git_blob": "61e16c285db458b156a9f9f2baf013844e581b00",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/consensus/params.h"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/test/pow_tests.cpp",
+        "bytes": 44375,
+        "sha256": "54f25cc8fdc1bae210a445e829c025f000e04516b8a891813d060cf0cfd51987",
+        "git_blob": "fd3ea96b9a663b28a7020393e5a71a413b2ed355",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/test/pow_tests.cpp"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "contrib/testgen/validate_nbits_aserti3_2d.py",
+        "bytes": 8237,
+        "sha256": "e8dff4581d1345148e3428c9aec6a7d0b9a1b97bd76ed27e2a76577a6093229d",
+        "git_blob": "5be35fdc22ac2ea1d1f83b5e0683a4a1a8d2d9f7",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/contrib/testgen/validate_nbits_aserti3_2d.py"
+      },
+      {
+        "repository": "bitcoin-cash-node/bitcoin-cash-node",
+        "revision": "631badbf64766fa8c2d38f099e937f8c6cb19014",
+        "path": "src/chainparams.cpp",
+        "bytes": 60796,
+        "sha256": "8906498d1dc6cdd54a83f5e1e889f29cada7a0ec5a8909939f42524f75abc195",
+        "git_blob": "678763c5aa3523d18dd0904477780bf2a1b23e9d",
+        "url": "https://github.com/bitcoin-cash-node/bitcoin-cash-node/blob/631badbf64766fa8c2d38f099e937f8c6cb19014/src/chainparams.cpp"
+      }
+    ],
+    "source_files": 11,
+    "raw_bytes": 182896,
+    "capture_closed": true,
+    "raw_spec_identity": null
+  },
+  "saved_reference": {
+    "path": "../child-work-policy/result.json",
+    "identity": {
+      "raw": true,
+      "bytes": 19194,
+      "sha256": "952c9d677b2d81556e39af19942764e26f87f9db104f0f126a1d6a8deb68b5a9"
+    },
+    "cases": 66,
+    "primary_cases": 18,
+    "producer_executed": false
+  },
+  "transcription": {
+    "source": "immutable saved numeric strings, no target calculation",
+    "fixture_bytes": 16219,
+    "fixture_tuples": 66,
+    "input_cap": 19194,
+    "output_cap": 32768
+  },
+  "nominal": "Isolated std-only library. Default empty. No workspace imports, external dependencies, build scripts, binaries, doctests or accepting chain API.",
+  "scope": "Prospective fixed60s unverified numeric data. Private600s kernel comparisons. No authenticated genesis, target policy, predecessor, clock, branch, proof or ledger authority.",
+  "runtime_freeze": "Private whole selected Rust bin/lib, installed source HTML, actual retained MSVC/SDK files, PowerShell runtime, source, fixtures and built executable. No OS audit or all-OS-file freeze claimed.",
+  "prior_runtime": "No old reference, primary generator, C++ tests, proof, healthy verifier, witness or journal execution."
+}
