@@ -1,0 +1,59 @@
+{
+  "format": "kova.keccak-fixed-reference.validation.v1",
+  "date": "2026-11-01",
+  "scope": "One new guarded integer reference. No Rust AIR, production field or proof execution.",
+  "reference_requests": 1,
+  "failed_requests": 0,
+  "guard": {
+    "accepted": true,
+    "launched": true,
+    "exit_code": 0,
+    "hard_limit_installed": true,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "available_before_bytes": 3652665344,
+    "minimum_available_bytes": 2147483648,
+    "timeout_seconds": 120,
+    "peak_private_commit_bytes": 42188800,
+    "peak_job_commit_bytes": 43483136,
+    "peak_working_bytes": 46895104,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "expected_tests": 0,
+    "test_counts_verified": false
+  },
+  "frozen_inputs_postverified": 1701,
+  "original_guard_record_raw_sha256": "8f659e6b23afc99470dd4f4e67d41233b5027193eecc374b00972ebe27527517",
+  "publication_sources": {
+    "static_check.py": {
+      "bytes": 3238,
+      "sha256": "ce0fe9ec418ea756b4140ad5d39ac22239ce0b3c52cb05ce24048a9af2eba323",
+      "raw": false
+    },
+    "README.md": {
+      "bytes": 5909,
+      "sha256": "1ad55622b01c6603f31b43228fae117f1d05fc55fdc0928ffd7f3537d8274f94",
+      "raw": false
+    }
+  },
+  "artifacts": {
+    "results/result.json": {
+      "bytes": 2555,
+      "sha256": "a75b47eac2308434ae437be2a1da517daad4f16de3303635afe061ff39914927",
+      "raw": true
+    },
+    "results/reference.txt": {
+      "bytes": 124,
+      "sha256": "a501cd9a5d03728a4b2994a2ee52893920b48443026a388e7c02e4890bd62b46",
+      "raw": true
+    }
+  },
+  "limitations": [
+    "Integer equation transcription is not actual Rust AIR evaluation",
+    "Fixed wiring variable identity is not a proof copy argument",
+    "Direct full graph proving class remains refused",
+    "No full signature, payment, ledger, network or achieved security claim"
+  ]
+}

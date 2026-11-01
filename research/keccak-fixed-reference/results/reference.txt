@@ -1,0 +1,1 @@
+Whole fixed Keccak integer reference passed: 2 full-state KATs, 4 reverse maps, 6 functional alternatives, 9 row refusals.

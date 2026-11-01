@@ -1,0 +1,76 @@
+{
+  "format": "kova.keccak-fixed-reference.sources.v1",
+  "baseline": "3f51512bb166c963a654f3110e319ba47b7e45a2",
+  "scope": "New finite whole-permutation integer graph and column-equation transcription. No original Rust AIR or proving integration.",
+  "source_files": {
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424",
+      "raw": true
+    },
+    "NOTICE.md": {
+      "bytes": 983,
+      "sha256": "bc301d9c1e719d9c5d9ee8ace5bd473c00cf5bf47133f30353a05171d6dcb850",
+      "raw": false
+    },
+    "reference.py": {
+      "bytes": 17789,
+      "sha256": "edb294c461eab39b52b62cebb50d879c3339217a0fa3aca12fc30fc5d849b90d",
+      "raw": false
+    },
+    "evidence/constants.rs": {
+      "bytes": 7799,
+      "sha256": "1ba48243b0ece1bfd544abf47e72b9e6d350668ef3ea16c05a60a5f2dd68dd93",
+      "raw": true
+    },
+    "evidence/xkcp.rs": {
+      "bytes": 4341,
+      "sha256": "765294948aec812387fbf99c692f240d890a49a40a977d17deb4df47e26afb2e",
+      "raw": true
+    },
+    "fixtures/anchors.json": {
+      "bytes": 1619,
+      "sha256": "56cf7ded9e7329927629b2cf7d35d74ec77ea783347531c1314a3bb263a283ba",
+      "raw": false
+    },
+    "licenses/PLONKY3-APACHE": {
+      "bytes": 10848,
+      "sha256": "3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026",
+      "raw": true
+    },
+    "licenses/PLONKY3-MIT": {
+      "bytes": 1086,
+      "sha256": "d6543a1b0a0a51d10b5f8c389324c7dfeba556b7f39815efd292927bde808700",
+      "raw": true
+    },
+    "licenses/RUSTCRYPTO-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5",
+      "raw": true
+    },
+    "licenses/RUSTCRYPTO-MIT": {
+      "bytes": 1082,
+      "sha256": "8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b",
+      "raw": true
+    }
+  },
+  "repository_context": {
+    "research/overlay-composition/keccak-fixed-wiring.md": {
+      "bytes": 15474,
+      "sha256": "1b209e7a51f9f8898eb6eb0427a73cfabcb5d69cfa5e38f17d1148e94732b0f3",
+      "raw": false
+    },
+    "research/overlay-composition/keccak-wiring-sources.json": {
+      "bytes": 21562,
+      "sha256": "9cc678a871810b98b0ec6d9fe1277f1792c8dd3665516a0d18089b8576e07548",
+      "raw": false
+    }
+  },
+  "stdlib_imports": [
+    "json",
+    "os",
+    "sys"
+  ],
+  "licenses": "Project MIT, original Plonky3 MIT OR Apache-2.0 and RustCrypto MIT OR Apache-2.0. XKCP vector attribution retained in primary source. No direct original XKCP artifact identity.",
+  "features": "No Cargo root, registry execution, thirdparty module or proof import."
+}

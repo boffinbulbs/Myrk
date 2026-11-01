@@ -63,6 +63,8 @@ Accepted random fields are also different from delivered RNG bytes. The main, qu
 
 ## Independent evidence and execution limits
 
+The [whole Keccak integer reference](../keccak-fixed-reference/README.md) evaluates the separate fixed wiring relation against complete primary state vectors and integer column equations. It preserves the refusal of direct graph materialization and does not supply a new proof class.
+
 The fresh inventory agrees with the independently saved small owner reservation of 13 roles and 1,325,056 bytes. Its main only subtotal matches 112,640 bytes, 24,576 returned main fields and 360,448 actual leaf preimage bytes. The complete small proof's nine FRI commitments agree with the separate geometric count. No producer of those records was repeated.
 
 Eight malformed scalar cases reject. The sole isolated integer evaluation passed under a 512 MiB process and aggregate job limit, a fresh two GiB availability requirement and a 120 second deadline. [Validation](validation.json) retains the result and exact source identities. This small evaluator's peak is unrelated to wide proving feasibility.

@@ -78,3 +78,8 @@ research/monetary-paired60/result.json -text
 research/monetary-paired60/licenses/* -text whitespace=-blank-at-eof
 research/monetary-paired60-native/licenses/* -text whitespace=-blank-at-eof
 research/monetary-paired60-native/results/native.txt -text -whitespace
+research/keccak-fixed-reference/LICENSE -text whitespace=-blank-at-eof
+research/keccak-fixed-reference/licenses/* -text whitespace=-blank-at-eof
+research/keccak-fixed-reference/evidence/* -text whitespace=-blank-at-eof
+research/keccak-fixed-reference/results/result.json -text
+research/keccak-fixed-reference/results/reference.txt -text -whitespace
