@@ -1,0 +1,77 @@
+{
+  "format": "kova.overlay-composition.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64",
+  "python": "3.14.5",
+  "scope": "One bounded scalar inventory. Zero field, witness, commitment or proof execution.",
+  "execution_files": {
+    "model.py": {
+      "bytes": 9848,
+      "sha256": "d23e9721725c6d4ad49e3890b502a698ec81d2d53c10a6da0b3b85ec02eaf375"
+    },
+    "run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    }
+  },
+  "artifacts": {
+    "inventory.json": {
+      "bytes": 10013,
+      "sha256": "141a76e498431e8357c4471b31f067df0ad6d13fa758abca5a844ad3c92b3886"
+    }
+  },
+  "guard": {
+    "accepted": true,
+    "expected_tests": 0,
+    "test_counts_verified": false,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 5990522880,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 18178048,
+    "peak_private_commit_bytes": 10895360,
+    "sampled_peak_private_bytes": 8851456,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 12197888,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "runtime_identities": {
+    "python.exe": {
+      "bytes": 106208,
+      "sha256": "3adbbf2af609e206e3ca18cd55fc7c4b52f5c8bb8218dd99fd5a9e50d7a193cd"
+    },
+    "python3.dll": {
+      "bytes": 73952,
+      "sha256": "f3d0cd260a46a9617a8b1d4d5e8703278478c22a910165bffb4e4ddf6562d93f"
+    },
+    "python314.dll": {
+      "bytes": 6776544,
+      "sha256": "18310593c50ad109fc5c95db1fd5c92ecec9e1bfc66c976df9fc11dd62616d5a"
+    },
+    "vcruntime140.dll": {
+      "bytes": 120400,
+      "sha256": "052ad6a20d375957e82aa6a3c441ea548d89be0981516ca7eb306e063d5027f4"
+    },
+    "vcruntime140_1.dll": {
+      "bytes": 49776,
+      "sha256": "6a99bc0128e0c7d6cbbf615fcc26909565e17d4ca3451b97f8987f9c6acbc6c8"
+    }
+  },
+  "limitations": [
+    "Conditional experimental comparison profile, not selected chain parameters",
+    "Field file contents and retained vectors do not establish simultaneous memory peak or serialized proof size",
+    "Child RNG journals are not covered by the parent delivered salt byte count",
+    "No achieved security score, complete private signature proof or same witness payment acceptance",
+    "Interpreter identity is not a complete operating system or standard library audit"
+  ],
+  "construction_quantity_notes": {
+    "quotient_mask_bank_bytes": "Seven independently sampled banks only. Complete coupled allocation includes the eighth derived bank: 8*H*(e+r)*4 bytes."
+  }
+}

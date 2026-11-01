@@ -201,6 +201,8 @@ The Qt desktop wallet target includes a local validation node, local witness con
 
 ## Release gates
 
+The [complete overlay inventory](../research/overlay-composition/README.md) projects 26,300,841,984 retained field file bytes under the experimental comparison profile. It separately accounts for base and FRI salts and digests, query contents, claims and construction lifetimes. The full relation remains outside current admission limits. This is scalar resource evidence rather than a wide allocation or complete private proof. The declared proof cap still requires a general untrusted framing and parser implementation.
+
 Private PQ transaction and staking constructions must pass their feasibility and review gates before production interfaces that depend on them are frozen. The bootstrap, genesis, difficulty, finality, withdrawal and recovery rules need complete specifications. Source licenses and dependency notices must be inventoried. No release date or security audit completion is implied by a development milestone.
 
 The temporary developer allocation requires a future consensus hard fork for retirement after work completion and community handover. The future miner/stake redistribution, completion criteria, change process, and activation height remain undefined. The pool share stays at 10 percent absent a separate explicit change, and existing legitimately earned credits remain unaffected. No automatic sunset, milestone key, or retirement height is implemented. No production genesis has been released.

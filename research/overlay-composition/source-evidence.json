@@ -1,0 +1,35 @@
+{
+  "format": "kova.overlay-composition.source-evidence.v1",
+  "scope": "Inspected registry source identities, no dependency execution",
+  "text_normalization": "CRLF to LF",
+  "implementations": {
+    "p3-dft-0.8.0/src/radix_2_dit_parallel.rs": {
+      "bytes": 34128,
+      "sha256": "af2437aa5aa0ce1c6d08a52f6f2cf4fb0bebc16914f683908117f6ca8221e53c"
+    },
+    "p3-dft-0.8.0/src/traits.rs": {
+      "bytes": 24816,
+      "sha256": "1537f55435215e9321615904525435f4326d45cee0f43dfa5ece2f4dcde273e2"
+    },
+    "p3-merkle-tree-0.8.0/src/mmcs/mod.rs": {
+      "bytes": 43549,
+      "sha256": "8164c4089590055bed06739a327b4561ce4793f3bc19b730fd1c24d77dec1e4c"
+    },
+    "p3-merkle-tree-0.8.0/src/mmcs/batch.rs": {
+      "bytes": 50887,
+      "sha256": "f893dbbb6818e386980d7cee66383725e5546832071a2975fc4b3cedb0cca1b4"
+    },
+    "p3-merkle-tree-0.8.0/src/mmcs/pruned.rs": {
+      "bytes": 33346,
+      "sha256": "7b6bf996320371b413b889070353fb50d297f47bb1b5365dfc6e57188542417d"
+    },
+    "p3-merkle-tree-0.8.0/src/hiding_mmcs.rs": {
+      "bytes": 21122,
+      "sha256": "f0e04424ea9141519cd76ce56995c6ed7eb8eb8c203cd51f4fa71378bda6dd57"
+    },
+    "p3-commit-0.8.0/src/adapters/extension_mmcs.rs": {
+      "bytes": 4743,
+      "sha256": "84c93692a9955aa2ee9aed5f756dc460d24d9f6eca3076b7cf99935dc06fca07"
+    }
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "achieved_security_bits": null,
+  "backend_proofs": 0,
+  "comparison_profile": {
+    "constraint_degree": 4,
+    "extension_degree": 4,
+    "fold_arity": 2,
+    "grinding_bits": 0,
+    "log_blowup": 3,
+    "queries": 64,
+    "random_codewords": 4,
+    "raw_height": 256,
+    "raw_width": 2,
+    "salt_columns": 16
+  },
+  "conditional_overlay": {
+    "accepted_base_salt_fields": 20971520,
+    "accepted_random_fields": {
+      "auxiliary": 131072,
+      "main": 345587712,
+      "quotient": 720896,
+      "whole": 346439680
+    },
+    "base_digest_bytes": 50331456,
+    "base_salt_bytes": 83886080,
+    "boundaries": {
+      "execution_admitted": false,
+      "field_files": false,
+      "general_transport_cap_enforced": false,
+      "kernel_constraints_after_layout": false,
+      "kernel_quotient_rows": false,
+      "kernel_width": false,
+      "public_shape": false,
+      "raw_width": false,
+      "stored_shape": false
+    },
+    "constraints": 71623,
+    "construction": {
+      "auxiliary_dense_input_bytes": 524288,
+      "auxiliary_leaf_preimage_bytes_per_row": 96,
+      "column_tile": 4,
+      "compressed_matrix_vector_bytes": 2097152,
+      "dft_moves_and_grows_same_vector": true,
+      "main_leaf_preimage_bytes_per_row": 168792,
+      "normalized_selector_contents_bytes": 1048576,
+      "peak_memory_established": false,
+      "quotient_batch_leaf_preimage_bytes_per_row": 768,
+      "quotient_mask_bank_bytes": 1835008,
+      "quotient_random_bank_bytes": 1048576,
+      "reduced_opening_vector_bytes": 2097152,
+      "tile_input_payload_bytes": 262144,
+      "tile_output_payload_bytes": 2097152,
+      "tiles": 10546
+    },
+    "fri": {
+      "retained_digest_bytes": 16775296,
+      "retained_field_bytes": 4194048,
+      "retained_salt_bytes": 8388096,
+      "rounds": 14,
+      "tree_heights": [
+        65536,
+        32768,
+        16384,
+        8192,
+        4096,
+        2048,
+        1024,
+        512,
+        256,
+        128,
+        64,
+        32,
+        16,
+        8
+      ]
+    },
+    "lde_height": 131072,
+    "main_only_field_file_bytes": 26262044672,
+    "prepared_shape": [
+      16384,
+      42182
+    ],
+    "public_values": 196,
+    "queries": {
+      "all_ood_extension_claim_bytes": 1350976,
+      "auxiliary_data_bytes": 2048,
+      "base_salt_bytes": 40960,
+      "batched_functions": 84436,
+      "duplicate_rows_preserved": true,
+      "fri_salt_bytes": 57344,
+      "fri_sibling_extension_bytes": 14336,
+      "indices": 64,
+      "main_data_bytes": 10798592,
+      "main_two_point_extension_claim_bytes": 1349824,
+      "quotient_data_bytes": 16384,
+      "serialized_bytes_established": false
+    },
+    "raw_shape": [
+      8192,
+      42178
+    ],
+    "reserved_roles": 13,
+    "retained_field_file_bytes": 26300841984,
+    "roles": {
+      "auxiliary_lde": 4194304,
+      "canonical_quotient_source": 1048576,
+      "main_lde": 22115516416,
+      "prepared": 2764439552,
+      "quotient_ldes": 33554432,
+      "raw": 1382088704
+    }
+  },
+  "field_instances": 0,
+  "format": "kova.overlay-composition.inventory.v1",
+  "invalid_metadata_refusals": 8,
+  "payment_witness_joins_established": false,
+  "prover_instances": 0,
+  "saved_small_proof_encoded_bytes": 596650,
+  "saved_small_proof_is_full_signature": false,
+  "scope": "Fixed integer source inventory, no field or proof execution",
+  "small_reference": {
+    "accepted_base_salt_fields": 655360,
+    "accepted_random_fields": {
+      "auxiliary": 4096,
+      "main": 2560,
+      "quotient": 22528,
+      "whole": 29184
+    },
+    "base_digest_bytes": 1572672,
+    "base_salt_bytes": 2621440,
+    "boundaries": {
+      "execution_admitted": false,
+      "field_files": true,
+      "general_transport_cap_enforced": false,
+      "kernel_constraints_after_layout": true,
+      "kernel_quotient_rows": true,
+      "kernel_width": true,
+      "public_shape": true,
+      "raw_width": true,
+      "stored_shape": true
+    },
+    "constraints": 4,
+    "construction": {
+      "auxiliary_dense_input_bytes": 16384,
+      "auxiliary_leaf_preimage_bytes_per_row": 96,
+      "column_tile": 4,
+      "compressed_matrix_vector_bytes": 65536,
+      "dft_moves_and_grows_same_vector": true,
+      "main_leaf_preimage_bytes_per_row": 88,
+      "normalized_selector_contents_bytes": 32768,
+      "peak_memory_established": false,
+      "quotient_batch_leaf_preimage_bytes_per_row": 768,
+      "quotient_mask_bank_bytes": 57344,
+      "quotient_random_bank_bytes": 32768,
+      "reduced_opening_vector_bytes": 65536,
+      "tile_input_payload_bytes": 8192,
+      "tile_output_payload_bytes": 65536,
+      "tiles": 2
+    },
+    "fri": {
+      "retained_digest_bytes": 522688,
+      "retained_field_bytes": 130816,
+      "retained_salt_bytes": 261632,
+      "rounds": 9,
+      "tree_heights": [
+        2048,
+        1024,
+        512,
+        256,
+        128,
+        64,
+        32,
+        16,
+        8
+      ]
+    },
+    "lde_height": 4096,
+    "main_only_field_file_bytes": 112640,
+    "prepared_shape": [
+      512,
+      6
+    ],
+    "public_values": 2,
+    "queries": {
+      "all_ood_extension_claim_bytes": 1344,
+      "auxiliary_data_bytes": 2048,
+      "base_salt_bytes": 40960,
+      "batched_functions": 84,
+      "duplicate_rows_preserved": true,
+      "fri_salt_bytes": 36864,
+      "fri_sibling_extension_bytes": 9216,
+      "indices": 64,
+      "main_data_bytes": 1536,
+      "main_two_point_extension_claim_bytes": 192,
+      "quotient_data_bytes": 16384,
+      "serialized_bytes_established": false
+    },
+    "raw_shape": [
+      256,
+      2
+    ],
+    "reserved_roles": 13,
+    "retained_field_file_bytes": 1325056,
+    "roles": {
+      "auxiliary_lde": 131072,
+      "canonical_quotient_source": 32768,
+      "main_lde": 98304,
+      "prepared": 12288,
+      "quotient_ldes": 1048576,
+      "raw": 2048
+    }
+  },
+  "source_files": {
+    "research/fallible-input/src/lib.rs": {
+      "bytes": 19733,
+      "sha256": "2de5d619fe33449773c6e8a43939fdf5d5276d0667d7768d0571f7579a18372c"
+    },
+    "research/fallible-main/results/native.json": {
+      "bytes": 2579,
+      "sha256": "a54057cdd2cdca8d5c193faee5c0b82ebd15d68212e203224e524ccb9d45fdb0"
+    },
+    "research/fallible-main/src/context.rs": {
+      "bytes": 10552,
+      "sha256": "8786539758fa2602be3bb6866adda72912c491e2798d3a14c19bb3d2c0154e33"
+    },
+    "research/fallible-main/src/diagnostics_setup.rs": {
+      "bytes": 20844,
+      "sha256": "fa2af0016202934b6578f50d97d4191edc20e4740341549ab2f2aa002fe84ae8"
+    },
+    "research/fallible-main/src/hiding_pcs.rs": {
+      "bytes": 21232,
+      "sha256": "9bdd79a4960ea4bea6b51474275de6038e6f77633d9b1ff7a61f664cb637270d"
+    },
+    "research/fallible-source/src/composite.rs": {
+      "bytes": 41494,
+      "sha256": "31789525240b63f5b5c6a8d5f1e2e8b88374d821e889d60261c863911c835e1e"
+    },
+    "research/fallible-source/src/extension.rs": {
+      "bytes": 24815,
+      "sha256": "2514d694276257ed36aa144715e38be8b62f74d96f12659555f291176ea3312d"
+    },
+    "research/fallible-source/src/owned_prover.rs": {
+      "bytes": 23300,
+      "sha256": "fba479e858fca705a913b7421e04807fd55c890cbde015f9f7fef70e32834b94"
+    },
+    "research/fallible-source/src/source.rs": {
+      "bytes": 10326,
+      "sha256": "d3829f1a1a2180f0a9e9cae5b1246da424263c9e19f041bf82143890a126274c"
+    },
+    "research/overlay-composition/source-evidence.json": {
+      "bytes": 1320,
+      "sha256": "cb6c53af575ef09a11e87098240f3c4350e5ab10621872f604909ef9aa725bba"
+    },
+    "research/proof-preflight/src/preflight.rs": {
+      "bytes": 8131,
+      "sha256": "c08cb17ab5703e9ae0aa81fde2ebf07b622bc026bb2d8096172bd8a1ec803c8c"
+    },
+    "research/quotient-source/src/quotient_kernel.rs": {
+      "bytes": 10400,
+      "sha256": "7df6a350620007f3c0117c48120f92148f6d0f752c008920b1746d8eb93e4a44"
+    },
+    "research/signature-overlay/results/symbolic.json": {
+      "bytes": 310,
+      "sha256": "62371b668338320d0ba104877b5b22441cf535d35b66be353f15e8b191b2aab8"
+    },
+    "research/signature-overlay/src/air.rs": {
+      "bytes": 1148,
+      "sha256": "42720358014063e50220cf97960d01f19ff3ee6597a9f72bb0f7dbf81eaf6f35"
+    },
+    "research/signature-overlay/src/layout.rs": {
+      "bytes": 4541,
+      "sha256": "263035a13c82024429862620e362d9ff02378e091cdcf1972d8a9f6ec021b37c"
+    },
+    "research/source-prover/results/measurement.json": {
+      "bytes": 5421,
+      "sha256": "4bc9422c1962d1a4dc025cacf8854470dda3fc440ad23ed547bd1140439e90fe"
+    },
+    "research/source-prover/src/diagnostics.rs": {
+      "bytes": 9609,
+      "sha256": "a6303d4bdc2cb6bd5208867d7ca8c68297721ad6075bf9459ab3e2428e3de792"
+    },
+    "research/storage-pcs/backend/src/config.rs": {
+      "bytes": 20398,
+      "sha256": "78f50dc6f0b9233e28399a33a0b402d9c1c53f218b5cb8c73df000075c55f4fe"
+    },
+    "research/storage-pcs/backend/src/hiding_pcs.rs": {
+      "bytes": 69656,
+      "sha256": "8c12cca5d256e28f0a87f0cf95020e33b62b27070d430776e24599d6a18d6eed"
+    },
+    "research/storage-pcs/backend/src/prover.rs": {
+      "bytes": 20819,
+      "sha256": "37c1aa19313ac2e2c3327ba03e7185dd0045e351b294428e4b74742dcb1d1e3f"
+    },
+    "research/storage-pcs/backend/src/transcript.rs": {
+      "bytes": 39974,
+      "sha256": "a9ee1af03b02514bffffa6519c1f0544c91457c3e2327024cdfcfd84273ab6e9"
+    },
+    "research/storage-pcs/backend/src/two_adic_pcs.rs": {
+      "bytes": 70809,
+      "sha256": "5ffa814e4f979b211d84f52d111e7e3d73499d572c88e63553a973e4066ae5b6"
+    },
+    "research/storage-pcs/resources/record.json": {
+      "bytes": 6650,
+      "sha256": "90d5b28c40773387089b8ed7465fd8315b3501b0e083ad64a19c886fdff88b3a"
+    },
+    "research/storage-pcs/tests/common/mod.rs": {
+      "bytes": 2880,
+      "sha256": "b91f76d65845f72b4d16dc2a929242a8dfa9e2c139167b4bdebd49a5c1418c4b"
+    },
+    "research/storage-pcs/validation.json": {
+      "bytes": 15564,
+      "sha256": "5508ff1f5c92128ba3a3c4f9576cbf145b73baccc871b2d61f7b783d6260c962"
+    }
+  },
+  "whole_salt_rng_byte_coverage_established": false
+}

@@ -4,6 +4,8 @@ This index records the individual laboratory boundaries, retained references and
 
 ## Proof research map
 
+The [complete overlay resource inventory](../research/overlay-composition/README.md) joins the current relation dimensions to source, commitment and FRI contents, private opening ownership, entropy and query lifetimes. Its scalar calculation checks independently saved small records. Full signature proving, untrusted transport admission, security composition and the same witness ledger remain separate requirements.
+
 The workspace contains eight isolated hiding proof crates. Their component and diagnostic statements are research interfaces rather than a production payment format. Exact dependencies, independent references, closed transport profiles and test scope are recorded with each component.
 
 | Component | Verified relation scope |

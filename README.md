@@ -206,6 +206,8 @@ The [fallible proving entry](research/fallible-source/README.md) connects that w
 
 The [successful main construction](research/fallible-main/README.md) consumes the new fallible source through actual owned preparation, extension and the retained hiding MMCS. All 24,576 returned main fields, 360,448 committed leaf input bytes, the actual root and continuing RNG observations match saved references. The diagnostic closes after main commitment and produces no proof. Full relation resource construction and security composition remain open.
 
+The [complete overlay resource inventory](research/overlay-composition/README.md) accounts for current source contents, retained folding trees, entropy, queries and construction lifetimes. Independent saved records check its bounded scalar calculation. The conditional field file total is 26,300,841,984 bytes. No wide allocation, signature proof, achieved security score or general transport bound follows from that projection.
+
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
 ## Build and reproduce
