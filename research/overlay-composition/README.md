@@ -71,6 +71,8 @@ Current preflight refuses raw width above eight before symbolic collection. Stor
 
 ## Security and private ledger obligations
 
+The [authorization construction boundary](authorization-construction.md) identifies why scheduling unchanged hash gadgets cannot fit the current class and specifies the private equalities needed to join signature ownership to membership, stable nullifiers and the complete payment relation. It selects no new prover or execution class.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
