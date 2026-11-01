@@ -1,0 +1,51 @@
+{
+  "format": "kova.quotient-basis.validation.v1",
+  "date": "2026-11-01",
+  "platform": "Windows x86_64",
+  "python": "3.14.5",
+  "scope": "one independent tiny Fourier quotient-basis and coefficient image reference",
+  "provenance": {
+    "bytes": 3962,
+    "sha256": "ea851c8b034d34baa59b0dcc71263a4836264a8b55d885a0b48ba1d6433d6d3d"
+  },
+  "reference": {
+    "bytes": 566,
+    "sha256": "3ad785073c0b5701a96c93926bba8368282d2248d3c43fc4cc0d6fa7100f3e05"
+  },
+  "reference_attempts": 1,
+  "guard": {
+    "accepted": true,
+    "expected_tests": 0,
+    "actual_passed": null,
+    "actual_failed": null,
+    "actual_ignored": null,
+    "test_counts_verified": false,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 5606944768,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 14749696,
+    "peak_private_commit_bytes": 9904128,
+    "sampled_peak_private_bytes": 8409088,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 11194368,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "native_freeze": {
+    "files": 32,
+    "sha256": "fa11c9eaf65b8d8c14fbc8304d8ef707cf848e4811d4bb4a3fe4b88f72431994"
+  },
+  "limitations": [
+    "Tiny field reference does not execute the production field or prover",
+    "Image enumeration covers one coefficient, not every mask polynomial",
+    "Oracle basis equivalence does not establish hash or transcript equivalence",
+    "No complete security bound or private payment acceptance"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "format": "kova.quotient-basis.sources.v1",
+  "base_revision": "3b9bd07f8f6aacc4bdac025e900aeaa28463eeb4",
+  "normalization": "UTF-8 CRLF to LF",
+  "python_packages": [],
+  "source_files": {
+    "model.py": {
+      "bytes": 6952,
+      "sha256": "6900bcc631a6e3b3a02e23e17e5cbfad3e63270cabbd1dba58f1426cb050704e"
+    },
+    "fixtures/literals.json": {
+      "bytes": 642,
+      "sha256": "0f193cac9dd94d1f8f2bb4e126a670efcb2d1354e07d843250f6d9f43dab028b"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "NOTICE.md": {
+      "bytes": 1190,
+      "sha256": "057a396bf220edbb111b0bf997685555a6cc885d3542c32fe17e8a5f40b6ea0c"
+    },
+    ".gitignore": {
+      "bytes": 74,
+      "sha256": "648070717aa6e4a0af4a33abce540238050afe30526d2248b7ae8ba5a6bd8169"
+    },
+    "run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    },
+    "static_check.py": {
+      "bytes": 2963,
+      "sha256": "327132ec38bb3f5c414f649001ca9a48addd6856b925f73fc2f0da76d5b78b2f"
+    }
+  },
+  "repository_files": {
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "research/fallible-source/Cargo.lock": {
+      "bytes": 16267,
+      "sha256": "bffed31bda33ecbce15d65c071cca806c6ba8dfac9f6bc794305e85c4a8b9b34"
+    },
+    "research/fallible-source/src/hiding_pcs.rs": {
+      "bytes": 19434,
+      "sha256": "0078d961ae8dabfa2bdee56fcaad411bc3d99e36a8a8afe0617907f710254b38"
+    },
+    "research/fallible-source/src/owned_prover.rs": {
+      "bytes": 23300,
+      "sha256": "fba479e858fca705a913b7421e04807fd55c890cbde015f9f7fef70e32834b94"
+    },
+    "research/storage-pcs/backend/src/hiding_pcs.rs": {
+      "bytes": 69656,
+      "sha256": "8c12cca5d256e28f0a87f0cf95020e33b62b27070d430776e24599d6a18d6eed"
+    },
+    "research/storage-pcs/backend/src/storage.rs": {
+      "bytes": 6958,
+      "sha256": "e52cea4aac0a82c99b244c70fddc9d302212aec93f2e39692965140bf0fdc18d"
+    },
+    "research/quotient-source/src/quotient_kernel.rs": {
+      "bytes": 10400,
+      "sha256": "7df6a350620007f3c0117c48120f92148f6d0f752c008920b1746d8eb93e4a44"
+    },
+    "research/storage-pcs/tests/common/air.rs": {
+      "bytes": 1328,
+      "sha256": "7f04cd362c0e32374ffcebeb049696fc7e8373c8df2a4850a138397a33df466b"
+    }
+  },
+  "registry_source_context": {
+    "p3-commit-0.8.0/src/domain.rs": {
+      "bytes": 21062,
+      "sha256": "cd3388e1657ef38da3b4542045c47f585032a5685d87bd1d86b9b2bafcc3182d"
+    },
+    "p3-uni-stark-0.8.0/src/verifier.rs": {
+      "bytes": 28497,
+      "sha256": "d55e7787358dca6ad70d28bad8ce8a25428322160fe0133fa680c1a5fe6ab077"
+    },
+    "p3-uni-stark-0.8.0/src/security.rs": {
+      "bytes": 50884,
+      "sha256": "d3b692c49faad781971a9fba002153f01b899daaa20170cbe3b77bf568117510"
+    },
+    "p3-uni-stark-0.8.0/src/proof.rs": {
+      "bytes": 15158,
+      "sha256": "73aa8cd250bdd7ebc8045bbdbcea883d79a391dd44a22be46a733765e3932aec"
+    },
+    "p3-security-0.8.0/src/deep.rs": {
+      "bytes": 3103,
+      "sha256": "5afc71bc379623ebd18e852868333c5d8e9ad8999c75aaf9a58ed2f5bb064043"
+    },
+    "p3-security-0.8.0/src/shape.rs": {
+      "bytes": 4725,
+      "sha256": "877d4f627ace244cb4856b0389a43979502330ee158c2b265fe21006ddb53f64"
+    }
+  },
+  "primary_source": {
+    "title": "STARK-Based Signatures from the RPO Permutation",
+    "authors": [
+      "Shahla Atapoor",
+      "Cyprien Delpech de Saint Guilhem",
+      "Al Kindi"
+    ],
+    "url": "https://cic.iacr.org/p/3/2/38/pdf",
+    "doi": "10.62056/absgbn-3y",
+    "published": "2026-08-03",
+    "pages": 37,
+    "bytes": 852985,
+    "sha256": "4dae35e44b84b2350e4c8cbe470725ac08f27686bb0d8bc6d54df853577c220a",
+    "license": "CC BY 4.0",
+    "visually_reviewed_pages": [
+      13,
+      14,
+      15,
+      16,
+      30,
+      31,
+      32
+    ]
+  }
+}
