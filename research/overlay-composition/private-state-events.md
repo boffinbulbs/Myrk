@@ -77,6 +77,8 @@ This proposition proves memory consistency conditional on actual event productio
 
 ## Dense encoding refusal and remaining construction
 
+The subsequent [exact Keccak fixed wiring relation](keccak-fixed-wiring.md) specializes immutable state references for all 24 rounds and gives a conditional correspondence to the retained round equations. Its direct field materialization is also refused. No copy argument or prover class follows from either specification.
+
 The explicit permutation matrix is a specification baseline, not a viable successor. In this particular encoding it materializes $N^2$ Boolean field cells before event coordinates, sorting or cryptographic arithmetic. Representing the retained 2,547 private source words as separately initialized addresses with at least one read each already gives $N\ge5094$. Its matrix alone has at least
 
 $$5094^2=25948836\ \text{field cells},\qquad 4\cdot25948836=103795344\ \text{field content bytes}.$$
