@@ -4,7 +4,7 @@ This inventory connects the [measured signature overlay](../signature-overlay/RE
 
 ## Statement and comparison parameters
 
-The retained relation has height $H=8192$, width $W=42178$, 196 public values and 71,623 assertions of degree four. The experimental comparator uses extension degree $e=4$, random columns $r=4$, 64 queries, blowup eight, binary folding and 16 base field salt columns. These are research parameters. They are not selected chain security parameters.
+The retained relation has height $H=8192$, width $W=42178$, 196 public values and 71,623 assertions of degree four. The experimental comparator uses extension degree $e=4$, random columns $r=4$, 64 queries, blowup eight, binary folding and 16 base field salt columns. These are research parameters. They are not selected chain security parameters. The [complete instance and security record](instance-security.md) traces the actual nominal owners, verifier checks, challenge order, claim incidence and unresolved theorem obligations.
 
 Let $W_p=W+r$ and $L=16H$. Actual preparation writes $W$ input fields followed by $W+2r$ sampled fields for each source row, then reinterprets the flat sequence at width $W_p$. Thus prepared height is $2H$. The current tiled transform consumes that actual prepared order.
 
@@ -57,7 +57,7 @@ The inventory's `quotient_mask_bank_bytes` entry counts the seven independently 
 
 The current pruned Merkle opener removes redundant authentication siblings. It still gathers a row for each of the 64 supplied queries, preserving duplicate indices. Main query data therefore contain $64W_p\cdot4=10,798,592$ field bytes in this implementation. The two main opening points add $2W_pe\cdot4=1,349,824$ claim bytes. Claims for random codeword columns are moved into the proof tuple rather than discarded. All main, quotient and auxiliary claims total 1,350,976 field bytes. Salt, FRI siblings, authentication paths, commitments, framing and public data remain separate.
 
-These quantities describe field contents. They are not serialized proof size. The previous complete small proof encoded 596,650 JSON bytes. Its dimensions do not establish wide transport feasibility. `ResourcePlan.declared_serialized_proof_cap` declares two MiB, while the retained diagnostic writer bounds its own output. A general untrusted proof decoder and service transport limit have not been established by either statement.
+These quantities describe field contents. They are not serialized proof size. The previous complete small proof encoded 596,650 JSON bytes. Its dimensions do not establish wide transport feasibility. `ResourcePlan.declared_serialized_proof_cap` declares two MiB, while the retained diagnostic writer bounds its own output. The subsequent [typed decoder](../proof-transport/README.md) and [header admitted reader](../frame-reader/README.md) enforce their own fixed small proof resource boundaries. They do not verify a payment statement or supply production network deadlines and peer admission.
 
 Accepted random fields are also different from delivered RNG bytes. The main, quotient and auxiliary constructions consume respectively $H(W+8)$, $88H$ and $16H$ accepted base fields. Rejection sampling can require additional draws. Saved small records satisfy those lower bounds. Observer forks create separate journals, so the old parent salt byte counter does not cover every FRI child stream. No total delivered wide RNG byte count is claimed.
 
