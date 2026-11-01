@@ -196,6 +196,8 @@ The [complete proof composition analysis](research/proof-composition/README.md) 
 
 The [packed lifetime inventory](research/packed-lifetimes/README.md) maps all 67 physical regions and their source obligations. It identifies overlapping product work and a separate arithmetic mode overlay candidate. The candidate remains an unimplemented layout design with explicit degree and dataflow gates.
 
+The [arithmetic workspace component](research/arithmetic-overlay/README.md) implements clock bound modes, original integer gadgets, held operand sources and result updates in one shared bank. A complete component trace passes and sixteen hostile controls reject. Integration into the full private signature relation remains the next boundary.
+
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
 ## Build and reproduce

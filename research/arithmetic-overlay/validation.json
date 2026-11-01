@@ -1,0 +1,46 @@
+{
+  "artifacts": {
+    "results/measurement.json": {
+      "bytes": 3329,
+      "sha256": "0011d6da6a88af3eace56a4278926a82b155b3824fbbbeb57f8a97d46a88e13e"
+    }
+  },
+  "date": "2026-11-01",
+  "format": "kova.arithmetic-overlay.validation.v1",
+  "guard": {
+    "accepted": true,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "actual_passed": 1,
+    "available_before_bytes": 6109659136,
+    "exit_code": 0,
+    "expected_tests": 1,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 66060288,
+    "peak_private_commit_bytes": 64753664,
+    "peak_working_bytes": 68956160,
+    "test_counts_verified": true,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "Synthetic held sources and sixteen synthetic public outputs, not a payment wire format",
+    "Full packed signature layout, constructor and private source integration remain unchanged",
+    "Native constraint rejections are not cryptographic proof rejections",
+    "No commitment scheme, proof backend or complete private payment proof selected",
+    "Component degree and memory do not establish full signature degree or prover resources",
+    "No complete post quantum security result"
+  ],
+  "native_executable_sha256": "9f68c98c09a57d71c19d5a12bfa304a6c169ac886d724afedca63af7bd42eb26",
+  "platform": "Windows x86_64",
+  "rust": "1.94.1",
+  "scope": "one symbolic collection and actual shared arithmetic component trace with sixteen native controls",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "ccc049dbe3e1f4bb7740475bbc48886562d807277a5061e93e3484677ca97f04"
+}

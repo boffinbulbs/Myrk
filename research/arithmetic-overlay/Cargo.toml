@@ -1,0 +1,35 @@
+[package]
+name = "kova-arithmetic-overlay"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+publish = false
+autotests = false
+license = "MIT"
+
+[features]
+default = []
+diagnostics = []
+
+[lib]
+test = false
+doctest = false
+
+[dependencies]
+p3-air = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+serde = { version = "=1.0.229", default-features = false, features = ["derive"] }
+serde_json = "=1.0.145"
+
+[[test]]
+name = "overlay"
+path = "tests/overlay.rs"
+required-features = ["diagnostics"]
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+incremental = false

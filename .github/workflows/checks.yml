@@ -310,6 +310,24 @@ jobs:
       - name: Packed lifetime inventory evidence
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: python -I -S research/packed-lifetimes/static_check.py
+      - name: Arithmetic overlay formatting
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 rustfmt --edition 2024 --config skip_children=true --check research/arithmetic-overlay/src/fixture.rs research/arithmetic-overlay/src/laboratory.rs research/arithmetic-overlay/src/layout.rs research/arithmetic-overlay/src/lib.rs research/arithmetic-overlay/src/relation.rs research/arithmetic-overlay/src/schedule.rs research/arithmetic-overlay/tests/overlay.rs
+      - name: Arithmetic overlay dependencies
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/arithmetic-overlay/Cargo.toml --locked
+      - name: Arithmetic overlay recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/arithmetic-overlay/static_check.py
+      - name: Arithmetic overlay diagnostic compilation
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo test --manifest-path research/arithmetic-overlay/Cargo.toml --release --features diagnostics --test overlay --locked --offline --no-run --jobs 1
+      - name: Arithmetic overlay strict checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/arithmetic-overlay/Cargo.toml --release --features diagnostics --lib --test overlay --locked --offline -- -D warnings
+      - name: Arithmetic overlay default checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/arithmetic-overlay/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
 
   row:
     needs: scope
