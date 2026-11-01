@@ -1,0 +1,7 @@
+
+running 1 test
+test accounting::tests::bounded_native_accounting ... period_pairs=240 phase_boundaries=960 cap_pairs=960 earned_burn_cases=18 actual_numeric_refusals=16 saved_prefixes=9 saved_transitions=3 manual_nominal=13 manual_pair=7 manual_allocation=6
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,345 @@
+{
+  "format": "kova.monetary-paired60-native.provenance.v1",
+  "date": "2026-11-01",
+  "baseline": "a41e1e4900d57b159869134c0225c41f1e97ecbd",
+  "files": {
+    "Cargo.lock": {
+      "raw": false,
+      "bytes": 184,
+      "sha256": "42ca30de8aae15ee76ab5c52b40e3d7e886c7dbe4dff796f401360ff5770b4a3"
+    },
+    "Cargo.toml": {
+      "raw": false,
+      "bytes": 412,
+      "sha256": "07940c348c6524b88e27dd29c711c73874cb0c263e2cbc0390cb237ed4f78814"
+    },
+    "licenses/Kova-MIT": {
+      "raw": true,
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "README.md": {
+      "raw": false,
+      "bytes": 5892,
+      "sha256": "17bbe4686f139a1bf93bf26cd352223388ae8766a9e9213fe9f832aafb9ce036"
+    },
+    "results/native.txt": {
+      "raw": true,
+      "bytes": 358,
+      "sha256": "54822459e94225e65f9df7afbccce27698ec8fa9df6760fe4b93f942bd45b01d"
+    },
+    "src/accounting.rs": {
+      "raw": false,
+      "bytes": 8729,
+      "sha256": "449ed050926215678beb5cb5249602cfc1f45bed399bf33e02ea63d8c1f4f4fc"
+    },
+    "src/lib.rs": {
+      "raw": false,
+      "bytes": 326,
+      "sha256": "30680b9a9dd313f54a6ce6e4c1c53a89f422a9725e8949d8f443d82364c3d894"
+    },
+    "src/saved_cases.rs": {
+      "raw": false,
+      "bytes": 41306,
+      "sha256": "7d83f49d574ec1f984d888c3ec009300bcd89dafb4ee59b8781ebae9c66ad729"
+    },
+    "src/tests.rs": {
+      "raw": false,
+      "bytes": 11579,
+      "sha256": "a6a92ca89bd2d1505628701a53e0457ff315ce53be790037cadaffb0488b3f19"
+    },
+    "static_check.ps1": {
+      "raw": false,
+      "bytes": 3151,
+      "sha256": "2a2dcfb8d8420e3f92bef863363603d0b042d313a07a5c263d08260daaa51f8c"
+    }
+  },
+  "repository_context": {
+    "Cargo.toml": {
+      "raw": false,
+      "bytes": 735,
+      "sha256": "2dad10da5dedfdef787a3eac95ddedf59e6d97dd7b51f9f076b6775fa9af8b17",
+      "git_blob": "5eb927a78f13d1714b4c833ee28396f7d4257b48"
+    },
+    "Cargo.lock": {
+      "raw": false,
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
+      "git_blob": "7d826f03ad620fb9bc926ff5d6109d1ba8863d06"
+    },
+    "LICENSE": {
+      "raw": true,
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424",
+      "git_blob": "17b48f16c64fd688b5929736899c73faca927d19"
+    },
+    "crates/thorum-core/Cargo.toml": {
+      "raw": false,
+      "bytes": 310,
+      "sha256": "41156d64feb2af242f96711d71f52006c5d014766a6621aa85e394f4ac1e2b7d",
+      "git_blob": "659b51c48442f4101a687127e73efb4a2722af2c"
+    },
+    "crates/thorum-core/src/lib.rs": {
+      "raw": false,
+      "bytes": 1817,
+      "sha256": "b5339e14659c208b321a767ea4164bb629f7db2c638d031391df5bd3c0aadd67",
+      "git_blob": "24a2b3d22cb8ff8c3ef31b16b22378a89fa1868c"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "raw": false,
+      "bytes": 3989,
+      "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b",
+      "git_blob": "924d22657f0eb056d3e47c19830326392bc0dfe7"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "raw": false,
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d",
+      "git_blob": "2aa845c5751b7975bb40b2415b55b92beff2a85b"
+    },
+    "crates/thorum-core/src/emission.rs": {
+      "raw": false,
+      "bytes": 3344,
+      "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7",
+      "git_blob": "da8721c6f8478bbb1918e0b72cdf0035325cca7f"
+    },
+    "crates/thorum-core/src/table.rs": {
+      "raw": false,
+      "bytes": 4423,
+      "sha256": "ae8e7e9f2333a0948a9c606a77dd03f161db0a931fe532def4e2efb7942c0148",
+      "git_blob": "a2ee8e59729d4b2d1b44b6a995ee74775433c3fd"
+    },
+    "crates/thorum-core/tests/accounting.rs": {
+      "raw": false,
+      "bytes": 17304,
+      "sha256": "66ce74d238e069fda7cdbc945d632bed18b436fc196f9a63736a0375c8192cfa",
+      "git_blob": "26d9390478c4c8d7a48da3b3c639fbd03dc71479"
+    },
+    "crates/thorum-core/tests/golden_vectors.rs": {
+      "raw": false,
+      "bytes": 5773,
+      "sha256": "84199f0bc3179233db4efd6f949b9559d4041d4f925c73c7237d6831caabc5a6",
+      "git_blob": "9b10bf5aca0179d454a69f29342a2bc8e8d5f38e"
+    },
+    "crates/thorum-core/examples/parameters.rs": {
+      "raw": false,
+      "bytes": 1341,
+      "sha256": "b12002f526ffb117f8c773aa64f7db5a567becf5820d3755ff7968b8111b6dbb",
+      "git_blob": "b823c447b9c29a7163b0a35dbc8296ae5d27f134"
+    },
+    "research/emission/README.md": {
+      "raw": false,
+      "bytes": 12947,
+      "sha256": "e6fa17490f6b57c780f90d0ad5eb0377acd40d68ce8e8841fc0d09c838647a20",
+      "git_blob": "17755f414f3f4afa858020798d08285265ae7f56"
+    },
+    "research/emission/emission.py": {
+      "raw": false,
+      "bytes": 19184,
+      "sha256": "e1a4b2176e80807da8cba997bbedd0ea4a5512b3e8befb604691ed2f44226a94",
+      "git_blob": "3ddc3babae91c2cbfbf9a89e17cccfed662fa79f"
+    },
+    "research/emission/test_emission.py": {
+      "raw": false,
+      "bytes": 11744,
+      "sha256": "44240fbc7360b2d4c630f658166fd8c17dd08d23c36596ccda62bb0748aa6eee",
+      "git_blob": "1bf63a40eedb999dad2a7198f7df0245adad4dc9"
+    },
+    "research/emission/metadata.json": {
+      "raw": false,
+      "bytes": 3622,
+      "sha256": "6f0b8997850fb7640da8dad61c46b91ec2d38b82c7667be8c2ab1931497a321c",
+      "git_blob": "f77b496c5d9cef70419db816dbec454432420cfc"
+    },
+    "research/emission/schedule.csv": {
+      "raw": false,
+      "bytes": 13498,
+      "sha256": "1a06338798693b63261c76bcc4dc873437f716b4d6f413a961f32c8ecd336918",
+      "git_blob": "2c65c0cd4aba3c1352d3ffa3b4c3032e74682104"
+    },
+    "research/emission/golden_vectors.json": {
+      "raw": false,
+      "bytes": 19620,
+      "sha256": "603f08b76560db7c6d2510e3c8fc8c13617ace70cb9852987b8414bc69132fc4",
+      "git_blob": "38ca4a399bb0100861c36ee37430cc88f203a6ea"
+    },
+    "research/emission/golden_vectors.csv": {
+      "raw": false,
+      "bytes": 3480,
+      "sha256": "f6aaec600724b24dc4642dc2a668b5442fad0d695233416d6b3bb7091b134e35",
+      "git_blob": "374f3c709b8271e94f22aaeba6f41e2535c8ab77"
+    },
+    "docs/parameters.md": {
+      "raw": false,
+      "bytes": 6099,
+      "sha256": "29541f85caf9d04d96217ebecf1b3ff6960fe78c8bea6455bc6b4b494c42ba90",
+      "git_blob": "f53e11f2c395e5d4f99b14a447f8a925541cd49f"
+    },
+    "docs/subsidy-allocation.md": {
+      "raw": false,
+      "bytes": 7079,
+      "sha256": "69303fb1105341abf41232c409061e0da05b41120a8c9b0e69db147f0f4aaf24",
+      "git_blob": "6855233e87cab8abd3fd3aed6a9a15a5a07378e7"
+    },
+    "docs/architecture.md": {
+      "raw": false,
+      "bytes": 9533,
+      "sha256": "d00407a4b71d2e222454ca72ae4df30c69bdad7e91360ddaefa31f7366ffe7e5",
+      "git_blob": "f194d88d13c1f77bf517dd034884ca77aac759fb"
+    },
+    "docs/checkpoints.md": {
+      "raw": false,
+      "bytes": 5476,
+      "sha256": "0888287d33dc6c2a1fa8a265365220f0e6e94d7808b4ed6d7b11ce6e54efc1e1",
+      "git_blob": "07f5fc9450dc39f209ed8a9fafa10dbdca58cbec"
+    },
+    "docs/private-transition-state.md": {
+      "raw": false,
+      "bytes": 20202,
+      "sha256": "f5d447290a69bb11ed9efda6d0a5024dbaac1f0e1bfafa079f01d5f1522e7fbf",
+      "git_blob": "852793fd3de546aa9074c562bbb0eb0be5708990"
+    },
+    "docs/confidential-stake.md": {
+      "raw": false,
+      "bytes": 21669,
+      "sha256": "703c3d90f01999a7b250c3142cd615f1758928b495e037787e633563cbd2daa8",
+      "git_blob": "8d00cca2d27740a96d5f3a21d3af9fcc94ce40c3"
+    },
+    "docs/governance.md": {
+      "raw": false,
+      "bytes": 18274,
+      "sha256": "9ce2ee9e317c7784ae5930324e56b9f08a78f06405905e89f2d9fed025ecc76e",
+      "git_blob": "b6b7348aecfa7137f9b16d491924a57f9eaa6ec1"
+    },
+    "docs/delivery-roadmap.md": {
+      "raw": false,
+      "bytes": 9055,
+      "sha256": "526db01aa3557ab5fa655af2847a430de1c5b0b99af90deca4415a948fac337d",
+      "git_blob": "f665ba699c37596bb9027eaae49fc7ca43b670ae"
+    },
+    "docs/child-work-policy.md": {
+      "raw": false,
+      "bytes": 12795,
+      "sha256": "a2caf354527d8c998512413d7a4f6886b66643595dab3d040f62d1fe1258d08f",
+      "git_blob": "2041fe2df010f83cbdcdb14f9360e5d9faecef03"
+    },
+    "docs/monetary-paired60.md": {
+      "raw": false,
+      "bytes": 9339,
+      "sha256": "56ca90f1516be7980f7bd3bdcc7a16a39d144551383afbab9b5871ad12b6a418",
+      "git_blob": "3f2d8ed30a9448f41fa5e638f410139906211d61"
+    },
+    "research/monetary-paired60/reference.py": {
+      "raw": false,
+      "bytes": 11220,
+      "sha256": "45c694834183f5ba20d895d3755c17e65d683dfa4ad7e8cb12fa9d08a42afd0f",
+      "git_blob": "1ce5a20484e9b6d0822b28b6c08c5eb74d96e665"
+    },
+    "research/monetary-paired60/literals.json": {
+      "raw": false,
+      "bytes": 1265,
+      "sha256": "671d995318e19f8c924a0486ed23aa2c98f22cfb9e3f8a3f7508ada4a7d2e2a1",
+      "git_blob": "a3b836e3120dc65d898f48b25266fed72be45545"
+    },
+    "research/monetary-paired60/result.json": {
+      "raw": true,
+      "bytes": 37444,
+      "sha256": "87a343c07ff0334c95a5d1095f6a964eaa92c9954b082c1a4896b173e8d7397b",
+      "git_blob": "538da5ac230ac280ac8aba0cc3de00b30dc4e8d0"
+    },
+    "research/monetary-paired60/provenance.json": {
+      "raw": false,
+      "bytes": 9111,
+      "sha256": "1f035658b3ba3c56ef051b1deedf69831dc7e7fcfc2d1cfb12889a7c53ca96cb",
+      "git_blob": "640e27c90c09274ad32f9ee9b14c684ed76297f1"
+    },
+    "research/monetary-paired60/validation.json": {
+      "raw": false,
+      "bytes": 2350,
+      "sha256": "6f64c43cbcade745f30bc70a2b292a1187ef9003ba406e2f368ea481e81677de",
+      "git_blob": "e14d77fa695c79a3cef39654686c85aaa5a21592"
+    },
+    "research/monetary-paired60/README.md": {
+      "raw": false,
+      "bytes": 6129,
+      "sha256": "ad62dc64e2121968a75a20edeee463f45ace82e8e697670ba64b8bce0626f26d",
+      "git_blob": "6d703b3539cc95a605697176b25c7becdf4f9593"
+    }
+  },
+  "source_identity": "CRLF-normalized UTF-8 text, raw original license and actual captured stdout.",
+  "compiler": {
+    "release": "1.94.1",
+    "revision": "e408947bfd200af42db322daf0fadfe7e26d3bd1",
+    "llvm": "21.1.8",
+    "target": "x86_64-pc-windows-msvc",
+    "installed": {
+      "bin/rustc.exe": {
+        "bytes": 111104,
+        "sha256": "21256c9767416cbc70120e7987449c6cc5a66e3e9f843d05392ee4fd5e617261"
+      },
+      "bin/cargo.exe": {
+        "bytes": 30737408,
+        "sha256": "43226f7efc5ea12b88c9156da97f8954b9af582673baadb3fb1a3ebec5d97348"
+      },
+      "bin/rustfmt.exe": {
+        "bytes": 4829696,
+        "sha256": "0491ddaa5d29cbbfc85c1a112358b8f2c7306a7d2a6d8acc81f8829025844a67"
+      },
+      "bin/clippy-driver.exe": {
+        "bytes": 11922432,
+        "sha256": "cdf204b48299acd73d568608a58f92dfe59cc83d47314f13cd0181c34bc924e5"
+      },
+      "share/doc/rust/html/version_info.html": {
+        "bytes": 375,
+        "sha256": "f35836e633bc4c2b92f77820036ac88c6fbe12658ef1fec837807a7e48f28e66"
+      },
+      "share/doc/rust/html/src/core/macros/mod.rs.html": {
+        "bytes": 177387,
+        "sha256": "e9bb6a88766fe38a171f95cdbd49dcbaf50c72e7dc7c1b9c16428c078fabde3e"
+      },
+      "share/doc/rust/html/src/core/num/uint_macros.rs.html": {
+        "bytes": 484217,
+        "sha256": "be8e1b374fca23625ec496be720adcd1396cea7bee2da2e80b8de81382951259"
+      },
+      "share/doc/rust/html/src/core/array/mod.rs.html": {
+        "bytes": 103838,
+        "sha256": "da66c1aff7b33c2bd60f906f5f4f4dcb160558569e035c33e238d907cf622151"
+      },
+      "share/doc/rust/html/src/core/error.rs.html": {
+        "bytes": 110661,
+        "sha256": "c8c0d405d25147be776f240808c3236875964c9eefd6e58ac0911129e980aed3"
+      },
+      "share/doc/rust/html/src/core/fmt/mod.rs.html": {
+        "bytes": 324415,
+        "sha256": "b38751838a68ff348c15d6149901526204b68622e67e40625fce4da340aa73d2"
+      }
+    }
+  },
+  "cargo_nodes": 1,
+  "registry_dependencies": 0,
+  "actual_features": [
+    "default",
+    "diagnostics"
+  ],
+  "default_feature_items": [],
+  "nominal": "Isolated std-only default-empty library. Diagnostic numeric types all Unverified. Local unsafe forbidden, no original core accounting/test import.",
+  "included_constants": "Actual unchanged crates/thorum-core/src/table.rs through compile-time include. Formatting does not traverse this input. The recorded table hash constant is metadata, not proof authority.",
+  "guard": {
+    "bytes": 13335,
+    "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+  },
+  "fixture": {
+    "bytes": 41306,
+    "period_rows": 240,
+    "nominal_literals": 13,
+    "pair_literals": 7,
+    "allocation_literals": 6,
+    "prefixes": 9,
+    "transitions": 3,
+    "output_cap": 65536,
+    "source_result_raw_sha256": "87a343c07ff0334c95a5d1095f6a964eaa92c9954b082c1a4896b173e8d7397b",
+    "expected_results_computed_by_helper": false
+  },
+  "runtime_scope": "Actual compiler bin/lib, installed source HTML, retained MSVC/SDK files, PowerShell runtime, source/imports/fixtures and executable frozen privately. No OS or toolchain audit claimed.",
+  "scope": "Prospective from-genesis kova.monetary.paired60.v1 numeric accounting. No history/profile/earned duty/ownership/destination/ledger/commit authority or live activation. Separate numeric operations are not an atomic database transaction."
+}

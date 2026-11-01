@@ -1,0 +1,29 @@
+[package]
+name = "kova-monetary-paired60-native-diagnostic"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+license = "MIT"
+publish = false
+autobins = false
+autotests = false
+autobenches = false
+
+[workspace]
+
+[features]
+default = []
+diagnostics = []
+
+[lib]
+doctest = false
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = "deny"
+
+[profile.release]
+overflow-checks = true
+incremental = false
