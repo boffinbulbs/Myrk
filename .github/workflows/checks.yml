@@ -457,6 +457,24 @@ jobs:
       - name: Frame reader default checks
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/frame-reader/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
+      - name: Complete AIR metadata formatting
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 rustfmt --edition 2024 --config skip_children=true --check research/layout-metadata/src/lib.rs research/layout-metadata/src/metadata.rs research/layout-metadata/tests/metadata.rs
+      - name: Complete AIR metadata dependencies
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/layout-metadata/Cargo.toml --locked
+      - name: Complete AIR metadata recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/layout-metadata/static_check.py
+      - name: Complete AIR metadata diagnostic compilation
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo test --manifest-path research/layout-metadata/Cargo.toml --release --features diagnostics --test metadata --no-run --locked --offline --jobs 1
+      - name: Complete AIR metadata strict checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/layout-metadata/Cargo.toml --release --features diagnostics --lib --test metadata --locked --offline --jobs 1 -- -D warnings
+      - name: Complete AIR metadata default checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/layout-metadata/Cargo.toml --release --no-default-features --lib --locked --offline --jobs 1 -- -D warnings
 
   row:
     needs: scope

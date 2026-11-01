@@ -1,0 +1,38 @@
+[package]
+name = "kova-layout-metadata"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94.1"
+publish = false
+autotests = false
+autobins = false
+autobenches = false
+license = "MIT"
+
+[features]
+default = []
+diagnostics = []
+
+[lib]
+test = false
+doctest = false
+
+[dependencies]
+kova-signature-overlay = { path = "../signature-overlay", default-features = false }
+p3-air = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+
+[dev-dependencies]
+serde_json = { version = "=1.0.145", default-features = false, features = ["std"] }
+
+[[test]]
+name = "metadata"
+path = "tests/metadata.rs"
+required-features = ["diagnostics"]
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+incremental = false

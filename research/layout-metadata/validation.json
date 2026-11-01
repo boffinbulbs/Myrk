@@ -1,0 +1,59 @@
+{
+  "format": "kova.layout-metadata.validation.v1",
+  "date": "2026-11-01",
+  "rust": "1.94.1",
+  "platform": "Windows x86_64",
+  "hardware_reference": "../signature-overlay/validation.json",
+  "scope": "one actual complete AIR metadata evaluation and 24 fixed control groups",
+  "native": {
+    "bytes": 427,
+    "sha256": "3d6f0406c988695c269acd23873fd24a9d4a92c4b0acafc837aeae5aac5ec9ab"
+  },
+  "provenance": {
+    "bytes": 57615,
+    "sha256": "30284657385792e7e4ea35edc78864662df61387c48bfef96f7768d23f1d7467"
+  },
+  "native_guard": {
+    "accepted": true,
+    "expected_tests": 1,
+    "actual_passed": 1,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "test_counts_verified": true,
+    "timeout_seconds": 120,
+    "launched": true,
+    "hard_limit_installed": true,
+    "working_guard_terminated": false,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "available_before_bytes": 5501804544,
+    "minimum_available_bytes": 2147483648,
+    "hard_process_commit_limit_bytes": 536870912,
+    "peak_working_bytes": 9773056,
+    "peak_private_commit_bytes": 5210112,
+    "sampled_peak_private_bytes": 5210112,
+    "installed_process_commit_limit_bytes": 536870912,
+    "installed_job_commit_limit_bytes": 536870912,
+    "peak_job_commit_bytes": 6516736,
+    "installed_job_flags": 8960,
+    "exit_code": 0
+  },
+  "native_attempts": 1,
+  "compiler_preparation_attempts": 5,
+  "compiler_preparation_failures": 2,
+  "executable": {
+    "bytes": 1088000,
+    "sha256": "614e5363755b0afdfbcbfb0fdf2a94f70b96d938dc10c9f36646fba9302d19d9"
+  },
+  "native_freeze": {
+    "files": 3048,
+    "sha256": "92950a1c189cd881fea4a10ae11d4a8375c41177f1942a86b0ad11148ecedfe9"
+  },
+  "limitations": [
+    "No witness satisfaction or proof verification",
+    "Not integrated into a proving planner",
+    "Original full signature admission remains refused",
+    "Attached metadata charges exclude discarded detached work and other field arithmetic",
+    "No security score or completed private payment"
+  ]
+}

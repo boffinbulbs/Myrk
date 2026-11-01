@@ -1,0 +1,1816 @@
+{
+  "format": "kova.layout-metadata.sources.v1",
+  "base_revision": "1bd0234b4bec304d5e8064fb7e0c8bc08b420ef0",
+  "normalization": "UTF-8 CRLF to LF",
+  "metadata_nodes": 85,
+  "imported_overlay_features": [],
+  "registry_packages": [
+    {
+      "name": "aead",
+      "version": "0.6.1",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "alloc"
+      ]
+    },
+    {
+      "name": "aes",
+      "version": "0.9.1",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "zeroize"
+      ]
+    },
+    {
+      "name": "aes-gcm",
+      "version": "0.11.1",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "aes",
+        "alloc",
+        "zeroize"
+      ]
+    },
+    {
+      "name": "autocfg",
+      "version": "1.5.1",
+      "license": "Apache-2.0 OR MIT",
+      "features": []
+    },
+    {
+      "name": "base64ct",
+      "version": "1.8.3",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "alloc"
+      ]
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.12.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "cipher",
+      "version": "0.5.2",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "block-buffer",
+        "stream-wrapper"
+      ]
+    },
+    {
+      "name": "cmov",
+      "version": "0.5.4",
+      "license": "Apache-2.0 OR MIT",
+      "features": []
+    },
+    {
+      "name": "const-oid",
+      "version": "0.10.2",
+      "license": "Apache-2.0 OR MIT",
+      "features": []
+    },
+    {
+      "name": "cpubits",
+      "version": "0.1.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "cpufeatures",
+      "version": "0.3.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.2.2",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "rand_core"
+      ]
+    },
+    {
+      "name": "ctr",
+      "version": "0.10.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "ctutils",
+      "version": "0.4.6",
+      "license": "Apache-2.0 OR MIT",
+      "features": []
+    },
+    {
+      "name": "der",
+      "version": "0.8.3",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "alloc",
+        "oid",
+        "zeroize"
+      ]
+    },
+    {
+      "name": "digest",
+      "version": "0.11.3",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "either",
+      "version": "1.19.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "getrandom",
+      "version": "0.4.3",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "sys_rng"
+      ]
+    },
+    {
+      "name": "ghash",
+      "version": "0.6.0",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "zeroize"
+      ]
+    },
+    {
+      "name": "hybrid-array",
+      "version": "0.4.15",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "alloc",
+        "ctutils",
+        "extra-sizes",
+        "zeroize"
+      ]
+    },
+    {
+      "name": "inout",
+      "version": "0.2.5",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "itertools",
+      "version": "0.15.0",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "use_alloc"
+      ]
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "keccak",
+      "version": "0.2.2",
+      "license": "Apache-2.0 OR MIT",
+      "features": []
+    },
+    {
+      "name": "kem",
+      "version": "0.3.0",
+      "license": "Apache-2.0 OR MIT",
+      "features": []
+    },
+    {
+      "name": "libc",
+      "version": "0.2.191",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "lock_api",
+      "version": "0.4.14",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "atomic_usize",
+        "default"
+      ]
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.3",
+      "license": "Unlicense OR MIT",
+      "features": [
+        "alloc",
+        "std"
+      ]
+    },
+    {
+      "name": "ml-dsa",
+      "version": "0.1.1",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "alloc",
+        "rand_core",
+        "zeroize"
+      ]
+    },
+    {
+      "name": "ml-kem",
+      "version": "0.3.3",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "alloc",
+        "zeroize"
+      ]
+    },
+    {
+      "name": "module-lattice",
+      "version": "0.2.3",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "alloc",
+        "ctutils",
+        "zeroize"
+      ]
+    },
+    {
+      "name": "num-bigint",
+      "version": "0.5.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "num-integer",
+      "version": "0.1.47",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "i128"
+      ]
+    },
+    {
+      "name": "num-traits",
+      "version": "0.2.19",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "i128"
+      ]
+    },
+    {
+      "name": "p3-air",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-baby-bear",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-dft",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-field",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-keccak-air",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-matrix",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-maybe-rayon",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-mds",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-monty-31",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-poseidon1",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-poseidon2",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-symmetric",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "p3-util",
+      "version": "0.8.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "paste",
+      "version": "1.0.15",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "pin-project-lite",
+      "version": "0.2.17",
+      "license": "Apache-2.0 OR MIT",
+      "features": []
+    },
+    {
+      "name": "pkcs8",
+      "version": "0.11.0",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "alloc"
+      ]
+    },
+    {
+      "name": "polyval",
+      "version": "0.7.3",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "hazmat",
+        "zeroize"
+      ]
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "default",
+        "proc-macro"
+      ]
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "default",
+        "proc-macro"
+      ]
+    },
+    {
+      "name": "r-efi",
+      "version": "6.0.0",
+      "license": "MIT OR Apache-2.0 OR LGPL-2.1-or-later",
+      "features": []
+    },
+    {
+      "name": "rand",
+      "version": "0.10.3",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "rand_core",
+      "version": "0.10.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "ryu",
+      "version": "1.0.23",
+      "license": "Apache-2.0 OR BSL-1.0",
+      "features": []
+    },
+    {
+      "name": "scopeguard",
+      "version": "1.2.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "alloc",
+        "derive",
+        "serde_derive"
+      ]
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "alloc",
+        "result",
+        "std"
+      ]
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "default"
+      ]
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.145",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "std"
+      ]
+    },
+    {
+      "name": "sha3",
+      "version": "0.12.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "shake",
+      "version": "0.1.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "signature",
+      "version": "3.0.0",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "alloc",
+        "digest",
+        "rand_core"
+      ]
+    },
+    {
+      "name": "spin",
+      "version": "0.12.3",
+      "license": "MIT",
+      "features": [
+        "barrier",
+        "default",
+        "lazylock",
+        "lock_api",
+        "mutex",
+        "once",
+        "rwlock",
+        "spin_mutex"
+      ]
+    },
+    {
+      "name": "spki",
+      "version": "0.8.1",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "alloc"
+      ]
+    },
+    {
+      "name": "sponge-cursor",
+      "version": "0.1.0",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "syn",
+      "version": "2.0.119",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "clone-impls",
+        "extra-traits",
+        "full",
+        "parsing",
+        "printing",
+        "proc-macro",
+        "visit-mut"
+      ]
+    },
+    {
+      "name": "syn",
+      "version": "3.0.9",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "clone-impls",
+        "default",
+        "derive",
+        "parsing",
+        "printing",
+        "proc-macro"
+      ]
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.21",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.21",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "tracing",
+      "version": "0.1.44",
+      "license": "MIT",
+      "features": [
+        "attributes",
+        "tracing-attributes"
+      ]
+    },
+    {
+      "name": "tracing-attributes",
+      "version": "0.1.31",
+      "license": "MIT",
+      "features": []
+    },
+    {
+      "name": "tracing-core",
+      "version": "0.1.36",
+      "license": "MIT",
+      "features": []
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "license": "MIT OR Apache-2.0",
+      "features": [
+        "const-generics"
+      ]
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.27",
+      "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "features": []
+    },
+    {
+      "name": "universal-hash",
+      "version": "0.6.1",
+      "license": "MIT OR Apache-2.0",
+      "features": []
+    },
+    {
+      "name": "zeroize",
+      "version": "1.9.1",
+      "license": "Apache-2.0 OR MIT",
+      "features": [
+        "aarch64",
+        "alloc",
+        "default"
+      ]
+    }
+  ],
+  "source_files": {
+    ".gitignore": {
+      "bytes": 74,
+      "sha256": "648070717aa6e4a0af4a33abce540238050afe30526d2248b7ae8ba5a6bd8169"
+    },
+    "Cargo.toml": {
+      "bytes": 817,
+      "sha256": "12e6b27daea9c55d9bdcbff40a1e519cd0d524f39c6236dfd817116a3d2c1ce0"
+    },
+    "Cargo.lock": {
+      "bytes": 19869,
+      "sha256": "fa54939dc53e7e019f95f413f6f2b832dcb1e20688ba176a2e2e7dd48685fcdc"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "NOTICE.md": {
+      "bytes": 1414,
+      "sha256": "54612dab23b39483f6ca060df562e51c07a7e8499e9b9f199dfd61c526844664"
+    },
+    "run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    },
+    "src/lib.rs": {
+      "bytes": 249,
+      "sha256": "75949ea6c2f2e49aae1e2ed17b0740a7abc2fed7d3ccf45ecdae8cc26c8f30e0"
+    },
+    "src/metadata.rs": {
+      "bytes": 16063,
+      "sha256": "667edd14b8ff79d61baf1f63ceaab3482fc0a8b15c3b59aca057ee2605b2579c"
+    },
+    "tests/metadata.rs": {
+      "bytes": 1845,
+      "sha256": "b3e0a66f9295f25bed201393dc7a5b63cbf0720f42b41a811472db6a47256499"
+    },
+    "static_check.py": {
+      "bytes": 3700,
+      "sha256": "ab824b096155aa25de79c634b6a153be14fd770ffb9050fd253a22b3c62e5c29"
+    }
+  },
+  "repository_files": {
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "bytes": 6720,
+      "sha256": "6b769826b89dec81539682122e438dfed9b76c428b6486cf6ee0f0c49e65853e"
+    },
+    "crates/thorum-core/Cargo.toml": {
+      "bytes": 310,
+      "sha256": "41156d64feb2af242f96711d71f52006c5d014766a6621aa85e394f4ac1e2b7d"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "bytes": 3989,
+      "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b"
+    },
+    "crates/thorum-core/src/emission.rs": {
+      "bytes": 3344,
+      "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7"
+    },
+    "crates/thorum-core/src/lib.rs": {
+      "bytes": 1817,
+      "sha256": "b5339e14659c208b321a767ea4164bb629f7db2c638d031391df5bd3c0aadd67"
+    },
+    "crates/thorum-core/src/table.rs": {
+      "bytes": 4423,
+      "sha256": "ae8e7e9f2333a0948a9c606a77dd03f161db0a931fe532def4e2efb7942c0148"
+    },
+    "crates/thorum-crypto-lab/Cargo.toml": {
+      "bytes": 819,
+      "sha256": "fb4bcf1015dda241af00f3621bd332d01b17d18c493fe173c07772ed3080eb9d"
+    },
+    "crates/thorum-crypto-lab/src/envelope.rs": {
+      "bytes": 3154,
+      "sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5"
+    },
+    "crates/thorum-crypto-lab/src/lib.rs": {
+      "bytes": 16754,
+      "sha256": "c1671d70b61ffdaa0824512e6598b64b4d31a3ff35040186cd13f89d18c6e601"
+    },
+    "crates/thorum-relation-lab/Cargo.toml": {
+      "bytes": 567,
+      "sha256": "bd0c5172915695c61dbc46aa2308f16b3ba38a8e747507abdf019f07d4cd1782"
+    },
+    "crates/thorum-relation-lab/src/capability.rs": {
+      "bytes": 4048,
+      "sha256": "5ccba5406267c5cabb4ec3268a5b2103c85bfcdada307dd2910d16d9abc5285f"
+    },
+    "crates/thorum-relation-lab/src/codec.rs": {
+      "bytes": 1278,
+      "sha256": "d034294a3c7045a9d3c99fd64c60ee6959973215770b8470cc66f16ac1d66d98"
+    },
+    "crates/thorum-relation-lab/src/error.rs": {
+      "bytes": 4273,
+      "sha256": "b00bde429ce19a798c6181396af5df27877de1023bb966775922ed501d410fed"
+    },
+    "crates/thorum-relation-lab/src/lib.rs": {
+      "bytes": 2787,
+      "sha256": "4680bfc8b0577d760723fef74f47433c32adfbd8be3569bb2a7107704e237782"
+    },
+    "crates/thorum-relation-lab/src/merkle.rs": {
+      "bytes": 1280,
+      "sha256": "08e9e813916d0e4c9585591cdd9ac68cb511d327a54b2f463f4a302797b2b92d"
+    },
+    "crates/thorum-relation-lab/src/note.rs": {
+      "bytes": 15074,
+      "sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176"
+    },
+    "crates/thorum-relation-lab/src/stake.rs": {
+      "bytes": 8007,
+      "sha256": "a03f77e22f82096a68951104932cb7cd960f18af9726c237899d707500ec5876"
+    },
+    "research/arithmetic-overlay/provenance.json": {
+      "bytes": 19845,
+      "sha256": "ccc049dbe3e1f4bb7740475bbc48886562d807277a5061e93e3484677ca97f04"
+    },
+    "research/arithmetic-overlay/src/relation.rs": {
+      "bytes": 3470,
+      "sha256": "8e8195f16997ac99c4b7fdb3c26fb12b185f147fdcc49a13f1ae11c0b354312a"
+    },
+    "research/arithmetic-overlay/src/schedule.rs": {
+      "bytes": 1453,
+      "sha256": "455d56a3da9820777d6947f875024966a827c4c62f1e06ec566996da13d81afe"
+    },
+    "research/proof-preflight/fixtures/features.json": {
+      "bytes": 3654,
+      "sha256": "7921ce6d34f24eceb842753ec527f8db161e05ba56719a0fdb3049158bd19941"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "research/signature-complete-native/src/build/decode.rs": {
+      "bytes": 6229,
+      "sha256": "529723c997f70825d918310f3f7ab49bc2465531328a9177467ef2f922ecbc29"
+    },
+    "research/signature-complete-native/src/build/sample.rs": {
+      "bytes": 2439,
+      "sha256": "e2a1881c852ec427953ddd153fde8caccedc1e042576f8d5da6efd0feef754d5"
+    },
+    "research/signature-complete-native/src/decoding.rs": {
+      "bytes": 7325,
+      "sha256": "0308df4f1519a27c9bbe9aca31f79030d7838c53d1074bafc86b4ea431df9c43"
+    },
+    "research/signature-complete-native/src/hint_rows.rs": {
+      "bytes": 4448,
+      "sha256": "de3f9425acfc6be9a7e93101c30fd7655df1f5ec540ca1fc5edf951b8d9ee04f"
+    },
+    "research/signature-complete-native/src/hints.rs": {
+      "bytes": 4015,
+      "sha256": "9038be9076454fc27ab8c65d8e827c01731270c6877b291a1e5702d60065b401"
+    },
+    "research/signature-complete-native/src/keccak.rs": {
+      "bytes": 2561,
+      "sha256": "d619093afdd30b630ddc7c88817644c7257c1bdbd2d24f38ca29cd8b4d5db76c"
+    },
+    "research/signature-complete-native/src/mul.rs": {
+      "bytes": 2518,
+      "sha256": "fdf7c8dcb834539b566dab21baf2762de25bc56f907e393f01e8d9b05b09a7e1"
+    },
+    "research/signature-complete-native/src/packing.rs": {
+      "bytes": 2138,
+      "sha256": "bd4a1ed77192af82a32f15a6104eab8f68677ac1aa6beb50dbf630ac1bb8d9ce"
+    },
+    "research/signature-complete-native/src/sources.rs": {
+      "bytes": 6088,
+      "sha256": "60ca3c71a7d31865ef1b59a89bddcdda34264fa33fab4cdab8d65c18a4a3d91b"
+    },
+    "research/signature-complete-native/src/sponge.rs": {
+      "bytes": 8351,
+      "sha256": "3e092a2789ad1ddc2eebd65b95361e32111a0ea1fc7497d8bba70abeebe95e25"
+    },
+    "research/signature-packed-shape/results/symbolic.json": {
+      "bytes": 211,
+      "sha256": "905a3614eabc6da435b51ed0fbe993de8fd7ab826a5d869257bd2bc983da26ea"
+    },
+    "research/signature-packed/Cargo.lock": {
+      "bytes": 19746,
+      "sha256": "8d42c9a923b19ed4ddb4dba53e79785c114fdd04f04bbe9cb8820aa7019b8e89"
+    },
+    "research/signature-packed/Cargo.toml": {
+      "bytes": 1123,
+      "sha256": "fe87edf87ded44fcd6658023dedce6c6b1a7ab909f34e6d1eba600f7127edd12"
+    },
+    "research/signature-packed/LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "research/signature-packed/NOTICE.md": {
+      "bytes": 1143,
+      "sha256": "c7eb45e25375c3934935dc4b566bfff64ee61855bfc39615da20f155f25c880a"
+    },
+    "research/signature-packed/fixtures-features.json": {
+      "bytes": 3238,
+      "sha256": "e553bfa47dae5748b323995f34c4086291cc7980b1d4fa2caa77f5dca6d9d610"
+    },
+    "research/signature-packed/origins.json": {
+      "bytes": 592,
+      "sha256": "87b0452cd16ac801960d6828e5ee7d25164d8449d4a6228353e9db29bb83daee"
+    },
+    "research/signature-packed/provenance.json": {
+      "bytes": 13325,
+      "sha256": "1a9b1d91eeb1d83148669938f17e49ba292f27bfb51e922a93d5c553726c0a80"
+    },
+    "research/signature-packed/src/air.rs": {
+      "bytes": 1093,
+      "sha256": "19de19ab525083ada93da323de9014d7bb3d841dd371dd4ca135b09956e8dd6c"
+    },
+    "research/signature-packed/src/build.rs": {
+      "bytes": 9328,
+      "sha256": "7a25ada6296b491fe92f363419354a4d1275fbdc0769977a9f98660176eef15b"
+    },
+    "research/signature-packed/src/decoding.rs": {
+      "bytes": 7769,
+      "sha256": "072d5a18bcb819c4f2038a8bbea249c0f3a3b5de896e5e5e835acd4bb6efb250"
+    },
+    "research/signature-packed/src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "eabccbce5c232da1a9e838699a01203d7d7b32456e5d95001608d56cafabdc18"
+    },
+    "research/signature-packed/src/layout.rs": {
+      "bytes": 3836,
+      "sha256": "40c3c0c728fba345c91687060fc983feb923d4ec1aad685747a569e3ca081ec2"
+    },
+    "research/signature-packed/src/lib.rs": {
+      "bytes": 2301,
+      "sha256": "9a2800a72d3b83315a487d7b908ea37392f6a3371f75ab1352286272dd529098"
+    },
+    "research/signature-packed/src/packed.rs": {
+      "bytes": 14006,
+      "sha256": "bc78d17a7c94a7eaab2b49e931771cf67f8854412f92be2a15473b3313283b41"
+    },
+    "research/signature-packed/src/sources.rs": {
+      "bytes": 6657,
+      "sha256": "8d791f7526874ab48eeb164b9a6b353c57d53ce34028ecf0f9c953fa90f50ffc"
+    },
+    "research/signature-packed/src/sponge.rs": {
+      "bytes": 9251,
+      "sha256": "63ccb3990325d8898a6c6888a64426bb93d004a61a6a7a698047a2f757bb2b74"
+    },
+    "research/signature-storage/src/activity.rs": {
+      "bytes": 3215,
+      "sha256": "6f1ba210b94e8c511e0b4751a0132d0d6c8ee713c7a6162c0601b64768a40315"
+    },
+    "research/signature-storage/src/air.rs": {
+      "bytes": 1214,
+      "sha256": "2f60ca6f5b719acf1078e2e5183891cd7c32d23b81521c91dc78021652f6ee1b"
+    },
+    "research/signature-storage/src/build.rs": {
+      "bytes": 9386,
+      "sha256": "1d8e1426e690cc0ec838380a5785db8eca3383da95689b01b173596e140d469c"
+    },
+    "research/signature-storage/src/clock.rs": {
+      "bytes": 3696,
+      "sha256": "800c4a123d818507b1ee3fb6b77f3ce59657aa50d8dcdd7adc6e7114e6734e37"
+    },
+    "research/signature-storage/src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "72d9280279c7486ee367b0607a86b422f0fd943101b5bcb51aa1590f73206f44"
+    },
+    "research/signature-storage/src/layout.rs": {
+      "bytes": 3780,
+      "sha256": "4e09098d6355ccdc039868dc3d4f4a4f31962e45aa9d32ad146ebc1ccebd9e7d"
+    },
+    "research/signature-storage/src/lib.rs": {
+      "bytes": 2224,
+      "sha256": "418f1e443f073764169e92d0073601de38c4a1a8de48a06d42c980fa162a891e"
+    },
+    "research/signature-storage/src/matrix.rs": {
+      "bytes": 15396,
+      "sha256": "0460487297976483bac254e916ec2ef138284e3dc5b33072f145fed147832027"
+    },
+    "research/signature-storage/src/ntt.rs": {
+      "bytes": 20398,
+      "sha256": "db12c67a3ea5a8d7c5182e2d2f020905a7f91cb0b949dc4d178f3992dc29a913"
+    },
+    "research/signature-storage/src/program.rs": {
+      "bytes": 1692,
+      "sha256": "9a21160312cc652ca953bb617bf14bd430e917b2c1381cfac96dfc0cfcfa0a6a"
+    },
+    "research/signature-storage/src/sampler.rs": {
+      "bytes": 6195,
+      "sha256": "9375cc249ed6621df3cfd828a75f646eae6b8dc832603d045dfa54a69f92894c"
+    },
+    "research/source-certificate/fixtures-certificate.json": {
+      "bytes": 97665,
+      "sha256": "9ee63b3d1cc1c6e25c659ed375163d6dcc4a13b857c58cc499711e17e0c15ef8"
+    },
+    "research/source-certificate/provenance.json": {
+      "bytes": 6042,
+      "sha256": "48831b31d4add5a5958aa8e4036de721d78f96072fbe33b4e4c9b2e8fc742273"
+    },
+    "research/source-certificate/validation.json": {
+      "bytes": 1847,
+      "sha256": "62574b95986b584c9f274e2e8bb0908fe82a8c375e3af4a745c9d139526165a6"
+    },
+    "research/signature-overlay/Cargo.lock": {
+      "bytes": 19747,
+      "sha256": "6742ae73ce75f4433d5405fbe350708cba7106f798e3dca67e2922aed307ee01"
+    },
+    "research/signature-overlay/Cargo.toml": {
+      "bytes": 1212,
+      "sha256": "4b930a775f0f09d91646ace590c05aee98b2599e04900af653d7f733ca6263a1"
+    },
+    "research/signature-overlay/LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    },
+    "research/signature-overlay/NOTICE.md": {
+      "bytes": 1351,
+      "sha256": "d31e4a9011dd91b6db63ab3714b0ba480ab3c1e8a4fb4579e456650784fe9e5b"
+    },
+    "research/signature-overlay/fixtures-features.json": {
+      "bytes": 3238,
+      "sha256": "6bef206e0dc363e4eebd25685fafda8462c11436733d44ed359d6765af01e6cd"
+    },
+    "research/signature-overlay/run_guarded_windows.ps1": {
+      "bytes": 13335,
+      "sha256": "a311b927d0fde0a8dedde54913720bec88428d0490a4cba2fc0c4c120c67624b"
+    },
+    "research/signature-overlay/src/air.rs": {
+      "bytes": 1148,
+      "sha256": "42720358014063e50220cf97960d01f19ff3ee6597a9f72bb0f7dbf81eaf6f35"
+    },
+    "research/signature-overlay/src/arithmetic_modes.rs": {
+      "bytes": 2311,
+      "sha256": "2d3c17f72df1e435fd9343c7f08e9cc2294a75a26ab0f40a9ab6936cb5ccc87a"
+    },
+    "research/signature-overlay/src/build.rs": {
+      "bytes": 9376,
+      "sha256": "e5b1958a0e25d90dcafca910e7fc982a78d9216821cbf611d11ef020e86be828"
+    },
+    "research/signature-overlay/src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "e48178e97fa4b88dbbef6fcbb2beadf8b6d76333a8a58e49934331c0c0ae7935"
+    },
+    "research/signature-overlay/src/hint_rows.rs": {
+      "bytes": 4673,
+      "sha256": "c0a16a7d7c2eb2632593a71da83a76bcdcbf430004b57050f6251e4d6e79695b"
+    },
+    "research/signature-overlay/src/layout.rs": {
+      "bytes": 4541,
+      "sha256": "263035a13c82024429862620e362d9ff02378e091cdcf1972d8a9f6ec021b37c"
+    },
+    "research/signature-overlay/src/lib.rs": {
+      "bytes": 2414,
+      "sha256": "719aa5810b8d1158d7468a7c545ad7177f97f73aad9faa35af96f5279a22df37"
+    },
+    "research/signature-overlay/src/ntt.rs": {
+      "bytes": 21215,
+      "sha256": "236479888836c90eb7a05e3a5c9882bc03d7875b8010410c7e186ee4635febb5"
+    },
+    "research/signature-overlay/tests/shape.rs": {
+      "bytes": 2852,
+      "sha256": "1fb27a9c5ab10b958e968a82518c4aed5124d669800242fda5d91097966751b8"
+    }
+  },
+  "registry_files": {
+    "aead-0.6.1/Cargo.toml": {
+      "bytes": 2790,
+      "sha256": "cda27d7960de6273a9969330ad54e6b87fbbf18e582da44d05ac2f2f972d0952"
+    },
+    "aead-0.6.1/LICENSE-APACHE": {
+      "bytes": 10850,
+      "sha256": "b1cf9a3333ca78152b859012cd4a804156e5243e9ca20ad1df7327ba5ea7405c"
+    },
+    "aead-0.6.1/LICENSE-MIT": {
+      "bytes": 1117,
+      "sha256": "33b32a251d445c5c03a634e64c53314c55540fc367fabdd45d9b6c8f260c028c"
+    },
+    "aes-0.9.1/Cargo.toml": {
+      "bytes": 1966,
+      "sha256": "19cf09a6e0d410f379f99ec443d5562990eeedfd5b8d491a62d8971215fdd910"
+    },
+    "aes-0.9.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "aes-0.9.1/LICENSE-MIT": {
+      "bytes": 1115,
+      "sha256": "25f77efa393854f7c15eaf6a2589a2071db2d7337642742763adb12bdecf0445"
+    },
+    "aes-gcm-0.11.1/Cargo.toml": {
+      "bytes": 3330,
+      "sha256": "cd890dd38daf60de22ecc095b470af6a93dfa2962499aa1fefe0c030c7dcdccb"
+    },
+    "aes-gcm-0.11.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "aes-gcm-0.11.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0"
+    },
+    "autocfg-1.5.1/Cargo.toml": {
+      "bytes": 1581,
+      "sha256": "ed7c832b4250c3be736e040d68688c2b83a5b164a93ef533e61532cbe0d44e99"
+    },
+    "autocfg-1.5.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "autocfg-1.5.1/LICENSE-MIT": {
+      "bytes": 1054,
+      "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac"
+    },
+    "base64ct-1.8.3/Cargo.toml": {
+      "bytes": 2041,
+      "sha256": "950ec911574afbf038e970968c9bcd03df0fe56d78eabee157012e54d487cb29"
+    },
+    "base64ct-1.8.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "base64ct-1.8.3/LICENSE-MIT": {
+      "bytes": 1148,
+      "sha256": "2d1c57bff28344b9e698f51063bc8509799cc4c99a4e0cf2aa3f7e7c3e1f9a9d"
+    },
+    "block-buffer-0.12.1/Cargo.toml": {
+      "bytes": 2345,
+      "sha256": "f21191120ab1d04327657b7125f25b0e3f2bce34af5e921d3c66d24de11d5e60"
+    },
+    "block-buffer-0.12.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "block-buffer-0.12.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "98181e7249d0c01737645ec982499ce99a0f07eb8f7d625b8840d799d10dbc01"
+    },
+    "cfg-if-1.0.5/Cargo.toml": {
+      "bytes": 1239,
+      "sha256": "d646663ec1bd4e8e795bd6a386cff9c374880d6237bbfa36bbac08b7f26ce65c"
+    },
+    "cfg-if-1.0.5/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "cfg-if-1.0.5/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "cipher-0.5.2/Cargo.toml": {
+      "bytes": 2856,
+      "sha256": "8685a3b996d8d12e00d51d882425a409101d344f7efac1a48cf37a7509847c7f"
+    },
+    "cipher-0.5.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "cipher-0.5.2/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "950d712c518a02fcb7cff96950aee304a1cc5283361712c980ea21e8d6d669a5"
+    },
+    "cmov-0.5.4/Cargo.toml": {
+      "bytes": 2763,
+      "sha256": "3f91a59940445ae78e4155fc6bd53efaf277f8369a0c6385f0033d986a3455ad"
+    },
+    "cmov-0.5.4/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "cmov-0.5.4/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "70c9d40f1f9545c3f133b8a67206e89da850f6468eed072281bb3701514114a9"
+    },
+    "const-oid-0.10.2/Cargo.toml": {
+      "bytes": 1854,
+      "sha256": "591ac78fc8cd99d8a31110e8cb572534bb9d04af23bc48db855a34d4a6c78569"
+    },
+    "const-oid-0.10.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "const-oid-0.10.2/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa"
+    },
+    "cpubits-0.1.1/Cargo.toml": {
+      "bytes": 1233,
+      "sha256": "356af6c2a43e0cae4c7d49193903c64b1d82383b4e5ee5b28b39976f15160bfb"
+    },
+    "cpubits-0.1.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "cpubits-0.1.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "003736bc98408b53511b9cc8ff5d1af3bf0a8f17d53841cc39d8ab1b96a195b0"
+    },
+    "cpufeatures-0.3.1/Cargo.toml": {
+      "bytes": 2958,
+      "sha256": "2e82ee61a94e8ef99197ca59723e9794d0f08363f28bacab680292af6ccdde61"
+    },
+    "cpufeatures-0.3.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "cpufeatures-0.3.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa"
+    },
+    "crypto-common-0.2.2/Cargo.toml": {
+      "bytes": 2481,
+      "sha256": "1b47561054dd2fe13246f2f6e19c29eac256269e02c96162fd6efed28247e78a"
+    },
+    "crypto-common-0.2.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "crypto-common-0.2.2/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "d2e7ec5355c96eeade56b09187ceb48a6a30299da3ce7531a66d3d11405ab963"
+    },
+    "ctr-0.10.1/Cargo.toml": {
+      "bytes": 2701,
+      "sha256": "b778af44205c3650154c6373e02d71d8d5f9acaa4c4544dbfbf3211e3f755391"
+    },
+    "ctr-0.10.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "ctr-0.10.1/LICENSE-MIT": {
+      "bytes": 1103,
+      "sha256": "63af4bea227c94d021e99427f6ca3a4b8efddadcca93ab6130f708cf6138cf68"
+    },
+    "ctutils-0.4.6/Cargo.toml": {
+      "bytes": 2740,
+      "sha256": "35aab4982b5099c361e077e7981d3d270b626a7b2e4ad499fa5f28f47e788602"
+    },
+    "ctutils-0.4.6/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "ctutils-0.4.6/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "91585c36e4fb9ab4ca0d3dfac5d66d3c0c62cc51f640a0e1196542daf2267eae"
+    },
+    "der-0.8.3/Cargo.toml": {
+      "bytes": 4147,
+      "sha256": "de18a104d776584ebb3c488debd47c25bcce8f899d924be89615401c84aa2d36"
+    },
+    "der-0.8.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "der-0.8.3/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa"
+    },
+    "digest-0.11.3/Cargo.toml": {
+      "bytes": 2957,
+      "sha256": "59c4f2cba7e34831c87e8f4844718d91d0f276af7bd192de76fda7d5a8978eb9"
+    },
+    "digest-0.11.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "digest-0.11.3/LICENSE-MIT": {
+      "bytes": 1103,
+      "sha256": "af59cea35d7f5e2777a713b8d155d65efa2c339eb43f3c14e868c6ac8506edad"
+    },
+    "either-1.19.0/Cargo.toml": {
+      "bytes": 1495,
+      "sha256": "a245f305b622e445db7b93c14dda11a8157741a7f119d9b7cd0a532fa4e66834"
+    },
+    "either-1.19.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "either-1.19.0/LICENSE-MIT": {
+      "bytes": 1043,
+      "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545"
+    },
+    "getrandom-0.4.3/Cargo.toml": {
+      "bytes": 4847,
+      "sha256": "4f107fe4ceacee71d0068cfbbc69554b3d8523a1fcbb99b17e9fa0d008961ff9"
+    },
+    "getrandom-0.4.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf"
+    },
+    "getrandom-0.4.3/LICENSE-MIT": {
+      "bytes": 1130,
+      "sha256": "523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d9b2cd5419b"
+    },
+    "ghash-0.6.0/Cargo.toml": {
+      "bytes": 1522,
+      "sha256": "075d4228787cf0d1b38ba0d4d9794714623d660bb8947da4e19ebc955e07f51f"
+    },
+    "ghash-0.6.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "ghash-0.6.0/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0"
+    },
+    "hybrid-array-0.4.15/Cargo.toml": {
+      "bytes": 3146,
+      "sha256": "0f4ca21a2707a25425c1b7f8977a7534bd350c0c650cdea4c49497397a5a8aa8"
+    },
+    "hybrid-array-0.4.15/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "hybrid-array-0.4.15/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "70c9d40f1f9545c3f133b8a67206e89da850f6468eed072281bb3701514114a9"
+    },
+    "inout-0.2.5/Cargo.toml": {
+      "bytes": 2357,
+      "sha256": "1845f64246752089ba336ee54f9c01e31b14976c32d1bc4e7ff45ce465e53132"
+    },
+    "inout-0.2.5/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "inout-0.2.5/LICENSE-MIT": {
+      "bytes": 1115,
+      "sha256": "a07fcacc3c60de4dc0fab10ac9d6aaba7379974e28451c99da7f7df09c25b28c"
+    },
+    "itertools-0.15.0/Cargo.toml": {
+      "bytes": 3316,
+      "sha256": "62dea4c41dff0c454c3198715885ca13ae6cdf1a5d3b5a5ec68ef42750ccbaf2"
+    },
+    "itertools-0.15.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "itertools-0.15.0/LICENSE-MIT": {
+      "bytes": 1043,
+      "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545"
+    },
+    "itoa-1.0.18/Cargo.toml": {
+      "bytes": 1669,
+      "sha256": "894c215e4e7e973b556b0e9627bf9b6a719a043fac9b5af9838660816392a09f"
+    },
+    "itoa-1.0.18/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "itoa-1.0.18/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "keccak-0.2.2/Cargo.toml": {
+      "bytes": 2645,
+      "sha256": "a059fa772f385e2e5929da96fea33916f1f4984e457beaf5919acf42019f076a"
+    },
+    "keccak-0.2.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "keccak-0.2.2/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b"
+    },
+    "kem-0.3.0/Cargo.toml": {
+      "bytes": 1424,
+      "sha256": "a165ebdaa61bea728cfb8e2c9a94ffe2e859e10f8fc78d20b9417c5e9b381833"
+    },
+    "kem-0.3.0/LICENSE-APACHE": {
+      "bytes": 561,
+      "sha256": "f25e815326bb6e7efb7baf7eeca7f096cd05bc1af9bb7c408984db61bd69e304"
+    },
+    "kem-0.3.0/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "d2e7ec5355c96eeade56b09187ceb48a6a30299da3ce7531a66d3d11405ab963"
+    },
+    "libc-0.2.191/Cargo.toml": {
+      "bytes": 6292,
+      "sha256": "c8e45fe04427917e1bbadf4b628353571c9a0f2574971231814bb71dc6a86f1f"
+    },
+    "libc-0.2.191/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "libc-0.2.191/LICENSE-MIT": {
+      "bytes": 1066,
+      "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e"
+    },
+    "lock_api-0.4.14/Cargo.toml": {
+      "bytes": 1501,
+      "sha256": "dd67edbeff9cee46c3ea6411098aeec7363cb4fe865006c8eca321d321332484"
+    },
+    "lock_api-0.4.14/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "lock_api-0.4.14/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+    },
+    "memchr-2.8.3/COPYING": {
+      "bytes": 126,
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+    },
+    "memchr-2.8.3/Cargo.toml": {
+      "bytes": 1833,
+      "sha256": "a14f68b8fa55f15fd03b15dced37bcf66a0a628f568eedc82817cdb7f9281951"
+    },
+    "memchr-2.8.3/LICENSE-MIT": {
+      "bytes": 1081,
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+    },
+    "ml-dsa-0.1.1/Cargo.toml": {
+      "bytes": 4347,
+      "sha256": "8af8ec5dcb78ff9b31eb22f71a9068ee20307146283aa107fef33e9217ad4b0e"
+    },
+    "ml-dsa-0.1.1/LICENSE-APACHE": {
+      "bytes": 10834,
+      "sha256": "391a7404ef6f0ad2b21e5270dd0b95c69ed09dc03be45252442542c010c9a9f6"
+    },
+    "ml-dsa-0.1.1/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "4621bda86773a67b5645bbd25cf1bf8b6820d4fcec3885b23b9ceec612007f63"
+    },
+    "ml-kem-0.3.3/Cargo.toml": {
+      "bytes": 4084,
+      "sha256": "822dc6e7b39d2bb6d1ba7daaf8f599b6bc5233e46f6b36272aec8bc74bce278c"
+    },
+    "ml-kem-0.3.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "ml-kem-0.3.3/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "d0fb27c23e807f1fc6f506d161984b294a1f05c9888ae31f056d1712685948ad"
+    },
+    "module-lattice-0.2.3/Cargo.toml": {
+      "bytes": 3190,
+      "sha256": "eb3383630b860c8598b24b4e45b185d8aecc4b4a05c4de6b8b89f87f0ce7670d"
+    },
+    "module-lattice-0.2.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "module-lattice-0.2.3/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "d0fb27c23e807f1fc6f506d161984b294a1f05c9888ae31f056d1712685948ad"
+    },
+    "num-bigint-0.5.1/Cargo.toml": {
+      "bytes": 3393,
+      "sha256": "3413270c8dd1a2adfa18f752411edb104c1cd5542d7359f2302eddbf2ccc1505"
+    },
+    "num-bigint-0.5.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "num-bigint-0.5.1/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "num-integer-0.1.47/Cargo.toml": {
+      "bytes": 1622,
+      "sha256": "a0fc4aee99b0663bb80ce2fc8052491b7e28872765711266faddb2ed0474cb96"
+    },
+    "num-integer-0.1.47/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "num-integer-0.1.47/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "num-traits-0.2.19/Cargo.toml": {
+      "bytes": 1296,
+      "sha256": "dd701a0da6cce7e6e047cc944b2330f3c5e48cd64329e10942ea7d9299d435be"
+    },
+    "num-traits-0.2.19/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "num-traits-0.2.19/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "p3-air-0.8.0/Cargo.toml": {
+      "bytes": 2069,
+      "sha256": "9e54c6c1894dce6032bf3b36f2f191fd2f6c31989f49f0e58d71b52fe0ae27ae"
+    },
+    "p3-baby-bear-0.8.0/Cargo.toml": {
+      "bytes": 2557,
+      "sha256": "a44f68259915c6c8da8ca8000eb1295fc899dc37886d1c4eb15575eebcd8b836"
+    },
+    "p3-dft-0.8.0/Cargo.toml": {
+      "bytes": 2529,
+      "sha256": "99e92229e2de5fa4bb412239a00b5d9d139512873083b51f6d407f90e86b6d54"
+    },
+    "p3-field-0.8.0/Cargo.toml": {
+      "bytes": 2804,
+      "sha256": "24cf3b46167d3cc42c752baa9688708a5c8dd47dc029bb1b286c1ef4c2831b96"
+    },
+    "p3-keccak-air-0.8.0/Cargo.toml": {
+      "bytes": 2977,
+      "sha256": "87581901a475832d0cb123cff47a2a772070577828ab2af094421694c553efb1"
+    },
+    "p3-matrix-0.8.0/Cargo.toml": {
+      "bytes": 2873,
+      "sha256": "6387d71e18da233d3bf6f01540e7ea3440918ed297b8cd8bd79d0840c7cac0a6"
+    },
+    "p3-maybe-rayon-0.8.0/Cargo.toml": {
+      "bytes": 1700,
+      "sha256": "e86565befec49a26094f1b5936e6a4eb515163f6d41eebd14d9d1fa47cbb779a"
+    },
+    "p3-mds-0.8.0/Cargo.toml": {
+      "bytes": 2067,
+      "sha256": "db277fe08af33ee9a135f6d6540578c07c9b71f373fa91abad1079ba95d4367d"
+    },
+    "p3-monty-31-0.8.0/Cargo.toml": {
+      "bytes": 2655,
+      "sha256": "e98b0e3db8c2ef54d3bc96da0319386f3560931cb6dd384300a44a23cd04039b"
+    },
+    "p3-poseidon1-0.8.0/Cargo.toml": {
+      "bytes": 1977,
+      "sha256": "a598c3da3a164ead190e75b460d3386b325faf7c0a74f7b600ad16abf433544b"
+    },
+    "p3-poseidon2-0.8.0/Cargo.toml": {
+      "bytes": 2088,
+      "sha256": "a67ea8c443c7b39d9d66f0a6a8102e618e4f2e1522fd19dc87068d3abf684d4d"
+    },
+    "p3-symmetric-0.8.0/Cargo.toml": {
+      "bytes": 2192,
+      "sha256": "25434c65acf9fd0ebfe215ef2636526059141e940ae1bd17e9084381c22f7e05"
+    },
+    "p3-util-0.8.0/Cargo.toml": {
+      "bytes": 2254,
+      "sha256": "6b9548b72d251efcf2032b7de986039d3bb0741c9a4f2ea3c9ef7a0d281ac3c7"
+    },
+    "paste-1.0.15/Cargo.toml": {
+      "bytes": 1619,
+      "sha256": "b639e399e32159609ed573ffdb1a4edf06fba8aee208d9259e9dba031834aaaa"
+    },
+    "paste-1.0.15/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "paste-1.0.15/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "pin-project-lite-0.2.17/Cargo.toml": {
+      "bytes": 3699,
+      "sha256": "473f9cfe9738986d0d1c46e306bd11ad3e36bca8f1eab5bbe9f7297313fb33f4"
+    },
+    "pin-project-lite-0.2.17/LICENSE-APACHE": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "pin-project-lite-0.2.17/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "pkcs8-0.11.0/Cargo.toml": {
+      "bytes": 3671,
+      "sha256": "7571449407274ea85dd60e16e2d7af169a8f559d135462fcb318dc6b3f34b81d"
+    },
+    "pkcs8-0.11.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "pkcs8-0.11.0/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa"
+    },
+    "polyval-0.7.3/Cargo.toml": {
+      "bytes": 3130,
+      "sha256": "e8dc04416390a2788d2a3846c0c4d33a579d2c651f07ecd982a90940c78de858"
+    },
+    "polyval-0.7.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "polyval-0.7.3/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0"
+    },
+    "proc-macro2-1.0.107/Cargo.toml": {
+      "bytes": 2460,
+      "sha256": "6bdbe54a7f052e552dcfca90351764476e2767237ec3f954df8bd9f602861056"
+    },
+    "proc-macro2-1.0.107/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "proc-macro2-1.0.107/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "quote-1.0.47/Cargo.toml": {
+      "bytes": 1753,
+      "sha256": "13d8c50837f14aff48cd622349f98fb2c46350b7a0c08fd574cf7de4def27d06"
+    },
+    "quote-1.0.47/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "quote-1.0.47/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "r-efi-6.0.0/Cargo.toml": {
+      "bytes": 1548,
+      "sha256": "a021f9fb0645cc5de5770cf7f41594c1deff4b388eca933b289752aa52666829"
+    },
+    "rand-0.10.3/Cargo.toml": {
+      "bytes": 2308,
+      "sha256": "9d9a2f6f49bb8d49ef1761e183d0d4fd4ad66dfd225b77815ba83775cf48de67"
+    },
+    "rand-0.10.3/LICENSE-APACHE": {
+      "bytes": 9724,
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab"
+    },
+    "rand-0.10.3/LICENSE-MIT": {
+      "bytes": 1117,
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b"
+    },
+    "rand_core-0.10.1/Cargo.toml": {
+      "bytes": 1489,
+      "sha256": "4ff4becbb9ef65154f4840262f8d0cffa97d97a265b994b9d53f53925bdd3578"
+    },
+    "rand_core-0.10.1/LICENSE-APACHE": {
+      "bytes": 10282,
+      "sha256": "6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51"
+    },
+    "rand_core-0.10.1/LICENSE-MIT": {
+      "bytes": 1076,
+      "sha256": "8b6e9feec03e7c9a5facb26855cecd31662bf989b636bcfe79521bdf8ac863f0"
+    },
+    "ryu-1.0.23/Cargo.toml": {
+      "bytes": 2412,
+      "sha256": "410de3eae58a75b9d2558d0a4e3ed43c2c8317781ffbd30a7cbe4aebaa833e1a"
+    },
+    "ryu-1.0.23/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "ryu-1.0.23/LICENSE-BOOST": {
+      "bytes": 1338,
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    },
+    "scopeguard-1.2.0/Cargo.toml": {
+      "bytes": 1199,
+      "sha256": "68899251551903e2e1ba03c927f12e4c19fc8a15e8bd3756610f53f5ec075b48"
+    },
+    "scopeguard-1.2.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "scopeguard-1.2.0/LICENSE-MIT": {
+      "bytes": 1097,
+      "sha256": "fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7"
+    },
+    "serde-1.0.229/Cargo.toml": {
+      "bytes": 1969,
+      "sha256": "6883caefd46e86eb15d22d3a6d274ad304c5e7934ab70eb58d81b7c4a29ef9db"
+    },
+    "serde-1.0.229/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "serde-1.0.229/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "serde_core-1.0.229/Cargo.toml": {
+      "bytes": 1950,
+      "sha256": "c6049e170e4f7c2b48749fefab59db583bfac4e466cde6d0c53e4f49bc5044f7"
+    },
+    "serde_core-1.0.229/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "serde_core-1.0.229/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "serde_derive-1.0.229/Cargo.toml": {
+      "bytes": 2094,
+      "sha256": "d2581160ffa61baa386f882e08b0db20051dc3c782a82268d6473998b61c926e"
+    },
+    "serde_derive-1.0.229/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "serde_derive-1.0.229/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "serde_json-1.0.145/Cargo.toml": {
+      "bytes": 3083,
+      "sha256": "a603996936a2ed8d62e4bf158aeacd830b7c8f237cefc31c3bf6313fbf26d214"
+    },
+    "serde_json-1.0.145/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "serde_json-1.0.145/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "sha3-0.12.0/Cargo.toml": {
+      "bytes": 1726,
+      "sha256": "69a5a38684afb429397aa6a42f8633c8b4de6eb1cd4e365628f66b54d870adbe"
+    },
+    "sha3-0.12.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "sha3-0.12.0/LICENSE-MIT": {
+      "bytes": 1255,
+      "sha256": "6462612d92b861384dcd378168a7a0ef3ef28876d3d380d382cb5a3091e360b8"
+    },
+    "shake-0.1.0/Cargo.toml": {
+      "bytes": 2703,
+      "sha256": "b639b7245b417b4fd3c137944e10552425352dbaec80b597eead2c9ba32f607c"
+    },
+    "shake-0.1.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "shake-0.1.0/LICENSE-MIT": {
+      "bytes": 1077,
+      "sha256": "083cb05a34eb9c78faf69aa49674ec30d1eadbdc2042473644992786e6c8249b"
+    },
+    "signature-3.0.0/Cargo.toml": {
+      "bytes": 2436,
+      "sha256": "758bad4841d2eaf9f6d79464d99039ef6a96d6bee3c1065b933f682df418e734"
+    },
+    "signature-3.0.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "signature-3.0.0/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "9aa4f92bfcde293ebeca9e2379fa18d1d61f000977da144c7b74c2986c9b6466"
+    },
+    "spin-0.12.3/Cargo.toml": {
+      "bytes": 2197,
+      "sha256": "f37b70d68ea8bb6d7a333e2df2c1cd74a06d8c9c63f94fa9b2df23e312e3af63"
+    },
+    "spin-0.12.3/LICENSE": {
+      "bytes": 1084,
+      "sha256": "6ac8711fb340c62ce0a4ecd463342d3fa0e8e70de697c863a2e1c0c53006003c"
+    },
+    "spki-0.8.1/Cargo.toml": {
+      "bytes": 3176,
+      "sha256": "3844b342ac20f71540c199a58f91dd751499cbe1cbbd9001d8d8669bb16d6329"
+    },
+    "spki-0.8.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "spki-0.8.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "57a4d75c1d095bb94754a478f3cd15e60ac66a5c5627d844be01a918eea5fe88"
+    },
+    "sponge-cursor-0.1.0/Cargo.toml": {
+      "bytes": 2306,
+      "sha256": "ad08b71a941a200c83237dd071cf32c0c2a411c2606c29f3d522680a411b4f23"
+    },
+    "sponge-cursor-0.1.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "sponge-cursor-0.1.0/LICENSE-MIT": {
+      "bytes": 1077,
+      "sha256": "083cb05a34eb9c78faf69aa49674ec30d1eadbdc2042473644992786e6c8249b"
+    },
+    "syn-2.0.119/Cargo.toml": {
+      "bytes": 5007,
+      "sha256": "da8b83ac2c66a7b404dc55d88ae42592f70714823251f51b620ae349b246a18f"
+    },
+    "syn-2.0.119/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "syn-2.0.119/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "syn-3.0.9/Cargo.toml": {
+      "bytes": 4938,
+      "sha256": "b6f7f6069d92142d3e294f84855a68049bebc5b886c557ed4ae980ddbc866e1c"
+    },
+    "syn-3.0.9/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "syn-3.0.9/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "thiserror-2.0.21/Cargo.toml": {
+      "bytes": 2433,
+      "sha256": "4ab1fdd3cba041dbaa5b813dff268978a93b1542dcc31935fb903772cc700a47"
+    },
+    "thiserror-2.0.21/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "thiserror-2.0.21/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "thiserror-impl-2.0.21/Cargo.toml": {
+      "bytes": 1470,
+      "sha256": "cc5e3660d65270da1302d5b24cbefb50b4993b258d344a9ac9b4b69a612aa27f"
+    },
+    "thiserror-impl-2.0.21/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "thiserror-impl-2.0.21/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "tracing-0.1.44/Cargo.toml": {
+      "bytes": 4847,
+      "sha256": "b7e201be4f3872fe25da1fa45aa404c8751a661755d4883fdbb5c0c558303e6d"
+    },
+    "tracing-0.1.44/LICENSE": {
+      "bytes": 1062,
+      "sha256": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1"
+    },
+    "tracing-attributes-0.1.31/Cargo.toml": {
+      "bytes": 2836,
+      "sha256": "646214905e4c61a54c111ba9b16834c692fda2969be6f2cdb190a910ab1f2a51"
+    },
+    "tracing-attributes-0.1.31/LICENSE": {
+      "bytes": 1062,
+      "sha256": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1"
+    },
+    "tracing-core-0.1.36/Cargo.toml": {
+      "bytes": 2140,
+      "sha256": "610cf318865f1d349164f4420b53b49b2b3662b6938c2e730873371eb92e050e"
+    },
+    "tracing-core-0.1.36/LICENSE": {
+      "bytes": 1062,
+      "sha256": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1"
+    },
+    "typenum-1.20.1/Cargo.toml": {
+      "bytes": 1697,
+      "sha256": "00785a81eae34b3298dfdde78a6bd96fe3ec000de46edd509bd13b7cab7a9870"
+    },
+    "typenum-1.20.1/LICENSE": {
+      "bytes": 17,
+      "sha256": "db11fec9946737df39ca3898d9cd8c10ec6f6c3a884a6802b0ad0b81b4e8f23a"
+    },
+    "typenum-1.20.1/LICENSE-APACHE": {
+      "bytes": 10835,
+      "sha256": "516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406"
+    },
+    "typenum-1.20.1/LICENSE-MIT": {
+      "bytes": 1083,
+      "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f"
+    },
+    "unicode-ident-1.0.27/Cargo.toml": {
+      "bytes": 2072,
+      "sha256": "c0e96a9c7ee62f5f9ab12de69e0ad44826ad753911d47638f605c936f7ea2c1c"
+    },
+    "unicode-ident-1.0.27/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "unicode-ident-1.0.27/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "unicode-ident-1.0.27/LICENSE-UNICODE": {
+      "bytes": 1995,
+      "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1"
+    },
+    "universal-hash-0.6.1/Cargo.toml": {
+      "bytes": 2296,
+      "sha256": "61fa1dc4e3e5ae5ff7463a2f4852f080510c15e19c51ead403528c0a1c94f12c"
+    },
+    "universal-hash-0.6.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "universal-hash-0.6.1/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "efa52eb70a774b62c50cf50f5e57e2625c29d375d09b91132f4f020e47b9944e"
+    },
+    "zeroize-1.9.1/Cargo.toml": {
+      "bytes": 2855,
+      "sha256": "71dd9b47dcf1ea92e55517d3543d1524448c76582a0a49d1d4c16c24a09f7cb0"
+    },
+    "zeroize-1.9.1/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "zeroize-1.9.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b"
+    }
+  }
+}
