@@ -56,6 +56,8 @@ Consequently, serializing the four hash slots, reusing the arithmetic workspace,
 
 ## Minimum successor construction
 
+The subsequent [private state event specification](private-state-events.md) defines the exact read and update obligation, including sampler address equality and transform bank reuse. It proves a conditional finite consistency statement and rejects its dense permutation encoding as an execution candidate. It supplies no complete private proof or new execution class.
+
 A successor needs a new constrained representation, rather than another retained gadget schedule. No particular decomposition or execution class is selected. The following deliverables are required together before selecting a program:
 
 1. A complete equation map for the same hidden payment witness above, preserving the exact ML-DSA authorization, SHA3/SHAKE padding and rates, rejection samplers, coefficient ranges, NTT order, multiplication carries, UseHint, holds, initialization, terminal rows and wrap behavior. Every private read needs an actual constrained producer. A proposed memory or copy argument needs its own equations and soundness assumptions.

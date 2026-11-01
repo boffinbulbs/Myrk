@@ -1,0 +1,309 @@
+{
+  "format": "kova.private-state-events.sources.v1",
+  "date": "2026-11-01",
+  "baseline": "d1d4c74bc6352463e3f2b907f8565ccec61dbf07",
+  "scope": "Source and mathematical specification only. Conditional finite memory consistency proposition and refusal of its dense Boolean permutation encoding. No implementation candidate or runtime selected.",
+  "text_identity": "UTF-8 with CRLF normalized to LF, encoding preserved",
+  "review": {
+    "new_selected_bodies": [
+      "Actual sampler equations and native sample constructor",
+      "Complete NTT equations, forward and inverse constructors, scratch/output update ordering",
+      "Complete matrix sampling, accumulation, XOF and constructor ordering",
+      "Complete canonical decoding equations, packing, modular multiplication and UseHint definitions"
+    ],
+    "selected_context": [
+      "Actual global hash/NTT/matrix schedule and bank six mapping",
+      "Packed immutable source declarations, read equations and constructors",
+      "Actual nominal imports, arithmetic modes and inverse hint dataflow"
+    ],
+    "remaining": [
+      "A whole-operation event grammar and exact Keccak lowering",
+      "Complete private payment and same-witness relation correspondence",
+      "Implementation of canonical integer keys, comparison, sorting and event constraints",
+      "Full crypto/owner/MMCS/PCS/FRI/challenger/verifier/dependency/feature/license execution closure",
+      "Full AIR dimensions, quotient/profile, matching complete proof schema and security correspondence"
+    ],
+    "identity_scope": "Preservation pins do not assert complete body or transitive review."
+  },
+  "mathematical_status": {
+    "event_relation": "Exact complete-tuple permutation, fixed source-bound initialization, strict typed address/time order and sequential before/after chaining",
+    "conditional_proposition": "Consistency of real reads with most recent initialized or written value, and converse for correctly produced sequential executions",
+    "not_claimed": [
+      "Complete signature equivalence",
+      "An implemented AIR or lookup argument",
+      "A zero knowledge theorem",
+      "An achieved security score",
+      "A feasible proving class"
+    ],
+    "finite_count_hypothesis": "N < base field characteristic p for Boolean row and column counting",
+    "dense_source_baseline": {
+      "source_words": 2547,
+      "minimum_events": 5094,
+      "permutation_boolean_field_cells": 25948836,
+      "field_content_bytes": 103795344,
+      "current_necessary_raw_cell_ceiling": 2048,
+      "interpretation": "Manual counts for the explicit full matrix materialization only, not an allocation, peak, wire size or universal lower bound."
+    },
+    "required_control_groups": 8,
+    "executed_controls": 0
+  },
+  "repository_files": {
+    "research/signature-overlay/src/lib.rs": {
+      "bytes": 2414,
+      "sha256": "719aa5810b8d1158d7468a7c545ad7177f97f73aad9faa35af96f5279a22df37",
+      "git_blob": "5463874bd84397ac3dec1e6e9e7a9e0053eb9e1b"
+    },
+    "research/signature-overlay/src/air.rs": {
+      "bytes": 1148,
+      "sha256": "42720358014063e50220cf97960d01f19ff3ee6597a9f72bb0f7dbf81eaf6f35",
+      "git_blob": "34926a3ba6a4c1c94981476e69a9eead6d075d85"
+    },
+    "research/signature-overlay/src/layout.rs": {
+      "bytes": 4541,
+      "sha256": "263035a13c82024429862620e362d9ff02378e091cdcf1972d8a9f6ec021b37c",
+      "git_blob": "6646dfe0ceae79123bae03850879a7b57a292087"
+    },
+    "research/signature-overlay/src/build.rs": {
+      "bytes": 9376,
+      "sha256": "e5b1958a0e25d90dcafca910e7fc982a78d9216821cbf611d11ef020e86be828",
+      "git_blob": "09e0dbd19f2ea3f9676ffa723256f4644c991193"
+    },
+    "research/signature-overlay/src/full_program.rs": {
+      "bytes": 4324,
+      "sha256": "e48178e97fa4b88dbbef6fcbb2beadf8b6d76333a8a58e49934331c0c0ae7935",
+      "git_blob": "be8d293237a134618926c4377db1373c1ebbe547"
+    },
+    "research/signature-overlay/src/arithmetic_modes.rs": {
+      "bytes": 2311,
+      "sha256": "2d3c17f72df1e435fd9343c7f08e9cc2294a75a26ab0f40a9ab6936cb5ccc87a",
+      "git_blob": "24a973de4195b23838ff0e731a3112b780e7f5a6"
+    },
+    "research/signature-overlay/src/ntt.rs": {
+      "bytes": 21215,
+      "sha256": "236479888836c90eb7a05e3a5c9882bc03d7875b8010410c7e186ee4635febb5",
+      "git_blob": "eb9cf3f2a612be9eb2abcde8dc15635359f14745"
+    },
+    "research/signature-overlay/src/hint_rows.rs": {
+      "bytes": 4673,
+      "sha256": "c0a16a7d7c2eb2632593a71da83a76bcdcbf430004b57050f6251e4d6e79695b",
+      "git_blob": "293da8dddbadf3750b0fde1ae1c068b55c225882"
+    },
+    "research/signature-overlay/Cargo.toml": {
+      "bytes": 1212,
+      "sha256": "4b930a775f0f09d91646ace590c05aee98b2599e04900af653d7f733ca6263a1",
+      "git_blob": "0675ef25df8d0bc0a939c814b699667c08ec9678"
+    },
+    "research/signature-overlay/Cargo.lock": {
+      "bytes": 19747,
+      "sha256": "6742ae73ce75f4433d5405fbe350708cba7106f798e3dca67e2922aed307ee01",
+      "git_blob": "349e5e8a8ef1066a6832808f0b5aab9ef3f06f93"
+    },
+    "research/signature-packed/src/packed.rs": {
+      "bytes": 14006,
+      "sha256": "bc78d17a7c94a7eaab2b49e931771cf67f8854412f92be2a15473b3313283b41",
+      "git_blob": "3bf7fea52944b247d5c38a61e2cdb6cfee39d611"
+    },
+    "research/signature-packed/src/sources.rs": {
+      "bytes": 6657,
+      "sha256": "8d791f7526874ab48eeb164b9a6b353c57d53ce34028ecf0f9c953fa90f50ffc",
+      "git_blob": "26407dedd58f8933e18fce97f2ab85ee3d86f233"
+    },
+    "research/signature-packed/src/sponge.rs": {
+      "bytes": 9251,
+      "sha256": "63ccb3990325d8898a6c6888a64426bb93d004a61a6a7a698047a2f757bb2b74",
+      "git_blob": "eeb352bb3d8b53ddf701f0dbe4319e426dd1bc48"
+    },
+    "research/signature-packed/src/decoding.rs": {
+      "bytes": 7769,
+      "sha256": "072d5a18bcb819c4f2038a8bbea249c0f3a3b5de896e5e5e835acd4bb6efb250",
+      "git_blob": "93b7de9476bf137c03bb319667d3e8d240bed984"
+    },
+    "research/signature-storage/src/program.rs": {
+      "bytes": 1692,
+      "sha256": "9a21160312cc652ca953bb617bf14bd430e917b2c1381cfac96dfc0cfcfa0a6a",
+      "git_blob": "dbbafd89c61b334c866884b00b0c915b22be4a9c"
+    },
+    "research/signature-storage/src/matrix.rs": {
+      "bytes": 15396,
+      "sha256": "0460487297976483bac254e916ec2ef138284e3dc5b33072f145fed147832027",
+      "git_blob": "1391bd4c8ce834bdffb4a3bafac128e0a121ad9f"
+    },
+    "research/signature-storage/src/sampler.rs": {
+      "bytes": 6195,
+      "sha256": "9375cc249ed6621df3cfd828a75f646eae6b8dc832603d045dfa54a69f92894c",
+      "git_blob": "7370ac79791ae9ee0c54df983c958ade0c61135c"
+    },
+    "research/signature-storage/src/clock.rs": {
+      "bytes": 3696,
+      "sha256": "800c4a123d818507b1ee3fb6b77f3ce59657aa50d8dcdd7adc6e7114e6734e37",
+      "git_blob": "39e23b30f6c5bf3506373a64506c2185f2ee9621"
+    },
+    "research/signature-storage/src/activity.rs": {
+      "bytes": 3215,
+      "sha256": "6f1ba210b94e8c511e0b4751a0132d0d6c8ee713c7a6162c0601b64768a40315",
+      "git_blob": "bdceb2bf97910d25d2f0f35a8869e28bd922c2cc"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b",
+      "git_blob": "a27a772b097071f9b8e7358ae160ed563755ba91"
+    },
+    "research/signature-complete-native/src/keccak.rs": {
+      "bytes": 2561,
+      "sha256": "d619093afdd30b630ddc7c88817644c7257c1bdbd2d24f38ca29cd8b4d5db76c",
+      "git_blob": "d6219f77865ca2167e55a0a6f7e884c938c609a0"
+    },
+    "research/signature-complete-native/src/packing.rs": {
+      "bytes": 2138,
+      "sha256": "bd4a1ed77192af82a32f15a6104eab8f68677ac1aa6beb50dbf630ac1bb8d9ce",
+      "git_blob": "9a499468e6c268479c8bd0350a5f6562c424b364"
+    },
+    "research/signature-complete-native/src/mul.rs": {
+      "bytes": 2518,
+      "sha256": "fdf7c8dcb834539b566dab21baf2762de25bc56f907e393f01e8d9b05b09a7e1",
+      "git_blob": "942216d958743256f3df6597e5eaa093af8d453a"
+    },
+    "research/signature-complete-native/src/hints.rs": {
+      "bytes": 4015,
+      "sha256": "9038be9076454fc27ab8c65d8e827c01731270c6877b291a1e5702d60065b401",
+      "git_blob": "cb0b6c504161a596d50309cc38980aceb8dbafb7"
+    },
+    "research/signature-complete-native/src/build/sample.rs": {
+      "bytes": 2439,
+      "sha256": "e2a1881c852ec427953ddd153fde8caccedc1e042576f8d5da6efd0feef754d5",
+      "git_blob": "c8052b6f95824439ba2d559212f79655f8bddaab"
+    },
+    "research/signature-complete-native/src/build/decode.rs": {
+      "bytes": 6229,
+      "sha256": "529723c997f70825d918310f3f7ab49bc2465531328a9177467ef2f922ecbc29",
+      "git_blob": "ecce4c47284d5ae17bcdcd57ad223c508481b7b1"
+    },
+    "research/trace-domain/src/lib.rs": {
+      "bytes": 344,
+      "sha256": "bf48f62ed4c52327f196e39e9526f3333ce812f8a7ca22bf78869f554cc7620b",
+      "git_blob": "46b6934b61a0a5f95a91f30cc97fb89b876a873b"
+    },
+    "research/trace-domain/src/laboratory.rs": {
+      "bytes": 1985,
+      "sha256": "d0550352068646fbb17356a831395151fc2d5767c9578b29b5ec7284379f8b9b",
+      "git_blob": "101e564119865915175ed20aa3fa41644428f80a"
+    },
+    "research/trace-domain/src/context.rs": {
+      "bytes": 7137,
+      "sha256": "1a1cec356b9e1d4aeeef82dd35baefa49df14ea987374874b355b1c97db81825",
+      "git_blob": "7bb6728e838d5733787a98248dc21802a0352e55"
+    },
+    "research/trace-domain/src/owned_prover.rs": {
+      "bytes": 23824,
+      "sha256": "edc664ec6a5907874e9d0650adc5150b18fbcb2a9fe28fcfe0217dcf77511b1b",
+      "git_blob": "bd451c550ed14ffea15cd04604ce105b4e1bfe70"
+    },
+    "research/trace-domain/src/domain.rs": {
+      "bytes": 12665,
+      "sha256": "3f14472abbab216e2bd5a909c4f18addc447cc24bf82e29e1da1413635b84746",
+      "git_blob": "e4f889ce9e7721644c3538add9d4dc14b567ce6d"
+    },
+    "research/trace-domain/src/trace_admission.rs": {
+      "bytes": 581,
+      "sha256": "346bbc165b44be2a9bce353a9854b3a51d8e4dccc349cc2a4f9148a27b0f57b2",
+      "git_blob": "486fa43690990c37dde9e465be49e9fe820acfdc"
+    },
+    "research/opening-domain/src/composite.rs": {
+      "bytes": 41541,
+      "sha256": "e149341f01b57415d972395aa7802c370c3ee6261ab89c7010044c0b6c48e6b7",
+      "git_blob": "e1253cf063f52ad3d42ed932feae30e462b86cc0"
+    },
+    "research/opening-domain/src/owned_pcs.rs": {
+      "bytes": 2862,
+      "sha256": "c8e9dd808f6ccba98813abbcc714c4501d676918ea1283f23c44a11335816987",
+      "git_blob": "ff935b4e66b60d8f44c503c41c53d87126dfffbf"
+    },
+    "research/opening-domain/src/hiding_pcs.rs": {
+      "bytes": 14835,
+      "sha256": "26826760e2ca98140f0c6e8866af604c0cd0eee427948871eb266dbdfdc4e0a2",
+      "git_blob": "fdcac49f45a1df226187bed6f949a59a37275006"
+    },
+    "research/fallible-source/src/extension.rs": {
+      "bytes": 24815,
+      "sha256": "2514d694276257ed36aa144715e38be8b62f74d96f12659555f291176ea3312d",
+      "git_blob": "af25faf51ee22b4051617004513f5a54308df367"
+    },
+    "research/fallible-source/src/source.rs": {
+      "bytes": 10326,
+      "sha256": "d3829f1a1a2180f0a9e9cae5b1246da424263c9e19f041bf82143890a126274c",
+      "git_blob": "a1db037ce9d6a39943608f334b895b53aa63c634"
+    },
+    "research/quotient-source/src/quotient_kernel.rs": {
+      "bytes": 10400,
+      "sha256": "7df6a350620007f3c0117c48120f92148f6d0f752c008920b1746d8eb93e4a44",
+      "git_blob": "2fe7434d5e147714d4ff6ad7e43d4bddf02f6c29"
+    },
+    "research/proof-preflight/src/preflight.rs": {
+      "bytes": 8131,
+      "sha256": "c08cb17ab5703e9ae0aa81fde2ebf07b622bc026bb2d8096172bd8a1ec803c8c",
+      "git_blob": "75ccf57968c24d7345ea3916d63dd1f30e10e2f8"
+    },
+    "research/trace-domain/Cargo.toml": {
+      "bytes": 2002,
+      "sha256": "a6ac7022924134fefb9924b58118d2b26f5d9db23b285a6d0077c45e8cbca761",
+      "git_blob": "004132307be8c96aff3032ede033dccb49bf0a5b"
+    },
+    "research/trace-domain/Cargo.lock": {
+      "bytes": 16264,
+      "sha256": "bb48c96a56baec70eac10e597c8b3fd781b47fb62791de8e06cccec93c1c7621",
+      "git_blob": "eec0f7b4e2c23f07063a271af6b97c2590c694c5"
+    },
+    "research/trace-domain/NOTICE.md": {
+      "bytes": 790,
+      "sha256": "e2a70d8e4af90ce58b518c653efb2a9c4f421b17566c9e88ce06bf154c88a5ca",
+      "git_blob": "59a94c1213a475588ccdd9d83744a08ea2b7ab77"
+    },
+    "research/trace-domain/LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424",
+      "git_blob": "17b48f16c64fd688b5929736899c73faca927d19"
+    },
+    "research/trace-domain/LICENSE-MIT": {
+      "bytes": 1086,
+      "sha256": "d6543a1b0a0a51d10b5f8c389324c7dfeba556b7f39815efd292927bde808700",
+      "git_blob": "ae8393261a5c288d5efe1208b7ea3de22b861f84"
+    },
+    "research/trace-domain/LICENSE-APACHE": {
+      "bytes": 10848,
+      "sha256": "3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026",
+      "git_blob": "1e5006dc141e22213c898c27abaded8d936c32f0"
+    },
+    "research/overlay-composition/authorization-sources.json": {
+      "bytes": 14012,
+      "sha256": "e0f96f6238905e179e5d9cc2b87cb708822747908f125bd4c0765cc957375cda",
+      "git_blob": "718235967af0b15b80c686694eab9d93657047e5"
+    },
+    "docs/private-transition-state.md": {
+      "bytes": 20202,
+      "sha256": "f5d447290a69bb11ed9efda6d0a5024dbaac1f0e1bfafa079f01d5f1522e7fbf",
+      "git_blob": "852793fd3de546aa9074c562bbb0eb0be5708990"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 9055,
+      "sha256": "526db01aa3557ab5fa655af2847a430de1c5b0b99af90deca4415a948fac337d",
+      "git_blob": "f665ba699c37596bb9027eaae49fc7ca43b670ae"
+    }
+  },
+  "historical_context_blobs": {
+    "research/overlay-composition/authorization-construction.md": {
+      "revision": "d1d4c74bc6352463e3f2b907f8565ccec61dbf07",
+      "git_blob": "7bca4de1915d9b0933e59bbf445fbf77353e092f"
+    }
+  },
+  "licenses": "Original Thorum MIT and retained Plonky3 MIT OR Apache-2.0 attribution and copies unchanged.",
+  "execution": {
+    "compiler": 0,
+    "model": 0,
+    "event_generator": 0,
+    "protocol_hash": 0,
+    "native": 0,
+    "proof": 0,
+    "old_programs": 0,
+    "runtime_admission": "none"
+  }
+}
