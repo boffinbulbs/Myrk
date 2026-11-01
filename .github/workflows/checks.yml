@@ -328,6 +328,24 @@ jobs:
       - name: Arithmetic overlay default checks
         if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
         run: rustup run 1.94.1 cargo clippy --manifest-path research/arithmetic-overlay/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
+      - name: Complete overlay formatting
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 rustfmt --edition 2021 --config skip_children=true --check research/signature-overlay/src/lib.rs research/signature-overlay/src/air.rs research/signature-overlay/src/arithmetic_modes.rs research/signature-overlay/src/build.rs research/signature-overlay/src/full_program.rs research/signature-overlay/src/hint_rows.rs research/signature-overlay/src/layout.rs research/signature-overlay/src/ntt.rs research/signature-overlay/tests/shape.rs
+      - name: Complete overlay dependencies
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-overlay/Cargo.toml --locked
+      - name: Complete overlay recorded evidence
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: python -I -S research/signature-overlay/static_check.py
+      - name: Complete overlay diagnostic compilation
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo test --manifest-path research/signature-overlay/Cargo.toml --release --features diagnostics --test shape --locked --offline --no-run --jobs 1
+      - name: Complete overlay strict checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-overlay/Cargo.toml --release --features diagnostics --lib --test shape --locked --offline -- -D warnings
+      - name: Complete overlay default checks
+        if: needs.scope.outputs.core != 'false' && (matrix.suite == 'development')
+        run: rustup run 1.94.1 cargo clippy --manifest-path research/signature-overlay/Cargo.toml --release --no-default-features --lib --locked --offline -- -D warnings
 
   row:
     needs: scope

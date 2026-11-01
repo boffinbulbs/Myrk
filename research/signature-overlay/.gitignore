@@ -1,0 +1,5 @@
+/results/*
+!/results/symbolic.json
+*.stdout.txt
+*.stderr.txt
+*.guard.json

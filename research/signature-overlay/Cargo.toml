@@ -1,0 +1,49 @@
+[package]
+name = "kova-signature-overlay"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.94.1"
+publish = false
+autotests = false
+autobins = false
+autobenches = false
+license = "MIT"
+
+[dependencies]
+p3-air = { version = "=0.8.0", default-features = false }
+p3-baby-bear = { version = "=0.8.0", default-features = false }
+p3-field = { version = "=0.8.0", default-features = false }
+p3-keccak-air = { version = "=0.8.0", default-features = false }
+p3-matrix = { version = "=0.8.0", default-features = false }
+thorum-crypto-lab = { path = "../../crates/thorum-crypto-lab" }
+thorum-relation-lab = { path = "../../crates/thorum-relation-lab" }
+
+[dev-dependencies]
+serde = { version = "=1.0.229", default-features = false, features = ["derive"] }
+serde_json = { version = "=1.0.145", default-features = false, features = ["std"] }
+thorum-core = { path = "../../crates/thorum-core" }
+
+[features]
+default = []
+diagnostics = []
+native-execution = []
+
+[lib]
+test = false
+doctest = false
+
+[[test]]
+name = "shape"
+path = "tests/shape.rs"
+required-features = ["diagnostics"]
+
+[workspace]
+
+[profile.test]
+opt-level = 2
+debug-assertions = true
+overflow-checks = true
+
+[profile.release]
+overflow-checks = true
+lto = "thin"

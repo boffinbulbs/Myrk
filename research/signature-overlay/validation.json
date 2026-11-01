@@ -1,0 +1,50 @@
+{
+  "artifacts": {
+    "results/symbolic.json": {
+      "bytes": 310,
+      "sha256": "62371b668338320d0ba104877b5b22441cf535d35b66be353f15e8b191b2aab8"
+    }
+  },
+  "date": "2026-11-01",
+  "executable": {
+    "bytes": 1384960,
+    "sha256": "4df8b549e437de4e574739f3b238910e16f713253db102ecb6af43f2d468304c"
+  },
+  "format": "kova.signature-overlay.validation.v1",
+  "guard": {
+    "accepted": true,
+    "actual_failed": 0,
+    "actual_ignored": 0,
+    "actual_passed": 1,
+    "available_before_bytes": 6779453440,
+    "exit_code": 0,
+    "expected_tests": 1,
+    "installed_job_commit_limit_bytes": 536870912,
+    "installed_job_flags": 8960,
+    "installed_process_commit_limit_bytes": 536870912,
+    "minimum_available_bytes": 2147483648,
+    "output_limit_exceeded": false,
+    "peak_job_commit_bytes": 407068672,
+    "peak_private_commit_bytes": 405774336,
+    "peak_working_bytes": 395194368,
+    "test_counts_verified": true,
+    "timed_out": false,
+    "timeout_seconds": 120,
+    "working_guard_terminated": false
+  },
+  "hardware": "13th Gen Intel Core i9-13900H",
+  "limitations": [
+    "Symbolic shape does not establish a satisfying full signature witness",
+    "No native full trace or source constructor executed",
+    "No backend proof or complete private payment selected",
+    "Full signature remains outside the existing proof admission",
+    "No full system post quantum security result"
+  ],
+  "original_guard_receipt_sha256": "3a309d4e17f87012b449e838ab96b2768664dae602834e475867d90ba7671950",
+  "platform": "Windows x86_64",
+  "profile": "release",
+  "rust": "1.94.1",
+  "scope": "one actual complete symbolic collection without native signature construction",
+  "source_manifest_normalization": "CRLF to LF",
+  "source_manifest_sha256": "85e8e757b6d826069671af4022d7239b4d45b7e6bab74a334e656d9df5ee5381"
+}
