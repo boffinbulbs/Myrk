@@ -17,6 +17,8 @@ The complete checkpoint protocol is open research. It must specify eligibility, 
 
 Confidential eligibility must bind committed stake, ownership, epoch, chain, referenced state, and authorized voting key. It must reject weight forgery, double counting, reuse after spending, replay across networks, and conflicting use of the same authority. Splitting the same value across many positions must not increase aggregate stake or expected influence.
 
+The [confidential stake lifecycle](confidential-stake.md) defines the consumed bond right, authenticated eligible snapshot, distinct contribution and reward identities, and restricted voting authority requirements. It records the unresolved first-activation dependency separately from normal finalized eligibility. These are specifications, not an accepting stake protocol.
+
 The randomness construction must address grinding, withholding, and adaptive participants while meeting native PQ requirements. A classical VRF or aggregate certificate cannot be adopted without accounting for its security assumptions.
 
 ## Lifecycle and rewards

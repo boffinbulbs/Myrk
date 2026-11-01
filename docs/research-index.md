@@ -6,6 +6,8 @@ This index records the individual laboratory boundaries, retained references and
 
 The independent [snapshot journal](../research/state-journal/README.md) validates finite public byte storage and writable process recovery. It is a storage substrate diagnostic, with no proof or payment acceptance path. Its record preserves actual publication and fixture failures separately from the passing remaining recovery controls.
 
+The [confidential stake contract](confidential-stake.md) defines required consumed bond rights, epoch eligibility, complete weight, restricted voting and bootstrap dependencies. Its failure matrix is specification work. Existing transparent witness checks and payment proof components do not implement that contract.
+
 The [finite proof reader](../research/frame-reader/README.md) connects header admission, payload reservation and one request authority to the original proof decoder. Actual file, truncation, error cause and repeated-use controls retain separate resource, encoding and cryptographic validity boundaries.
 
 The [bounded source proof decoder](../research/proof-transport/README.md) applies fixed byte and syntax budgets before owned decoding of the original proof type. Its diagnostic tests actual malformed inputs, shape checks and canonical comparison. A correctly encoded altered commitment still decodes without verification, preserving the boundary between transport and cryptographic validity.

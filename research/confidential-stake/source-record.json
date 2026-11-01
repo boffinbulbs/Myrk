@@ -1,0 +1,161 @@
+{
+  "format": "kova.confidential-stake.sources.v1",
+  "date": "2026-11-01",
+  "baseline": "7bff144b82a5ce2744106172f6a7a8cb6dde9d26",
+  "scope": "Source and specification only. No stake proof, signer, kernel or node implemented.",
+  "text_identity": "CRLF normalized to LF with byte encoding preserved",
+  "repository_files": {
+    "crates/thorum-core/src/lib.rs": {
+      "bytes": 1817,
+      "sha256": "b5339e14659c208b321a767ea4164bb629f7db2c638d031391df5bd3c0aadd67"
+    },
+    "crates/thorum-core/src/accounting.rs": {
+      "bytes": 9462,
+      "sha256": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d"
+    },
+    "crates/thorum-core/src/emission.rs": {
+      "bytes": 3344,
+      "sha256": "e924aba41290a7c7f01429e385d13829d3510787f9815a0c0d87f63e19e3a6b7"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "bytes": 3989,
+      "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b"
+    },
+    "crates/thorum-relation-lab/Cargo.toml": {
+      "bytes": 567,
+      "sha256": "bd0c5172915695c61dbc46aa2308f16b3ba38a8e747507abdf019f07d4cd1782"
+    },
+    "crates/thorum-relation-lab/src/lib.rs": {
+      "bytes": 2787,
+      "sha256": "4680bfc8b0577d760723fef74f47433c32adfbd8be3569bb2a7107704e237782"
+    },
+    "crates/thorum-relation-lab/src/note.rs": {
+      "bytes": 15074,
+      "sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035"
+    },
+    "crates/thorum-relation-lab/src/stake.rs": {
+      "bytes": 8007,
+      "sha256": "a03f77e22f82096a68951104932cb7cd960f18af9726c237899d707500ec5876"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176"
+    },
+    "crates/thorum-nullifier-proof-lab/src/lib.rs": {
+      "bytes": 12269,
+      "sha256": "fcca3051d7e2ff845153570197f2aca32d0a4b11aa2d8dd5cad8377af8e1c9f6"
+    },
+    "crates/thorum-owner-binding-proof-lab/src/lib.rs": {
+      "bytes": 12413,
+      "sha256": "8354ba70f6fccf6f3a6501906afeb523601040c0343b31db55b5748450ad6869"
+    },
+    "crates/thorum-crypto-lab/src/lib.rs": {
+      "bytes": 16754,
+      "sha256": "c1671d70b61ffdaa0824512e6598b64b4d31a3ff35040186cd13f89d18c6e601"
+    },
+    "research/signature-overlay/src/lib.rs": {
+      "bytes": 2414,
+      "sha256": "719aa5810b8d1158d7468a7c545ad7177f97f73aad9faa35af96f5279a22df37"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b"
+    },
+    "research/state-journal/src/journal.rs": {
+      "bytes": 13880,
+      "sha256": "9592f5381529b5ce613749310bb1dc4fd1cd21118f6ffad89ff3fc39da171d0b"
+    },
+    "research/state-journal/src/worker.rs": {
+      "bytes": 1655,
+      "sha256": "941b461695d290ad7d7a77ef287390bcba0f7afa82e8ca3baec1cf361cd8bb82"
+    },
+    "docs/architecture.md": {
+      "bytes": 9533,
+      "sha256": "d00407a4b71d2e222454ca72ae4df30c69bdad7e91360ddaefa31f7366ffe7e5"
+    },
+    "docs/parameters.md": {
+      "bytes": 5743,
+      "sha256": "4e21e1847a52fca37be761c3ac17d64047483aea64584929a0169150c4dbb7f9"
+    },
+    "docs/private-transactions.md": {
+      "bytes": 8491,
+      "sha256": "6d9f859495d7b33e9b3def14c88c066d72ab3db75efb20fe07b79c372661869e"
+    },
+    "docs/protocol-extensions.md": {
+      "bytes": 14131,
+      "sha256": "76dda809f0d427ae5225f4012606ade3cd35b79492c965d12595fd92b8cc1ce5"
+    },
+    "docs/subsidy-allocation.md": {
+      "bytes": 7079,
+      "sha256": "69303fb1105341abf41232c409061e0da05b41120a8c9b0e69db147f0f4aaf24"
+    },
+    "docs/governance.md": {
+      "bytes": 18274,
+      "sha256": "9ce2ee9e317c7784ae5930324e56b9f08a78f06405905e89f2d9fed025ecc76e"
+    },
+    "docs/node-integration.md": {
+      "bytes": 6368,
+      "sha256": "c8809ce2e794239d358f4dd8c2f3eebb5e5e3627270b5bfc0735c2a7f0b3bfda"
+    },
+    "docs/rpc-and-data.md": {
+      "bytes": 9583,
+      "sha256": "68091137821c61bf5f08cea17a91080bda589ecfeea370511a0cbcfa2c6a0f87"
+    },
+    "docs/wallet.md": {
+      "bytes": 7754,
+      "sha256": "66127a407c56fb3a9cbab83ac1fdc481f9fa58258ff52c97282e1ed8c4e27639"
+    },
+    "research/overlay-composition/transport-feasibility.md": {
+      "bytes": 6285,
+      "sha256": "0128eddd6143840936cf70fcfc270f13c00aead83037b8cc24affaf250c3445e"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424"
+    }
+  },
+  "historical_documents": {
+    "docs/checkpoints.md": {
+      "git_blob": "c5e570bc5f73b01d15dc876671749bb44e6c6938",
+      "change": "Specification link added after reviewed source baseline"
+    },
+    "docs/delivery-roadmap.md": {
+      "git_blob": "8d2e5a40fcb2b889f5a2b161863cbae1e6352fcc",
+      "change": "Specification link added after reviewed source baseline"
+    },
+    "docs/private-transition-state.md": {
+      "git_blob": "df9b189d5511bfb49dc91075d06a574e3715dc07",
+      "change": "Specification link added after reviewed source baseline"
+    },
+    "docs/research-index.md": {
+      "git_blob": "d087ddf7ebc2f548bff94ded8d199bf4251b3a66",
+      "change": "Specification link added after reviewed source baseline"
+    }
+  },
+  "document": {
+    "path": "docs/confidential-stake.md",
+    "identity": {
+      "bytes": 21669,
+      "sha256": "703c3d90f01999a7b250c3142cd615f1758928b495e037787e633563cbd2daa8"
+    }
+  },
+  "reviewed_boundaries": [
+    "Complete core accounting, emission and amount source",
+    "Complete transparent relation public root, bond notes, payment and stake checks",
+    "Nullifier and owner proof roots: public statements, fixed profiles and original prove/verify entries",
+    "Complete signature overlay root and PaymentStatement authorization mapping",
+    "Crypto laboratory declarations and context header only, not a new primitive audit"
+  ],
+  "required_failure_scenarios": 18,
+  "executed_new_tests": 0,
+  "compiler_calls": 0,
+  "model_calls": 0,
+  "proof_calls": 0,
+  "network_calls": 0,
+  "decisions": [
+    "Normal registration consumes original note identities and creates conserved restricted bond rights",
+    "Normal eligibility retains finality and maturity",
+    "First activation stays blocked pending a separately reviewed bootstrap rule"
+  ],
+  "attribution": "Original Kova MIT specification and existing sources. No upstream implementation or theorem text copied."
+}

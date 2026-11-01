@@ -122,6 +122,8 @@ Nullifiers accumulate along a valid branch. Replacing an unfinalized branch rest
 
 Checkpoint support cannot authorize an invalid private transition. Before confidential stake bootstrap and certificate construction are complete, no service may report stake finality. Safe, fast locks, contracts and later Aegis retain their separate [delivery gates](delivery-roadmap.md). An activation requires the complete applicable state and authorization rules, not a wallet label or a cached acceptance record.
 
+The [confidential stake lifecycle](confidential-stake.md) uses consumed and newly created bond rights under the same private transition rules. Its active snapshot and complete weight require authenticated construction. Signer anti-equivocation history has a separate recovery obligation and cannot be erased merely because ledger branch state rolls back. No such signer is supplied by the byte journal.
+
 ## Required failure and recovery cases
 
 These are specification requirements, not executed tests.

@@ -21,6 +21,8 @@ The current stage is private cryptographic feasibility. The workspace contains m
 
 Complete private payment and confidential stake feasibility both precede ledger integration. Private authorization includes ownership, membership, stable nullifiers, value conservation and delivery binding for the same transaction. Success in separate component harnesses does not complete that relation.
 
+The [confidential stake contract](confidential-stake.md) requires consumed and recreated bond rights, authenticated complete weight, restricted signing and an explicit first-activation construction. Its bootstrap dependency remains a launch blocker. The normal finality rule is unchanged and no transparent stake service or synthetic initialized fixture supplies a production fallback.
+
 The initial public network depends on the applicable consensus, privacy, recovery, resource and independent review gates. Later application milestones may be delivered separately. An unfinished application is not an exception to the ledger rules.
 
 Aegis is outside the first chain test milestone. The initial onward spending boundary remains checkpoint finality. Contract and Safe architecture can be developed before their executable stages, with unsupported operations rejected by the active protocol. Documentation alone does not represent partial runtime completion.
