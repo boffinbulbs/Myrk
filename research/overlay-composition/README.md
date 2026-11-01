@@ -79,6 +79,8 @@ The [two phase wire binding contract](two-phase-wire-binding.md) gives prospecti
 
 The [common private witness contract](private-witness-join.md) binds the same note, owner key, real signature, nullifier secret and path across the ordinary v2 payment obligations. Its exact confidential asset equations and output encryption boundary expose the remaining joint-proof construction requirements. It supplies no accepting payment route.
 
+The [encrypted output construction boundary](encrypted-output-boundary.md) traces the actual KEM, sampler, KDF and GCM operations and fixes their same-opening association. It identifies the missing finite sampling and cipher correspondence required before a complete private encryption proof can be selected.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
