@@ -70,6 +70,6 @@ The saved evidence check does not execute the native diagnostic. Native reproduc
 
 ## Remaining integration
 
-Header admission before payload allocation, aggregate request budgets and concrete reader error behavior remain separate work. This diagnostic exposes no node RPC or production decoder API. Full signature construction remains outside current resource admission, as recorded in the [complete overlay inventory](../overlay-composition/README.md). Hiding, soundness, knowledge and quantum transcript composition, and the same hidden witness payment ledger remain open.
+The [finite reader experiment](../frame-reader/README.md) adds header admission before payload reservation, one request authority and actual reader error controls. Production transport, blocking I/O deadlines and aggregate peer limits remain separate work. This diagnostic exposes no node RPC or production decoder API. Full signature construction remains outside current resource admission, as recorded in the [complete overlay inventory](../overlay-composition/README.md). Hiding, soundness, knowledge and quantum transcript composition, and the same hidden witness payment ledger remain open.
 
 The [roadmap](../../docs/delivery-roadmap.md) retains private payments by default, confidential staking, work and stake consensus, mining, governance, restricted viewing and service APIs, ordinary nodes, desktop and mobile wallets, contracts, Safe, migration, compact history and later Aegis.

@@ -4,6 +4,8 @@ This index records the individual laboratory boundaries, retained references and
 
 ## Proof research map
 
+The [finite proof reader](../research/frame-reader/README.md) connects header admission, payload reservation and one request authority to the original proof decoder. Actual file, truncation, error cause and repeated-use controls retain separate resource, encoding and cryptographic validity boundaries.
+
 The [bounded source proof decoder](../research/proof-transport/README.md) applies fixed byte and syntax budgets before owned decoding of the original proof type. Its diagnostic tests actual malformed inputs, shape checks and canonical comparison. A correctly encoded altered commitment still decodes without verification, preserving the boundary between transport and cryptographic validity.
 
 The [complete overlay resource inventory](../research/overlay-composition/README.md) joins the current relation dimensions to source, commitment and FRI contents, private opening ownership, entropy and query lifetimes. Its scalar calculation checks independently saved small records. Full signature proving, untrusted transport admission, security composition and the same witness ledger remain separate requirements.

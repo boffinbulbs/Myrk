@@ -208,7 +208,7 @@ The [successful main construction](research/fallible-main/README.md) consumes th
 
 The [complete overlay resource inventory](research/overlay-composition/README.md) accounts for current source contents, retained folding trees, entropy, queries and construction lifetimes. Independent saved records check its bounded scalar calculation. The conditional field file total is 26,300,841,984 bytes. No wide allocation, signature proof, achieved security score or general transport bound follows from that projection.
 
-The [bounded source proof decoder](research/proof-transport/README.md) checks borrowed input budgets before actual typed decoding, then enforces the retained shape and canonical serialization. Its adversarial diagnostic distinguishes encoding admission from cryptographic verification. Header admission before network payload allocation remains a separate boundary.
+The [bounded source proof decoder](research/proof-transport/README.md) and [finite proof reader](research/frame-reader/README.md) connect stack header admission, payload reservation and one request authority to actual typed decoding and canonical serialization. File, fragmented input, I/O failure and repeated-use controls retain separate resource and encoding boundaries. Cryptographic validity, production transport and blocking I/O deadlines remain separate requirements.
 
 The [research implementation index](docs/research-index.md) preserves the complete laboratory catalogue, source lineage, measurements and narrower evidence boundaries. The [implementation record](docs/development.md) and [delivery roadmap](docs/delivery-roadmap.md) track the chain, wallet and later protocol milestones.
 
