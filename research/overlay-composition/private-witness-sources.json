@@ -1,0 +1,426 @@
+{
+  "format": "kova.private-witness-join.sources.v1",
+  "date": "2026-11-02",
+  "baseline": "364250b249271618a9b8fcf553697307a6eddc6e",
+  "scope": "Source and mathematical contract for one shared private ordinary recipient-v2 payment witness. Complete executable relation and private proof refused.",
+  "ordinary_domain": {
+    "inputs": "1..8",
+    "outputs": "1..8",
+    "encoding": 2,
+    "policy": "Payment",
+    "opening_bytes": 418,
+    "amount_bits": 64,
+    "asset_bits": 256,
+    "legacy_and_bond": "Excluded from this correspondence, not silently reinterpreted or activated"
+  },
+  "component_differences": [
+    "Owner AIR two inputs/two outputs, one public asset, depth32,520public values, no signature/encryption",
+    "Signature overlay one key/signature/note and196expected authorization bytes, no membership/NF consumption",
+    "Host checker borrowed caller context, checked private multi-asset sums and real sender encryption operations, no authenticated state mutation"
+  ],
+  "mathematics": {
+    "same_sources": [
+      "Canonical input opening",
+      "Verification key",
+      "Real signature",
+      "Retained nullifier secret",
+      "Actual private path/index",
+      "Canonical output opening",
+      "Canonical recipient public key",
+      "Actual sender encapsulation randomness"
+    ],
+    "output_exclusions": "No recipient nullifier secret, decapsulation key or future spending signature in sender witness",
+    "stable_nullifier": "Exact v2 H_domain(chain,retained_secret,same_private_commitment), excludes current root/version/epoch/path",
+    "authorization": "Actual canonical PaymentStatement -> message/context -> retained196bytes/nonempty FIPS context, per input same key/signature",
+    "conservation": "Exact256bit asset equality using separate quadratic XNOR/product nodes and checked64bit gated integer prefix additions for each of<=17representatives, no public asset list/random compression",
+    "correspondence": "Both semantic witness directions under complete operation predicates and actual authenticated expected state, not an existing accepted-proof theorem or Rust private-constructor provenance theorem",
+    "unresolved_encryption": "Host deterministic ML-KEM1024/framed experimental SHA3KDF/AES256GCM reproduction is not a constrained encryption circuit",
+    "unresolved_eligibility": "Creation version is not reward origin height. Leaf membership in caller-owned root does not establish maturity/finality/branch or current spent state.",
+    "resources": "No complete H/W/PV/assertion/degree/quotient/aux/query/claims/tree/FRI/entropy/transport or proving class selected; existing refusals preserved"
+  },
+  "review": {
+    "whole_selected_bodies": [
+      "Relation lib/note/capability/payment/Merkle/codec/error",
+      "Crypto context, authorization and sender encryption operation bodies and envelope codec",
+      "Owner-binding AIR/constructor and public proof boundary",
+      "Signature authorization preprocessing and packed source binding"
+    ],
+    "selected_partial": [
+      "Membership/nullifier public and proof boundaries",
+      "Overlay lib/AIR/build boundary",
+      "Original component/state document context"
+    ],
+    "preserved": [
+      "Prior detailed signature arithmetic, Keccak and private-state reviews",
+      "Original manifests/locks/licenses/notices and owner/backend boundaries"
+    ],
+    "not_completed": [
+      "Cryptographic backend and full executable transitive feature/license closure",
+      "Actual combined AIR, whole private source/copy placement and matching verifier",
+      "Constrained output encryption, authenticated eligibility/history and atomic ledger"
+    ]
+  },
+  "repository_files": {
+    "crates/thorum-relation-lab/src/lib.rs": {
+      "bytes": 2787,
+      "sha256": "4680bfc8b0577d760723fef74f47433c32adfbd8be3569bb2a7107704e237782",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "df0eb92bfb9e2ca00e16d2b119b6c1482c740b3f",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-relation-lab/src/note.rs": {
+      "bytes": 15074,
+      "sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "10566a7ceab5b93dafd14be313d61600b91a36c7",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-relation-lab/src/capability.rs": {
+      "bytes": 4048,
+      "sha256": "5ccba5406267c5cabb4ec3268a5b2103c85bfcdada307dd2910d16d9abc5285f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "513c1a0b583bd2871118be85b520afa4de4a92bf",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "c7005f1c76d3f8698f9942ec769ea0fdb5b35692",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-relation-lab/src/merkle.rs": {
+      "bytes": 1280,
+      "sha256": "08e9e813916d0e4c9585591cdd9ac68cb511d327a54b2f463f4a302797b2b92d",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "e9a563cc88d2e1fd8abd4977836e7a7c17d1cc0b",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-relation-lab/src/codec.rs": {
+      "bytes": 1278,
+      "sha256": "d034294a3c7045a9d3c99fd64c60ee6959973215770b8470cc66f16ac1d66d98",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "2dc168613f6917e0d2c21154329eb9729393cf33",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-relation-lab/src/error.rs": {
+      "bytes": 4273,
+      "sha256": "b00bde429ce19a798c6181396af5df27877de1023bb966775922ed501d410fed",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "8a78a33c4e0842e9f41d65e1b6df1270bc7c019a",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-relation-lab/Cargo.toml": {
+      "bytes": 567,
+      "sha256": "bd0c5172915695c61dbc46aa2308f16b3ba38a8e747507abdf019f07d4cd1782",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "e84ef2b87d733e1e8a847e402d97be46303441d3",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-crypto-lab/src/lib.rs": {
+      "bytes": 16754,
+      "sha256": "c1671d70b61ffdaa0824512e6598b64b4d31a3ff35040186cd13f89d18c6e601",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "f70e4dc4b222d6130103371b6bdf2364ddcae5e5",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-crypto-lab/src/envelope.rs": {
+      "bytes": 3154,
+      "sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "eb7d472e9cd0cbd4e0b131889a57fe8fb036309a",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-crypto-lab/Cargo.toml": {
+      "bytes": 819,
+      "sha256": "fb4bcf1015dda241af00f3621bd332d01b17d18c493fe173c07772ed3080eb9d",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "316595d914469478f7cb67c5207666e2239a50ba",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-core/src/amount.rs": {
+      "bytes": 3989,
+      "sha256": "9ddaa2ff9b934726e3ca828a0b46cd67b6b0b81416ef0b12b11ef37c8659144b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "924d22657f0eb056d3e47c19830326392bc0dfe7",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-owner-binding-proof-lab/src/lib.rs": {
+      "bytes": 12413,
+      "sha256": "8354ba70f6fccf6f3a6501906afeb523601040c0343b31db55b5748450ad6869",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "9828b69bc1cc3c9807a739e0aa02226041c52be6",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-owner-binding-proof-lab/src/sponge.rs": {
+      "bytes": 34530,
+      "sha256": "d30d7bdbc59599ee266256a52881202cc57c7e226ef7b8632d2d3767d4d18d4c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "fc13507937fa11def23841a327664a979591a351",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-membership-proof-lab/src/lib.rs": {
+      "bytes": 11912,
+      "sha256": "f868567f3642a47ff9aa3e91582d95f6ae8bd4aac3e0c4f2ba9036f1cd914721",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "e26cfed2db0e4daa9c9abf0fa90836c398a2c534",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "crates/thorum-nullifier-proof-lab/src/lib.rs": {
+      "bytes": 12269,
+      "sha256": "fcca3051d7e2ff845153570197f2aca32d0a4b11aa2d8dd5cad8377af8e1c9f6",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "24fafb756926ff6e446d1125989f48c51224473d",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "research/signature-complete-native/src/authorization.rs": {
+      "bytes": 3195,
+      "sha256": "506699ddfe298bfd58553e27bf56f456e7bbb2ffa96804f8d45665b56c28738b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "a27a772b097071f9b8e7358ae160ed563755ba91",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "research/signature-complete-native/src/layout.rs": {
+      "bytes": 3241,
+      "sha256": "1a1814846ab193268f8a09e8bf503e6cfc3a482f50be20c29f610c55e94241cc",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "4a6521653a63e5b0d34bf3fe8cc859825cf3bbc5",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "research/signature-packed/src/sources.rs": {
+      "bytes": 6657,
+      "sha256": "8d791f7526874ab48eeb164b9a6b353c57d53ce34028ecf0f9c953fa90f50ffc",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "26407dedd58f8933e18fce97f2ab85ee3d86f233",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "research/signature-overlay/src/lib.rs": {
+      "bytes": 2414,
+      "sha256": "719aa5810b8d1158d7468a7c545ad7177f97f73aad9faa35af96f5279a22df37",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "5463874bd84397ac3dec1e6e9e7a9e0053eb9e1b",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "research/signature-overlay/src/air.rs": {
+      "bytes": 1148,
+      "sha256": "42720358014063e50220cf97960d01f19ff3ee6597a9f72bb0f7dbf81eaf6f35",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "34926a3ba6a4c1c94981476e69a9eead6d075d85",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "research/signature-overlay/src/build.rs": {
+      "bytes": 9376,
+      "sha256": "e5b1958a0e25d90dcafca910e7fc982a78d9216821cbf611d11ef020e86be828",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "09e0dbd19f2ea3f9676ffa723256f4644c991193",
+      "review_scope": "Selected definitions and boundaries described in review, not necessarily whole file/transitive bodies"
+    },
+    "research/signature-overlay/src/layout.rs": {
+      "bytes": 4541,
+      "sha256": "263035a13c82024429862620e362d9ff02378e091cdcf1972d8a9f6ec021b37c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "6646dfe0ceae79123bae03850879a7b57a292087",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-overlay/src/ntt.rs": {
+      "bytes": 21215,
+      "sha256": "236479888836c90eb7a05e3a5c9882bc03d7875b8010410c7e186ee4635febb5",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "eb9cf3f2a612be9eb2abcde8dc15635359f14745",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-storage/src/matrix.rs": {
+      "bytes": 15396,
+      "sha256": "0460487297976483bac254e916ec2ef138284e3dc5b33072f145fed147832027",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "1391bd4c8ce834bdffb4a3bafac128e0a121ad9f",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-storage/src/sampler.rs": {
+      "bytes": 6195,
+      "sha256": "9375cc249ed6621df3cfd828a75f646eae6b8dc832603d045dfa54a69f92894c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "7370ac79791ae9ee0c54df983c958ade0c61135c",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-packed/src/packed.rs": {
+      "bytes": 14006,
+      "sha256": "bc78d17a7c94a7eaab2b49e931771cf67f8854412f92be2a15473b3313283b41",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "3bf7fea52944b247d5c38a61e2cdb6cfee39d611",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-packed/src/sponge.rs": {
+      "bytes": 9251,
+      "sha256": "63ccb3990325d8898a6c6888a64426bb93d004a61a6a7a698047a2f757bb2b74",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "eeb352bb3d8b53ddf701f0dbe4319e426dd1bc48",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-complete-native/src/packing.rs": {
+      "bytes": 2138,
+      "sha256": "bd4a1ed77192af82a32f15a6104eab8f68677ac1aa6beb50dbf630ac1bb8d9ce",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "9a499468e6c268479c8bd0350a5f6562c424b364",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-complete-native/src/mul.rs": {
+      "bytes": 2518,
+      "sha256": "fdf7c8dcb834539b566dab21baf2762de25bc56f907e393f01e8d9b05b09a7e1",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "942216d958743256f3df6597e5eaa093af8d453a",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-complete-native/src/hints.rs": {
+      "bytes": 4015,
+      "sha256": "9038be9076454fc27ab8c65d8e827c01731270c6877b291a1e5702d60065b401",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "cb0b6c504161a596d50309cc38980aceb8dbafb7",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-overlay/Cargo.toml": {
+      "bytes": 1212,
+      "sha256": "4b930a775f0f09d91646ace590c05aee98b2599e04900af653d7f733ca6263a1",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "0675ef25df8d0bc0a939c814b699667c08ec9678",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-overlay/Cargo.lock": {
+      "bytes": 19747,
+      "sha256": "6742ae73ce75f4433d5405fbe350708cba7106f798e3dca67e2922aed307ee01",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "349e5e8a8ef1066a6832808f0b5aab9ef3f06f93",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-overlay/LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424",
+      "identity_mode": "raw bytes",
+      "git_blob": "17b48f16c64fd688b5929736899c73faca927d19",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/signature-overlay/NOTICE.md": {
+      "bytes": 1351,
+      "sha256": "d31e4a9011dd91b6db63ab3714b0ba480ab3c1e8a4fb4579e456650784fe9e5b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "2e0484e2d1ea25995af6dbe02cbe4c829112a404",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/overlay-composition/two-phase-wire-binding.md": {
+      "bytes": 19085,
+      "sha256": "d2995acece35c040a02714daa4ff3e63460145eea7e0207e5c6bd0c59fe6ba3c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "7b6ce65dcd802bcc1e6fd933a95b710bc65ccc30",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/overlay-composition/wire-binding-sources.json": {
+      "bytes": 26468,
+      "sha256": "0babe7d63779195ec9e534e6b6390bcd75487bbcf4bd447f91d2e3099380bed0",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "6c9429fc01a08bb95c5471f9094a445843708c91",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/overlay-composition/authorization-construction.md": {
+      "bytes": 13610,
+      "sha256": "3b629f3c34ebf6623181994330d3821a3dea4bafb003fd993d91b09d3326a401",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "1543a3ee272ecebe584afe7f45e91e9456ae271b",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "research/overlay-composition/private-state-events.md": {
+      "bytes": 16858,
+      "sha256": "15dc915401ccb1d66341a38039637239d431739e0e3a1fb741acff745a4191a9",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "d10ac52072e9e92c1b7eabef195c3f8aa4caf786",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "docs/private-transactions.md": {
+      "bytes": 8491,
+      "sha256": "6d9f859495d7b33e9b3def14c88c066d72ab3db75efb20fe07b79c372661869e",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "c19df960ac5fee7670a676d560a5e13dfbe01d89",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "docs/private-transition-state.md": {
+      "bytes": 20202,
+      "sha256": "f5d447290a69bb11ed9efda6d0a5024dbaac1f0e1bfafa079f01d5f1522e7fbf",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "852793fd3de546aa9074c562bbb0eb0be5708990",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "docs/confidential-stake.md": {
+      "bytes": 21669,
+      "sha256": "703c3d90f01999a7b250c3142cd615f1758928b495e037787e633563cbd2daa8",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "8d00cca2d27740a96d5f3a21d3af9fcc94ce40c3",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 9055,
+      "sha256": "526db01aa3557ab5fa655af2847a430de1c5b0b99af90deca4415a948fac337d",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "f665ba699c37596bb9027eaae49fc7ca43b670ae",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "docs/preseal-job.md": {
+      "bytes": 17600,
+      "sha256": "1a16ad59ab202efc655764a02e926e996ca09125aa678bd2b4a8e2eafd606bb4",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "1c6e3aebcd966def72381e285f767ca7df4b8a89",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "Cargo.toml": {
+      "bytes": 735,
+      "sha256": "2dad10da5dedfdef787a3eac95ddedf59e6d97dd7b51f9f076b6775fa9af8b17",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "5eb927a78f13d1714b4c833ee28396f7d4257b48",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved",
+      "git_blob": "7d826f03ad620fb9bc926ff5d6109d1ba8863d06",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424",
+      "identity_mode": "raw bytes",
+      "git_blob": "17b48f16c64fd688b5929736899c73faca927d19",
+      "review_scope": "Preserved context, no new whole-body review claim"
+    }
+  },
+  "historical_context_blobs": {
+    "research/overlay-composition/two-phase-wire-binding.md": {
+      "revision": "364250b249271618a9b8fcf553697307a6eddc6e",
+      "git_blob": "7b6ce65dcd802bcc1e6fd933a95b710bc65ccc30"
+    },
+    "docs/private-transition-state.md": {
+      "revision": "364250b249271618a9b8fcf553697307a6eddc6e",
+      "git_blob": "852793fd3de546aa9074c562bbb0eb0be5708990"
+    }
+  },
+  "licenses": "Original project MIT, Plonky3 and retained dependency notices unchanged. No new dependency/code capture or library/toolchain audit.",
+  "execution": {
+    "stock_source_checks": true,
+    "new_capture": false,
+    "helper_evaluator": false,
+    "model": false,
+    "reference": false,
+    "cargo": false,
+    "compiler": false,
+    "native": false,
+    "protocol_hash": false,
+    "encryption": false,
+    "signature": false,
+    "rng": false,
+    "witness": false,
+    "prover": false,
+    "verifier": false,
+    "ledger": false,
+    "network": false,
+    "old_test_replay": false,
+    "new_runtime_admission": false
+  }
+}

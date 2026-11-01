@@ -77,6 +77,8 @@ The [authorization construction boundary](authorization-construction.md) identif
 
 The [two phase wire binding contract](two-phase-wire-binding.md) gives prospective local producer/read placement and exact copy-product equations. It identifies the missing second commitment phase in the actual prover and verifier, and refuses the proposed placement under current limits. Its conditional algebra does not supply a complete private authorization proof.
 
+The [common private witness contract](private-witness-join.md) binds the same note, owner key, real signature, nullifier secret and path across the ordinary v2 payment obligations. Its exact confidential asset equations and output encryption boundary expose the remaining joint-proof construction requirements. It supplies no accepting payment route.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
