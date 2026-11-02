@@ -121,6 +121,8 @@ The [quadratic source completion](quadratic-source-completion.md) derives a pros
 
 The [shared word source map](shared-word-source-map.md) preserves an entire fixed word relation by replacing every private word with one globally reused XOR share pair. Its semantic maps and binary view criterion identify the separate same-source lookup and joint hiding construction still missing.
 
+The [visible history and source privacy](visible-history-source-privacy.md) criterion accounts jointly for adaptive public histories and actual disclosed values. Its conditional kernels and deterministic source specialization identify the source and full-view privacy evidence still required for one common private cash construction.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
