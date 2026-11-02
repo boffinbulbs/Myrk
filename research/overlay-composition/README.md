@@ -99,6 +99,8 @@ The [integer word correspondence](integer-word-correspondence.md) follows the ac
 
 The [private trace and oracle relation](private-trace-oracles.md) connects actual word storage, ordered field packing and the lookup pushforward's two openings on one commitment. It separates structural schedule discovery, honest zero padding and versioned byte containers from complete masked verification, bounded parsing and the same-witness private payment construction.
 
+The [masked oracle opening](masked-oracle-opening.md) follows matched producer and verifier relation batching, mask interpolation, lift/repeat placement and the final FRI equality. It distinguishes those conditional identities from joint hiding, transcript soundness, complete source closure and the actual combined proving resources.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
