@@ -105,6 +105,8 @@ The [encoded oracle correspondence](encoded-oracle-correspondence.md) follows ac
 
 The [original codeword privacy boundary](original-codeword-privacy.md) connects actual encoder permutation, lift and native query paths to the unchanged inner word trace. It identifies the separate original codeword values disclosed by queried leaves and the missing same-trace hiding construction, while preserving full source, parser, resource and private cash requirements.
 
+The [word witness extension](word-witness-extension.md) preserves every original fixed word predicate under a private coordinate injection and gives both assignment maps. Its joint hiding criterion includes queried original codewords and clear claims, while exposing the remaining lookup, adaptive transcript and full private cash feasibility construction.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
