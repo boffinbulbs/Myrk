@@ -107,6 +107,8 @@ The [original codeword privacy boundary](original-codeword-privacy.md) connects 
 
 The [word witness extension](word-witness-extension.md) preserves every original fixed word predicate under a private coordinate injection and gives both assignment maps. Its joint hiding criterion includes queried original codewords and clear claims, while exposing the remaining lookup, adaptive transcript and full private cash feasibility construction.
 
+The [private lookup compensation](private-lookup-compensation.md) gives both local maps for compensated lookup equations and identifies the unchanged claim, clear compensation and aligned query boundaries. It retains the same hidden index and original oracle obligations while leaving complete joint hiding and private cash feasibility unselected.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
