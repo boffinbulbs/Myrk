@@ -1,0 +1,23 @@
+AES source equations:
+RustCrypto aes 0.9.1 src/soft/fixslice64.rs and src/soft.rs.
+Copyright (c) 2018-2024 The RustCrypto Project Developers.
+Copyright (c) 2018 Artyom Pavlov.
+Original fixsliced C implementation by Alexandre Adomnicai,
+Nanyang Technological University, Singapore.
+Originally MIT, relicensed Apache 2.0 plus MIT with permission.
+
+Represented multiplication source equations:
+RustCrypto polyval 0.7.3 src/field_element.rs,
+src/field_element/mul64.rs and src/field_element/mulx.rs.
+Adapted from BearSSL ghash_ctmul64.c.
+Copyright (c) 2016 Thomas Pornin <pornin@bolet.org>.
+Original crate MIT and Apache notices are in licenses/.
+
+Independent expected data:
+RustCrypto aes-gcm 0.11.1 tests/aes256gcm.rs attributes the selected
+complete records to NIST CAVS gcmEncryptExtIV256.rsp.
+No direct new NIST artifact identity or executed library is claimed.
+
+Python standard library runtime:
+Python 3.14.5. Original Python license and included notices are retained
+in licenses/Python-LICENSE. No runtime audit is claimed.

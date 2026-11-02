@@ -83,6 +83,8 @@ The [encrypted output construction boundary](encrypted-output-boundary.md) trace
 
 The [whole GCM software word relation](gcm-word-relation.md) gives the exact portable key, payload and tag relation and both conditional source-correspondence directions. It retains the hardware, constrained-copy, combined proving-resource and complete payment gates.
 
+The [whole GCM integer reference](../gcm-word-reference/README.md) checks that relation against six independently retained complete records and a full public synthetic output instance. Its bounded integer results do not supply the complete private encryption proof or reduce the remaining combined proving geometry.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |

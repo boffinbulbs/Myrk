@@ -83,3 +83,9 @@ research/keccak-fixed-reference/licenses/* -text whitespace=-blank-at-eof
 research/keccak-fixed-reference/evidence/* -text whitespace=-blank-at-eof
 research/keccak-fixed-reference/results/result.json -text
 research/keccak-fixed-reference/results/reference.txt -text -whitespace
+research/gcm-word-reference/LICENSE -text whitespace=-blank-at-eof
+research/gcm-word-reference/NOTICE -text
+research/gcm-word-reference/licenses/* -text whitespace=-blank-at-eof
+research/gcm-word-reference/licenses/Python-LICENSE -text -whitespace
+research/gcm-word-reference/fixtures/* -text
+research/gcm-word-reference/results/* -text

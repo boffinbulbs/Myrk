@@ -1,0 +1,129 @@
+{
+  "format": "kova.gcm-word.reference.v1",
+  "primary_kats": [
+    {
+      "record": 0,
+      "word_nodes": 35553,
+      "ciphertext_and_tag": "bdc1ac884d332457a1d2664f168c76f0"
+    },
+    {
+      "record": 1,
+      "word_nodes": 60412,
+      "ciphertext_and_tag": "3e5d486aa2e30b22e040b85723a06e76"
+    },
+    {
+      "record": 2,
+      "word_nodes": 63682,
+      "ciphertext_and_tag": "fa4362189661d163fcd6a56d8bf0405ad636ac1bbedd5cc3ee727dc2ab4a9489"
+    },
+    {
+      "record": 3,
+      "word_nodes": 88535,
+      "ciphertext_and_tag": "8b29e66e924ecae84f6d8f7d681e365805c8f28b2ed8a5cadfd9079158"
+    },
+    {
+      "record": 4,
+      "word_nodes": 148040,
+      "ciphertext_and_tag": "c9e48684df13afccdb1d9ceaa483759022e59c3111188c1eceb02eaf308035b0428db826de862d925a3c55af0b61fd8f09a74d8f577e8730c19858cad8e0124f311dd9"
+    },
+    {
+      "record": 5,
+      "word_nodes": 297183,
+      "ciphertext_and_tag": "488b40ad594e1845ccdd9e9467fc5e1afbbfde34e57d45bfcd30b61cc326d57fe8e3f31a39cdebf00f60bbd2c3cdf69f756eff3bf3fbab9b48486fd08a5552604df639"
+    }
+  ],
+  "wrong_whole_alternatives": [
+    {
+      "variant": "added-encryption-nots",
+      "primary_record": 3,
+      "word_nodes": 88703
+    },
+    {
+      "variant": "omitted-key-nots",
+      "primary_record": 3,
+      "word_nodes": 88479
+    },
+    {
+      "variant": "bit-planes",
+      "primary_record": 3,
+      "word_nodes": 88535
+    },
+    {
+      "variant": "key-rotation",
+      "primary_record": 3,
+      "word_nodes": 88535
+    },
+    {
+      "variant": "updated-mix",
+      "primary_record": 3,
+      "word_nodes": 101207
+    },
+    {
+      "variant": "counter-little",
+      "primary_record": 3,
+      "word_nodes": 88535
+    },
+    {
+      "variant": "counter-one",
+      "primary_record": 3,
+      "word_nodes": 88534
+    },
+    {
+      "variant": "hash-plaintext",
+      "primary_record": 3,
+      "word_nodes": 88535
+    },
+    {
+      "variant": "combined-padding",
+      "primary_record": 5,
+      "word_nodes": 272341
+    },
+    {
+      "variant": "byte-lengths",
+      "primary_record": 3,
+      "word_nodes": 88535
+    },
+    {
+      "variant": "no-reversal",
+      "primary_record": 3,
+      "word_nodes": 88535
+    },
+    {
+      "variant": "stale-reduction",
+      "primary_record": 3,
+      "word_nodes": 88535
+    },
+    {
+      "variant": "omitted-reduction",
+      "primary_record": 3,
+      "word_nodes": 88457
+    },
+    {
+      "variant": "mask-zero",
+      "primary_record": 3,
+      "word_nodes": 88534
+    }
+  ],
+  "fresh_restored_primary_computations": 14,
+  "ordinary_synthetic": {
+    "word_nodes": 3579076,
+    "logical_aes_requests": 29,
+    "ghash_message_blocks": 140,
+    "candidate_ciphertext_and_tag": "4010cb33f6db8b4fd22be20b3a7fd9c134144aec1395a678377dc0b5262f51ee6662d3743c5fbb2ccb6eaa0d63712934f97b4db51998fabe50edaf898345445237ee1b92202f2f75037e9f2ea4d96f844f0844fad5cdeaac32277b3c83f6a891ecca64aef71fa16ee196ab12e3c3e0b36d858f53e0cb3cbe62c5129dd9801f723cc09d6e07690287d70bbda136cc6dee01b6ae6d567feace03c54dc7411438327465631dfae1e54a9829889ab4f607370a6c679a4865aa588a25c5d76ae386cf541ed7927ea35f5da8fc662671973868167cf56e1e2e83b53ecbffb73ace1e66e491696735feead1ad4dad289e273d1dfff1d40d1ebe1001b8d1a2a3507ab37d13c3efb8aee4016a28b507873cbb9ba66d760715636578ab7e35486131b2eb176671a3c0295b67a32df6efbae163a1df8fe876660ada9673f74b98860c9bf4550e47a2c2789e71fdbcca4e6016857c0ee4985a1c3fba3ccc86799d9676b759e37e1dc491d60a1bbf5f2531833c03a3e4531ff281edff19e5b0df718c8731284e22115d7134b91a087e9a0b7f355633abd54921e3fc4e2b50b28a7bf6f6206a8afe887c6684bd2e318895250f03ba6097544f",
+    "independent_expected": false
+  },
+  "routing_positions": 512,
+  "batch": {
+    "independent_blocks": 4,
+    "reordered_blocks": 4,
+    "expanded_words": 120
+  },
+  "zero_key_multiplications": 2,
+  "typed_input_refusals": 15,
+  "trace_controls": {
+    "typed_refusals": 13,
+    "restored_complete_replays": 13
+  },
+  "word_bit_representation": "Canonical host words, vectorized Boolean/fulladder equations",
+  "scope": "Public synthetic integer GCM encryption, not RustCrypto execution or private proof"
+}

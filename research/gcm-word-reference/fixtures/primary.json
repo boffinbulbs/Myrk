@@ -1,0 +1,72 @@
+{
+  "format": "kova.gcm.primary-literals.v89",
+  "status": "Manually transcribed immutable expected DATA before any V89 candidate or evaluator. No cryptographic evaluation or runtime admission.",
+  "source": "aes-gcm-0.11.1/tests/aes256gcm.rs",
+  "raw_source_bytes": 179278,
+  "raw_source_sha256": "c474f9b86a6ee7d262e65df555bfe6009f0af675da9a06da365acebc07bbac0c",
+  "attribution": "Retained RustCrypto test source attributes these records to NIST CAVS gcmEncryptExtIV256.rsp. No direct NIST raw artifact or executed independent implementation.",
+  "scope": "Six complete AES256GCM key/nonce/AAD/plaintext/ciphertext/tag records. No expected ciphertext for synthetic ordinary418-byte note instance is supplied.",
+  "records": [
+    {
+      "label": "empty_body_empty_aad",
+      "source_lines": [19, 26],
+      "key": "b52c505a37d78eda5dd34f20c22540ea1b58963cf8e5bf8ffa85f9f2492505b4",
+      "nonce": "516c33929df5a3284ff463d7",
+      "plaintext": "",
+      "aad": "",
+      "ciphertext": "",
+      "tag": "bdc1ac884d332457a1d2664f168c76f0"
+    },
+    {
+      "label": "empty_body_full_aad_block",
+      "source_lines": [139, 146],
+      "key": "78dc4e0aaf52d935c3c01eea57428f00ca1fd475f5da86a49c8dd73d68c8e223",
+      "nonce": "d79cf22d504cc793c3fb6c8a",
+      "plaintext": "",
+      "aad": "b96baa8c1c75a671bfb2d08d06be5f36",
+      "ciphertext": "",
+      "tag": "3e5d486aa2e30b22e040b85723a06e76"
+    },
+    {
+      "label": "one_full_body_block_empty_aad",
+      "source_lines": [679, 686],
+      "key": "31bdadd96698c204aa9ce1448ea94ae1fb4a9a0b3c9d773b51bb1822666b8f22",
+      "nonce": "0d18e06c7c725ac9e362e1ce",
+      "plaintext": "2db5168e932556f8089a0622981d017d",
+      "aad": "",
+      "ciphertext": "fa4362189661d163fcd6a56d8bf0405a",
+      "tag": "d636ac1bbedd5cc3ee727dc2ab4a9489"
+    },
+    {
+      "label": "partial_body_full_aad_block",
+      "source_lines": [1459, 1466],
+      "key": "dad89d9be9bba138cdcf8752c45b579d7e27c3dbb40f53e771dd8cfd500aa2d5",
+      "nonce": "cfb2aec82cfa6c7d89ee72ff",
+      "plaintext": "b526ba1050177d05b0f72f8d67",
+      "aad": "6e43784a91851a77667a02198e28dc32",
+      "ciphertext": "8b29e66e924ecae84f6d8f7d68",
+      "tag": "1e365805c8f28b2ed8a5cadfd9079158"
+    },
+    {
+      "label": "multiblock_partial_body_empty_aad",
+      "source_lines": [2707, 2718],
+      "key": "1c7690d5d845fceabba227b11ca221f4d6d302233641016d9cd3a158c3e36017",
+      "nonce": "93bca8de6b11a4830c5f5f64",
+      "plaintext": "3c79a39878a605f3ac63a256f68c8a66369cc3cd7af680d19692b485a7ba58ce1d536707c55eda5b256c8b29bbf0b4cbeb4fc4",
+      "aad": "",
+      "ciphertext": "c9e48684df13afccdb1d9ceaa483759022e59c3111188c1eceb02eaf308035b0428db826de862d925a3c55af0b61fd8f09a74d",
+      "tag": "8f577e8730c19858cad8e0124f311dd9"
+    },
+    {
+      "label": "multiblock_partial_body_and_aad",
+      "source_lines": [3605, 3618],
+      "key": "6be7f4d18ff0fbdd9b3b3cacaba4629a0c617387079add62f6ce1584b33faad1",
+      "nonce": "fda568c9cb13d9c176bcef03",
+      "plaintext": "4df668e99d5068604a48bcca5baa8245435928558a83d68d7b0b081861224e9bd39ea8f2d55a635949e66c6f6a7ff5cc34dd94",
+      "aad": "11ebeb97dd4a9925c1fbe2b9af77392058d2d971e42db15da39f090d7bc132573c34bf7d92a2d72dc66ee6840c3ff07985b8976ee8d8f36bf47ae330b899fdc60652dd5a23c45f3680f11951f019e0697c8acfcaa95f01b9c7dd",
+      "ciphertext": "488b40ad594e1845ccdd9e9467fc5e1afbbfde34e57d45bfcd30b61cc326d57fe8e3f31a39cdebf00f60bbd2c3cdf69f756eff",
+      "tag": "3bf3fbab9b48486fd08a5552604df639"
+    }
+  ],
+  "control_plan_status": "These independent records anchor a future wholeGCM evaluation only. They do not select a candidate, generate expected answers, prove the418-byte case, cover full parallel routing by themselves, or grant runtime admission. All further source/math/ownership/control/finite-resource/runtime/license/freeze/actual original guard obligations remain."
+}
