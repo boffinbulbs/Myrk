@@ -119,6 +119,8 @@ The [native proof transcript](native-proof-transcript.md) connects actual field 
 
 The [quadratic source completion](quadratic-source-completion.md) derives a prospective division free producer recurrence from the same original columns for every evaluation coordinate. It preserves the distinction between genuine internal source computation, the actual accumulator contract and the complete private cash proof still required.
 
+The [shared word source map](shared-word-source-map.md) preserves an entire fixed word relation by replacing every private word with one globally reused XOR share pair. Its semantic maps and binary view criterion identify the separate same-source lookup and joint hiding construction still missing.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
