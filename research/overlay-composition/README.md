@@ -103,6 +103,8 @@ The [masked oracle opening](masked-oracle-opening.md) follows matched producer a
 
 The [encoded oracle correspondence](encoded-oracle-correspondence.md) follows actual message and mask assembly, matched first and later folds, original committed query leaves and the checked terminal value. It identifies the remaining encoder basis and authenticated channel construction, including real word query publicness, before a complete private cash proof can be selected.
 
+The [original codeword privacy boundary](original-codeword-privacy.md) connects actual encoder permutation, lift and native query paths to the unchanged inner word trace. It identifies the separate original codeword values disclosed by queried leaves and the missing same-trace hiding construction, while preserving full source, parser, resource and private cash requirements.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
