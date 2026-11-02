@@ -115,6 +115,8 @@ The [masked round correspondence](masked-round-correspondence.md) follows the ac
 
 The [main round source binding](main-round-source-binding.md) connects the actual quadratic factory, shared column ownership, deferred folds and interpolation to the original columns. It identifies the interpolation domain condition and the remaining complete source, proof and private cash construction.
 
+The [native proof transcript](native-proof-transcript.md) connects actual field and word channel operations to observed bytes, advice, deterministic replay and explicit finalization. It identifies the separate owning verifier, point domain, bounded parsing and joint privacy construction still required for private cash.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
