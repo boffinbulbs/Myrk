@@ -123,6 +123,8 @@ The [shared word source map](shared-word-source-map.md) preserves an entire fixe
 
 The [visible history and source privacy](visible-history-source-privacy.md) criterion accounts jointly for adaptive public histories and actual disclosed values. Its conditional kernels and deterministic source specialization identify the source and full-view privacy evidence still required for one common private cash construction.
 
+The [proof entropy source](proof-entropy-source.md) review traces the wrapped entry's parent generator, seeded mask generator, replayed keys and correlated product coordinates. Its conditional complete source criterion distinguishes actual randomness lineage from an unproved independent entropy model.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
