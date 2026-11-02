@@ -6,10 +6,21 @@ Kova uses one ledger and one set of native conservation and authorization rules.
 
 The implementation targets a custom chain with reviewed cryptographic dependencies. [Node operation and service integration](node-integration.md) defines ordinary validation independently from mining, staking and wallet authority. Server and exchange interfaces remain subject to the same private relation and consensus gates.
 
+## First release and later applications
+
+The [minimum private cash launch](minimal-launch.md) is the first release target. It includes complete private native payments, independent validation, atomic authenticated state, supported work, confidential checkpoint consensus and bootstrap, recovery and a basic payment client. General contracts and the Safe can activate later through explicit protocol upgrades. This delivery split does not waive any base privacy, proof, consensus, recovery or network gate.
+
+The [private programmable application architecture](private-contracts.md) retains Kova's own general private smart contract target. EVM compatibility is not required. Programs must share the same private source bindings, authorization, global consumption, conservation and encrypted-delivery rules as native payments. Their execution model, compiler, supported resources, matched proof/verifier and activation remain separate construction work.
+
+Unsupported contract and Safe transitions are rejected before their activation. A later version must preserve old note meaning, stable nullifiers, reward origin/maturity, finality and bond restrictions. It cannot turn an unimplemented application into a successful no-op or reinterpret old notes through a wallet setting. The full Qt/mobile experience, broad service integration, governance interface and later Aegis retain their delivery milestones.
+
+## Components
+
 | Component | Responsibility | Evidence required |
 |---|---|---|
 | Wallet and executor | Discover notes, construct witnesses, execute private application logic, encrypt recovery data | Local reconstruction, restricted key handling, recovery and leakage tests |
 | Private proof relation | Bind ownership, asset/value policy, nullifiers, ciphertext commitments and resulting state | Formal relation, adversarial vectors, security analysis and review |
+| Later private execution | Execute supported private programs and calls under the common ledger rules | Complete semantics, compiler/constraint correspondence, bounded resources, private state and matched verification |
 | Validation kernel | Canonical decoding, proof verification, resource limits, global uniqueness and state transitions | Independent validation agreement and rejection vectors |
 | Monetary accounting | Scheduled allocation, actual issuance, cumulative cap, completed burns | Integer boundaries, conservation and reference vectors |
 | Work adapter | Construct and authenticate child commitments within supported parent jobs | Acceptance of the same work, malformed witness rejection, compatible operator integration |

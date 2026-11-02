@@ -2,6 +2,8 @@
 
 The [development stages and feature boundaries](delivery-roadmap.md) define the delivery sequence. Private authorization and confidential stake remain current feasibility gates. The Safe, its Qt interface and fast payment locks have distinct later milestones and acceptance evidence.
 
+The [minimum private cash launch](minimal-launch.md) separates the first complete payment chain from later general private contracts, Safe and expanded interfaces. The [private contract architecture](private-contracts.md) retains the general programmable target. These delivery boundaries add no accepting chain or active application class.
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/development-stages-dark.svg">
   <img alt="Base chain dependencies and separate later wallet application and Aegis milestones" src="../research/protocol-figures/figures/development-stages.svg">

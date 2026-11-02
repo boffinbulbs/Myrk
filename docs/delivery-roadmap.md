@@ -4,6 +4,12 @@ Kova develops through independently reviewable increments. Each stage records it
 
 The current stage is private cryptographic feasibility. The workspace contains monetary accounting, transparent references and isolated hiding proof components. It has no running chain, complete private payment relation, confidential staking service or desktop wallet. Component results are recorded in [implementation milestones](development.md).
 
+## First release scope
+
+The [minimum private cash launch](minimal-launch.md) targets a complete native-payment chain before general contracts, Safe and expanded client/service applications. Its base includes real private proofs, confidential checkpoint consensus and bootstrap, supported work, authenticated atomic state, recovery, independent nodes and a basic private payment client. Later feature delivery does not permit a transparent payment fallback or incomplete base verification.
+
+Kova's [own private programmable contract system](private-contracts.md) remains a full architectural target. EVM compatibility is not required. Contract and Safe activation use separately reviewed versions with preserved old-note, consumption, maturity and finality semantics. No activation height, production profile or release date is selected by this delivery decision.
+
 ## Delivery sequence
 
 | Stage | Scope | Completion evidence |
@@ -12,8 +18,9 @@ The current stage is private cryptographic feasibility. The workspace contains m
 | Confidential stake | Private eligible weight, epoch and state binding, restricted voting authority and stake lifecycle | No duplicate weight or reused eligibility, bounded certificates, withdrawal and conflicting vote cases |
 | Ledger and consensus | Authenticated roots, spent state, atomic persistence, issuance, reward maturity, supported auxiliary work and checkpoint rules | Independent state agreement, crash recovery, replay rejection, branch changes and miner/staker disagreement |
 | Private server network | Peering, synchronization and the node RPC boundary | Multiple independent instances, restarts, partitions, reconnection and resource limit tests |
+| Base payment client | Local proving, private Send/receive and discovery, encrypted backup/restore and accurate finality/maturity status | End to end native payments and recovery against the real multi-node rules, without depending on later contract or Safe interfaces |
 | Private application milestone | Private timed escrow and confidential assets through the common ledger rules | Release/refund conflict rejection, exact expiry boundaries, conservation and authorized issuance |
-| Desktop wallet | Local validation, private Send, private scanning, scoped viewing, encrypted backup, recovery and restricted staking/voting | End to end private transfers, device restoration, reorganizations and metadata measurements |
+| Expanded desktop/mobile wallet | Full client presentation, scoped viewing and restricted staking/voting over the validated payment service | Device restoration, reorganizations, authority separation, metadata measurements and cross-client agreement |
 | Private Safe | Chain enforced delayed withdrawal, restricted recovery cancellation and a separate protected balance view | Consensus transition tests, recovery monitoring and Qt integration against the same rules |
 | Fast payment locks | Committee certified reservation of a fully authorized private payment | Conflicting certificate rejection, expiration, unavailable quorum, partition recovery and measured latency |
 | Aegis later protocol | Spendable certified private state before PoW recording through a separately activated consensus version | Complete weighted consensus, confidential quorum, available payloads, exactly once recording, chained private payments, bounded backlog and independent review |
@@ -24,6 +31,8 @@ Complete private payment and confidential stake feasibility both precede ledger 
 The [confidential stake contract](confidential-stake.md) requires consumed and recreated bond rights, authenticated complete weight, restricted signing and an explicit first-activation construction. Its bootstrap dependency remains a launch blocker. The normal finality rule is unchanged and no transparent stake service or synthetic initialized fixture supplies a production fallback.
 
 The initial public network depends on the applicable consensus, privacy, recovery, resource and independent review gates. Later application milestones may be delivered separately. An unfinished application is not an exception to the ledger rules.
+
+The table records the complete work program rather than requiring every later row before the first release. A local multi-node chain with disposable test values, an operator test network and a public release are separate evidence milestones. Each must execute its actual declared validation rules. The complete private payment proof/parser and confidential bootstrap remain blocking constructions today.
 
 Aegis is outside the first chain test milestone. The initial onward spending boundary remains checkpoint finality. Contract and Safe architecture can be developed before their executable stages, with unsupported operations rejected by the active protocol. Documentation alone does not represent partial runtime completion.
 
