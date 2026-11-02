@@ -960,6 +960,28 @@ jobs:
         run: rustup run 1.94.1 cargo fetch --manifest-path research/signature-packed-shape/Cargo.toml --locked
       - name: Check complete symbolic shape identities
         run: python research/signature-packed-shape/static_check.py
+      - name: Preserve recorded symbolic shape
+        shell: python
+        run: |
+          import hashlib
+          from pathlib import Path
+
+          root = Path.cwd().resolve()
+          source = root / "research/signature-packed-shape/results/symbolic.json"
+          if source.is_symlink() or not source.resolve().is_relative_to(root):
+              raise RuntimeError("Recorded symbolic shape is outside the checkout")
+          with source.open("rb") as recorded:
+              raw = recorded.read(212)
+          if len(raw) != 211 or hashlib.sha256(raw).hexdigest() != "905a3614eabc6da435b51ed0fbe993de8fd7ab826a5d869257bd2bc983da26ea":
+              raise RuntimeError("Recorded symbolic shape identity differs")
+          retained = source.with_name("symbolic-recorded.json")
+          with retained.open("xb") as saved:
+              if saved.write(raw) != len(raw):
+                  raise RuntimeError("Recorded symbolic shape preservation was incomplete")
+          with retained.open("rb") as saved:
+              if saved.read(212) != raw:
+                  raise RuntimeError("Recorded symbolic shape preservation differs")
+          source.unlink()
       - name: Measure complete packed symbolic shape
         env:
           KOVA_PACKED_SYMBOLIC_GATE: reviewed-external-resource-admission
