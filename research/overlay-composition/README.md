@@ -93,6 +93,8 @@ The [wrapped transcript relation](wrapped-transcript-relation.md) follows the ac
 
 The [outer layout preservation argument](outer-layout-preservation.md) follows the actual frontend's private-wire substitution, public derivation, hint and finalization rules. Its conditional assignment maps preserve the selected field equations without treating an honest hint, host validation or dummy-wire count as payment proof or security evidence.
 
+The [word claims and committed wiring](word-claims-and-wiring.md) review follows the ordered operation claims into their actual public-value and fixed-program wiring checks. It preserves the separate integer, bitwise and represented-field predicates and states the remaining source, transcript, resource and security obligations before adoption.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
