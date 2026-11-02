@@ -95,6 +95,8 @@ The [outer layout preservation argument](outer-layout-preservation.md) follows t
 
 The [word claims and committed wiring](word-claims-and-wiring.md) review follows the ordered operation claims into their actual public-value and fixed-program wiring checks. It preserves the separate integer, bitwise and represented-field predicates and states the remaining source, transcript, resource and security obligations before adoption.
 
+The [integer word correspondence](integer-word-correspondence.md) follows the actual unsigned multiplication predicate, exponentiation and parity reduction, canonical source indices and ordered shifts. Its conditional maps connect those operations to the retained wiring relation without treating source validation, a native result or a public table as a complete private payment proof.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
