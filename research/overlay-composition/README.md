@@ -97,6 +97,8 @@ The [word claims and committed wiring](word-claims-and-wiring.md) review follows
 
 The [integer word correspondence](integer-word-correspondence.md) follows the actual unsigned multiplication predicate, exponentiation and parity reduction, canonical source indices and ordered shifts. Its conditional maps connect those operations to the retained wiring relation without treating source validation, a native result or a public table as a complete private payment proof.
 
+The [private trace and oracle relation](private-trace-oracles.md) connects actual word storage, ordered field packing and the lookup pushforward's two openings on one commitment. It separates structural schedule discovery, honest zero padding and versioned byte containers from complete masked verification, bounded parsing and the same-witness private payment construction.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
