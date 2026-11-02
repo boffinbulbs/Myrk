@@ -1,0 +1,390 @@
+{
+  "format": "kova.outer-layout-preservation.sources.v1",
+  "date": "2026-11-02",
+  "baseline": "fedd2ab69319d82b21f4e6e5528bec4be6ef53a8",
+  "status": "SOURCE AND CONDITIONAL MATHEMATICAL RELATION ONLY. Four-body local frontend review complete, whole private-cash construction and backend adoption unselected.",
+  "primary_repository": "https://github.com/binius-zk/binius64",
+  "primary_revision": "6e75a2d1d2e716578ae3ccb62806413fb1615176",
+  "historical": true,
+  "current_head_verified": false,
+  "capture": {
+    "metadata_not_raw_http_identity": true,
+    "source_files": 4,
+    "source_raw_bytes": 72784,
+    "no_old_failed_path_retry": true,
+    "metadata_resources": 1,
+    "primary_git_blobs_matched": 4,
+    "closed": true,
+    "retries": 0,
+    "parent_module_blob_matched": true,
+    "requests": 5
+  },
+  "repository_files": {
+    "Cargo.toml": {
+      "bytes": 735,
+      "sha256": "2dad10da5dedfdef787a3eac95ddedf59e6d97dd7b51f9f076b6775fa9af8b17",
+      "git_blob": "5eb927a78f13d1714b4c833ee28396f7d4257b48",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
+      "git_blob": "7d826f03ad620fb9bc926ff5d6109d1ba8863d06",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424",
+      "git_blob": "17b48f16c64fd688b5929736899c73faca927d19",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-crypto-lab/Cargo.toml": {
+      "bytes": 819,
+      "sha256": "fb4bcf1015dda241af00f3621bd332d01b17d18c493fe173c07772ed3080eb9d",
+      "git_blob": "316595d914469478f7cb67c5207666e2239a50ba",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-crypto-lab/src/lib.rs": {
+      "bytes": 16754,
+      "sha256": "c1671d70b61ffdaa0824512e6598b64b4d31a3ff35040186cd13f89d18c6e601",
+      "git_blob": "f70e4dc4b222d6130103371b6bdf2364ddcae5e5",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-crypto-lab/src/envelope.rs": {
+      "bytes": 3154,
+      "sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5",
+      "git_blob": "eb7d472e9cd0cbd4e0b131889a57fe8fb036309a",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-relation-lab/src/lib.rs": {
+      "bytes": 2787,
+      "sha256": "4680bfc8b0577d760723fef74f47433c32adfbd8be3569bb2a7107704e237782",
+      "git_blob": "df0eb92bfb9e2ca00e16d2b119b6c1482c740b3f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-relation-lab/src/note.rs": {
+      "bytes": 15074,
+      "sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035",
+      "git_blob": "10566a7ceab5b93dafd14be313d61600b91a36c7",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-relation-lab/src/capability.rs": {
+      "bytes": 4048,
+      "sha256": "5ccba5406267c5cabb4ec3268a5b2103c85bfcdada307dd2910d16d9abc5285f",
+      "git_blob": "513c1a0b583bd2871118be85b520afa4de4a92bf",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176",
+      "git_blob": "c7005f1c76d3f8698f9942ec769ea0fdb5b35692",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/private-witness-join.md": {
+      "bytes": 21092,
+      "sha256": "282542a81b0bf803d891c3edad22f6324f48b4fd12ff99d6a05dc61eb9ab1084",
+      "git_blob": "a15b53e9eff2212a26ba411566abca8a41b86856",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/gcm-word-relation.md": {
+      "bytes": 16196,
+      "sha256": "de9e30606081b23a313a89199703441aceac318a0170c3c9270ea726cdfbaec2",
+      "git_blob": "cdf3ace9c75525812d74a18db11b8de2acaaac7f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/whole-encryption-completion.md": {
+      "bytes": 22347,
+      "sha256": "aee1e59fa7191dc3f8e52f235e7a36d04d9384490fd84b83f9e668d9a9dc01c6",
+      "git_blob": "ef3a3002a7eb19f3d01e851305041b60a2c2725f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/whole-encryption-sources.json": {
+      "bytes": 35513,
+      "sha256": "5ee653f5ee09ceb1b934dba073fddd91afe5e752d8132ada88f120b2c4559444",
+      "git_blob": "e47ecc0d43cfda361bdb320862bd4f880e69fb7f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/trace-domain/src/lib.rs": {
+      "bytes": 344,
+      "sha256": "bf48f62ed4c52327f196e39e9526f3333ce812f8a7ca22bf78869f554cc7620b",
+      "git_blob": "46b6934b61a0a5f95a91f30cc97fb89b876a873b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/trace-domain/src/owned_prover.rs": {
+      "bytes": 23824,
+      "sha256": "edc664ec6a5907874e9d0650adc5150b18fbcb2a9fe28fcfe0217dcf77511b1b",
+      "git_blob": "bd451c550ed14ffea15cd04604ce105b4e1bfe70",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/proof-preflight/src/preflight.rs": {
+      "bytes": 8131,
+      "sha256": "c08cb17ab5703e9ae0aa81fde2ebf07b622bc026bb2d8096172bd8a1ec803c8c",
+      "git_blob": "75ccf57968c24d7345ea3916d63dd1f30e10e2f8",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/quotient-source/src/quotient_kernel.rs": {
+      "bytes": 10400,
+      "sha256": "7df6a350620007f3c0117c48120f92148f6d0f752c008920b1746d8eb93e4a44",
+      "git_blob": "2fe7434d5e147714d4ff6ad7e43d4bddf02f6c29",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/gcm-word-reference/reference.py": {
+      "bytes": 32741,
+      "sha256": "90f6ecf76cd5b03ea383cd959c992e072267c4e508ab4a97c9d09ad2984892d0",
+      "git_blob": "c7f8267f3b201d0f92e9b8ba0db318a8832a6669",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/gcm-word-reference/validation.json": {
+      "bytes": 24921,
+      "sha256": "abe484c6463a5c4834cf8b7fced7b82adb910d34d0b55580ed87ac2b63437e30",
+      "git_blob": "f4c89bdd994b046e1439f0486adbe79857f07dbc",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/gcm-word-reference/results/result.json": {
+      "bytes": 4090,
+      "sha256": "7ab08cb89c81e9e2e41beb00cec475e50f1c438803e98c6f7fae7b729453c75f",
+      "git_blob": "058419be4d98a11646b86a77dcbad6f811fe96e2",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "docs/minimal-launch.md": {
+      "bytes": 8478,
+      "sha256": "c49eff1341f34275b593c8531631d9caf3dd6892dabae65fa9f6597c103dbdcc",
+      "git_blob": "cd6e4af66da36744f9bc8d3c5197fe88d27fdd45",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "docs/private-contracts.md": {
+      "bytes": 4876,
+      "sha256": "5450bd2906b853ab6d9cdb8e1df02784459aa034b1910dc38dcf85404bbd2c22",
+      "git_blob": "0b18398228e5e06c196cca37e8b357c5ccecf3f3",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 10611,
+      "sha256": "6c2e7d4acc727bf893827334d0b4ee0baec2cf935dc970ff801f2d4a573c551f",
+      "git_blob": "8e7134cb7905f306abb50cbaead09314ad094dc8",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    ".github/workflows/checks.yml": {
+      "bytes": 99642,
+      "sha256": "ecf2d550385f996cce14422d80ee7753fcc5b574ae65c3adc5380577f47b763a",
+      "git_blob": "28fafab08de2909e62989a941115488869c71ed3",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/signature-packed-shape/results/symbolic.json": {
+      "bytes": 211,
+      "sha256": "905a3614eabc6da435b51ed0fbe993de8fd7ab826a5d869257bd2bc983da26ea",
+      "git_blob": "77afafba5bf6e408b1bfabd766150032cdefada0",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/word-proof-boundary.md": {
+      "bytes": 13705,
+      "sha256": "616bce6ef9227a60acc8b01578fc3fe545442438e436edb62d7fa252146cdb7f",
+      "git_blob": "da84bfdacee1559b13530d30420c34b7e7cbc525",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/word-proof-sources.json": {
+      "bytes": 19242,
+      "sha256": "953d097c8bb83a42221f170d9ecfa93c3e2a946729b15147363392d90b12cca5",
+      "git_blob": "dd5753b0b83061a4449aa667dca4ff1d9f80fd9c",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/wrapped-transcript-relation.md": {
+      "bytes": 11825,
+      "sha256": "a114410561686ea11c270effd7ce8e4b9669373edbff835e14a416d285ff3f48",
+      "git_blob": "6378c3d738efc6b70bdc6dc995fc3404aee71152",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/wrapped-transcript-sources.json": {
+      "bytes": 19710,
+      "sha256": "59734a0d64407251645f2f258ba54c9aafa4963d6037a1d3091e3291a0563296",
+      "git_blob": "6405b6ce968085c6db33e8df38ddc36781497807",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    }
+  },
+  "primary_raw_files": {
+    "crates/spartan-frontend/src/circuit_builder.rs": {
+      "bytes": 35431,
+      "sha256": "dee26e3c54a8859983c69e5d695a9949d8e3deaef0512aaecda7a16d3239ac66",
+      "git_blob": "d8caa437bc631fd3223405f58e6caaa4dc6f3487",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": true,
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-frontend/src/circuit_builder.rs"
+    },
+    "crates/spartan-frontend/src/compiler.rs": {
+      "bytes": 428,
+      "sha256": "70566f7afd45962514e3034cb806f08d026c7bf2d026a4f0ec2c7c2dafe5f67c",
+      "git_blob": "bbb0b250a7c0700966438c82d37a7eac50d38635",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": true,
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-frontend/src/compiler.rs"
+    },
+    "crates/spartan-frontend/src/constraint_system.rs": {
+      "bytes": 19290,
+      "sha256": "053eb55678b6e8e4486fc766cf9e41ec01603ec633a1521bf144c46e723bfbfd",
+      "git_blob": "11770646dc840fa3592df3d1ad91802f2330f050",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": true,
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-frontend/src/constraint_system.rs"
+    },
+    "crates/spartan-frontend/src/wire_elimination.rs": {
+      "bytes": 17635,
+      "sha256": "ec189993109b33b4c008261c842a88d18d603244ee6f4aa7983b41e84c0662c3",
+      "git_blob": "822d03691f16291e4e849430b6c43956c78d8552",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": true,
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-frontend/src/wire_elimination.rs"
+    },
+    "crates/spartan-prover/src/wrapper/mod.rs": {
+      "bytes": 864,
+      "sha256": "d0e02afa14f5c8d691a19fc61bd179ab13ed99e9213b5ba99f8bf5ace586aa4c",
+      "git_blob": "7787cfd6a7531f8fcfddd201fa52e842ceeccbdd",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Prior complete V94 body review retained, selected actual caller context",
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-prover/src/wrapper/mod.rs"
+    },
+    "crates/spartan-verifier/src/wrapper/mod.rs": {
+      "bytes": 10489,
+      "sha256": "5b0d51ba07001617dcc1c658acf2162fc2d38d653a689fa224a1b691329c90a1",
+      "git_blob": "8632702a8086fedc493bc8c73376a885d8e20d13",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Prior complete V94 body review retained, selected actual caller context",
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-verifier/src/wrapper/mod.rs"
+    },
+    "crates/spartan-prover/src/wrapper/replay_channel.rs": {
+      "bytes": 9864,
+      "sha256": "e1c8918b1f3475d6415114fd04046ad547583b122d65b0dc35532721f1605f2f",
+      "git_blob": "9d40a04628c49a0b37188ae2e590d8823eff7001",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Prior complete V94 body review retained, selected actual caller context",
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-prover/src/wrapper/replay_channel.rs"
+    },
+    "crates/spartan-prover/src/wrapper/zk_wrapped_prover_channel.rs": {
+      "bytes": 11897,
+      "sha256": "62bca7a4f5212f75c0bfcdf9260a107460e31873af7b4727d681693ec03133bd",
+      "git_blob": "c5b28e82bf7c28636f4f146b4a669f9024a1a278",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Prior complete V94 body review retained, selected actual caller context",
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-prover/src/wrapper/zk_wrapped_prover_channel.rs"
+    },
+    "crates/spartan-verifier/src/wrapper/builder_channel.rs": {
+      "bytes": 6144,
+      "sha256": "2bdaab7acf5d68d9b8a018b9bd500723b39eec018a84c287a9e70e286822c77a",
+      "git_blob": "f3bef3a20a7875a22c57fe59b958988d535f46a4",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Prior complete V94 body review retained, selected actual caller context",
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-verifier/src/wrapper/builder_channel.rs"
+    },
+    "crates/spartan-verifier/src/wrapper/circuit_elem.rs": {
+      "bytes": 14274,
+      "sha256": "67026b6678bc6884df1c937d88ed668bf060afdc75f7d9031c3ce5ff6a4be17c",
+      "git_blob": "6cb292fc4768cb83f3cdd33dcf0d49e36310bb1a",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Prior complete V94 body review retained, selected actual caller context",
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-verifier/src/wrapper/circuit_elem.rs"
+    },
+    "crates/spartan-verifier/src/wrapper/gadgets.rs": {
+      "bytes": 3905,
+      "sha256": "bf3a25ea6b1e630ace84c4af7dc2ecfc04b6a80861e26875f413632d0dbeaf52",
+      "git_blob": "2458ec7e489462f1fa3cad34d276e94e3f457060",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Prior complete V94 body review retained, selected actual caller context",
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-verifier/src/wrapper/gadgets.rs"
+    },
+    "crates/spartan-verifier/src/wrapper/zk_wrapped_channel.rs": {
+      "bytes": 14718,
+      "sha256": "d07cbe1812ee69fcf5cd4573c9a11c1ef2e418034de565bcc4997f3e5f1744b1",
+      "git_blob": "989b1c176c6e733cbb02a22278b8cc90726d9419",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Prior complete V94 body review retained, selected actual caller context",
+      "url": "https://github.com/binius-zk/binius64/blob/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-verifier/src/wrapper/zk_wrapped_channel.rs"
+    },
+    "crates/spartan-frontend/src/lib.rs": {
+      "bytes": 3978,
+      "sha256": "595150c8f6ba289b50b5a7e3953e5c6e5ae5588d9b6ab08ab1fe69065e4a90bd",
+      "git_blob": "a59f1a8eb54d91aa3bff5be790899b67bf3e1fb2",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": true,
+      "whole_new_body_read": false,
+      "review": "Retained nominal entry or original license",
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-frontend/src/lib.rs"
+    },
+    "LICENSE-Apache-2.0.txt": {
+      "bytes": 11388,
+      "sha256": "245f1fe888a9b2cc730d5313b1b430ef896bf29aede9649d4f11ebcf42faa8f2",
+      "git_blob": "bf0841f65960383640ff3300b5b332ab347c5762",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": false,
+      "whole_new_body_read": false,
+      "review": "Retained nominal entry or original license",
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/LICENSE-Apache-2.0.txt"
+    },
+    "LICENSE-MIT.txt": {
+      "bytes": 1102,
+      "sha256": "723891a70c107d694fe1d457a7c7ed5d0580c274ac8cfa2aa18f3ee75f49790e",
+      "git_blob": "e2c4c0618714f8c626a1f6be6b226655a6d544ca",
+      "identity_mode": "raw bytes",
+      "primary_git_blob_match": false,
+      "whole_new_body_read": false,
+      "review": "Retained nominal entry or original license",
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/LICENSE-MIT.txt"
+    }
+  },
+  "primary_raw_bytes": 161407,
+  "review": {
+    "library_toolchain_or_hardware_audit": false,
+    "four_complete_new_bodies_and_tests_read_as_data": true,
+    "public_private_hint_witness_instance_layout_bodies_inspected": true,
+    "actual_compiler_optimization_executed": false,
+    "word_protocol_reduction_closure": false,
+    "operand_modtwo_and_complete_use_substitution_inspected": true,
+    "field_hash_transcript_basefold_fri_closure": false,
+    "full_dependency_feature_target_license_graph": false,
+    "whole_new_local_frontend_module_review": true
+  },
+  "mathematics": {
+    "hint_outputs_not_independently_constrained": true,
+    "final_zero_equation": "A*1=0 with expected constant one fixed by actual public instance",
+    "hint_input_types_do_not_prove_closure_purity": true,
+    "required_field": "Characteristic two",
+    "source_blinding_formula": "q+7 nominal positions per committed segment before power-of-two rounding, not a hiding theorem",
+    "elimination": "Projection preserves equations; reverse-order pivot reconstruction restores original existential field assignment under complete-use and canonical operand hypotheses",
+    "public_derivation": "Fixed sequence and correct partition, plus actual verifier recomputation and public-hint purity",
+    "complete_payment_or_proof_theorem": false
+  },
+  "licenses": {
+    "upstream_implementation_imported": false,
+    "original_MIT_and_Apache_raw_notices_preserved": true
+  },
+  "execution": {
+    "old_program_replay": false,
+    "new_runtime_admission": false,
+    "protocol_hash_encryption_rng": false,
+    "witness_prover_verifier": false,
+    "compiler_cargo_metadata_build": false,
+    "stock_source_identity_checks": true,
+    "root_lock_registry_workflow_class_profile_change": false,
+    "upstream_test_or_example": false,
+    "candidate_helper_model_reference": false,
+    "scope": "This local source and mathematical review. Existing repository CI is separate."
+  }
+}

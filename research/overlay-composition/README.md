@@ -91,6 +91,8 @@ The [word proof privacy boundary](word-proof-boundary.md) distinguishes actual t
 
 The [wrapped transcript relation](wrapped-transcript-relation.md) follows the actual private-message pads, symbolic equations, honest witness replay and concrete outer verification through one combined opening. Its conditional correspondence and exact field-gadget obligations do not supply the missing private-cash program, compiler closure, practical recipient policy or security theorem.
 
+The [outer layout preservation argument](outer-layout-preservation.md) follows the actual frontend's private-wire substitution, public derivation, hint and finalization rules. Its conditional assignment maps preserve the selected field equations without treating an honest hint, host validation or dummy-wire count as payment proof or security evidence.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
