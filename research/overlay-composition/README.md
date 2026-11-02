@@ -109,6 +109,8 @@ The [word witness extension](word-witness-extension.md) preserves every original
 
 The [private lookup compensation](private-lookup-compensation.md) gives both local maps for compensated lookup equations and identifies the unchanged claim, clear compensation and aligned query boundaries. It retains the same hidden index and original oracle obligations while leaving complete joint hiding and private cash feasibility unselected.
 
+The [outer witness padding](outer-witness-padding.md) connects actual committed segment padding to both assignment maps and the correlated distribution of dummy multiplication triples. It separates a conditional query and operand projection from the complete joint opening, private cash compiler and security construction.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
