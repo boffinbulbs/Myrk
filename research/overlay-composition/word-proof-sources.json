@@ -1,0 +1,380 @@
+{
+  "format": "kova.word-proof-boundary.sources.v1",
+  "date": "2026-11-02",
+  "baseline": "49ff353a60949e340bf6c12a50ee4e0ed52c7439",
+  "status": "Source and architectural decision only. Complete private-cash backend adoption refused pending actual common relation, full called source, matching verifier/parser/resources/security. No program or class selected.",
+  "primary_repository": "https://github.com/binius-zk/binius64",
+  "primary_revision": "6e75a2d1d2e716578ae3ccb62806413fb1615176",
+  "historical_comparison": true,
+  "current_head_verified": false,
+  "source_selections": [
+    {
+      "phase": "nominal roots",
+      "selected": 12,
+      "attempted": 12,
+      "retained": 12,
+      "raw_bytes": 71426,
+      "closed": true
+    },
+    {
+      "phase": "called bodies",
+      "selected": 12,
+      "attempted": 10,
+      "retained": 9,
+      "raw_bytes": 110472,
+      "failure": "HTTP404 crates/core/src/constraint_system.rs",
+      "not_requested": [
+        "crates/prover/src/bit_matrix.rs",
+        "crates/prover/src/fold_word.rs"
+      ],
+      "retries": 0,
+      "closed": true
+    }
+  ],
+  "review": {
+    "whole_captured_files_read": true,
+    "upstream_tests_read_as_data_only": true,
+    "plain_and_wrapped_paths_distinguished": true,
+    "pending_wiring_claim_and_finish_calls_inspected": true,
+    "complete_transitive_body_review": false,
+    "constraint_system_body_unavailable": true,
+    "wrapped_channel_bodies_reviewed": false,
+    "field_hash_transcript_pcs_full_closure": false,
+    "dependency_feature_target_license_graph": false,
+    "compiler_or_hardware_audit": false,
+    "independent_upstream_git_blob_comparison": false,
+    "raw_capture_git_blob_values": "Computed directly from retained raw bytes, not independently matched against a downloaded Git tree."
+  },
+  "decisions": [
+    "Transparent Prover/Verifier is not a private payment route. Actual ZKProver/ZKVerifier wrapper is a separate source construction, not adopted or granted security by its name.",
+    "Bare IOP verification returns pending wiring claim. Correct higher entry checks that claim and finishes channels. Generic serialized verifier/constraint system must not be peer authority.",
+    "Actual wrapped setup builds outer verifier constraints and a single combined opening schedule. Full same-source and transcript/masking correspondence remains before acceptance.",
+    "No identity embedding of all wordAND operations as field multiplication: all words idempotent, fields only0/1. Separate constrained encodings are not ruled out.",
+    "Full KEM/KDF/GCM/MLDSA/note/private-state joins, practical recipient completion/refusal and exact whole resources/parser/security remain required. No primitive/profile/cap substitution."
+  ],
+  "source_security_parameter": "Actual SECURITY_BITS96 is source configuration, not achieved security, Kova profile, quantum bound or theorem. No parameter changed.",
+  "repository_files": {
+    "Cargo.toml": {
+      "bytes": 735,
+      "sha256": "2dad10da5dedfdef787a3eac95ddedf59e6d97dd7b51f9f076b6775fa9af8b17",
+      "git_blob": "5eb927a78f13d1714b4c833ee28396f7d4257b48",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "Cargo.lock": {
+      "bytes": 25648,
+      "sha256": "79276c95e6772e0ed31470e8e7c7b7d54204dbc04ec5fbfb87ea6baccb0847c5",
+      "git_blob": "7d826f03ad620fb9bc926ff5d6109d1ba8863d06",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "LICENSE": {
+      "bytes": 1065,
+      "sha256": "5ebe182b2b52b953ac3c2c292af06f5a5d6d1665cdc8868aa11beb3c3afa9424",
+      "git_blob": "17b48f16c64fd688b5929736899c73faca927d19",
+      "identity_mode": "raw bytes"
+    },
+    "crates/thorum-crypto-lab/Cargo.toml": {
+      "bytes": 819,
+      "sha256": "fb4bcf1015dda241af00f3621bd332d01b17d18c493fe173c07772ed3080eb9d",
+      "git_blob": "316595d914469478f7cb67c5207666e2239a50ba",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-crypto-lab/src/lib.rs": {
+      "bytes": 16754,
+      "sha256": "c1671d70b61ffdaa0824512e6598b64b4d31a3ff35040186cd13f89d18c6e601",
+      "git_blob": "f70e4dc4b222d6130103371b6bdf2364ddcae5e5",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-crypto-lab/src/envelope.rs": {
+      "bytes": 3154,
+      "sha256": "0e9d3ffa524d85e0fb2b66505ac8ae9c53899e2dc9cb33b291544176188b37c5",
+      "git_blob": "eb7d472e9cd0cbd4e0b131889a57fe8fb036309a",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-relation-lab/src/lib.rs": {
+      "bytes": 2787,
+      "sha256": "4680bfc8b0577d760723fef74f47433c32adfbd8be3569bb2a7107704e237782",
+      "git_blob": "df0eb92bfb9e2ca00e16d2b119b6c1482c740b3f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-relation-lab/src/note.rs": {
+      "bytes": 15074,
+      "sha256": "4e62a640f449b9156a53cc8325553058e1ded3f6ee8942d1c71e90435ca5d035",
+      "git_blob": "10566a7ceab5b93dafd14be313d61600b91a36c7",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-relation-lab/src/capability.rs": {
+      "bytes": 4048,
+      "sha256": "5ccba5406267c5cabb4ec3268a5b2103c85bfcdada307dd2910d16d9abc5285f",
+      "git_blob": "513c1a0b583bd2871118be85b520afa4de4a92bf",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "crates/thorum-relation-lab/src/payment.rs": {
+      "bytes": 9207,
+      "sha256": "e8d28267f6d7783be524aa59fc07c531e0042100038aa2b96651d5a421eb7176",
+      "git_blob": "c7005f1c76d3f8698f9942ec769ea0fdb5b35692",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/private-witness-join.md": {
+      "bytes": 21092,
+      "sha256": "282542a81b0bf803d891c3edad22f6324f48b4fd12ff99d6a05dc61eb9ab1084",
+      "git_blob": "a15b53e9eff2212a26ba411566abca8a41b86856",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/gcm-word-relation.md": {
+      "bytes": 16196,
+      "sha256": "de9e30606081b23a313a89199703441aceac318a0170c3c9270ea726cdfbaec2",
+      "git_blob": "cdf3ace9c75525812d74a18db11b8de2acaaac7f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/whole-encryption-completion.md": {
+      "bytes": 22347,
+      "sha256": "aee1e59fa7191dc3f8e52f235e7a36d04d9384490fd84b83f9e668d9a9dc01c6",
+      "git_blob": "ef3a3002a7eb19f3d01e851305041b60a2c2725f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/overlay-composition/whole-encryption-sources.json": {
+      "bytes": 35513,
+      "sha256": "5ee653f5ee09ceb1b934dba073fddd91afe5e752d8132ada88f120b2c4559444",
+      "git_blob": "e47ecc0d43cfda361bdb320862bd4f880e69fb7f",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/trace-domain/src/lib.rs": {
+      "bytes": 344,
+      "sha256": "bf48f62ed4c52327f196e39e9526f3333ce812f8a7ca22bf78869f554cc7620b",
+      "git_blob": "46b6934b61a0a5f95a91f30cc97fb89b876a873b",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/trace-domain/src/owned_prover.rs": {
+      "bytes": 23824,
+      "sha256": "edc664ec6a5907874e9d0650adc5150b18fbcb2a9fe28fcfe0217dcf77511b1b",
+      "git_blob": "bd451c550ed14ffea15cd04604ce105b4e1bfe70",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/proof-preflight/src/preflight.rs": {
+      "bytes": 8131,
+      "sha256": "c08cb17ab5703e9ae0aa81fde2ebf07b622bc026bb2d8096172bd8a1ec803c8c",
+      "git_blob": "75ccf57968c24d7345ea3916d63dd1f30e10e2f8",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/quotient-source/src/quotient_kernel.rs": {
+      "bytes": 10400,
+      "sha256": "7df6a350620007f3c0117c48120f92148f6d0f752c008920b1746d8eb93e4a44",
+      "git_blob": "2fe7434d5e147714d4ff6ad7e43d4bddf02f6c29",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/gcm-word-reference/reference.py": {
+      "bytes": 32741,
+      "sha256": "90f6ecf76cd5b03ea383cd959c992e072267c4e508ab4a97c9d09ad2984892d0",
+      "git_blob": "c7f8267f3b201d0f92e9b8ba0db318a8832a6669",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/gcm-word-reference/validation.json": {
+      "bytes": 24921,
+      "sha256": "abe484c6463a5c4834cf8b7fced7b82adb910d34d0b55580ed87ac2b63437e30",
+      "git_blob": "f4c89bdd994b046e1439f0486adbe79857f07dbc",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/gcm-word-reference/results/result.json": {
+      "bytes": 4090,
+      "sha256": "7ab08cb89c81e9e2e41beb00cec475e50f1c438803e98c6f7fae7b729453c75f",
+      "git_blob": "058419be4d98a11646b86a77dcbad6f811fe96e2",
+      "identity_mode": "raw bytes"
+    },
+    "docs/minimal-launch.md": {
+      "bytes": 8478,
+      "sha256": "c49eff1341f34275b593c8531631d9caf3dd6892dabae65fa9f6597c103dbdcc",
+      "git_blob": "cd6e4af66da36744f9bc8d3c5197fe88d27fdd45",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "docs/private-contracts.md": {
+      "bytes": 4876,
+      "sha256": "5450bd2906b853ab6d9cdb8e1df02784459aa034b1910dc38dcf85404bbd2c22",
+      "git_blob": "0b18398228e5e06c196cca37e8b357c5ccecf3f3",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "docs/delivery-roadmap.md": {
+      "bytes": 10611,
+      "sha256": "6c2e7d4acc727bf893827334d0b4ee0baec2cf935dc970ff801f2d4a573c551f",
+      "git_blob": "8e7134cb7905f306abb50cbaead09314ad094dc8",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    ".github/workflows/checks.yml": {
+      "bytes": 99642,
+      "sha256": "ecf2d550385f996cce14422d80ee7753fcc5b574ae65c3adc5380577f47b763a",
+      "git_blob": "28fafab08de2909e62989a941115488869c71ed3",
+      "identity_mode": "UTF-8 CRLF normalized to LF, encoding preserved"
+    },
+    "research/signature-packed-shape/results/symbolic.json": {
+      "bytes": 211,
+      "sha256": "905a3614eabc6da435b51ed0fbe993de8fd7ab826a5d869257bd2bc983da26ea",
+      "git_blob": "77afafba5bf6e408b1bfabd766150032cdefada0",
+      "identity_mode": "raw bytes"
+    }
+  },
+  "primary_raw_files": {
+    "LICENSE-Apache-2.0.txt": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/LICENSE-Apache-2.0.txt",
+      "bytes": 11388,
+      "sha256": "245f1fe888a9b2cc730d5313b1b430ef896bf29aede9649d4f11ebcf42faa8f2",
+      "git_blob": "bf0841f65960383640ff3300b5b332ab347c5762",
+      "identity_mode": "raw bytes"
+    },
+    "LICENSE-MIT.txt": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/LICENSE-MIT.txt",
+      "bytes": 1102,
+      "sha256": "723891a70c107d694fe1d457a7c7ed5d0580c274ac8cfa2aa18f3ee75f49790e",
+      "git_blob": "e2c4c0618714f8c626a1f6be6b226655a6d544ca",
+      "identity_mode": "raw bytes"
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/README.md",
+      "bytes": 8099,
+      "sha256": "284557a09041dd35a2ea4842d433847155ad531ff048fff38fdd66c40289cfab",
+      "git_blob": "16a4906913b16d3eac301c9a0d6b5ade2610fd3f",
+      "identity_mode": "raw bytes"
+    },
+    "ARCHITECTURE.md": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/ARCHITECTURE.md",
+      "bytes": 5005,
+      "sha256": "93b548a23bc3dd7099c3ec108b323eb81cfe3d72ae51ba8900e15c5b54016785",
+      "git_blob": "f1c85549a418519801724dcb8fffd44380ef30ca",
+      "identity_mode": "raw bytes"
+    },
+    "Cargo.toml": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/Cargo.toml",
+      "bytes": 3360,
+      "sha256": "639b22aec08d8f7e6d8733e4c42f616a0a9ec2537afe114604e2edc335c7798c",
+      "git_blob": "1206504854e7090fbf1132d5f24c90c0b0ff6adc",
+      "identity_mode": "raw bytes"
+    },
+    "crates/prover/src/lib.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/prover/src/lib.rs",
+      "bytes": 1641,
+      "sha256": "2bfac6ddfd584f6b610a2c3b485df47ea86618c9aa45eeca717bda8fdc1970da",
+      "git_blob": "ccd2d4890072c0372a0df4d57e86d7068df472be",
+      "identity_mode": "raw bytes"
+    },
+    "crates/verifier/src/lib.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/verifier/src/lib.rs",
+      "bytes": 1838,
+      "sha256": "8f2ed9812efaf2052f0198b630fdf88aa2bb3518a78532de8e7d1dec195cdc03",
+      "git_blob": "4533f316171f6ae1ceb7dc03dc2a27771f149583",
+      "identity_mode": "raw bytes"
+    },
+    "crates/spartan-prover/src/lib.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-prover/src/lib.rs",
+      "bytes": 18281,
+      "sha256": "f55fe3b2b7c776339fe3fff8622c25d1d01b617fda46e15f6357047452eaa065",
+      "git_blob": "2d99d6aef6e980eac70d32eee87dfac7ad019344",
+      "identity_mode": "raw bytes"
+    },
+    "crates/spartan-verifier/src/lib.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-verifier/src/lib.rs",
+      "bytes": 13758,
+      "sha256": "7d7d0e057e7b4318141281c211abff3bce35bf9e3673f5e4e7c29026a1d59b61",
+      "git_blob": "7149469ae56a76ddd07186a9057e71fdb8886fc5",
+      "identity_mode": "raw bytes"
+    },
+    "crates/spartan-frontend/src/lib.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/spartan-frontend/src/lib.rs",
+      "bytes": 3978,
+      "sha256": "595150c8f6ba289b50b5a7e3953e5c6e5ae5588d9b6ab08ab1fe69065e4a90bd",
+      "git_blob": "a59f1a8eb54d91aa3bff5be790899b67bf3e1fb2",
+      "identity_mode": "raw bytes"
+    },
+    "crates/core/src/lib.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/core/src/lib.rs",
+      "bytes": 471,
+      "sha256": "80640820e509bfddd441785ff71a702d228d46499ed121a743550ea77b2dd63e",
+      "git_blob": "506c26af4fdb5bf76ee7ba03d79c3de29141f229",
+      "identity_mode": "raw bytes"
+    },
+    "crates/frontend/src/lib.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/frontend/src/lib.rs",
+      "bytes": 2505,
+      "sha256": "c0f5ea13829632642d60d132f9f0f1276241f8cf063400eb683b172123539659",
+      "git_blob": "7766f51f4c5fc18218fe179e8d5caab041406a3b",
+      "identity_mode": "raw bytes"
+    },
+    "crates/prover/src/prove.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/prover/src/prove.rs",
+      "bytes": 31881,
+      "sha256": "248647a20e6ca0fa6f9d03b23ffd1c317ab7fdba3d0bd3196fa00c60b932e5ee",
+      "git_blob": "4600f96d5e20a09c11a7b4a682b5d85e4b1986c7",
+      "identity_mode": "raw bytes"
+    },
+    "crates/verifier/src/verify.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/verifier/src/verify.rs",
+      "bytes": 15848,
+      "sha256": "a762ddd81a4ec8a4c15500b9a82ad4af011cf5f78956769b3456b3755f02cd7d",
+      "git_blob": "ef74cf2dc1ee86b3c2822df6f1cc2454182a1c31",
+      "identity_mode": "raw bytes"
+    },
+    "crates/prover/src/zk_config.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/prover/src/zk_config.rs",
+      "bytes": 10196,
+      "sha256": "06242f2e7ed1563c8346786ab12d01c6f03dc6b659559438f6405c624449ce11",
+      "git_blob": "4b379eb0583e26c76a23c898cfac47f6ce8797a3",
+      "identity_mode": "raw bytes"
+    },
+    "crates/verifier/src/zk_config.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/verifier/src/zk_config.rs",
+      "bytes": 11029,
+      "sha256": "bd96910b4f4dbdf1ed06a15f4ba0b2746a156626e19cda4260a97fc5a1df0a0d",
+      "git_blob": "d09e28032feb7474835897ecc97ba56ea7360a57",
+      "identity_mode": "raw bytes"
+    },
+    "crates/prover/src/pcs_compiler.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/prover/src/pcs_compiler.rs",
+      "bytes": 1798,
+      "sha256": "528e1b9d6d7d2b2262aae51430bcd6df4ce00b6b90e042d9d98ef66c166908f2",
+      "git_blob": "86461acbf8f78c2eefc5b45b3fad63fad9631f6e",
+      "identity_mode": "raw bytes"
+    },
+    "crates/verifier/src/pcs_compiler.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/verifier/src/pcs_compiler.rs",
+      "bytes": 7803,
+      "sha256": "205abcdf4237d8d659cd424e023aab800356d000a2d43a9fa94ab19801dc5653",
+      "git_blob": "35f3c634a9af7c4b90fe763ea01c608ab1f3a197",
+      "identity_mode": "raw bytes"
+    },
+    "crates/verifier/src/pcs.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/verifier/src/pcs.rs",
+      "bytes": 1025,
+      "sha256": "9b9f95f2c598853fca8c43bf53a5711c4344f7e872891f75184ca209ac78aaf5",
+      "git_blob": "f9c73232e1e2f7cc7257e52d08c666b802cec4c5",
+      "identity_mode": "raw bytes"
+    },
+    "crates/verifier/src/config.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/verifier/src/config.rs",
+      "bytes": 1176,
+      "sha256": "0f41a8b27efd4a842016be275e54c9d9984cd4491a87568dbf0cfc08c0b936f1",
+      "git_blob": "ccf27d501d4fbeaa8c7b166a08df874bdbe10a02",
+      "identity_mode": "raw bytes"
+    },
+    "crates/core/src/word.rs": {
+      "url": "https://raw.githubusercontent.com/binius-zk/binius64/6e75a2d1d2e716578ae3ccb62806413fb1615176/crates/core/src/word.rs",
+      "bytes": 29716,
+      "sha256": "fe9d02c9ecfcd355c3e7cf60057ce50b08338751e7d95775568e5f6344f71400",
+      "git_blob": "dccbf129f9282bf3b8409a34849b180a31d46625",
+      "identity_mode": "raw bytes"
+    }
+  },
+  "licenses": "Original copyright2025IrreducibleInc/2026TheBiniusDevelopers and retainedMIT/Apache2 licenses preserved. No upstream implementation imported or copied into this project in this increment.",
+  "execution": {
+    "stock_source_identity_checks": true,
+    "source_capture_only": true,
+    "cargo_metadata_fetch": false,
+    "compiler": false,
+    "upstream_example_or_test": false,
+    "candidate_helper_model_reference": false,
+    "symbolic_native_witness": false,
+    "protocol_hash_or_encryption": false,
+    "rng": false,
+    "prover_verifier": false,
+    "old_program_replay": false,
+    "new_runtime_admission": false,
+    "root_lock_registry_change": false,
+    "workflow_change_in_this_increment": false
+  }
+}
