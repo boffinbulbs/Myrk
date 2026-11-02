@@ -117,6 +117,8 @@ The [main round source binding](main-round-source-binding.md) connects the actua
 
 The [native proof transcript](native-proof-transcript.md) connects actual field and word channel operations to observed bytes, advice, deterministic replay and explicit finalization. It identifies the separate owning verifier, point domain, bounded parsing and joint privacy construction still required for private cash.
 
+The [quadratic source completion](quadratic-source-completion.md) derives a prospective division free producer recurrence from the same original columns for every evaluation coordinate. It preserves the distinction between genuine internal source computation, the actual accumulator contract and the complete private cash proof still required.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
