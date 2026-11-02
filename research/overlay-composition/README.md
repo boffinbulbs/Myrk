@@ -111,6 +111,8 @@ The [private lookup compensation](private-lookup-compensation.md) gives both loc
 
 The [outer witness padding](outer-witness-padding.md) connects actual committed segment padding to both assignment maps and the correlated distribution of dummy multiplication triples. It separates a conditional query and operand projection from the complete joint opening, private cash compiler and security construction.
 
+The [masked round correspondence](masked-round-correspondence.md) follows the actual separable mask, compressed round recurrence, challenge order and same-buffer terminal opening. Its restricted full-round distribution identifies the remaining main-source, joint oracle and adaptive transcript construction required for private cash.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
