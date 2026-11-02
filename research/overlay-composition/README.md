@@ -89,6 +89,8 @@ The [whole encrypted output completion relation](whole-encryption-completion.md)
 
 The [word proof privacy boundary](word-proof-boundary.md) distinguishes actual transparent and wrapped verifier paths in one prospective backend. It identifies the required wiring and completion checks and refuses adoption before the complete same-witness program, source, resource, parser and security construction. No dependency or proof class is added.
 
+The [wrapped transcript relation](wrapped-transcript-relation.md) follows the actual private-message pads, symbolic equations, honest witness replay and concrete outer verification through one combined opening. Its conditional correspondence and exact field-gadget obligations do not supply the missing private-cash program, compiler closure, practical recipient policy or security theorem.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
