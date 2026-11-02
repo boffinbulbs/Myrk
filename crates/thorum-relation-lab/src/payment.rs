@@ -6,11 +6,13 @@ use thorum_crypto_lab::{
 };
 
 use crate::{
-    hash_fields, key_binding, short_tag, statement_frame, AssetId, ChainId, Digest64, MerklePath,
-    NoteOpening, NotePolicy, NullifierSecret, RelationError, FORMAT_VERSION, NATIVE_ASSET_ID,
+    codec::Reader, hash_fields, key_binding, short_tag, statement_frame, AssetId, ChainId, Digest64,
+    MerklePath, NoteOpening, NotePolicy, NullifierSecret, RelationError, FORMAT_VERSION,
+    MAX_STATEMENT_BYTES, NATIVE_ASSET_ID,
 };
 
 pub const MAX_PAYMENT_ITEMS: usize = 8;
+const PAYMENT_STATEMENT_DOMAIN: &[u8] = b"thorum.relation-lab.payment-statement.v1";
 
 /// Explicit external state view. The caller authenticates its contents.
 pub struct PaymentContext<'a> {
@@ -48,7 +50,7 @@ impl PaymentStatement {
             return Err(RelationError::LimitExceeded);
         }
         let mut bytes = Vec::new();
-        statement_frame(&mut bytes, b"thorum.relation-lab.payment-statement.v1")?;
+        statement_frame(&mut bytes, PAYMENT_STATEMENT_DOMAIN)?;
         statement_frame(&mut bytes, &FORMAT_VERSION.to_be_bytes())?;
         statement_frame(&mut bytes, &self.chain_id)?;
         statement_frame(&mut bytes, &self.protocol_version.to_be_bytes())?;
@@ -70,6 +72,52 @@ impl PaymentStatement {
         Ok(bytes)
     }
 
+    /// Decode the public laboratory encoding with bounded counts and exact consumption.
+    /// Parsing does not authenticate the chain, anchor, payment or encrypted delivery.
+    pub fn from_bytes(bytes: &[u8]) -> Result<Self, RelationError> {
+        if bytes.len() > MAX_STATEMENT_BYTES {
+            return Err(RelationError::LimitExceeded);
+        }
+        let mut reader = Reader::new(bytes);
+        if reader.field()? != PAYMENT_STATEMENT_DOMAIN {
+            return Err(RelationError::UnsupportedEncoding);
+        }
+        if u16::from_be_bytes(reader.fixed()?) != FORMAT_VERSION {
+            return Err(RelationError::UnsupportedEncoding);
+        }
+        let chain_id = reader.fixed()?;
+        let protocol_version = u32::from_be_bytes(reader.fixed()?);
+        let validation_tag = reader.fixed()?;
+        let anchor = reader.fixed()?;
+
+        let input_count = payment_item_count(&mut reader)?;
+        let mut input_nullifiers = Vec::with_capacity(input_count);
+        for _ in 0..input_count {
+            input_nullifiers.push(reader.fixed()?);
+        }
+        let output_count = payment_item_count(&mut reader)?;
+        let mut outputs = Vec::with_capacity(output_count);
+        for _ in 0..output_count {
+            let commitment = reader.fixed()?;
+            let envelope = SealedNote::from_bytes(reader.field()?)?;
+            outputs.push(PaymentOutput {
+                commitment,
+                envelope,
+            });
+        }
+        let native_fee = Amount::from_atomic(u64::from_be_bytes(reader.fixed()?));
+        reader.finish()?;
+        Ok(Self {
+            chain_id,
+            protocol_version,
+            validation_tag,
+            anchor,
+            input_nullifiers,
+            outputs,
+            native_fee,
+        })
+    }
+
     /// The full statement is hashed before signing. The 64 byte digest is not a proof.
     pub fn authorization_message(&self) -> Result<Digest64, RelationError> {
         Ok(hash_fields(
@@ -89,6 +137,15 @@ impl PaymentStatement {
             )),
         })
     }
+}
+
+fn payment_item_count(reader: &mut Reader<'_>) -> Result<usize, RelationError> {
+    let count = usize::try_from(u32::from_be_bytes(reader.fixed()?))
+        .map_err(|_| RelationError::LimitExceeded)?;
+    if !(1..=MAX_PAYMENT_ITEMS).contains(&count) {
+        return Err(RelationError::LimitExceeded);
+    }
+    Ok(count)
 }
 
 pub struct InputWitness {

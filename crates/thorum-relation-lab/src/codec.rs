@@ -1,6 +1,6 @@
 use crate::RelationError;
 
-/// Bounded callers supply a complete public capability or private opening slice.
+/// Bounded callers supply a complete capability, opening or public statement slice.
 pub(crate) struct Reader<'a> {
     remaining: &'a [u8],
 }
