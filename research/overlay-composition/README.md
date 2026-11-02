@@ -113,6 +113,8 @@ The [outer witness padding](outer-witness-padding.md) connects actual committed 
 
 The [masked round correspondence](masked-round-correspondence.md) follows the actual separable mask, compressed round recurrence, challenge order and same-buffer terminal opening. Its restricted full-round distribution identifies the remaining main-source, joint oracle and adaptive transcript construction required for private cash.
 
+The [main round source binding](main-round-source-binding.md) connects the actual quadratic factory, shared column ownership, deferred folds and interpolation to the original columns. It identifies the interpolation domain condition and the remaining complete source, proof and private cash construction.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
