@@ -125,6 +125,8 @@ The [visible history and source privacy](visible-history-source-privacy.md) crit
 
 The [proof entropy source](proof-entropy-source.md) review traces the wrapped entry's parent generator, seeded mask generator, replayed keys and correlated product coordinates. Its conditional complete source criterion distinguishes actual randomness lineage from an unproved independent entropy model.
 
+The [direct Boolean field lowering](boolean-field-lowering.md) construction preserves a complete fixed word relation through shared source bits and characteristic independent checked arithmetic. Native binary multiplication still requires its actual basis product correspondence, and no complete cash circuit or proof backend is adopted.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
