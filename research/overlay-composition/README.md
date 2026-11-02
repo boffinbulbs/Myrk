@@ -101,6 +101,8 @@ The [private trace and oracle relation](private-trace-oracles.md) connects actua
 
 The [masked oracle opening](masked-oracle-opening.md) follows matched producer and verifier relation batching, mask interpolation, lift/repeat placement and the final FRI equality. It distinguishes those conditional identities from joint hiding, transcript soundness, complete source closure and the actual combined proving resources.
 
+The [encoded oracle correspondence](encoded-oracle-correspondence.md) follows actual message and mask assembly, matched first and later folds, original committed query leaves and the checked terminal value. It identifies the remaining encoder basis and authenticated channel construction, including real word query publicness, before a complete private cash proof can be selected.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
