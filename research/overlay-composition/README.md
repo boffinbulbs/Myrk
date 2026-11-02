@@ -85,6 +85,8 @@ The [whole GCM software word relation](gcm-word-relation.md) gives the exact por
 
 The [whole GCM integer reference](../gcm-word-reference/README.md) checks that relation against six independently retained complete records and a full public synthetic output instance. Its bounded integer results do not supply the complete private encryption proof or reduce the remaining combined proving geometry.
 
+The [whole encrypted output completion relation](whole-encryption-completion.md) joins the same opening through canonical KEM, actual modular arithmetic, KDF and complete GCM. It proves both conditional semantic directions, separates successful termination from completeness on every canonical key and refuses its explicit selector representation under current limits. Its finite-state bound is mathematical and impractical, with no new program or proving class.
+
 | Boundary | Required evidence |
 |---|---|
 | Algebraic soundness | Actual batching multiplicities, DEEP and proximity errors, domains and folding schedule |
