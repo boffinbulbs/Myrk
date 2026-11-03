@@ -128,14 +128,18 @@ impl PaymentStatement {
 
     pub fn authorization_context(&self) -> Result<Context, RelationError> {
         let digest = self.authorization_message()?;
-        Ok(Context {
+        Ok(self.authorization_context_from_digest(&digest))
+    }
+
+    fn authorization_context_from_digest(&self, digest: &Digest64) -> Context {
+        Context {
             chain_id: self.chain_id,
             protocol_version: self.protocol_version,
             output_tag: short_tag(&hash_fields(
                 b"thorum.relation-lab.payment-auth-context.v1",
-                &[&digest],
+                &[digest],
             )),
-        })
+        }
     }
 }
 
@@ -221,7 +225,7 @@ pub fn check_payment(
         return Err(RelationError::LimitExceeded);
     }
     let message = statement.authorization_message()?;
-    let authorization_context = statement.authorization_context()?;
+    let authorization_context = statement.authorization_context_from_digest(&message);
     let mut seen = BTreeSet::new();
     for nullifier in &statement.input_nullifiers {
         if !seen.insert(*nullifier) {

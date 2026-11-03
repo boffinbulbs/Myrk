@@ -86,6 +86,14 @@ These payload free errors remain local diagnostics inside the private witness bo
 
 One additional [checker test source](../crates/thorum-relation-lab/tests/payment.rs) specifies a valid two output payment, a compound duplicate and opening mismatch, a matched opening duplicate, and freshly authorized restorations. Its real laboratory key, encryption and authorization operations have not run for this increment. Static source review is the only validation here. Compilation, rustfmt and test execution remain pending their separate gates.
 
+### Single authorization digest in the checker
+
+The checker derives its authorization message once and passes that exact local digest to a private context helper. The public `authorization_context` method still derives its own message through the same fallible encoding path. The helper preserves the existing chain, protocol version, context domain, full digest input and first 32 byte tag. It exposes no public supplied digest interface or reusable verification fact.
+
+This removes one repeated canonical statement encoding and payment digest calculation from the checker source path. The encoder, decoder, public method results, remaining check order and output refusal precedence are unchanged. No runtime cost, allocation peak or performance improvement has been measured. This local transparent checker still supplies no private proof or authenticated ledger authority.
+
+Two additional [authorization test sources](../crates/thorum-relation-lab/tests/payment_authorization.rs) specify independent hash preimage framing, a changed fee and restoration, and shared public refusal cases. They use public synthetic data and no keys, RNG or private witnesses. Their expected hash computations use the returned canonical statement bytes and do not independently validate that serializer or supply saved hash result literals. This increment has source review only. Compilation, rustfmt, SHA3 calculations and test execution remain unverified under their separate gates.
+
 ## Focused stake eligibility oracle
 
 1. A bond note commits its restricted voting key binding, activation epoch, maturity epoch and exclusive unlock epoch. The constructor requires `activation <= maturity < unlock` and a voting key binding distinct from the owner's spending key binding. Registration authority, allowed delegation and the legitimacy of the snapshot root must already have been established by the external ledger. The oracle cannot create a bond or authenticate its origin by itself.
