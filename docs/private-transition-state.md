@@ -110,6 +110,8 @@ The complete ownership state must account for $I_{v+1}-B_{v+1}$. Unearned stakin
 
 The retained executable schedule remains at 120 seconds. The [60 second target and origin rules](protocol-extensions.md#reward-origin-and-maturity) need their own versioned transition and vectors. Mining and staking rewards require authenticated origin $h_r$, bounded comparison $h\ge h_r$ and $h-h_r\ge10080$ under that target. Creating history must also satisfy the initial checkpoint finality rule. Ordinary later payments do not restart a reward delay. Applications, stake registration and migration cannot erase an immature origin or other restriction.
 
+The [eligibility specification at the candidate height](reward-origin-eligibility.md) derives the consuming height from the authenticated parent, separates local commit permission from exact proof facts, and requires fresh context checks after a permitted branch replacement. Its conditional bounds from the finalized prefix do not replace the 10080 block rule or select an origin encoding.
+
 ## Durable state, restart and branch changes
 
 The atomic unit includes nullifiers, notes and metadata, policy and stake changes, supply counters, encrypted data references, receipts and the state lineage they describe. A prepared record alone is not a durable accepted state. Readers observe one complete published snapshot, and a receipt follows its durability point.

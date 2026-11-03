@@ -94,6 +94,8 @@ Use the expected child threshold, not peer bits, the numeric work hash or the ha
 
 Work comparison applies only after both branches satisfy complete private validity, supported work policy, availability and the authenticated finalized ancestry. Higher work cannot override finalized history or authorize invalid private state. A strictly greater compatible score can select a provisional suffix. Equal scores retain the current valid tip and establish no invalidity or finality for the competitor. The checkpoint protocol must still provide its actual safety and liveness construction.
 
+The [reward origin eligibility specification](reward-origin-eligibility.md) explains why a work increase alone cannot preserve an earlier maturity decision. Candidate height, actual finality of the creating history and the current commit context must still be checked. No shorter higher work ASERT fixture is asserted by that specification.
+
 Restoring a numeric cumulative score or anchor tuple does not authenticate the history that produced it. Restart and reorganization need an authenticated state owner, consistent block and ledger lineage, and replay of the actual rule. The existing byte journal and monetary totals do not provide this authority. No history validator or branch switch executes in the reference.
 
 ## Evidence and implementation gate

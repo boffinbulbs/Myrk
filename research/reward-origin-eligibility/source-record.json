@@ -1,0 +1,73 @@
+{
+  "title": "Reward origin at a candidate height",
+  "record_version": 1,
+  "status": "SPECIFICATION_AND_CONDITIONAL_INTEGER_ARGUMENTS_ONLY",
+  "document": "docs/reward-origin-eligibility.md",
+  "baseline_commit": "43d0dccb3df8e12886cd538e66dce5d7a6771500",
+  "source_identity_scope": "UTF8 LF text and Git blobs at the baseline commit. Policy cross links added after that baseline do not change these historical identities.",
+  "contexts": [
+    {
+      "path": "docs/private-transition-state.md",
+      "utf8_lf_bytes": 20202,
+      "sha256_utf8_lf": "f5d447290a69bb11ed9efda6d0a5024dbaac1f0e1bfafa079f01d5f1522e7fbf",
+      "git_blob_at_baseline": "852793fd3de546aa9074c562bbb0eb0be5708990"
+    },
+    {
+      "path": "docs/child-work-policy.md",
+      "utf8_lf_bytes": 12795,
+      "sha256_utf8_lf": "a2caf354527d8c998512413d7a4f6886b66643595dab3d040f62d1fe1258d08f",
+      "git_blob_at_baseline": "2041fe2df010f83cbdcdb14f9360e5d9faecef03"
+    },
+    {
+      "path": "docs/protocol-extensions.md",
+      "utf8_lf_bytes": 14131,
+      "sha256_utf8_lf": "76dda809f0d427ae5225f4012606ade3cd35b79492c965d12595fd92b8cc1ce5",
+      "git_blob_at_baseline": "afa5f3890548d4e7772c89935c88f14b975da33a"
+    },
+    {
+      "path": "docs/preseal-job.md",
+      "utf8_lf_bytes": 17600,
+      "sha256_utf8_lf": "1a16ad59ab202efc655764a02e926e996ca09125aa678bd2b4a8e2eafd606bb4",
+      "git_blob_at_baseline": "1c6e3aebcd966def72381e285f767ca7df4b8a89"
+    },
+    {
+      "path": "docs/subsidy-allocation.md",
+      "utf8_lf_bytes": 7079,
+      "sha256_utf8_lf": "69303fb1105341abf41232c409061e0da05b41120a8c9b0e69db147f0f4aaf24",
+      "git_blob_at_baseline": "6855233e87cab8abd3fd3aed6a9a15a5a07378e7"
+    },
+    {
+      "path": "research/child-work-native/src/arithmetic.rs",
+      "utf8_lf_bytes": 11040,
+      "sha256_utf8_lf": "8f6696003ec1c593909bbc3d1c68a60788660c370c9f597844f2c5f022033d6f",
+      "git_blob_at_baseline": "c1dc0bd008ab01048e7c815ca9810bbdde74d9e9"
+    },
+    {
+      "path": "research/monetary-paired60-native/src/accounting.rs",
+      "utf8_lf_bytes": 8729,
+      "sha256_utf8_lf": "449ed050926215678beb5cb5249602cfc1f45bed399bf33e02ea63d8c1f4f4fc",
+      "git_blob_at_baseline": "1d1027b3967406d8b8def9f1a5ebcff6286c22e2"
+    },
+    {
+      "path": "crates/thorum-core/src/accounting.rs",
+      "utf8_lf_bytes": 9462,
+      "sha256_utf8_lf": "3056156b8d4188abd38915dc59279675395d6a26669f149b391da3f4e8f21a0d",
+      "git_blob_at_baseline": "2aa845c5751b7975bb40b2415b55b92beff2a85b"
+    }
+  ],
+  "mathematical_scope": [
+    "Checked consuming height H=parent+1 and checked reward age at least 10080.",
+    "SAME hidden note and authenticated origin association with actual finalized ancestry.",
+    "Local attempt generation distinct from protocol bytes and exact proof cache identity.",
+    "Conditional maturity relative to the selected branch and sufficient finalized age 10080/10079 bounds for existing compatible candidates under fixed rules."
+  ],
+  "validation_scope": "Source/specification review, data identities, links and whitespace only. No validator, model, compiler, cryptographic or ledger execution.",
+  "not_constructed": [
+    "Actual origin encoding or authenticated state implementation.",
+    "Complete private payment proof or native expected verification.",
+    "A feasible pair of mined ASERT branches with decreasing selected height.",
+    "Checkpoint bootstrap, atomic persistence and recovery, joint privacy, resource feasibility or network activation."
+  ],
+  "original_profiles_and_encodings": "Unchanged",
+  "new_dependencies_or_primary_acquisitions": 0
+}
