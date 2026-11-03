@@ -78,6 +78,14 @@ sum(input_values[asset])
 
 8. Ordinary payments cannot mint, substitute one asset for another or fund a native fee from a different asset. Overflow is rejection rather than modular equality. There is no general asset mint, burn, contract execution or fee distribution path in this checker.
 
+### Distinct output refusal causes
+
+The local checker returns `CommitmentMismatch` when the complete opening does not match the declared output commitment. After that comparison succeeds, a repeated commitment in the same statement returns `DuplicateOutputCommitment`. The comparison and set insertion retain their original order, before the same recipient and encryption checks. This distinguishes two existing refusal cases without changing the accepted payment set or introducing an earlier scan. The added Rust enum variant can require updates to exhaustive matches in callers. No peer error encoding is selected.
+
+These payload free errors remain local diagnostics inside the private witness boundary. Error categories can disclose checked predicates and do not define a safe public RPC or logging contract. No remote endpoint or actual disclosure is demonstrated. This change adds no global output identity registry, authenticated origin association, ledger or private proof authority. The public decoder continues to roundtrip duplicates as syntax without granting validation authority.
+
+One additional [checker test source](../crates/thorum-relation-lab/tests/payment.rs) specifies a valid two output payment, a compound duplicate and opening mismatch, a matched opening duplicate, and freshly authorized restorations. Its real laboratory key, encryption and authorization operations have not run for this increment. Static source review is the only validation here. Compilation, rustfmt and test execution remain pending their separate gates.
+
 ## Focused stake eligibility oracle
 
 1. A bond note commits its restricted voting key binding, activation epoch, maturity epoch and exclusive unlock epoch. The constructor requires `activation <= maturity < unlock` and a voting key binding distinct from the owner's spending key binding. Registration authority, allowed delegation and the legitimacy of the snapshot root must already have been established by the external ledger. The oracle cannot create a bond or authenticate its origin by itself.

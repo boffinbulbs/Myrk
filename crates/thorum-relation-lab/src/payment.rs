@@ -274,8 +274,11 @@ pub fn check_payment(
         if note.creation_version != statement.protocol_version {
             return Err(RelationError::VersionMismatch);
         }
-        if note.commitment() != output.commitment || !output_commitments.insert(output.commitment) {
+        if note.commitment() != output.commitment {
             return Err(RelationError::CommitmentMismatch);
+        }
+        if !output_commitments.insert(output.commitment) {
+            return Err(RelationError::DuplicateOutputCommitment);
         }
         note.check_recipient_key(&private.recipient_public_key)?;
         let encryption_context = output_encryption_context(

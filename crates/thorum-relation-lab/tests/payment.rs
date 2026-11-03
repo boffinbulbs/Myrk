@@ -303,6 +303,60 @@ fn output_opening_and_context_substitution_are_rejected() {
 }
 
 #[test]
+fn duplicate_output_is_distinct_from_a_mismatched_opening() {
+    fn second_output(fixture: &Fixture, serial: u8) -> (PaymentOutput, OutputWitness) {
+        let (opening, _) = note(&fixture.receiver_owner, NATIVE_ASSET_ID, 49, serial, 1);
+        let commitment = opening.commitment();
+        let context = output_encryption_context(CHAIN, 1, TAG, 1, &commitment).unwrap();
+        let public_key = fixture.recipient.public_key();
+        let (envelope, encryption) =
+            seal_for_relation(&public_key, &context, &opening.private_opening_bytes()).unwrap();
+        (
+            PaymentOutput {
+                commitment,
+                envelope,
+            },
+            OutputWitness {
+                opening,
+                recipient_public_key: public_key,
+                encryption,
+            },
+        )
+    }
+
+    // Public synthetic values: 99 = 49 + 49 + 1 native fee.
+    let mut fixture = Fixture::new(99, 49, 1, NATIVE_ASSET_ID, NATIVE_ASSET_ID);
+    let first_commitment = fixture.statement.outputs[0].commitment;
+    let (distinct_output, distinct_witness) = second_output(&fixture, 3);
+    assert_ne!(distinct_output.commitment, first_commitment);
+    fixture.statement.outputs.push(distinct_output);
+    fixture.witness.outputs.push(distinct_witness);
+    fixture.resign();
+    assert_eq!(fixture.check(), Ok(()));
+
+    // A public duplicate with a different private opening fails the earlier comparison.
+    let distinct_commitment = fixture.statement.outputs[1].commitment;
+    fixture.statement.outputs[1].commitment = first_commitment;
+    fixture.resign();
+    assert_eq!(fixture.check(), Err(RelationError::CommitmentMismatch));
+    fixture.statement.outputs[1].commitment = distinct_commitment;
+    fixture.resign();
+    assert_eq!(fixture.check(), Ok(()));
+
+    // Recreate the first opening, with a fresh envelope bound to output index one.
+    let (duplicate_output, duplicate_witness) = second_output(&fixture, 2);
+    assert_eq!(duplicate_output.commitment, first_commitment);
+    let saved_output = std::mem::replace(&mut fixture.statement.outputs[1], duplicate_output);
+    let saved_witness = std::mem::replace(&mut fixture.witness.outputs[1], duplicate_witness);
+    fixture.resign();
+    assert_eq!(fixture.check(), Err(RelationError::DuplicateOutputCommitment));
+    fixture.statement.outputs[1] = saved_output;
+    fixture.witness.outputs[1] = saved_witness;
+    fixture.resign();
+    assert_eq!(fixture.check(), Ok(()));
+}
+
+#[test]
 fn ordinary_payment_rejects_mint_asset_substitution_and_non_native_fee_funding() {
     for fixture in [
         Fixture::new(100, 101, 0, NATIVE_ASSET_ID, NATIVE_ASSET_ID),
