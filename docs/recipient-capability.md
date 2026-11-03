@@ -139,6 +139,12 @@ Capability sharing and reuse also create visible relationships. An identical pub
 
 ## Recovery and backup boundary
 
+The source includes `PaymentStatement::recover_recipient_output` for local recovery of one selected output. It bounds the output count and index, matches the statement to independent creation chain, version, validation tag and full commitment, and matches the actual recipient key to the retained capability. It derives the existing encryption context from the selected statement fields and index, opens that same envelope, then passes the zeroizing plaintext into the existing typed v2 recovery checks. It returns only a sensitive local `NoteOpening` and adds no plaintext export API. The typed decoder retains its internal canonical reserialization.
+
+The expected creation version and validation tag belong to the original creation statement. They must not be replaced with a wallet's current version or tag during later restoration. The caller authenticates this creation association and index through its own accepted historical data. Equality with caller supplied context is not authentication. This method does not validate the whole payment, unselected outputs, proof, inclusion, reward origin, finality, maturity, spent state, data availability or permission to credit or spend. It does not implement note discovery or an encrypted backup store. Diagnostic errors and retained secrets stay within the local private wallet boundary.
+
+This composition changes the existing sender discard recovery test and adds two source tests for context and authority substitutions, encrypted byte changes, restoration and an independently indexed second output. The two output fixture conserves `100 = 49 + 50 + 1` under the local host relation. Moving its second envelope to index zero must fail even when its expected commitment remains aligned. These changes have source review only. Compilation, rustfmt, cryptographic operations and test execution remain unverified under separate gates. Earlier executed results do not validate this modified consumer or the new tests.
+
 Typed v2 recovery checks the expected commitment, chain, creation version, capability fields, and retained nullifier secret binding. It rejects noncanonical bytes, unsupported formats, malformed lengths, invalid policies, truncation, and trailing data. A bond additionally requires ordered activation, maturity and exclusive unlock epochs, and distinct owner and voting key bindings. Decrypting an envelope and accepting a typed opening are distinct checks. Neither one authenticates the application's intended recipient by itself.
 
 The v2 encrypted payload does not contain $k_N$. Retaining ciphertext and a recipient decryption key therefore does not reconstruct missing nullifier authority. The receiver must separately preserve its nullifier secret and spending authority with an explicit backup and compromise model. There is no seed only recovery claim, wallet restore process, archival availability protocol, or automatic key recovery in this interface.
@@ -153,7 +159,7 @@ Disclosure of a capability's shared nullifier secret grants tracking authority a
 
 ## Required evidence and remaining gates
 
-The [recipient tests](../crates/thorum-relation-lab/tests/recipient.rs) provide the following local evidence. Their nine tests exercise valid and invalid paths without claiming private proof validation.
+The original nine [recipient tests](../crates/thorum-relation-lab/tests/recipient.rs) cover the local evidence below without claiming private proof validation. The modified recovery consumer and two additional source tests have the unverified execution status stated above.
 
 | Evidence | Valid case | Invalid or boundary case |
 |---|---|---|

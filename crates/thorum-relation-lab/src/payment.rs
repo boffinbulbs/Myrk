@@ -2,13 +2,14 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use thorum_core::Amount;
 use thorum_crypto_lab::{
-    verify_authorization, verify_encryption_witness, Context, EncryptionWitness, SealedNote,
+    verify_authorization, verify_encryption_witness, Context, EncryptionWitness, RecipientKey,
+    SealedNote,
 };
 
 use crate::{
     codec::Reader, hash_fields, key_binding, short_tag, statement_frame, AssetId, ChainId, Digest64,
-    MerklePath, NoteOpening, NotePolicy, NullifierSecret, RelationError, FORMAT_VERSION,
-    MAX_STATEMENT_BYTES, NATIVE_ASSET_ID,
+    MerklePath, NoteOpening, NotePolicy, NullifierSecret, RecipientCapability, RecoveryContext,
+    RelationError, FORMAT_VERSION, MAX_STATEMENT_BYTES, NATIVE_ASSET_ID,
 };
 
 pub const MAX_PAYMENT_ITEMS: usize = 8;
@@ -116,6 +117,50 @@ impl PaymentStatement {
             outputs,
             native_fee,
         })
+    }
+
+    /// Recover one local v2 output against independently authenticated creation data.
+    /// This does not validate the payment, its inclusion or permission to spend.
+    pub fn recover_recipient_output(
+        &self,
+        output_index: usize,
+        expected_validation_tag: [u8; 32],
+        creation: &RecoveryContext,
+        recipient: &RecipientKey,
+        capability: &RecipientCapability,
+        secret: &NullifierSecret,
+    ) -> Result<NoteOpening, RelationError> {
+        if !(1..=MAX_PAYMENT_ITEMS).contains(&self.outputs.len()) {
+            return Err(RelationError::LimitExceeded);
+        }
+        let output = self
+            .outputs
+            .get(output_index)
+            .ok_or(RelationError::LimitExceeded)?;
+        if self.chain_id != creation.chain_id || self.chain_id != capability.chain_id() {
+            return Err(RelationError::ChainMismatch);
+        }
+        if self.protocol_version != creation.creation_version {
+            return Err(RelationError::VersionMismatch);
+        }
+        if self.validation_tag != expected_validation_tag {
+            return Err(RelationError::ContextMismatch);
+        }
+        if output.commitment != creation.expected_commitment {
+            return Err(RelationError::CommitmentMismatch);
+        }
+        if recipient.public_key().as_slice() != capability.recipient_public_key() {
+            return Err(RelationError::RecipientKeyMismatch);
+        }
+        let context = output_encryption_context(
+            self.chain_id,
+            self.protocol_version,
+            self.validation_tag,
+            output_index as u32,
+            &output.commitment,
+        )?;
+        let plaintext = recipient.open(&context, &output.envelope)?;
+        NoteOpening::recover_recipient(&plaintext, creation, capability, secret)
     }
 
     /// The full statement is hashed before signing. The 64 byte digest is not a proof.

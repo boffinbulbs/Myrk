@@ -2,7 +2,7 @@ use std::collections::BTreeSet;
 
 use thorum_core::Amount;
 use thorum_crypto_lab::{
-    seal_for_relation, verify_encryption_witness, AuthorizationKey, RecipientKey,
+    seal_for_relation, verify_encryption_witness, AuthorizationKey, Error as CryptoError, RecipientKey,
 };
 use thorum_relation_lab::*;
 
@@ -451,33 +451,33 @@ fn public_capability_output_survives_sender_discard_and_receiver_recovers_and_sp
         statement
     };
     let delivered = &statement.outputs[0];
-    let encryption_context =
-        output_encryption_context(CHAIN, 1, TAG, 0, &delivered.commitment).unwrap();
-    let plaintext = receiver
-        .kem
-        .open(&encryption_context, &delivered.envelope)
-        .unwrap();
     let creation = RecoveryContext {
         chain_id: CHAIN,
         creation_version: 1,
         expected_commitment: delivered.commitment,
     };
-    let opening = NoteOpening::recover_recipient(
-        &plaintext,
-        &creation,
-        &receiver.capability,
-        &receiver.secret,
-    )
-    .unwrap();
-    let stable_nf = opening.nullifier(&receiver.secret).unwrap();
-    for version in [1, 7] {
-        let restored = NoteOpening::recover_recipient(
-            &plaintext,
+    let opening = statement
+        .recover_recipient_output(
+            0,
+            TAG,
             &creation,
+            &receiver.kem,
             &receiver.capability,
             &receiver.secret,
         )
         .unwrap();
+    let stable_nf = opening.nullifier(&receiver.secret).unwrap();
+    for version in [1, 7] {
+        let restored = statement
+            .recover_recipient_output(
+                0,
+                TAG,
+                &creation,
+                &receiver.kem,
+                &receiver.capability,
+                &receiver.secret,
+            )
+            .unwrap();
         let path = if version == 1 {
             MerklePath::new(0, vec![]).unwrap()
         } else {
@@ -514,6 +514,230 @@ fn public_capability_output_survives_sender_discard_and_receiver_recovers_and_sp
             Err(RelationError::OwnerKeyMismatch)
         );
     }
+}
+
+fn recover_output(
+    statement: &PaymentStatement,
+    index: usize,
+    tag: [u8; 32],
+    creation: &RecoveryContext,
+    receiver: &Receiver,
+) -> Result<NoteOpening, RelationError> {
+    statement.recover_recipient_output(
+        index,
+        tag,
+        creation,
+        &receiver.kem,
+        &receiver.capability,
+        &receiver.secret,
+    )
+}
+
+#[test]
+fn statement_recovery_binds_creation_context_and_retained_authority() {
+    let receiver = Receiver::new();
+    let (mut statement, witness) = sender_payment(
+        &receiver.capability,
+        receiver.capability.recipient_public_key(),
+    );
+    check(&statement, &witness).unwrap();
+    let mut creation = recovery_context(&witness.outputs[0].opening);
+    let expected_nullifier = witness.outputs[0]
+        .opening
+        .nullifier(&receiver.secret)
+        .unwrap();
+    drop(witness);
+    let recovered = recover_output(&statement, 0, TAG, &creation, &receiver).unwrap();
+    assert_eq!(recovered.commitment(), creation.expected_commitment);
+    assert_eq!(
+        recovered.nullifier(&receiver.secret).unwrap(),
+        expected_nullifier
+    );
+
+    for index in [1, usize::MAX] {
+        assert_eq!(
+            recover_output(&statement, index, TAG, &creation, &receiver).err(),
+            Some(RelationError::LimitExceeded)
+        );
+    }
+    for count in [0, 9] {
+        let mut changed = statement.clone();
+        changed.outputs.resize(count, statement.outputs[0].clone());
+        assert_eq!(
+            recover_output(&changed, 0, TAG, &creation, &receiver).err(),
+            Some(RelationError::LimitExceeded)
+        );
+    }
+    creation.chain_id[0] ^= 1;
+    assert_eq!(
+        recover_output(&statement, 0, TAG, &creation, &receiver).err(),
+        Some(RelationError::ChainMismatch)
+    );
+    creation.chain_id[0] ^= 1;
+    creation.creation_version = 2;
+    assert_eq!(
+        recover_output(&statement, 0, TAG, &creation, &receiver).err(),
+        Some(RelationError::VersionMismatch)
+    );
+    creation.creation_version = 1;
+    assert_eq!(
+        recover_output(&statement, 0, [9; 32], &creation, &receiver).err(),
+        Some(RelationError::ContextMismatch)
+    );
+    creation.expected_commitment[63] ^= 1;
+    assert_eq!(
+        recover_output(&statement, 0, TAG, &creation, &receiver).err(),
+        Some(RelationError::CommitmentMismatch)
+    );
+    creation.expected_commitment[63] ^= 1;
+
+    statement.validation_tag[0] ^= 1;
+    assert_eq!(
+        recover_output(&statement, 0, TAG, &creation, &receiver).err(),
+        Some(RelationError::ContextMismatch)
+    );
+    assert_eq!(
+        recover_output(&statement, 0, statement.validation_tag, &creation, &receiver).err(),
+        Some(RelationError::Crypto(CryptoError::AuthenticationFailed))
+    );
+    statement.validation_tag[0] ^= 1;
+    statement.outputs[0].commitment[63] ^= 1;
+    assert_eq!(
+        recover_output(&statement, 0, TAG, &creation, &receiver).err(),
+        Some(RelationError::CommitmentMismatch)
+    );
+    creation.expected_commitment[63] ^= 1;
+    assert_eq!(
+        recover_output(&statement, 0, TAG, &creation, &receiver).err(),
+        Some(RelationError::Crypto(CryptoError::AuthenticationFailed))
+    );
+    statement.outputs[0].commitment[63] ^= 1;
+    creation.expected_commitment[63] ^= 1;
+    statement.outputs[0].envelope.ciphertext[0] ^= 1;
+    assert_eq!(
+        recover_output(&statement, 0, TAG, &creation, &receiver).err(),
+        Some(RelationError::Crypto(CryptoError::AuthenticationFailed))
+    );
+    statement.outputs[0].envelope.ciphertext[0] ^= 1;
+
+    let wrong_key = RecipientKey::generate().unwrap();
+    assert_eq!(
+        statement
+            .recover_recipient_output(
+                0,
+                TAG,
+                &creation,
+                &wrong_key,
+                &receiver.capability,
+                &receiver.secret,
+            )
+            .err(),
+        Some(RelationError::RecipientKeyMismatch)
+    );
+    let wrong_secret = NullifierSecret::from_bytes([8; 32]);
+    assert_eq!(
+        statement
+            .recover_recipient_output(
+                0,
+                TAG,
+                &creation,
+                &receiver.kem,
+                &receiver.capability,
+                &wrong_secret,
+            )
+            .err(),
+        Some(RelationError::NullifierSecretMismatch)
+    );
+    let wrong_capability = RecipientCapability::new(
+        CHAIN,
+        &receiver.owner.public_key(),
+        &receiver.kem.public_key(),
+        &wrong_secret,
+    )
+    .unwrap();
+    assert_eq!(
+        statement
+            .recover_recipient_output(
+                0,
+                TAG,
+                &creation,
+                &receiver.kem,
+                &wrong_capability,
+                &receiver.secret,
+            )
+            .err(),
+        Some(RelationError::CapabilityMismatch)
+    );
+    let restored = recover_output(&statement, 0, TAG, &creation, &receiver).unwrap();
+    assert_eq!(restored.commitment(), creation.expected_commitment);
+    assert_eq!(
+        restored.nullifier(&receiver.secret).unwrap(),
+        expected_nullifier
+    );
+}
+
+#[test]
+fn statement_recovery_binds_the_actual_second_output_index() {
+    let sender = Receiver::new();
+    let receiver = Receiver::new();
+    let input = public_output(&sender.capability, 1, 100, NotePolicy::Payment);
+    let first = public_output(&receiver.capability, 1, 49, NotePolicy::Payment);
+    let second = public_output(&receiver.capability, 1, 50, NotePolicy::Payment);
+    let creation = recovery_context(&second);
+    let expected_nullifier = second.nullifier(&receiver.secret).unwrap();
+    let (mut statement, mut witness) = transaction(
+        input,
+        NullifierSecret::from_bytes(*sender.secret.export_backup()),
+        &sender.owner,
+        first,
+        receiver.capability.recipient_public_key(),
+        1,
+        MerklePath::new(0, vec![]).unwrap(),
+    );
+    let context = output_encryption_context(CHAIN, 1, TAG, 1, &creation.expected_commitment).unwrap();
+    let (envelope, encryption) = seal_for_relation(
+        receiver.capability.recipient_public_key(),
+        &context,
+        &second.private_opening_bytes(),
+    )
+    .unwrap();
+    statement.outputs.push(PaymentOutput {
+        commitment: creation.expected_commitment,
+        envelope,
+    });
+    witness.outputs.push(OutputWitness {
+        opening: second,
+        recipient_public_key: receiver.kem.public_key(),
+        encryption,
+    });
+    let message = statement.authorization_message().unwrap();
+    let authorization_context = statement.authorization_context().unwrap();
+    for input in &mut witness.inputs {
+        input.authorization = sender
+            .owner
+            .sign(&authorization_context, &message)
+            .unwrap();
+    }
+    check(&statement, &witness).unwrap();
+    drop(witness);
+    let recovered = recover_output(&statement, 1, TAG, &creation, &receiver).unwrap();
+    assert_eq!(recovered.commitment(), creation.expected_commitment);
+    assert_eq!(
+        recovered.nullifier(&receiver.secret).unwrap(),
+        expected_nullifier
+    );
+    statement.outputs.swap(0, 1);
+    assert_eq!(
+        recover_output(&statement, 0, TAG, &creation, &receiver).err(),
+        Some(RelationError::Crypto(CryptoError::AuthenticationFailed))
+    );
+    statement.outputs.swap(0, 1);
+    let restored = recover_output(&statement, 1, TAG, &creation, &receiver).unwrap();
+    assert_eq!(restored.commitment(), creation.expected_commitment);
+    assert_eq!(
+        restored.nullifier(&receiver.secret).unwrap(),
+        expected_nullifier
+    );
 }
 
 #[test]
