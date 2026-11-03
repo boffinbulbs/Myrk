@@ -20,7 +20,7 @@ edition = "2021"
 rust-version = "1.94.1"
 publish = false
 license = "MIT"
-repository = "https://github.com/th0rigin/Thorum"
+repository = "https://github.com/boffinbulbs/Myrk"
 
 [profile.release]
 overflow-checks = true

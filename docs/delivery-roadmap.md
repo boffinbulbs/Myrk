@@ -1,6 +1,6 @@
 # Development stages and feature boundaries
 
-Kova develops through independently reviewable increments. Each stage records its executable boundary, supporting evidence and remaining dependencies. Architecture documents describe intended rules. A feature becomes an implemented capability only after its required behavior and rejection cases are reproducible.
+Myrk develops through independently reviewable increments. Each stage records its executable boundary, supporting evidence and remaining dependencies. Architecture documents describe intended rules. A feature becomes an implemented capability only after its required behavior and rejection cases are reproducible.
 
 The current stage is private cryptographic feasibility. The workspace contains monetary accounting, transparent references and isolated hiding proof components. It has no running chain, complete private payment relation, confidential staking service or desktop wallet. Component results are recorded in [implementation milestones](development.md).
 
@@ -8,7 +8,7 @@ The current stage is private cryptographic feasibility. The workspace contains m
 
 The [minimum private cash launch](minimal-launch.md) targets a complete native-payment chain before general contracts, Safe and expanded client/service applications. Its base includes real private proofs, confidential checkpoint consensus and bootstrap, supported work, authenticated atomic state, recovery, independent nodes and a basic private payment client. Later feature delivery does not permit a transparent payment fallback or incomplete base verification.
 
-Kova's [own private programmable contract system](private-contracts.md) remains a full architectural target. EVM compatibility is not required. Contract and Safe activation use separately reviewed versions with preserved old-note, consumption, maturity and finality semantics. No activation height, production profile or release date is selected by this delivery decision.
+Myrk's [own private programmable contract system](private-contracts.md) remains a full architectural target. EVM compatibility is not required. Contract and Safe activation use separately reviewed versions with preserved old-note, consumption, maturity and finality semantics. No activation height, production profile or release date is selected by this delivery decision.
 
 ## Delivery sequence
 

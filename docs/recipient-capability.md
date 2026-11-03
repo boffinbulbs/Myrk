@@ -135,7 +135,7 @@ Output consistency requires the public KEM key used for encryption to match the 
 
 Replacing an entire capability can still create an internally consistent output for a different recipient. Internal consistency does not authenticate a person, an application destination, a copied payment request, or a public address. The application must obtain and authenticate the intended recipient capability through a defined routing and identity policy. The current laboratory implements no such policy.
 
-Capability sharing and reuse also create visible relationships. An identical public capability exposes the same owner binding, nullifier binding, and static KEM key to parties receiving it. Note discovery, address reuse, capability rotation, scope separation, relay metadata, and observer correlation remain separate privacy gates. The binary capability representation is experimental and does not implement the `kova` wallet address namespace.
+Capability sharing and reuse also create visible relationships. An identical public capability exposes the same owner binding, nullifier binding, and static KEM key to parties receiving it. Note discovery, address reuse, capability rotation, scope separation, relay metadata, and observer correlation remain separate privacy gates. The binary capability representation is experimental and does not implement the `myrk` wallet address namespace.
 
 ## Recovery and backup boundary
 

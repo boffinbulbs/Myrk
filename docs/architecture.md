@@ -2,7 +2,7 @@
 
 ## Component boundaries
 
-Kova uses one ledger and one set of native conservation and authorization rules. Payment, asset, application, and staking transitions must share compatible ownership, nullifier, commitment, and rollback semantics.
+Myrk uses one ledger and one set of native conservation and authorization rules. Payment, asset, application, and staking transitions must share compatible ownership, nullifier, commitment, and rollback semantics.
 
 The implementation targets a custom chain with reviewed cryptographic dependencies. [Node operation and service integration](node-integration.md) defines ordinary validation independently from mining, staking and wallet authority. Server and exchange interfaces remain subject to the same private relation and consensus gates.
 
@@ -10,7 +10,7 @@ The implementation targets a custom chain with reviewed cryptographic dependenci
 
 The [minimum private cash launch](minimal-launch.md) is the first release target. It includes complete private native payments, independent validation, atomic authenticated state, supported work, confidential checkpoint consensus and bootstrap, recovery and a basic payment client. General contracts and the Safe can activate later through explicit protocol upgrades. This delivery split does not waive any base privacy, proof, consensus, recovery or network gate.
 
-The [private programmable application architecture](private-contracts.md) retains Kova's own general private smart contract target. EVM compatibility is not required. Programs must share the same private source bindings, authorization, global consumption, conservation and encrypted-delivery rules as native payments. Their execution model, compiler, supported resources, matched proof/verifier and activation remain separate construction work.
+The [private programmable application architecture](private-contracts.md) retains Myrk's own general private smart contract target. EVM compatibility is not required. Programs must share the same private source bindings, authorization, global consumption, conservation and encrypted-delivery rules as native payments. Their execution model, compiler, supported resources, matched proof/verifier and activation remain separate construction work.
 
 Unsupported contract and Safe transitions are rejected before their activation. A later version must preserve old note meaning, stable nullifiers, reward origin/maturity, finality and bond restrictions. It cannot turn an unimplemented application into a successful no-op or reinterpret old notes through a wallet setting. The full Qt/mobile experience, broad service integration, governance interface and later Aegis retain their delivery milestones.
 
@@ -32,8 +32,8 @@ Unsupported contract and Safe transitions are rejected before their activation. 
 ## State separation
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../research/protocol-figures/figures/base-architecture-dark.svg">
-  <img alt="Planned base architecture and independent validation responsibilities" src="../research/protocol-figures/figures/base-architecture.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/diagrams/base-architecture-dark.svg">
+  <img alt="Planned base architecture and independent validation responsibilities" src="../assets/diagrams/base-architecture.svg">
 </picture>
 
 The monetary module owns a narrow accounting transition. A future chain state additionally needs authenticated commitment roots, spent nullifier state, asset policy, execution commitments, block identity/order, and finalized checkpoint context. Passing an amount to an accounting function does not authorize its creation or destruction.
@@ -46,7 +46,7 @@ The [RPC and data boundary](rpc-and-data.md) separates public explorer/index dat
 
 ## Later Aegis state boundary
 
-The [Kova Aegis Protocol](aegis.md) extends this architecture through a separately versioned later consensus milestone. It is not part of the initial onward spending rule. Under its design, eligible stakers commit one authoritative private transition sequence and miners record its contiguous prefix. Recording advances a cursor without executing the transition again. An unfinalized work reorganization cannot erase already committed Aegis consumption or its dependent payments.
+The [Myrk Aegis Protocol](aegis.md) extends this architecture through a separately versioned later consensus milestone. It is not part of the initial onward spending rule. Under its design, eligible stakers commit one authoritative private transition sequence and miners record its contiguous prefix. Recording advances a cursor without executing the transition again. An unfinalized work reorganization cannot erase already committed Aegis consumption or its dependent payments.
 
 Certified note roots, global spent identities, restrictions, finalized mined height, monetary imports, encrypted data and epoch authority must share the same authenticated state. Checkpoint advancement and epoch changes are serialized controls. Aegis requires its own consensus, confidential quorum, data availability, bootstrap and activation review. Current runtime behavior and the first chain milestone remain unchanged. Its [figures](../research/aegis/README.md) illustrate planned ordering without a performance claim.
 

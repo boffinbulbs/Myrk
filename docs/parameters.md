@@ -23,9 +23,11 @@ The later [Aegis protocol](aegis.md) evaluates certified spending before mining 
 
 The values below describe the existing executable monetary model and its historical figures. Its 120 second cadence is retained for reproducibility. The new testnet timing target is documented separately above.
 
+Myrk is the project name. THM remains the historical accounting symbol, without selecting a production ticker.
+
 | Parameter | Value |
 |---|---:|
-| Name | Kova |
+| Name | Myrk |
 | Ticker | THM |
 | Atomic units per THM | 100,000,000 |
 | Cumulative issuance ceiling | 63,000,000 THM |

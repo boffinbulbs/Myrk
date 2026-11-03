@@ -1,6 +1,6 @@
 [package]
 name = "thorum-crypto-lab"
-description = "Isolated primitive integration and measurement for Thorum research"
+description = "Isolated primitive integration and measurement for Myrk research"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true

@@ -15,7 +15,7 @@ Do not introduce a placeholder proof, signature, randomness source, or checkpoin
 
 ## Documentation and research
 
-Write directly about Kova's architecture, implementation, and results. Record definitions, assumptions, equations, parameter values, references, and open questions. Include source data and a reproducible generation command for each research figure.
+Write directly about Myrk's architecture, implementation, and results. Record definitions, assumptions, equations, parameter values, references, and open questions. Include source data and a reproducible generation command for each research figure.
 
 ## Dependencies and source attribution
 

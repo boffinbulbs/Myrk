@@ -1,6 +1,6 @@
 # Node operation and service integration
 
-Kova targets a custom ledger and consensus implementation with reviewed cryptographic dependencies. The current workspace contains research components and specifications. A network node, wallet RPC service and exchange integration are not implemented yet. Complete private payment and confidential stake feasibility precede their dependent interfaces.
+Myrk targets a custom ledger and consensus implementation with reviewed cryptographic dependencies. The current workspace contains research components and specifications. A network node, wallet RPC service and exchange integration are not implemented yet. Complete private payment and confidential stake feasibility precede their dependent interfaces.
 
 ## Independent node operation
 
@@ -27,7 +27,7 @@ The later [Aegis state architecture](aegis.md) adds verification and synchroniza
 
 Service integration is an engineering target. An exchange independently decides whether and when to support an asset. Protocol software cannot guarantee admission, liquidity or a listing date.
 
-A service needs a documented network identifier, canonical address codec, stable transaction and node APIs, reproducible node builds, supported upgrade behavior and a private wallet integration. The main address namespace target remains `kova`, with versioned types and checksums still subject to the [address specification](wallet.md#address-namespace).
+A service needs a documented network identifier, canonical address codec, stable transaction and node APIs, reproducible node builds, supported upgrade behavior and a private wallet integration. The main address namespace target remains `myrk`, with versioned types and checksums still subject to the [address specification](wallet.md#address-namespace).
 
 | Interface | Required behavior |
 |---|---|

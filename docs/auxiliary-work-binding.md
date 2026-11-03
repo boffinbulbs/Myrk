@@ -49,7 +49,7 @@ The existing `PaymentStatement` encoder binds a payment's public effect and encr
 
 The required job construction has this acyclic order:
 
-1. Derive the exact child effects and expected private proof statements from the current authenticated Kova context.
+1. Derive the exact child effects and expected private proof statements from the current authenticated Myrk context.
 2. Construct and verify the actual bounded authorization data. Its statements bind effects and prior context, without referring to the bytes of their own proofs or the eventual work seal.
 3. Freeze one canonical preseal job containing the child network, active rules and resource identity, predecessor and ordering context, expected child target, effect binding, actual public authorization binding, recovery data binding and treasury policy binding.
 4. Compute the 64 byte job commitment from those actual canonical bytes under the [specified outer framing and domain](preseal-job.md), then place it in the parent carrier. The inner class encodings and supported actual proof mapping remain required. No shorter replacement authorization primitive is introduced.
@@ -62,11 +62,11 @@ The miner record exposes only the proposed job commitment. It must not carry pri
 
 ## Separate work targets
 
-Let `T_child` be derived from authenticated Kova predecessor state. A child share requires an actual valid fixed-parameter solution and `SHA256d(header) <= T_child`. Whether that same share wins the parent network is a distinct comparison with its authenticated expected `T_parent`, together with the parent's other validity rules.
+Let `T_child` be derived from authenticated Myrk predecessor state. A child share requires an actual valid fixed-parameter solution and `SHA256d(header) <= T_child`. Whether that same share wins the parent network is a distinct comparison with its authenticated expected `T_parent`, together with the parent's other validity rules.
 
 The existing [header diagnostic](../research/header-work/src/header.rs) matches one expected raw parent `nBits` and uses its expanded value as the comparison target. That interface intentionally couples two facts for its saved fixture. It cannot be relabeled as a general auxiliary-share predicate: using the parent's harder target can exclude legitimate child-only shares, while using the child target as the expected raw parent field changes the parent template requirement. Reading an untrusted header's bits back into `ExpectedWork` would evade its policy boundary.
 
-A future cohesive successor must keep expected raw parent header policy, the child threshold and any parent-win assertion distinct. No such successor is implemented by this document, and the existing fixture verifier remains unchanged. Removing the expected-bits check, resetting a profile or supplying a host verdict is not an integration fix. Ordinary Kova validators are not silently required to run a parent full node. A claimed external canonical history or winning receipt needs its own evidence path.
+A future cohesive successor must keep expected raw parent header policy, the child threshold and any parent-win assertion distinct. No such successor is implemented by this document, and the existing fixture verifier remains unchanged. Removing the expected-bits check, resetting a profile or supplying a host verdict is not an integration fix. Ordinary Myrk validators are not silently required to run a parent full node. A claimed external canonical history or winning receipt needs its own evidence path.
 
 ## Proposed bounded witness contents
 
@@ -91,7 +91,7 @@ Carrier admission must bound counts and all conditional byte ranges before ownin
 
 The retained [primary digest vectors](https://github.com/zcash/zcash-test-vectors/blob/78321beacb0e0477e33cd002b56585a107c2708c/test-vectors/json/zip_0244.json) contain ten raw v5 transactions with independently saved transaction and authorization digests. The generator uses NU5 branch `0xc2d6d0b4`. Its shielded proof bytes are synthetic, so these are digest references, not ten valid mined transactions or complete parent witnesses. The generator was inspected, not imported or executed.
 
-The separately captured [mainnet block 1687106](https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-test/src/vectors/block-main-1-687-106.txt) contains 9117 decoded bytes. It supplies actual historical parent-format data. Only byte framing has been inspected in this increment. No header work, tree, digest, proof or history check has run on it. It contains no demonstrated Kova job record. The earlier genesis positive is not evidence for a v5 authorization tree.
+The separately captured [mainnet block 1687106](https://github.com/ZcashFoundation/zebra/blob/f72dc18766be63574f17510ee35e61ff2abfe2ae/zebra-test/src/vectors/block-main-1-687-106.txt) contains 9117 decoded bytes. It supplies actual historical parent-format data. Only byte framing has been inspected in this increment. No header work, tree, digest, proof or history check has run on it. It contains no demonstrated Myrk job record. The earlier genesis positive is not evidence for a v5 authorization tree.
 
 The architectural decision is to retain the coinbase-script carrier and same-position dual-root construction as the candidate, and **refuse execution or activation until its remaining inputs are concrete**:
 

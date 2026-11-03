@@ -1,6 +1,6 @@
 [package]
 name = "thorum-core"
-description = "Integer monetary accounting for Thorum development parameters"
+description = "Integer monetary accounting for Myrk development parameters"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true

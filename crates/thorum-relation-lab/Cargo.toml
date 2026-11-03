@@ -1,6 +1,6 @@
 [package]
 name = "thorum-relation-lab"
-description = "Transparent local payment and stake witness checks for Thorum research"
+description = "Transparent local payment and stake witness checks for Myrk research"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true

@@ -1,4 +1,4 @@
-//! Integer monetary accounting for Thorum (THM) development parameters.
+//! Integer monetary accounting for Myrk development parameters.
 //!
 //! This crate implements an issuance ceiling, a frozen subsidy schedule, planned
 //! reward allocation, and cumulative burns. All monetary calculations use atomic

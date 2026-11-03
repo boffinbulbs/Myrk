@@ -1,20 +1,20 @@
-# Kova
+# Myrk
 
 **Private cash. Protected by design.**
 
-Kova is a custom blockchain research implementation for private electronic cash. Its objective is to give users a confidential way to hold and transfer value, protect savings through explicit spending policies, and retain independent verification as cryptographic technology evolves.
+Myrk is a custom blockchain research implementation for private electronic cash. Its objective is to give users a confidential way to hold and transfer value, protect savings through explicit spending policies, and retain independent verification as cryptographic technology evolves.
 
 The protocol is being developed around local witness construction, post quantum authorization and recipient encryption, auxiliary proof of work and stake checkpoint consensus. Private contracts, protected wallet balances and cryptographic migration extend the same ledger architecture. The standard payment path targets privacy by default.
 
-[Website](https://kova.cash/), [protocol specification](docs/research-target.md), [architecture](docs/architecture.md), [research index](docs/research-index.md), [implementation](docs/development.md), [build instructions](#build-and-reproduce).
+[Website](https://myrk.org/), [protocol specification](docs/research-target.md), [architecture](docs/architecture.md), [research index](docs/research-index.md), [implementation](docs/development.md), [build instructions](#build-and-reproduce).
 
 ## Architecture
 
 Wallets retain spending secrets, construct private witnesses, execute application logic and encrypt recipient data locally. Validators check the public transition statement and its proof against authenticated state. Work, staking and ordinary node operation have distinct responsibilities.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="research/protocol-figures/figures/base-architecture-dark.svg">
-  <img alt="Kova architecture connecting local wallets and private proofs to ledger validation, auxiliary work, stake checkpoints and authenticated storage" src="research/protocol-figures/figures/base-architecture.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/base-architecture-dark.svg">
+  <img alt="Myrk architecture connecting local wallets and private proofs to ledger validation, auxiliary work, stake checkpoints and authenticated storage" src="assets/diagrams/base-architecture.svg">
 </picture>
 
 The diagrams express required interfaces and ordering. The repository currently implements research components and bounded experiments. Complete private payments, confidential staking, a network node and a desktop wallet remain implementation milestones.
@@ -93,7 +93,7 @@ The [cryptographic specification](docs/research-target.md), [primitive measureme
 
 ## Work, staking and independent verification
 
-Auxiliary proof of work targets compatible Equihash (200,9) parent work. A valid auxiliary witness must authenticate the Kova candidate, the complete relevant parent commitment path, chain domains and target rules. Additional parent profiles require explicit versioned verification rules and compatibility tests. Mining adapters and consensus changes have different activation boundaries.
+Auxiliary proof of work targets compatible Equihash (200,9) parent work. A valid auxiliary witness must authenticate the Myrk candidate, the complete relevant parent commitment path, chain domains and target rules. Additional parent profiles require explicit versioned verification rules and compatibility tests. Mining adapters and consensus changes have different activation boundaries.
 
 Stake checkpoints certify eligible chain state under a defined consensus protocol. If $E_e$ is the eligible stake set for epoch $e$, a weighted quorum has the schematic requirement
 
@@ -147,8 +147,8 @@ $$
 The ordering symbol denotes certification before recording. Each onward payment needs its own valid proof, eligible certified state, complete payload and consensus decision. Preliminary locks are distinct from spendable finalized outputs. Aegis requires its own later implementation and activation. No transfer latency has been measured.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="research/aegis/figures/aegis-architecture-dark.svg">
-  <img alt="Aegis architecture for private payments between C, Y and Z after stake certification and before subsequent work recording" src="research/aegis/figures/aegis-architecture.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/diagrams/aegis-architecture-dark.svg">
+  <img alt="Aegis architecture for private payments between C, Y and Z after stake certification and before subsequent work recording" src="assets/diagrams/aegis-architecture.svg">
 </picture>
 
 The [Aegis specification](docs/aegis.md) records its certified state, mining interface, privacy boundaries and failure recovery obligations. The initial test chain retains checkpoint finality for onward spending.
@@ -217,14 +217,14 @@ The [research implementation index](docs/research-index.md) preserves the comple
 The repository currently builds research crates and executable tests. Node, mining and wallet launch interfaces follow their runtime milestones. The validated toolchain is Rust 1.94.1. Exact dependencies are recorded in the lock files.
 
 ```text
-git clone https://github.com/boffinbulbs/Kova.git
-cd Kova
+git clone https://github.com/boffinbulbs/Myrk.git
+cd Myrk
 rustup toolchain install 1.94.1 --profile minimal --component rustfmt --component clippy
 rustup run 1.94.1 cargo fetch --locked
 rustup run 1.94.1 cargo test -p thorum-core --locked --offline
 ```
 
-The historical `thorum-*` package identifiers remain part of retained laboratory interfaces and fixture compatibility. Project identity and the intended `kova` address namespace are defined in the [identity record](docs/project-identity.md).
+The historical `thorum-*` package identifiers remain part of retained laboratory interfaces and fixture compatibility. Project identity and the intended `myrk` address namespace are defined in the [identity record](docs/project-identity.md).
 
 Each [laboratory](docs/research-index.md) supplies its own reproduction instructions, source pins, hardware and exact tested scope. Large provers execute serially with explicit resource limits. [Component check instructions](docs/development.md#proof-component-checks) and [verification scope](docs/verification-scope.md) document the test organization.
 

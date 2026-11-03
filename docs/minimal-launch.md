@@ -28,7 +28,7 @@ Protocol pool and developer allocations require real accounting and authenticate
 
 | Later milestone | Architectural commitment retained now |
 |---|---|
-| General private smart contracts | Kova's own deterministic private execution and proof model with private inputs/state, explicit public effects, bounded resources and the common ledger's authority/consumption rules |
+| General private smart contracts | Myrk's own deterministic private execution and proof model with private inputs/state, explicit public effects, bounded resources and the common ledger's authority/consumption rules |
 | Confidential assets and application templates | Versioned policy authority, per-asset conservation, private escrow and application state under the same kernel |
 | Private Safe | Protected receiving, delayed requests, restricted recovery cancellation, common pending-right consumption and the separate wallet view |
 | Expanded clients and services | Qt/mobile interfaces, scoped viewing, exchange/service APIs and bounded public indexing without exporting spending authority |

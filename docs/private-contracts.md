@@ -1,6 +1,6 @@
 # Private programmable applications
 
-Kova targets its own general programmable private application system. The objective includes private smart contracts, confidential assets, escrow and the Safe under one authenticated ledger. EVM bytecode, Ethereum account semantics and Ethereum tooling compatibility are not prerequisites. No VM, instruction set, compiler, gas schedule or production contract proof class is implemented or selected by this document.
+Myrk targets its own general programmable private application system. The objective includes private smart contracts, confidential assets, escrow and the Safe under one authenticated ledger. EVM bytecode, Ethereum account semantics and Ethereum tooling compatibility are not prerequisites. No VM, instruction set, compiler, gas schedule or production contract proof class is implemented or selected by this document.
 
 The [minimum private cash release](minimal-launch.md) can precede contract activation. The complete functionality remains in the [architecture](architecture.md) and [delivery roadmap](delivery-roadmap.md).
 

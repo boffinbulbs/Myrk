@@ -1,6 +1,6 @@
-# Kova Aegis Protocol
+# Myrk Aegis Protocol
 
-Kova Aegis is the later protocol design for private payments that become spendable after stake consensus, before their recording in the mined chain. Wallets construct complete private payment proofs locally. Eligible stakers commit an ordered state transition. Miners subsequently record that committed history under the existing auxiliary work rules.
+Myrk Aegis is the later protocol design for private payments that become spendable after stake consensus, before their recording in the mined chain. Wallets construct complete private payment proofs locally. Eligible stakers commit an ordered state transition. Miners subsequently record that committed history under the existing auxiliary work rules.
 
 ## Development boundary
 
@@ -17,8 +17,8 @@ Aegis is a separate later milestone. The initial chain scope retains complete pr
 The architecture uses one ordered certified history and one PoW chain. Contracts and the wallet Safe retain their own delivery stages. Unsupported application rights cannot become spendable merely because a committee signs them.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../research/aegis/figures/aegis-architecture-dark.svg">
-  <img alt="Later Aegis private payment architecture from C through Y to Z, with subsequent mining recording" src="../research/aegis/figures/aegis-architecture.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/diagrams/aegis-architecture-dark.svg">
+  <img alt="Later Aegis private payment architecture from C through Y to Z, with subsequent mining recording" src="../assets/diagrams/aegis-architecture.svg">
 </picture>
 
 The figures show planned dependencies and ordering. They contain no measured performance data. Their [source and reproduction record](../research/aegis/README.md) are retained separately.
@@ -93,8 +93,8 @@ $$
 A mined block authenticates a contiguous extension from its parent's cursor. It cannot skip a batch, reorder transactions, alter encrypted data or replace a committed spend. Recording does not append commitments, consume nullifiers, debit fees or issue the same reward twice. Replaying history on a new node reconstructs each transition exactly once.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../research/aegis/figures/aegis-certification-order-dark.svg">
-  <img alt="Illustrative certification sequence and later mined recording cursor" src="../research/aegis/figures/aegis-certification-order.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="../assets/diagrams/aegis-certification-order-dark.svg">
+  <img alt="Illustrative certification sequence and later mined recording cursor" src="../assets/diagrams/aegis-certification-order.svg">
 </picture>
 
 A reorganization of unfinalized work can change a branch's recording cursor. It cannot erase the certified state or make an already committed nullifier unused. Nodes retain the committed data needed to record it again. Work selection remains restricted to branches compatible with finalized work anchors and the certified history. Greater work does not override a conflicting valid Aegis commitment.
@@ -124,7 +124,7 @@ Explicit ML-DSA-87 signatures are the initial certificate evaluation baseline. T
 
 Confidential eligibility requires an actual construction proving authorized distinct signers and the hidden weight threshold. Separate individual eligibility proofs do not automatically provide an aggregate of hidden weights. Distributed generation of that evidence, transcript privacy, canonical ordering, signer accountability and bounded verification are unresolved gates. Revealing holdings or adopting an unsupported classical aggregate is not a completion of this requirement.
 
-Votes bind chain, version, epoch, sequence, round, phase, batch digest and eligibility snapshot. Persistent signing records must survive crashes, restores and duplicated services before votes leave the signer. The [durable signing and replay reference](https://github.com/cometbft/cometbft/blob/d03254d3599b973f979314e6383b89fa1802e679/spec/consensus/wal.md) motivates a dedicated crash and replay test gate. Exact Kova domains and encodings remain unfrozen.
+Votes bind chain, version, epoch, sequence, round, phase, batch digest and eligibility snapshot. Persistent signing records must survive crashes, restores and duplicated services before votes leave the signer. The [durable signing and replay reference](https://github.com/cometbft/cometbft/blob/d03254d3599b973f979314e6383b89fa1802e679/spec/consensus/wal.md) motivates a dedicated crash and replay test gate. Exact Myrk domains and encodings remain unfrozen.
 
 Proofs, commitments, nullifiers, encryption, consensus signatures, history and recovery each retain their own post quantum analysis. Current component experiments do not establish a combined quantum security level or confidential quorum protocol.
 

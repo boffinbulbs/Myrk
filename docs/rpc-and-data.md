@@ -2,7 +2,7 @@
 
 ## Scope and implementation status
 
-Kova's interfaces must support independent nodes, explorers, wallets and exchange integration while preserving the private transaction relation. Public verification data and private wallet capabilities have separate interfaces and authorities.
+Myrk's interfaces must support independent nodes, explorers, wallets and exchange integration while preserving the private transaction relation. Public verification data and private wallet capabilities have separate interfaces and authorities.
 
 This document specifies that boundary. A production RPC server, explorer index, wallet service and exchange adapter are not implemented. Method names, wire encodings, authentication profiles and limits require versioned definitions before implementation. No private data becomes public merely to support an API.
 

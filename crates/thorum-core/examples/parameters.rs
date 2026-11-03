@@ -4,7 +4,7 @@ use thorum_core::{
 };
 
 fn main() {
-    println!("Thorum development parameters ({TICKER})");
+    println!("Myrk development parameters ({TICKER})");
     println!("Atomic decimals: {ATOMIC_DECIMALS}");
     println!("Cumulative issuance ceiling: {ISSUANCE_CAP} {TICKER}");
     println!("Target spacing: {BLOCK_TARGET_SECONDS} seconds");
