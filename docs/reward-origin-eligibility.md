@@ -147,10 +147,22 @@ For $h_r=100$, finalized heights 10179 and 10180 give the sharper and conservati
 | Ordinary output follows valid mature reward consumption | No new reward delay, finality of the creating transition still applies |
 | Principal or pool/developer input has no applicable complete policy | No classification or permission from this reward age rule |
 
+## Local numeric source implementation
+
+The core [reward height module](../crates/thorum-core/src/reward_height.rs) supplies `unverified_reward_blocks_remaining(parent_height, reward_origin)`. It computes the checked consuming successor first, then the checked age. A future origin or exhausted parent returns a payload free error. An age below 10080 returns the remaining block distance. An age at least 10080 returns zero. No invalid successor or age is clamped into success.
+
+These are unverified numeric inputs. Zero establishes only the age comparison, without reward classification, origin authentication, ancestry, finality, current unspentness, proof validity, spendability or commit permission. A positive distance at the final admitted height does not promise any later candidate. Height zero inputs do not establish a genesis reward. The fixed internal delay neither changes the monetary schedule nor classifies principal, pool or development credits.
+
+Hidden origins remain inside the actual local private witness boundary. Validators must not request them for a host check in place of the complete private relation. The module adds no origin record, state transition, callback, cache token, peer format or accepting validator path. Its errors retain no numeric inputs. The arithmetic has no allocation, loop, cryptography, randomness, clock or state effects. Formatting delegates static diagnostic text to the caller's formatter and has no independent transitive effect qualification.
+
+Returned distances and error categories also depend on the inputs and stay inside that authorized private boundary. For a positive distance $D$ and known consuming height $H$, the integer identity $h_r=H-(10080-D)$ recovers the supplied origin. Zero still reveals the numeric age predicate, and an error category reveals its own condition. Payload free errors do not make public RPC responses or logs safe. No actual disclosure or remote endpoint is demonstrated here.
+
+The seven [source tests](../crates/thorum-core/tests/reward_height.rs) use public integer literals for the successor boundary, zero age, future origins, exhausted parent precedence, maximum age, last possible maturity boundary and recomputation at a lower candidate. They are not valid branch, ASERT, mining or ledger fixtures. This source implementation has static review only. Compilation, rustfmt and test execution have not run for this increment. No runtime or chain adoption is claimed.
+
 ## Evidence and implementation gate
 
 The [source record](../research/reward-origin-eligibility/source-record.json) pins eight local contexts at the stated baseline revision. The work arithmetic accepts unverified numeric context. The core and paired accounting components explicitly delegate history, origin and commit authority. Their behavior is inspected as source, not executed here. The two linked policy documents receive explanatory links only. Their baseline hashes remain specific to the baseline revisions rather than describing later worktree bytes.
 
-This increment supplies specifications and conditional integer arguments only. It changes no Rust source, original note or nullifier encoding, hash domain, root version, work rule, subsidy schedule or allocation, resource class or consensus activation. No new origin representation, proof backend or accepting ledger is adopted.
+The initial specification increment supplied specifications and conditional integer arguments only. It changed no Rust source, original note or nullifier encoding, hash domain, root version, work rule, subsidy schedule or allocation, resource class or consensus activation. The subsequent numeric source implementation above adopts no new origin representation, proof backend or accepting ledger.
 
 Before implementation can accept any reward, the complete authenticated encoding of creation origin and availability, SAME private cash relation, real validator expected verification, canonical bounded parser, work and checkpoint/bootstrap validity, atomic state publication and recovery, witness privacy and practical recipient completion, resources and independent validation must be supplied. A numeric permanence proof does not close any of those gates. Local multinode experiments, an independent operator testnet and public release retain their separate actual requirements.

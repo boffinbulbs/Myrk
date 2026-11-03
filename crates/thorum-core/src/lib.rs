@@ -22,6 +22,7 @@
 mod accounting;
 mod amount;
 mod emission;
+mod reward_height;
 mod table;
 
 pub use accounting::{AccountingError, BlockBudget, BlockIssuance, SupplyState};
@@ -31,4 +32,5 @@ pub use emission::{
     ATOMIC_UNITS_PER_THM, BLOCKS_PER_SUBSIDY_PERIOD, BLOCK_TARGET_SECONDS, FIRST_LONG_TERM_HEIGHT,
     ISSUANCE_CAP, ISSUANCE_CAP_ATOMIC, LONG_TERM_SUBSIDY, SUBSIDY_PERIODS, TICKER,
 };
+pub use reward_height::{unverified_reward_blocks_remaining, RewardHeightError};
 pub use table::{PERIOD_SUBSIDIES_ATOMIC, SUBSIDY_TABLE_SHA256};
